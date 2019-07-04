@@ -53,7 +53,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="ViewModels\Shared\partials\" />
+    <Folder Include="Models\VMs\Shared\partials\" />
   </ItemGroup>
   
   <ItemGroup>
