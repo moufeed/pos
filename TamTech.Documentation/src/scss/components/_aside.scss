@@ -1,0 +1,111 @@
+
+
+
+.aside {
+    position: sticky;
+    top: 20px;
+    #{$left}: 0;
+    &.fixed {
+        position: fixed;
+    }
+    margin-bottom: 50px;
+}
+
+.navbar-links {
+    border-#{$right}: 1px solid $gray-300;
+    padding: 0;
+    .main-nav {
+        width: 100%;
+
+        span {
+
+            >a {
+                display: block;
+                color: $gray-800;
+                padding: 6px 12px;
+                //background: $gray-100;
+                font-weight: bolder;
+                border-bottom: 1px solid  transparent;
+                &:hover {
+                    color: $orange;
+                    border-bottom-color: $orange;
+                } 
+
+                &.active {
+                    color: $cyan;
+                    border-bottom-color: $cyan;
+                }
+
+                i {
+                    float: $right;
+                    margin: 5px;
+                    display: none;
+                }
+
+                &.active {
+
+                    i {
+                        transform: rotate(-90deg);
+                    }
+
+                    +.subnav {
+                        height: auto;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &:hover {
+
+                // i{
+                //     transform: rotate(-90deg);
+                // }
+                //  .subnav{
+                //     height :auto;
+                //     opacity: 1;
+                // }
+
+            }
+        }
+    }
+
+    .subnav {
+        padding: 8px 0;
+        margin-#{$left}: 25px;
+        // border-#{$left}: 1px solid  $gray-400;  
+        // height : 0;
+        // opacity: 0;
+        // overflow :hidden;
+        transition: all .3s;
+
+        a {
+            display: block;
+            color: $gray-600;
+            padding: 5px 12px;
+            border-bottom: 1px solid transparent;
+            position: relative;
+            &:after{
+                position: absolute;
+                #{$left} : -3px;
+                top :20%;
+                content: '•';
+                color: $gray-500;
+            }
+            &.active {
+                &, &:after{
+                    color: $green;
+                    border-bottom-color: $green;
+                }
+            }
+
+            &:hover {
+               
+                &, &:after{
+                    color: $orange;
+                    border-bottom-color: $orange;
+                }
+            }
+
+        }
+    }
+}

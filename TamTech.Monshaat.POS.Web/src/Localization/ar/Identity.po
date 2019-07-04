@@ -1,0 +1,66 @@
+
+msgid "your_are_blocked_title"
+msgstr "للأسف تم حظر حسابك من قبل المدير"
+
+msgid "your_blocked_action"
+msgstr "للمزيد من المعلومات يمكنك التواصل مع  المدير من خلال صفحة {0} كم يمكنك الدائماً العودة {1}"
+
+msgid "to_home_page"
+msgstr "للصفحة الرئيسية"
+
+msgid "Title"
+msgstr "وزارة التجارة والاستثمار"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Forgot_your_passwword"
+msgstr "نسيت كلمة المرور؟"
+
+msgid "Back_To_Login"
+msgstr "العودة للصفحة تسجيل الدخول"
+
+msgid "Reset_Password"
+msgstr "إستعادة"
+
+msgid "sucess_reset_msg"
+msgstr "تم إرسال كلمة السر الجديدة الى الى {0} يرجى التحقق من البريد"
+
+msgid "Access_is_denied"
+msgstr "وصول مرفوض"
+
+msgid "Access_is_denied_msg"
+msgstr "لاتملك صلاحيات للوصول للمسار المطلوب اذا كان هناك خطا يمكنك التواصل مع المدير . كم يمكنك العودة {0}"
+
+msgid "You_are_now_logged_out"
+msgstr "تم تسجيل الخروج"
+
+msgid "return_to_login_or_homepage"
+msgstr "يمكنك {0} مرة آخرى او العودة {1}"
+
+msgid "Current_Password"
+msgstr "كلمة المرور الحالة"
+
+msgid "new_password"
+msgstr "الكلمة المرور الجديدة"
+
+msgid "Confirm_new_Password"
+msgstr "تأكيد كلمة المرور"
+
+msgid "Change_Password"
+msgstr "تغير كلمة المرور"
+
+msgid "Back_To_dashboard"
+msgstr "العودة للوحة التحكم"
+
+msgid "Log_out"
+msgstr "تسجيل الخروج"
+
+msgid "Congratulations_You_have_successfully_changed_your_password"
+msgstr "تم تغير كلمة المرور الخاصة بك بنجاح يمكنك العودة الى{0}"
+
+msgid "dashboard"
+msgstr "لوحة التحكم"
+
+msgid ""
+msgstr ""

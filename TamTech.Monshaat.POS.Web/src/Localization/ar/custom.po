@@ -1,0 +1,6 @@
+# admin -> pages controller 
+msgid "home_page_section"
+msgstr "الرئيسية"
+
+msgid "other_section"
+msgstr "غير ذلك"

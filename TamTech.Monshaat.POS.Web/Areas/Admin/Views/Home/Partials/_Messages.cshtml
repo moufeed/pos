@@ -1,0 +1,52 @@
+﻿
+
+    <div class="x_panel tile fixed_height_400 messages-widget">
+        <div class="x_title clearfix ">
+            <h4>@Localizer["unread_messages"]</h4>
+        </div>
+        <div class="x_content p-3">
+            <if include-if="@ViewBag.Emails != null">
+                @{
+                    PagedResultModel<List<ContactDto>> _Emails = (PagedResultModel<List<ContactDto>>)ViewBag.Emails;
+                }
+                <if include-if="_Emails.Data.Count > 0">
+                    <div class="emails scroll" data-theme="minimal-dark">
+                        <ul class="list-unstyled ">
+                            @foreach(ContactDto item in _Emails.Data)
+                            {
+                                <li>
+                                    <a asp-action="ViewMessage" asp-controller="Contact" asp-route-id="@item.Id">
+                                            <i class="fa fa-reply" aria-hidden="true"></i>
+                                        <div class="info clearfix">
+                                            <span>
+                                                <strong>@item.FullName</strong>
+                                                <small class="email">@item.Email</small>
+                                            </span>
+                                            <span>
+                                                <small class="type">@item.TypeName </small>
+                                                 @item.CreatedDate.ToString("dd/MM/yyyy")  
+                                            </span>
+                                           
+                                        </div>
+                                    </a>
+                                    
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </if>
+                <if exclude-if="_Emails.Data.Count > 0">
+                    <div class="text-center no-messages">
+                        <i class="fa fa-check-circle-o m-b5" aria-hidden="true"></i>
+                        <p class="lead"> @Localizer["no_unread_messages"]</p>
+                    </div>
+                </if>
+            </if>
+            <if exclude-if="@ViewBag.Emails != null">
+                <div class="text-center no-messages">
+                    <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                    <p class="lead"> @Localizer["could_not_get_data"]</p>
+                </div>
+            </if>
+        </div>
+    </div>

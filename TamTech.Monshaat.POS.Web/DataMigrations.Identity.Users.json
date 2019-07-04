@@ -1,0 +1,204 @@
+{
+  "Roles": [
+    "TAMCMS_MenusContentAdmin",
+    "TAMCMS_SlidersContentAdmin",
+    "TAMCMS_PagesContentAdmin",
+    "TAMCMS_UsersAdmin",
+    "TAMCMS_GalleriesContentAdmin",
+    "TAMCMS_ServicesContentAdmin",
+    "TAMCMS_PostsContentAdmin",
+    "TAMCMS_PostsEditor",
+    "TAMCMS_PostAuthor",
+    "TAMCMS_ProductsContentAdmin",
+    "TAMCMS_ContactUsAdmin",
+    "TAMCMS_ContactUsTypesAdmin",
+    "TAMCMS_ContactUsStatusAdmin",
+    "TAMCMS_POSAdmin",
+    "TAMCMS_POSTypesAdmin",
+    "TAMCMS_POSSectorsAdmin",
+    "TAMCMS_POSStatusAdmin",
+    "TAMCMS_POSAttributesAdmin",
+    "TAMCMS_VendorAdmin",
+    "TAMCMS_RequestAdmin",
+    "TAMCMS_TestimonialsAdmin",
+    "TAMCMS_Vendor"
+  ],
+  "Users": [
+    {
+      "Id": "72ec359d-d91d-48a5-820c-71d5956c0b5d",
+      "Username": "pos_admin",
+      "Password": "P05@dm!n",
+      "PhoneNumber": "009053454441350",
+      "Email": "a.aktaa@tamtech.solutions",
+      "Roles": [
+        "TAMCMS_MenusContentAdmin",
+        "TAMCMS_SlidersContentAdmin",
+        "TAMCMS_PagesContentAdmin",
+        "TAMCMS_UsersAdmin",
+        "TAMCMS_GalleriesContentAdmin",
+        "TAMCMS_ServicesContentAdmin",
+        "TAMCMS_PostsContentAdmin",
+        "TAMCMS_PostsEditor",
+        "TAMCMS_PostAuthor",
+        "TAMCMS_ProductsContentAdmin",
+        "TAMCMS_ContactUsAdmin",
+        "TAMCMS_ContactUsTypesAdmin",
+        "TAMCMS_ContactUsStatusAdmin",
+        "TAMCMS_POSAdmin",
+        "TAMCMS_POSTypesAdmin",
+        "TAMCMS_POSSectorsAdmin",
+        "TAMCMS_POSStatusAdmin",
+        "TAMCMS_POSAttributesAdmin",
+        "TAMCMS_VendorAdmin",
+        "TAMCMS_RequestAdmin",
+        "TAMCMS_TestimonialsAdmin",
+        "TAMCMS_Vendor"
+      ]
+    },
+    {
+      "Id": "cd1506ac-9b13-4593-9908-9274e109315b",
+      "Username": "test1",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000001",
+      "Email": "superuser1@superuser1.com",
+      "Roles": [
+        "TAMCMS_MenusContentAdmin",
+        "TAMCMS_SlidersContentAdmin",
+        "TAMCMS_PagesContentAdmin",
+        "TAMCMS_UsersAdmin",
+        "TAMCMS_GalleriesContentAdmin",
+        "TAMCMS_ServicesContentAdmin",
+        "TAMCMS_PostsContentAdmin",
+        "TAMCMS_PostsEditor",
+        "TAMCMS_PostAuthor",
+        "TAMCMS_ProductsContentAdmin",
+        "TAMCMS_ContactUsAdmin",
+        "TAMCMS_ContactUsTypesAdmin",
+        "TAMCMS_ContactUsStatusAdmin",
+        "TAMCMS_POSAdmin",
+        "TAMCMS_POSTypesAdmin",
+        "TAMCMS_POSSectorsAdmin",
+        "TAMCMS_POSStatusAdmin",
+        "TAMCMS_POSAttributesAdmin",
+        "TAMCMS_VendorAdmin",
+        "TAMCMS_RequestAdmin",
+        "TAMCMS_TestimonialsAdmin",
+        "TAMCMS_Vendor"
+      ]
+    },
+    {
+      "Id": "713e82f7-f012-4fc8-9c8f-178a60c52895",
+      "Username": "superuser",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000011",
+      "Email": "super2@super2.com",
+      "Roles": [
+        "TAMCMS_MenusContentAdmin",
+        "TAMCMS_SlidersContentAdmin",
+        "TAMCMS_PagesContentAdmin",
+        "TAMCMS_UsersAdmin",
+        "TAMCMS_GalleriesContentAdmin",
+        "TAMCMS_ServicesContentAdmin",
+        "TAMCMS_PostsContentAdmin",
+        "TAMCMS_PostsEditor",
+        "TAMCMS_PostAuthor",
+        "TAMCMS_ProductsContentAdmin",
+        "TAMCMS_ContactUsAdmin",
+        "TAMCMS_ContactUsTypesAdmin",
+        "TAMCMS_ContactUsStatusAdmin",
+        "TAMCMS_POSAdmin",
+        "TAMCMS_POSTypesAdmin",
+        "TAMCMS_POSSectorsAdmin",
+        "TAMCMS_POSStatusAdmin",
+        "TAMCMS_POSAttributesAdmin",
+        "TAMCMS_VendorAdmin",
+        "TAMCMS_RequestAdmin",
+        "TAMCMS_TestimonialsAdmin",
+        "TAMCMS_Vendor"
+      ]
+    },
+    {
+      "Id": "6e2dda3b-dd99-41a2-9567-c8f710791953",
+      "Username": "menus_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000002",
+      "Email": "menus_user@menus_user.com",
+      "Roles": [
+        "TAMCMS_MenusContentAdmin"
+      ]
+    },
+    {
+      "Id": "c0890abd-1da8-4007-bced-1cea455a5ca6",
+      "Username": "sliders_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000003",
+      "Email": "sliders_user@sliders_user.com",
+      "Roles": [
+        "TAMCMS_SlidersContentAdmin"
+
+      ]
+    },
+    {
+      "Id": "9396f199-8454-4468-bc16-b31cd6ad0c85",
+      "Username": "pages_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000004",
+      "Email": "pages_user@pages_user.com",
+      "Roles": [
+        "TAMCMS_PagesContentAdmin"
+      ]
+    },
+    {
+      "Id": "f39b805b-d120-413a-bd3b-bcd5b934c1a2",
+      "Username": "users_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000005",
+      "Email": "users_user@users_user.com",
+      "Roles": [
+        "TAMCMS_UsersAdmin"
+      ]
+    },
+    {
+      "Id": "36575ee7-a2c0-4b10-983c-78c84c98ae04",
+      "Username": "galleries_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000005",
+      "Email": "galleries_user@galleries_user.com",
+      "Roles": [
+        "TAMCMS_GalleriesContentAdmin"
+      ]
+    },
+    {
+      "Id": "07f9681d-ce84-46b2-bd9e-5c4d152248e0",
+      "Username": "services_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000006",
+      "Email": "services_user@services_user.com",
+      "Roles": [
+        "TAMCMS_ServicesContentAdmin"
+      ]
+    },
+    {
+      "Id": "94d292ba-9cd7-4ae3-8256-372511be157c",
+      "Username": "posts_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000007",
+      "Email": "posts_user@posts_user.com",
+      "Roles": [
+        "TAMCMS_PostsContentAdmin",
+        "TAMCMS_PostsEditor",
+        "TAMCMS_PostAuthor"
+      ]
+    },
+    {
+      "Id": "713a9c29-49ca-4f0d-be57-df9a25ae7df9",
+      "Username": "products_user",
+      "Password": "asdfasdf",
+      "PhoneNumber": "+9660000000008",
+      "Email": "products_user@products_user.com",
+      "Roles": [
+        "TAMCMS_ProductsContentAdmin"
+      ]
+    }
+  ]
+}

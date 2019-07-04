@@ -1,0 +1,70 @@
+.benfits-area{
+    
+    img{
+        max-width: 100%;
+    }
+    .colum-image{
+        margin-bottom: 35px;
+        img{
+            max-width: 350px;
+            height: auto;
+            @include media-breakpoint-down(md){
+                max-width: 200px;
+            }
+        }
+    }
+    .colum-text{
+        > h3{
+            position: relative;
+            margin-bottom: 40px;
+            span{
+                display: inline-block;
+                position: relative;
+                &:after{
+                    content: '';
+                    @include absolute(bottom $left , -25px 0 ); 
+                    background: $l-green;
+                    width: 60px;
+                    height: 4px;
+                }
+            }
+        }
+        p{
+            @include font-size(18px);
+            color: $gray-600;
+            @include media-breakpoint-up(lg){
+                max-width: 96%;
+                margin:25px 0  ;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm){
+        .mt-55{
+            margin-top: 15px !important;
+        }
+        .mb-75{
+            margin-bottom: 15px !important;
+        }
+        .column-1{order:2}
+        .column-2{order:1}
+        .column-3{order:3}
+        .column-4{order:4}
+        .column-5{order:6}
+        .column-6{order:5}
+        .column-7{order:7}
+        .column-8{order:8}
+        .column-9{order:10}
+        .column-10{order:9}
+        .column-11{order:11}
+        .column-12{order:12}
+        .column-13{order:14}
+        .column-14{order:13}
+        .column-15{order:15}
+
+        .colum-image{
+            margin: 35px auto;
+        }
+    }
+    
+}

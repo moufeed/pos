@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{pagetitle}}</title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style-{{lang}}.min.css">
+</head>
+<body data-spy="scroll" data-target="#navbar-links" data-offset="0"> 
+    
+{{>_header}}
+  <section class="docs-conteiner mt-50 closed"> 
+       <button class="btn btn-link d-lg-none position-fixed float-btn" id="menutoggle">
+             <span class="burger"></span>
+        </button>
+       <div class="container"> 
+            <div class="row no-gutters row-content" >  
+                
+                <aside class="col-md-4 col-lg-3 " id="sidebar">
+                    {{>aside maincontent = this.vendor_Content}}
+                </aside> 
+                <main class="col-md-12 col-lg-9" id="main-content">
+                    {{>utilities/_fontController}}
+                    {{>main maincontent = this.vendor_Content}}
+                </main>
+            </div>
+       </div>
+   </section>
+{{>_footer}}
+<script src="assets/js/script.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,404 @@
+msgid "pos_directory"
+msgstr "دليل نقاط البيع"
+
+msgid "site_title"
+msgstr "وزارة التجارة والاستثمار"
+
+msgid "conatact_area_msg"
+msgstr "نحن نتطلع دائمًا إلى خدمتك بشكل أفضل، فلا تتردد بالتواصل معنا "
+
+msgid "send_message"
+msgstr "ارسال رسالة"
+
+msgid "directory_area_msg"
+msgstr "ابحث عن نظام نقاط البيع المناسب لعملك الان"
+
+msgid "copyrights"
+msgstr "© {0} جميع الحقوق محفوظة وزارة التجارة والاستثمار  "
+
+msgid "useing_message"
+msgstr "باستخدامك هذا الموقع، فإنك توافق على"
+
+msgid "privacy_policy"
+msgstr "سياسة الخصوصية"
+
+msgid "terms_of_use"
+msgstr "شروط الاستخدام"
+
+msgid "and"
+msgstr "و"
+
+#page contact us 
+msgid "contact_us"
+msgstr "تواصل معنا"
+
+msgid "contant_us_message"
+msgstr "نحن نتطلع دائمًا إلى خدمتك بشكل أفضل  فلا تترد بالتواصل معنا"
+
+msgid "Name"
+msgstr "الأسم"
+ 
+msgid "full_name"
+msgstr "اسمك الكامل"
+ 
+msgid "mobile_number"
+msgstr "رقم الجوال"
+ 
+msgid "phone_number"
+msgstr "رقم الهاتف"
+ 
+msgid "phone_number_placeholder"
+msgstr "05xxxxxxxx"
+ 
+msgid "email_address"
+msgstr "البريد الالكتروني"
+ 
+msgid "email_address_placeholder"
+msgstr "بريدك الالكتروني"
+ 
+msgid "reason_for_communication"
+msgstr "سبب التواصل"
+ 
+msgid "select_the_reason_for_the_communication"
+msgstr "اختر سبب التواصل"
+ 
+msgid "Request"
+msgstr "طلب"
+ 
+msgid "Inquiry"
+msgstr "استفسار"
+ 
+msgid "Suggestion"
+msgstr "إقتراح"
+ 
+msgid "Complaint"
+msgstr "شكوى"
+ 
+msgid "Message"
+msgstr "التفاصيل"
+ 
+msgid "Message_placeholder"
+msgstr "قم بكتابة تفاصيل هنا"
+ 
+msgid "send"
+msgstr "ارسال"
+ 
+msgid "vendor_detials"
+msgstr "تفاصيل مزود نقاط البيع"
+ 
+msgid "complaint_detials"
+msgstr "تفاصيل الشكوى"
+ 
+msgid "company_name"
+msgstr "اسم الشركه المزودة النظام"
+ 
+msgid "Attachments"
+msgstr "المرفقات"
+ 
+msgid "choose_file"
+msgstr "اختر ملفآ لتحميله"
+
+msgid "files_selected"
+msgstr "ملفات  محددة"
+
+msgid "acceptable_formats"
+msgstr "يسمح بارفاق ملفات بالصيغ التالية"
+ 
+msgid "location"
+msgstr "الموقع"
+ 
+msgid "choose_location"
+msgstr "اختر الموقع"
+ 
+#page success
+
+msgid "thank_you_for_contacting_us"
+msgstr "شكرا لتواصلك معنا"
+ 
+msgid "your_request_will_be_reviewed"
+msgstr "سوف يتم مراجعة طلبك و التواصل معك في اقرب وقت"
+ 
+msgid "back_to_hompage"
+msgstr "العوده الى الصفحة الرئيسية"
+
+
+#directory
+msgid "d_search_label"
+msgstr "ابحث عن أفضل حل نقاط البيع لأي نوع من الأعمال"
+ 
+msgid "d_search_placeholder"
+msgstr "ابحث باسم نقاط البيع"
+
+msgid "d_sectors_title"
+msgstr "تصفح أنظمة نقاط البيع بواسطة القطاع"
+   
+msgid "result_count_msg"
+msgstr "تصفح أنظمة نقاط البيع المتوفرة"
+ 
+msgid "system_count"
+msgstr "{0} نظام"
+
+ 
+msgid "filter_search_results"
+msgstr "تصفية نتائج البحث"
+
+msgid "no_results_found"
+msgstr "لا يتوفر نتائج مطابقة لمعايير بحثك"
+ 
+msgid "pos_attributes"
+msgstr "مميزات النظام"
+ 
+msgid "pos_brief"
+msgstr "نبذة عن النظام"
+
+msgid "contact_information"
+msgstr "معلومات التواصل"
+
+msgid "compnay_name"
+msgstr "اسم الشركة"
+ 
+msgid "system_type"
+msgstr "نوع النظام"
+ 
+msgid "specialization"
+msgstr "التخصص"
+ 
+msgid "website"
+msgstr "الموقع الالكتروني"
+ 
+msgid "more_detials"
+msgstr "المزيد من التفاصيل"
+ 
+msgid "thank_you_for_register"
+msgstr "شكرا لتسجيلكم"
+ 
+msgid "we'll_check_your_information"
+msgstr "سوف نتحقق من معلوماتك ونرسل لك بريد إلكتروني لتأكيد التسجيل"
+ 
+msgid "you_can_login"
+msgstr "يمكنك في هذه الاثناء تسجيل الدخول الى حسابك لإضافة المزيد من الأنظمة"
+ 
+msgid "login"
+msgstr "تسجيل الدخول"
+ 
+msgid "search"
+msgstr "بحث"
+ 
+msgid "visit_website"
+msgstr "زيارة الموقع"
+ 
+msgid "remove_all_filters"
+msgstr "إزالة جميع التصفيات"
+ 
+msgid "system_name"
+msgstr "اسم النظام"
+ 
+msgid "pos_details"
+msgstr " تفاصيل نقطة البيع"
+ 
+msgid "actions"
+msgstr "إجراءات"
+ 
+msgid "edit"
+msgstr "تعديل"
+ 
+msgid "delete"
+msgstr "حذف"
+ 
+msgid "add_new_system"
+msgstr "إضافة نظام جديد"
+ 
+msgid "add_pos_system"
+msgstr "قم باضافة نظام نقاط البيع"
+ 
+msgid "follow_steps"
+msgstr "اتبع الخطوات التالية لتسجيل نظام النقاط الخاص بك في الموقع "
+ 
+msgid "pos_some_information"
+msgstr "أخبرنا بعض المعلومات عن نظام نقاط البيع الخاص بك "
+ 
+msgid "write_details_here"
+msgstr "قم بكتابة تفاصيل هنا "
+ 
+msgid "add_commercial_images"
+msgstr "قم بإضافة صور ترخيص السجل التجاري و البلدية"
+ 
+msgid "choose_sector_for_pos"
+msgstr "أختر قطاع نظام نقاط البيع"
+ 
+msgid "other_sector"
+msgstr "قطاع اخر"
+
+msgid "add_images"
+msgstr "أضف صور"
+
+msgid "type"
+msgstr "النوع"
+
+msgid "cancel"
+msgstr "إلغاء"
+
+msgid "add"
+msgstr "إضافة"
+
+msgid "update"
+msgstr "تعديل"
+
+msgid "add_pos_images"
+msgstr "أضف <b id='ImagesCount'>{0}</b> صور  كحد أقصى"
+
+msgid "word_count"
+msgstr "بحد أقصى {0} كلمة"
+
+msgid "vedor_register"
+msgstr "تسجيل الموردين"
+
+msgid "already_have_an_account"
+msgstr "لديك حساب مسبقآ في منشأت؟"
+
+msgid "Dear_customer"
+msgstr "عزيزنا العميل.."
+
+msgid "please_login_signup_via_SSO"
+msgstr " يرجى تسجيل الدخول أولاً عن طريق اسم المستخدم وكلمة المرور من خلال"
+
+msgid "please_log_in_via_sso"
+msgstr "نظام الدخول الموحد"
+
+msgid "access_denied_to_register_vendor"
+msgstr "للاسف <b>{0}</b> غير مسموح لكم بتسجيل مورد!!" 
+
+msgid "please_log_in"
+msgstr "قم بتسجيل الدخول"
+
+msgid "register_your_company"
+msgstr "سجل شركتك و نظام نقاط البيع الخاص بك مع وزارة التجارة والاستثمار"
+
+msgid "company_name_in_commercial"
+msgstr "اسم الشركة في السجل التجاري"
+
+msgid "municipal_license"
+msgstr "رخصة البلدية"
+
+msgid "commercial_registration_no"
+msgstr "رقم السجل التجاري"
+
+msgid "first_name"
+msgstr "الاسم الأول"
+
+msgid "last_name"
+msgstr "الاسم الأخير"
+
+msgid "job_title"
+msgstr "المسمى الوظيفي"
+
+msgid "website_link"
+msgstr "رابط الموقع"
+
+msgid "or_browse"
+msgstr "او تصفح"
+
+msgid "all_sectors"
+msgstr "جميع القطاعات"
+
+msgid "or"
+msgstr "أو"
+
+msgid "view_more"
+msgstr "مشاهدة المزيد"
+
+msgid "choose_your_business_type"
+msgstr "اختر نوع النشاط التجاري الخاص بك"
+
+msgid "total_of_pos"
+msgstr "<strong>{0}</strong> نظام نقاط بيع قد يكون مناسب لمتجرك"
+
+msgid "register"
+msgstr "تسجيل"
+
+msgid "fax"
+msgstr "فاكس"
+
+msgid "name_already_exists"
+msgstr "الاسم موجود مسبقاً"
+
+msgid "POBox"
+msgstr "صندوق بريد"
+
+msgid "city"
+msgstr "المدينة"
+
+msgid "street"
+msgstr "الشارع"
+
+msgid "ZipCode"
+msgstr "الرمز البريدي"
+
+msgid "company_address"
+msgstr "العنوان"
+
+msgid "add_pos"
+msgstr "إضافة نظام نقطة بيع"
+
+msgid "your_account_has_been_created"
+msgstr "آهلا {0} ، تم إنشاء حسابكم في منشآت بنجاح"
+
+msgid "you_can_add_pos"
+msgstr "يمكنك الأن إضافة أنظمة نقاط البيع الخاص بك "
+
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+msgid "pos_manager"
+msgstr "إدارة نقاط البيع"
+
+msgid "supplier_information"
+msgstr "معلومات المورد"
+
+msgid "remove_pos_from_system"
+msgstr "حذف نظام نقاط البيع <span id='posName'></span> من الموقع"
+
+msgid "pos_deleted_successfully"
+msgstr "تم حذف نظام <strong id='pos_name'></strong> من الموقع بنجاح"
+
+msgid "sector_validate"
+msgstr "رجاء اختار  قطاع أو قم بكتابة اسم القطاع"
+
+msgid "p_error_title"
+msgstr "خطأ!"
+
+msgid "p_error_message"
+msgstr "للاسف حث خطا اثناء معالجة طلبك"
+
+msgid "your_account_has_been_updated"
+msgstr "تم تعديل بياناتك بنجاح"
+
+msgid "edit_information"
+msgstr "تعديل البيانات"
+
+msgid "edit_your_information"
+msgstr "تستطيع تعديل بيانات شركتك والتاكد من إدخال بيانات صحيحة "
+
+msgid "current_status"
+msgstr "حالة الطلب"
+
+msgid "edit_vendor_information"
+msgstr "تعديل البيانات"
+
+msgid "vedor_info"
+msgstr "معلومات المورد"
+
+msgid "page_not_found"
+msgstr "الصفحة غير موجودة"
+
+msgid "page_not_found_msg"
+msgstr "عذراً ... الصفحة التي تحاول الوصول إليها غير موجودة"
+
+msgid "something_went_wrong"
+msgstr "حدث خطأ ما"
+
+msgid "try_to_refresh_this_page"
+msgstr "لايمكننا الحصول على المعلومات الأن. الرجاء المحاولة مجدداً في وقت لاحق"
+
+msgid ""
+msgid ""

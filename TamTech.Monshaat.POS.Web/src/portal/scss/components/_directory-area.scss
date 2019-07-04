@@ -1,0 +1,56 @@
+
+.directory-area{
+    position: relative;
+    overflow: hidden;
+    &:before{
+        @include absolute(top $left , 0 0);
+        content: '';
+        width: 200%;
+        height: 150%;
+        background: $m-lime;
+        z-index: -1;
+        transform: rotate3d(0, 0, 1, if-ltr(10deg,-10deg));
+        transform-origin: top $left;
+    }
+     .container{
+         margin-top: 85px;
+     }
+    img{
+        width: 200px;
+    }
+    .d-content{
+        box-shadow: $box-shadow;
+        padding: 45px 0;
+    }
+    .total-pos{
+        font-size: 45px;
+        font-family: $font-bold ;
+        margin-bottom: 15px;
+        strong{
+            font-size: 60px;
+            display: block;
+            color: $green;
+            margin-bottom: 15px; 
+        }
+    }
+
+    @include media-breakpoint-down(lg){
+        .total-pos{
+            font-size: 35px;  
+        }
+    }
+    @include media-breakpoint-down(md){
+        .total-pos{
+            font-size: 22px;  
+        }
+    }
+    @include media-breakpoint-down(sm){
+        text-align: center;
+        .container{
+            margin-top: 0; 
+            .row{
+                margin: 0;
+            }
+        }
+    }
+}

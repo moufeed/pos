@@ -1,0 +1,236 @@
+﻿@model TamTechSDK.Common.Services.PosService.PosService.Models.PosDto
+
+@{
+    ViewData["Title"] = "Details";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3> @Localizer["pos_details"]<small></small></h3>
+        </div>
+        <div class="title_right">
+            <a asp-action="Index"
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        <div class="x_panel">
+            <div class="x_content p-y-5 ">
+
+                <div class="row">
+                    <div class="col-md-12  col-lg-7">
+
+                        <dl class="dl-horizontal">
+                            <dt class="m-b3">
+                                @Localizer["system_name"]
+                            </dt>
+                            <dd>
+                                @Model.Name
+                            </dd>
+                            <dt class="m-b3">
+                                @Localizer["type"]
+                            </dt>
+                            <dd>
+                                @Model.TypeName
+                            </dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_sector"]
+                            </dt>
+                            <dd>
+                                @Model.SectorName
+                            </dd>
+
+
+                            <dt class="m-b3">
+                                @Localizer["t_visibility"]
+                            </dt>
+                            <dd id="published">
+                                @if (Model.Published)
+                                {
+                                    <span class="c-green"> <i class="fa fa-check" aria-hidden="true"></i>@Localizer["published"] </span>
+                                }
+                                else
+                                {
+                                    <span class="c-red"> <i class="fa fa-times" aria-hidden="true"></i>@Localizer["unpublished"] </span>
+                                }
+                            </dd>
+                            <dt class="m-b3">
+                                @Localizer["l_status"]
+                            </dt>
+                            <dd id="statustext">
+                                @Model.StatusName
+                            </dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_vendor_name"]
+                            </dt>
+                            <dd>
+                                @Model.VendorName
+                            </dd>
+                            @*<dt class="m-b3">
+                        @Localizer["l_price"]
+                    </dt>
+                    <dd>
+                        @Model.Price
+                    </dd>*@
+                            <dt class="m-b3">
+                                @Localizer["created_date"]
+                            </dt>
+                            <dd>
+                                @Model.CreatedDate
+                            </dd>
+
+
+                            <dt class="m-b3">
+                                @Localizer["pos_brief"]
+                            </dt>
+                            <dd>
+                                @Model.About
+                            </dd>
+
+
+
+
+                        </dl>
+
+
+
+
+                    </div>
+                    <div class="col-md-12 col-lg-5">
+
+                        <dl class="dl-horizontal">
+                            @foreach (var item in Model.Specifications)
+                            {
+                                <dt class="m-b3">
+                                    @item.AttName
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        @foreach (var val in item.Values)
+                                        {
+                                            <li> @val.Value</li>
+                                        }
+                                    </ul>
+                                    <hr />
+                                </dd>
+
+                            }
+                        </dl>
+
+
+                    </div>
+                </div>
+                <div class="p-x-5">
+                    <h4 class="m-b2">  @Localizer["images"]</h4>
+                    <div class="row">
+
+                        @foreach (var item in Model.Images)
+                        {
+                            <div class="col-sm-6 col-md-2">
+                                <img src="@item" alt="@Model.Name" class="img-thumbnail ">
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                @Model.Actionable
+                @ViewBag.PosActions
+                <div class="pos-actions p-x-5 p-t5">
+                    <h4 class="m-b3">@Localizer["t_actions"]</h4>
+                    <ul class="nav nav-tabs sub-tabs" role="tablist">
+                        <if include-if="ViewBag.PosActions != null && Model.Actionable">
+                            <li role="presentation" class="active"><a href="#form" aria-controls="form" role="tab" data-toggle="tab">@Localizer["new_action"]</a></li>
+                        </if>
+                        <if include-if="Model.StatusHistories != null">
+                            <li role="presentation" class="@(ViewBag.PosActions == null ||  Model.Actionable == false ? "active" :"")"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab">@Localizer["old_action"]</a></li>
+                        </if>
+
+                    </ul>
+
+                    <div class="tab-content">
+                        <if include-if="ViewBag.PosActions != null && Model.Actionable">
+                            <div role="tabpanel" class="tab-pane fade in active" id="form">
+                                @{
+                                    List<ProcessActionModel> Actions = (List<ProcessActionModel>)ViewBag.PosActions;
+                                }
+                                <div class="pos-actions ">
+
+
+                                    <form asp-action="PosAction" method="post" class="form m-y-5" id="actionform" data-history="@Url.AdminUrl("GetHistory","pos",new { id=Model.Id})">
+                                        <input type="hidden" name="POSId" value="@Model.Id" />
+                                        <input type="hidden" name="lang" value="@activeLang" />
+                                        <div class="form-group clearfix">
+                                            <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["l_status"] </label>
+                                            <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                                                @foreach (ProcessActionModel act in Actions)
+                                                {
+                                                    <span class="m-x-3">
+                                                        <label for="Action-@act.ActionId">
+                                                            <input type="radio" name="ActionId" id="Action-@act.ActionId" value="@act.ActionId" class="check" data-note='@(act.NoteMandatory ? "true" : "false" )' required @(Model.StatusName)>
+                                                            <span class="check-txt">@act.Name</span>
+                                                        </label>
+                                                    </span>
+                                                }
+                                                <div class="actionId-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["l_notes"] </label>
+                                            <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                                                <textarea rows="5" class="form-control action_note" name="Notes"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-offset-2 col-sm-offset-3 col-sm-6 col-xs-12 ">
+                                                <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["send"]">
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </if>
+
+
+                        <if include-if="Model.StatusHistories != null">
+                            @{
+                                List<POSStatusHistoryDto> history = Model.StatusHistories;
+                            }
+                            <div role="tabpanel" class="tab-pane fade @(ViewBag.PosActions == null || Model.Actionable == false  ? "in active" :"")" id="history">
+                                <partial name="~/Areas/Admin/Views/Pos/Partials/_history.cshtml" model="@history" />
+                            </div>
+                        </if>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+   
+    <script src="~/Admin/js/pos.min.js"></script>
+} 

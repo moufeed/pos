@@ -1,0 +1,36 @@
+
+
+.initiative-Area{
+    margin-bottom: 50px;
+   
+    
+        .i-content{
+            background: $green;
+            padding:65px 35px; 
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            &:before{
+                @include absolute(top $right , 5% -25%);
+                content: "";
+                background: rgba($white,.05);
+                transform: rotate3d(0, 0, 1, if-ltr(-10deg,10deg));
+                transform-origin: top $right;
+                width: 150%;
+                height: 150%;
+            }
+            h3{
+                color: $white;
+                margin-bottom: 25px;;
+            }
+            p{
+                color: $white;
+                font-size: 18px;
+            }
+        }
+        @include media-breakpoint-down(sm){
+              .row {
+                margin: 0;
+            }
+        }
+}

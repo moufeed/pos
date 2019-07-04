@@ -1,0 +1,110 @@
+@model PagedResultModel<List<PosDto>>
+    <div id="resultsList">
+        <if exclude-if="Model.Data != null && Model.Data.Count > 0">
+            <partial name="~/Areas/Portal/Views/Directory/partials/_messages.cshtml" />
+        </if>
+
+        <if include-if="Model.Data != null && Model.Data.Count > 0">
+            <div >
+                <h5 class="heading-large mb-25 total-line">@Localizer["result_count_msg"]  <span class="c-green">@Localizer["system_count", Model.Pagination.TotalCount]</span></h5>
+                @foreach (var item in Model.Data)
+                {
+                    <div class="results-list ">
+                        <div class="result-item  white-panel  mb-3 b-shadow">
+                            <div class="row no-gutters">
+                                <div class="col-md-3 col-lg-3 p-x-5 pos-imgs">
+                                    <div class="owl-carousel" data-singleitem="true" data-dots="true" data-rtl="true">
+                                        <if include-if="item.Images != null && item.Images.Count > 0">
+                                            @foreach (var img in item.Images)
+                                            {
+                                                <a asp-action="pos" asp-route-slug="@item.Slug">
+                                                    <img src="@img" class="img-fluid" alt="@item.Name">
+                                                </a>
+                                            }
+                                        </if>
+                                        <if exclude-if="item.Images != null && item.Images.Count > 0">
+                                            <a asp-action="pos" asp-route-slug="slug">
+                                                <img src="~/portal/img/pos-empty.jpg" class="img-fluid" alt="">
+                                            </a>
+                                        </if>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 p-x-5">
+                                    <h4><a asp-action="pos" asp-route-slug="@item.Slug" class="c-black">@item.Name</a></h4>
+                                    <ul class="list-unstyled pos-details flex-wrap">
+                                        <li class="mt-5">
+                                            <span>@Localizer["compnay_name"]</span>
+                                            <span>@item.VendorName</span>
+                                        </li>
+                                        <li class="mt-5">
+                                            <span>@Localizer["system_type"]</span>
+                                            <span>@item.TypeName</span>
+                                        </li>
+                                        <li class="mt-5">
+                                            <span>@Localizer["specialization"]</span>
+                                            <span>@item.SectorName</span>
+                                        </li>
+                                    </ul>
+                                    <p class="pos-description">
+                                        @item.About
+                                    </p>
+                                    @*<a asp-action="pos" asp-route-slug="@item.Slug" class="more btn-link"> @Localizer["view_more"]</a>*@
+                                </div>
+                                <div class="col-md-3 col-lg-3 p-x-5">
+                                    <div class="d-flex flex-column justify-content-between h-100">
+                                        <if include-if="item.Specifications != null">
+                                            <ul class="list-unstyled pos-attribute">
+                                                @{
+                                                    int count = 0;
+
+                                                }
+                                                @foreach (var opt in item.Specifications)
+                                                {
+                                                    if (count == 4)
+                                                    {
+                                                        break;
+                                                    }
+                                                    @foreach (var val in opt.Values)
+                                                    {
+                                                        if (count == 4)
+                                                        {
+                                                            break;
+                                                        }
+                                                        <li>
+                                                            <i class="fas fa-check-circle"></i>
+                                                            <small>@val.Value</small>
+                                                        </li>
+                                                        count++;
+                                                    }
+
+                                                }
+
+
+                                            </ul>
+                                        </if>
+
+
+                                        @*<a href="#" class="btn btn-orange btn-block c-white  p-y-10  " target="_blank">
+                                            @Localizer["visit_website"]
+                                        </a>*@
+
+                                        <a asp-action="pos" asp-route-slug="@item.Slug" class="btn btn-orange btn-block c-white  p-y-10  "> @Localizer["view_more"]</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+            <partial name="~/Areas/Portal/Views/Directory/partials/_pagination.cshtml" model="Model.Pagination" />
+
+
+            <if include-if="ViewBag.ReoladScripts != null">
+                <script>
+                    LoadCarousel();
+                </script>
+            </if>
+        </if>
+    </div>

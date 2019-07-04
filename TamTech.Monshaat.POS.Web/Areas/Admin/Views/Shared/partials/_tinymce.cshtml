@@ -1,0 +1,170 @@
+﻿
+
+@{ 
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+<script src="~/Admin/lib/tinymce/tinymce.min.js"></script>
+<style>
+    .mce-container,.mce-container *:not(.mce-ico),.mce-widget,.mce-widget *:not(.mce-ico),.mce-reset {font-family:unset;}
+</style>
+
+<script>
+     function saveOnchange(editor) {
+              editor.on('change', function(e) {
+                  editor.save();
+              })
+        }
+
+
+         function UploadImage(blobInfo, success, failure){
+            var xhr, formData;
+            xhr = new XMLHttpRequest(blobInfo, success, failure);
+            xhr.withCredentials = false;
+            xhr.open('POST', "@Url.AdminUrl("UploadImage", "Home")");
+            xhr.onload = function() {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
+
+                if (!json || typeof json.url != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.url);
+            };
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+            }
+
+
+        var toolbar_items = " undo redo | bold italic underline strikethrough |" +
+            " alignleft aligncenter alignright alignjustify |" +
+            " styleselect | formatselect fontselect fontsizeselect | searchreplace | bullist numlist |" +
+            " outdent indent  | link unlink anchor   | forecolor backcolor | fullscreen | table |" +
+            " subscript superscript | charmap link image media | hr ltr rtl | cut copy paste pastetext |" +
+            " visualchars visualblocks nonbreaking blockquote template |" +
+            " print preview codesample insertdatetime removeformat format | code";
+
+        var Suumry_toolbar = ['undo redo | bold italic underline strikethrough |'+
+            ' alignleft aligncenter alignright alignjustify  |'+
+            ' fontselect fontsizeselect  | outdent indent   | code  |'+
+            ' hr ltr rtl |blockquote  removeformat '];
+
+        var plugins = ['advlist autolink link image lists charmap print',
+            'preview hr anchor pagebreak spellchecker autosave',
+            'searchreplace wordcount visualblocks visualchars fullscreen',
+            'insertdatetime media nonbreaking colorpicker code charmap',
+            'save table contextmenu directionality emoticons ',
+            'template paste textcolor codesample importcss '];
+
+        var Suumry_plugins = ['code hr anchor pagebreak spellchecker directionality code'];
+
+        var menu_bar = "edit insert view format table tools";
+
+
+
+ 
+
+        var font_formats =  'frutiger Light =frutigerLight;frutiger Regular=frutigerRegular;'+
+                            'frutiger Bold =frutigerBold;frutiger Black=frutigerBlack;'+
+                            'Tajawal Regular =TajawalRegular;Tajawal Medium=TajawalMedium;'+
+                            'Tajawal Bold=TajawalBold;Tajawal Black=TajawalBlack;'+
+                            'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;' +
+                            'Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;' +
+                            'Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;' +
+                            'Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;' +
+                            'Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;' +
+                            'Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;' +
+                            'Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;'+
+                            'Segoe UI=Segoe UI,Segoe UI Emoji,Segoe UI Symbol;';
+
+        var fontsize_formats = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px';
+
+
+        var directionality = "@(System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? "rtl" : "ltr")";
+
+
+        var image_class_list = [
+                            { title: 'None', value: '' },
+                            { title: 'Responsive', value: 'img-responsive'},
+                            { title: 'img-fluid', value: 'img-fluid ' }];
+
+    var content_css = ["/editor/editor.css"]
+
+    var  HtmlTemplates=[
+                {
+                title : " الصفحة الرئيسية",
+                url : "/editor/Templates/tow-columns.html",
+                description : "قالب يحتوي على عدة اسطر كل سطر عبارة نص بجانبه صورة"
+            }
+        ]
+
+
+    @if (ViewBag.TinyMce_Contetnt_Id != null)
+    {
+        <text>
+        tinymce.init({
+                    selector                    : '@ViewBag.TinyMce_Contetnt_Id',
+                    branding                    : false,
+                    language                    : "@(activeLang)",
+                    theme                       : 'modern',
+                    height                      : 300,
+                    plugins                     : plugins,
+                    toolbar                     : toolbar_items ,
+                    toolbar_items_size          : "small",
+                    menubar                     : menu_bar,
+                    images_upload_url           : "@Url.AdminUrl("UploadImage", "Home")",
+                    images_upload_handler       : UploadImage,
+                    image_class_list            : image_class_list ,
+                    image_advtab                : true,
+                    relative_urls               : false,
+                    //remove_script_host        : false,
+                    //convert_urls              : true,
+                    extended_valid_elements     : 'span,img[class|!src|border:0|alt|title|width|height|style]',
+                    invalid_elements            : "script,applet",
+                    schema                      : "html5",
+                    verify_html                 : true,
+                    paste_data_images           : false,
+                    suffix                      : ".min",
+                    insertdatetime_formats      : ["%H:%M:%S", "%Y-%m-%d", "%I:%M:%S %p", "%D"],
+                    block_formats               : 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3',
+                    directionality              : directionality,
+                    content_css                 : content_css ,
+                    font_formats                : font_formats,
+                    fontsize_formats            : fontsize_formats,
+                    importcss_merge_classes     : false,
+                    setup                       : saveOnchange ,
+                    templates                   : HtmlTemplates ,
+                     
+                });
+        </text>
+    }
+    @if (ViewBag.TinyMce_Suumry_Id != null)
+    {
+         <text>
+        tinymce.init({
+            selector            : '@ViewBag.TinyMce_Suumry_Id',
+            branding            : false,
+            language            : "@(activeLang)",
+            theme               : 'modern',
+            force_br_newlines   : true,
+            force_p_newlines    : false,
+            forced_root_block   : false,
+            min_height          : 150,
+            statusbar           : false,
+            menubar             : false,
+            directionality      : directionality,
+            plugins             : Suumry_plugins ,
+            toolbar             : Suumry_toolbar ,
+            content_css         : content_css,
+            font_formats        : font_formats,
+            fontsize_formats    : fontsize_formats,
+            setup               : saveOnchange
+        });
+         </text>
+    }
+</script>

@@ -1,0 +1,132 @@
+@import 'node_modules/swiper/src/swiper.scss';
+
+
+.main-slider{
+    
+    position: relative;
+    overflow: hidden;
+    &:after{
+        @include absolute(top $left , -25% -3% );
+        content: '';
+        width: 200%;
+        height: 120%;
+        background: $green;
+        transform: rotate3d(0,0,1,if-ltr(12deg,-12deg));
+        z-index: -1;
+
+        @include media-breakpoint-down(md) {  
+            #{$left} :-8%;
+        }
+    }
+    
+   
+    
+    .swiper-slide{
+        overflow: hidden;
+        
+        .main-img{
+            height: auto;
+            min-height: 100%;
+            width: 100%;
+        }
+         .half_image{
+             max-width: 100%;
+             max-height: 100%;
+         }
+            &._full{
+                .slide-info{
+                    padding-#{$left}: 20%; 
+                }
+            }
+            &._half {
+                .slide-info{
+                    h2{
+                        font-size: 50px;
+                        @include media-breakpoint-up(md){ 
+                            max-width:100%;
+                        }
+                    }
+                } 
+            }
+
+            .slide-info{
+                width: 100%;
+                text-align: $left;
+                padding: 25px;
+                
+                z-index: 10;
+                h2{
+                    font-size: 40px;
+                    color: $white;
+                   
+                    
+                }
+            }
+
+
+        @include media-breakpoint-down(sm) {  
+                .slide-info{
+                    h2{
+                        font-size: 21px;
+                    }
+                }
+        }
+           
+        @include media-breakpoint-down(md) {  
+            &._full{
+                height: 350px;
+                justify-content: center;
+            }
+            &._half{
+                padding-top:40px; 
+                height: auto;
+                min-height:400px ;
+                .slide-info{
+                    text-align: center;
+                    h2{
+                        font-size: 30px;
+                    }
+                }
+            }
+           
+        }
+        @include media-breakpoint-up(md){
+            .slide-info{
+                h2{
+                    max-width: 40%;
+                }
+            }
+        }
+
+        @include media-breakpoint-only(lg) {  
+            &._full{
+                height: 450px;
+                justify-content: center;
+            }
+            &._half{
+                padding-top:65px;
+                height: 500px;
+                .slide-info{
+                    h2{
+                        font-size: 40px;
+                    }
+                }
+            }
+            
+        }
+
+        @include media-breakpoint-up(xl) {
+            height: 760px;
+            &._full{
+                justify-content: center;  
+            }
+            &._half{
+                padding-top:85px;
+            }   
+            
+            
+        }
+
+  
+    }
+}

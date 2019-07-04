@@ -1,0 +1,141 @@
+@model ValueVM
+
+@{
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title m-b1">
+        <div class="title_left">
+            <h3>@ViewData["Title"]<small></small></h3>
+        </div>
+        <div class="title_right dropdown">
+            <a asp-action="Index"
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+
+             
+        </div>
+    </div>
+</div>
+
+ 
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        @{
+            if (ViewBag.IsEditMode)
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary {
+                        {"id" , Model.Id }};
+            }
+            else
+            {
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+            }
+
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
+
+        <div class="x_panel">
+            <div class="x_content">
+
+
+                <form asp-action="@(ViewBag.IsEditMode ? "edit" : "create")"
+                      method="post"
+                      class="form-horizontal forn-new form-label-left"
+                      id="valuesForm" enctype="multipart/form-data">
+                    <input type="hidden" name="Lang" value="@activeLang" />
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="All" class="alert alert-danger"></div>
+                    }
+
+                    @if (ViewBag.IsEditMode)
+                    {
+                        <input type="hidden" asp-for="Id" class="ut-id" />
+
+                    }
+                    <input type="hidden" asp-for="IsOfficial" class="ut-id" value="true" />
+                    <div class="form-group clearfix">
+                        <label asp-for="Name" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_name"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            <input asp-for="Name" class="form-control" required data-seo-name />
+                            <span asp-validation-for="Name" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                     
+
+                    <div class="form-group clearfix">
+                        <label asp-for="AttId" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["attribute"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            <div class="inputBtn">
+                                <span class="input">
+                                    <select asp-items="ViewBag.attributes" asp-for="AttId" class="form-control select_picker" required></select>
+                                    <span asp-validation-for="AttId" class="text-danger invalid_field"></span>
+                                </span>
+                                <span data-toggle="modal" data-target="#sectionModal" class="btn btn-success linktosection">
+                                    <a data-toggle="tooltip" data-placement="top"  asp-action="create" asp-controller="@ViewData["relatedController"]" title="@Localizer["new_attribute"]">
+                                        <i class="fa fa-filter"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="DisplayOrder" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            @if (activeLang != CultureConstants.DefaultCulture.Lang && ViewBag.IsEditMode)
+                            {
+                                <input asp-for="DisplayOrder" class="form-control" min="0" disabled />
+                            }
+                            else
+                            {
+                                <input asp-for="DisplayOrder" class="form-control" min="0" />
+                            }
+                            <span asp-validation-for="DisplayOrder" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Description" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_description"] </label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            <textarea asp-for="Description" class="form-control" rows="5" maxlength="1000" data-seo-description></textarea>
+                            <span asp-validation-for="Description" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-2 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@((ViewBag.IsEditMode) ? Localizer["Update"]  : Localizer["Create"] )">
+                            <input type="submit" class="btn btn-info p-x-5   ut-continue-btn" name="save-continue" value="@Localizer["save_and_continue"]">
+                        </div>
+                    </div>
+                    @*<if class="Model.Options != null">
+
+            @foreach (var Key in Model.Options)
+            {
+                    <input type="checkbox" asp-for="Options[Key.Key]"  />
+            }
+
+        </if>*@
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+
+
+.contact-page{
+    .page-title{
+        color: $text_color; 
+    }
+}
+
+.contact-message{
+    @include font-size(21px);
+    color: $text_color; 
+    margin: 10px 0 20px 0;
+    font-weight: 600;
+}
+.contact-form{
+    label {
+        color: $black; 
+        font-weight: 500;
+        small{
+            @include font-size(7px);
+            color: $danger;
+            position: relative;
+            top: -5px;
+        }
+    }
+}
+
+.box__input{
+    border: 2px dashed darken($white ,15%);
+    border-radius: 10px;
+    padding:25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.disabled{
+        .fas{
+            color: $gray-300;
+        }
+        .box__file+label{
+            cursor :not-allowed;
+        }
+    }
+    .fas {
+        @include font-size(45px);
+        color: $green;
+        margin-bottom: 5px;
+    }
+    &.is-dragover{
+        opacity: .8;
+        background: darken($white,5%);
+        border-style : solid ;
+    }
+    &.is-invalid{
+        border-color: $red;
+    }
+}
+
+
+.js{
+    .box__file{
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1; 
+        + label{
+            max-width: 80%;
+            text-overflow: ellipsis;
+            padding: 5px;
+            white-space: nowrap;
+            cursor: pointer;
+            display: inline-block;
+            overflow: hidden;
+            &:hover{
+                color: $link-hover-color;
+            }
+        }
+     
+    }
+}

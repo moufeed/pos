@@ -1,0 +1,54 @@
+﻿@using TamTechSDK.Common.Services.ContentService.Sliders.Models;
+@{
+    var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+}
+
+<if include-if="(ViewBag.publicMainSlider != null)">
+    @{
+        SliderDto mainSlider = (SliderDto)ViewBag.publicMainSlider;
+    }
+    <if include-if="mainSlider.Items != null && mainSlider.Items.Count > 0">
+        <section class="main-slider">
+
+            
+            <div class="swiper-container">
+                 
+                <div class="swiper-wrapper">
+                    @foreach (SliderItemDto slide in mainSlider.Items)
+                    {
+                        @if (string.Equals("_full", slide.UrlTarget))
+                        {
+                            <div class="swiper-slide d-flex   align-items-center @slide.Url _full">
+                                <img src="@slide.MainImage" alt="@slide.Title" class="main-img" />
+                                <div class="position-absolute slide-info">
+                                    <h2 class="animate" data-animate="fadeInDown"> @slide.Title </h2>
+                                    <a asp-controller="directory" asp-action="index" class="btn btn-light mt-4 btn-lg animate" data-animate="fadeInUp">@Localizer["pos_directory"]</a>
+                                </div>
+                            </div>
+                        }
+                        @if (string.Equals("_half", slide.UrlTarget))
+                        {
+                            <div class="swiper-slide _half @slide.Url">
+                                <div class="container">
+                                    <div class="row   justify-content-between align-items-start">
+                                        <div class="col-md-6  slide-info">
+                                            <h2 class="animate" data-animate="fadeInDown"> @slide.Title </h2>
+                                            <a asp-controller="directory" asp-action="index" class="btn btn-light mt-4 btn-lg animate" data-animate="fadeInUp">@Localizer["pos_directory"]</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="@slide.MainImage" alt="@slide.Title" class="half_image" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </section>
+    </if>
+</if>
+
+ 

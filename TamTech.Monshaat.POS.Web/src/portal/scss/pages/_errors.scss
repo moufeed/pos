@@ -1,0 +1,18 @@
+
+.error-http{
+    color: $gray-600;
+    svg{
+        width: 115px;  
+        path{
+            fill: #43C59E 
+        }
+        circle{
+            fill:#43C59E  
+        }
+    }
+    h1{
+        font-size: 80px;
+        word-spacing: -12px;
+        color: #637384;//$gray-500 ;
+    } 
+}

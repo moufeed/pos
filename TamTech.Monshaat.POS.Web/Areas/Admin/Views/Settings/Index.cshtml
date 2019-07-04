@@ -1,0 +1,97 @@
+﻿@model SiteInformationVm
+
+@{
+    string PageTitle = Localizer["homepage_content"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-homepage_content-form";
+    ViewData["Title"] = PageTitle;
+
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@PageTitle<small></small></h3>
+        </div>
+        <div class="title_right dropdown">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+                ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        <div class="x_panel">
+            <div class="x_content">
+            <form asp-action="Index"
+                method="post"
+                class=" forn-new"
+                id="homeForm" enctype="multipart/form-data">
+                <input type="hidden" name="Lang" value="@activeLang" />
+                    
+                    <div class="form-group">
+                         
+                        <div class="row">
+                            
+                        <div class="col-md-9">
+                            <div class="form-group clearfix">
+                                <label  for="Title" class="control-label   ">@Localizer["title"]</label>
+                                 
+                                    <input  for="Title" class="form-control"   />
+                                   
+                                
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label  for="Title" class="control-label col-md-1 col-sm-3 col-xs-12 ">@Localizer["content"]</label>
+                                <div class="col-md-11 col-lg-10 col-sm-9 col-xs-12">
+                                  <textarea name=""   rows="5" class="form-control summary"></textarea>
+                                    <span  validation-for="Title" class="text-danger invalid_field"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="hidden" name="files.Image">
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                             <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["save"] ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+@section Styles{}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Admin/js/validator.min.js"></script>
+
+    @{
+        ViewBag.TinyMce_Contetnt_Id = ".textarea";
+        ViewBag.TinyMce_Suumry_Id = ".summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
+    <script>
+         @if(TempData.ContainsKey("UpdateDone")){
+            TempData.Remove("UpdateDone");
+            <text>
+                $notification.success("","@Localizer["information_updated"]")
+            </text>
+        }
+    </script>
+}

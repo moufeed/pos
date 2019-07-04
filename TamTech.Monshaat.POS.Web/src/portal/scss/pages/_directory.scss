@@ -1,0 +1,361 @@
+/*  
+    .d-header
+    .search
+    .sectors
+    .results-wrapper
+    .filters-sidebar
+    .filter-widgets
+    .options-list
+    .results-list
+*/
+  
+// .d-header
+.d-header{
+   padding-top:120px; 
+    background:$l-lime ;//url("#{$img}footer.png") $right bottom /42% no-repeat 
+    position: relative;
+   
+    .container{
+        z-index: 1;
+    }
+}
+
+// -- .search
+
+.d-search-input{
+    label{
+        @include font-size(25px);
+        margin-bottom: 25px;
+        font-family: $font-bold; 
+        font-weight: bolder;
+        color: darken($text_color ,5%) ;
+    }
+.input-group{
+    position: relative; 
+    background: $white;
+    padding:5px 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0  rgba(#B5B5B5, 0.5);
+    .form-control{
+        padding: 30px;
+        border-radius: 0;
+        border: 0;
+        padding-#{$left} : 15px;
+        @include media-ie{
+            padding: 0;
+            height: 65px;
+            line-height: 40px;
+        }
+        @include placeholder{
+            color: $d-Lead;
+            font-size: 16px;
+            line-height: 31px;
+        }
+    }
+    .fas{
+        width: 40px;
+        text-align: center;
+        @include font-size(26px);
+        color: $l-green;
+    }
+    /* button{
+        @include absolute(top $left , 0 0);
+        height: 100%;
+        width: 50px;
+        background: transparent;
+        border : 0;
+        z-index: 10;
+    } */
+}
+
+}
+
+@include media-breakpoint-down(sm){
+    .d-search-input .input-group .form-control{         
+            padding: 5px;
+    }
+}
+
+
+// --   .sectors ----------------------
+ .sectors-widget{ 
+      margin-bottom: 50px;
+     h4{
+        color: darken($text_color ,5%) ;
+     }
+ }
+ .sector-title{
+     position: relative;
+     &:before{ 
+         @include absolute(bottom $left , -20px 0);
+         content: "";
+         width: 65px;
+         height: 4px;
+         background: $yellow;
+     }
+ }
+.sectors-carousel{
+    margin: 35px 0;
+    .sector-link{
+        margin:10px 5px;
+        border: 2px solid transparent;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(#D5D5D5,  .3);
+        min-width: 115px;
+        min-height: 185px;
+        &.active{
+            border-color: $orange;
+            pointer-events :none;
+        }
+        span{
+            display: block;
+            text-align: center;
+            font-weight: 600; 
+            color: $black;
+            &:first-child{
+                width: 90px;
+                height: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            img{
+                max-width: 100%;
+                max-height: 100%; 
+                 
+            }
+            color: $text_color;
+        }
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+ 
+
+//- .results-wrapper  --------------
+.results-wrapper{ 
+    padding-top: 50px;
+    position: relative;
+    overflow-x: hidden; 
+    background: $directory-bg;
+ 
+}
+.total-line{
+    
+    span{
+        display: inline;
+        margin:0 5px; 
+    }
+ 
+}
+
+//-- .filters-sidebar ---------------
+
+.filters-sidebar{
+   @include media-breakpoint-down(md){
+    @include fixed(top bottom $left , 0 0 ( $filters_sidebar_width  * - 1 - 10) );
+    padding-top:25px ;
+    width: $filters_sidebar_width ;
+    border-radius: 0;
+    background: #fff; 
+    z-index: $zindex-fixed;
+    box-shadow :if-ltr(1px ,-1px) 0px 15px 1px rgba(69,65,78,0.1);
+    transition: all .3s;
+    &.oppend{
+        #{ $left} : 0;
+    }
+    .filter-widgets{
+        overflow-y: auto;
+        height: 100%;
+    }
+   }
+}
+
+.btn-filter{
+    @include fixed( bottom $right ,15px 15px );
+    z-index: $zindex-fixed;
+  //  border-radius: 50%;
+    @include square(50px);
+    text-align: center;
+    line-height: 40px;
+    box-shadow :0 0px 15px 1px rgba(69,65,78,0.1);
+}
+
+//-- .filter-widgets ----------
+.filter-widgets{
+    padding: 25px 15px;
+}
+ 
+.filter-widget{
+    margin: 15px 0;
+    &:not(:last-child){
+        border-bottom: 1px solid $border-color;
+    }
+    a{
+        display: block;
+        font-family: $font-bold; 
+        color: $black;
+        padding: 5px 0;
+        &:hover{
+            text-decoration: none;
+        }
+        &.collapsed{
+            svg{
+                transform: rotate(0);
+            }
+        }
+    }
+    svg{
+        width: 15px;
+        height: 15px;
+        float: $right;
+        margin: 5px 0 0 ;
+        transform: rotate(180deg);
+        transition: all .2s;
+        path{
+            fill: $text_light_color;
+        }
+    }
+}
+
+// -- .options-list ---------------
+.options-list{
+    padding: 0;
+    padding-#{$left}: 20px;
+    margin:15px 0;
+
+}
+.form-check ,.form-radio{
+    padding: 0 10px;
+    margin: 2px 0;
+    label{
+        position: relative;
+        padding: 6px;
+        padding-#{$left}: 10px; 
+        font-family: $font-regular;
+       &:before ,&:after{
+        @include absolute(top $left ,6px -26px);
+        @include square(24px);
+        border-radius: 3px;
+       }
+        &:before{
+            content: '';
+            border: 1px solid $lt-gray;
+        }
+        &:after{
+            text-align: center;
+            background: $l-green;
+            color: transparent;
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            content: "\f00c";
+            font-size: 11px;
+            line-height: 24px;
+            opacity: 0;
+            transition: background .2s ,opacity .2s , color .6s;
+        }
+    }
+
+    input[type="checkbox"],input[type="radio"]{
+        display: none;
+        &:checked +label{
+            &:after{
+                opacity: 1;
+                color: $white;
+            }
+        }
+    }
+    
+}
+.form-radio{
+    label{
+        &:before,&:after{
+            border-radius: 50%
+        }
+       
+    }
+}
+// -- .results-list -----------------------
+ 
+.result-item{
+    padding: 25px;
+ 
+    ul{
+        padding: 0;
+    }
+    .btn-link{
+        float: $right; 
+        margin-#{$right}: 15px; 
+    }
+   
+}
+
+.pos-details{
+    padding: 0 4px;
+    display: flex;
+    justify-content: space-between;
+ 
+        li{
+            span{
+                display: inline;
+                margin: 0 3px;
+                &:first-child{
+                    font-family: $font-bold;
+                }
+                &:last-child{
+                    color: $blue;
+                }
+            }
+        }
+}
+
+.pos-attribute{
+    li{
+        margin-bottom: 7px;
+        font-family: $font-regular;
+        i{
+            color: $green;
+        }
+    } 
+}
+.pos-description{
+    margin-bottom: 0;
+    @include ellipse(16px ,1.6,3,true);
+}    
+.pos-imgs{
+    img{
+        max-height: 200px;
+    }
+}
+@include media-breakpoint-down(md){
+    .result-item{
+    padding: 25px 5px;
+    }
+    .pos-imgs{
+        align-self: center;
+    }
+    .pos-details{
+        flex-wrap: wrap;
+    }
+}
+@include media-breakpoint-down(sm){
+    .pos-imgs{
+        margin-bottom: 15px;
+    }
+}
+ 
+// no results 
+.no-results{
+    padding: 50px 0;
+    color: lighten($text_light_color ,15%);
+    i{
+        @include font-size(75px);
+        margin: 35px 0;
+        color: $orange;
+    }
+    p{
+        @include font-size(20px);
+    }
+}

@@ -1,0 +1,264 @@
+﻿
+
+@{ 
+    
+     
+    string activeController = ViewContext.RouteData.Values["Controller"].ToString();
+    string activeAction = ViewContext.RouteData.Values["Action"].ToString();
+}
+
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+    <div class="menu_section">
+
+        <ul class="nav side-menu">
+            <li>
+                <a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>@Localizer["Home"]</a>
+            </li>
+
+
+            <if include-if="@AdminModules.PosModule">
+                <li class="@( activeController == " Vendors" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Vendors")">
+                        <i class="fa fa-users"></i>@Localizer["vendors"]
+                    </a>
+                </li>
+                <li class="@( activeController == " Sectors" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Sectors")">
+                        <i class="fa fa-pie-chart"></i>@Localizer["sectors"]
+
+                    </a>
+                </li>
+                <li class="@( activeController == " Pos" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Pos")">
+                        <i class="fa fa-shopping-bag"></i>@Localizer["Pos"]
+                    </a>
+                </li>
+                <li class="@( activeController == " PosTypes" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","PosTypes")">
+                        <i class="fa fa-cubes"></i> @Localizer["pos_types"]
+                    </a>
+                </li>
+
+                <li class="@( activeController == " PosAttributes" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","PosAttributes")">
+                        <i class="fa fa-filter"></i>@Localizer["attributes"]
+                    </a>
+                </li>
+                <li class="@( activeController == " PosValues" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","PosValues")">
+                        <i class="fa fa-list-ul"></i>@Localizer["values"]
+                    </a>
+                </li>
+            </if>
+
+
+
+            <if include-if="@AdminModules.ProductsModule">
+                <li>
+                    <a><i class="fa fa-cubes"></i>@Localizer["Catelog"]<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li class="@( activeController == " Products" ? "current-page" :"" )">
+
+                            <a asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                <i class="fa fa-circle"></i>
+                                @Localizer["Products"]
+                            </a>
+                        </li>
+                        @*<li class="@( activeController == " Manufacturer" ? "current-page" :"" )">
+                        <a asp-area="Admin" asp-controller="Manufacturer" asp-action="Index"><i class="fa fa-circle"></i>@Localizer["Manufacturer"]</a>
+                    </li>
+                    <li class="@( activeController == " Categories" ? "current-page" :"" )">
+                        <a asp-area="Admin" asp-controller="Categories" asp-action="Index"><i class="fa fa-circle"></i>@Localizer["Categories"]</a>
+                    </li>
+                    <li class="@( activeController == " Reviews" ? "current-page" :"" )">
+                        <a asp-area="Admin" asp-controller="Reviews" asp-action="Index"><i class="fa fa-circle"></i>@Localizer["Reviews"]</a>
+                    </li>*@
+                    </ul>
+                </li>
+            </if>
+            <if include-if="@AdminModules.PagesModule">
+                <li class="@( activeController == " Pages" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","pages")">
+                        <i class="fa fa-files-o"></i>
+                        @Localizer["Pages"]
+                    </a>
+                </li>
+
+            </if>
+            <if include-if="@AdminModules.MenusModule">
+                <li class='@((activeController == "Menus")  ?  "current-page" :""  )'>
+                    <a href="@Url.AdminUrl("index","menus")"><i class="fa fa-bars"></i>@Localizer["Menus"]</a>
+                </li>
+            </if>
+            <if include-if="@AdminModules.UsersModule">
+                <li class="@( activeController == " Users" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","users")"><i class="fa fa-users"></i>@Localizer["Users"]</a>
+                </li>
+
+
+            </if>
+            <if include-if="@AdminModules.ServicesModule">
+                <li class='@((activeController == "Services")  ?  "active" :""  )'>
+                    <a>
+                        <i class="fa fa-cubes"></i>
+                        @Localizer["Services"] <span class="fa fa-chevron-down"></span>
+                    </a>
+
+                    <ul class="nav child_menu">
+                        <li class="@( activeController == " Services" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("index","services")">
+                                <i class="fa fa-circle"></i>@Localizer["view_all"]
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Services" && activeAction=="Create" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("Create","services")">
+                                <i class="fa fa-plus"></i>@Localizer["new_service"]
+
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+            </if>
+            <if include-if="@AdminModules.SlidersModule">
+
+                <li class="@( activeController == " Sliders" && activeAction=="Index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Sliders")">
+                        <i class="fa fa-picture-o"></i>@Localizer["Sliders"]
+
+                    </a>
+                </li>
+
+            </if>
+            <if include-if="@AdminModules.GalleriesModule">
+                <li class='@((activeController == "Galleries")  ?  "active" :""  )'>
+                    <a>
+                        <i class="fa fa-camera-retro "></i> @Localizer["Galleries"] <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="nav child_menu">
+                        <li class="@( activeController == " Galleries" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("index" ,"galleries" )">
+                                <i class="fa fa-circle"></i>@Localizer["view_all"]
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Galleries" && activeAction=="Create" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("create" ,"galleries" )"><i class="fa fa-plus"></i>@Localizer["new_gallery"]</a>
+                        </li>
+                    </ul>
+                </li>
+            </if>
+            <if include-if="@AdminModules.PostsModule">
+                <li class='@((activeController == "Posts")  ?  "active" :""  )'>
+                    <a>
+                        <i class="fa fa-files-o "></i> @Localizer["Posts"] <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="nav child_menu">
+                        <li class="@( activeController == " Sections" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("index" ,"Sections" )">
+                                <i class="fa fa-circle"></i>@Localizer["all_sections"]
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Posts" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("index" ,"Posts" )">
+                                <i class="fa fa-circle"></i>@Localizer["all_posts"]
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Posts" && activeAction=="Create" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("create" ,"Posts" )"><i class="fa fa-plus"></i>@Localizer["new_post"]</a>
+                        </li>
+
+
+
+                        <li class="@( activeController == " sections" && activeAction=="Create" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("create" ,"sections" )"><i class="fa fa-plus"></i>@Localizer["new_section"]</a>
+                        </li>
+                    </ul>
+                </li>
+            </if>
+            <if include-if="@AdminModules.Testimonials">
+                <li class='@((activeController == "Sliders")  ?  "active" :""  )'>
+                    <a>
+                        <i class="fa fa-comments"></i> @Localizer["Testimonials"] <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="nav child_menu">
+                        <li class="@( activeController == " Testimonials" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("index","Testimonials")">
+                                <i class="fa fa-circle"></i>@Localizer["view_all"]
+
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Testimonials" && activeAction=="Create" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("Create","Testimonials")"><i class="fa fa-plus"></i>@Localizer["new_testimonial"]</a>
+                        </li>
+                    </ul>
+                </li>
+            </if>
+            <if include-if="@AdminModules.RequestsModule">
+
+                <li class='@((activeController == "Request")  ?  "active" :""  )'>
+                    <a asp-area="Admin" asp-controller="Request" asp-action="Index"><i class="fa fa-question-circle-o"></i>@Localizer["requests"]</a>
+                </li>
+
+            </if>
+
+            <if include-if="@AdminModules.ContactUs">
+
+                <li class="@( activeController == " Contact" && activeAction=="index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Contact")">
+                        <i class="fa fa-envelope-o"></i>@Localizer["Messages"]
+                    </a>
+                </li>
+
+
+                <li class="@( activeController == " Contact-Types" && activeAction=="Contact" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Contact-Types")">
+                        <i class="fa fa-cubes"></i> @Localizer["contact_types"]
+                    </a>
+                </li>
+
+            </if>
+            <if include-if="@AdminModules.Regions">
+
+                <li class="@( activeController == " Regions" && activeAction=="index" ? "current-page" :"" )">
+                    <a href="@Url.AdminUrl("index","Regions")">
+                        <i class="fa fa-map-o"></i>@Localizer["regions"]
+                    </a>
+                </li>
+
+            </if>
+
+
+            <if include-if="@AdminModules.Settings">
+                <li class='@((activeController == "Settings")  ?  "active" :""  )'>
+                    <a>
+                        <i class="fa fa-sliders"></i> @Localizer["settings"] <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="nav child_menu">
+                       @*
+                         <li class="@( activeController == " Settings" && activeAction=="Index" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("Index","Settings")">
+                                <i class="fa fa-newspaper-o"></i>@Localizer["homepage_content"]
+                            </a>
+                        </li>    
+                       *@
+                        <li class="@( activeController == " Settings" && activeAction=="information" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("information","Settings")">
+                                <i class="fa fa-cogs"></i>@Localizer["website_information"]
+                            </a>
+                        </li>
+                        <li class="@( activeController == " Settings" && activeAction=="biography" ? "current-page" :"" )">
+                            <a href="@Url.AdminUrl("biography","Settings")">
+                                <i class="fa fa-info-circle"></i>@Localizer["website_biography"]
+
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+            </if>
+
+
+        </ul>
+    </div>
+</div>

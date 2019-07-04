@@ -1,0 +1,40 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using TamTechSDK.Web.Services.Configurations.Cultures;
+using TamTechSDK.Web.Services.Telemetry;
+
+namespace TamTechSDK.Web.Controllers.Identity
+{
+    [Area("Identity")]
+    public class IdentityBaseController : BaseController
+    {
+        #region Props   
+
+        #endregion
+
+
+        #region Ctors
+        public IdentityBaseController(ITelemetryClientService telemetryClientService)
+          : base(telemetryClientService)
+        {
+            //  _helperService = helperService;
+            ViewData["Area"] = "Admin";
+        }
+
+
+
+        public void AddErrorModel(string key = "Error", string msg = "General Error!!")
+        {
+            ModelState.AddModelError(key, msg);
+        }
+
+        public override void TrackException(Exception exc)
+        {
+            AddErrorModel("Exeption", exc.Message);
+            base.TrackException(exc);
+        }
+        #endregion
+    }
+}

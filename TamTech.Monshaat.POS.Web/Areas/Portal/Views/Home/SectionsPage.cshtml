@@ -1,0 +1,69 @@
+﻿@model SectionsPage
+    <if include-if=" Model != null">
+        @{
+            ViewData["Title"] = Model.Title;
+            Layout = "_Layout";
+            ViewData["ImageURl"] = @Url.Content("~/portal/img/about.jpg");
+            ViewData["pageTitle"] = @Model.Title;
+
+            ViewBag.ItemId = Model.Id;
+            ViewBag.Action = "EditSectionsPage";
+        }
+
+
+        @{
+            List<SlugModel> SlugModel = new List<SlugModel>();
+        }
+        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+
+        @section SEO{
+            <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
+            <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
+            <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
+        }
+
+
+
+
+
+
+        
+        <section class="section-page py-5">
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="mb-35 p-x-15">@Model.Title</h4>
+                        <div class="white-panel  p-x-35 p-y-25">
+                            <if exclude-if='string.Equals(Model.Slug,"الاستخدام_وإخلاء_المسؤولية", StringComparison.OrdinalIgnoreCase) '>
+                                <div class="page-summary">
+                                    @Html.Raw(Model.Summary)
+                                </div>
+                            </if>
+
+                            <div class="page-content m-y-25">
+                                @foreach (var content in Model.Content)
+                                {
+                                    <article class="article-content">
+                                        <h5 class="title-underline"><span>@content.Key</span></h5>
+                                        <p>
+                                            @Html.Raw(content.Value)
+                                        </p>
+                                    </article>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="top-footer bg-light-lime pt-50 text-center">
+            <img src="~/portal/img/footer.png" alt="footerimage">
+        </section>
+
+    </if>

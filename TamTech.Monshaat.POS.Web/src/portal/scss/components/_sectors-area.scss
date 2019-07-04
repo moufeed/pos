@@ -1,0 +1,41 @@
+
+.sectors-area{
+    position: relative;
+    z-index: 1000;
+}
+.sectors_carousel{
+    .sector-link{
+        box-shadow: $box-shadow;
+        padding: 25px;
+        margin: 15px; 
+        min-height: 205px;
+        border-radius: 10px; 
+        color: $black;
+        font-weight: bold;
+        span:last-child{
+            margin-top: 15px;
+        }
+        img{
+            // max-width: 70px;
+            // max-height: 63px;
+            width: 115px;
+            max-height: 115px;
+        }
+    }
+    @include if-rtl{
+        .owl-nav{
+         
+            .owl-prev{
+                i:before{
+                    content:  "\f054";
+                }
+            }
+            .owl-next{
+                i:before{
+                    content: "\f053"; 
+                }
+            }
+        }
+    }
+   
+}

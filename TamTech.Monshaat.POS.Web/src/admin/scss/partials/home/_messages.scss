@@ -1,0 +1,61 @@
+.messages-widget{
+    .scroll{
+        height: 300px;
+    }
+
+    ul{
+        li{
+            a{
+                display: block;
+                padding: 15px;
+                border-bottom:1px solid #f0f0f0; 
+                &:hover{
+                    background: #f5f5f5;
+                }
+            }
+            i{
+                float: $right;
+            }
+            strong{
+                display: block;
+            }
+            span{
+                position: relative;
+                float: $left;
+                &:last-child{
+                    float: $right;
+                    margin-#{$right}: 25px ; 
+                }
+            }
+            .type{
+                display: block;
+            }
+        }
+    }
+}
+.no-messages{
+    min-height: 285px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #a9a9a9;
+    .fa{
+        font-size: 54px;
+        color: #e2e2e2;
+    }
+}
+
+/*
+  <div class="info clearfix">
+                                            <span>
+                                                <strong>@item.FullName</strong>
+                                                <small class="email">@item.Email</small>
+                                            </span>
+                                            <span>
+                                                <small class="type">@item.TypeName </small>
+                                                 @item.CreatedDate.ToString("dd/MM/yyyy")  
+                                            </span>
+                                           
+                                        </div>
+*/

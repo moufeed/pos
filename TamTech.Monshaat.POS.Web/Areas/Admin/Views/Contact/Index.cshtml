@@ -1,0 +1,139 @@
+﻿@model PagedResultModel<List<ContactDto>>
+
+@{
+    ViewData["Title"] = Localizer["contact_us"];
+    ViewData["UnitTestPageClass"] = "ut-contactus-index";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+
+
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["contact_us"] <small></small></h3>
+        </div>
+        <div class="title_right">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        <div class="x_panel p-x-0">
+            <div class="x_content">
+
+
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
+                <div class="table-responsive">
+
+                    <table class="table table-middle table-striped contact-table" id="content">
+                        <thead>
+                            <tr>
+                                <th style="min-width:200px;">@Localizer["t_name"]</th>
+                                <th class="td-message">@Localizer["t_message"]</th>
+                                <th width="150" class="text-center">@Localizer["t_email"]</th>
+                                <th width="150" class="text-center">@Localizer["t_phone"]</th>
+                                <th>@Localizer["t_type"]</th>
+                                <th width="100">@Localizer["t_create_date"]</th>
+                                <th>@Localizer["t_status"]</th>
+                                <th>@Localizer["t_attachments"]</th>
+                                <th>@Localizer["t_actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <if include-if="Model.Data != null && Model.Data.Count > 0">
+                                @foreach (ContactDto item in Model.Data)
+                                {
+                                    <tr id="tr-@item.Id">
+                                        <td class="p-y-1 p-x-2">@item.FullName</td>
+                                        <td>
+                                            <div class="ellipsis" style="max-width:400px">
+                                                <a asp-action="ViewMessage"
+                                                   asp-route-id="@item.Id">
+                                                    @item.Message
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>@item.Email</td>
+                                        <td class="text-center">@item.Phone</td>
+                                        <td>@item.TypeName </td>
+                                        <td class="text-center">
+
+                                            @item.CreatedDate.ToString("dd/MM/yyyy")
+
+                                        </td>
+                                        <td><span class="badge badge-@item.StatusOptions">@item.StatusName</span></td>
+                                        <td class="text-center" width="50px">
+
+                                            @if (item.Attachments != null && item.Attachments.Count > 0)
+                                            {
+
+                                                <i data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["t_has_attachments"]"
+                                                   class="fa fa-paperclip" aria-hidden="true"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-ban text-light"></i>
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @{
+                                                string placement = activeLang == "ar" ? "right" : "left";
+                                            }
+                                            <a data-toggle="tooltip"
+                                               data-placement="@placement"
+                                               asp-action="ViewMessage"
+                                               asp-route-id="@item.Id"
+                                               title="@Localizer["t_view_message"]"
+                                               class="btn btn-view btn-round   ut-view-btn"><i class="fa fa-eye "></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </if>
+                            <if include-if=' Model.Data == null || Model.Data.Count == 0'>
+                                <tr>
+                                    <td colspan="9" class="text-center">
+                                        <p class="empty_row">
+                                            <i class='fa fa fa-exclamation-circle'></i>
+                                            @Localizer["no_data_table"]
+                                        </p>
+                                         
+                                    </td>
+                                </tr>
+                            </if>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr class="m-y-2" />
+                <pagination controller-name="contact" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.ellipsis').css('max-width', $('.td-message').width());
+        })
+        $(window).on('resize', function () {
+             $('.ellipsis').delay( 800 ).css('max-width', $('.td-message').width());
+        })
+    </script>
+
+}

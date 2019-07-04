@@ -1,0 +1,63 @@
+﻿ 
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "User Info";
+  
+}
+ 
+<section class="create-vendor-page pt-75  pb-50" data-fix-height>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <header class="vendor-form-header mb-35">
+                    <h3 class="mb-25">
+                        @*@Localizer["info"]*@ User Info :
+                    </h3>
+                </header>
+                <div class="white-panel p-y-45 p-x-35 mb-25">
+                    <div class="form-group">
+                        <label>
+                            UserId
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@User.Identity.GetUserId()</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Username
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@User.Identity.GetUsername()</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Authenticated
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@User.Identity.IsAuthenticated</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Name
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@User.Identity.Name</span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            UserRoles [@User.Identity.GetUserRoles().Count]
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">
+                            <if include-if="User.Identity.GetUserRoles().Count > 0">
+                                @foreach(var role in User.Identity.GetUserRoles())
+                                {
+                                <b>@role</b><br />
+                                }
+                            </if>
+                        </span>
+                    </div>
+
+                </div> 
+
+            </div>
+        </div>
+
+    </div>
+</section> 

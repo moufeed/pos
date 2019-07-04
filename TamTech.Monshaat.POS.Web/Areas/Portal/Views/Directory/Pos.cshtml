@@ -1,0 +1,147 @@
+﻿@model  PosDto
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer["pos_details"];
+
+    List<SlugModel> SlugModel = new List<SlugModel>();
+}
+<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+
+<if include-if="Model != null">
+    <section class="pos-page pt-75">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-7 col-lg-7 col-info">
+                    <div class="white-panel  posdetails">
+                        <h4 class="pos-title mb-35">
+                            @Localizer["system_name"]
+
+                            <span>@Model.Name</span>
+                        </h4>
+
+                        <ul class="list-unstyled pos-meta pos-details justify-content-between">
+                            <li>
+                                <span>@Localizer["compnay_name"]</span>
+                                <span class="mt-5">@Model.VendorName</span>
+                            </li>
+                            <li>
+                                <span>@Localizer["system_type"]</span>
+                                <span class="mt-5">@Model.TypeName</span>
+                            </li>
+                            <li>
+                                <span>@Localizer["specialization"]</span>
+                                <span class="mt-5">@Model.SectorName</span>
+                            </li>
+                        </ul>
+
+                        <if include-if="Model.Specifications != null">
+                            <h4 class="mt-25 mb-15">@Localizer["pos_attributes"]</h4>
+
+                            <div class="row mt-25">
+                                @foreach (var item in Model.Specifications)
+                                {
+                                    <div class="col-xl-6">
+                                        <h6 class="c-gray mb-15">@item.AttName</h6>
+
+                                        <ul class="list-unstyled pos-attribute ">
+                                            @foreach (var val in item.Values)
+                                            {
+                                                <li>
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <small>@val.Value</small>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                        </if>
+
+
+
+
+                        <h4 class="mt-25 mb-15">@Localizer["pos_brief"]</h4>
+
+                        <p class="pos_description">
+                            @Model.About
+                        </p>
+
+                        <div class=" d-block d-md-none">
+                            <h4 class="mt-25 mb-15">@Localizer["contact_information"]</h4>
+                            <ul class="list-unstyled contact-list">
+                                <li>
+                                    <i class="fas fa-globe"></i>
+                                    <span class="font-bold d-inline m-x-10">
+                                        @Localizer["website"]
+                                    </span>
+                                    <a href="" target="_blank" class="btn btn-link">
+                                        @Model.VendorWebsite 
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <span class="font-bold d-inline m-x-10"> 
+                                        @Localizer["phone_number"]
+                                    </span>
+                                    <a href="tel:@Model.VendorPhone" class="btn btn-link">@Model.VendorPhone</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-5 col-imgs">
+                    <div class="owl-carousel pos-images" data-singleitem="true" data-dots="true" data-rtl="true">
+                        <if include-if="Model.Images != null && Model.Images.Count > 0">
+                            @foreach (var img in Model.Images)
+                            {
+                                <img src="@img" class="img-fluid" alt="@Model.Name">
+                            }
+                        </if>
+                        <if exclude-if="Model.Images != null && Model.Images.Count > 0">
+                            <img src="~/portal/img/pos-empty.jpg" class="img-fluid" alt="">
+                        </if>
+
+                    </div>
+                    <div class="white-panel p-4 mt-25 d-none d-md-block">
+                        <h4 class="mt-25 mb-15">@Localizer["contact_information"]</h4>
+                        <ul class="list-unstyled contact-list">
+                            <li>
+                                <i class="fas fa-globe"></i>
+                                <span class="font-bold d-inline m-x-10">
+                                    @Localizer["website"]
+                                </span>
+                                <a href="@Model.VendorWebsite" target="_blank" class="btn btn-link">
+                                    @Model.VendorWebsite
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span class="font-bold d-inline m-x-10">
+                                    @Localizer["phone_number"]
+                                </span>
+                                <a href="tel:@Model.VendorPhone" class="btn btn-link">@Model.VendorPhone </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="contact-area pt-50 bg-light-lime mt-50">
+        <div class="container">
+            <div class="text-center text_area">
+                <p class="text_area c-dark-green">@Localizer["conatact_area_msg"]</p>
+                <a asp-action="contactus" asp-controller="home" class="btn btn-success p-x-25">@Localizer["send_message"]</a>
+            </div>
+        </div>
+    </section>
+    <section class="top-footer bg-light-lime pt-50 text-center">
+        <img src="~/portal/img/footer.png" alt="footerimage">
+    </section>
+</if>
+
+@section Footer{
+    <script src="~/Portal/js/carousel.min.js"></script>
+}

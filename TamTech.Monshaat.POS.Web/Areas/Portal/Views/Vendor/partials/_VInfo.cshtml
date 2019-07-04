@@ -1,0 +1,109 @@
+﻿@model VendorFormVm
+
+@{
+     string FormAction = ViewContext.RouteData.Values["Action"].ToString();
+}
+
+
+
+ 
+    <div class="vendor-form">
+        <div class="white-panel p-y-45 p-x-35">
+            <if exclude-if='string.Equals(FormAction ,"info" ,StringComparison.OrdinalIgnoreCase)'>
+                <div class="form-group">
+                    <div class="form-row justify-content-between">
+                        <label asp-for="StatusName" class="col-md-3">
+                            @Localizer["current_status"]
+                        </label>
+                        <div class="col-auto">
+                            <span class="badge badge-@Model.StatusOptions  p-x-20 p-y-5 c-white">@Model.StatusName</span>
+                        </div>
+                    </div>
+                </div> 
+                    <div class="form-group">
+                        <div class="form-row justify-content-between">
+                            <label asp-for="Notes" class="col-md-3">
+                                @Localizer["l_notes"]
+                            </label>
+                            <div class="col-auto">
+                                <p>@Model.Notes</p>
+                            </div>
+                        </div>
+                    </div> 
+                    <hr />
+                </if>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label asp-for="CompanyName" class="col-md-4">
+                            @Localizer["company_name_in_commercial"]
+                        </label>
+                        <div class="col-auto">
+                            <span class="form-control-plaintext">@Model.CompanyName</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FirstName">
+                            @Localizer["first_name"]
+                        </label>
+                        <span class="form-control-plaintext">@Model.FirstName</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">
+                            @Localizer["last_name"]
+                        </label>
+                        <span class="form-control-plaintext">@Model.LastName</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">@Localizer["job_title"]  </label>
+                    <span class="form-control-plaintext">@Model.JobTitle</span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Mobile">
+                            @Localizer["mobile_number"]
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@Model.Mobile</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Phone">@Localizer["phone_number"] </label>
+                        <span class="form-control-plaintext" dir="ltr">@Model.Phone</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Email">
+                            @Localizer["email_address"]
+                        </label>
+                        <span class="form-control-plaintext" dir="ltr">@Model.Email</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Fax">@Localizer["fax"] </label>
+                        <span class="form-control-plaintext" dir="ltr">@Model.Fax</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WebsiteUrl">@Localizer["website"]  </label>
+                    <span class="form-control-plaintext">@Model.WebsiteUrl</span>
+                </div>
+                <if exclude-if='string.Equals(FormAction ,"info" ,StringComparison.OrdinalIgnoreCase)'>
+                    <div class="form-group mt-25 d-flex justify-content-end">
+                        <a asp-action="index" asp-controller="home" class="btn btn-outline-primary">
+                            @Localizer["back_to_hompage"]
+                        </a>
+
+                        <if include-if='Model.VendorCanEdit'>
+
+                            <a asp-action="edit" asp-controller="vendor" class="btn btn-outline-info m-x-15">
+                                @Localizer["go_to_edit_page"]
+                            </a>
+
+                        </if>
+                    </div>
+                </if>
+               
+</div>
+    </div>
+

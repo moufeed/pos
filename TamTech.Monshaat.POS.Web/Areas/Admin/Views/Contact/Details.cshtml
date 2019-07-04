@@ -1,0 +1,167 @@
+﻿@model ContactDto
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["view_message"] <small></small></h3>
+        </div>
+        <div class="title_right">
+            <a asp-action="Index"
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+        </div>
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel  p-x-0">
+            <div class="x_content">
+                <div class="message-box">
+                    <div class="m-header p-x-5">
+                        <div class="m-sender">
+                            <h4>@Localizer["t_sender"] : <strong>@Model.FullName</strong></h4>
+                            <div>
+                                <span>@Localizer["t_status"] <strong>@Model.StatusName</strong></span>
+                                <span>
+                                    @Model.CreatedDate
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled email-details row">
+                            <li class="col-md-3 col-sm-6 col-xs-12">
+                                <span>@Localizer["t_email"] : <strong>@Model.Email</strong></span>
+                            </li>
+                            <li class="col-md-2 col-sm-6 col-xs-12">
+                                <span>@Localizer["t_phone"] : <strong>@Model.Phone</strong></span>
+                            </li>
+                            <li class="col-md-2 col-sm-6 col-xs-12">
+                                <span> @Localizer["t_subject"] : <strong>@Model.TypeName</strong> </span>
+                            </li>
+                            <li class="col-md-2 col-sm-6 col-xs-12">
+
+                                <span>@Localizer["t_regoin"] : <strong> @Model.RegionName </strong></span>
+                            </li>
+                            <li class="col-md-3 col-sm-6 col-xs-12">
+                                <span>@Localizer["t_company"] : <strong>@Model.CompanyName </strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr />
+
+
+
+                    <div class="m-content p-x-5">
+                        <h4>@Localizer["t_message"]</h4>
+                        @Html.Raw(Model.Message)
+                    </div>
+
+                    <hr />
+                    <div class="reply-box p-x-5">
+                        <if include-if="Model.Replay != null">
+                            <h5>@Localizer["reply_text"]</h5>
+                            <div>
+                                @Html.Raw(Model.Replay)
+                            </div>
+                        </if>
+                        <if exclude-if="Model.Replay != null">
+                            <h5>@Localizer["create_reply"]</h5>
+                            <form class="form" asp-action="reply" method="post" id="form-reply">
+                                <input type="hidden" name="Id" value="@Model.Id" />
+                                <input type="hidden" name="Email" value="@Model.Email" />
+                                <input type="hidden" name="ReplyType" value="@Model.TypeName" />
+                                <div class="form-group">
+                                    <label for="">@Localizer["f_title"]</label>
+                                    <input type="text" value="" name="Subject" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">@Localizer["f_content"]</label>
+                                    <textarea class="form-control" rows="6" name="Replay" id="Replay" required data-rule-minlength="10"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn btn-blue">
+                                        <i class="fa fa-reply"></i> @Localizer["reply"]
+                                    </button>
+                                </div>
+                            </form>
+                        </if>
+                    </div>
+
+
+
+                    <if include-if="@Model.Attachments  != null && Model.Attachments .Count > 0 ">
+                        <hr />
+                        @using System.Text.RegularExpressions
+
+                        <div class="m-attachments p-x-5">
+                            <h4>@Localizer["Attachements"]</h4>
+
+                            <div class="row">
+                                @foreach (var attch in Model.Attachments)
+                                {
+                                    <div class="col-md-2 col-sm-3 col-xs-6">
+                                        @if (Regex.IsMatch(attch, "(.jpg|.png)$"))
+                                        {
+                                            <div class="attachment-box">
+                                                <div class="att-img">
+                                                    <img src="@attch" alt="image" />
+                                                </div>
+                                                <div>
+                                                    <a data-toggle="tooltip"
+                                                       data-placement="top"
+                                                       title="@Localizer["download"]"
+                                                       href="@attch" class="btn btn-link"
+                                                       download target="_blank"><i class="fa fa-download"></i></a>
+
+                                                    <a data-toggle="tooltip"
+                                                       data-placement="top"
+                                                       title="@Localizer["view"]"
+                                                       href="@attch" class="btn btn-link"
+                                                       target="_blank"><i class="fa fa-eye"></i></a>
+
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="attachment-box">
+                                                <div class="att-file">
+                                                    <span>
+                                                        <i class="fa fa-file @(System.IO.Path.GetExtension(attch).Replace(".",""))"></i>
+                                                        <small class="text-capitalize">@(System.IO.Path.GetExtension(attch).Replace(".", ""))</small>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <a data-toggle="tooltip"
+                                                       data-placement="top"
+                                                       title="@Localizer["download"]"
+                                                       href="@attch" class="btn btn-link"
+                                                       download target="_blank"><i class="fa fa-download"></i></a>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+
+                        </div>
+                    </if>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/Admin/js/message.min.js"></script>
+  
+
+} 

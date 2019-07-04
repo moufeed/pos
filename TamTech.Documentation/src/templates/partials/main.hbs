@@ -1,0 +1,89 @@
+<div class="main-content" >
+ {{#each maincontent}}
+    {{#if this.published}}
+    <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="{{this.id}}">
+    <div class="container">
+        <h1>{{this.Link}}</h1>
+        {{#if this.brief.length}}
+        <p class="mt-15">{{this.brief}}</p>
+        {{/if}}
+    </div>
+    </div>
+        {{#each this.content}}
+             {{#if this.published}}
+                <div class="article mb-50" id="{{this.id}}">
+                        {{#if this.title.length}}
+                    <h5 class="m-y-25 article-headline">
+                        <a class="article-headline-link" href="#{{this.id}}">#</a>
+                        <span>{{this.title}}</span>
+                        </h5>
+                        {{/if}}
+                        {{#each this.values}}
+                           <div class="mt-20"> 
+                            {{#if this.title.length}} 
+                                <h6 class="mt-15">
+                                    {{{this.title}}} 
+                                </h6> 
+                            {{/if}} 
+                            {{#if this.img.length}}
+                            <a href="assets/images/{{this.img}}" data-lightbox="image-{{@index}}" data-title="{{this.title}}" class="m-y-25 d-block image">
+                                <img src="assets/images/{{this.img}}" alt="{{this.title}}" class="img-fluid img-thumbnail">
+                            </a>
+                            {{/if}}
+                            {{#if this.images.length}}
+                                {{#each this.images}}
+                                        <a href="assets/images/{{this.src}}" data-lightbox="image-{{@index}}" data-title="{{this.title}}" class="m-y-25 {{this.class}} image">
+                                            <img src="assets/images/{{this.src}}" alt="{{../title}}" class="img-fluid img-thumbnail">
+                                        </a>
+                                {{/each}}
+                            {{/if}}
+                            
+                            {{#if this.text.length}}
+                                <div class="mt-25 no-break">  
+                                {{{this.text}}}
+                                </div>
+                            {{/if}}
+
+                            
+
+                            {{#if this.ul.length}}
+                                    <ul>
+                                        {{#each  this.ul}}
+                                            <li>
+                                                {{{this}}}
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                            {{/if}} 
+
+                            {{#if this.table.length}}
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        {{#each this.table}}
+                                            <tr>
+                                                {{#each this.tds}}
+                                                    <td style="min-width: 150px">
+                                                       {{#if this.text.length}}
+                                                            <p class="p-y-5 p-x-15">{{{this.text}}} </p>                                                          
+                                                        {{/if}}
+                                                         {{#if this.img.length}}
+                                                        <a href="assets/images/{{this.img}}" data-lightbox="image-{{@index}}"   class="m-y-25 d-block image">
+                                                            <img src="assets/images/{{this.img}}"   class="img-fluid img-thumbnail img-table">
+                                                        </a>
+                                                        {{/if}}
+                                                    </td>
+                                                {{/each}}
+                                            </tr>
+                                        {{/each}}
+                                    </table>
+                                </div>
+                            {{/if}}
+                           </div>
+                        {{/each}}
+                </div>
+             {{/if}}
+        {{/each}} 
+    {{/if}}
+    
+ {{/each}}
+</div>     

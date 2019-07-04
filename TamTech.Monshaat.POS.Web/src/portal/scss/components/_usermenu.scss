@@ -1,0 +1,25 @@
+
+.usermenu{
+
+    .btn{
+        @include media-breakpoint-up(lg){
+            margin-top: 5px;
+        }
+    }
+    .dropdown-menu{
+        text-align: $left;
+        border: 0;
+        box-shadow: $box-shadow;
+    }
+    .dropdown-item{
+        color: $gray-600; 
+        &:hover{
+            color:$white ;
+            background: $teal;
+        }
+    }
+    i{
+        font-size: 14px;
+        margin-#{$right}:5px ;
+    }
+}

@@ -1,0 +1,15 @@
+﻿
+    <if include-if="ViewBag.Benefitssummary != null">
+        @{ HtmlPage  Bpage = (HtmlPage)ViewBag.Benefitssummary; }
+
+        <section class="benfits-area section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-75 mt-55">
+                        <h3 class="area-title">@Bpage.Title</h3>
+                    </div>
+                </div>
+                @Html.Raw(Bpage.Content)
+            </div>
+        </section>
+    </if>

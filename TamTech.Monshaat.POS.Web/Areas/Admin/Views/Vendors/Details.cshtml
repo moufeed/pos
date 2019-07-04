@@ -1,0 +1,193 @@
+﻿@model PersonDto
+
+@{
+    ViewData["Title"] = "Details";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3> @Localizer["vendor_details"]<small></small></h3>
+        </div>
+        <div class="title_right">
+            <a asp-action="Index"
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { { "id", Model.Id } };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+        <div class="x_panel">
+            <div class="x_content p-y-5 ">
+
+                <div class="row">
+                    <div class="col-md-12  col-lg-6">
+
+                        <dl class="dl-horizontal">
+                            <dt class="m-b3">@Localizer["t_company"]</dt>
+                            <dd>
+                                @Model.Vendor.Name
+                            </dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_name"]
+                            </dt>
+                            <dd>
+                                @Model.FirstName @Model.LastName
+                            </dd>
+                            <dt class="m-b3">@Localizer["t_job_position"]</dt>
+                            <dd>@Model.JobTitle</dd>
+
+                            <dt class="m-b3">@Localizer["t_mobileNumber"]</dt>
+                            <dd><span dir="ltr">@Model.Mobile </span></dd>
+
+
+                            <dt class="m-b3">@Localizer["t_phone"]</dt>
+                            <dd> <span dir="ltr">@Model.Vendor.Phone</span></dd>
+
+
+
+                            <dt class="m-b3">@Localizer["t_fax"]</dt>
+                            <dd> <span dir="ltr">@Model.Vendor.Fax</span>
+                            </dd>
+
+                        </dl>
+
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <dl class="dl-horizontal">
+                            <dt class="m-b3">@Localizer["t_email"]</dt>
+                            <dd>@Model.Email</dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_website"]
+                            </dt>
+                            <dd>
+                                <span dir="ltr">@Model.Vendor.WebsiteUrl</span>
+                            </dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_register_date"]
+                            </dt>
+                            <dd>
+                                @Model.CreatedDate
+                            </dd>
+                            <dt class="m-b3">
+                                @Localizer["l_status"]
+                            </dt>
+                            <dd id="statustext">
+                                <span class="badge badge-@Model.Vendor.StatusOptions">
+                                    @Model.Vendor.StatusName
+                                </span>
+                            </dd>
+
+                            <dt class="m-b3">
+                                @Localizer["t_situation"]
+                            </dt>
+                            <dd id="published">
+                                @if (Model.Vendor.Activated)
+                                {
+                                    <i class="fa fa-check c-green"></i>
+                                    @Localizer["t_active"]
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times c-red"></i>
+                                    @Localizer["t_inactive"]
+                                }
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+ 
+                <div class="actions p-x-5 p-t5">
+                    <h4 class="m-b3">@Localizer["t_actions"]</h4>
+                    <ul class="nav nav-tabs sub-tabs" role="tablist">
+                        <if include-if="ViewBag.Actions != null && Model.Vendor.AdminActionable">
+                            <li role="presentation" class="active"><a href="#form" aria-controls="form" role="tab" data-toggle="tab">@Localizer["new_action"]</a></li>
+                        </if>
+                        <if include-if="Model.Vendor.StatusHistories != null">
+                            <li role="presentation" class="@(ViewBag.Actions == null || !Model.Vendor.AdminActionable ? "active" :"")"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab">@Localizer["old_action"]</a></li>
+                        </if>
+                    </ul>
+
+                    <div class="tab-content">
+                        <if include-if="ViewBag.Actions != null && Model.Vendor.AdminActionable">
+                            @{
+                                List<ProcessActionModel> Actions = (List<ProcessActionModel>)ViewBag.Actions;
+                            }
+                            <div role="tabpanel" class="tab-pane fade in active" id="form">
+                                <form asp-action="VendorAction" method="post" class="form m-y-5" id="actionform" data-history="@Url.AdminUrl("GetHistory","Vendors",new { id=Model.Vendor.Id})">
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <input type="hidden" name="lang" value="@activeLang" />
+                                    <input type="hidden" name="Email" value="@Model.Email" />
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["l_status"] </label>
+                                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                                            @foreach (ProcessActionModel act in Actions)
+                                            {
+                                                <span class="m-x-3">
+                                                    <label for="Action-@act.ActionId">
+                                                        <input type="radio" name="ActionId" id="Action-@act.ActionId" value="@act.ActionId" class="check" data-note='@(act.NoteMandatory ? "true" : "false" )' required @(Model.Vendor.StatusName)>
+                                                        <span class="check-txt">@act.Name</span>
+                                                    </label>
+                                                </span>
+                                            }
+                                            <div class="actionId-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["l_notes"] </label>
+                                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                                            <textarea rows="5" class="form-control action_note" name="Notes"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-2 col-sm-offset-3 col-sm-6 col-xs-12 ">
+                                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["send"]">
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </if>
+                        <if include-if="Model.Vendor.StatusHistories != null">
+                            @{
+                                List<VendorStatusHistoryDto> history = Model.Vendor.StatusHistories;
+                            }
+
+                            <div role="tabpanel" class="tab-pane fade @(ViewBag.Actions == null || !Model.Vendor.AdminActionable ? "in active" :"")" id="history">
+                               <partial name="~/Areas/Admin/Views/Vendors/Partials/_history.cshtml" model="@history"/>
+                            </div>
+                        </if>
+                          
+                          
+
+                    </div>
+                    </div>
+
+                 
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/Admin/js/vendor.min.js"></script>
+}
+
+   

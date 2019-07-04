@@ -1,0 +1,141 @@
+﻿@model PagedResultModel<List<PosBaseDto>>
+
+@{
+    ViewData["Title"] = Localizer["Pos"];
+    ViewData["UnitTestPageClass"] = "ut-Pos-index";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["Pos"] <small></small></h3>
+        </div>
+        <div class="title_right">
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+        <div class="x_panel p-x-0">
+
+            <div class="x_content">
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
+
+                <div class="table-responsive">
+                    <table class="table table-middle table-striped posts-table" id="sectorsTable">
+
+                        <thead>
+                            <tr>
+                                <th>@Localizer["t_title"]</th>
+                                <th>@Localizer["t_vendor_name"]</th>
+                                <th>@Localizer["t_type"]</th>
+                                <th>@Localizer["t_sector"]</th>
+                                <th>@Localizer["t_status"]</th>
+                                <th width="100" class="text-center">@Localizer["t_visibility"]</th>
+                                <th width="175">@Localizer["t_actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+
+                                <tr id="tr-@item.Id">
+                                    <td style="min-width:150px">
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_details"]"
+                                           href="@Url.AdminUrl("details" ,"pos",new { id = item.Id })" class="ser-title underline">@item.Name</a>
+                                    </td>
+                                    <td>
+                                        @item.VendorName
+                                    </td>
+                                    <td>
+                                        @item.TypeName
+                                    </td>
+                                    <td>
+                                        @item.SectorName
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-@item.StatusOptions">@item.StatusName</span>
+                                    </td>
+                                    <td>
+                                        <span data-toggle="tooltip"
+                                              data-placement="@(activeLang == "ar" ? "right" : "left")"
+                                              data-status="true"
+                                              title="@Localizer["t_unpublish"] / @Localizer["t_publish"]">
+
+                                            <input class="tgl tgl-flat toggle__publish"
+                                                   data-url="@Url.AdminUrl("PublishAsync","pos" , new { id = item.Id})"
+                                                   id="@item.Id"
+                                                   type="checkbox"
+                                                   @((item.Published) ? "<text> checked </text>" : "") />
+                                            <label class="tgl-btn" for="@item.Id"></label>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @{
+                                            string placement = activeLang == "ar" ? "right" : "left";
+                                        }
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="@placement"
+                                           title="@Localizer["t_details"]"
+                                           href="@Url.AdminUrl("Details","pos",new { id = item.Id })"
+                                           class="btn btn-view btn-round ut-detail-btn"><i class="fa fa-pencil"></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="@placement"
+                                           data-id="@item.Id"
+                                           data-url="@Url.AdminUrl("DeleteAsync", "pos", new { id = item.Id })"
+                                           title="@Localizer["t_remove"]"
+                                           class="btn btn-remove btn-round delete-pos ut-remove-btn"><i class="fa fa-times "></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+
+                            <if include-if='Model.Data.Count == 0'>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <p class="empty_row">
+                                            <i class='fa fa fa-exclamation-circle'></i>
+                                            @Localizer["no_data_table"]
+                                        </p>
+                                    </td>
+                                </tr>
+                            </if>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <hr class="m-y-2" />
+                <pagination controller-name="pos" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@section Scripts{
+    <script src="~/Admin/js/pos.min.js"></script>
+} 

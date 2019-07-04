@@ -1,0 +1,229 @@
+﻿@model List< TamTechSDK.Common.Services.ContentService.Settings.Models.SettingDto>
+
+@{
+    string PageTitle = Localizer["Application Configurations - General"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-homepage_content-form";
+    ViewData["Title"] = PageTitle;
+
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+<h1>@ViewBag.Post</h1>
+<style>
+    .page-title .title_left {
+        float: left;
+        direction:ltr;
+    }
+    .col-md-9{
+        float:left;
+    }
+    .box-item {
+        border-style: solid;
+        background-color: #f9f9f9;
+        border-color: #ddd;
+        border-width: 1px;
+        border-radius: 4px 4px 0 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding: 10px 2px;
+        margin: 10px 1px;
+        transition: all 0.4s;
+    }
+    .box-editable {
+        background-color: #f9f9f9a1;
+        box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.16);
+        transform: scale(1.01);
+        margin-top: 15px;
+        margin-bottom: 15px;
+        transition: all 0.4s;
+    }
+    .input-key {
+        font-weight: bold;
+        color: #303135;
+    }
+    .btn-border {
+        font-size: 18px;
+        padding: 5px 10px;
+    }
+        .btn-border:hover {
+            color: #fff;
+        }
+
+    .btn-update-border {
+        border: 1px solid #FF8C42;
+        color: #FF8C42; 
+    }
+        .btn-update-border:hover { 
+            background-color: #FF8C42; 
+        }
+
+    .btn-reset-border {
+        border: 1px solid #03A9F4;
+        color: #03A9F4;
+    }
+        .btn-reset-border:hover { 
+            background-color: #03A9F4; 
+        }
+    .btn-save-border {
+        border: 1px solid #69b578;
+        color: #69b578;
+    }
+        .btn-save-border:hover { 
+            background-color: #69b578;
+           
+        }
+    .btn-undo-border {
+        border: 1px solid #6a69b5;
+        color: #6a69b5;
+    }
+        .btn-undo-border:hover { 
+            background-color: #6a69b5; 
+        }
+
+
+    .btn-cancel-border {
+        border: 1px solid #ff0000;
+        color: #ff0000;
+    } 
+        .btn-cancel-border:hover {
+            background-color: #ff0000;
+        }
+     .disabled.btn-border {
+        border-color: #a4a6b0;
+        color: #a4a6b0;
+        cursor:not-allowed
+    } 
+  /*  .btn-border[disabled] {
+        background-color: #f0f3f4;
+          opacity: .7;  
+    }
+
+    .btn-border[disabled]  {
+        cursor: not-allowed;
+    }*/
+
+</style>
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@PageTitle<small></small></h3>
+        </div>
+        <div class="title_right dropdown">
+
+        </div>
+    </div>
+</div>
+
+<div class="row" dir="ltr">
+    <div class="col-md-12 col-sm-12 col-xs-12"> 
+        <div class="x_panel">
+            <div class="x_content">
+                <form asp-action="Index"
+                      method="post"
+                      class=" forn-new"
+                      id="homeForm" enctype="multipart/form-data">
+                    <input type="hidden" name="Lang" value="@activeLang" />
+
+                    <div class="form-group">
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <div class="row box-item" data-id="@item.Id">
+                                    <div class="col-md-2 form-group">
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           data-id="@item.Id"
+                                           title="Edit" 
+                                           class="btn btn-border btn-update-border  m-t5 edit-setting"><i class="fa fa-pencil-square-o"></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           data-id="@item.Id"
+                                           data-url="@Url.AdminUrl("Post", "Configurations", new { id = "reset" })"
+                                           title="Reset" 
+                                           class="btn btn-border  btn-reset-border  m-t5 reset-setting 
+                                           @((item.Updated) ? "" : " disabled") "><i class="fa fa-refresh"></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           data-id="@item.Id"
+                                           data-url="@Url.AdminUrl("Post", "Configurations", new { id = "undo" })"
+                                           title="Undo"
+                                           class="btn btn-border  btn-undo-border  m-t5 undo-setting
+                                           @((item.Lasted) ? "" : " disabled") "><i class="fa fa-undo"></i></a>
+
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           data-id="@item.Id"
+                                           data-url="@Url.AdminUrl("Post", "Configurations", new { id = "save" })"
+                                           title="Save"
+                                           class="btn btn-border  btn-save-border  m-t5  save-setting hidden"><i class="fa fa-floppy-o"></i></a>
+                                        
+                                        <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           data-id="@item.Id" 
+                                           title="Cancel"
+                                           class="btn btn-border  btn-cancel-border  m-t5  cancel-setting hidden"><i class="fa fa fa-times"></i></a>
+
+                                        <input type="hidden" name="files.Image">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label for="Title" class="control-label   ">@Localizer["Description"]</label>
+
+                                        <input for="Title" class="form-control" value="@item.Description"
+                                               disabled id="input-set-des-@item.Id" data-id="sett-data-1" />
+                                    </div>
+
+                                    <div class="col-md-3 form-group">
+                                        <label for="Title" class="control-label   ">@Localizer["Value"]</label>
+
+                                        <input for="Title" class="form-control" value="@item.Value"
+                                               disabled id="input-set-val-@item.Id" data-id="sett-data-1" />
+                                    </div>
+
+                                    <div class="col-md-3 form-group">
+                                        <label for="Title" class="control-label   ">@Localizer["Key"]</label>
+
+                                        <input for="Title" class="form-control input-key" value="@item.Key" 
+                                               disabled id="input-set-key-@item.Id" data-id="sett-data-1" />
+                                    </div>
+
+
+                                </div>
+                            }
+                        }
+                        </div>
+
+
+                    <div class="form-group">
+                        @*<div class="col-md-6 col-md-offset-3 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["save"] ">
+                        </div>*@
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles{}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Admin/js/validator.min.js"></script>
+
+    <script>
+         @if(TempData.ContainsKey("UpdateDone")){
+            TempData.Remove("UpdateDone");
+            <text>
+                $notification.success("","@Localizer["information_updated"]")
+            </text>
+        }
+    </script>
+
+
+   
+        <script src="~/Admin/js/configurations.min.js"></script>
+   
+}

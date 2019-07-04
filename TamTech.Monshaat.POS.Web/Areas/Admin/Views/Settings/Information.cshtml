@@ -1,0 +1,358 @@
+﻿@model SiteInformationVm
+
+@{
+    string PageTitle = Localizer["website_information"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-information-form";
+    ViewData["Title"] = PageTitle;
+
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@PageTitle<small></small></h3>
+        </div>
+        <div class="title_right dropdown">
+            <a asp-action="Index"
+               class="btn btn-blue"><span class="fa fa-chevron-left"></span>@Localizer["back_to_list"]</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
+
+        <form asp-action="Information"
+              method="post"
+              class="form form-new  "
+              id="information" enctype="multipart/form-data">
+            <input type="hidden" name="Lang" value="@activeLang" />
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+            }
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    @* Logo *@
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["site_identity"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <div class="form-group ">
+                                <label asp-for="SiteTitle" class="control-label">@Localizer["sitetitle"]</label>
+                                <input asp-for="SiteTitle" class="form-control" />
+                                <span asp-validation-for="SiteTitle" class="text-danger invalid_field"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Logo" class="m-b3">@Localizer["logo"]</label>
+
+
+                                <label class="form-control clearfix uploadfile">
+                                    <input type="file" asp-for="NewLogo" id="NewLogo" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="800" />
+                                    <span class="url">@Localizer["choose_file"]</span>
+                                    <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
+                                </label>
+                                <label id="NewLogo-error" class="invalid_field" for="NewMainImage" style="display:none;"></label>
+                                <span asp-validation-for="NewLogo" class="text-danger invalid_field"></span>
+                                @if (!string.IsNullOrEmpty(Model.Logo))
+                                {
+                                    <div class="text-center p-3">
+                                        <img src="@Model.Logo" style="max-width:50%" class="img-thumbnail m-b3 bg-gray" data-seo-image="@Model.Logo">
+                                        <input type="hidden" asp-for="Logo" value="@Model.Logo" />
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["Emails"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <if include-if="Model.Emails != null && Model.Emails.Count > 0">
+                                @{
+                                    int index = 0;
+                                }
+                                @foreach (var item in Model.Emails)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Emails" class="control-label">@Localizer["email_", (index + 1)]</label>
+                                        <input asp-for="Emails" class="form-control" type="email" value="@Model.Emails[index]" />
+                                        <span asp-validation-for="Emails[index]" class="text-danger invalid_field"></span>
+                                    </div>
+                                    index++;
+                                }
+                            </if>
+                            <if exclude-if="Model.Emails != null && Model.Emails.Count > 0">
+
+                                @for (var item = 0; item < 3; item++)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Emails" class="control-label">@Localizer["email_", (item + 1)]</label>
+                                        <input asp-for="Emails" class="form-control" type="email" />
+                                        <span asp-validation-for="Emails[item]" class="text-danger invalid_field"></span>
+                                    </div>
+                                }
+                            </if>
+                        </div>
+                    </div>
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["social_media"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <if include-if="Model.SocailMedia != null && Model.SocailMedia.Count > 0">
+                                @foreach (var item in Model.SocailMedia)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="SocailMedia[item.Key]" class="control-label">@item.Key</label>
+                                        <input asp-for="SocailMedia[item.Key]" class="form-control" type="url" />
+                                        <span asp-validation-for="SocailMedia[item.Key]" class="text-danger invalid_field"></span>
+                                    </div>
+                                }
+                            </if>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="col-md-6">
+
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["phones"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <if include-if="Model.Phones != null && Model.Phones.Count > 0">
+                                @{
+                                    int idx = 0;
+                                }
+                                @foreach (var item in Model.Phones)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Phones" class="control-label">@Localizer["phone_", (idx + 1)]</label>
+                                        <input asp-for="Phones" class="form-control" type="tel" value="@Model.Phones[idx]" />
+                                        <span asp-validation-for="Phones[idx]" class="text-danger invalid_field"></span>
+                                    </div>
+                                    idx++;
+                                }
+                            </if>
+                            <if exclude-if="Model.Phones != null && Model.Phones.Count > 0">
+
+                                @for (var item = 0; item < 3; item++)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Phones" class="control-label">@Localizer["phone_", (item + 1)]</label>
+                                        <input asp-for="Phones" class="form-control" type="tel" />
+                                        <span asp-validation-for="Phones[item]" class="text-danger invalid_field"></span>
+                                    </div>
+                                }
+                            </if>
+                        </div>
+                    </div>
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["moblies"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <if include-if="Model.Moblies != null && Model.Moblies.Count > 0">
+                                @{
+                                    int im = 0;
+                                }
+                                @foreach (var item in Model.Moblies)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Moblies" class="control-label">@Localizer["moblie_", (im + 1)]</label>
+                                        <input asp-for="Moblies" class="form-control" type="tel" value="@Model.Moblies[im]" />
+                                        <span asp-validation-for="Moblies[im]" class="text-danger invalid_field"></span>
+                                    </div>
+                                    im++;
+                                }
+                            </if>
+                            <if exclude-if="Model.Moblies != null && Model.Moblies.Count > 0">
+
+                                @for (var item = 0; item < 3; item++)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Moblies" class="control-label">@Localizer["moblie_", (item + 1)]</label>
+                                        <input asp-for="Moblies" class="form-control" type="tel" />
+                                        <span asp-validation-for="Moblies[item]" class="text-danger invalid_field"></span>
+                                    </div>
+                                }
+                            </if>
+                        </div>
+                    </div>
+
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["faxs"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <if include-if="Model.Faxs != null && Model.Faxs.Count > 0">
+                                @{
+                                    int ix = 0;
+                                }
+                                @foreach (var item in Model.Faxs)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Faxs" class="control-label">@Localizer["fax_", (ix + 1)]</label>
+                                        <input asp-for="Faxs" class="form-control" type="tel" value="@Model.Moblies[ix]" />
+                                        <span asp-validation-for="Faxs[ix]" class="text-danger invalid_field"></span>
+                                    </div>
+                                    ix++;
+                                }
+                            </if>
+                            <if exclude-if="Model.Faxs != null && Model.Faxs.Count > 0">
+                                @for (var item = 0; item < 3; item++)
+                                {
+                                    <div class="form-group">
+                                        <label asp-for="Faxs" class="control-label">@Localizer["fax_", (item + 1)]</label>
+                                        <input asp-for="Faxs" class="form-control" type="tel" />
+                                        <span asp-validation-for="Faxs[item]" class="text-danger invalid_field"></span>
+                                    </div>
+                                }
+                            </if>
+                        </div>
+                    </div>
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["map"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+
+                            <div class="form-group clearfix">
+                                <div class="col-md-6">
+                                    <label asp-for="Longitude" class="control-label">Longitude</label>
+                                    <input asp-for="Longitude" class="form-control" />
+                                    <span asp-validation-for="Longitude" class="text-danger invalid_field"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="Latitude" class="control-label">Latitude</label>
+                                    <input asp-for="Latitude" class="form-control" />
+                                    <span asp-validation-for="Latitude" class="text-danger invalid_field"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="x_panel tile">
+                        <div class="x_title clearfix ">
+                            <h2> @Localizer["address"]</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="x_content p-3">
+                            <div class="form-group">
+                                <label asp-for="Address" class="control-label">@Localizer["address"]</label>
+
+                                <textarea asp-for="Address" class="form-control" rows="4">  </textarea>
+                                <span asp-validation-for="Address" class="text-danger invalid_field"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["save"] ">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+
+        $('#information').validate({
+            errorClass: "invalid_field",
+            validClass: "valid_field",
+            ignore: ".ignore"
+        });
+
+        @if(TempData.ContainsKey("UpdateDone")){
+            TempData.Remove("UpdateDone");
+            <text>
+                $notification.success("","@Localizer["information_updated"]")
+            </text>
+        }
+    </script>
+
+
+
+}

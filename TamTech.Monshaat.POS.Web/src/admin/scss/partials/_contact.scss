@@ -1,0 +1,93 @@
+
+
+.m-header{ 
+
+}
+.m-sender{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen  and(max-width : 767px){
+        flex-direction: column-reverse;
+        
+    }
+    h4{
+        font-weight: normal;
+        font-family: if-ltr($ltr-fonts, $rtl-fonts );
+    }
+    span{
+        display: block;
+        margin-bottom:5px ;
+        &:last-child{
+            color: $dark-gray ;
+        }
+    }
+}
+
+.email-details{
+    margin: 15px -15px 15px;
+    li span{
+        background: #f9f9f9;
+        padding: 3px 5px;
+        display: block;
+    }
+    strong{
+        font-weight: normal;
+        margin: 0 5px;
+        display: inline-block;
+    }
+}
+
+ 
+.m-attachments{
+    h4{
+        margin-bottom: 25px;
+    }
+}
+.attachment-box{
+    img{
+        height: 90%;
+    }
+    border: 1px solid #eee;
+    .btn{
+        padding:10px 5px;
+        margin: 2px ;
+        color: $dark-blue;
+    }
+}
+.att-img,.att-file{
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background:darken(#fff,5%);
+}
+.att-file{
+   text-align: center;
+   small{
+       font-size: 14px;
+   }
+    .fa{
+        display: block;
+       font-size: 5rem; 
+       color: #adadad;
+       &.pdf:before{
+            content: "\f1c1";
+            color: #db181b;
+       }
+       &.txt:before{
+            content: "\f0f6";
+            color: #333333;
+       }
+       &.xls:before,&.xlsx:before{
+            content: "\f1c3";
+            color: #1f7246;
+       }
+       &.doc:before,&.docx:before{
+        content: "\f1c2";
+        color: #2a5596;
+    }
+    }
+}

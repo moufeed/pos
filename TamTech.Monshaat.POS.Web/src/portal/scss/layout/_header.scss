@@ -1,0 +1,30 @@
+
+.main-header{
+    padding: 15px 0; 
+    background: $green;
+   // box-shadow : 0px 1px 15px 1px rgba(69,65,78,0.1); 
+}
+
+.main_logo{
+    img{
+        max-width: $logo_width;
+        width: 100%;
+    }
+} 
+@include media-breakpoint-down(sm){
+    .main_logo{
+        img{
+            max-width: 230px;
+            
+        }
+    } 
+}
+body.sticky_header{
+    .main-header{
+        position: fixed;
+        top: 0;
+        #{$left}: 0;
+        z-index: $zindex-tooltip;
+        width: 100%;
+    }
+}

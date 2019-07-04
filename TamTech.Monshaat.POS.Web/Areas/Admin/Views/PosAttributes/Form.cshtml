@@ -1,0 +1,25 @@
+@model AttributeVM
+@{
+    string PageTitle = ViewBag.IsEditMode ? Localizer["attribute_edit"].Value : Localizer["attribute_create"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-types-form";
+    ViewData["Title"] = PageTitle;
+    ViewData["relatedController"] = "PosValues";
+}
+<partial name="~/Areas/Admin/Views/Attributes/Form.cshtml" />
+
+
+
+@section Scripts{
+     
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+         $('#AttributeForm').validate({
+            errorClass: "invalid_field",
+            validClass: "valid_field",
+            ignore: ".ignore"
+        });
+    </script>
+
+}

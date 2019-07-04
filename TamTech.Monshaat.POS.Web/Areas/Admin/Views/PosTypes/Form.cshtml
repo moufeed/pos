@@ -1,0 +1,8 @@
+@model TypeVM
+@{
+    string PageTitle = ViewBag.IsEditMode ? Localizer["type_edit"].Value : Localizer["type_create"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-types-form";
+    ViewData["Title"] = PageTitle;
+}
+<partial name="~/Areas/Admin/Views/Types/Form.cshtml" />

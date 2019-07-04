@@ -1,0 +1,520 @@
+{
+  "POSSectorsData": [
+    {
+      "Id": 1,
+      "Name": "مراكز الخدمات الشخصية",
+      "Description": "مراكز الخدمات الشخصية",
+      "Image": "/Portal/img/sectors/pharmacy.png",
+      "Icon": "/Portal/img/icons/pharmacy.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 1
+    },
+    {
+      "Id": 2,
+      "Name": "التموينات والبقالات",
+      "Description": "التموينات والبقالات",
+      "Image": "/Portal/img/sectors/shop.png",
+      "Icon": "/Portal/img/icons/shop.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 2
+    },
+    {
+      "Id": 3,
+      "Name": "البناء والمقاولات",
+      "Description": "البناء والمقاولات",
+      "Image": "/Portal/img/sectors/entertainment.png",
+      "Icon": "/Portal/img/icons/entertainment.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 3
+    },
+    {
+      "Id": 4,
+      "Name": "قطاع التجزئة",
+      "Description": "قطاع التجزئة",
+      "Image": "/Portal/img/sectors/restaurant.png",
+      "Icon": "/Portal/img/icons/restaurant.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 4
+    },
+    {
+      "Id": 5,
+      "Name": "الأغذية والمشروبات",
+      "Description": "الأغذية والمشروبات",
+      "Image": "/Portal/img/sectors/cafe.png",
+      "Icon": "/Portal/img/icons/cafe.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 5
+    },
+    {
+      "Id": 6,
+      "Name": "ورش السيارات وقطع الغيار",
+      "Description": "ورش السيارات وقطع الغيار",
+      "Image": "/Portal/img/sectors/truck.png",
+      "Icon": "/Portal/img/icons/truck.png",
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 6
+    }
+  ],
+  "POSTypesData": [
+    {
+      "Id": 1,
+      "Name": "طراز SaaS",
+      "Description": "طراز SaaS",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 1
+    },
+    {
+      "Id": 2,
+      "Name": "داخل المنشأة",
+      "Description": "داخل المنشأة",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 2
+    }
+  ],
+  "ConUsTypesData": [
+    {
+      "Id": 3,
+      "Name": "طلب",
+      "Description": "طلب",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 1,
+      "Options": null
+    },
+    {
+      "Id": 4,
+      "Name": "استفسار",
+      "Description": "استفسار",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 2,
+      "Options": null
+    },
+    {
+      "Id": 5,
+      "Name": "إقتراح",
+      "Description": "إقتراح",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 3,
+      "Options": null
+    },
+    {
+      "Id": 6,
+      "Name": "شكوى",
+      "Description": "شكوى",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 4,
+      "Options": {
+        "CompanyName": true,
+        "Attachments": true,
+        "RegionId": true
+      }
+
+    }
+  ],
+  "POSAttributesData": [
+    {
+      "Id": 1,
+      "Name": "الخصائص",
+      "Description": "الخصائص",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "InputType": 2,
+      "ValueType": 1,
+      "DisplayOrder": 1,
+      "Values": [
+        {
+          "Id": 1,
+          "Name": "توفر خيارات الدفع لاحقًا",
+          "Description": "توفر خيارات الدفع لاحقًا",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        },
+        {
+          "Id": 2,
+          "Name": "مفاتيح سريعة و / أو البحث عن المنتج",
+          "Description": "مفاتيح سريعة و / أو البحث عن المنتج",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 2
+        },
+        {
+          "Id": 3,
+          "Name": ".طرق دفع متعددة / تقسيم المدفوعات",
+          "Description": ".طرق دفع متعددة / تقسيم المدفوعات",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 3
+        },
+        {
+          "Id": 4,
+          "Name": "عوائد ، والمبالغ المستردة وميزات الائتمان",
+          "Description": "عوائد ، والمبالغ المستردة وميزات الائتمان",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 4
+        },
+        {
+          "Id": 5,
+          "Name": ".حسابات المستخدمين والأذونات",
+          "Description": ".حسابات المستخدمين والأذونات",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 5
+        },
+        {
+          "Id": 6,
+          "Name": ".سجلات المحمول",
+          "Description": ".سجلات المحمول",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 6
+        },
+        {
+          "Id": 7,
+          "Name": ".عرض تواجه العملاء",
+          "Description": ".عرض تواجه العملاء",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 7
+        },
+        {
+          "Id": 8,
+          "Name": ".الفواتير ومعالجة الطلب",
+          "Description": ".الفواتير ومعالجة الطلب",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 8
+        },
+        {
+          "Id": 9,
+          "Name": ".مراقبة المبيعات وإعداد التقارير",
+          "Description": ".مراقبة المبيعات وإعداد التقارير",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        },
+        {
+          "Id": 10,
+          "Name": ".جرد وإدارة المخزون",
+          "Description": ".جرد وإدارة المخزون",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 9
+        },
+        {
+          "Id": 11,
+          "Name": ".إدارة عوائد القنوات المتقاطعة",
+          "Description": ".إدارة عوائد القنوات المتقاطعة",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 10
+        },
+        {
+          "Id": 12,
+          "Name": ".علاقة العملاء والخبرة",
+          "Description": ".علاقة العملاء والخبرة",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        },
+        {
+          "Id": 13,
+          "Name": ".إدارة شؤون الموظفين",
+          "Description": ".إدارة شؤون الموظفين",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 11
+        },
+        {
+          "Id": 14,
+          "Name": ".برامج الولاء وبطاقات الهدايا",
+          "Description": ".برامج الولاء وبطاقات الهدايا",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 12
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "قابلية التشغيل",
+      "Description": "قابلية التشغيل",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "InputType": 1,
+      "ValueType": 1,
+      "DisplayOrder": 2,
+      "Values": [
+        {
+          "Id": 15,
+          "Name": "فرع واحد",
+          "Description": "فرع واحد",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        },
+        {
+          "Id": 16,
+          "Name": "يدعم أكثر من فرع",
+          "Description": "يدعم أكثر من فرع",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 2
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "خدمات التوصيل",
+      "Description": "خدمات التوصيل",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "InputType": 1,
+      "ValueType": 1,
+      "DisplayOrder": 3,
+      "Values": [
+        {
+          "Id": 17,
+          "Name": "خدمة التوصيل متوفرة",
+          "Description": "خدمة التوصيل متوفرة",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "خدمات الجرد",
+      "Description": "خدمات الجرد",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "InputType": 1,
+      "ValueType": 1,
+      "DisplayOrder": 4,
+      "Values": [
+        {
+          "Id": 18,
+          "Name": "خدمة الجرد متوفرة",
+          "Description": "خدمة الجرد متوفرة",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "التغطية",
+      "Description": "التغطية",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "InputType": 1,
+      "ValueType": 1,
+      "DisplayOrder": 5,
+      "Values": [
+        {
+          "Id": 19,
+          "Name": "محلية",
+          "Description": "محلية",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 1
+        },
+        {
+          "Id": 20,
+          "Name": "دولية",
+          "Description": "دولية",
+          "Icon": null,
+          "Published": true,
+          "IsOfficial": true,
+          "DisplayOrder": 2
+        }
+      ]
+    }
+  ],
+  "ConUsRegionsData": [
+    {
+      "Id": 1,
+      "Name": "المنطقة الشرقية",
+      "Description": "المنطقة الشرقية",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 1
+    },
+    {
+      "Id": 2,
+      "Name": "المنطقة الوسطى",
+      "Description": "المنطقة الوسطى",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 2
+    },
+    {
+      "Id": 3,
+      "Name": "المنطقة الغربية",
+      "Description": "المنطقة الغربية",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 3
+    },
+    {
+      "Id": 4,
+      "Name": "المنطقة الجنوبية",
+      "Description": "المنطقة الجنوبية",
+      "Icon": null,
+      "Published": true,
+      "IsOfficial": true,
+      "DisplayOrder": 4
+    }
+  ],
+  "ConUsStatusData": [
+    {
+      "Id": 1,
+      "Name": "غير مقروء",
+      "Description": "غير مقروء",
+      "DisplayOrder": 1,
+      "Options": "new",
+      "Code": "new"
+    },
+    {
+      "Id": 2,
+      "Name": "مقروء",
+      "Description": "مقروء",
+      "DisplayOrder": 2,
+      "Options": "read",
+      "Code": "read"
+    },
+    {
+      "Id": 3,
+      "Name": "تم الردّ",
+      "Description": "تم الردّ",
+      "DisplayOrder": 3,
+      "Options": "replied",
+      "Code": "replied"
+    }
+  ],
+  "POSStatusData": [
+    {
+      "Id": 4,
+      "Name": "قيد المعالجة",
+      "Description": "قيد المعالجة",
+      "DisplayOrder": 1,
+      "Options": "InProrgress"
+    },
+    {
+      "Id": 5,
+      "Name": "تم الموافقة",
+      "Description": "تم الموافقة",
+      "DisplayOrder": 2,
+      "Options": "Approved"
+    },
+    {
+      "Id": 6,
+      "Name": "تم الرفض",
+      "Description": "تم الرفض",
+      "DisplayOrder": 3,
+      "Options": "Rejected"
+    }
+  ],
+  "VendorStatusData": [
+    {
+      "Id": 7,
+      "Name": "جاري الإنتظار",
+      "Description": "جاري الإنتظار",
+      "DisplayOrder": 1,
+      "Options": "InProrgress"
+    },
+    {
+      "Id": 8,
+      "Name": "تم الموافقة",
+      "Description": "تم الموافقة",
+      "DisplayOrder": 2,
+      "Options": "Approved"
+    },
+    {
+      "Id": 9,
+      "Name": "تم الرفض",
+      "Description": "تم الرفض",
+      "DisplayOrder": 3,
+      "Options": "Rejected"
+    }
+  ],
+  "POSActionsData": [
+    {
+      "Id": 1,
+      "Name": "موافق",
+      "Description": "موافق",
+      "DisplayOrder": 1,
+      "Code": "ok"
+    },
+    {
+      "Id": 2,
+      "Name": "رفض",
+      "Description": "رفض",
+      "DisplayOrder": 2,
+      "Code": "reject"
+    }
+  ],
+  "VendorActionsData": [
+    {
+      "Id": 3,
+      "Name": "موافق",
+      "Description": "موافق",
+      "DisplayOrder": 1,
+      "Code": "ok"
+    },
+    {
+      "Id": 4,
+      "Name": "رفض",
+      "Description": "رفض",
+      "DisplayOrder": 2,
+      "Code": "reject"
+    }
+  ]
+}

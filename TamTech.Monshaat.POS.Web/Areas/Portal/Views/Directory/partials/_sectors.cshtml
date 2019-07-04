@@ -1,0 +1,39 @@
+<if include-if="(ViewBag.sectors != null)">
+    @{ List<SectorDto> Sectors = (List<SectorDto>)ViewBag.sectors; }
+
+    <if include-if="Sectors.Count > 0">
+        <div class="sectors-widget mt-35">
+            <h5 class="sector-title c-black">
+                @Localizer["d_sectors_title"]
+                        @if (ViewBag.ActiveSector != null)
+                        {
+                            @Localizer["or"] <a asp-action="index" asp-controller="Directory" asp-route-slug="" class="c-blue"><u>@Localizer["all_sectors"]</u></a>
+                        }
+                    </h5>
+
+            <div class="sectors-carousel owl-carousel" data-items="7" data-xs-items="2" data-sm-items="2" data-md-items="4" data-lg-items="6" data-xl-items="7" data-rtl="true">
+                @foreach (SectorDto item in Sectors)
+                {
+                    <div>
+                        <a asp-route-slug="@item.Slug" asp-action="index" asp-controller="Directory" title="@item.Name"  data-id="@item.Id" data-slug="@item.Slug"
+                           class="sector-link text-center white-panel d-flex flex-column justify-content-between align-items-center @(ViewBag.ActiveSector == item.Slug ? "active" : "")">
+                            <span>
+                                @if (string.IsNullOrEmpty(item.Icon))
+                                {
+                                    <img src="~/Portal/img/icons/sector.png" alt="@item.Name" class="ignore" />
+                                }
+                                else
+                                {
+                                    <img src="@item.Icon" alt="@item.Name" class="ignore" />
+                                }
+                            </span>
+                            <span>
+                                @item.Name
+                            </span>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </if>
+</if>

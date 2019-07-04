@@ -1,0 +1,49 @@
+﻿ 
+    <if include-if="ViewBag.sectors != null">
+        @{ 
+            List<SectorDto> Sectors = (List<SectorDto>)ViewBag.sectors;
+        }
+        <if include-if="Sectors.Count > 0">
+            <section class="sectors-area">
+                <div class="container">
+                    <div class="text-center mb-45">
+                        <h3>@Localizer["choose_your_business_type"]</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                              <div class="sectors_carousel owl-carousel" 
+                                   data-items="5" 
+                                   data-xl-items="5" 
+                                   data-xs-items="2" 
+                                   data-lg-items="5" 
+                                   data-sm-items="2" 
+                                   data-md-items="4" 
+                                   data-slideby="3"
+                                   data-rtl="true" data-nav="true">
+                                @foreach (SectorDto item in Sectors)
+                                {
+                                    
+                                        <a asp-route-slug="@item.Slug" asp-action="index" asp-controller="Directory" title="@item.Name"  data-id="@item.Id" data-slug="@item.Slug"
+                                        class="sector-link text-center white-panel d-flex flex-column justify-content-between align-items-center @(ViewBag.ActiveSector == item.Slug ? "active" : "")">
+                                            <span>
+                                                @if (string.IsNullOrEmpty(item.Image))
+                                                {
+                                                    <img src="~/Portal/img/icons/sector.png" alt="@item.Name" class="ignore" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="@item.Image" alt="@item.Name" class="ignore" />
+                                                }
+                                            </span>
+                                            <span>
+                                                @item.Name
+                                            </span>
+                                        </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </if>
+    </if>

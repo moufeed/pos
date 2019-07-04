@@ -1,0 +1,21 @@
+.success-panel{
+    padding:70px 25px;
+    svg{
+      
+       
+         width: 90px;
+         height: 90px;
+        margin-bottom: 25px;
+        path{
+            fill:$l-green;
+        }
+    }
+    
+    p{
+        color: $black;
+    }
+    .btn{
+        margin-top: 25px;
+        
+    }
+}

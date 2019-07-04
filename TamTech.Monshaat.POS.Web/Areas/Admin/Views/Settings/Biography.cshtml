@@ -1,0 +1,205 @@
+﻿@model SiteInformationVm
+
+@{
+    string PageTitle = Localizer["website_biography"].Value;
+
+    ViewData["UnitTestPageClass"] = "ut-information-form";
+    ViewData["Title"] = PageTitle;
+
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@PageTitle<small></small></h3>
+        </div>
+        <div class="title_right dropdown">
+
+        </div>
+    </div>
+</div>
+
+ 
+
+    
+
+     
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+
+        
+            
+
+        <form asp-action="biography"
+              method="post"
+              class="form-horizontal forn-new form-label-left"
+              id="sectorForm" enctype="multipart/form-data">
+            <input type="hidden" name="Lang" value="@activeLang" />
+
+
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["site_brief"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="Brief" class="form-control textarea" rows="5"></textarea>
+                    <span asp-validation-for="Brief" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["about_site"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="About" class="form-control textarea" rows="5"></textarea>
+                    <span asp-validation-for="About" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["site_vision"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="Vision" class="form-control textarea" rows="5"></textarea>
+                    <span asp-validation-for="Vision" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["site_mission"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="Mission" class="form-control textarea" rows="5"></textarea>
+                    <span asp-validation-for="Mission" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+            <h2>SEO</h2>
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["site_summury"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="Summury" class="form-control summary" rows="5"></textarea>
+                    <span asp-validation-for="Summury" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["meta_description"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+                    <textarea asp-for="MetaDescription" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="MetaDescription" class="text-danger invalid_field"></span>
+                </div>
+            </div>  
+            
+            <div class="x_panel tile">
+                <div class="x_title clearfix ">
+                    <h2> @Localizer["meta_keywords"]</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="x_content">
+
+                    <div class="static-form-control">
+                        <input type="text" asp-for="MetaKeywords" class="form-control keywords" />
+                    </div>
+
+                  
+                    <span asp-validation-for="MetaKeywords" class="text-danger invalid_field"></span>
+                </div>
+            </div>  
+             
+            <div class="x_panel">
+                <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@Localizer["save"] ">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@section Styles{
+    <link href="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Admin/js/validator.min.js"></script>
+
+    @{
+        ViewBag.TinyMce_Contetnt_Id = ".textarea";
+        ViewBag.TinyMce_Suumry_Id = ".summary";
+        await Html.RenderPartialAsync("partials/_tinymce.cshtml");
+    }
+
+     
+    <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+
+    <script>
+         
+         $('.keywords').tagsinput({
+                    tagClass: 'tag'
+         });
+
+
+         @if(TempData.ContainsKey("UpdateDone")){
+            TempData.Remove("UpdateDone");
+            <text>
+                $notification.success("","@Localizer["information_updated"]")
+            </text>
+        }
+    </script>
+
+}

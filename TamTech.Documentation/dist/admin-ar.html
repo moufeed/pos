@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>تانتوم - دليل الاستخدام</title> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style-ar.min.css">
+</head>
+<body data-spy="scroll" data-target="#navbar-links" data-offset="0"> 
+    
+ 
+ <header class="docs-cover">
+      <div class="container">
+          <div class="row align-items-center content">
+           <div class="col-12">
+            <div class="clearfix logo-box">
+                   
+                   
+                   
+                    
+                       
+                   <svg version="1.1"   viewBox="0 0 48 48"   class="svg-logo" >
+                   <g>
+                   	<rect x="3" y="10" fill="#1976D2" width="42" height="29"/>
+                   	<circle fill="#1976D2" cx="24" cy="36" r="5"/>
+                   </g>
+                   <circle fill="#263238" cx="24" cy="36" r="3"/>
+                   <polygon fill="#CFD8DC" points="40,7 25,10 23,10 8,7 6,12 6,36 42,36 42,12 "/>
+                   <path fill="#B0BEC5" d="M8,33h15v3h2v-3h15l2,3H6L8,33z M25,10h-2v26h2V10z"/>
+                   <path fill="#ECEFF1" d="M40,33c0,0-15,0-15,3c0,0,0-23,0-26s15-3,15-3V33z M8,33c0,0,15,0,15,3c0,0,0-23,0-26S8,7,8,7V33z"/>
+                   <path fill="#2196F3" d="M33.9,28h-2.8V17h2.8V28z M34,13.5c0-0.8-0.7-1.5-1.5-1.5S31,12.7,31,13.5s0.7,1.5,1.5,1.5S34,14.3,34,13.5"
+                   	/>
+                   </svg>
+                  <div class="d-info">
+                    <h1> إدارة نقاط البيع</h1>
+                    <h4>دليل الإستخدام</h4>
+                    <p>إصدار <span dir="ltr">V 0.5</span> <span>30 يونيو - 2019</span></p>
+                    <a href="#main-content" class="btn btn-outline-secondary p-x-45 mt-40 d-print-none goto" >إستعراض</a>
+                  </div>
+              </div>
+           </div>
+          </div> 
+      </div>
+ </header>       <section class="docs-conteiner mt-50 closed"> 
+       <button class="btn btn-link d-lg-none position-fixed float-btn" id="menutoggle">
+             <span class="burger"></span>
+        </button>
+       <div class="container"> 
+            <div class="row no-gutters row-content" >  
+                
+                <aside class="col-md-4 col-lg-3 " id="sidebar">
+                    
+                    <aside class="aside d-print-none">
+                    <nav id="navbar-links" class="navbar navbar-links">
+                      <nav class="nav main-nav flex-column">
+                      
+                            <span><a class="nav-link" href="#index">الصفحة الرئيسية </a></span>
+                            <span><a class="nav-link" href="#Vendors"> <i class="fas fa-chevron-left"></i> إدارة الموردين </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#vendors-list">قائمة إدارة الموردين </a> <a class="nav-link" href="#vendors-acceptance">عملية قبول ورفض المورد</a>  </nav></span>
+                            <span><a class="nav-link" href="#Sectors"> <i class="fas fa-chevron-left"></i> القطاعات </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#sectors-list">  إدارة القطاعات </a> <a class="nav-link" href="#add-sectors">عملية إضافة قطاع جديد</a> <a class="nav-link" href="#publish-sectors">إدارة ونشر القطاعات</a>  </nav></span>
+                            <span><a class="nav-link" href="#Pos"> <i class="fas fa-chevron-left"></i> نقاط البيع </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#pos-list">قائمة إدارة نقاط البيع</a> <a class="nav-link" href="#pos-publish">نشر/إلغاء  نقطة بيع</a> <a class="nav-link" href="#pos-delete">حذف نقطة بيع </a> <a class="nav-link" href="#pos-details">تفاصيل نقطة البيع </a> <a class="nav-link" href="#pos-acceptance">قبول و رفض نقطة بيع</a>  </nav></span>
+                            <span><a class="nav-link" href="#PosTypes"> <i class="fas fa-chevron-left"></i> أنواع نقاط البيع </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#pos-new-type">إضافة نوع جديد</a> <a class="nav-link" href="#pos-types-publish">إدارة ونشر أنواع نقاط البيع</a>  </nav></span>
+                            <span><a class="nav-link" href="#PosAttributes"> <i class="fas fa-chevron-left"></i> الميزات والخصائص </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#pos_attributes_new_attr">إضافة ميزة جديدة</a> <a class="nav-link" href="#pos_attributes_publish">نشر وإدارة الميزات</a> <a class="nav-link" href="#pos_attributes_value_list">إدارة قيم الخصائص</a> <a class="nav-link" href="#pos_attributes_value">إضافة قيمة جديدة ضمن الميزة</a> <a class="nav-link" href="#pos_attributes_value_publish">نشر وإدارة خصائص الميزات</a>  </nav></span>
+                            <span><a class="nav-link" href="#Pages"> <i class="fas fa-chevron-left"></i> صفحات </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#pages_new_html"> صفحة ويب (html) جديدة</a> <a class="nav-link" href="#pages_new_sections"> صفحة فقرات (sections) جديدة</a> <a class="nav-link" href="#pages_publish">نشر وإدارة الصفحات</a>  </nav></span>
+                            <span><a class="nav-link" href="#Contact"> <i class="fas fa-chevron-left"></i> الرسائل </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#messages_menage">إدارة الرسائل</a> <a class="nav-link" href="#messages_reply">الرد على الرسائل</a>  </nav></span>
+                            <span><a class="nav-link" href="#contact-types"> <i class="fas fa-chevron-left"></i> أنواع الرسائل </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#messages_type">إدارة انوع الرسائل</a> <a class="nav-link" href="#messages_new_type">إضافة نوع جديد</a> <a class="nav-link" href="#messages_publish_types">نشر وإدارة أنواع الرسائل</a>  </nav></span>
+                            <span><a class="nav-link" href="#Regions"> <i class="fas fa-chevron-left"></i> المناطق </a> <nav class="nav subnav flex-column"><a class="nav-link" href="#regions_select">إختيار المنطقة</a> <a class="nav-link" href="#regions_list">إدارة المناطق</a> <a class="nav-link" href="#regions_new">إضافة  منطقة جديدة</a> <a class="nav-link" href="#regions_publish">نشر وإدارة المناطق</a>  </nav></span>
+                          
+                      </nav> 
+                    </nav>
+                    </aside>     
+                </aside> 
+                <main class="col-md-12 col-lg-9" id="main-content">
+                    <div class="main-content" >
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="index">
+                        <div class="container">
+                            <h1>الصفحة الرئيسية</h1>
+                            <p class="mt-15">يوفر هذا القسم إحصائيات عن مجمل النظام بشكل عام</p>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="charts-list">
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        النماذج البيانية العددية  
+                                                    </h6> 
+                                                <a href="assets/images/statistics.jpg" data-lightbox="image-0" data-title="النماذج البيانية العددية " class="m-y-25 d-block image">
+                                                    <img src="assets/images/statistics.jpg" alt="النماذج البيانية العددية " class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>النماذج البيانية العددية </strong> العدد الكلي لجميع نقاط البيع في النظام
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الموردين </strong>  العدد الكلي لجميع الموردين في النظام.
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الرسائل </strong> العدد الكلي لجميع الرسائل في النظام
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الصفحات</strong> العدد الكلي لصفحات المحتوى الديناميكي في النظام
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        النماذج البيانية الإحصائية 
+                                                    </h6> 
+                                                <a href="assets/images/pos-charts.jpg" data-lightbox="image-1" data-title="النماذج البيانية الإحصائية" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-charts.jpg" alt="النماذج البيانية الإحصائية" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>نقاط البيع – الحالة </strong>: يوضح هذا النموذج البياني عدد نقاط البيع في النظام بحسب الحالة بالإضافة إلى النسبة المئوية بحسب الحالة  (قيد المعالجة/تم الموافقة/تم الرفض).
+                                                                </li>
+                                                                <li>
+                                                                    <strong>نقاط البيع – القطاعات </strong>: يوضح هذا النموذج البياني عدد نقاط البيع في النظام بحسب القطاعات بالإضافة إلى النسبة المئوية بحسب القطاعات .
+                                                                </li>
+                                                                <li>
+                                                                    <strong>نقاط البيع – الأنواع </strong>: يوضح هذا النموذج البياني عدد نقاط البيع في النظام بحسب الأنواع بالإضافة إلى النسبة المئوية بحسب الأنواع.
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        النماذج البيانية الإحصائية 
+                                                    </h6> 
+                                                <a href="assets/images/vendor-charts.jpg" data-lightbox="image-2" data-title="النماذج البيانية الإحصائية" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-charts.jpg" alt="النماذج البيانية الإحصائية" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يوضح هذا النموذج البياني عدد الموردين في النظام بحسب الحالة بالإضافة إلى النسبة المئوية بحسب الحالة  (جاري الإنتظار/تم الموافقة/تم الرفض).
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        الرسائل  
+                                                    </h6> 
+                                                <a href="assets/images/messages-charts.jpg" data-lightbox="image-3" data-title="الرسائل " class="m-y-25 d-block image">
+                                                    <img src="assets/images/messages-charts.jpg" alt="الرسائل " class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الرسائل – الحالة </strong> : يوضح هذا النموذج البياني عدد الرساائل في النظام بحسب الحالة بالإضافة إلى النسبة المئوية بحسب الحالة  ( غير مقروء/ مقروء/ تم الردّ).
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الرسائل – الأنواع  </strong> : يوضح هذا النموذج البياني عدد الرساائل في النظام بحسب نوع الرسالة بالإضافة إلى النسبة المئوية بحسب نوع الرسالة  ( طلب / استفسار / إقتراح / شكوى).
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        أخر الرسائل 
+                                                    </h6> 
+                                                <a href="assets/images/latest-messages.jpg" data-lightbox="image-4" data-title="أخر الرسائل" class="m-y-25 d-block image">
+                                                    <img src="assets/images/latest-messages.jpg" alt="أخر الرسائل" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    توفر لمدير النظام  قائمة بالرسائل الغير مقروءة فقط. ويمكن الوصول إلى تفاصيل الرسالة من أجل الرد عليها من خلال الضغط على الرسالة مباشرة.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Vendors">
+                        <div class="container">
+                            <h1>إدارة الموردين</h1>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="vendors-list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#vendors-list">#</a>
+                                            <span>قائمة إدارة الموردين </span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    <p>تقوم هذه الصفحة بعرض جميع الموردين الراغبين بالتسجيل بالنظام إضافةً إلى عرض حالة الطلب من حيث الموافقة، الرفض أو قيد المراجعة. كما توفّر هذه الصفحة خاصية  البحث والفرز حسب معايير مختلفة. </p>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/vendor-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="vendors-acceptance">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#vendors-acceptance">#</a>
+                                            <span>عملية قبول ورفض المورد</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    عند وجود طلب جديد، ستظهر حالة الطلب تحت اسم 'جاري الانتظار'. لتفقّد معلومات المورّد، يتم الضغط على زر الإجراءات. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/vendor-info-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-info-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد الضغط على زر الإجراءات تظهر صفحة تفاصيل المورد، من خلالها يمكن الموافقة أو الرفض عبر الضغط على إحدى زري 'الحالة' مع كتابة التفاصيل في الملاحظات ثم الضغط على زر إرسال. ليتم بعدها إبلاغ المورد الراغب بالتسجيل بحالة طلبه عبر رسالة في البريد الإلكتروني. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/vendor-detials.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-detials.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد الموافقة، سيتم تحديث صفحة تفاصيل المورد لعرض حالة المورد الجديدة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/vendor-actions-result.jpg" data-lightbox="image-3" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-actions-result.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    كما ستعكس صفحة الموردين الحالة الجديدة للمورد لتصبح على النحو التالي
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/vendor-status-result.jpg" data-lightbox="image-4" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/vendor-status-result.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Sectors">
+                        <div class="container">
+                            <h1>القطاعات</h1>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="sectors-list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#sectors-list">#</a>
+                                            <span>  إدارة القطاعات </span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يسمح قسم القطاعات بإضافة، إزالة وتحرير القطاعات التي تظهر بالموقع الرئيسي في كلاً من:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sectors-portal.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sectors-portal.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    حيث تظهر جميع القطاعات في الصفحة بالترتيب الأبجدي ويمكن فرزها بحسب الأحدث أو الأقدم إضافةً أو بحسب الحالة. كما تتوفر في الصفحة خاصية البحث عن قطاع معيّن.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sectors-list.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sectors-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="add-sectors">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#add-sectors">#</a>
+                                            <span>عملية إضافة قطاع جديد</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة قطاع جديد، يتم الضغط على زر قطاع جديد + بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/new-sector.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/new-sector.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة قطاع جديد والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sector-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sector-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة قطاع جديد الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الاسم</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الاسم اللطيف </strong><strong>slug</strong><strong>: </strong>الاسم الذي سيظهر في الرابط
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الصورة الرئيسية: </strong>التي تظهر في الموقع الرئيسي للزوار
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الأيقونة: </strong>التي تظهر في الصفحات الداخلية للمسجلين
+                                                                </li>
+                                                                <li>
+                                                                    <strong>ترتيب العرض</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الوصف</strong>
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                     بعد تعبئة الحقول المطلوبة، يتم الضغط على زر حفظ لإضافة القطاع والعودة إلى قائمة القطاعات. كما يمكن الضغط على زر حفظ ومتابعة لإضافة القطاع والاستمرار في الصفحة دون العودة إلى القائمة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    <div class='alert alert-warning' role='alert'><strong>ملاحظة</strong>: يُمكن استخدام الصورة نفسها عند إدخال الصورة الرئيسية والأيقونة.</div>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="publish-sectors">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#publish-sectors">#</a>
+                                            <span>إدارة ونشر القطاعات</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة القطاع، سيظهر في القائمة بصفحة القطاعات. ومن ثمّ يمكن نشره عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sector-publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sector-publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يظهر بجانب زر إمكانية الرؤية خيارات أخرى لإدارة القطاعات وهي: 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التفاصيل </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-info.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-info.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يعرض تفاصيل القطاع المُضاف بما فيها تاريخ الإنشاء والتعديل </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التحرير </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-edit.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-edit.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يُتيح تعديل القطاع المُضاف وذلك سواءً للاسم، الاسم اللطيف slug أو الصور </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر الإزالة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-delete.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-delete.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بحذف القطاع المُضاف </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Pos">
+                        <div class="container">
+                            <h1>نقاط البيع</h1>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="pos-list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-list">#</a>
+                                            <span>قائمة إدارة نقاط البيع</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يوفر قسم 'نقاط البيع' في لوحة التحكم للمدير استعراض وإدارة (رفض/قبول نشر/إلغاء نشر حذف )نقاط البيع الموجودة في الموقع.<br />حيث يوفر هذا القسم قائمة بنقاط البيع مرتبة بشكل افتراضي من الأحدث إلى الأقدم، تتيح للمدير استعراض المعلومات الأساسية لكل نقطة بيع وإتخاذ الإجراء المطلوب:
+                                                    </div>
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>عنوان </strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>البائع</strong>: اسم الشركة الخاصة بالمورد
+                                                                </li>
+                                                                <li>
+                                                                    <strong>النوع</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>القطاع</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الحالة</strong>: وهي حالة نقطة البيع بالنسبة للمورّد (قيد المعالجة، تم الموافقة، تم الرفض)
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إمكانية الرؤية</strong> النشر في الموقع الرئيسي للزوار ليتمكن الزوار من استعراض المعلومات 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إلغاء النشر </strong>لعدم ظهور المعلومات في الموقع الرئيسي للزوار.
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إجراءت</strong>: من اجل اتخاذ إجراء (قبول / رفض / حذف)بالإضافة إلى استعراض كافة التفاصيل والمعلومات الخاصة
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بالإضافة إلى ذلك هذا القسم للمدير خاصية الفرز و البحث المتقدم بحسب معايير مختلفة لمساعدة المدير على الوصول إلى المعلومات المطلوبة بسهولة وسرعة
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-list.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos-publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-publish">#</a>
+                                            <span>نشر/إلغاء  نقطة بيع</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    توفر هذه الميزة للمدير إمكانية نشر نقطة بيع بحالة تم الموافقة عليها في الموقع الرئيسي للزوار أو إلغاء نشرها. وذلك من خلال زر النشر -إلغاء النشر الموجود في عمود  ‘إمكانية الرؤية’ ضمن قائمة إدارة نقاط البيع.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos-delete">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-delete">#</a>
+                                            <span>حذف نقطة بيع </span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    توفر هذه الميزة للمدير إمكانية حذف نقطة بيع بشكل نهائي من الموقع، وذلك من خلال الضغط على زر الحذف الموجود في عمود الإجراءات ضمن قائمة إدارة نقاط البيع.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-delete.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-delete.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                     عند الضغط على زر حذف سيظهر للمدير رسالة تأكيد تحتوي على زر ‘موافق’  من أجل تأكدي عملية الحذف و زر 'إلغاء' من أجل التراجع عن عملية الحذف.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos-details">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-details">#</a>
+                                            <span>تفاصيل نقطة البيع </span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                     يمكن للمدير استعراض كافة تفاصيل نقطة البيع والمعلومات والصور الخاصة بها وذلك من خلال الوصول إلى شاشة 'تفاصيل نقطة بيع' بالضغط على الأيقونة الخاصة بالشاشة الموجودة في عمود الإجراءات  ضمن قائمة إدارة نقاط البيع
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-details.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-details.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos-acceptance">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-acceptance">#</a>
+                                            <span>قبول و رفض نقطة بيع</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يوجد ثلاث حالات لنقاط البيع وهي على الشكل التالي :
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    <ul><li><strong>قيد المعالجة</strong>: والتي تعني تم إنشاء نقطة بيع جديدة من قبل المورّد، أو تم تعديل معلومات نقطة بيع من قبل المورّد قام برفضها المدير سابقاً.</li><li><strong>تم الموافقة</strong>: قام المدير بالموافقة على نقطة البيع الخاصة بالمورّد.</li><li><strong>تم الرفض</strong>: قام المدير برفض نقطة البيع الخاصة بالمورّد.</li></ul>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يمكن للمدير إتخاذ إجراء قبول أو رفض نقاط البيع التي هي بحالة قيد المعالجة فقط، وسيتم بشكل آلي إرسال بريد الكتروني إلى المورّد المعني بنتيجة الإجراء المتخذ على نقطة البيع.  وذلك من خلال قسم 'تفاصيل نقطة البيع' والتي يمكن الوصول لها من خلال حقل الإجراءات في قائمة إدارة نقاط البيع.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-actions.jpg" data-lightbox="image-3" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-actions.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        الموافقة والرفض على نقطة البيع:  
+                                                    </h6> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    للموافقة على نقطة البيع يجب تفعيل خيار <b class='text-success'>موافقة</b> ، كما يمكن إدخال ملاحظات ضمن حقل الملاحظات (حقل الملاحظات اختياري في هذه الحالة) والضغط على زر إرسال. بحسب الشكل التالي:  
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-accept.jpg" data-lightbox="image-5" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-accept.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد الضغط على إرسال وتنفيذ العملية بنجاح، يتم تعديل حالة نقطة البيع - الحالة إلى <b class='text-success'>تم الموافقة</b>, إمكانية الرؤية إلى  <b class='text-info'>منشور</b> حيث يقوم النظام بنشر نقطة البيع بشكل آلي في الموقع الرئيسي للزوار، ويقوم النظام أيضاً  بشكل آلي بإرسال بريد إلكتروني للمورّد بالموافقة على نقطة البيع الخاصة به . بحسب الشكل التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-accept-result.jpg" data-lightbox="image-6" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-accept-result.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لرفض نقطة بيع، يجب تفعيل خيار <b class='text-danger'>رفض</b> و إدخال اسباب و ملاحظات المدير التي أدت إلى الرفض في حقل الملاحظات (حقل الملاحظات إلزامي في هذه الحالة)، بحسب الشكل التالي
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-reject.jpg" data-lightbox="image-7" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-reject.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد الضغط على إرسال وتنفيذ العملية بنجاح، يتم تعديل حالة نقطة البيع - الحالة إلى <b class='text-danger'>تم الرفض</b>, إمكانية الرؤية إلى <b class='text-warning'>غير منشور</b> حيث يقوم النظام بإرسال بريد إلكتروني للمورّد برفض نقطة البيع الخاصة به بشكل آلي. بحسب الشكل التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-reject-result.jpg" data-lightbox="image-8" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-reject-result.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يمكن للمدير استعراض الإجراءات والحالات التي مرّت بها نقطة البيع من خلال الضغط على التبويب   <b class='text-primary'>الإجراءات السابقة</b> كما يوضح الشكل التالي 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-history.jpg" data-lightbox="image-9" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-history.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="PosTypes">
+                        <div class="container">
+                            <h1>أنواع نقاط البيع</h1>
+                            <p class="mt-15">من خلال هذا القسم يتم إدارة  أنواع نقاط البيع التي تتبع لها نقاط البيع ويمكن ملاحظاتها عند إنشاء نقطة بيع جديدة او ضمن قسم نقاط البيع تحت مسمى النوع</p>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="pos-new-type">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-new-type">#</a>
+                                            <span>إضافة نوع جديد</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة نوع جديد نقاط البيع، يتم الضغط على <b class='text-info btn'>نوع جديد + </b>بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/new-pos-type.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/new-pos-type.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة نوع جديد والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/new-pos-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/new-pos-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد تعبئة الحقول المطلوبة، يتم الضغط على زر  <b class='text-success'>حفظ</b> لإضافة النوع الجديد والعودة إلى قائمة أنواع نقاط البيع. كما يمكن الضغط على زر حفظ ومتابعة لإضافة النوع والاستمرار في الصفحة دون العودة إلى القائمة
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos-types-publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos-types-publish">#</a>
+                                            <span>إدارة ونشر أنواع نقاط البيع</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة النوع، سيظهر في القائمة بصفحة أنواع نقاط البيع. ومن ثمّ يمكن نشره عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-types-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-types-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لتعديل اسم، وصف أو ترتيب عرض النوع المُدخل يمكن الضغط على زر التحرير 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos-type-edit.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos-type-edit.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="PosAttributes">
+                        <div class="container">
+                            <h1>الميزات والخصائص</h1>
+                            <p class="mt-15">يمكّن كلا قسمي الميزات والخصائص من إضافة الخاصيات التي ممكن أن يختارها الموردين المسجلين بالموقع الرئيسي</p>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="pos_attributes_show">
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يمكن رؤية الخصائص عند إنشاء نقطة بيع من قبل المورد  كما يمكن ملاحظتها من قبل زوار الموقع ضمن صفحة البحث 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">صفحة إضافة نقطة بيع في الموقع الرئيسي للمسجلين  </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">صفحة البحث في الموقع الرئيسي للمسجلين </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/vendor_attributes.jpg" data-lightbox="image-0"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/vendor_attributes.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/filters.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/filters.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لكي يتم نشر هذه الخاصيات على هذا النحو، يتعيّن اتباع الخطوات التالية
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>إضافة ميزة جديدة</strong>  تحديد إذا كانت خيارات السمة متعددة أم تشمل خيار واحد فقط
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إضافة قيمة جديدة في الخصائص</strong> تحديد السمة التي تعود إليها القيمة الجديدة المُضافة
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos_attributes_new_attr">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos_attributes_new_attr">#</a>
+                                            <span>إضافة ميزة جديدة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة ميزة جديدة، يتم الضغط على زر <b class='text-info'>سمة جديدة +</b> بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/new_attr.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/new_attr.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة سمة جديدة والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/attr-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/attr-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة سمة جديدة الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الاسم</strong>: 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إلزامي</strong>: في حال كان مطلوب من الموردين المُسجلين
+                                                                </li>
+                                                                <li>
+                                                                    <strong>ترتيب العرض</strong>: 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الخيارات</strong>:تمكّن من تحديد إذا كانت خيارات السمة متعددة أم تشمل خيار واحد فقط 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الوصف</strong>: 
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد تعبئة الحقول المطلوبة، يتم الضغط على <b class='text-success'>زر حفظ</b> لإضافة السمة والعودة إلى قائمة الميزات. كما يمكن الضغط على <b class='text-info'>زر حفظ ومتابعة</b> لإضافة السمة والاستمرار في الصفحة دون العودة إلى القائمة
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos_attributes_publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos_attributes_publish">#</a>
+                                            <span>نشر وإدارة الميزات</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة السمة الجديدة، ستظهر في القائمة بصفحة الميزات. ومن ثمّ يمكن نشرها عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pos_attr_publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pos_attr_publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يظهر بجانب زر إمكانية الرؤية خيارات أخرى لإدارة السمات المُضافة وهي: 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التحرير </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-edit.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-edit.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يُتيح تعديل السمة المُضافة وذلك سواءً للاسم، ترتيب العرض، اختيارات متعددة والوصف </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر الإزالة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-delete.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-delete.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بحذف السمة المُضافة </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos_attributes_value_list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos_attributes_value_list">#</a>
+                                            <span>إدارة قيم الخصائص</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    تقوم هذه الصفحة بعرض  قائمة بكل القيم المضافة مع إمكانية البحث  والقيام بعدة إجراءات
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/attributes_values.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/attributes_values.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos_attributes_value">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos_attributes_value">#</a>
+                                            <span>إضافة قيمة جديدة ضمن الميزة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة قيمة جديدة في خصائص الميزات، يتم الضغط على <b class='text-info'>زر قيمة جديدة +</b> بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/attribute-new-value.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/attribute-new-value.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة قيمة جديدة والتي تحتوي على نموذج للإضافة على النحو التالي
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/attribute-value-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/attribute-value-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة قيمة جديدة الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الاسم</strong>:
+                                                                </li>
+                                                                <li>
+                                                                    <strong>السمة/ الخاصية</strong>:والتي تمكّن من تحديد السمة التي تعود إليها القيمة الجديدة المُضافة
+                                                                </li>
+                                                                <li>
+                                                                    <strong>ترتيب العرض</strong>:
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الوصف</strong>:
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد تعبئة الحقول المطلوبة، يتم الضغط على <b class='text-success'>زر حفظ </b>لإضافة القيمة والعودة إلى قائمة الخصائص. كما يمكن الضغط على <b class='text-info'>زر حفظ ومتابعة</b> لإضافة القيمة والاستمرار في الصفحة دون العودة إلى القائمة.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pos_attributes_value_publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pos_attributes_value_publish">#</a>
+                                            <span>نشر وإدارة خصائص الميزات</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة القيمة الجديدة، ستظهر في القائمة بصفحة خصائص الميزات. ومن ثمّ يمكن نشرها عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/attr-value-publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/attr-value-publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يظهر بجانب زر إمكانية الرؤية خيارات أخرى لإدارة الخصائص المُضافة وهي: 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التحرير </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-edit.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-edit.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يُتيح تعديل القيمة المُضافة وذلك سواءً للاسم، السمة، ترتيب العرض والوصف </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر الإزالة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-delete.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-delete.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بحذف القيمة المحددة </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر مشاهدة ضمن السمة  </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/attr-value-info-btn.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/attr-value-info-btn.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بفتح صفحة تعديل السمة والتي تظهر فيها كذلك كافة الخصائص التي تعود للميزة المُحددة </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    <div class='alert alert-warning' role='alert'><h4 class='alert-heading'>ملاحظة</h4><p> يجب مراعاة الميزات عند إدارة خصائص الميزات. على سبيل المثال:</p><hr><ul><li>عند نشر خصائص الميزات، يتعيّن التأكد من أن الميزة التي تعود لها هذه الخصائص منشورة أيضاً. وكذلك عند نشر ميّزة، يتعيّن التأكد من أن الخصائص التي تعود لها منشورة</li><li>  عند حذف جميع خصائص الميزات التي تعود لميزة معينة، لا يتم تلقائياً حذف هذه الميزة. وكذلك عند حذف الميزة، لا يتم تلقائياً حذف جميع الخصائص التي تعود إليها لكن يتم إعادة تحديد هذه الخصائص إلى ميّزة أُخرى</li></ul></div>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Pages">
+                        <div class="container">
+                            <h1>صفحات</h1>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="pages_list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pages_list">#</a>
+                                            <span>الصفحات</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يوفّر هذا القسم إمكانية إنشاء صفحة جديدة إضافةً لنشر وتعديل الصفحات للموقع الرئيسي. حيث يعرض هذا القسم الصفحات بالترتيب الأبجدي ويمكن فرزها بحسب الأحدث أو الأقدم إضافةً أو بحسب الحالة. كما تتوفر خاصية البحث عن صفحة معيّنة.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pages-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pages-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pages_new_html">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pages_new_html">#</a>
+                                            <span> صفحة ويب (html) جديدة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة صفحة جديدة، يتم الضغط على زر صفحة HTML جديدة بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pages-new-html-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pages-new-html-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة جديدة والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/html-page-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/html-page-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة صفحة جديدة الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>العنوان</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الاسم اللطيف slug:</strong> الاسم الذي سيظهر في الرابط
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الاسم بالنظام</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>القسم</strong>: الجزء الذي تندرج تحته الصفحة 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الصورة الرئيسية</strong>: صورة اختيارية للصفحة
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الملخص</strong>: مُحتوى الصفحة باختصار
+                                                                </li>
+                                                                <li>
+                                                                    <strong>المحتوى</strong>: النص، الجدول، الصورة أو الوسائط المُراد عرضها بالصفحة
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد تعبئة الحقول المطلوبة، يتم الضغط على<b class='text-success'> زر  حفظ</b> لإضافة الصفحة والعودة إلى قائمة الصفحات. كما يمكن الضغط على <b class='text-info'>زر حفظ ومتابعة</b> لإضافة الصفحة والاستمرار في الصفحة دون العودة إلى القائمة.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pages_new_sections">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pages_new_sections">#</a>
+                                            <span> صفحة فقرات (sections) جديدة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة صفحة جديدة، يتم الضغط على زر صفحة sections جديدة بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/pages-new-sections-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/pages-new-sections-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة جديدة والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sections-page-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sections-page-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة صفحة جديدة الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>العنوان</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الاسم اللطيف slug:</strong> الاسم الذي سيظهر في الرابط
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الاسم بالنظام</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>القسم</strong>: الجزء الذي تندرج تحته الصفحة 
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الصورة الرئيسية</strong>: صورة اختيارية للصفحة
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الملخص</strong>: مُحتوى الصفحة باختصار
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                    <h6 class="mt-15">
+                                                        محتوى الصفحة 
+                                                    </h6> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                     يمكن إضافة محتوى للصفحة  بضغط زر <b class='text-secondary'>  إضافة محتوى </b> والمحتوى هو عبارة عن فقرات كل فقرة تحتوى على
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">عنوان الفقرة<br/>محتوى الفقرة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/sections-content.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/sections-content.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    تستطيع حذف فقرة عبر الضغط على <b class='text-danger'>زر الحذف</b>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/sections-content-delete.jpg" data-lightbox="image-5" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/sections-content-delete.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="pages_publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#pages_publish">#</a>
+                                            <span>نشر وإدارة الصفحات</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة الصفحة الجديدة، ستظهر في القائمة بقسم الصفحات. ومن ثمّ يمكن نشرها عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/page-publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/page-publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يظهر بجانب زر إمكانية الرؤية خيارات أخرى لإدارة الخصائص المُضافة وهي: 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التفاصيل </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-info.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-info.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يعرض تفاصيل الصفحة المُضافة بما فيها: تاريخ الإنشاء، تاريخ التعديل، العنوان، القسم والمُحتوى </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التحرير </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-edit.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-edit.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يُتيح تعديل الصفحة المُضافة وذلك سواءً للعنوان، الاسم اللطيف slug، الاسم بالنظام، الملخص والمحتوى </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر الإزالة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-delete.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-delete.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بحذف الصفحة المُضافة </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Contact">
+                        <div class="container">
+                            <h1>الرسائل</h1>
+                            <p class="mt-15">يوفر  قسم الرسائل إمكانية إتستعراض وإدارة الرسائل المستلمة من قبل الزوار في الموقع الرئيسي</p>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="messages_menage">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#messages_menage">#</a>
+                                            <span>إدارة الرسائل</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يحتوي هذا القسم على قائمة  للرسائل بترتيب من الاحدث الى الأقدم مع إمكانية البحث بحسب العنوان او البريد الالكتروني
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/messages-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/messages-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    كم يعرض القسم عن كل رسالة المعلومات التالية
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الاسم</strong>: اسم الشخص المُرسل
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الرسالة</strong>: جزء من النص الكامل للرسالة
+                                                                </li>
+                                                                <li>
+                                                                    <strong>البريد الإلكتروني</strong> البريد الإلكتروني للمرسل
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الهاتف</strong> رقم الهاتف المدخل من قبل المرسل
+                                                                </li>
+                                                                <li>
+                                                                    <strong>النوع</strong>: سبب التواصل المُدخل في نموذج الرسائل
+                                                                </li>
+                                                                <li>
+                                                                    <strong>تاريخ الإنشاء</strong>: تاريخ الإرسال من قبل المرسل
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الحالة</strong>: حالة الرسالة وتشمل: <span class='badge badge-read text-white'>مقروء</span> <span class='badge badge-new text-white'>غير مقروء</span> <span class='badge badge-replied '>تم الردّ</span>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>المُرفقات</strong>: في حال تم إرفاق ملف عند إرسال رسالة من نوع شكوى
+                                                                </li>
+                                                                <li>
+                                                                    <strong>إجراءات</strong>: استعراض الرسالة والرد عليها
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="messages_reply">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#messages_reply">#</a>
+                                            <span>الرد على الرسائل</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لقراءة النص الكامل للرسالة والرد عليها، يتم الضغط على زر <b class='text-success'> قراءة الرسالة</b> او الضغط مباشرة على نص الرسالة
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/read-message-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/read-message-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد فتح صفحة مشاهدة الرسالة، تظهر الرسالة بالنص الكامل مع تفاصيل المُرسل بما فيها: البريد الإلكتروني، الهاتف، سبب التواصل، المنطقة والشركة. كما يظهر حقلان لكتابة الرد على الرسالة وهما العنوان والمحتوى. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/message-details.jpg" data-lightbox="image-3" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/message-details.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد تعبئة العنوان والمحتوى وضغط  <b class='text-info'>زر رد</b> ، يتم إشعار المُرسل بالرد على الرسالة عبر البريد الالكتروني.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    <div class='alert alert-warning' role='alert'><strong>ملاحظة</strong> لا يمكن الرد على الرسالة أكثر من مرة واحدة</div>
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="contact-types">
+                        <div class="container">
+                            <h1>أنواع الرسائل</h1>
+                            <p class="mt-15">يوفر هذا القسم إمكانية إستعراض وإدارة انواع الرسائل المذكورة ضمن الموقع الرئيسي تحت مسمى  سبب التواصل ضمن صفحة  التواصل مع إدارة الموقع</p>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="messages_type">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#messages_type">#</a>
+                                            <span>إدارة انوع الرسائل</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يحتوي هذا القسم على قائمة  للرسائل بترتيب من الاحدث الى الأقدم مع إمكانية البحث بحسب العنوان او البريد الالكتروني
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/contact-types-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/contact-types-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="messages_new_type">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#messages_new_type">#</a>
+                                            <span>إضافة نوع جديد</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة نوع جديد في أنواع الرسائل، يتم الضغط على زر <b class='text-success'>نوع جديد +</b> بأعلى الصفحة. 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/types-form-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/types-form-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة نوع جديد والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/types-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/types-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يتضمن نموذج إضافة نوع جديد الحقول التالية:
+                                                    </div>
+                    
+                                                
+                    
+                                                        <ul>
+                                                                <li>
+                                                                    <strong>الاسم</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>ترتيب العرض</strong>
+                                                                </li>
+                                                                <li>
+                                                                    <strong>الوصف</strong>
+                                                                </li>
+                                                        </ul>
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="messages_publish_types">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#messages_publish_types">#</a>
+                                            <span>نشر وإدارة أنواع الرسائل</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة النوع الجديد، ستظهر في القائمة بقسم أنواع الرسائل. ومن ثمّ يمكن نشره عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/types-publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/types-publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لتعديل اسم، وصف أو ترتيب عرض نوع الرسائل المُدخل يمكن الضغط على زر التحرير 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/btn-edit.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/btn-edit.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                        
+                        <div class="jumbotron jumbotron-fluid mb-75 bg-light p-x-15 p-y-25 c-mavi" id="Regions">
+                        <div class="container">
+                            <h1>المناطق</h1>
+                        </div>
+                        </div>
+                                    <div class="article mb-50" id="regions_select">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#regions_select">#</a>
+                                            <span>إختيار المنطقة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يمكن هذا القسم من إدارة المناطق الموجودة ضمن صفحة اتصل بنا 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/regoin-select.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/regoin-select.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="regions_list">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#regions_list">#</a>
+                                            <span>إدارة المناطق</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يحتوي هذا القسم على قائمة  للمناطق بترتيب من الاحدث الى الأقدم مع إمكانية البحث بحسب اسم المنطقة 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/regoin-list.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/regoin-list.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="regions_new">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#regions_new">#</a>
+                                            <span>إضافة  منطقة جديدة</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    لإضافة منطقة جديدة يتم  الضغط على زر<b class='text-sucess'>منطقة جديدة</b> 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/regoin-new-btn.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/regoin-new-btn.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد ذلك تظهر صفحة إضافة منطقة  جديدة والتي تحتوي على نموذج للإضافة على النحو التالي:
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/region-form.jpg" data-lightbox="image-2" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/region-form.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                    
+                                                
+                    
+                    
+                                               </div>
+                                    </div>
+                                    <div class="article mb-50" id="regions_publish">
+                                        <h5 class="m-y-25 article-headline">
+                                            <a class="article-headline-link" href="#regions_publish">#</a>
+                                            <span>نشر وإدارة المناطق</span>
+                                            </h5>
+                                               <div class="mt-20"> 
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    بعد إضافة المنطقة الجديدة، ستظهر في القائمة. ومن ثمّ يمكن نشرها عبر الضغط على زر إمكانية الرؤية.
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                               </div>
+                                               <div class="mt-20"> 
+                                                <a href="assets/images/region-publish.jpg" data-lightbox="image-1" data-title="" class="m-y-25 d-block image">
+                                                    <img src="assets/images/region-publish.jpg" alt="" class="img-fluid img-thumbnail">
+                                                </a>
+                                                
+                                                    <div class="mt-25 no-break">  
+                                                    يظهر بجانب زر إمكانية الرؤية خيارات أخرى لإدارة المناطق المُضافة وهي: 
+                                                    </div>
+                    
+                                                
+                    
+                    
+                                                    <div class="table-responsive">
+                                                        <table class="table text-center">
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر التحرير </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-edit.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-edit.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يُتيح تعديل المنطقة المُضافة وذلك سواءً للاسم، السمة، ترتيب العرض والوصف </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">زر الإزالة </p>                                                          
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                            <a href="assets/images/btn-delete.jpg" data-lightbox="image-1"   class="m-y-25 d-block image">
+                                                                                <img src="assets/images/btn-delete.jpg"   class="img-fluid img-thumbnail img-table">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td style="min-width: 150px">
+                                                                                <p class="p-y-5 p-x-15">يقوم بحذف المنطقة المحددة </p>                                                          
+                                                                        </td>
+                                                                </tr>
+                                                        </table>
+                                                    </div>
+                                               </div>
+                                    </div>
+                        
+                        
+                        
+                    </div>     
+                </main>
+            </div>
+       </div>
+   </section> 
+<footer>
+   
+<div class="container">
+     <hr>
+    <div class="row justify-content-between align-items-center p-y-5">
+        <div class="col-md-3">
+            <p>تانتوم - دليل الاستخدام</p>
+        </div>
+        <div class="col-md-3">
+            <p>V 0.5 - 30 يونيو - 2019</p>
+        </div>
+    </div>
+</div>
+</footer>
+<script src="assets/js/script.min.js"></script>
+</body>
+</html>

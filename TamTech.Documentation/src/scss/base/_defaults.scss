@@ -1,0 +1,38 @@
+ 
+    body{
+        direction: $dir;
+        text-align: $left;
+        font-family: $font-regular, $font-family-base; 
+        background: $body_background;
+    }
+    
+    
+    @include makeSpacing($lengths); 
+    
+    
+    .c-mavi{
+        color :$mavi;
+    } 
+.img-table{
+    width: auto;
+    max-width: 100%;
+    max-height: 250px; 
+}
+
+
+.badge{
+    font-weight: normal;
+    &.badge-new , &.badge-Approved{
+        background: $green;
+    }
+    &.badge-read, &.badge-InProrgress{
+        background: $orange;
+    }
+    &.badge-replied{
+        background: $gray-300;
+    }
+    &.badge-Rejected{
+        background: $red;
+    }
+    
+}

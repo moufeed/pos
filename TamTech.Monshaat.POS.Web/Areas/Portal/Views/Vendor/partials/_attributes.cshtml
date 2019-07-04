@@ -1,0 +1,78 @@
+﻿@model PosFormVm
+
+@{
+var attributes = (List<AttributeDto>)ViewBag.attributes;
+
+    }
+
+    <if include-if="attributes.Count > 0">
+        @{
+        int index = 0;
+        }
+        @foreach (AttributeDto item in attributes)
+        {
+        var _Required = true;
+
+        <input type="hidden" asp-for="Specifications[index].Id" value="@item.Id" />
+        <input type="hidden" asp-for="Specifications[index].ChoiceType" value="@item.ChoiceType" />
+        <input type="hidden" asp-for="Specifications[index].InputType" value="@item.InputType" />
+        <div class="attribute" data-id="@item.Id">
+            <h5>@item.Name
+                <button class="btn btn-link btn-opt-cancel" title='@Localizer["cancel"]' type="button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </h5>
+            <div class="form-group">
+                <if include-if="item.InputType == (int)AttributeInputType.Checkbox">
+                    <ul class="list-unstyled options-list row" id="options-@item.Id">
+                        <if include-if="item.ChoiceType == (int)AttributeChoiceType.Multichoice">
+                            @{ var valIndex = 0;}
+                            @foreach (ValueDto val in item.Values)
+                            {
+
+                            <li class="form-group form-check option-item col-md-6">
+                                @if (val.Checked)
+                                {
+                                <input type="checkbox" class="form-check-input @((item.IsMandatory)  ?  "checks" : "" )" data-group="#options-@item.Id" asp-for="Specifications[index].Values[valIndex].IsChecked" id="opt-@val.Id" data-attribute checked>
+                                }
+                                else
+                                {
+                            <input type="checkbox" class="form-check-input @((item.IsMandatory)  ?  "checks" : "" )" data-group="#options-@item.Id" asp-for="Specifications[index].Values[valIndex].IsChecked" id="opt-@val.Id" data-attribute>
+                                }
+                                
+
+                                <label class="form-check-label" for="opt-@val.Id">@val.Name</label>
+                                <input type="hidden" asp-for="Specifications[index].Values[valIndex].Id" value="@val.Id" />
+                            </li>
+                                valIndex++;
+                            }
+                        </if>
+                         <if include-if="item.ChoiceType == (int)AttributeChoiceType.OneChoice">
+
+                            
+                                @foreach (ValueDto val in item.Values)
+                                {
+                             <li class="form-group form-radio option-item col-md-6">
+                                 @if (val.Checked)
+                                 {
+                                     <input class="form-check-input @((item.IsMandatory)  ?  "required" : "" )" type="radio" asp-for="Specifications[index].Values[0].Id" id="opt-@val.Id" value="@val.Id" data-attribute checked>
+                                 }
+                                 else
+                                 {
+                                     <input class="form-check-input @((item.IsMandatory)  ?  "required" : "" )" type="radio" asp-for="Specifications[index].Values[0].Id" id="opt-@val.Id" value="@val.Id" data-attribute>
+                                 }
+
+                                 <label class="form-check-label" for="opt-@val.Id">@val.Name</label>
+                             </li>
+                                }
+                            </if> 
+                        <li asp-validation-for="Specifications[index].Values[item.Id]" class="text-danger invalid_field col-md-12 options-errors"></li>
+                    </ul>
+                </if>
+            </div> 
+
+        </div>
+
+        index++;
+        }
+    </if>

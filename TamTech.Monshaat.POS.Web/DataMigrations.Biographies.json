@@ -1,0 +1,136 @@
+{
+  "Biographies": [ 
+    {
+      "Id": 1,
+      "GroupId": 1,
+      "Key": "Logo",
+      "Value_ar": "/portal/img/Logo.svg",
+      "Lang": "ar"
+    },
+    {
+      "Id": 2,
+      "GroupId": 1,
+      "Key": "SiteTitle",
+      "Value_ar": "https://localhost:44365/",
+      "Lang": "ar"
+    },
+    {
+      "Id": 3,
+      "GroupId": 1,
+      "Key": "Phones",
+      "Value_ar": "[\"+966561310726\",\"+966540152017\",\"+966542609040\"]",
+      "Lang": "ar"
+    },
+    {
+      "Id": 4,
+      "GroupId": 1,
+      "Key": "Moblies",
+      "Value_ar": "[\"+966561310726\",\"+966540152017\",\"+966542609040\"]",
+      "Lang": "ar"
+    },
+    {
+      "Id": 5,
+      "GroupId": 1,
+      "Key": "Faxs",
+      "Value_ar": "[\"+966561310726\",\"+966540152017\",\"+966542609040\"]",
+      "Lang": "ar"
+    },
+    {
+      "Id": 6,
+      "GroupId": 1,
+      "Key": "Emails",
+      "Value_ar": "[\"rili@mailinator.net\",\"refe@mailinator.com\",\"homoduj@mailinator.net\"]",
+      "Lang": "ar"
+    },
+    {
+      "Id": 7,
+      "GroupId": 1,
+      "Key": "SocailMedia",
+      "Value_ar": "{\"Facebook\": \"https:\/\/www.facebook.com\/\",\"Twitter\": \"https:\/\/twitter.com\/\",\"Youtube\": \"https:\/\/www.youtube.com\/\"}",
+      "Lang": "ar"
+    },
+    {
+      "Id": 8,
+      "GroupId": 1,
+      "Key": "Address",
+      "Value_ar": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore miam, quis nostrud exercitation ullamco ",
+      "Lang": "ar"
+    },
+    {
+      "Id": 9,
+      "GroupId": 2,
+      "Key": "Brief",
+      "Value_ar": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",
+      "Lang": "ar"
+    },
+    {
+      "Id": 10,
+      "GroupId": 2,
+      "Key": "About",
+      "Value_ar": "ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+      "Lang": "ar"
+    },
+    {
+      "Id": 11,
+      "GroupId": 2,
+      "Key": "Vision",
+      "Value_ar": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Lang": "ar"
+    },
+    {
+      "Id": 12,
+      "GroupId": 2,
+      "Key": "Mission",
+      "Value_ar": "amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
+      "Lang": "ar"
+    },
+    {
+      "Id": 13,
+      "GroupId": 2,
+      "Key": "MetaDescription",
+      "Value_ar": "Iaculis eu non diam phasellus vestibulum lorem sed risus ultricies. In hendrerit gravida rutrum quisque non tellus orci. Gravida quis blandit turpis cursus in. Pretium viverra suspendisse",
+      "Lang": "ar"
+    },
+    {
+      "Id": 14,
+      "GroupId": 2,
+      "Key": "MetaKeywords",
+      "Value_ar": "وزارة, التجارة, استثمار, تجارة, سجل, خدمات, إلكترونية, علامة, شركة, مؤسسة",
+      "Lang": "ar"
+    },
+    {
+      "Id": 15,
+      "GroupId": 2,
+      "Key": "Summury",
+      "Value_ar": "phasellus vestibulum lorem sed risus ultricies. In hendrerit gravida rutrum quisque non tellus orci.",
+      "Lang": "ar"
+    },
+    {
+      "Id": 16,
+      "GroupId": 1,
+      "Key": "Longitude",
+      "Value_ar": "",
+      "Lang": "ar"
+    },
+    {
+      "Id": 17,
+      "GroupId": 1,
+      "Key": "Latitude",
+      "Value_ar": "",
+      "Lang": "ar"
+    },
+    {
+      "Id": 18,
+      "GroupId": 1,
+      "Key": "Images",
+      "Lang": "ar"
+    },
+    {
+      "Id": 19,
+      "GroupId": 3,
+      "Key": "HomeSummry",
+      "Lang": "ar",
+      "Value_ar" :"[{\"title\" :\"الفعالية وسلاسة الأعمال\",\"showImage\": true,\"value\": \"تركيب أجهزة نقاط البيع والحلول التقنية المناسبة لنشاط العمل لها أن تزيد من فعالية البائعين في القيام بأعمالهم بأتم وجه – وتنعكس إيجاباً على تجربة العميل.\"},{\"title\" :\"تقارير المبيعات\",\"showImage\": true,\"value\": \"تمنح أجهزة نقاط البيع والحلول التقنية نظرة عامة على أداء المتجر والأعمال حيث أن للنظام القدرة في حفظ المعلومات حول الحالة المالية للمتجر وحالة المخزون وأداء المبيعات. بناءً على هذه المعلومات، يمكن التخطيط للإيرادات المتوقعة مستقبلا.},{\"title\" :\"إدارة المخزون \",\"showImage\": true,\"value\": \"تساعد أجهزة نقاط البيع والحلول التقنية في تتبع المخزون بشكل مستمر – حيث يتم تدوين جميع عمليات الشراء والبيع وتزويد التاجر والموردين بصورة دقيقة عن حالة المخزون في أي وقت.\"},{\"title\" :\"تقليل الأخطاء \",\"showImage\": true,\"value\": \"تمكن أجهزة نقاط البيع والحلول التقنية التاجر من تغيير أسعار الأصناف والمنتجات وتحديثها بشكل تام في النظام – بحيث تكون أسعار وحدات كل منتج وصنف متناسقة على الدوام.\"},{\"title\" :\"برامج ولاء العملاء\",\"showImage\": true,\"value\": \"تمكن أجهزة نقاط البيع والحلول التقنية المتجر من حفظ جميع معلومات العميل المتعلقة بعملياته الشرائية. ويتيح للتاجر معرفة المنتجات المفضلة لكل عميل ويساعد في إعداد العروض الترويجية التي تناسبهم وتحفزهم على زيادة معدلات الشراء.\"},{\"title\" :\"إدارة شؤون الموظفين\",\"showImage\": true,\"value\": \"يمكن استخدام أجهزة نقاط البيع والحلول التقنية للتحقق من المبيعات التي يقوم بها كل بائع واستخدامها كأداة إدارية ومعيار للمكافآت. من خلال القيام بذلك، سيحصل الموظفون على المزيد من الدوافع لزيادة المبيعات وتحسين خدمة العملاء.\"},{\"title\" :\"تبسيط العمليات المحاسبية\",\"showImage\": true,\"value\": \"يساعد نظام نقاط البيع في تبسيط إجراءات العمليات المحاسبية، حيث يتمكن التاجر والبائع من طباعة التقارير والحصول على البيانات المحاسبية المطلوبة مباشرة من النظام عوضاً عن فرز الإيصالات.\"}]"
+    }
+  ]
+}

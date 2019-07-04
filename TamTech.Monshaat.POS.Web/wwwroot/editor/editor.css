@@ -1,0 +1,35 @@
+﻿@font-face {
+    font-family: TajawalRegular;
+    src: url(../Portal/fonts/tajawal/Tajawal-Regular.ttf)
+}
+
+@font-face {
+    font-family: TajawalMedium;
+    src: url(../Portal/fonts/tajawal/Tajawal-Medium.ttf)
+}
+
+@font-face {
+    font-family: TajawalBold;
+    src: url(../Portal/fonts/tajawal/Tajawal-Bold.ttf)
+}
+@font-face {
+    font-family: TajawalBlack;
+    src: url(../Portal/fonts/tajawal/Tajawal-Black.ttf)
+}
+
+@font-face {
+    font-family: frutigerLight;
+    src: url(../Portal/fonts/frutiger/FrutigerLTArabic-45Light.ttf)
+}
+@font-face {
+    font-family: frutigerRegular;
+    src: url(../Portal/fonts/frutiger/FrutigerLTArabic-55Roman.ttf)
+}
+@font-face {
+    font-family: frutigerBold;
+    src: url(../Portal/fonts/frutiger/FrutigerLTArabic-65Bold.ttf)
+}
+@font-face {
+    font-family: frutigerBlack;
+    src: url(../Portal/fonts/frutiger/FrutigerLTArabic-75Black.ttf)
+}

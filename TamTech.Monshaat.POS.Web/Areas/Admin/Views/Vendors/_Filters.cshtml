@@ -1,0 +1,68 @@
+﻿@model TamTechSDK.Web.Models.Shared.Filters.Filter
+
+
+<form class="form-horizontal forn-new form-label-left p-3 filter-form" asp-action="index" method="get" name="filterForm">
+
+
+    <div class="row">
+        <div class="col-md-9 col-lg-11 col-sm-10 col-xs-12">
+            <div class="row">
+                <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["t_company"]</label>
+                    <input type="text" asp-for="Name" class="form-control m-x-1" style="height: 38px;" />
+                </div>
+
+                <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["t_email"]</label>
+                    <input type="email" asp-for="Email" class="form-control m-x-1" style="height: 38px;" />
+                </div>
+                 <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["t_mobileNumber"]</label>
+                    <input type="tel" asp-for="Email" class="form-control m-x-1" style="height: 38px;" />
+                </div>
+
+
+                <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["sort_by"]</label>
+                    <select asp-for="SortBy" asp-items="ViewBag.sortList"
+                            class="form-control m-x-1 select_no-search"></select>
+                </div>
+
+                <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["register_status"]</label>
+                    <select asp-for="StatusId"
+                            asp-items="ViewBag.statusList"
+                            class="form-control m-x-1 select_no-search">
+                        <option value="null">@Localizer["all"]</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4 col-sm-4 col-lg-3">
+                    <label for="sortPage">@Localizer["activation_status"]</label>
+                    <select asp-for="Visibility"
+                            asp-items="ViewBag.visibilityList"
+                            class="form-control m-x-1 select_no-search">
+                        <option value="null">@Localizer["all"]</option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-group col-md-3 col-lg-1 col-sm-2 col-xs-12">
+            <label for="sortPage">@Localizer["page_size"]</label>
+            <select asp-for="PageSize"
+                    asp-items="ViewBag.pagesizes"
+                    onchange="document.filterForm.submit()"
+                    class="form-control m-x-1 select_no-search pagesize"></select>
+        </div>
+    </div>
+    <div class="form-group  ">
+
+        <button type="submit" class="btn btn-info p-x-5">@Localizer["search"]</button>
+
+        <if exclude-if="@ViewBag.showReset">
+            <a href="@Url.AdminUrl("index","vendors")" class="btn btn-link p-x-2   c-red"> <i class="fa fa-times-circle "></i> @Localizer["reset"]</a>
+        </if>
+    </div>
+</form>
+<hr class="m-y-2" />

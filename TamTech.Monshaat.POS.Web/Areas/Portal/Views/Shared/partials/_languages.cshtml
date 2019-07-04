@@ -1,0 +1,92 @@
+﻿@using System.Linq
+@model List<SlugModel>
+@{
+    string _lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+    var controller = ViewContext.RouteData.Values["Controller"].ToString();
+    var action = ViewContext.RouteData.Values["Action"].ToString();
+    var model = ViewContext.ViewData.Model;
+
+}
+
+@*
+    List<string> list;
+    string item = list.FirstOrDefault(i => i == "", )
+
+
+*@
+
+
+ 
+@if (model != null && Model.Count > 0)
+{
+
+    <div class="dropdown">
+        <a class="btn btn-language dropdown-toggle text-uppercase" role="button"
+           id="languageMenu"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @_lang.ToUpper()
+        </a>
+        <div class="p-0 dropdown-menu" aria-labelledby="languageMenu">
+
+
+            @foreach (var culture in TamTech.Monshaat.POS.Web.Settings.Cultures.CultureConstants.CulturesList)
+            {
+
+                if (!string.Equals(_lang, culture.Lang, StringComparison.OrdinalIgnoreCase))
+                {
+                    SlugModel item = Model.FirstOrDefault(i => string.Equals(i.Lang, culture.Lang, StringComparison.OrdinalIgnoreCase));
+
+                    if (item.Slug != null)
+                    {
+                        <a class="dropdown-item"
+                           href="@Url.Action(action,controller, new {Culture= item.Lang , slug =item.Slug}).Replace("%2F", "/")"
+                            >@culture.Name</a>
+                    }
+                    else if (string.Equals(action, "index", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <a class="dropdown-item"
+                           asp-action="@action"
+                           asp-controller="@controller"
+                           asp-route-Culture="@item.Lang">@culture.Name</a>
+                    }
+                    else
+                    {
+                        <a class="dropdown-item"
+                           asp-action="index"
+                           asp-controller="home"
+                           asp-route-Culture="@item.Lang">@culture.Name</a>
+                    }
+                }
+
+
+                @*<a class="dropdown-item @((_lang == culture.Lang) ? "active" :"" )"
+                    href="/@culture.Culture/portal">@culture.Name</a>*@
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="dropdown">
+        <a class="btn btn-language dropdown-toggle text-uppercase" role="button"
+           id="languageMenu"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @_lang.ToUpper()
+        </a>
+        <div class="p-0 dropdown-menu" aria-labelledby="languageMenu">
+            @foreach (var culture in TamTech.Monshaat.POS.Web.Settings.Cultures.CultureConstants.CulturesList)
+            {
+                if (!string.Equals(_lang, culture.Lang, StringComparison.OrdinalIgnoreCase))
+                {
+                    <a class="dropdown-item"
+                       asp-action="@action"
+                       asp-controller="@controller"
+                       asp-route-Culture="@culture.Lang">@culture.Name</a>
+                }
+
+
+            }
+        </div>
+    </div>
+}
+

@@ -1,0 +1,15 @@
+﻿ <if include-if="(ViewBag.initiativeSummary != null)">
+     @{ HtmlPage HtmlPage = (HtmlPage)ViewBag.initiativeSummary; }
+    <section class="section initiative-Area">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 i-content">
+                    <h3 class="area-title">@HtmlPage.Title</h3>
+                    <div class="content">
+                        @Html.Raw(HtmlPage.Content)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</if>

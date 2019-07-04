@@ -1,0 +1,14 @@
+
+<aside class="aside d-print-none">
+<nav id="navbar-links" class="navbar navbar-links">
+  <nav class="nav main-nav flex-column">
+  
+     {{#each maincontent}}
+    {{#if this.published}} 
+        {{#MakeNav this}} {{/MakeNav}}
+      {{/if}}
+    {{/each}} 
+      
+  </nav> 
+</nav>
+</aside>     

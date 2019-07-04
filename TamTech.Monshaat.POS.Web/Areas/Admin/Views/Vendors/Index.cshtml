@@ -1,0 +1,120 @@
+﻿@model PagedResultModel<List<PersonDto>>
+
+@{
+    ViewData["Title"] = Localizer["vendors"];
+    ViewData["UnitTestPageClass"] = "ut-vendors-index";
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+}
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@Localizer["vendors"] <small></small></h3>
+        </div>
+        <div class="title_right">
+             
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+        <div class="x_panel p-x-0">
+
+            <div class="x_content">
+                <partial name="_Filters.cshtml" model="ViewBag.FilterModel" />
+
+                <div class="table-responsive">
+                    <table class="table table-middle table-striped types-table" id="sectorsTable">
+
+                        <thead>
+                        <tr>
+                             <th>@Localizer["t_company"]</th>
+                            <th>@Localizer["t_supplier"]</th>
+                            <th>@Localizer["t_email"]</th>
+                            <th>@Localizer["t_mobileNumber"]</th>
+                            <th>@Localizer["register_status"]</th>
+                            <th class="text-center" width="100">@Localizer["activation_status"]</th>
+                            <th>@Localizer["t_actions"]</th>
+                        </tr>
+                        </thead>
+                       <tbody>
+                           <if include-if="Model.Data != null && Model.Data.Count > 0"> 
+                               @foreach(PersonDto item in Model.Data){
+                                   <tr>
+                                       <td>@item.Vendor.Name</td>
+                                       <td>@item.FirstName @item.LastName </td>
+                                       <td>@item.Email</td>
+                                       <td><span dir="ltr">@item.Mobile</span></td>
+                                       <td><span class="badge badge-@item.Vendor.StatusOptions"> @item.Vendor.StatusName</span></td>
+                                       <td>
+                                          <span data-toggle="tooltip"
+                                              data-placement="@(activeLang == "ar" ? "right" : "left")"
+                                              data-status="true"
+                                              title="@Localizer["block"] / @Localizer["unblock"]">
+
+                                            <input class="tgl tgl-flat toggle__Activate"
+                                                   data-url="@Url.AdminUrl("VendorActivation","Vendors")"
+                                                   type="checkbox"
+                                                   id="@item.Id"
+                                                   data-id="@item.IdentityNo"
+                                                   data-block-msg="@Localizer["block_vendor_msg"]"
+                                                   data-unblock-msg="@Localizer["un_block_vendor_msg"]"
+                                                   data-blocked-msg="@Localizer["blocked_vendor_msg"]"
+                                                   data-unblocked-msg="@Localizer["un_blocked_vendor_msg"]"
+                                                   @((item.Vendor.Activated) ? "<text> checked </text>" : "") />
+                                            <label class="tgl-btn" for="@item.Id"></label>
+                                        </span>
+                                            
+                                       </td>
+                                       <td>
+                                           <a data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="@Localizer["t_details"]"
+                                           href="@Url.AdminUrl("Details","vendors",new { id = item.Id })"
+                                           class="btn btn-view btn-round ut-detail-btn"><i class="fa fa-info "></i></a>
+                                       </td>
+                                   </tr>
+                               }
+                           </if>
+                           <if exclude-if="Model.Data != null && Model.Data.Count > 0">
+                                 <tr>
+                                    <td colspan="7" class="text-center">
+                                        <p class="empty_row">
+                                            <i class='fa fa fa-exclamation-circle'></i>
+                                            @Localizer["no_data_table"]
+                                        </p>
+                                    </td>
+                                </tr>
+                           </if>
+                       </tbody>
+                    </table>
+                </div>
+
+
+                 <hr class="m-y-2" />
+                <pagination controller-name="vendors" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@section Scripts{
+    <script src="~/Admin/js/vendor.min.js"></script>
+} 

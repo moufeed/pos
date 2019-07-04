@@ -1,0 +1,74 @@
+﻿@using TamTechSDK.Common.Services.ContentService.ContentService.Models
+
+
+
+<if include-if="ViewBag.statistics != null">
+
+    <div class="row statistics-panel">
+
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card card-statistics card-pos">
+                <div class="card-body ">
+                    <div class="clearfix">
+                        <span class="icon icon-pos"></span>
+                        <div class="card-meta">
+                            <p class="title">@Localizer["Pos"]</p>
+                            <strong class="count">@ViewBag.TotalPos</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card card-statistics card-vendor">
+                <div class="card-body ">
+                    <div class="clearfix">
+                        <span class="icon icon-vendor"></span>
+                        <div class="card-meta">
+                            <p class="title">@Localizer["vendors"]</p>
+                            <strong class="count">@ViewBag.VendorTotal</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card card-statistics card-messages">
+                <div class="card-body ">
+                    <div class="clearfix">
+                        <span class="icon icon-messages"></span>
+                        <div class="card-meta">
+                            <p class="title">@Localizer["Messages"]</p>
+                            <strong class="count">@ViewBag.ContactUsTotal</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @foreach (var item in (Dictionary<string, NumericalStatisticsDto>)ViewBag.statistics)
+        {
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="card card-statistics card-@item.Key">
+                    <div class="card-body ">
+                        <div class="clearfix">
+                            <span class="icon icon-@item.Key"></span>
+                            <div class="card-meta">
+                                <p class="title">@Localizer[$"h_{item.Key}"]</p>
+                                <strong class="count">@item.Value.Count</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</if>
+
+
+  
+     

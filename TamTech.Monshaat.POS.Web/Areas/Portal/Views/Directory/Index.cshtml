@@ -1,0 +1,53 @@
+﻿@model PagedResultModel<List<PosDto>>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer["pos_directory"];
+
+    List<SlugModel> SlugModel = new List<SlugModel>();
+}
+<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+
+<section class="directory-page ">
+    <div class="d-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <partial name="~/Areas/Portal/Views/Directory/partials/_search.cshtml" />
+                </div>
+                <div class="col-12 col-md-12 col-lg-12">
+                    <partial name="~/Areas/Portal/Views/Directory/partials/_sectors.cshtml" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="results-wrapper pb-50">
+        <button class="btn btn-primary d-lg-none btn-filter"> <i class="fas fa-filter"></i></button>
+
+        <div class="container">
+
+            <div class="row">
+                <div class=" d-lg-inline col-lg-4 col-xl-3 filters-sidebar" id="filterSidebar">
+                    <if include-if="ViewBag.attributes != null">
+                        <partial name="~/Areas/Portal/Views/Directory/partials/_filters.cshtml" model="ViewBag.attributes" />
+                    </if>
+                </div>
+                <div class="col-12 col-md-12 col-lg-8 col-xl-9">
+                    <partial name="~/Areas/Portal/Views/Directory/partials/_results.cshtml" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="top-footer bg-lime pt-50 text-center">
+    <img src="~/portal/img/footer.png" alt="footerimage" class="img-fluid">
+</section>
+@section Footer{
+    <script src="~/Portal/js/carousel.min.js"></script>
+    <script src="~/Portal/js/validation.min.js"></script>
+    <script src="~/Portal/js/directory.min.js"></script>
+}

@@ -1,0 +1,102 @@
+$fonts :'../fonts';
+
+@font-face {
+    font-family: frutigerLight;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-45Light.ttf);
+} 
+
+@font-face {
+    font-family: frutigerRegular;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-55Roman.ttf);
+} 
+
+@font-face {
+    font-family: frutigerBold;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-65Bold.ttf);
+} 
+
+@font-face {
+    font-family: frutigerBlack;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-75Black.ttf);
+} 
+ 
+$font-light   :     if-rtl(frutigerLight), $font-family-base;  
+$font-regular :     if-rtl(frutigerRegular), $font-family-base;  
+$font-bold  :       if-rtl(frutigerBold), $font-family-base;
+$font-black :       if-rtl(frutigerBlack), $font-family-base;
+
+
+
+h1,h2,h3,h4,h5,h6,.hedding-large,.heading-miduem{
+    font-family: $font-bold;
+}
+
+p{
+    font-family: $font-regular;  
+    color: $black;
+}
+
+.font-light{
+    font-family:  $font-light ;   
+}
+.font-regular{
+    font-family: $font-regular ; 
+}
+ .font-bold{
+    font-family: $font-bold ;
+ }
+
+
+.hedding-large{
+    font-size: 25px;
+    line-height: 48px;
+    color: $black;
+}
+.heading-miduem{
+    font-size: 16px;
+    line-height: 31px; 
+    color: $black;
+}  
+
+.p-l{
+    font-size: 16px;
+    line-height: 31px; 
+    color: $black;
+}
+.p-r{
+    font-size: 14px;
+    line-height: 27px; 
+    color: $black;
+}
+.p-s{
+    font-size: 12px;
+    line-height: 27px; 
+    color: $d-Lead;
+}
+.p-xs{
+    font-size: 12px;
+    line-height: 27px;
+    color: #a6afbb;
+    font-family: $font-light;
+
+}
+ 
+label{
+    
+    line-height: 27px;
+    color: $black;
+    font-family: $font-bold;
+}
+
+@each $i in $font-sizes{
+    .fz-#{$i}{
+        @include font-size($i * 1px);
+    }
+} 
+
+@include media-breakpoint-down(sm){
+label{
+    
+    font-family: $font-regular;
+    }  
+}

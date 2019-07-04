@@ -1,0 +1,161 @@
+﻿@model VendorFormVm
+@{
+    string FormAction = ViewContext.RouteData.Values["Action"].ToString();
+}
+
+ 
+<form asp-action="@FormAction" method="post" enctype="multipart/form-data" id="createVendorForm" class="vendor-form  ">
+
+    <input type="hidden" name="Lang" value="@System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName" />
+    <input type="hidden" asp-for="VendorCanEdit" class="ignore" />
+
+    <if include-if='(!ViewData.ModelState.IsValid)'>
+        <div asp-validation-summary="All" class="alert alert-danger"></div>
+    </if>
+
+    <if include-if='@FormAction.Equals("edit")'>
+        <input type="hidden" asp-for="Id" class="ignore" />
+        <input type="hidden" asp-for="VendorId" class="ignore" />
+    </if>
+    <div class="white-panel p-y-45 p-x-35">
+        <h5 class="mb-25">
+            @Localizer[FormAction.Equals("edit", StringComparison.OrdinalIgnoreCase) ? "edit_your_information" : "register_your_company"]
+        </h5>
+
+        <div class="form-group">
+            <label asp-for="CompanyName">
+                @Localizer["company_name_in_commercial"] <small class="fas fa-star-of-life fz-6"></small>
+            </label>
+            <input type="text" asp-for="CompanyName" class="form-control" placeholder="@Localizer["compnay_name"]" required data-remote='@Url.Action("ValidateVendorNameIsExist","Vendor")' data-msg-remote="@Localizer["name_already_exists"]" data-id="@(FormAction.Equals("Edit",StringComparison.OrdinalIgnoreCase) ? Model.VendorId.ToString() :"")">
+            <span asp-validation-for="CompanyName" class="text-danger invalid_field"></span>
+        </div>
+
+        @*    <div class="form-group">
+                <label asp-for="CommercialNo">
+                    @Localizer["commercial_registration_no"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="CommercialNo" type="text" class="form-control" placeholder="@Localizer["commercial_registration_no"]" required>
+                <span asp-validation-for="CommercialNo" class="text-danger invalid_field"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MunicipalLicense">
+                    @Localizer["municipal_license"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="MunicipalLicense" type="text" class="form-control" placeholder="@Localizer["municipal_license"]" required>
+                <span asp-validation-for="MunicipalLicense" class="text-danger invalid_field"></span>
+            </div>
+
+                <div class="attachment-area form-group" data-id="Attachments">
+                    <label>@Localizer["add_images"] <small class="fas fa-star-of-life fz-6"></small></label>
+                    <div class="box__input @(ViewBag.UploadedCount == 3 ? "disabled" :"") ">
+                        <label for="Attachments">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </label>
+
+                        <input type="file" name="Attachments" id="Attachments" class="box__file"
+                               data-multiple-caption="{count} @Localizer["files_selected"]"
+                               aria-describedby="AttachmentsHelp"
+                               accept="image/png, image/jpeg"
+                               multiple required data-rule-filemaximum="2" />
+                        <label for="Attachments" class="file-btn" data-text="@Localizer["choose_file"]">
+                            <strong> @Localizer["choose_file"]</strong>
+                        </label>
+
+                    </div>
+                    <span asp-validation-for="Attachments" class="text-danger invalid_field Attachments-errors"></span>
+                    <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["add_commercial_images"]  </small>
+                </div>*@
+
+        <h5 class="m-y-25">@Localizer["contact_information"]</h5>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="FirstName">
+                    @Localizer["first_name"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="FirstName" type="text" class="form-control" placeholder="@Localizer["first_name"]" required />
+                <span asp-validation-for="FirstName" class="text-danger invalid_field"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">
+                    @Localizer["last_name"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="LastName" type="text" class="form-control" placeholder="@Localizer["last_name"]" required>
+                <span asp-validation-for="LastName" class="text-danger invalid_field"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">@Localizer["job_title"] <small class="fas fa-star-of-life fz-6"></small></label>
+            <input asp-for="JobTitle" type="text" class="form-control" placeholder='@Localizer["job_title"]' required>
+            <span asp-validation-for="JobTitle" class="text-danger invalid_field"></span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Mobile">
+                    @Localizer["mobile_number"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="Mobile" type="tel" class="form-control phoneNumbers" placeholder="@Localizer["phone_number_placeholder"]" required data-rule-mobileKSA="true">
+                <span asp-validation-for="Mobile" class="text-danger invalid_field"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Phone">@Localizer["phone_number"] </label>
+                <input asp-for="Phone" type="tel" class="form-control phoneNumbers" placeholder="@Localizer["phone_number"]">
+                <span asp-validation-for="Phone" class="text-danger invalid_field"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Email">
+                    @Localizer["email_address"] <small class="fas fa-star-of-life fz-6"></small>
+                </label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="@Localizer["email_address"]" required>
+                <span asp-validation-for="Email" class="text-danger invalid_field"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Fax">@Localizer["fax"] </label>
+                <input asp-for="Fax" type="tel" class="form-control" placeholder="@Localizer["fax"]">
+                <span asp-validation-for="Fax" class="text-danger invalid_field"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="WebsiteUrl">@Localizer["website"]  </label>
+            <input asp-for="WebsiteUrl" type="url" class="form-control" placeholder="@Localizer["website"]">
+            <span asp-validation-for="WebsiteUrl" class="text-danger invalid_field"></span>
+        </div>
+
+        @*<h5 class="m-y-25">@Localizer["company_address"]</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="City">@Localizer["city"] </label>
+                    <input asp-for="City" type="text" class="form-control" placeholder="@Localizer["city"]">
+                    <span asp-validation-for="City" class="text-danger invalid_field"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Street">@Localizer["street"] </label>
+                    <input asp-for="Street" type="text" class="form-control" placeholder="@Localizer["street"]">
+                    <span asp-validation-for="Street" class="text-danger invalid_field"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="POBox">@Localizer["POBox"] </label>
+                    <input asp-for="POBox" type="text" class="form-control" placeholder="@Localizer["POBox"]">
+                    <span asp-validation-for="POBox" class="text-danger invalid_field"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ZipCode">@Localizer["ZipCode"] </label>
+                    <input asp-for="ZipCode" type="number" class="form-control" placeholder="@Localizer["ZipCode"]" step="1" data-rule-zipcode="true">
+                    <span asp-validation-for="ZipCode" class="text-danger invalid_field"></span>
+                </div>
+            </div>*@
+    </div>
+    <div class="form-group text-left mt-25">
+        <a asp-action="index" class="btn btn-outline-success p-x-20">@Localizer["cancel"]</a>
+        <button type="submit" class="btn btn-green c-white p-x-50">@Localizer[(FormAction.Equals("edit") ? "update" : "register")]</button>
+    </div>
+</form>

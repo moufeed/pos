@@ -1,0 +1,53 @@
+
+@import 
+'./vendors/bootstrap',
+'./vendors/animate'
+;
+
+@import 
+'./helpers/variables',
+'./helpers/functions',
+'./helpers/mixins'
+;
+
+ 
+@import 
+'./base/typography',
+'./base/defaults'
+;
+
+@import 
+'./layout/header',
+'./layout/footer'
+;
+
+ 
+@import  
+'./components/navbar',               
+'./components/slider',               
+'./components/contact-area',          
+'./components/directory-area'  ,      
+'./components/initiative-area',        
+'./components/benefits-area',
+'./components/sectors-area',
+'./components/usermenu'
+;
+ 
+
+@import 
+ './pages/home',
+ './pages/contact',
+ './pages/success',
+ './pages/directory',
+ './pages/pos-details',
+ './pages/vendor',
+ './pages/pos-create',
+ './pages/registration',
+ './pages//errors'
+;
+
+@import 
+'./overrides/bootstrap',
+'./vendors/carousel',
+'./vendors/select2'
+;

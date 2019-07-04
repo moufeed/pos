@@ -1,0 +1,93 @@
+﻿@{
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    TempData["attribute"] = Model.Id;
+}
+<div class="x_panel">
+    <div class="x_title">
+        <h2>@Localizer["values"]<small></small></h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <div class="table-responsive">
+            <table class="table table-middle table-striped types-table" id="AttrsTable">
+                <thead>
+                    <tr>
+
+                        <th>@Localizer["t_title"]</th>
+                        <th>@Localizer["t_description"]</th>
+                        <th width="120">@Localizer["t_display_order"]</th>
+                        <th width="100" class="text-center">@Localizer["t_visibility"]</th>
+                        <th width="175">@Localizer["t_actions"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <if include-if="Model.Values != null && Model.Values.Count > 0">
+                        @foreach (ValueVM item in Model.Values)
+                        {
+                            <tr id="value-@item.Id">
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.DisplayOrder</td>
+                                <td>
+                                    <if include-if="item.Locked">
+                                        <if include-if="item.Published">
+                                            <span class="label label-success">
+                                                <i class="fa fa-eye "></i>
+                                                @Localizer["t_published"]
+                                            </span>
+                                        </if>
+                                        <if exclude-if="item.Published">
+                                            <span class="label label-danger">
+                                                <i class="fa fa-eye-slash "></i>
+                                                @Localizer["t_unpublished"]
+                                            </span>
+                                        </if>
+                                    </if>
+                                    <if exclude-if="item.Locked">
+                                        <span data-toggle="tooltip"
+                                              data-placement="@(activeLang == "ar" ? "right" : "left")"
+                                              data-status="true"
+                                              title="@Localizer["t_unpublish"] / @Localizer["t_publish"]">
+
+                                            <input class="tgl tgl-flat toggle__publish"
+                                                   data-url="@Url.AdminUrl("PublishAsync",ViewData["relatedController"].ToString() , new { id = item.Id})"
+                                                   id="@item.Id"
+                                                   type="checkbox"
+                                                   @((item.Published) ? "<text> checked </text>" : "") />
+                                            <label class="tgl-btn" for="@item.Id"></label>
+                                        </span>
+
+                                    </if>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip"
+                                       data-placement="@(activeLang == "ar" ? "right" : "left")"
+                                       title="@Localizer["t_edit"]"
+                                       href="@Url.AdminUrl("Edit" ,ViewData["relatedController"].ToString() ,new { id = item.Id })"
+                                       class="btn btn-edit btn-round ut-edit-btn"><i class="fa fa-edit "></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </if>
+                    <if include-if="Model.Values == null || Model.Values.Count ==  0">
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <p class="empty_row">
+                                    <i class='fa fa fa-exclamation-circle'></i>
+                                    @Localizer["no_data_table"]
+                                    <br />
+                                    <a asp-action="create" asp-controller="@ViewData["relatedController"]" class="btn btn-blue m-t5">
+                                        @Localizer["new_value"]
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    </if>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

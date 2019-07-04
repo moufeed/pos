@@ -1,0 +1,43 @@
+﻿@model PageDto
+
+
+
+@{
+    ViewData["Title"] = String.IsNullOrEmpty(Model.Title) ? "TamTech" : Model.Title;
+    Layout = "_Layout";
+    ViewData["ImageURl"] = @Url.Content("~/portal/img/about.jpg");
+    ViewData["pageTitle"] = @Model.Title;
+
+    ViewBag.ItemId = Model.Id;
+    ViewBag.Action = "EditHtmlPage";
+
+}
+<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="Model.Slugs" />
+
+
+
+
+@section SEO{
+    <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
+    <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
+    <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="" />
+}
+
+
+
+
+
+
+<section class="section-page py-5 mt-50" data-fix-height>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @Html.Raw(Model.HtmlContent)
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="top-footer bg-light-lime pt-50 text-center">
+    <img src="~/portal/img/footer.png" alt="footerimage">
+</section>

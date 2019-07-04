@@ -1,0 +1,47 @@
+$fonts :'../fonts';
+
+@font-face {
+    font-family: frutigerLight;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-45Light.ttf);
+} 
+
+@font-face {
+    font-family: frutigerRegular;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-55Roman.ttf);
+} 
+
+@font-face {
+    font-family: frutigerBold;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-65Bold.ttf);
+} 
+
+@font-face {
+    font-family: frutigerBlack;
+    src: url(#{$fonts}/frutiger/FrutigerLTArabic-75Black.ttf);
+} 
+ 
+$font-light   :     if-rtl(frutigerLight), $font-family-base;  
+$font-regular :     if-rtl(frutigerRegular), $font-family-base;  
+$font-bold  :       if-rtl(frutigerBold), $font-family-base;
+$font-black :       if-rtl(frutigerBlack), $font-family-base;
+
+
+
+h1,h2,h3,h4,h5,h6,.hedding-large,.heading-miduem{
+    font-family: $font-bold;
+}
+
+p{
+    font-family: $font-regular;  
+    color: $black;
+}
+
+.font-light{ 
+    font-family:  $font-light ;   
+}
+.font-regular{
+    font-family: $font-regular ; 
+}
+ .font-bold{
+    font-family: $font-bold ;
+ }

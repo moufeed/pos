@@ -1,0 +1,22 @@
+@model TamTech.Monshaat.POS.Web.Models.Portal.Partials.FooterVm
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-6">
+                <p> @Localizer["copyrights", DateTime.Now.Year]</p>
+
+            </div>
+            <div class="col-md-6">
+                <p>@Localizer["useing_message"]  <a asp-action="PrivacyPolicy" asp-controller="Home"><u>@Localizer["privacy_policy"]</u></a>  @Localizer["and"]  <a asp-action="TermsofUse" asp-controller="Home"><u>@Localizer["terms_of_use"]</u></a></p>
+                <input id="Footer-BiographyInfo-InvokedCount" type="hidden" asp-for="BiographyInfo.InvokedCount" class="ut-id" />
+         
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<a href="javascript:void(0)" class="back-to-top">
+    <i class="fa fa-angle-double-up"></i>
+</a>

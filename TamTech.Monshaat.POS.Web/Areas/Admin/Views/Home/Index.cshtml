@@ -1,0 +1,238 @@
+﻿@using TamTechSDK.Common.Services.Utilities.Models;
+ 
+@{
+
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer["home_page"];
+
+
+    StatisticsDto ContactUsByStatus = ViewBag.ContactUsByStatus != null ? (StatisticsDto)ViewBag.ContactUsByStatus : new StatisticsDto();
+    StatisticsDto ContactUsByType = ViewBag.ContactUsByType != null ? (StatisticsDto)ViewBag.ContactUsByType : new StatisticsDto();
+
+
+
+
+    StatisticsDto POSByStatus = ViewBag.POSByStatus != null ? (StatisticsDto)ViewBag.POSByStatus : new StatisticsDto();
+    StatisticsDto POSBySector = ViewBag.POSBySector != null ? (StatisticsDto)ViewBag.POSBySector : new StatisticsDto();
+    StatisticsDto POSByType = ViewBag.POSByType != null ? (StatisticsDto)ViewBag.POSByType : new StatisticsDto();
+
+
+
+    StatisticsDto VendorByStatus = ViewBag.VendorByStatus != null ? (StatisticsDto)ViewBag.VendorByStatus : new StatisticsDto();
+
+
+    ViewBag.TotalPos = POSByStatus.Data.Sum();
+    ViewBag.VendorTotal = VendorByStatus.Data.Sum();
+    ViewBag.ContactUsTotal = ContactUsByStatus.Data.Sum();
+}
+
+
+
+<partial name="partials/_statisticsPanel.cshtml" />
+
+
+
+@section Scripts{
+
+    <script src="~/Admin/js/chart.min.js"></script>
+}
+
+
+
+<section class="m-t5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["Pos-status"]</h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var posDataByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Data.ToArray());
+                            var posLabelsByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Labels.ToArray());
+                        }
+                        <if include-if="@POSByStatus.Data.Count > 0">
+                            <canvas class="chart-widget"
+                                    data-chart-values="@posDataByStatus"
+                                    data-labels='@posLabelsByStatus'
+                                    data-legend-postion="right"
+                                    data-legend-display="false"
+                                    data-chart-type="doughnut"
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"
+                                    ></canvas>
+                        </if>
+                        <if exclude-if="@POSByStatus.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["Pos-sector"]</h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var posDataBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Data.ToArray());
+                            var posLabelsBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Labels.ToArray());
+                        }
+                        <if include-if="@POSBySector.Data.Count > 0">
+                            <canvas class="chart-widget"
+                                    data-chart-type="polarArea"
+                                    data-chart-values="@posDataBySector"
+                                    data-labels='@posLabelsBySector'
+                                    data-legend-postion="right"
+                                    data-legend-display="true"
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"
+                                    ></canvas>
+                        </if>
+                        <if exclude-if="@POSBySector.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["Pos-type"]</h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var posDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Data.ToArray());
+                            var posLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Labels.ToArray());
+                        }
+                        <if include-if="@POSByType.Data.Count > 0">
+                            <canvas class="chart-widget"
+                                    data-chart-values="@posDataByType"
+                                    data-labels='@posLabelsByType'
+                                    data-legend-postion="right"
+                                    data-legend-display="true"
+                                     data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
+                        </if>
+                        <if exclude-if="@POSByType.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400 d-flex">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["vendors"]</h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var VendorData = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Data.ToArray());
+                            var VendorLabels = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Labels.ToArray());
+                        }
+                        <if include-if="@VendorByStatus.Data.Count > 0">
+                            <canvas class="chart-widget" style="max-height:100%"
+                                    data-chart-type="doughnut"
+                                    data-chart-values="@VendorData"
+                                    data-labels='@VendorLabels'
+                                    data-legend-display="true"
+                                    data-legend-postion="right"
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
+                        </if>
+                        <if exclude-if="@VendorByStatus.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400 d-flex">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["Messages-status"]</h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var ContactUsData = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Data.ToArray());
+                            var ContactUsLabels = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Labels.ToArray());
+                        }
+                        <if include-if="@ContactUsByStatus.Data.Count > 0">
+                            <canvas class="chart-widget" style="max-height:100%"
+                                    data-chart-type="doughnut"
+                                    data-chart-values="@ContactUsData"
+                                    data-legend-display="true"
+                                    data-labels='@ContactUsLabels'
+                                    data-legend-postion="right"
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
+                        </if>
+                        <if exclude-if="@ContactUsByStatus.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="x_panel tile fixed_height_400 d-flex">
+                    <div class="x_title clearfix ">
+                        <h4>@Localizer["Messages-types"] </h4>
+                    </div>
+                    <div class="x_content p-3">
+                        @{
+                            var ContactUsDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Data.ToArray());
+                            var ContactUsLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Labels.ToArray());
+                        }
+                        <if include-if="@ContactUsByType.Data.Count > 0">
+                            <canvas class="chart-widget" style="max-height:100%"
+                                    data-chart-type="bar"
+                                    data-chart-values="@ContactUsDataByType"
+                                    data-legend-display="false"
+                                    data-labels='@ContactUsLabelsByType'
+                                    data-legend-postion="right"
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
+                        </if>
+                        <if exclude-if="@ContactUsByType.Data.Count > 0">
+                            <div class="text-center no-messages">
+                                <i class="fa fa-ban m-b5" aria-hidden="true"></i>
+                                <p class="lead"> @Localizer["there_this_data"]</p>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <partial name="partials/_Messages.cshtml" />
+            </div>
+        </div>
+    </div>
+</section>

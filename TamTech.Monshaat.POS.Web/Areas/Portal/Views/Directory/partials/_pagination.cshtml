@@ -1,0 +1,75 @@
+﻿
+@model  PaginationMetadataModel
+
+@functions{
+    public object CreateUrl (int indx){
+        dynamic Url = new System.Dynamic.ExpandoObject();
+
+            Url.PageNumber = indx;
+            Url.PageSize = Model.PageSize;
+
+            if(ViewBag.filters != null && ViewBag.filters.Length > 0){
+                Url.f = ViewBag.filters;
+            }
+
+            if(!string.IsNullOrEmpty(Context.Request.Query["Search"])){
+                Url.search = Context.Request.Query["Search"];
+            }
+            if( ViewBag.ActiveSector != null){
+                Url.slug = ViewBag.ActiveSector;
+            }
+
+        return Url;
+    }
+}
+<if include-if="Model != null && Model.TotalPages > 1">
+     
+    <nav class="pagination directory-pagination">
+        <ul class="pagination">
+            @{
+                var Previouslink = "#";
+                var Nextlink = "#";
+                var PreviousSearch = "#";
+                var NextSearch = "#";
+            }
+            @if(Model.PreviousPage){
+                object PreviousUrl = CreateUrl(int.Parse(Model.PageNumber) - 1);
+                Previouslink = Url.Action("index", "Directory", PreviousUrl);   
+                PreviousSearch = Url.Action("search", "Directory", PreviousUrl);
+            }
+
+            @if(Model.NextPage){
+                object NextUrl = CreateUrl(int.Parse(Model.PageNumber) + 1);
+                Nextlink = Url.Action("index", "Directory", NextUrl);
+                NextSearch = Url.Action("search", "Directory", NextUrl);
+            }
+
+        
+
+            <li class="page-item @(Model.PreviousPage ? string.Empty :"disabled")">
+                <a class="page-link" href="@Previouslink"   aria-disabled="@(Model.PreviousPage ? "false" :"true")"  data-search="@PreviousSearch">@Localizer["Previous"]</a>
+            </li>
+
+            @for(int i=1; i <= Model.TotalPages;i++){
+                 
+                    object Urls = CreateUrl(i);
+                    var  link = Url.Action("index", "Directory", Urls);
+                    var search = Url.Action("search", "Directory", Urls);
+                <li class="page-item @(int.Parse(Model.PageNumber) == i ? "active" :"") " aria-current="page">
+                     <a class="page-link" href="@link" data-search="@search">
+                        @i
+                        <if include-if="int.Parse(Model.PageNumber) == i">
+                            <span class="sr-only">(current)</span>
+                        </if>
+                     </a>
+                </li>
+            }
+           
+            <li class="page-item @(Model.NextPage ? string.Empty :"disabled")">
+                <a class="page-link" href="@Nextlink" aria-disabled="@(Model.NextPage ? "false" :"true")"  data-search="@NextSearch" >@Localizer["Next"]</a>
+            </li>
+            
+        </ul>
+    </nav>
+
+</if>

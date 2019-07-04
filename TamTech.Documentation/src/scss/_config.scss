@@ -1,0 +1,35 @@
+@import './vendors/bootstrap.config';
+@import '../../node_modules/lightbox2/src/css/lightbox'; 
+ 
+
+@import 
+'./helpers/variables',
+'./helpers/functions',
+'./helpers/mixins' 
+; 
+
+ 
+@import 
+'./base/typography',
+'./base/defaults'  
+;
+
+@import 
+'./layout/header',
+'./layout/footer'
+;  
+
+@import 
+'./components/aside',
+'./components/maincontent',
+'./components/font-controller'
+;
+
+
+@import 
+'./base/print'
+;
+
+@import 
+'./pages/main'
+;

@@ -1,0 +1,150 @@
+@model ContactusVM
+@using TamTechSDK.Common.Services.ContentService.Contact.Enums
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Localizer["contact_us"];
+
+    List<SlugModel> SlugModel = new List<SlugModel>();
+}
+<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+
+
+
+<section class="contact-page page">
+    <div class="container">
+        <div class="row justify-content-center pt-80">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-7">
+                <h3 class="page-title">@Localizer["contact_us"]</h3>
+                <div class="wrapper  content-wrapper mb-65">
+                    <p class="contact-message">@Localizer["contant_us_message"]</p>
+
+                    <form method="post" class="contact-form" id="contact-form" asp-action="contactus" asp-controller="home" enctype="multipart/form-data">
+
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div asp-validation-summary="All" class="alert alert-danger"></div>
+                        }
+                        @if (ViewBag.UploadedFiles != null)
+                        {
+                            <input type="hidden" name="UploadedFiles" value="@ViewBag.UploadedFiles">
+                        }
+
+                        <div class="form-group">
+                            <label asp-for="Name">@Localizer["Name"] <small class="fas fa-star-of-life"></small></label>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="@Localizer["full_name"]" required>
+                            <span asp-validation-for="Name" class="text-danger invalid_field"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber">@Localizer["phone_number"] <small class="fas fa-star-of-life"></small></label>
+                            <input type="tel" asp-for="PhoneNumber" class="form-control" placeholder='@Localizer["phone_number_placeholder"]' required>
+                            <span asp-validation-for="PhoneNumber" class="text-danger invalid_field"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email">@Localizer["email_address"] <small class="fas fa-star-of-life"></small></label>
+                            <input type="email" asp-for="Email" class="form-control" placeholder="@Localizer["email_address_placeholder"]" required>
+                            <span asp-validation-for="Email" class="text-danger invalid_field"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TypeId">@Localizer["reason_for_communication"] <small class="fas fa-star-of-life"></small></label>
+                            <select class="form-control select-list" asp-for="TypeId" required data-change data-placeholder="@Localizer["select_the_reason_for_the_communication"]">
+                                 
+                                <if include-if="ViewBag.types != null">
+                                    @{
+                                        List<TypeDto> types = (List<TypeDto>)ViewBag.types;
+                                    }
+                                    @foreach (TypeDto opt in types)
+                                    {
+
+                                        string options = string.Empty;
+                                        if (opt.Options != null)
+                                        {
+                                            options = JsonConvert.SerializeObject(opt.Options, Formatting.None);
+                                        }
+
+                                        <option value="@opt.Id" data-options="@options">@opt.Name</option>
+                                    }
+                                </if>
+
+                            </select>
+                            <span asp-validation-for="TypeId" class="text-danger invalid_field"></span>
+                        </div>
+
+                        <div class="complaint-box d-none" data-id="CompanyName">
+                            <h5>@Localizer["vendor_detials"]</h5>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="CompanyName">@Localizer["Name"] <small class="fas fa-star-of-life"></small></label>
+                                        <input type="text" asp-for="CompanyName" class="ignore form-control" data-required placeholder="@Localizer["company_name"]" />
+                                        <span asp-validation-for="CompanyName" class="text-danger invalid_field"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="RegionId">@Localizer["location"]</label>
+                                    <select asp-for="RegionId" class="form-control" asp-items="ViewBag.Regions">
+                                        <option disabled selected>@Localizer["choose_location"]</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message"> <span data-msg="@Localizer["Message"] " data-comlaint="@Localizer["complaint_detials"] ">@Localizer["Message"] </span><small class="fas fa-star-of-life"></small> </label>
+                            <textarea class="form-control" asp-for="Message" rows="5" placeholder="@Localizer["Message_placeholder"]" required></textarea>
+                            <span asp-validation-for="Message" class="text-danger invalid_field"></span>
+                        </div>
+
+                        <div class="attachment-area form-group d-none" data-id="Attachments">
+                            <label>@Localizer["Attachments"]</label>
+                            <div class="box__input ">
+                                <label for="Attachments" >
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </label>
+                              
+                                <input type="file" asp-for="Attachments" class="box__file"
+                                       data-multiple-caption="{count} @Localizer["files_selected"]"
+                                       aria-describedby="AttachmentsHelp"
+                                       accept=".doc,.docx,.xls,.xlsx, application/msword,text/plain,
+                                  application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                  application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                  application/vnd.ms-excel,application/pdf,image/png , image/jpeg" />
+                                <label for="Attachments" class="file-btn" data-text="@Localizer["choose_file"]">
+
+                                    <strong> @Localizer["choose_file"]</strong>
+                                </label>
+
+                            </div>
+                            <span asp-validation-for="Attachments" class="text-danger invalid_field Attachments-errors"></span>
+                            <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["acceptable_formats"] <span>txt,doc,docx,xls,xlsx,pdf,jpg,png</span></small>
+                        </div>
+
+                     
+                            <div class="form-group">
+                                <div id="grecaptcha" data-callback="RecaptchaCallback" ></div>
+                                <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                            </div>
+                        
+                        <div class="form-group text-left">
+                            <button type="submit" class="btn btn-success p-x-50">
+                                @Localizer["send"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Footer{
+    <script src="~/Portal/js/plugins/select2.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadGrecaptcha&render=explicit&hl=ar" async defer></script>
+    <script src="~/Portal/js/validation.min.js"></script>
+    <script src="~/Portal/js/contactus.min.js"></script>
+ 
+}

@@ -1,0 +1,56 @@
+@import './carousel/owl.carousel' ,'./carousel/owl.theme.default'; 
+
+
+.owl-dots{
+    text-align: center;
+    margin-top: 10px;
+    .owl-dot{
+        margin: 0 4px;
+        outline: none !important;
+        span{
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius:50%; 
+            background: #dee5eb;
+        }
+        &.active{
+            span{
+                background: $orange;
+            }
+        }
+    }
+}
+.owl-carousel{
+.owl-nav{
+    button.owl-prev ,button.owl-next{
+        position: absolute;
+        top: calc(50% - 20px);
+        width: 40px;
+        height: 40px;
+        color: $green;
+        &.disabled{ 
+            opacity: 0.5; 
+            color:$gray-500;
+        }
+    }
+    .owl-prev{
+        #{$left} :-45px;
+    }
+    .owl-next{
+        #{$right} :-45px;
+    }
+    @include media-breakpoint-down(md){
+        button.owl-prev ,button.owl-next{
+            background: $white;
+            box-shadow: $box-shadow;
+        }
+        .owl-prev{ 
+            #{$left} :-10px;
+        }
+        .owl-next{
+            #{$right} :-10px;
+        }
+    }
+}
+}

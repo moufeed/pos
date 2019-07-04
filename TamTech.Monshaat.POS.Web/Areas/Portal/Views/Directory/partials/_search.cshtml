@@ -1,0 +1,22 @@
+
+@{
+    var value = Context.Request.Query["Search"];
+}
+
+    <form asp-action="index" method="get" class="form d-search-input" id="searchForm">
+        @if (!string.IsNullOrEmpty(ViewBag.ActiveSector))
+        {
+            <input type="hidden" name="slug" value="@ViewBag.ActiveSector" />
+        }
+
+        <div class="form-group">
+            <label for="keyword" class="c-black">@Localizer["d_search_label"]</label>
+            <div class="input-group d-flex justify-content-between align-items-center">
+                <i class="fas fa-search"></i>
+                <input type="text" name="Search" id="" class="form-control form-control-lg " placeholder="@Localizer["d_search_placeholder"]" submit-on-enter value="@value" required minlength="3">
+                <button type="submit" class="btn btn-primary p-x-25">
+                    @Localizer["search"]
+                </button>
+            </div>
+        </div>
+    </form>
