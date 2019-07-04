@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Upload.FileTypes
+namespace TamTech.Monshaat.POS.Web.Services.Upload.FileTypes
 {
    public class  FileTypesSettingsModel  
     { 

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Types
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Types
 {
     public static class TypesMapper
     {
@@ -43,9 +44,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Types
         }
 
 
-        public static TamTechSDK.Common.Services.TypesService.Models.CreateTypeModel MapToCreateTypeModel(this TamTechSDK.Web.Models.Admin.Types.TypeVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models.CreateTypeModel MapToCreateTypeModel(this TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types.TypeVM item)
         {
-            return new TamTechSDK.Common.Services.TypesService.Models.CreateTypeModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models.CreateTypeModel
             {
                 Name = item.Name,
                 Description = item.Description,
@@ -62,9 +63,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Types
             };
         }
 
-        public static TamTechSDK.Web.Models.Admin.Types.TypeVM MapToTypeVM(this TamTechSDK.Common.Services.TypesService.Models.TypeDto item)
+        public static TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types.TypeVM MapToTypeVM(this TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models.TypeDto item)
         {
-            return new Models.Admin.Types.TypeVM
+            return new  TypeVM
             {
                 Name = item.Name,
                 Description = item.Description,
@@ -83,9 +84,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Types
 
 
 
-        public static TamTechSDK.Common.Services.TypesService.Models.UpdateTypeModel MapToUpdateTypeModel(this Models.Admin.Types.TypeVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models.UpdateTypeModel MapToUpdateTypeModel(this  TypeVM item)
         {
-            return new TamTechSDK.Common.Services.TypesService.Models.UpdateTypeModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models.UpdateTypeModel
             {
                 Name = item.Name,
                 Description = item.Description,

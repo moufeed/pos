@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Sliders.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
 {
     public class UpdateSliderDto
     {

@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.ContentService.Core.Domain.Models.Results;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders
 {
-    public class DirectSlidersService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Sliders.ISlidersServices
+    public class DirectSlidersService : BaseDirectService, TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.ISlidersServices
     {
         #region Props  
         private readonly TamTech.ContentService.Services.Sliders.ISliderService _sliderService;

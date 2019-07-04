@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Upload.Settings
+namespace TamTech.Monshaat.POS.Web.Services.Upload.Settings
 {
     public interface IUploadBackendSettings
     {

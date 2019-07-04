@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Models.Filter
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Filter
 {
     public class DTFilter
     {

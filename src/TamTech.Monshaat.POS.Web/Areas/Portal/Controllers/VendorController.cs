@@ -9,26 +9,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.EFile2.Utilities.Filters;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTechSDK.Common.Models.Attachments;
-using TamTechSDK.Common.Services.Attributes;
-using TamTechSDK.Common.Services.Attributes.Models;
-using TamTechSDK.Common.Services.PosService.Directory.Models;
-using TamTechSDK.Common.Services.PosService.PosService;
-using TamTechSDK.Common.Services.PosService.PosService.Models;
-using TamTechSDK.Common.Services.PosService.Sectors;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Common.Services.TypesService.Models;
-using TamTechSDK.Common.Services.Upload;
-using TamTechSDK.Common.Services.VendorsServices;
-using TamTechSDK.Common.Services.VendorsServices.Models;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Extensions;
-using TamTechSDK.Web.Extensions.AutoMapper.Pos;
-using TamTechSDK.Web.Extensions.AutoMapper.Vendor;
-using TamTechSDK.Web.Filters;
-using TamTechSDK.Web.Models.Portal.Pos;
-using TamTechSDK.Web.Models.Portal.vendor;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Attachments;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Extensions;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Pos;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Vendor;
+using TamTech.Monshaat.POS.Web.Core.Filters;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -640,7 +642,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 if (!string.IsNullOrWhiteSpace(img))
                 {
                     Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.General } };
-                    Common.Providers.Requests.Models.IRequestProviderResult<Common.Services.Upload.Models.DeleteFilesModelResult> uploadResult =
+                     IRequestProviderResult<DeleteFilesModelResult> uploadResult =
                         await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     if (uploadResult.Success)
                     {

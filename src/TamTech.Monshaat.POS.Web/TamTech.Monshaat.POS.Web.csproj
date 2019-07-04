@@ -53,10 +53,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Models\VMs\Shared\partials\" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <ProjectReference Include="..\TamTech.Monshaat.POS.EFile2.Utilities\TamTech.Monshaat.POS.EFile2.Utilities.csproj" />
   </ItemGroup>
   

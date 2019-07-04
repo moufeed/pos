@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TamTechSDK.Common.Enums;
-using TamTechSDK.Common.Services.PosService.PosService.Models;
-using TamTechSDK.Web.Models.Portal.Pos;
+using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Pos
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
 {
     public static class PosMapper
     {
-        public static TamTechSDK.Common.Services.PosService.PosService.Models.CreatePosModel MapToCreateModelWithoutAttachments(this TamTechSDK.Web.Models.Portal.Pos.PosFormVm item)
+        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.CreatePosModel MapToCreateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos.PosFormVm item)
         {
-            return new Common.Services.PosService.PosService.Models.CreatePosModel
+            return new  CreatePosModel
             {
                 Name = item.Name,
                 Lang = item.Lang,
@@ -34,7 +34,7 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Pos
 
 
 
-        public static UpdatePosModel MapToUpdateModelWithoutAttachments(this TamTechSDK.Web.Models.Portal.Pos.PosFormVm item)
+        public static UpdatePosModel MapToUpdateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos.PosFormVm item)
         {
             return new UpdatePosModel
             {
@@ -59,10 +59,10 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Pos
 
 
 
-        public static List<TamTechSDK.Common.Services.PosService.PosService.Models.SpecificationModel> MapToBackSpecifications(this List<Specification> specification)
+        public static List<TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationModel> MapToBackSpecifications(this List<Specification> specification)
         {
 
-            var result = new List<TamTechSDK.Common.Services.PosService.PosService.Models.SpecificationModel>();
+            var result = new List<TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationModel>();
 
             foreach (Specification item in specification)
             {
@@ -91,7 +91,7 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Pos
         }
 
 
-        public static PosFormVm MapToPosFormVm(this TamTechSDK.Common.Services.PosService.PosService.Models.PosDto item)
+        public static PosFormVm MapToPosFormVm(this TamTech.Monshaat.POS.Web.Services.POSs.Models.PosDto item)
         {
             return new PosFormVm
             {
@@ -117,7 +117,7 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Pos
         }
 
 
-        public static Specification MapToSpecification(this TamTechSDK.Common.Services.PosService.PosService.Models.SpecificationDto item)
+        public static Specification MapToSpecification(this TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationDto item)
         {
             return new Specification
             {

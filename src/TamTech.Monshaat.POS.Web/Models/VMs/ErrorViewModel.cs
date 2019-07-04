@@ -1,6 +1,6 @@
 using System;
 
-namespace TamTechSDK.Web.Models
+namespace TamTech.Monshaat.POS.Web.Models.VMs
 {
     public class ErrorViewModel
     {

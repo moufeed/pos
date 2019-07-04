@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 {
     public interface IPageService
     {

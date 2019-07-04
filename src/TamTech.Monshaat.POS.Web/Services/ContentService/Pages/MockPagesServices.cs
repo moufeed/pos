@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Enums;
-using TamTechSDK.Common.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 {
     public class MockPagesServices  
     {

@@ -8,13 +8,13 @@ using TamTech.ContentService.Core.Domain.Models.Results;
 using TamTech.Monshaat.POS.Web.Core.Enums;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.Mapper;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
 using TamTechSDK.Web.Services.ContentService.Menus.PublicService;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus
 {
-    public class DirectMenusServices : BaseDirectService, TamTechSDK.Common.Services.ContentService.Menus.IMenusServices
+    public class DirectMenusServices : BaseDirectService, TamTech.Monshaat.POS.Web.Services.ContentService.Menus.IMenusServices
     {
 
 

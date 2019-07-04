@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Attributes;
-using TamTechSDK.Common.Services.Attributes.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes
 {
@@ -50,7 +50,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes
             };
         }
 
-        public async Task<List<TamTechSDK.Common.Models.SelectList.SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public async Task<List<TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel>> GetAllSelectListAsync(string lang)
         {
             var result = await _AttributeService.GetAllSelectListAsync(lang);
 

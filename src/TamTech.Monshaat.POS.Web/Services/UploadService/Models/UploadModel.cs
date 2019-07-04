@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Upload.Models
+namespace TamTech.Monshaat.POS.Web.Services.Upload.Models
 {
     public class UploadModel
     {

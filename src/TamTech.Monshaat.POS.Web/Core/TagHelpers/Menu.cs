@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Common.Services.ContentService.Menus.Enums;
-using TamTechSDK.Common.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
 
-namespace TamTech.Monshaat.POS.Web.TagHelpers
+namespace TamTech.Monshaat.POS.Web.Core.TagHelpers
 {
     [HtmlTargetElement("Menu")]
     public class Navigation : TagHelper

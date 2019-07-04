@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Net;
-using TamTechSDK.Common.Models.Exceptions;
+using System.Net; 
 
-namespace TamTechSDK.Common.Providers.Requests.Models
+namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
 {
     public class RequestProviderResult<T> : IRequestProviderResult<T>
     {
@@ -18,9 +17,7 @@ namespace TamTechSDK.Common.Providers.Requests.Models
 
         public string JsonHeader { get; set; }
 
-        public HttpStatusCode StatusCode { get; set; }
-
-        public ExceptionResponse Exception { get; set; }
+        public HttpStatusCode StatusCode { get; set; } 
 
         
     }

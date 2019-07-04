@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin
 {
     public class BaseVM
     {

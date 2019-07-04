@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TamTechSDK.Web.Models.Admin.User
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.User
 {
     public class CreateUserVM
     {

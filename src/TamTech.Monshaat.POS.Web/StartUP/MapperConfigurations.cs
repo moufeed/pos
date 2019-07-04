@@ -7,7 +7,7 @@ using System.Text;
 using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
 using TamTechBackendSDK.IdentityService.Models.UserManager;
 using TamTechBackendSDK.IdentityService.Models.Users; 
-using TamTechSDK.Web.Models.Admin.User;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
 
 
 namespace TamTech.Monshaat.POS.Web.StartUP

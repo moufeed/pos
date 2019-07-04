@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TamTechSDK.Common.Services.Attributes.Models;
-using TamTechSDK.Web.Models.Admin.Attributes;
-using TamTechSDK.Web.Models.Admin.Values;
+﻿using System.Linq; 
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Attributes;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Attributes
+
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Attributes
 {
     public static class AttributesMapper
     {

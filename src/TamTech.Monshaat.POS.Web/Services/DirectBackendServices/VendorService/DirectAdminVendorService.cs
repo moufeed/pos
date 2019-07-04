@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.ContentService.Services.Persons;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Shared.Models;
-using TamTechSDK.Common.Services.VendorsServices;
-using TamTechSDK.Common.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
 {
@@ -59,7 +59,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
             return request?.Select(m => m.MapToFrontProcessActionModel()).ToList();
         }
 
-        public async Task<IRequestProviderResult<PersonDto>> SetActionAsync(SetAction model)
+        public async Task<IRequestProviderResult<PersonDto>> SetActionAsync(SetActionModel model)
         {
             var request = await _vendorSerives.SetActionAsync(model.MapToBackSetAction());
 

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos.Mapper;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.PosService.Directory.Models;
-using TamTechSDK.Common.Services.PosService.PosService;
-using TamTechSDK.Common.Services.PosService.PosService.Models;
-using TamTechSDK.Common.Services.Shared.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos
 {

@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Services.Status;
-using TamTechSDK.Common.Services.PosService.PosService;
-using TamTechSDK.Common.Services.PosService.PosService.Models;
-using TamTechSDK.Common.Services.PosService.Sectors;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

@@ -8,7 +8,7 @@ using TamTech.ContentService.Services.Galleries.Dtos;
 using TamTech.ContentService.Services.Services.Validators;
 using TamTech.ContentService.Services.Menus.Validators;
 using TamTech.ContentService.Services.Galleries.Validators;
-using TamTechSDK.Web.Models.Portal.Pos;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

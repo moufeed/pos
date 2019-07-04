@@ -7,7 +7,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes.
 {
     public static class AttributesMapper
     {
-        public static TamTech.ContentService.Services.Attributes.Models.CreateAttributeModel MapToBackendCreateAttribute(this TamTechSDK.Common.Services.Attributes.Models.CreateAttributeModel item)
+        public static TamTech.ContentService.Services.Attributes.Models.CreateAttributeModel MapToBackendCreateAttribute(this TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.CreateAttributeModel item)
         {
             return new ContentService.Services.Attributes.Models.CreateAttributeModel
             {
@@ -27,7 +27,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes.
         }
 
 
-        public static TamTech.ContentService.Services.Attributes.Models.UpdateAttributeModel MapToBackendUpdateAttribute(this TamTechSDK.Common.Services.Attributes.Models.UpdateAttributeModel item)
+        public static TamTech.ContentService.Services.Attributes.Models.UpdateAttributeModel MapToBackendUpdateAttribute(this TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.UpdateAttributeModel item)
         {
             return new ContentService.Services.Attributes.Models.UpdateAttributeModel
             {
@@ -46,9 +46,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes.
             };
         }
 
-        public static TamTechSDK.Common.Services.Attributes.Models.AttributeDto MapToForntAttributeDto(this TamTech.ContentService.Services.Attributes.Models.AttributeDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.AttributeDto MapToForntAttributeDto(this TamTech.ContentService.Services.Attributes.Models.AttributeDto item)
         {
-            return new TamTechSDK.Common.Services.Attributes.Models.AttributeDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.AttributeDto
             {
                 Description = item.Description,
                 DisplayOrder = item.DisplayOrder,
@@ -71,15 +71,15 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes.
                 ModifierUserId = item.ModifierUserId,
                 Published = item.Published,
                 IsMandatory = item.IsMandatory,
-                Values = item.Values != null ? item.Values.Select(val => val.MapToFrontValueDto()).ToList() : new List<TamTechSDK.Common.Services.Attributes.Models.ValueDto>()
+                Values = item.Values != null ? item.Values.Select(val => val.MapToFrontValueDto()).ToList() : new List<TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.ValueDto>()
             };
 
         }
 
 
-        public static TamTechSDK.Common.Services.Attributes.Models.ValueDto MapToFrontValueDto(this TamTech.ContentService.Services.Values.Models.ValueDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.ValueDto MapToFrontValueDto(this TamTech.ContentService.Services.Values.Models.ValueDto item)
         {
-            return new TamTechSDK.Common.Services.Attributes.Models.ValueDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models.ValueDto
             {
                 Description = item.Description,
                 DisplayOrder = item.DisplayOrder,

@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using TamTechSDK.Common.Services.ContentService.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 
-namespace TamTechSDK.Common.Services.ContentService.Sliders.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
 {
     public class SliderDto : ContentItem
     {

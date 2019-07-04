@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Identity.Auth.Models
+namespace TamTech.Monshaat.POS.Web.Services.Identity.Auth.Models
 {
     public class ChangePassword
     {

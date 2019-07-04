@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TamTechSDK.Web.Models.Admin.Contact;
-using TamTechSDK.Web.Models.Portal.Contactus;
+﻿ using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Contact;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Contact
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Contact
 {
     public static class ContactMapper
     {
-        public static TamTechSDK.Common.Services.ContentService.Contact.Models.CreateModel MapToCreateModelWithoutAttachments(this ContactusVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models.CreateModel MapToCreateModelWithoutAttachments(this ContactusVM item)
         {
-            return new Common.Services.ContentService.Contact.Models.CreateModel
+            return new  CreateModel
             {
                 Email = item.Email,
                 FullName = item.Name,
@@ -28,9 +26,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Contact
             };
         }
 
-        public static TamTechSDK.Common.Services.ContentService.Contact.Models.ReplayContactUsModel MapToReplyModel(this ReplayVm item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models.ReplayContactUsModel MapToReplyModel(this ReplayVm item)
         {
-            return new Common.Services.ContentService.Contact.Models.ReplayContactUsModel
+            return new  ReplayContactUsModel
             {
                 Id = item.Id,
                 Notes = item.Notes,

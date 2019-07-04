@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
     public static class Mapper
     {
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackend(this TamTechSDK.Common.Models.ContentItem.PublishDTO frontend)
+        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackend(this TamTech.Monshaat.POS.Web.Models.Dtos.Common.PublishDTO frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishModel
             {
@@ -19,9 +19,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
         }
 
 
-        public static TamTechSDK.Common.Models.SelectList.SelectListItemModel MapToFrontEndSelectListItemModel(this TamTech.ContentService.Core.Domain.Models.SelectListItemModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel MapToFrontEndSelectListItemModel(this TamTech.ContentService.Core.Domain.Models.SelectListItemModel item)
         {
-            return new TamTechSDK.Common.Models.SelectList.SelectListItemModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel
             {
                 Text = item.Text,
                 Value = item.Value
@@ -31,7 +31,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
 
 
 
-        public static TamTech.ContentService.Core.Domain.Models.PaginationParamsModel toBackendPaginationModel(this TamTechSDK.Common.Models.Pagination.PaginationModel item)
+        public static TamTech.ContentService.Core.Domain.Models.PaginationParamsModel toBackendPaginationModel(this TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationModel item)
         {
             return new TamTech.ContentService.Core.Domain.Models.PaginationParamsModel
             {
@@ -44,9 +44,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
 
 
 
-        public static TamTechSDK.Common.Models.Pagination.PaginationMetadataModel MapToForntEndPagination(this TamTech.ContentService.Core.Domain.Models.PaginationMetadataModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel MapToForntEndPagination(this TamTech.ContentService.Core.Domain.Models.PaginationMetadataModel item)
         {
-            return new TamTechSDK.Common.Models.Pagination.PaginationMetadataModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel
             {
                 TotalCount = item.TotalCount,
                 PageSize = item.PageSize,
@@ -59,7 +59,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
 
 
 
-        public static TamTech.ContentService.Core.Domain.Models.PaginationParamsModel MapToBackendPaginationModel(this TamTechSDK.Common.Models.Pagination.PaginationModel item)
+        public static TamTech.ContentService.Core.Domain.Models.PaginationParamsModel MapToBackendPaginationModel(this TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationModel item)
         {
             return new TamTech.ContentService.Core.Domain.Models.PaginationParamsModel
             {
@@ -68,7 +68,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
             };
         }
 
-        public static TamTech.ContentService.Core.Domain.Models.SortingModel MapToBackendSortingModel(this TamTechSDK.Common.Models.Sort.SortingModel item)
+        public static TamTech.ContentService.Core.Domain.Models.SortingModel MapToBackendSortingModel(this TamTech.Monshaat.POS.Web.Models.Dtos.Sort.SortingModel item)
         {
             return new TamTech.ContentService.Core.Domain.Models.SortingModel
             {
@@ -79,16 +79,16 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
 
 
 
-        public static TamTechSDK.Common.Models.Languages.SlugModel MapSlugsToFrontend(this TamTech.ContentService.Services.Shared.Dtos.SlugModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.Slugs.SlugModel MapSlugsToFrontend(this TamTech.ContentService.Services.Shared.Dtos.SlugModel item)
         {
-            return new TamTechSDK.Common.Models.Languages.SlugModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.Slugs.SlugModel
             {
                 Lang = item.Lang,
                 Slug = item.Slug
             };
         }
 
-        public static TamTech.ContentService.Services.Shared.Models.AttachmentModel MapToBackAttachments(this TamTechSDK.Common.Models.Attachments.AttachmentModel item)
+        public static TamTech.ContentService.Services.Shared.Models.AttachmentModel MapToBackAttachments(this TamTech.Monshaat.POS.Web.Models.Dtos.Attachments.AttachmentModel item)
         {
             return new ContentService.Services.Shared.Models.AttachmentModel
             {
@@ -102,9 +102,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
         }
 
 
-        public static TamTechSDK.Common.Services.Status.Models.StatusDto MapToFrontStatusDto(this TamTech.ContentService.Services.Statuses.Models.StatusDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models.StatusDto MapToFrontStatusDto(this TamTech.ContentService.Services.Statuses.Models.StatusDto item)
         {
-            return new TamTechSDK.Common.Services.Status.Models.StatusDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models.StatusDto
             {
                 Id = item.Id,
                 Name = item.Name,

@@ -1,22 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
-using System.Linq;
-using System.Security.Principal;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Models.Params;
-using TamTechSDK.Web.Extensions;
+using TamTech.Monshaat.POS.Web.Core.Extensions;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
 
-namespace TamTechSDK.Web.Filters
+namespace TamTech.Monshaat.POS.Web.Core.Filters
 {
-
-
     public class UserActivityFilter : ActionFilterAttribute, IActionFilter
     {
-
         private readonly IUsersManagerService _usersManagerService;
 
         public UserActivityFilter(IUsersManagerService usersManagerService)
@@ -35,8 +28,7 @@ namespace TamTechSDK.Web.Filters
                     var IsActiveResult = await _usersManagerService.CheckUserAccountIsActivatedAsync(new UserNameModel { UserName = controller.HttpContext.User.Identity.GetUsername() });
 
                     if (!IsActiveResult.Data)
-                    {
-
+                    { 
                         context.Result = new RedirectToRouteResult(new RouteValueDictionary {
                                       { "Controller","account" },
                                       { "Action", "blocked" },
@@ -48,11 +40,7 @@ namespace TamTechSDK.Web.Filters
                 if (context.Result == null)
                     await next();
             }
-        }
-
-
-
-    }
-
+        } 
+    } 
 }
 

@@ -18,7 +18,7 @@ using System.Web;
 using Microsoft.Extensions.Configuration;
 using TamTechBackendSDK.IdentityService.Models;
 using TamTechBackendSDK.IdentityService.Services;
-using TamTechSDK.Web.Filters;
+using TamTech.Monshaat.POS.Web.Core.Filters;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
 {

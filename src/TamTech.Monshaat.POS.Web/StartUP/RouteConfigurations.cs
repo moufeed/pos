@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
-using TamTech.Monshaat.POS.Web.Settings.Cultures;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Email.Models
+namespace TamTech.Monshaat.POS.Web.Services.Email.Models
 {
      public class EmailServiceModel
     {

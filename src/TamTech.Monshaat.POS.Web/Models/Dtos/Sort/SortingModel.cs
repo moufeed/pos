@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Models.Sort
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Sort
 
 {
     public class SortingModel

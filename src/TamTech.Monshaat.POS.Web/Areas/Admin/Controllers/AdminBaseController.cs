@@ -4,27 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using TamTechSDK.Web.Services.Telemetry;
-using TamTechSDK.Web.Extensions;
+using TamTech.Monshaat.POS.Web.Core.Telemetry; 
 using Microsoft.AspNetCore.Authorization;
-using TamTechSDK.Common.Services.Upload.Models;
-using TamTechSDK.Common.Services.Helpers;
-using Newtonsoft.Json;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models; 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using TamTechSDK.Web.Models.Shared;
-using TamTechSDK.Common.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using TamTechSDK.Web.Filters;
-using TamTechSDK.Web.Services.Configurations.Cultures;
-using TamTechSDK.Common.Services.Upload;
-using TamTechSDK.Web.Models.Shared.Filters;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using TamTechSDK.Common.Models.Sort;
-using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Services.TypesService.Models;
-using TamTechSDK.Common.Services.Status.Models;
-using TamTechSDK.Common.Models.SelectList;
+using TamTech.Monshaat.POS.Web.Core.Filters;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using Microsoft.AspNetCore.Mvc.Rendering; 
+using Microsoft.Extensions.Localization; 
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Web.Models.Admin.Values;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
 
-namespace TamTechSDK.Web.Models.Admin.Attributes
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Attributes
 {
     public class AttributeVM : BaseVM
     {

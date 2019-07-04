@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
+ 
 
-namespace TamTechSDK.Web.Services.Configurations.Cultures
+namespace TamTech.Monshaat.POS.Web.Core.Cultures
 {
     public static class DataCultureHelper
     {

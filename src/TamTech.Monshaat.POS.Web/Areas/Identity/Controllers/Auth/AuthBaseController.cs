@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Auth.Models;
-using TamTechSDK.Web.Services.Configurations.Cultures;
-using TamTechSDK.Web.Services.Telemetry;
-using TamTechSDK.Web.Services.Validations;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Auth.Models;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Core.Validations;
 
 namespace TamTechSDK.Web.Controllers.Identity
 {

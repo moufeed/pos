@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Identity.Models;
-using TamTechSDK.Common.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
 
-namespace TamTechSDK.Common.Services.Identity
+namespace TamTech.Monshaat.POS.Web.Services.Identity
 {
     public interface IUsersManagerService
     {

@@ -6,11 +6,11 @@ using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTechBackendSDK.Common.Services.ServiceBus;
 using TamTechBackendSDK.Common.Services.ServiceBus.Models;
 
-using TamTechSDK.Common.Services.Email.Models;
+using TamTech.Monshaat.POS.Web.Services.Email.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.EmailServices
 {
-    public class DirectEmailServices : TamTechSDK.Common.Services.Email.IEmailSenderService
+    public class DirectEmailServices : TamTech.Monshaat.POS.Web.Services.Email.IEmailSenderService
     {
         private readonly TamTechBackendSDK.EmailService.Services.IEmailSender _emailSender;
         private readonly SettingsHelpers _settingsHelpers;

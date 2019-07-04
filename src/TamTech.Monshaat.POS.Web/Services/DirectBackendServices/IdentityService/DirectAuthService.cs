@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Identity.Auth.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Auth.Models;
 using TamTechBackendSDK.IdentityService.Services.UserAccountServices.ResetPasswordService;
 using TamTechBackendSDK.IdentityService.Services.UserAccountServices.ResetPasswordService.Models;
 using TamTechBackendSDK.IdentityService.Services;
@@ -11,7 +11,7 @@ using TamTechBackendSDK.IdentityService.Models.Users;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService
 {
-    public class DirectAuthService : BaseDirectService, TamTechSDK.Common.Services.Identity.IAuthService
+    public class DirectAuthService : BaseDirectService, TamTech.Monshaat.POS.Web.Services.Identity.IAuthService
     {
 
         private IResetPasswordByEmailSendingService _resetService;

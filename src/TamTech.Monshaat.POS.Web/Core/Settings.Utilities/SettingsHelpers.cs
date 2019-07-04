@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTechSDK.Common.Services.ContentService.Settings;
-using TamTechSDK.Common.Services.Email.Settings;
-using TamTechSDK.Web.Models.Admin.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.Services.Email.Settings;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
 
 namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
 {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.ContentService.Data;
 using TamTech.ContentService.Data.Repositories.CosmosRepositories;
 using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;

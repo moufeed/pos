@@ -1,4 +1,4 @@
-﻿namespace TamTechSDK.Common.Services.ContentService.Pages.Settings
+﻿namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
 {
     public interface IPageServiceSettings
     {

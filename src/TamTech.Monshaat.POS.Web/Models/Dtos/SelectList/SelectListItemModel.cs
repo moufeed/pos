@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Models.SelectList
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.SelectList
 {
     public class SelectListItemModel
     {

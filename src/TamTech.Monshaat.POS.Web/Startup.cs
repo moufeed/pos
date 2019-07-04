@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using TamTech.ContentService.Core.EFCore.Contexts;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
-using TamTech.Monshaat.POS.Web.Settings.Cultures;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.StartUP;
 
 namespace TamTech.Monshaat.POS.Web

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Portal.vendor
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor
 {
     public class VendorFormVm
     {

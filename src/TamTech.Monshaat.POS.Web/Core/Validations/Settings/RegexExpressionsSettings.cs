@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Services.Validations.Settings
+namespace TamTech.Monshaat.POS.Web.Core.Validations.Settings
 {
     public class RegexExpressionsSettings
     {

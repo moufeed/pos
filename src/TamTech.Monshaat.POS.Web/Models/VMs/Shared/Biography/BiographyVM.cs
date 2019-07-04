@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Shared.Biography
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography
 {
     public class BiographyVM
     {

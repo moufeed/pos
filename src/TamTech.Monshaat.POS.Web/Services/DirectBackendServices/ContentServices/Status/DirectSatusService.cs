@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.SelectList;
-using TamTechSDK.Common.Services.Status;
-using TamTechSDK.Common.Services.Status.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status
 {
-    public class DirectSatusService : IRequestStatusService, IContactStatusService, IPosStatusService, IVendorStatusService
+    public class DirectSatusService :  IContactUsStatusService, IPosStatusService, IVendorStatusService
     {
         private TamTech.ContentService.Services.Statuses.IStatusService _statusService;
 

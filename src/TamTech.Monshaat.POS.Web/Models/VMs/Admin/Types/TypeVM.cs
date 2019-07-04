@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Services.TypesService.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
 
-namespace TamTechSDK.Web.Models.Admin.Types
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types
 {
     public class TypeVM
     {

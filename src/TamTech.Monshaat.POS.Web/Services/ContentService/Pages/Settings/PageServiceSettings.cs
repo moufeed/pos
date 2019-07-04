@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages.Settings
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
 {
-    public class PageServiceSettings : ContentsServiceSettings, IPageServiceSettings
+    public class PageServiceSettings : CCUServiceSettings, IPageServiceSettings
     {
         public PageServiceSettings(string contentsServiceUrl) : base(contentsServiceUrl)
         {

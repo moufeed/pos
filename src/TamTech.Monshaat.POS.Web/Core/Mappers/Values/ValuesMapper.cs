@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Services.ValuesServices.Models;
-using TamTechSDK.Web.Models.Admin.Values;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Values
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Values
 {
     public static class ValuesMapper
     {
 
-        public static Common.Services.ValuesServices.Models.CreateValueModel MapToCreateValueModel(this ValueVM item)
+        public static CreateValueModel MapToCreateValueModel(this ValueVM item)
         {
-            return new Common.Services.ValuesServices.Models.CreateValueModel
+            return new CreateValueModel
             {
                 Name = item.Name,
                 Description = item.Description,

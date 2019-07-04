@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Services.Identity.Models;
-using TamTechSDK.Common.Services.Identity.Models.Params;
-using TamTechSDK.Web.Models.Admin.User;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper
+namespace TamTech.Monshaat.POS.Web.Core.Mappers
 {
     public static class UsersManagerMapper
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using TamTechSDK.Common.Helpers;
+using TamTech.Monshaat.POS.Web.Core.Helpers;
 using Microsoft.Extensions.Localization;
 
-namespace TamTechSDK.Common.Services.ContentService.Menus.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models
 {
     public class CreateMenuDto
     {

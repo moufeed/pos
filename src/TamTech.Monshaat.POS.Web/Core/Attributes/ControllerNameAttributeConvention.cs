@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.AspNetCore.Mvc.ApplicationModels; 
+using System.Linq; 
 
-namespace TamTechSDK.Web.Attributes
+namespace TamTech.Monshaat.POS.Web.Core.Attributes
 {
    public class ControllerNameAttributeConvention : IControllerModelConvention
     {

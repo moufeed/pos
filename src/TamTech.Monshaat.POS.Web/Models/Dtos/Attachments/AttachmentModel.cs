@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Models.Attachments
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Attachments
 {
     public class AttachmentModel
     {

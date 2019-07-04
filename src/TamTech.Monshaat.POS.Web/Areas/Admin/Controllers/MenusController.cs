@@ -8,13 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Common.Services.ContentService.Menus.Enums;
-using TamTechSDK.Common.Services.ContentService.Menus.Models;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Extensions.AutoMapper;
-using TamTechSDK.Web.Models.Admin.Menus;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Mappers;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

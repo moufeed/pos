@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TamTechSDK.Common.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders.Mapper
 {

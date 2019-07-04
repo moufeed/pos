@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sectors;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Sectors
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Sectors
 {
     public static class SectorsMapper
     {
 
-        public static Models.Admin.Sectors.SectorVM MapToSectorVM(this TamTechSDK.Common.Services.PosService.Sectors.Models.SectorDto item)
+        public static SectorVM MapToSectorVM(this TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.SectorDto item)
         {
-            return new Models.Admin.Sectors.SectorVM
+            return new SectorVM
             {
                 Name = item.Name,
                 Description = item.Description,
@@ -33,9 +34,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Sectors
             };
         }
 
-        public static TamTechSDK.Common.Services.PosService.Sectors.Models.UpdateSectorModel MapToUpdateSectorModel(this Models.Admin.Sectors.SectorVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.UpdateSectorModel MapToUpdateSectorModel(this SectorVM item)
         {
-            return new TamTechSDK.Common.Services.PosService.Sectors.Models.UpdateSectorModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.UpdateSectorModel
             {
                 Id = item.Id,
                 Name = item.Name,
@@ -51,9 +52,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Sectors
                 Image = item.Image
             };
         }
-        public static TamTechSDK.Common.Services.PosService.Sectors.Models.CreateSectorModel MapToCreateSectorModel(this Models.Admin.Sectors.SectorVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.CreateSectorModel MapToCreateSectorModel(this SectorVM item)
         {
-            return new TamTechSDK.Common.Services.PosService.Sectors.Models.CreateSectorModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.CreateSectorModel
             {
                 Name = item.Name,
                 Description = item.Description,

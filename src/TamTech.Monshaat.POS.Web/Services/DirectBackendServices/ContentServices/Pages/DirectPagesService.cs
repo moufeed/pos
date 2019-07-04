@@ -5,16 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.ContentService.Core.Domain.Models.Results;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Enums;
-using TamTechSDK.Common.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages
 {
-    public class DirectPagesService : BaseDirectService, TamTechSDK.Common.Services.ContentService.Pages.IPageService
+    public class DirectPagesService : BaseDirectService, TamTech.Monshaat.POS.Web.Services.ContentService.Pages.IPageService
     {
         #region Props  
         private readonly TamTech.ContentService.Services.Pages.IPageService _pageService;

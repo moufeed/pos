@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.RolesService.Mapper;
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.RolesService
 {

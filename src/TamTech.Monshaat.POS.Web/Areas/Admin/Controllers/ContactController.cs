@@ -10,28 +10,28 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Services.ContentService.Contact;
-using TamTechSDK.Common.Services.ContentService.Contact.Models;
-using TamTechSDK.Common.Services.Status;
-using TamTechSDK.Common.Services.Status.Models;
-using TamTechSDK.Common.Services.Email;
-using TamTechSDK.Common.Services.Email.Models;
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Models;
-using TamTechSDK.Common.Services.Identity.Models.Params;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Common.Services.TypesService.Models;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Extensions.AutoMapper;
-using TamTechSDK.Web.Extensions.AutoMapper.Contact;
-using TamTechSDK.Web.Models.Admin.Contact;
-using TamTechSDK.Web.Models.Admin.Email;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Web.Services.Configurations.Cultures;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models;
+using TamTech.Monshaat.POS.Web.Services.Email;
+using TamTech.Monshaat.POS.Web.Services.Email.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Mappers;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Contact;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Contact;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Email;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -44,7 +44,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         IUsersManagerService _IdentityService;
         IContactService _contactService;
         IContactTypeService _typeService;
-        IContactStatusService _statusService;
+        IContactUsStatusService _statusService;
         IStringLocalizer<AdminBaseController> _localizer;
         public ContactController(
             IUsersManagerService IdentityService,
@@ -53,7 +53,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             IStringLocalizer<AdminBaseController> localizer,
             IContactService contactService,
             IContactTypeService typeService,
-            IContactStatusService statusService
+            IContactUsStatusService statusService
             ) : base(telemetryClientService, localizer)
         {
             _IdentityService = IdentityService;

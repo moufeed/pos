@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic; 
 
-namespace TamTechSDK.Web.Services.Telemetry
+namespace TamTech.Monshaat.POS.Web.Core.Telemetry
 {
     public class TelemetryService : ITelemetryService
     { 

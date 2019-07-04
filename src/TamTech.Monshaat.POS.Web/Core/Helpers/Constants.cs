@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿ 
 
-namespace TamTechSDK.Common.Helpers
+namespace TamTech.Monshaat.POS.Web.Core.Helpers
 {
    public class Constants
     {

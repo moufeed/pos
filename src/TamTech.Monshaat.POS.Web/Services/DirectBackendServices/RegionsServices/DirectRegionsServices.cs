@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.SelectList;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Regions;
-using TamTechSDK.Common.Services.Regions.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices
 {

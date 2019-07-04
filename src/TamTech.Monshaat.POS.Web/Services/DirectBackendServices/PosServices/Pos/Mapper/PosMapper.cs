@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos.Mapper
     public static class PosMapper
     {
 
-        public static TamTech.ContentService.Services.POSs.Models.CreatePOSModel MapToBackCreatePosModel(this TamTechSDK.Common.Services.PosService.PosService.Models.CreatePosModel item)
+        public static TamTech.ContentService.Services.POSs.Models.CreatePOSModel MapToBackCreatePosModel(this TamTech.Monshaat.POS.Web.Services.POSs.Models.CreatePosModel item)
         {
             return new ContentService.Services.POSs.Models.CreatePOSModel
             {
@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos.Mapper
             };
         }
 
-        public static TamTech.ContentService.Services.POSs.Models.UpdatePOSModel MapToBackUpdatePosModel(this TamTechSDK.Common.Services.PosService.PosService.Models.UpdatePosModel item)
+        public static TamTech.ContentService.Services.POSs.Models.UpdatePOSModel MapToBackUpdatePosModel(this TamTech.Monshaat.POS.Web.Services.POSs.Models.UpdatePosModel item)
         {
             return new ContentService.Services.POSs.Models.UpdatePOSModel
             {
@@ -58,7 +58,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos.Mapper
         }
 
 
-        public static TamTech.ContentService.Services.POSs.Models.SpecificationModel MapToBackend(this TamTechSDK.Common.Services.PosService.PosService.Models.SpecificationModel item)
+        public static TamTech.ContentService.Services.POSs.Models.SpecificationModel MapToBackend(this TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationModel item)
         {
             return new ContentService.Services.POSs.Models.SpecificationModel
             {

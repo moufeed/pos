@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Models.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models
 {
     public class PagesList
     {

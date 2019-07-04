@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Shared.SEO
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Shared.SEO
 {
     public class ProductSEO : SeoSchema
     {

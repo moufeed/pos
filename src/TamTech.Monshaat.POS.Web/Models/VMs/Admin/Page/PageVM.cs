@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
 
-namespace TamTechSDK.Web.Models.Admin.Page
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Page
 {
     public class PageVM
     {

@@ -5,19 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TamTechSDK.Web.Services.Telemetry;
-using TamTechSDK.Common.Services.Identity; 
-using TamTechSDK.Web.Extensions;
-using TamTechSDK.Web.Models;
-using TamTechSDK.Web.Constants;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.Identity; 
+using TamTech.Monshaat.POS.Web.Core.Extensions;
+using TamTech.Monshaat.POS.Web.Models.VMs;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using Microsoft.AspNetCore.Http;
-using TamTechSDK.Common.Services.Upload;
+using TamTech.Monshaat.POS.Web.Services.Upload;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Services.ContentService;
-using TamTechSDK.Common.Services.ContentService.Contact;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Services.Utilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -31,7 +32,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly SettingsHelpers _settingsHelpers;
         private readonly IUsersManagerService _identityService; 
         private readonly IContactService _contactService;
-        private readonly IContentServices _contentServices;
+        private readonly ICCUServices _contentServices;
         private readonly IStatisticsService _statisticsService;
         IUploadManagerService _uploadManager;
 
@@ -42,7 +43,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             SettingsHelpers settingsHelpers,
              IUploadManagerService uploadManager,
              IStringLocalizer<AdminBaseController> localizer,
-             IContentServices contentServices,
+             ICCUServices contentServices,
              IContactService contactService,
              IStatisticsService statisticsService)
             : base(telemetryClientService, localizer)

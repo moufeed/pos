@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace TamTechSDK.Web.Extensions
+namespace TamTech.Monshaat.POS.Web.Core.Extensions
 {
     public static class UrlHelperExtensions
     {

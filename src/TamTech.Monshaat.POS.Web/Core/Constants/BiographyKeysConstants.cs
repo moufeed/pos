@@ -1,4 +1,5 @@
-﻿namespace TamTech.Monshaat.POS.Web.Settings.Configurations.AppSettings.Constants
+﻿
+namespace TamTech.Monshaat.POS.Web.Core.Constants
 {
     public class BiographyKeysConstants
     {

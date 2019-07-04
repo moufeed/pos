@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Common.Models.Settings;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService
 {

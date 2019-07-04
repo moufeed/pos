@@ -1,25 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.AspNetCore.Mvc.Filters; 
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 
-namespace TamTechSDK.Web.Filters
-{
-
-
+namespace TamTech.Monshaat.POS.Web.Core.Filters
+{ 
     public class AdminFilter : ActionFilterAttribute, IActionFilter
-    {
-
-
-        //private readonly IAppSettingsFile _appSettingsService;
-
-        //public AdminFilter(  IAppSettingsFile appSettingsService)
-        //{ 
-        //    _appSettingsService = appSettingsService ;
-        //}
-
+    {  
         public override void OnActionExecuted(ActionExecutedContext context)
         {
             var controller = context.Controller as Controller;
@@ -28,9 +14,7 @@ namespace TamTechSDK.Web.Filters
             {
 
                 controller.ViewBag.AppVersion = SettingsHelpers.app_version; 
-            }
-
-
+            } 
 
         }
     }

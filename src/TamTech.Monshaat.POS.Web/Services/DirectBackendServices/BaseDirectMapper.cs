@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices
 {
     public static class BaseDirectMapper
     {
-        public static TamTech.ContentService.Core.Domain.Models.DTFilterModel MapToBackDTFilter(this TamTechSDK.Common.Models.Filter.DTFilter item)
+        public static TamTech.ContentService.Core.Domain.Models.DTFilterModel MapToBackDTFilter(this TamTech.Monshaat.POS.Web.Models.Dtos.Filter.DTFilter item)
         {
             return new TamTech.ContentService.Core.Domain.Models.DTFilterModel
             {
@@ -20,7 +22,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             };
         }
 
-        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTechSDK.Common.Services.PosService.Directory.Models.PosFilters item)
+        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models.PosFilters item)
         {
             return new TamTech.ContentService.Services.POSs.Models.POSFilterModel
             {
@@ -34,9 +36,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
         }
 
 
-        public static TamTechSDK.Common.Models.Pagination.PaginationMetadataModel MapToFrontPagination(this TamTech.ContentService.Core.Domain.Models.PaginationMetadataModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel MapToFrontPagination(this TamTech.ContentService.Core.Domain.Models.PaginationMetadataModel item)
         {
-            return new TamTechSDK.Common.Models.Pagination.PaginationMetadataModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel
             {
                 TotalCount = item.TotalCount,
                 PageSize = item.PageSize,
@@ -48,9 +50,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
         }
 
 
-        public static TamTechSDK.Common.Models.Languages.SlugModel MapToFrontSlug(this TamTech.ContentService.Services.Shared.Dtos.SlugModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.Slugs.SlugModel MapToFrontSlug(this TamTech.ContentService.Services.Shared.Dtos.SlugModel item)
         {
-            return new TamTechSDK.Common.Models.Languages.SlugModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.Slugs.SlugModel
             {
                 Lang = item.Lang,
                 Slug = item.Slug
@@ -58,7 +60,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
         }
 
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel MapToBackendPuplishModel(this TamTechSDK.Common.Models.ContentItem.PublishDTO frontend)
+        public static TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel MapToBackendPuplishModel(this  PublishDTO frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel
             {
@@ -68,7 +70,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             };
         }
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackendPuplish(this TamTechSDK.Common.Models.ContentItem.PublishDTO frontend)
+        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackendPuplish(this  PublishDTO frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishModel
             {
@@ -78,25 +80,25 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             };
         }
 
-        public static TamTechSDK.Common.Models.SelectList.SelectListItemModel MapToForntSelectListItemModel(this TamTech.ContentService.Core.Domain.Models.SelectListItemModel item)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel MapToForntSelectListItemModel(this TamTech.ContentService.Core.Domain.Models.SelectListItemModel item)
         {
-            return new TamTechSDK.Common.Models.SelectList.SelectListItemModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel
             {
                 Text = item.Text,
                 Value = item.Value
             };
         }
 
-        public static TamTechSDK.Common.Services.Shared.Models.GeneratedSlugModel MapToFrontGeneratedSlugModel(this TamTech.ContentService.Services.Shared.Models.GeneratedSlugModel item)
+        public static  GeneratedSlugModel MapToFrontGeneratedSlugModel(this TamTech.ContentService.Services.Shared.Models.GeneratedSlugModel item)
         {
-            return new TamTechSDK.Common.Services.Shared.Models.GeneratedSlugModel
+            return new  GeneratedSlugModel
             {
                 Slug = item.Slug,
                 Unique = item.Unique
             };
         }
 
-        public static TamTech.ContentService.Services.Shared.Dtos.ActiveModel MaptoBackActiveModel(this TamTechSDK.Common.Models.ContentItem.ActiveModel item)
+        public static TamTech.ContentService.Services.Shared.Dtos.ActiveModel MaptoBackActiveModel(this  ActiveModel item)
         {
             return new ContentService.Services.Shared.Dtos.ActiveModel
             {
@@ -105,7 +107,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
 
             };
         }
-        public static TamTech.ContentService.Services.Shared.Models.SetActionModel MapToBackSetAction(this TamTechSDK.Common.Services.Shared.Models.SetAction item)
+        public static TamTech.ContentService.Services.Shared.Models.SetActionModel MapToBackSetAction(this  SetActionModel item)
         {
             return new TamTech.ContentService.Services.Shared.Models.SetActionModel
             {
@@ -116,9 +118,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             };
         }
 
-        public static TamTechSDK.Common.Services.Shared.Models.ProcessActionModel MapToFrontProcessActionModel(this TamTech.ContentService.Services.Shared.Models.ProcessActionModel item)
+        public static  ProcessActionModel MapToFrontProcessActionModel(this TamTech.ContentService.Services.Shared.Models.ProcessActionModel item)
         {
-            return new TamTechSDK.Common.Services.Shared.Models.ProcessActionModel
+            return new  ProcessActionModel
             {
                 ActionId = item.ActionId,
                 Name = item.Name,
