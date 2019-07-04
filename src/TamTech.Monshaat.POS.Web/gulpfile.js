@@ -1,17 +1,8 @@
 const gulp = require('gulp');
-
-require('require-dir',{ extensions: ['.js'] })('./src/gulp/tasks');
-
+const   requireDir = require('require-dir');
  
 
-// portal 
-gulp.task('p', ['p:css', 'p:js','p:f'  ]); 
-
-// admin 
-gulp.task('a', ['a:css', 'a:js' ]); 
-
-//shop
-gulp.task('s', ['s:css', 's:js'  ,'s:f']); 
-
-//
-gulp.task('default', ['p' ,'a' ,'s' ]); 
+ require('require-dir',{ extensions: ['.tasks.js']  })('./web-tools/gulp-tasks/Admin');
+ require('require-dir',{ extensions: ['.tasks.js']  })('./web-tools/gulp-tasks/Portal');
+ require('require-dir',{ extensions: ['.tasks.js']  })('./web-tools/gulp-tasks/Identity');
+ require('require-dir',{ extensions: ['.tasks.js']  })('./web-tools/gulp-tasks/Localization');

@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = Localizer["create_html_page"];
     ViewData["UnitTestPageClass"] = "ut-createPage";
-     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
 
@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
-        
+
 
         <div class="x_panel">
             <div class="x_content">
@@ -158,11 +158,7 @@
 
 
 
-@section Styles{
-    <link href="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-    <link href="~/Admin/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
-}
-
+ 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     <script src="~/Admin/js/validator.min.js"></script>
@@ -172,18 +168,13 @@
         ViewBag.TinyMce_Suumry_Id = "#Summary";
         await Html.RenderPartialAsync("partials/_tinymce.cshtml");
     }
-
-    <script src="~/Admin/lib/select2/dist/js/select2.min.js"></script>
-    <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-
+    <script src="~/Admin/js/tagify.min.js"></script>
     <script>
-         $('.select_picker').select2();
-         $('#keywords').tagsinput({
-                    tagClass: 'tag'
-         });
-         $("#Title").on("keyup", function () {
-             $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
-         })
+        var input = document.getElementById('keywords');
+        var tagify = new Tagify(input, {} );
+    
+        $("#Title").on("keyup", function () {
+            $("#Slug").val($(this).val().replace(/\s/g, "_")).valid();
+        })
     </script>
-
 }

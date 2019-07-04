@@ -289,26 +289,20 @@
     </div>
 </div>
 
-
-
-@section Styles{
-    <link href="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-}
+ 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-
-    <script src="~/Admin/js/validator.min.js"></script>
-
-    <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-
     @{await Html.RenderPartialAsync("~/Areas/Admin/Views/Shared/Seo/_seoLabels.cshtml"); }
+    <script src="~/Admin/js/validator.min.js"></script>
     <script src="~/Admin/js/serializejson.min.js"></script>
     <script src="~/Admin/js/seo.min.js"></script>
-
-
+    <script src="~/Admin/js/tagify.min.js"></script>
     <script src="~/Admin/lib/tinymce/tinymce.min.js"></script>
     <script>
+        var input = document.getElementById('keywords');
+        var tagify = new Tagify(input, {} );
+
 
         var directionality = "@(System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar" ? "rtl" : "ltr")";
          var Suumry_plugins = ['advlist hr anchor pagebreak spellchecker directionality code lists'];
@@ -419,9 +413,7 @@
                 i--;
             }
         })
-        $('#keywords').tagsinput({
-            tagClass: 'tag'
-        });
+         
 
         $('#publish-page').on('change', function () {
             var msg = ($(this).prop('checked')) ? "@Localizer["published_successfully"]" : "@Localizer["unpublished_successfully"]";

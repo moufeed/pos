@@ -1,11 +1,15 @@
 ﻿
 
-@{ 
+@{
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
-<script src="~/Admin/lib/tinymce/tinymce.min.js"></script>
+ 
+
+<script src="~/editor/tinymce/tinymce.min.js"></script>
 <style>
-    .mce-container,.mce-container *:not(.mce-ico),.mce-widget,.mce-widget *:not(.mce-ico),.mce-reset {font-family:unset;}
+    .mce-container, .mce-container *:not(.mce-ico), .mce-widget, .mce-widget *:not(.mce-ico), .mce-reset {
+        font-family: unset;
+    }
 </style>
 
 <script>
@@ -67,7 +71,7 @@
 
 
 
- 
+
 
         var font_formats =  'frutiger Light =frutigerLight;frutiger Regular=frutigerRegular;'+
                             'frutiger Bold =frutigerBold;frutiger Black=frutigerBlack;'+
@@ -139,7 +143,7 @@
                     importcss_merge_classes     : false,
                     setup                       : saveOnchange ,
                     templates                   : HtmlTemplates ,
-                     
+
                 });
         </text>
     }

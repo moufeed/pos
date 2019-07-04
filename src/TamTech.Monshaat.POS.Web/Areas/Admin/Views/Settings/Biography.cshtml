@@ -149,7 +149,7 @@
                 <div class="x_content">
 
                     <div class="static-form-control">
-                        <input type="text" asp-for="MetaKeywords" class="form-control keywords" />
+                        <input type="text" asp-for="MetaKeywords" class="form-control keywords" id="keywords" />
                     </div>
 
                   
@@ -168,11 +168,7 @@
 
 
 
-
-@section Styles{
-    <link href="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-    
-}
+ 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
@@ -183,17 +179,10 @@
         ViewBag.TinyMce_Suumry_Id = ".summary";
         await Html.RenderPartialAsync("partials/_tinymce.cshtml");
     }
-
-     
-    <script src="~/Admin/lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-
+     <script src="~/Admin/js/tagify.min.js"></script>
     <script>
-         
-         $('.keywords').tagsinput({
-                    tagClass: 'tag'
-         });
-
-
+        var input = document.getElementById('keywords');
+        var tagify = new Tagify(input, {} );
          @if(TempData.ContainsKey("UpdateDone")){
             TempData.Remove("UpdateDone");
             <text>

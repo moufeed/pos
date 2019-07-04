@@ -6,7 +6,6 @@
     "Tamtech <info@tamtech.solutions> (tamtech)"
   ],
   "license": "ISC",
-  "homepage": "index",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,18 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "sweetalert2": "^7.21.0",
-    "jquery-validation-unobtrusive": "v3.2.10",
-    "jquery-validation": "1.17.0",
     "bootstrap": "3.3.7",
-    "datatables": "^1.10.16",
-    "animate.css": "3.5.2",
-    "bootstrap-tagsinput": "0.8.0",
-    "typeahead.js": "v0.11.1",
-    "eonasdan-bootstrap-datetimepicker": "4.17.47",
-    "select2": "^4.0.5"
-  },
-  "resolutions": {
-    "jquery-validation-unobtrusive": "v3.2.10"
+    "select2": "^4.0.5",
+    "sweetalert2": "^7.21.0"
   }
 }
