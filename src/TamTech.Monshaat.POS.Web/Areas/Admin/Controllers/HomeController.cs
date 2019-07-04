@@ -14,10 +14,11 @@ using Microsoft.AspNetCore.Http;
 using TamTech.Monshaat.POS.Web.Services.Upload;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.Services.ContentService;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Contact;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Services.Utilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -31,7 +32,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly SettingsHelpers _settingsHelpers;
         private readonly IUsersManagerService _identityService; 
         private readonly IContactService _contactService;
-        private readonly IContentServices _contentServices;
+        private readonly ICCUServices _contentServices;
         private readonly IStatisticsService _statisticsService;
         IUploadManagerService _uploadManager;
 
@@ -42,7 +43,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             SettingsHelpers settingsHelpers,
              IUploadManagerService uploadManager,
              IStringLocalizer<AdminBaseController> localizer,
-             IContentServices contentServices,
+             ICCUServices contentServices,
              IContactService contactService,
              IStatisticsService statisticsService)
             : base(telemetryClientService, localizer)

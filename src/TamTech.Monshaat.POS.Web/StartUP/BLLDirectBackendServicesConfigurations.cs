@@ -1,12 +1,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.ContentService.Services.Sections;
 using TamTech.Monshaat.POS.Web.Services.ContentService;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography; 
-using TamTech.Monshaat.POS.Web.Services.ContentService.Contact; 
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies; 
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs; 
 using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;  
 using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders; 
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 using TamTech.Monshaat.POS.Web.Services.Email;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 using TamTech.Monshaat.POS.Web.Services.Upload;
@@ -18,40 +19,33 @@ namespace TamTech.Monshaat.POS.Web.StartUP
         public static void _AddBusinessLogicDirectBackendServicesConfigurations(this IServiceCollection services)
         {
             #region Contents Service 
-
+             
             services.AddScoped<IMenusServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.DirectMenusServices>();
                 services.AddTransient<IPageService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.DirectPagesService>();
-             services.AddTransient<IContentServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content.DirectContentService>();
+             services.AddTransient<ICCUServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content.DirectContentService>();
             services.AddTransient<ISlidersServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
-             services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IRequestStatusService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService>(); 
-           services.AddTransient<IContactService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact.DirectContactService>();
+              services.AddTransient<IContactService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact.DirectContactService>();
             services.AddTransient<IBiographyService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography.DirectBiographyService>();
             services.AddTransient<ISettingService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Settings.DirectSettingService>();
 
 
 
-            // services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IRequestStatusService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService>();
+          
+          
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IRequestStatusService>((serviceExtension) =>
-            {
-                var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IRequestStatusService>();
-                return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
-            });
-
-
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IContactStatusService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IContactUsStatusService>((serviceExtension) =>
             {
                 var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IContactStatusService>();
                 return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
             });
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IPosStatusService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IPosStatusService>((serviceExtension) =>
             {
                 var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IPOSStatusService>();
                 return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
             });
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Status.IVendorStatusService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IVendorStatusService>((serviceExtension) =>
             {
                 var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IVendorStatusService>();
                 return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
@@ -62,28 +56,28 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
 
             #region Pos Services
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Utilities.IStatisticsService, Web.DirectBackendServices.UtilitiesServices.DirectStatisticsService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.IStatisticsService, Web.DirectBackendServices.UtilitiesServices.DirectStatisticsService>();
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.PosService.Sectors.ISectorServices, Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.PosService.Directory.IDirectoryServices, Web.DirectBackendServices.PosServices.Directory.DirectDirectoryService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.PosService.PosService.IPOSAdminServeice, Web.DirectBackendServices.PosServices.Pos.DirectAdminPosServices>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.PosService.PosService.IPOSService, Web.DirectBackendServices.PosServices.Pos.DirectPosService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.VendorsServices.IVendorAdminServices, Web.DirectBackendServices.VendorService.DirectAdminVendorService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.VendorsServices.IVendorService, Web.DirectBackendServices.VendorService.DirectVendorService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.ISectorServices, Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.Directory.IDirectoryServices, Web.DirectBackendServices.PosServices.Directory.DirectDirectoryService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSAdminServeice, Web.DirectBackendServices.PosServices.Pos.DirectAdminPosServices>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSService, Web.DirectBackendServices.PosServices.Pos.DirectPosService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.IVendorAdminServices, Web.DirectBackendServices.VendorService.DirectAdminVendorService>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.IVendorService, Web.DirectBackendServices.VendorService.DirectVendorService>();
             #endregion
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
 
 
 
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.TypesService.IPosTypeService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IPosTypeService>((serviceExtension) =>
             {
                 var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IPOSTypeService>();
                 return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
             });
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.TypesService.IContactTypeService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IContactTypeService>((serviceExtension) =>
        {
            var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IConUsTypeService>();
            return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
@@ -94,7 +88,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 var service = serviceExtension.GetService<TamTech.ContentService.Services.Attributes.IPOSAttributeService>();
                 return new Web.DirectBackendServices.PosServices.Attributes.DirectAttributeService(service);
             });
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ValuesServices.IPosValuesService>((serviceExtension) =>
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Values.IPosValuesService>((serviceExtension) =>
             {
                 var service = serviceExtension.GetService<TamTech.ContentService.Services.Values.IPOSValueService>();
                 return new Web.DirectBackendServices.ValuesServices.DirectValuesServies(service);

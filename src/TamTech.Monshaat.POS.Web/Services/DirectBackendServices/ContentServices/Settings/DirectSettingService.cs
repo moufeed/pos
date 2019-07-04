@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Settings.Mapper;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Settings.Models;
 

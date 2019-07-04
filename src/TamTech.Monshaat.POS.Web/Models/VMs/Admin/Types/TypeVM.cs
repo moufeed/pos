@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.TypesService.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
 
 namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types
 {

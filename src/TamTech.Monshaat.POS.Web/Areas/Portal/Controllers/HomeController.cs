@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using System.Linq;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
 using TamTech.Monshaat.POS.Web.Services.Email;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
@@ -16,13 +16,13 @@ using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus;
-using TamTech.Monshaat.POS.Web.Services.PosService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Core.Mappers.Contact;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Attachments;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Contact;
-using TamTech.Monshaat.POS.Web.Services.TypesService;
-using TamTech.Monshaat.POS.Web.Services.PosService.Directory;
-using TamTech.Monshaat.POS.Web.Services.Regions;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Core.Enums;
 
 namespace TamTechSDK.Web.Controllers.Portal

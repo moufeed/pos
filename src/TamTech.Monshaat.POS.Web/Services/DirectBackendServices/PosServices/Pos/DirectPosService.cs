@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos.Mapper;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.PosService.Directory.Models;
-using TamTech.Monshaat.POS.Web.Services.PosService.PosService;
-using TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 

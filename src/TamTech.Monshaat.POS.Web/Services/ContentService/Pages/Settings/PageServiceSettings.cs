@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
 {
-    public class PageServiceSettings : ContentsServiceSettings, IPageServiceSettings
+    public class PageServiceSettings : CCUServiceSettings, IPageServiceSettings
     {
         public PageServiceSettings(string contentsServiceUrl) : base(contentsServiceUrl)
         {

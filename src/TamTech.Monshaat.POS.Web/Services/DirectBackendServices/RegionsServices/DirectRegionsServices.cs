@@ -9,8 +9,8 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.Regions;
-using TamTech.Monshaat.POS.Web.Services.Regions.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices
 {

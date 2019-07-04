@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Sectors
     public static class SectorsMapper
     {
 
-        public static SectorVM MapToSectorVM(this TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.SectorDto item)
+        public static SectorVM MapToSectorVM(this TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.SectorDto item)
         {
             return new SectorVM
             {
@@ -34,9 +34,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Sectors
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.UpdateSectorModel MapToUpdateSectorModel(this SectorVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.UpdateSectorModel MapToUpdateSectorModel(this SectorVM item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.UpdateSectorModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.UpdateSectorModel
             {
                 Id = item.Id,
                 Name = item.Name,
@@ -52,9 +52,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Sectors
                 Image = item.Image
             };
         }
-        public static TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.CreateSectorModel MapToCreateSectorModel(this SectorVM item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.CreateSectorModel MapToCreateSectorModel(this SectorVM item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.CreateSectorModel
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models.CreateSectorModel
             {
                 Name = item.Name,
                 Description = item.Description,

@@ -8,10 +8,10 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.PosService.Directory;
-using TamTech.Monshaat.POS.Web.Services.PosService.Directory.Models;
-using TamTech.Monshaat.POS.Web.Services.PosService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.TypesService;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 

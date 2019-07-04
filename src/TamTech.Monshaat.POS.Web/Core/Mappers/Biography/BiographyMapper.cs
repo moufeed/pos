@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic; 
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Biographies;
 using Newtonsoft.Json; 
 using TamTech.Monshaat.POS.Web.Core.Constants;

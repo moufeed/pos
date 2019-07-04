@@ -7,8 +7,8 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.PosService.PosService;
-using TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Settings
 {
-    public class MenusServicesSettings : ContentsServiceSettings, IMenusServicesSettings
+    public class MenusServicesSettings : CCUServiceSettings, IMenusServicesSettings
     {
         public MenusServicesSettings(string contentsServiceUrl) : base(contentsServiceUrl)
         {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography.Mapper;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography
 {

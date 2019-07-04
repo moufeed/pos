@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ValuesServices.Mapper
     public static class ValuesMapper
     {
 
-        public static TamTech.ContentService.Services.Values.Models.CreateValueModel MapToBackendCreateValueModel(this TamTech.Monshaat.POS.Web.Services.ValuesServices.Models.CreateValueModel item)
+        public static TamTech.ContentService.Services.Values.Models.CreateValueModel MapToBackendCreateValueModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.CreateValueModel item)
         {
             return new ContentService.Services.Values.Models.CreateValueModel
             {
@@ -26,7 +26,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ValuesServices.Mapper
             };
         }
 
-        public static TamTech.ContentService.Services.Values.Models.UpdateValueModel MapToBackendUpdateValueModel(this TamTech.Monshaat.POS.Web.Services.ValuesServices.Models.UpdateValueModel item)
+        public static TamTech.ContentService.Services.Values.Models.UpdateValueModel MapToBackendUpdateValueModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.UpdateValueModel item)
         {
             return new ContentService.Services.Values.Models.UpdateValueModel
             {
@@ -45,9 +45,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ValuesServices.Mapper
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.ValuesServices.Models.ValueDto MapToForntValueDto(this ContentService.Services.Values.Models.ValueDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto MapToForntValueDto(this ContentService.Services.Values.Models.ValueDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.ValuesServices.Models.ValueDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto
             {
                 Description = item.Description,
                 DisplayOrder = item.DisplayOrder,

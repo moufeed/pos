@@ -17,7 +17,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 
         public string IdentityEndpointBase => _identityServiceUrl;
 
-        public string ClientId => "whatcookapp";
+        public string ClientId => "clientapp";
 
         public string ClientSecret => "h8yI4DydzI5ZsKCMGTs9hfTdI1vRS3qfTo9Go92q3aM=";
 

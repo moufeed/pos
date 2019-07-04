@@ -10,7 +10,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.ValuesServices;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
 using TamTech.Monshaat.POS.Web.Core.Mappers.Values;
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;

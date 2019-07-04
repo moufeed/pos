@@ -9,9 +9,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices
     {
 
 
-        public static TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.PosBaseDto MapToForntPosBaseDto(this TamTech.ContentService.Services.POSs.Models.POSDto item)
+        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.PosBaseDto MapToForntPosBaseDto(this TamTech.ContentService.Services.POSs.Models.POSDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.PosBaseDto
+            return new TamTech.Monshaat.POS.Web.Services.POSs.Models.PosBaseDto
             {
                 Name = item.Name,
                 Lang = item.Lang,
@@ -46,9 +46,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices
         }
 
 
-        public static TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.PosDto MapToForntPosDto(this TamTech.ContentService.Services.POSs.Models.POSDetailedDto item)
+        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.PosDto MapToForntPosDto(this TamTech.ContentService.Services.POSs.Models.POSDetailedDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.PosDto
+            return new TamTech.Monshaat.POS.Web.Services.POSs.Models.PosDto
             {
                 Name = item.Name,
                 Lang = item.Lang,
@@ -82,14 +82,14 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices
                 VendorWebsite = item.VendorWebsite,
                 Notes = item.Notes,
                 Actionable = item.Actionable,
-                Specifications = item.Specifications != null ? item.Specifications.Select(el => el.MapToForntSpecifications()).ToList() : new List<TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.SpecificationDto>(),
+                Specifications = item.Specifications != null ? item.Specifications.Select(el => el.MapToForntSpecifications()).ToList() : new List<TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationDto>(),
                 StatusHistories = item.StatusHistories?.Select(el => el.MapToPOSStatusHistoryDto()).ToList()
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.SpecificationDto MapToForntSpecifications(this TamTech.ContentService.Services.POSs.Models.SpecificationDto item)
+        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationDto MapToForntSpecifications(this TamTech.ContentService.Services.POSs.Models.SpecificationDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.SpecificationDto
+            return new TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationDto
             {
                 AttId = item.AttId,
                 AttName = item.AttName,
@@ -100,7 +100,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices
         }
 
 
-        public static TamTech.ContentService.Services.Shared.Models.SetActionModel MapToBackUpdatePOSStatus(this TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.UpdatePOSStatus item)
+        public static TamTech.ContentService.Services.Shared.Models.SetActionModel MapToBackUpdatePOSStatus(this TamTech.Monshaat.POS.Web.Services.POSs.Models.UpdatePOSStatus item)
         {
             return new ContentService.Services.Shared.Models.SetActionModel
             {
@@ -122,9 +122,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices
         }
 
 
-        public static TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.POSStatusHistoryDto MapToPOSStatusHistoryDto(this TamTech.ContentService.Services.POSs.Models.POSStatusHistoryDto item)
+        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.POSStatusHistoryDto MapToPOSStatusHistoryDto(this TamTech.ContentService.Services.POSs.Models.POSStatusHistoryDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.PosService.PosService.Models.POSStatusHistoryDto
+            return new TamTech.Monshaat.POS.Web.Services.POSs.Models.POSStatusHistoryDto
             {
                 Id = item.Id,
                 ActionId = item.ActionId,

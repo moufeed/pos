@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models

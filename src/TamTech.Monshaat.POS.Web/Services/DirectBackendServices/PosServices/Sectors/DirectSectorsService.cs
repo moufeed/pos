@@ -10,8 +10,8 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.PosService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors
 {

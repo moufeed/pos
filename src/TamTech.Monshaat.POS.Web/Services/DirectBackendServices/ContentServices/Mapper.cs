@@ -102,9 +102,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
         }
 
 
-        public static TamTech.Monshaat.POS.Web.Services.Status.Models.StatusDto MapToFrontStatusDto(this TamTech.ContentService.Services.Statuses.Models.StatusDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models.StatusDto MapToFrontStatusDto(this TamTech.ContentService.Services.Statuses.Models.StatusDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.Status.Models.StatusDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models.StatusDto
             {
                 Id = item.Id,
                 Name = item.Name,

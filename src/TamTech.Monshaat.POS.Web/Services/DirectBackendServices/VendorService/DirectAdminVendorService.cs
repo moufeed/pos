@@ -9,8 +9,8 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Services.VendorsServices;
-using TamTech.Monshaat.POS.Web.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
 {

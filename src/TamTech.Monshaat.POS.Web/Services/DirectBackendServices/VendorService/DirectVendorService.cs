@@ -6,8 +6,8 @@ using TamTech.ContentService.Services.Persons;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Services.VendorsServices;
-using TamTech.Monshaat.POS.Web.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService

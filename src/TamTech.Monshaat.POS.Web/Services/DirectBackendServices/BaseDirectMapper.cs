@@ -22,7 +22,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             };
         }
 
-        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTech.Monshaat.POS.Web.Services.PosService.Directory.Models.PosFilters item)
+        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models.PosFilters item)
         {
             return new TamTech.ContentService.Services.POSs.Models.POSFilterModel
             {

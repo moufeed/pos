@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biography;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
 using TamTech.Monshaat.POS.Web.Core.Mappers.Biography;
 
 namespace TamTech.Monshaat.POS.Web.Core.Biographies

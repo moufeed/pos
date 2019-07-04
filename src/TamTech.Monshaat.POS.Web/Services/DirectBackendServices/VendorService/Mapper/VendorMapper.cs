@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
     public static class VendorMapper
     {
 
-        public static TamTech.ContentService.Services.Persons.Models.CreatePersonModel MapTobackCreatePersonModel(this TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.CreatePersonModel item)
+        public static TamTech.ContentService.Services.Persons.Models.CreatePersonModel MapTobackCreatePersonModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.CreatePersonModel item)
         {
             return new ContentService.Services.Persons.Models.CreatePersonModel
             {
@@ -23,7 +23,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
         }
 
 
-        public static TamTech.ContentService.Services.Vendors.Models.CreateVendorModel MapToBackCreateVendorModel(this TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.CreateVendorModel item)
+        public static TamTech.ContentService.Services.Vendors.Models.CreateVendorModel MapToBackCreateVendorModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.CreateVendorModel item)
         {
             return new TamTech.ContentService.Services.Vendors.Models.CreateVendorModel
             {
@@ -43,7 +43,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
             };
         }
 
-        public static TamTech.ContentService.Services.Persons.Models.UpdatePersonModel MapTobackUpdatePersonModel(this TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.UpdatePersonModel item)
+        public static TamTech.ContentService.Services.Persons.Models.UpdatePersonModel MapTobackUpdatePersonModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.UpdatePersonModel item)
         {
             return new ContentService.Services.Persons.Models.UpdatePersonModel
             {
@@ -58,7 +58,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
         }
 
 
-        public static TamTech.ContentService.Services.Vendors.Models.UpdateVendorModel MapToBackUpdateVendorModel(this TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.UpdateVendorModel item)
+        public static TamTech.ContentService.Services.Vendors.Models.UpdateVendorModel MapToBackUpdateVendorModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.UpdateVendorModel item)
         {
             return new TamTech.ContentService.Services.Vendors.Models.UpdateVendorModel
             {
@@ -79,9 +79,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.PersonDto MapToFrontPersonDto(this TamTech.ContentService.Services.Persons.Models.PersonDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.PersonDto MapToFrontPersonDto(this TamTech.ContentService.Services.Persons.Models.PersonDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.PersonDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.PersonDto
             {
                 Id = item.Id,
                 CreatedDate = item.CreatedDate,
@@ -100,9 +100,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
                 IdentityNo = item.IdentityNo
             };
         }
-        public static TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.VendorDto MapToFrontVendorDto(this TamTech.ContentService.Services.Vendors.Models.VendorDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.VendorDto MapToFrontVendorDto(this TamTech.ContentService.Services.Vendors.Models.VendorDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.VendorDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.VendorDto
             {
                 Id = item.Id,
                 StatusName = item.StatusName,
@@ -135,9 +135,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper
         }
 
 
-        public static TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.VendorStatusHistoryDto MapToVendorStatusHistoryDto(this TamTech.ContentService.Services.Vendors.Models.VendorStatusHistoryDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.VendorStatusHistoryDto MapToVendorStatusHistoryDto(this TamTech.ContentService.Services.Vendors.Models.VendorStatusHistoryDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.VendorStatusHistoryDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.VendorStatusHistoryDto
             {
                 Id = item.Id,
                 ActionId = item.ActionId,

@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices.Mapper
     public static class RegionsMapper
     {
 
-        public static TamTech.ContentService.Services.Regions.Models.CreateRegionModel MapToBackCreateRegionModel(this TamTech.Monshaat.POS.Web.Services.Regions.Models.CreateRegionModel item)
+        public static TamTech.ContentService.Services.Regions.Models.CreateRegionModel MapToBackCreateRegionModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models.CreateRegionModel item)
         {
             return new ContentService.Services.Regions.Models.CreateRegionModel
             {
@@ -26,7 +26,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices.Mapper
             };
         }
 
-        public static TamTech.ContentService.Services.Regions.Models.UpdateRegionModel MapToBackUpdateRegionModel(this TamTech.Monshaat.POS.Web.Services.Regions.Models.UpdateRegionModel item)
+        public static TamTech.ContentService.Services.Regions.Models.UpdateRegionModel MapToBackUpdateRegionModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models.UpdateRegionModel item)
         {
             return new ContentService.Services.Regions.Models.UpdateRegionModel
             {
@@ -44,9 +44,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices.Mapper
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.Regions.Models.RegionDto MapToFrontRegionDto(this TamTech.ContentService.Services.Regions.Models.RegionDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models.RegionDto MapToFrontRegionDto(this TamTech.ContentService.Services.Regions.Models.RegionDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.Regions.Models.RegionDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models.RegionDto
             {
                 Name = item.Name,
                 Description = item.Description,

@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biograp
 {
     public static class BiographyMapper
     {
-        public static TamTech.ContentService.Services.Biographies.Models.UpdateBiographyModel MapToBackUpdateBiographyModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models.UpdateBiographyModel item)
+        public static TamTech.ContentService.Services.Biographies.Models.UpdateBiographyModel MapToBackUpdateBiographyModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models.UpdateBiographyModel item)
         {
             return new ContentService.Services.Biographies.Models.UpdateBiographyModel
             {
@@ -20,7 +20,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biograp
 
 
 
-        public static TamTech.ContentService.Services.Biographies.Models.BiographyModel MapToBackBiographyModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models.BiographyModel item)
+        public static TamTech.ContentService.Services.Biographies.Models.BiographyModel MapToBackBiographyModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models.BiographyModel item)
         {
             return new ContentService.Services.Biographies.Models.BiographyModel
             {
@@ -33,9 +33,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biograp
         }
 
 
-        public static TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models.BiographyDto MapToFrontBiographyDto(this TamTech.ContentService.Services.Biographies.Models.BiographyDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models.BiographyDto MapToFrontBiographyDto(this TamTech.ContentService.Services.Biographies.Models.BiographyDto item)
         {
-            return new TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models.BiographyDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models.BiographyDto
             {
                 Description = item.Description,
                 GenericField = item.GenericField,

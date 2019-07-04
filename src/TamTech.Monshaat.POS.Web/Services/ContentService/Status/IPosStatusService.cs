@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿ 
 
-namespace TamTech.Monshaat.POS.Web.Services.Status
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Status
 {
     public interface IPosStatusService : IStatusService
     {

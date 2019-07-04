@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Services.Status.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models
 {
    public  class StatusDto
     {

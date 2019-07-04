@@ -10,12 +10,12 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.TypesService;
-using TamTech.Monshaat.POS.Web.Services.TypesService.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
 {
-    public class DirectTypeServices : BaseDirectService, TamTech.Monshaat.POS.Web.Services.TypesService.ITypeService, IContactTypeService, IPosTypeService
+    public class DirectTypeServices : BaseDirectService, TamTech.Monshaat.POS.Web.Services.ContentService.Types.ITypeService, IContactTypeService, IPosTypeService
     {
         private readonly TamTech.ContentService.Services.Types.ITypeService _typeService;
 

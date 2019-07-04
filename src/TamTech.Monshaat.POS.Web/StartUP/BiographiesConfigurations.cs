@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using TamTech.ContentService.Core.Domain.Models;
 using TamTech.ContentService.Data;
 
-namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService
+namespace TamTech.Monshaat.POS.Web.StartUP.ContentService
 {
     public static class BiographiesConfigurations
     {

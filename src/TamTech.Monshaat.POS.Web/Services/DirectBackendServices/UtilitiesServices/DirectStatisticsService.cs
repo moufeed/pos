@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices.Mapper;
-using TamTech.Monshaat.POS.Web.Services.Utilities;
-using TamTech.Monshaat.POS.Web.Services.Utilities.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices
 {
