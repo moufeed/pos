@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTechSDK.Common.Models.Policies
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Policies
 {
     public static class PolicyConstants
     { 

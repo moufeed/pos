@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Identity.Models.Params
+namespace TamTech.Monshaat.POS.Web.Services.Identity.Models.Params
 {
     public class GetUserModel
     {

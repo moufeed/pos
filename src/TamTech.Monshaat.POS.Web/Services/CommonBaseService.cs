@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
-namespace TamTechSDK.Common.Services
+namespace TamTech.Monshaat.POS.Web.Services
 {
     public class CommonBaseService
     {

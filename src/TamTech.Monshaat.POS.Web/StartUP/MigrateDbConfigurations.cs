@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.IdentityService;
 
 namespace TamTech.Monshaat.POS.Web.StartUP

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin.Menus
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus
 {
     public class StaticMenuItem
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Email.Settings
+namespace TamTech.Monshaat.POS.Web.Services.Email.Settings
 {
     public class EmailFromInfo
     {

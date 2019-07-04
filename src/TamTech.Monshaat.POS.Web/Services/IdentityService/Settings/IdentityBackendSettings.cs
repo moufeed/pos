@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Identity.Settings
+namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 {
     public class IdentityBackendSettings : IIdentityBackendSettings
     {

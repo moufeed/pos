@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Directory.M
     public static class DirectoryMapper
     {
 
-        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTechSDK.Common.Services.PosService.Directory.Models.PosFilters item)
+        public static TamTech.ContentService.Services.POSs.Models.POSFilterModel MapToBackPosFilter(this TamTech.Monshaat.POS.Web.Services.PosService.Directory.Models.PosFilters item)
         {
             return new ContentService.Services.POSs.Models.POSFilterModel
             {

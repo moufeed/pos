@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackendServices.EmailService;
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices; 
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

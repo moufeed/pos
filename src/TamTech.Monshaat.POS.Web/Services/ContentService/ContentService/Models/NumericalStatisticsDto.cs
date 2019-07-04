@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.ContentService.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.ContentService.Models
 {
     public class NumericalStatisticsDto
     {

@@ -8,11 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
-using TamTechSDK.Common.Models.Exceptions;
-using TamTechSDK.Common.Providers.Requests.Models;
+using System.Threading.Tasks; 
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
-namespace TamTechSDK.Common.Providers.Requests
+namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
 {
     public class RequestProvider : IRequestProvider
     {

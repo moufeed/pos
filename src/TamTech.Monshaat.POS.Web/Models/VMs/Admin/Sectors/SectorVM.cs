@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin.Sectors
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sectors
 {
     public class SectorVM
     {

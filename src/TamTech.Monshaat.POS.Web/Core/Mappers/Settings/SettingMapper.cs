@@ -4,7 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Linq;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Settings
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Settings
 {
     public static class SettingMapper
     {

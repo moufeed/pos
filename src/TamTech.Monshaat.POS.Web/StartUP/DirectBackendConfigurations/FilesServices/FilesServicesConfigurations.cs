@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTechBackendSDK.FileStorageService.Services;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry.Settings;
 using System.Linq;

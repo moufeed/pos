@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Sliders
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders
 {
 	public class SlidersServices : ISlidersServices
 	{

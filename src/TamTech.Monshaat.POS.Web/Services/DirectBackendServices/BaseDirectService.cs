@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Models.Languages;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
-namespace TamTechSDK.Common.Services.ContentService.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Models
 {
     public class ContentItem
     {

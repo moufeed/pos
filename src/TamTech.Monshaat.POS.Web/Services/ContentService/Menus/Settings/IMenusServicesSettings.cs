@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Menus.Settings
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Settings
 {
     public interface IMenusServicesSettings
     {

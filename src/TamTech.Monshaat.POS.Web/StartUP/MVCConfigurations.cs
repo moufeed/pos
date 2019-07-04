@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using TamTechSDK.Web.Attributes;
+using TamTech.Monshaat.POS.Web.Core.Attributes;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

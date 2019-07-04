@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Models.Pagination
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Pagination
 {
     public  class PagingParameterModel
     {

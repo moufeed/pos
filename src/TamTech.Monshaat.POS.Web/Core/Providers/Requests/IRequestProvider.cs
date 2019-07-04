@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
-namespace TamTechSDK.Common.Providers.Requests
+namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
 {
     public interface IRequestProvider
     { 

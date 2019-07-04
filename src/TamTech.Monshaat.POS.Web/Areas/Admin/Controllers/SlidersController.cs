@@ -5,15 +5,17 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Services.ContentService.Sliders;
-using TamTechSDK.Common.Services.ContentService.Sliders.Models;
-using TamTechSDK.Common.Services.Upload;
-using TamTechSDK.Common.Services.Upload.FileTypes;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Extensions.AutoMapper.Slider;
-using TamTechSDK.Web.Services.Configurations.Cultures;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Slider;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -64,7 +66,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (!string.IsNullOrWhiteSpace(img))
                 {
                     Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.SliderItemMainImage } };
-                    Common.Providers.Requests.Models.IRequestProviderResult<Common.Services.Upload.Models.DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
+                    IRequestProviderResult<DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
                 }
             }
@@ -185,7 +187,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 bool continueEditing = collection.ContainsKey("save-continue");
-                Common.Providers.Requests.Models.IRequestProviderResult<bool> result = await _sliderService.UpdateAsync(model);
+                 IRequestProviderResult<bool> result = await _sliderService.UpdateAsync(model);
                 HandelPostingResult(result, _localizer["slider_updating_successfully"]);
                 if (result.Success)
                 {

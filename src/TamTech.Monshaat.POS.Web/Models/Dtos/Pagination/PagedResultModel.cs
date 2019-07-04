@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Models.Languages; 
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs; 
 
-namespace TamTechSDK.Common.Models.Pagination
+namespace TamTech.Monshaat.POS.Web.Models.Dtos.Pagination
 {
     public class PagedResultModel<TCollection>
     {

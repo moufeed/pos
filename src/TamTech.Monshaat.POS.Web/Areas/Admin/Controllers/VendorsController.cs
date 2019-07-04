@@ -8,23 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.EFile2.Utilities;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Services.Email;
-using TamTechSDK.Common.Services.Email.Models;
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Models.Params;
-using TamTechSDK.Common.Services.Shared.Models;
-using TamTechSDK.Common.Services.Status;
-using TamTechSDK.Common.Services.VendorsServices;
-using TamTechSDK.Common.Services.VendorsServices.Models;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Models.Admin.Vendor;
-using TamTechSDK.Web.Models.Shared;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Services.Email;
+using TamTech.Monshaat.POS.Web.Services.Email.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Services.Status;
+using TamTech.Monshaat.POS.Web.Services.VendorsServices;
+using TamTech.Monshaat.POS.Web.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Vendor;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -135,7 +135,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 if (ModelState.IsValid)
                 {
-                    SetAction action = new SetAction
+                    SetActionModel action = new SetActionModel
                     {
                         Id = model.Id,
                         ActionId = model.ActionId,

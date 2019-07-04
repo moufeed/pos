@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.ContentService.Services.Persons;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService.Mapper;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Shared.Models;
-using TamTechSDK.Common.Services.VendorsServices;
-using TamTechSDK.Common.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Services.VendorsServices;
+using TamTech.Monshaat.POS.Web.Services.VendorsServices.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
 {

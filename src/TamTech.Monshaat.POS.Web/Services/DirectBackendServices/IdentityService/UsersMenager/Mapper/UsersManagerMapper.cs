@@ -7,7 +7,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMe
 {
     public static class UsersManagerMapper
     {
-        public static TamTechBackendSDK.IdentityService.Models.UserManager.RegisterUserModel MapToBackendModel(this TamTechSDK.Common.Services.Identity.Models.Params.RegisterUserModel frontend)
+        public static TamTechBackendSDK.IdentityService.Models.UserManager.RegisterUserModel MapToBackendModel(this TamTech.Monshaat.POS.Web.Services.Identity.Models.Params.RegisterUserModel frontend)
         {
             return new TamTechBackendSDK.IdentityService.Models.UserManager.RegisterUserModel
             {
@@ -20,7 +20,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMe
 
             };
         }
-        public static TamTechBackendSDK.IdentityService.Models.UserManager.GetUsersModel MapToBackendModel(this TamTechSDK.Common.Services.Identity.Models.Params.GetUsersModel frontend)
+        public static TamTechBackendSDK.IdentityService.Models.UserManager.GetUsersModel MapToBackendModel(this TamTech.Monshaat.POS.Web.Services.Identity.Models.Params.GetUsersModel frontend)
         {
             return new TamTechBackendSDK.IdentityService.Models.UserManager.GetUsersModel
             {
@@ -32,10 +32,10 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMe
             };
         }
 
-        public static TamTechSDK.Common.Models.Pagination.PaginationMetadataModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Models.PaginationMetadataModel backend)
+        public static TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Models.PaginationMetadataModel backend)
         {
 
-            return new TamTechSDK.Common.Models.Pagination.PaginationMetadataModel
+            return new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel
             {
                 NextPage = backend.NextPage,
                 PageNumber = backend.PageNumber.ToString(),
@@ -48,9 +48,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMe
         }
 
 
-        public static TamTechSDK.Common.Services.Identity.Models.UserModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Models.Users.UserModel backend)
+        public static TamTech.Monshaat.POS.Web.Services.Identity.Models.UserModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Models.Users.UserModel backend)
         {
-            return new TamTechSDK.Common.Services.Identity.Models.UserModel
+            return new TamTech.Monshaat.POS.Web.Services.Identity.Models.UserModel
             {
                 AccessFailedCount = backend.AccessFailedCount,
                 Email = backend.Email,

@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.Core.Biographies;
-using TamTechSDK.Common.Services.ContentService.Biography;
-using TamTechSDK.Common.Services.ContentService.Biography.Models;
-using TamTechSDK.Common.Services.Upload;
-using TamTechSDK.Common.Services.Upload.Models;
-using TamTechSDK.Web.Extensions.AutoMapper.Biography;
-using TamTechSDK.Web.Models.Admin.Biographies;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Biography;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Biographies;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -43,7 +44,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (!string.IsNullOrWhiteSpace(img))
                 {
                     Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.General } };
-                    Common.Providers.Requests.Models.IRequestProviderResult<Common.Services.Upload.Models.DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
+                    IRequestProviderResult<DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
                 }
             }

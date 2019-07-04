@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Portal.Contactus
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus
 {
     public class ContactusVM
     {

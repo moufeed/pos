@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 using TamTech.ContentService.Services.Statuses;
 using TamTech.ContentService.Services.Types;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService.Mapper;
-using TamTechSDK.Common.Models.ContentItem;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.SelectList;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Common.Services.TypesService.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.TypesService;
+using TamTech.Monshaat.POS.Web.Services.TypesService.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
 {
-    public class DirectTypeServices : BaseDirectService, TamTechSDK.Common.Services.TypesService.ITypeService, IContactTypeService, IPosTypeService
+    public class DirectTypeServices : BaseDirectService, TamTech.Monshaat.POS.Web.Services.TypesService.ITypeService, IContactTypeService, IPosTypeService
     {
         private readonly TamTech.ContentService.Services.Types.ITypeService _typeService;
 

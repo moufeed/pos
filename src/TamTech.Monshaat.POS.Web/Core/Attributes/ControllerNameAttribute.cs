@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System; 
 
-namespace TamTechSDK.Web.Attributes
+namespace TamTech.Monshaat.POS.Web.Core.Attributes
 {
    public class ControllerNameAttribute : Attribute
     {

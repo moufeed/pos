@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.Common.Services.Helpers;
 using TamTech.ContentService.Services.Helpers.ExpressionValidations;
 using TamTech.ContentService.Services.Helpers.ExpressionValidations.Settings;

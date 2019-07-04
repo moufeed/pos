@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
+using TamTech.Monshaat.POS.Web.Services.VendorsServices.Models;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Vendor
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Vendor
 {
     public static class VendorMapper
     {
-        public static Common.Services.VendorsServices.Models.CreatePersonModel MapVendorFormVmToCreatePersonModelWithoutAttachments(this Models.Portal.vendor.VendorFormVm item)
+        public static  CreatePersonModel MapVendorFormVmToCreatePersonModelWithoutAttachments(this  VendorFormVm item)
         {
-            return new Common.Services.VendorsServices.Models.CreatePersonModel
+            return new CreatePersonModel
             {
                 Email = item.Email,
                 FirstName = item.FirstName,
@@ -19,9 +21,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Vendor
             };
         }
 
-        public static Common.Services.VendorsServices.Models.CreateVendorModel MapVendorFormVmToCreateVendorModel(this Models.Portal.vendor.VendorFormVm item)
+        public static  CreateVendorModel MapVendorFormVmToCreateVendorModel(this  VendorFormVm item)
         {
-            return new Common.Services.VendorsServices.Models.CreateVendorModel
+            return new  CreateVendorModel
             {
                 CommercialNo = item.CommercialNo,
                 Description = item.Description,
@@ -39,9 +41,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Vendor
             };
         }
 
-        public static Models.Portal.vendor.VendorFormVm MapToVendorFormVm(this TamTechSDK.Common.Services.VendorsServices.Models.PersonDto item)
+        public static  VendorFormVm MapToVendorFormVm(this TamTech.Monshaat.POS.Web.Services.VendorsServices.Models.PersonDto item)
         {
-            return new Models.Portal.vendor.VendorFormVm
+            return new  VendorFormVm
             {
                 Id = item.Id,
                 Name = item.Vendor.Name,
@@ -75,9 +77,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Vendor
 
 
 
-        public static Common.Services.VendorsServices.Models.UpdatePersonModel MapToUpdatePersonModel(this Models.Portal.vendor.VendorFormVm item)
+        public static  UpdatePersonModel MapToUpdatePersonModel(this  VendorFormVm item)
         {
-            return new Common.Services.VendorsServices.Models.UpdatePersonModel
+            return new  UpdatePersonModel
             {
                 Id = item.Id,
                 Email = item.Email,
@@ -90,9 +92,9 @@ namespace TamTechSDK.Web.Extensions.AutoMapper.Vendor
             };
         }
 
-        public static Common.Services.VendorsServices.Models.UpdateVendorModel MapVendorFormVmToUpdateVendorModel(this Models.Portal.vendor.VendorFormVm item)
+        public static  UpdateVendorModel MapVendorFormVmToUpdateVendorModel(this  VendorFormVm item)
         {
-            return new Common.Services.VendorsServices.Models.UpdateVendorModel
+            return new  UpdateVendorModel
             {
                 Id = item.VendorId,
                 CommercialNo = item.CommercialNo,

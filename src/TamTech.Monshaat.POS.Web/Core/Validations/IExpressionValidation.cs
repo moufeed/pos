@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Services.Validations
+namespace TamTech.Monshaat.POS.Web.Core.Validations
 {
     public interface IExpressionValidation
     {

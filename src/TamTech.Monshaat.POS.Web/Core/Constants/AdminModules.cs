@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TamTech.Monshaat.POS.Web.Settings.Configurations.AppSettings.Constants
+﻿
+namespace TamTech.Monshaat.POS.Web.Core.Constants
 {
     public class AdminModules
 

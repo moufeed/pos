@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Models.Attachments;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Attachments;
 
-namespace TamTechSDK.Common.Services.ContentService.Contact.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models
 {
     public class CreateModel : ContactBaseModel
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-namespace TamTech.Monshaat.POS.Web.Settings.Cultures
+﻿using System.Collections.Generic;
+
+namespace TamTech.Monshaat.POS.Web.Core.Cultures
+
 {
     public static class CultureConstants
     {

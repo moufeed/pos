@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Common.Models.Pagination;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
 
-namespace TamTech.Monshaat.POS.Web.TagHelpers
+namespace TamTech.Monshaat.POS.Web.Core.TagHelpers
 {
     public class Pagination : TagHelper
     {

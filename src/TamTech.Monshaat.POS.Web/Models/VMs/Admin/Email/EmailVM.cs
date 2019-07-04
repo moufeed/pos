@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTechSDK.Web.Models.Admin.Email
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Email
 {
     public class EmailVM
     {

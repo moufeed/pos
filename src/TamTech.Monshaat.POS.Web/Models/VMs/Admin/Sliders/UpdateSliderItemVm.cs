@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TamTechSDK.Web.Models.Admin.Sliders
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sliders
 {
     public class UpdateSliderItemVm
     {

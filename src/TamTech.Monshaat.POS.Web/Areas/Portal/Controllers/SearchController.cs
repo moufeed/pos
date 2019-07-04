@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {

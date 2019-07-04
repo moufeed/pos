@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin.Sliders
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sliders
 {
     public class SliderCreationVM
     {

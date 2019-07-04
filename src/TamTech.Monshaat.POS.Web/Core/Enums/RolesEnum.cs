@@ -1,6 +1,6 @@
-using System;
+ 
 
-namespace TamTechSDK.Common.Enums
+namespace TamTech.Monshaat.POS.Web.Core.Enums
 {
     public enum  RolesEnum{
         Admin = 0,

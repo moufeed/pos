@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact
     {
 
 
-        public static TamTech.ContentService.Services.ContactsUs.Models.CreateContactUsModel mapToBackCreateContact(this TamTechSDK.Common.Services.ContentService.Contact.Models.CreateModel item)
+        public static TamTech.ContentService.Services.ContactsUs.Models.CreateContactUsModel mapToBackCreateContact(this TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models.CreateModel item)
         {
             return new ContentService.Services.ContactsUs.Models.CreateContactUsModel
             {
@@ -30,9 +30,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact
             };
         }
 
-        public static TamTechSDK.Common.Services.ContentService.Contact.Models.ContactDto MapToFrontContactDto(this TamTech.ContentService.Services.ContactsUs.Models.ContactUsDto item)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models.ContactDto MapToFrontContactDto(this TamTech.ContentService.Services.ContactsUs.Models.ContactUsDto item)
         {
-            return new TamTechSDK.Common.Services.ContentService.Contact.Models.ContactDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models.ContactDto
             {
                 Attachments = item.Attachments,
                 Notes = item.Notes,
@@ -62,7 +62,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact
         }
 
 
-        public static TamTech.ContentService.Services.ContactsUs.Models.ReplayContactUsModel MapToBackReplayModel(this TamTechSDK.Common.Services.ContentService.Contact.Models.ReplayContactUsModel item)
+        public static TamTech.ContentService.Services.ContactsUs.Models.ReplayContactUsModel MapToBackReplayModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models.ReplayContactUsModel item)
         {
             return new ContentService.Services.ContactsUs.Models.ReplayContactUsModel
             {

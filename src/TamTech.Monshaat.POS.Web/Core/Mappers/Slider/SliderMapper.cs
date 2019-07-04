@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TamTechSDK.Common.Services.ContentService.Sliders.Models;
-using TamTechSDK.Web.Models.Admin.Sliders;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sliders;
 
-namespace TamTechSDK.Web.Extensions.AutoMapper.Slider
+namespace TamTech.Monshaat.POS.Web.Core.Mappers.Slider
 {
     public static class SliderMapper
     {

@@ -9,13 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
 using TamTechBackendSDK.Common.Services.ServiceBus.Models;
 using TamTechBackendSDK.IdentityService.Enums;
 using TamTechBackendSDK.SMSService.Services;
 using TamTechBackendSDK.SMSService.Settings;
-using TamTechSDK.Web.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.IdentityService
 {

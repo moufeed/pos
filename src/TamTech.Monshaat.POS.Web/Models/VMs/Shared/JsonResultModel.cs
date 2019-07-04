@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Shared
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Shared
 {
     public class JsonResultModel<TResult, TModel>
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Biography.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models
 {
     public enum BiogrphyGroupEnum
     {

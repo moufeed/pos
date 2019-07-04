@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Services.Attributes;
-using TamTechSDK.Common.Services.ValuesServices;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ValuesServices;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

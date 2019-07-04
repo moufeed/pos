@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TamTechSDK.Web.Models.Shared;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
 {

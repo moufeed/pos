@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Localization.Routing;
-using System;
+using Microsoft.AspNetCore.Localization.Routing; 
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Globalization; 
 
-namespace TamTech.Monshaat.POS.Web.Settings.Cultures
+namespace TamTech.Monshaat.POS.Web.Core.Cultures
 {
     public class CultureManager
     {

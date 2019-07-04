@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Common.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
 
 namespace TamTechSDK.Web.Services.ContentService.Menus.PublicService
 {

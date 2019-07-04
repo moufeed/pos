@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTechSDK.Common.Services.ContentService.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models
 {
 
     public class PageDto : ContentItem

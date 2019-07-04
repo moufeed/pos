@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Net;
-using TamTechSDK.Common.Models.Exceptions;
+using System.Net; 
 
-namespace TamTechSDK.Common.Providers.Requests.Models
+namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
 {
     public interface IRequestProviderResult<T>
     {

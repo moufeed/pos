@@ -4,14 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using TamTech.Monshaat.POS.Web.Core.Biographies;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
-using TamTechSDK.Common.Helpers.Converters;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Common.Services.Helpers;
-using TamTechSDK.Common.Services.Upload;
-using TamTechSDK.Common.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Helpers.Converters;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus; 
+using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
 using TamTechSDK.Web.Services.ContentService.Menus.PublicService;
-using TamTechSDK.Web.Services.Validations;
+using TamTech.Monshaat.POS.Web.Core.Validations;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -24,7 +23,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
             //   services.AddScoped<IAppSettingsFile, AppSettingsFileReader>();
 
-            services.AddSingleton<IHelperService, HelperService>();
+           // services.AddSingleton<IHelperService, HelperService>();
             services.AddScoped<IStringConverters, StringConverters>();
             services.AddScoped<IExpressionValidation, ExpressionValidation>();
 

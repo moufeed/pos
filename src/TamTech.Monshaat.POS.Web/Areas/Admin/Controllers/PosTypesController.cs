@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Web.Constants;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.TypesService;
+using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

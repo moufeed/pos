@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.TagHelpers
+namespace TamTech.Monshaat.POS.Web.Core.TagHelpers
 {
     public class IfTagHelper : TagHelper
     {

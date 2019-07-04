@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿ 
 
-namespace TamTech.Monshaat.POS.Web.Settings.Cultures
+namespace TamTech.Monshaat.POS.Web.Core.Cultures
 {
     public class CultureModel
     {

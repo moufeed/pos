@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models
 {
     public class EditSectionsPageDto
     {

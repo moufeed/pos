@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Menus.Enums
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums
 {
     public enum MenuItemTypeEnum
     {

@@ -6,12 +6,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Upload.Models;
-using TamTechSDK.Common.Services.Upload.Settings;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload.Settings;
 
-namespace TamTechSDK.Common.Services.Upload
+namespace TamTech.Monshaat.POS.Web.Services.Upload
 {
     public class AzureBlobUploadService : IUploadService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin.Regions
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Regions
 {
     public class RegionVM : BaseVM
     {

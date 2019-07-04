@@ -7,9 +7,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.RolesSe
 {
     public static class RoleMapper
     {
-        public static TamTechSDK.Common.Services.Identity.Models.RoleModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Services.RolesService.Dtos.RoleDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.Identity.Models.RoleModel MapToFrontendModel(this TamTechBackendSDK.IdentityService.Services.RolesService.Dtos.RoleDto backend)
         {
-            return new TamTechSDK.Common.Services.Identity.Models.RoleModel
+            return new TamTech.Monshaat.POS.Web.Services.Identity.Models.RoleModel
             {
                 Id = backend.Id,
                 Name = backend.Name

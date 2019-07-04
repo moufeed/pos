@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Contact;
-using TamTechSDK.Common.Services.ContentService.Contact.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Contact;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models;
 using TamTech.ContentService.Services.ContactsUs;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact.Mapper;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.Policies;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Policies;
 
-namespace TamTechSDK.Common.Services.Identity.Models
+namespace TamTech.Monshaat.POS.Web.Services.Identity.Models
 {
     public class IdentityServiceSettings
     {

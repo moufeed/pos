@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using TamTechSDK.Web.Filters;
+using TamTech.Monshaat.POS.Web.Core.Filters;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Admin.Biographies
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Biographies
 {
     public class SettingVm
     {

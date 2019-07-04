@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
-using System.Threading.Tasks;
+using System.Security.Principal; 
 
-namespace TamTechSDK.Web.Extensions
+namespace TamTech.Monshaat.POS.Web.Core.Extensions
 {
     public static class IdentityExtensions
     {

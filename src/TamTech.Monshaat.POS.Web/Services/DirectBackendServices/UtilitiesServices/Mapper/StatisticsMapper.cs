@@ -8,9 +8,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices.Mappe
     public static class StatisticsMapper
     {
 
-        public static TamTechSDK.Common.Services.Utilities.Models.NumericalStatisticsItemDto MapToFrontNumericalStatisticsItemDto(this TamTech.ContentService.Services.Statistics.Models.NumericalStatisticsItemDto item)
+        public static TamTech.Monshaat.POS.Web.Services.Utilities.Models.NumericalStatisticsItemDto MapToFrontNumericalStatisticsItemDto(this TamTech.ContentService.Services.Statistics.Models.NumericalStatisticsItemDto item)
         {
-            return new TamTechSDK.Common.Services.Utilities.Models.NumericalStatisticsItemDto
+            return new TamTech.Monshaat.POS.Web.Services.Utilities.Models.NumericalStatisticsItemDto
             {
                 Count = item.Count,
                 Description = item.Description,

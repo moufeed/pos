@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography.Mapper;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Biography;
-using TamTechSDK.Common.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography
 {

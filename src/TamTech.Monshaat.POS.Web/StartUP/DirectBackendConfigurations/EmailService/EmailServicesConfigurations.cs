@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.EmailService.Services;
 using TamTechBackendSDK.EmailService.Settings;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;

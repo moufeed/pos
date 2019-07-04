@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Web.Models.Shared
+namespace TamTech.Monshaat.POS.Web.Models.VMs.Shared
 {
     public class TreeItem<T>
     {

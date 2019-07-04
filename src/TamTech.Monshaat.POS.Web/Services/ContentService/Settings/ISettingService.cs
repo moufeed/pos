@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Services.ContentService.Settings.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Settings
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Settings
 {
     public interface ISettingService
     {

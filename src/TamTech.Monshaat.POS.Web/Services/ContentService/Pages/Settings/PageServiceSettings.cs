@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.ContentService.Pages.Settings
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
 {
     public class PageServiceSettings : ContentsServiceSettings, IPageServiceSettings
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TamTechSDK.Common.Helpers.Converters
+namespace TamTech.Monshaat.POS.Web.Core.Helpers.Converters
 {
     public class StringConverters : IStringConverters
     {

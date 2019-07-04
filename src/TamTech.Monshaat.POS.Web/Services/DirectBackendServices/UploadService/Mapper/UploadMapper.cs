@@ -7,7 +7,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 {
     public static class UploadMapper
     {
-        public static TamTechBackendSDK.FileStorageService.Models.UploadFileModel MapUploadFileModel(this TamTechSDK.Common.Services.Upload.Models.UploadFileInfo common)
+        public static TamTechBackendSDK.FileStorageService.Models.UploadFileModel MapUploadFileModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadFileInfo common)
         {
             return new TamTechBackendSDK.FileStorageService.Models.UploadFileModel
             {
@@ -20,7 +20,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
         }
 
 
-        public static TamTechBackendSDK.FileStorageService.Models.UploadModel MapUploadModel(this TamTechSDK.Common.Services.Upload.Models.UploadModel common)
+        public static TamTechBackendSDK.FileStorageService.Models.UploadModel MapUploadModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadModel common)
         {
             var ret = new TamTechBackendSDK.FileStorageService.Models.UploadModel
             {
@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTechBackendSDK.FileStorageService.Models.UploadedFileURL MapUploadedFileURL(this TamTechSDK.Common.Services.Upload.Models.UploadedFileURL common)
+        public static TamTechBackendSDK.FileStorageService.Models.UploadedFileURL MapUploadedFileURL(this TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadedFileURL common)
         {
             return new TamTechBackendSDK.FileStorageService.Models.UploadedFileURL
             {
@@ -43,7 +43,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTechBackendSDK.FileStorageService.Models.UploadModelResult MapUploadModelResult(this TamTechSDK.Common.Services.Upload.Models.UploadModelResult common)
+        public static TamTechBackendSDK.FileStorageService.Models.UploadModelResult MapUploadModelResult(this TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadModelResult common)
         {
             return new TamTechBackendSDK.FileStorageService.Models.UploadModelResult
             {
@@ -54,9 +54,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTechSDK.Common.Services.Upload.Models.UploadedFileURL MapUploadedFileURL(this TamTechBackendSDK.FileStorageService.Models.UploadedFileURL nuget)
+        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadedFileURL MapUploadedFileURL(this TamTechBackendSDK.FileStorageService.Models.UploadedFileURL nuget)
         {
-            return new TamTechSDK.Common.Services.Upload.Models.UploadedFileURL
+            return new TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadedFileURL
             {
                 Type = nuget.Type,
                 UploadedDate = nuget.UploadedDate,
@@ -67,9 +67,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTechSDK.Common.Services.Upload.Models.UploadModelResult MapUploadModelResult(this TamTechBackendSDK.FileStorageService.Models.UploadModelResult nuget)
+        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadModelResult MapUploadModelResult(this TamTechBackendSDK.FileStorageService.Models.UploadModelResult nuget)
         {
-            return new TamTechSDK.Common.Services.Upload.Models.UploadModelResult
+            return new TamTech.Monshaat.POS.Web.Services.Upload.Models.UploadModelResult
             {
                 UploadPatchId = nuget.UploadPatchId,
                 URLs = nuget.URLs.Select(u => u.MapUploadedFileURL()).ToList()

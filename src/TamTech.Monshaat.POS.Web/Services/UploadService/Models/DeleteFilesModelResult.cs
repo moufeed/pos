@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTechSDK.Common.Services.Upload.Models
+namespace TamTech.Monshaat.POS.Web.Services.Upload.Models
 {
     public class DeleteFilesModelResult
     {

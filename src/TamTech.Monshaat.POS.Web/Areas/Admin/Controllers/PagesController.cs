@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TamTechSDK.Web.Extensions.AutoMapper;
-using TamTechSDK.Web.Services.Telemetry;
-using TamTechSDK.Common.Services.ContentService.Pages;
-using TamTechSDK.Common.Services.ContentService.Pages.Models;
-using TamTechSDK.Common.Services.ContentService.Pages.Enums;
-using TamTechSDK.Common.Helpers.Converters;
-using TamTechSDK.Web.Models.Admin.Page;
-using TamTechSDK.Common.Services.Upload;
+using TamTech.Monshaat.POS.Web.Core.Mappers;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.Core.Helpers.Converters;
+using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Page;
+using TamTech.Monshaat.POS.Web.Services.Upload;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using TamTechSDK.Web.Services.Configurations.Cultures;
-using TamTechSDK.Common.Services.Upload.FileTypes;
-using TamTechSDK.Common.Models.ContentItem;
+using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using Microsoft.AspNetCore.Authorization;
-using TamTechSDK.Web.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using Microsoft.Extensions.Localization;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -98,7 +100,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (!string.IsNullOrWhiteSpace(img))
                 {
                     Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.PageMainImage } };
-                    Common.Providers.Requests.Models.IRequestProviderResult<Common.Services.Upload.Models.DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
+                     IRequestProviderResult< DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
                 }
             }

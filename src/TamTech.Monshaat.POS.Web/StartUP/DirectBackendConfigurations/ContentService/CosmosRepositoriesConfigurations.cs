@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TamTech.Common.Models.Settings;
 using TamTech.ContentService.Data.Repositories;
 using TamTech.ContentService.Data.Repositories.CosmosRepositories;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService
 {

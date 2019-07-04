@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Settings.Mapper;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Biography.Models;
-using TamTechSDK.Common.Services.ContentService.Settings;
-using TamTechSDK.Common.Services.ContentService.Settings.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Settings
 {

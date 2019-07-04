@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Menus
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 {
     public class MockMenusServices 
     {

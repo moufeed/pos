@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Services.Email.Models;
+using TamTech.Monshaat.POS.Web.Services.Email.Models;
 
-namespace TamTechSDK.Common.Services.Email
+namespace TamTech.Monshaat.POS.Web.Services.Email
 {
     public interface IEmailSenderService
     {

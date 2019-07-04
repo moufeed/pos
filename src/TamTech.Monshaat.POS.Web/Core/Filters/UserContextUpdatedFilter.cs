@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TamTechBackendSDK.Common.Extensions;
 using TamTechBackendSDK.IdentityService.Models;
 
-namespace TamTechSDK.Web.Filters
+namespace TamTech.Monshaat.POS.Web.Core.Filters
 {
 
 

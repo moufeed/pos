@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Models.Sort;
-using TamTechSDK.Common.Services.ContentService.Menus;
-using TamTechSDK.Common.Services.Attributes;
-using TamTechSDK.Common.Services.PosService.Directory;
-using TamTechSDK.Common.Services.PosService.Directory.Models;
-using TamTechSDK.Common.Services.PosService.Sectors;
-using TamTechSDK.Common.Services.TypesService;
-using TamTechSDK.Web.Models.Shared.Filters;
-using TamTechSDK.Web.Services.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.PosService.Directory;
+using TamTech.Monshaat.POS.Web.Services.PosService.Directory.Models;
+using TamTech.Monshaat.POS.Web.Services.PosService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.TypesService;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {

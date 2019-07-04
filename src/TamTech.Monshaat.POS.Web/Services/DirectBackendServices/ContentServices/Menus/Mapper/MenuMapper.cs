@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
 {
     public static class MenuMapper
     {
-        public static TamTech.ContentService.Services.Menus.Dtos.CreateMenuModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.CreateMenuModel MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.CreateMenuDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.CreateMenuModel
             {
@@ -16,7 +16,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
             };
         }
 
-        public static TamTech.ContentService.Services.Menus.Dtos.CreateMenuItemModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.CreateMenuItemDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.CreateMenuItemModel MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.CreateMenuItemDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.CreateMenuItemModel
             {
@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
             };
         }
 
-        public static TamTech.ContentService.Services.Menus.Dtos.MenuItemKeysModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.MenuItemKeysModel MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.MenuItemKeysModel
             {
@@ -41,7 +41,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
             };
         }
 
-        public static TamTech.ContentService.Services.Menus.Dtos.PublishMenuItemDto MapToBackendPublishDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.PublishMenuItemDto MapToBackendPublishDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemKeysDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.PublishMenuItemDto
             {
@@ -52,7 +52,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
         }
 
 
-        public static TamTech.ContentService.Services.Menus.Dtos.UpdateMenuModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.UpdateMenuModel MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.UpdateMenuDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.UpdateMenuModel
             {
@@ -65,7 +65,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
         }
 
 
-        public static TamTech.ContentService.Services.Menus.Dtos.UpdateMenuItemModel MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Menus.Models.UpdateMenuItemDto frontend)
+        public static TamTech.ContentService.Services.Menus.Dtos.UpdateMenuItemModel MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.UpdateMenuItemDto frontend)
         {
             return new TamTech.ContentService.Services.Menus.Dtos.UpdateMenuItemModel
             {
@@ -82,9 +82,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
 
 
 
-        public static TamTechSDK.Common.Services.ContentService.Menus.Models.MenuLiteDto MapToFrontendLiteDto(this TamTech.ContentService.Services.Menus.Dtos.MenuDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuLiteDto MapToFrontendLiteDto(this TamTech.ContentService.Services.Menus.Dtos.MenuDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Menus.Models.MenuLiteDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuLiteDto
             {
                 Id = backend.Id,
                 Key = backend.Key,
@@ -97,16 +97,16 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
             };
         }
 
-        public static TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemDto MapToFrontendDto(this TamTech.ContentService.Services.Menus.Dtos.MenuItemDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemDto MapToFrontendDto(this TamTech.ContentService.Services.Menus.Dtos.MenuItemDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemDto
             {
 
                 Key = backend.Key,
                 Title = backend.Title,
                 DisplayOrder = backend.DisplayOrder,
                 ItemType = backend.ItemType,
-                MenuItems = backend.MenuItems != null ? backend.MenuItems.Select(m => m.MapToFrontendDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemDto>(),
+                MenuItems = backend.MenuItems != null ? backend.MenuItems.Select(m => m.MapToFrontendDto()).ToList() : new List<TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemDto>(),
                 Published = backend.Published,
                 Url = backend.Url,
                 UrlTarget = backend.UrlTarget,
@@ -116,9 +116,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
 
 
 
-        public static TamTechSDK.Common.Services.ContentService.Menus.Models.MenuDto MapToFrontendDto(this TamTech.ContentService.Services.Menus.Dtos.MenuDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuDto MapToFrontendDto(this TamTech.ContentService.Services.Menus.Dtos.MenuDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Menus.Models.MenuDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuDto
             {
                 Id = backend.Id,
                 Key = backend.Key,
@@ -127,7 +127,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.M
                 Locked = backend.Locked,
                 CreatedDate = backend.CreatedDate,
                 ModifiedDate = backend.ModifiedDate,
-                MenuItems = backend.MenuItems != null ? backend.MenuItems.Select(m => m.MapToFrontendDto()).ToList() : new List<TamTechSDK.Common.Services.ContentService.Menus.Models.MenuItemDto>(),
+                MenuItems = backend.MenuItems != null ? backend.MenuItems.Select(m => m.MapToFrontendDto()).ToList() : new List<TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models.MenuItemDto>(),
                 Lang = backend.Lang,
             };
         }

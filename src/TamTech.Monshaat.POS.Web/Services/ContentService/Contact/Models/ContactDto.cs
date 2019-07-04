@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
  
-namespace TamTechSDK.Common.Services.ContentService.Contact.Models
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models
 {
     public  class ContactDto : ContactBaseModel
     {

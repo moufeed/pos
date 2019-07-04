@@ -7,9 +7,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors.Map
 {
     public static class SectorsMapper
     {
-        public static TamTechSDK.Common.Services.PosService.Sectors.Models.SectorDto MapToForntSectorDto(this TamTech.ContentService.Services.Sectors.Dtos.SectorDto item)
+        public static TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.SectorDto MapToForntSectorDto(this TamTech.ContentService.Services.Sectors.Dtos.SectorDto item)
         {
-            return new TamTechSDK.Common.Services.PosService.Sectors.Models.SectorDto
+            return new TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.SectorDto
             {
                 Id = item.Id,
                 CreatedDate = item.CreatedDate,
@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors.Map
             };
         }
 
-        public static TamTech.ContentService.Services.Sectors.Dtos.CreateSectorModel MapToBackCreateSectorModel(this TamTechSDK.Common.Services.PosService.Sectors.Models.CreateSectorModel item)
+        public static TamTech.ContentService.Services.Sectors.Dtos.CreateSectorModel MapToBackCreateSectorModel(this TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.CreateSectorModel item)
         {
             return new TamTech.ContentService.Services.Sectors.Dtos.CreateSectorModel
             {
@@ -49,7 +49,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors.Map
             };
         }
 
-        public static TamTech.ContentService.Services.Sectors.Dtos.UpdateSectorModel MapToBackUpdateSectorModel(this TamTechSDK.Common.Services.PosService.Sectors.Models.UpdateSectorModel item)
+        public static TamTech.ContentService.Services.Sectors.Dtos.UpdateSectorModel MapToBackUpdateSectorModel(this TamTech.Monshaat.POS.Web.Services.PosService.Sectors.Models.UpdateSectorModel item)
         {
             return new TamTech.ContentService.Services.Sectors.Dtos.UpdateSectorModel
             {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.Shared.Biography;
-using TamTechSDK.Common.Services.ContentService.Biography;
-using TamTechSDK.Web.Extensions.AutoMapper.Biography;
+using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography;
+using TamTech.Monshaat.POS.Web.Core.Mappers.Biography;
 
 namespace TamTech.Monshaat.POS.Web.Core.Biographies
 {

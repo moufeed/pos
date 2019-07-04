@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.Languages;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.Mapper
 {
@@ -10,9 +10,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
     {
 
 
-        public static TamTechSDK.Common.Services.ContentService.Pages.Models.PageDto MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.PageDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.PageDto MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.PageDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Pages.Models.PageDto
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.PageDto
             {
 
                 Lang = backend.Lang,
@@ -43,9 +43,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
         }
 
 
-        public static TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary MapToPageSummaryFrontend(this TamTech.ContentService.Services.Pages.Dtos.PageDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.PageSummary MapToPageSummaryFrontend(this TamTech.ContentService.Services.Pages.Dtos.PageDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Pages.Models.PageSummary
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.PageSummary
             {
                 Id = backend.Id.ToString(),
                 Title = backend.Title,
@@ -59,9 +59,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
 
             };
         }
-        public static TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPage MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.HtmlPageDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.HtmlPage MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.HtmlPageDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPage
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.HtmlPage
             {
 
                 Lang = backend.Lang,
@@ -91,9 +91,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
             };
         }
 
-        public static TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.SectionsPageDto backend)
+        public static TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.SectionsPage MapToFrontendDto(this TamTech.ContentService.Services.Pages.Dtos.SectionsPageDto backend)
         {
-            return new TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPage
+            return new TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.SectionsPage
             {
                 Lang = backend.Lang,
                 Id = backend.Id,
@@ -122,7 +122,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
                 AuthorName = backend.AuthorName
             };
         }
-        //public static TamTech.ContentService.Pages.Dtos.CreateHtmlPageDto MapToModel(this TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPageCreationDto common)
+        //public static TamTech.ContentService.Pages.Dtos.CreateHtmlPageDto MapToModel(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.HtmlPageCreationDto common)
         //{
         //    return new TamTech.ContentService.Dtos.Pages.HtmlPageCreationDto
         //    {
@@ -135,7 +135,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
         //        Summary = common.Summary
         //    };
         //}
-        //public static TamTech.ContentService.Dtos.Pages.SectionsPageUpdatingDto USPVMToDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.SectionsPageEditingDto vm)
+        //public static TamTech.ContentService.Dtos.Pages.SectionsPageUpdatingDto USPVMToDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.SectionsPageEditingDto vm)
         //{
         //    return new TamTech.ContentService.Dtos.Pages.SectionsPageUpdatingDto
         //    {
@@ -149,7 +149,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
         //        Summary = vm.Summary
         //    };
         //}
-        //public static TamTech.ContentService.Dtos.Pages.HtmlPageUpdatingDto UHPVMToDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.HtmlPageEditingDto vm)
+        //public static TamTech.ContentService.Dtos.Pages.HtmlPageUpdatingDto UHPVMToDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.HtmlPageEditingDto vm)
         //{
         //    return new TamTech.ContentService.Dtos.Pages.HtmlPageUpdatingDto
         //    {
@@ -168,7 +168,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
 
 
 
-        public static TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.EditHtmlPageDto frontend)
+        public static TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.EditHtmlPageDto frontend)
         {
             return new TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto
             {
@@ -192,7 +192,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
         }
 
 
-        public static TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.EditSectionsPageDto frontend)
+        public static TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.EditSectionsPageDto frontend)
         {
             return new TamTech.ContentService.Services.Pages.Dtos.UpdatePageDto
             {
@@ -219,7 +219,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
 
 
 
-        public static TamTech.ContentService.Services.Pages.Dtos.CreatePageDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.CreateHtmlPageDto frontend)
+        public static TamTech.ContentService.Services.Pages.Dtos.CreatePageDto MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.CreateHtmlPageDto frontend)
         {
             return new TamTech.ContentService.Services.Pages.Dtos.CreatePageDto
             {
@@ -241,7 +241,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.M
         }
 
 
-        public static TamTech.ContentService.Services.Pages.Dtos.CreatePageDto MapToBackendDto(this TamTechSDK.Common.Services.ContentService.Pages.Models.CreateSectionsPageDto frontend)
+        public static TamTech.ContentService.Services.Pages.Dtos.CreatePageDto MapToBackendDto(this TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models.CreateSectionsPageDto frontend)
         {
             return new TamTech.ContentService.Services.Pages.Dtos.CreatePageDto
             {

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMenager.Mapper;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.Identity;
-using TamTechSDK.Common.Services.Identity.Models;
-using TamTechSDK.Common.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMenager
 {
-    public class DirectUserMenagerServices : BaseDirectService, TamTechSDK.Common.Services.Identity.IUsersManagerService
+    public class DirectUserMenagerServices : BaseDirectService, TamTech.Monshaat.POS.Web.Services.Identity.IUsersManagerService
     {
 
         #region Props  
@@ -66,7 +66,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMe
         {
             var result = _userManagerService.GetAll(model.MapToBackendModel());
             var users = result.Users != null ? result.Users.Select(m => m.MapToFrontendModel()).ToList() : new List<UserModel>();
-            TamTechSDK.Common.Models.Pagination.PaginationMetadataModel p = result.PaginateMetaData.MapToFrontendModel();
+            TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel p = result.PaginateMetaData.MapToFrontendModel();
             return GetRequestProviderResult(users, p);
         }
 

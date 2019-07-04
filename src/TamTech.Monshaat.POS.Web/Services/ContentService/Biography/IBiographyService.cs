@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Biography.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biography.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Biography
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Biography
 {
     public interface IBiographyService
     {

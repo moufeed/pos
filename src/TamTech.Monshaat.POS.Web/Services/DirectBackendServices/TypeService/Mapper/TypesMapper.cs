@@ -10,7 +10,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService.Mapper
 
 
 
-        public static TamTech.ContentService.Services.Types.Models.CreateTypeModel MapToBackCreateType(this TamTechSDK.Common.Services.TypesService.Models.CreateTypeModel item)
+        public static TamTech.ContentService.Services.Types.Models.CreateTypeModel MapToBackCreateType(this TamTech.Monshaat.POS.Web.Services.TypesService.Models.CreateTypeModel item)
         {
             return new ContentService.Services.Types.Models.CreateTypeModel
             {
@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService.Mapper
         }
 
 
-        public static TamTech.ContentService.Services.Types.Models.UpdateTypeModel MapToBackUpdateModele(this TamTechSDK.Common.Services.TypesService.Models.UpdateTypeModel item)
+        public static TamTech.ContentService.Services.Types.Models.UpdateTypeModel MapToBackUpdateModele(this TamTech.Monshaat.POS.Web.Services.TypesService.Models.UpdateTypeModel item)
         {
             return new ContentService.Services.Types.Models.UpdateTypeModel
             {
@@ -52,9 +52,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService.Mapper
 
 
 
-        public static TamTechSDK.Common.Services.TypesService.Models.TypeDto MapToForntTypeDto(this ContentService.Services.Types.Models.TypeDto item)
+        public static TamTech.Monshaat.POS.Web.Services.TypesService.Models.TypeDto MapToForntTypeDto(this ContentService.Services.Types.Models.TypeDto item)
         {
-            return new TamTechSDK.Common.Services.TypesService.Models.TypeDto
+            return new TamTech.Monshaat.POS.Web.Services.TypesService.Models.TypeDto
             {
                 Description = item.Description,
                 DisplayOrder = item.DisplayOrder,

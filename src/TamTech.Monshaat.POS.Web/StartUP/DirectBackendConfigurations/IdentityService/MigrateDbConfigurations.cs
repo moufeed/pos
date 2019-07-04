@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using TamTech.ContentService.Core.Domain.Models;
 using TamTech.ContentService.Data;
-using TamTech.Monshaat.POS.Web.Services.Configurations.AppSetting.Constants;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.Common.Services.IdentityService.Settings;
 using TamTechBackendSDK.IdentityService.Settings;
 

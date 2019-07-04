@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content.Mapper;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.ContentService.Models;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentService.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
 {
-    public class DirectContentService : TamTechSDK.Common.Services.ContentService.IContentServices
+    public class DirectContentService : TamTech.Monshaat.POS.Web.Services.ContentService.IContentServices
     {
 
         private readonly TamTech.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;

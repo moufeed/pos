@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTechSDK.Common.Models.Filter;
-using TamTechSDK.Common.Models.Pagination;
-using TamTechSDK.Common.Providers.Requests.Models;
-using TamTechSDK.Common.Services.ContentService.Contact.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Contact.Models;
 
-namespace TamTechSDK.Common.Services.ContentService.Contact
+namespace TamTech.Monshaat.POS.Web.Services.ContentService.Contact
 {
     public interface IContactService
     {
