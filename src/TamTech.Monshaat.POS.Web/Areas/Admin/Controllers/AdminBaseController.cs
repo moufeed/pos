@@ -40,7 +40,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         // public readonly IHelperService _helperService; 
 
 
-        public AdminBaseController(ITelemetryClientService telemetryClientService, IStringLocalizer<AdminBaseController> localizer)
+        public AdminBaseController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer)
             : base(telemetryClientService)
         {
             //  _helperService = helperService;

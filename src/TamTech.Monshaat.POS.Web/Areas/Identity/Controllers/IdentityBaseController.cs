@@ -16,7 +16,7 @@ namespace TamTechSDK.Web.Controllers.Identity
 
 
         #region Ctors
-        public IdentityBaseController(ITelemetryClientService telemetryClientService)
+        public IdentityBaseController(ITelemetryService telemetryClientService)
           : base(telemetryClientService)
         {
             //  _helperService = helperService;

@@ -38,7 +38,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         #endregion
 
         #region Ctors  
-        public HomeController(ITelemetryClientService telemetryClientService,
+        public HomeController(ITelemetryService telemetryClientService,
             SettingsHelpers settingsHelpers,
              IUploadManagerService uploadManager,
              IStringLocalizer<AdminBaseController> localizer,
@@ -163,15 +163,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             return View();
         }
-        public virtual void TrackException(Exception exc)
-        {
-            _telemetryClientService.TrackException(exc, new Dictionary<string, string>
-                {
-                    { TelemetryEventConstants.UserId, HttpContext.User.Identity.GetUserId() },
-                    { TelemetryEventConstants.UserClientId, HttpContext.User.Identity.GetClientId() },
-                    { TelemetryEventConstants.UserRoles, HttpContext.User.Identity.GetUserRolesCommaSeparated()}
-                });
-        }
+       
         public virtual IActionResult Contact()
         {
             //GetLanguages();

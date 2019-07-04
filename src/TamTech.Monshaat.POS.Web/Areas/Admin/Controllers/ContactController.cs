@@ -49,7 +49,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         public ContactController(
             IUsersManagerService IdentityService,
             IEmailSenderService emailService,
-            ITelemetryClientService telemetryClientService,
+            ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
             IContactService contactService,
             IContactTypeService typeService,

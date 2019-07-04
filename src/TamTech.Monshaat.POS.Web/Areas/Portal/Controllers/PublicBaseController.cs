@@ -31,7 +31,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         public readonly string _culture;
 
 
-        public PublicBaseController(ITelemetryClientService telemetryClientService)
+        public PublicBaseController(ITelemetryService telemetryClientService)
              : base(telemetryClientService)
         {
 

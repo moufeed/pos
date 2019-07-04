@@ -31,7 +31,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         #region Ctors
-        public MenusController(ITelemetryClientService telemetryClientService, IMenusServices MenusServices,
+        public MenusController(ITelemetryService telemetryClientService, IMenusServices MenusServices,
             IStringLocalizer<AdminBaseController> localizer, SettingsHelpers settingsHelpers)
             : base(telemetryClientService, localizer)
         {

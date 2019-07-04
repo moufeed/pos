@@ -19,7 +19,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
     {
         public static void AddCommonServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddApplicationInsightsTelemetryConfigurations(configuration);
+            services.AddTelemetryConfigurations(configuration);
 
 
             //   services.AddScoped<IAppSettingsFile, AppSettingsFileReader>();

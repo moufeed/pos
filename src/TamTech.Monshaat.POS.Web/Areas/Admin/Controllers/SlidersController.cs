@@ -28,7 +28,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         #region constructor
-        public SlidersController(ITelemetryClientService telemetryClientService, ISlidersServices sliderService, IUploadManagerService uploadManager,
+        public SlidersController(ITelemetryService telemetryClientService, ISlidersServices sliderService, IUploadManagerService uploadManager,
            IStringLocalizer<AdminBaseController> localizer)
             : base(telemetryClientService, localizer)
         {

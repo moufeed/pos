@@ -24,7 +24,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IStringLocalizer<AdminBaseController> _localizer;
 
 
-        public BaseTypesController(ITelemetryClientService telemetryClientService,
+        public BaseTypesController(ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
              ITypeService typeService)
             : base(telemetryClientService, localizer)

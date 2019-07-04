@@ -25,7 +25,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IPOSAttributeService _attributeService;
         private readonly IPosTypeService _posTypeService;
         public DirectoryController(
-                                            ITelemetryClientService telemetryClientService,
+                                            ITelemetryService telemetryClientService,
                                             ISectorServices sectorService,
                                             IDirectoryServices directoryServices,
                                             IPOSAttributeService attributeService,

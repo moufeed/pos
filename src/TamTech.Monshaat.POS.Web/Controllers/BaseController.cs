@@ -21,25 +21,20 @@ namespace TamTechSDK.Web.Controllers
     public class BaseController : Controller
     {
         #region Props 
-        public readonly ITelemetryClientService _telemetryClientService;
+      //  public readonly ITelemetryClientService _telemetryClientService;
         #endregion
 
         #region Ctors
-        public BaseController(ITelemetryClientService telemetryClientService)
+        public BaseController(ITelemetryService telemetryClientService)
         {
-            _telemetryClientService = telemetryClientService;
+         //   _telemetryClientService = telemetryClientService;
         }
         #endregion 
 
         #region Methodes
         public virtual void TrackException(Exception exc)
         {
-            _telemetryClientService.TrackException(exc, new Dictionary<string, string>
-                {
-                    { TelemetryEventConstants.UserId, HttpContext.User.Identity.GetUserId() },
-                    { TelemetryEventConstants.UserClientId, HttpContext.User.Identity.GetClientId() },
-                    { TelemetryEventConstants.UserRoles, HttpContext.User.Identity.GetUserRolesCommaSeparated()}
-                });
+            //
         }
 
 
@@ -65,27 +60,13 @@ namespace TamTechSDK.Web.Controllers
         public void TrackEvent(string name, dynamic model, string statusCode = null)
         {
 
-            _telemetryClientService.TrackEvent(name, new Dictionary<string, string>
-                {
-                    {TelemetryEventConstants.UserId,User.Identity.GetUserId() },
-                    { TelemetryEventConstants.UserClientId,User.Identity.GetClientId()},
-                    {TelemetryEventConstants.InputModel,  JsonConvert.SerializeObject(model) },
-                   { TelemetryEventConstants.HttpStatusCode , statusCode},
-                });
+        //
 
         }
 
         public void TrackEvent(string name, ModelStateDictionary modelState, dynamic model = null)
-        {
-
-            _telemetryClientService.TrackEvent(name, new Dictionary<string, string>
-                {
-                    {TelemetryEventConstants.UserId,User.Identity.GetUserId() },
-                    { TelemetryEventConstants.UserClientId,User.Identity.GetClientId()},
-                       {TelemetryEventConstants.ModelState, JsonConvert.SerializeObject(modelState) },
-                    {TelemetryEventConstants.InputModel,  JsonConvert.SerializeObject(model) }
-                });
-
+        { 
+          // 
         }
 
 

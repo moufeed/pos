@@ -33,7 +33,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         #endregion
 
         #region Ctors
-        public UsersController(ITelemetryClientService telemetryClientService,
+        public UsersController(ITelemetryService telemetryClientService,
                                IUsersManagerService identityService,
                                 IRolesService rolesService,
                                 IStringLocalizer<AdminBaseController> localizer)

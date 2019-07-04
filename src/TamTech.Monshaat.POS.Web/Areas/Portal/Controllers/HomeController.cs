@@ -42,7 +42,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IRegionService _regionsServices;
 
         #endregion
-        public HomeController(ITelemetryClientService telemetryClientService,
+        public HomeController(ITelemetryService telemetryClientService,
                                     IPageService pageService,
                                     ISlidersServices slidersServices,
                                     IUploadManagerService uploadManager,

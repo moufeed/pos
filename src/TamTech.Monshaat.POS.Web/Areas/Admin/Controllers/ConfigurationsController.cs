@@ -15,7 +15,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         private readonly ISettingService _settingsServices;
         private readonly IStringLocalizer<AdminBaseController> _localizer;
-        public ConfigurationsController(ITelemetryClientService telemetryClientService,
+        public ConfigurationsController(ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
             ISettingService settingsServices
             ) : base(telemetryClientService, localizer)

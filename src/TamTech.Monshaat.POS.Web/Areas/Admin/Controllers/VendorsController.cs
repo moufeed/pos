@@ -38,7 +38,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IdentityUtilities _identityUtilities;
         private readonly IUsersManagerService _usersManagerService;
         public VendorsController(
-            ITelemetryClientService telemetryClientService,
+            ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
             IVendorAdminServices vendorServices,
             IVendorStatusService statusServices,

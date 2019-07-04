@@ -49,7 +49,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region constructor
         public VendorController(
-            ITelemetryClientService telemetryClientService,
+            ITelemetryService telemetryClientService,
             IPosTypeService posTypeService,
             ISectorServices sectorService,
             IPOSAttributeService attributeService,

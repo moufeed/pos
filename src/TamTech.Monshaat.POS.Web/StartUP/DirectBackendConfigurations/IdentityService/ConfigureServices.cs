@@ -188,13 +188,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.IdentityS
                         options.AddPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.SlidersContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.PagesContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PagesContentAdmin)));
                         options.AddPolicy(ContentSDKPoliciesConstants.UsersAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.UsersAdmin)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.GalleriesContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.GalleriesContentAdmin)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.ServicesContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.ServicesContentAdmin)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.PostsContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PostsContentAdmin)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.PostsEditor, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PostsEditor)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.PostAuthor, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.PostAuthor)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.ProductsContentAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.ProductsContentAdmin)));
-                        options.AddPolicy(ContentSDKPoliciesConstants.DashboardAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.DashboardAdmin)));
+                         options.AddPolicy(ContentSDKPoliciesConstants.DashboardAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.DashboardAdmin)));
 
 
                         options.AddPolicy(ContentSDKPoliciesConstants.ContactUsAdmin, policy => policy.RequireRole(IdentityServiceSettings.GetRolesByPolicy(ContentSDKPoliciesConstants.ContactUsAdmin)));

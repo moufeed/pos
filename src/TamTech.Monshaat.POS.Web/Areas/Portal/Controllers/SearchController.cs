@@ -12,7 +12,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 {
     public class SearchController : PublicBaseController
     {
-        public SearchController(ITelemetryClientService telemetryClientService)
+        public SearchController(ITelemetryService telemetryClientService)
             : base(telemetryClientService)
         {
         }

@@ -53,13 +53,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Models\Shared\partials\" />
-    <Folder Include="src\Identity\scss\" />
+    <Folder Include="ViewModels\Shared\partials\" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\TamTech.Monshaat.POS.EFile2.Utilities\TamTech.Monshaat.POS.EFile2.Utilities.csproj" />
-    <ProjectReference Include="..\TamTechSDK.Common\TamTechSDK.Common.csproj" />
   </ItemGroup>
   
   <ItemGroup>
@@ -130,9 +128,6 @@
 
   <ItemGroup>
     <None Update="Localization\ar.po">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Localization\en.po">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

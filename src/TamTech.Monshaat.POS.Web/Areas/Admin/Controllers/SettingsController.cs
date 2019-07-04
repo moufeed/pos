@@ -23,7 +23,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IStringLocalizer<AdminBaseController> _localizer;
         private readonly IUploadManagerService _uploadManager;
         private readonly IBiographiesManager _biographiesManager;
-        public SettingsController(ITelemetryClientService telemetryClientService,
+        public SettingsController(ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
             IBiographyService settingsServices,
             IUploadManagerService uploadManager, IBiographiesManager biographiesManager

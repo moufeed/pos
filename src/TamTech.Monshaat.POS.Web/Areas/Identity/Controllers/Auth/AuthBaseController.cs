@@ -25,7 +25,7 @@ namespace TamTechSDK.Web.Controllers.Identity
 
 
         #region Ctors 
-        public AuthController(ITelemetryClientService telemetryClientService, IAuthService accountsService,
+        public AuthController(ITelemetryService telemetryClientService, IAuthService accountsService,
             IExpressionValidation expressionValidation)
             : base(telemetryClientService)
         {

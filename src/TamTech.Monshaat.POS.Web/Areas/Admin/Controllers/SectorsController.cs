@@ -30,7 +30,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IUploadManagerService _uploadManager;
 
         public SectorsController(
-                                    ITelemetryClientService telemetryClientService,
+                                    ITelemetryService telemetryClientService,
                                     IStringLocalizer<AdminBaseController> localizer,
                                     ISectorServices sectorServices,
                                     IUploadManagerService uploadManager

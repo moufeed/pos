@@ -15,7 +15,7 @@ namespace TamTechSDK.Web.Controllers.Admin
     [ControllerName("contact-types")]
     public class ContactTypesController : BaseTypesController
     {
-        public ContactTypesController(ITelemetryClientService telemetryClientService,
+        public ContactTypesController(ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer, IContactTypeService typeService)
             : base(telemetryClientService, localizer, typeService)
         {

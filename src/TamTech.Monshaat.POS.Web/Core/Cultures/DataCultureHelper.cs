@@ -12,9 +12,7 @@ namespace TamTechSDK.Web.Services.Configurations.Cultures
         /// </summary>
         /// <returns>string : activated language [en/ar] </returns>
         public static string GetCurrent(IQueryCollection queries)
-        {
-
-
+        { 
             return System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         }
     }

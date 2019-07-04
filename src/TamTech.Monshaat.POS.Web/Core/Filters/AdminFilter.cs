@@ -27,9 +27,7 @@ namespace TamTechSDK.Web.Filters
             if (controller != null)
             {
 
-                controller.ViewBag.AppVersion = SettingsHelpers.app_version; // _appSettingsService.GetVersion(); 
-                //controller.ViewData["_lang"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-                //controller.ViewData["_culture"] = System.Globalization.CultureInfo.CurrentCulture.Name;
+                controller.ViewBag.AppVersion = SettingsHelpers.app_version; 
             }
 
 

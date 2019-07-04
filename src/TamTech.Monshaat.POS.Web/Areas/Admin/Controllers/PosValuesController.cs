@@ -10,7 +10,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 {
     public class PosValuesController : BaseValuesController
     {
-        public PosValuesController(ITelemetryClientService telemetryClientService, IStringLocalizer<AdminBaseController> localizer, IPosValuesService valuesServices, IPOSAttributeService attributesService) : base(telemetryClientService, localizer, valuesServices, attributesService)
+        public PosValuesController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer, IPosValuesService valuesServices, IPOSAttributeService attributesService) : base(telemetryClientService, localizer, valuesServices, attributesService)
         {
         }
     }

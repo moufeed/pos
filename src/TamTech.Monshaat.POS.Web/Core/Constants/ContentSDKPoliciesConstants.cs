@@ -41,21 +41,7 @@ namespace TamTechSDK.Web.Constants
         public const string PagesContentAdmin = "PagesContentAdmin";
 
         // Users related policies
-        public const string UsersAdmin = "UsersAdmin";
-
-        // Galleries related policies
-        public const string GalleriesContentAdmin = "GalleriesContentAdmin";
-
-        // Services related policies
-        public const string ServicesContentAdmin = "ServicesContentAdmin";
-
-        // Posts related policies
-        public const string PostsContentAdmin = "PostsContentAdmin";
-        public const string PostsEditor = "PostsEditor";
-        public const string PostAuthor = "PostAuthor";
-
-        // Products related policies
-        public const string ProductsContentAdmin = "ProductsContentAdmin";
+        public const string UsersAdmin = "UsersAdmin"; 
 
         // Dashboard related policies
         public const string DashboardAdmin = "DashboardAdmin";

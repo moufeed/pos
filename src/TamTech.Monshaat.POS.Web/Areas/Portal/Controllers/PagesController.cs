@@ -22,7 +22,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         #region Ctors
-        public PagesController(ITelemetryClientService telemetryClientService, IPageService pageService)
+        public PagesController(ITelemetryService telemetryClientService, IPageService pageService)
             : base(telemetryClientService)
         {
             this._pageService = pageService;

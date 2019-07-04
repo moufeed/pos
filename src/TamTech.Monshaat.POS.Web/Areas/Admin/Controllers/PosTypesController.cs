@@ -12,7 +12,7 @@ namespace TamTechSDK.Web.Controllers.Admin
     [Authorize(Policy = ContentSDKPoliciesConstants.POSTypesAdmin)]
     public class PosTypesController : BaseTypesController
     {
-        public PosTypesController(ITelemetryClientService telemetryClientService, IStringLocalizer<AdminBaseController> localizer,
+        public PosTypesController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer,
             IPosTypeService typeService) : base(telemetryClientService, localizer, typeService)
         {
         }

@@ -37,7 +37,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         #region Ctors
-        public PagesController(ITelemetryClientService telemetryClientService,
+        public PagesController(ITelemetryService telemetryClientService,
                               IPageService pageService,
                               IUploadManagerService uploadManager,
                               IStringConverters stringConverters,
