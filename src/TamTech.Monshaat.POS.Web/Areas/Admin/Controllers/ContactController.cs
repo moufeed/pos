@@ -85,9 +85,13 @@ namespace TamTechSDK.Web.Controllers.Admin
             SortingModel sorting = CreateSortingModel(model.SortBy);
 
             var types = await _typeService.GetSelectListAsync(GetCurrentDataLang(), true);
-            if (types != null && types.Count > 0)
+            HandelGetingResult(types);
+            if (VerifySucceed(types))
             {
-                ViewBag.types = new SelectList(types, "Value", "Text", model.TypeId);
+                if ( types.Data.Count > 0)
+                {
+                    ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
+                }
             }
 
             var status = await _statusService.GetAllSelectListAsync(GetCurrentDataLang());

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
@@ -63,11 +64,21 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
 
             */
-            services.AddTransient<IPosTypeService, TypeService>();
+          
 
-            services.AddTransient<IContactTypeService, TypeService>();
-           
- 
+            services.AddTransient<IPosTypeService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IPOSTypeApiSettings>();
+                return new TypeService(provider, apiSettings);
+            });
+
+            services.AddTransient<IContactTypeService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IContactUsTypeApiSettings>();
+                return new TypeService(provider, apiSettings);
+            });
 
             /*
 

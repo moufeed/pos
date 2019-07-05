@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TamTech.Monshaat.POS.Web.Services.APIsServices;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
@@ -7,12 +8,17 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
      public static class  BackendAPIsSettingsConfigurations
     {
         public static void MicroServices_AddBackendAPIsSettingsConfigurations(this IServiceCollection services, IConfiguration configuration)
-        {
+        { 
 
+            services.AddScoped<IContactUsTypeApiSettings, TypeApiSettings>((serviceExtension) =>
+            { 
+                return new TypeApiSettings(BaseAPISettings.CUTypesController);
+            });
 
-            services.AddScoped<ITypeApiSettings, TypeApiSettings>();
-
-
+             services.AddScoped<IPOSTypeApiSettings, TypeApiSettings>((serviceExtension) =>
+            { 
+                return new TypeApiSettings(BaseAPISettings.POSTypesController);
+            });
 
 
 

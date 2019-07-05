@@ -73,8 +73,11 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var types = await _typeService.GetExceptSoftDeletedAsync(filters);
-
-                return View(types);
+                HandelGetingResult(types);
+                if (VerifySucceed(types))
+                {
+                    return View(types.Data);
+                }
             }
             catch (Exception ex)
             {
@@ -142,9 +145,11 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var result = await _typeService.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result != null)
-                    return View("Form", result.MapToTypeVM());
+                HandelGetingResult(result);
+                if (VerifySucceed(result))
+                { 
+                  return View("Form", result.Data.MapToTypeVM());
+                }
 
                 ViewBag.EmptyResponse = true;
 

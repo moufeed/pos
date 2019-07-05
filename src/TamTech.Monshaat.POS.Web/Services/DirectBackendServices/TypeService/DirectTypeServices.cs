@@ -35,31 +35,35 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             return MapRequestProviderResult(result);
         }
 
-        public async Task<List<TypeDto>> GetAllExceptSoftDeletedAsync(string lang)
+        public async Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
             var request = await _typeService.GetAllExceptSoftDeletedAsync(lang);
 
-            return request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+            var result = request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+
+            return ReturnRequestProviderResult(result);
         }
 
-        public async Task<TypeDto> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        public async Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
             var request = await _typeService.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return request != null ? request.MapToForntTypeDto() : null;
+            var result = request != null ? request.MapToForntTypeDto() : null;
 
+            return ReturnRequestProviderResult(result);
         }
 
-        public async Task<PagedResultModel<List<TypeDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _typeService.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<TypeDto>>
+            var result = new PagedResultModel<List<TypeDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToForntTypeDto()).ToList() : new List<TypeDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
             };
+            return ReturnRequestProviderResult(result);
         }
 
         public async Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug)
@@ -84,18 +88,23 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             return ReturnRequestProviderResult(result);
         }
 
-        public async Task<List<SelectListItemModel>> GetSelectListAsync(string lang, bool isOfficial = true)
+
+
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
         {
-            var result = await _typeService.GetSelectListAsync(lang, isOfficial);
+            var b_result = await _typeService.GetSelectListAsync(lang, isOfficial);
 
-            return result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            var result = b_result != null ? b_result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
 
+            return ReturnRequestProviderResult(result);
         }
-        public async Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
-            var result = await _typeService.GetAllSelectListAsync(lang);
+            var b_result = await _typeService.GetAllSelectListAsync(lang);
 
-            return result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            var result = b_result != null ? b_result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+
+            return ReturnRequestProviderResult(result);
 
         }
 
@@ -110,5 +119,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             var result = await _typeService.SoftDeleteAsync(id);
             return MapRequestProviderResult(result);
         }
+
+      
     }
 }
