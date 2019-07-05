@@ -23,7 +23,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                         "default-src 'self'; " +
                         "img-src 'self'  ; " +
                         "font-src 'self' use.fontawesome.com ; " +
-                        "style-src 'self' use.fontawesome.com stackpath.bootstrapcdn.com; " +
+                        "style-src 'self' 'unsafe-inline' use.fontawesome.com stackpath.bootstrapcdn.com; " +
                         "script-src 'self' 'unsafe-inline'  'unsafe-eval' ajax.googleapis.com stackpath.bootstrapcdn.com cdnjs.cloudflare.com;" +
                         "frame-src 'self';" +
                         "connect-src 'self';");
