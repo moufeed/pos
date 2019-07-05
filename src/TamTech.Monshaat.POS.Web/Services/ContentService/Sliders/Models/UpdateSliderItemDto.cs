@@ -43,10 +43,13 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
         [JsonProperty("displayorder")]
         public int DisplayOrder { get; set; }
 
+        [JsonProperty("published")]
         public bool Published { get; set; }
 
+        [JsonProperty("deleted")]
         public bool Deleted { get; set; }
 
+        [JsonProperty("createddate")]
         public DateTime CreatedDate { get; set; }
 
 

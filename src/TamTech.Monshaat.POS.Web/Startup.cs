@@ -77,7 +77,7 @@ namespace TamTech.Monshaat.POS.Web
             }
 
 
-
+            app.UseXSSProtection(env, Configuration);
 
             //app.UseHttpsRedirection();
             //app.UseStaticFiles();

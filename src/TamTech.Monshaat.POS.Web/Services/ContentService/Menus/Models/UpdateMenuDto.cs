@@ -24,6 +24,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models
         [JsonProperty("key")]
         public string Key { get; set; }
 
+        [JsonProperty("lang")]
         public string Lang { get; set; }
     }
 }

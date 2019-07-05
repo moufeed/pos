@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace TamTech.Monshaat.POS.Web.Models.Dtos.Sort
 
 {
     public class SortingModel
     {
-        public string SortBy;
-        public bool Descending;
+        [JsonProperty("sortby")]
+        public string SortBy {get; set;}
+
+        [JsonProperty("descending")]
+        public bool Descending {get; set;}
     }
 }

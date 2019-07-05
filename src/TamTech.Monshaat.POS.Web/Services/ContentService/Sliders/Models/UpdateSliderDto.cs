@@ -34,8 +34,10 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
         [JsonProperty("summary")]
         public string Summary { get; set; }
 
+        [JsonProperty("published")]
         public bool Published { get; set; }
 
+        [JsonProperty("items")]
         public List<UpdateSliderItemDto> Items { get; set; }
 
      

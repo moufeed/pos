@@ -1,4 +1,4 @@
-﻿ using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Contact;
+﻿using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Contact;
 using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
 

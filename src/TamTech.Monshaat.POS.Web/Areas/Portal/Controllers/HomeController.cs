@@ -24,6 +24,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Core.Enums;
+using System.Web;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -180,6 +181,11 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 if (ModelState.IsValid)
                 {
+
+                    var tt = HttpUtility.HtmlEncode(model.Message);
+
+
+
 
                     CreateModel _CreateModel = model.MapToCreateModelWithoutAttachments();
                     if (PreviousUploadFiles)
