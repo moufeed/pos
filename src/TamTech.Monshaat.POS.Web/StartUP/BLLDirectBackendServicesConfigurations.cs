@@ -71,17 +71,17 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
 
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IPosTypeService>((serviceExtension) =>
-            {
-                var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IPOSTypeService>();
-                return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
-            });
+            //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IPosTypeService>((serviceExtension) =>
+            //{
+            //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IPOSTypeService>();
+            //    return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
+            //});
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IContactTypeService>((serviceExtension) =>
-       {
-           var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IConUsTypeService>();
-           return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
-       });
+            //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IContactTypeService>((serviceExtension) =>
+            //   {
+            //       var service = serviceExtension.GetService<TamTech.ContentService.Services.Types.IConUsTypeService>();
+            //       return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
+            //   });
 
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.IPOSAttributeService>((serviceExtension) =>
             {

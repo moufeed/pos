@@ -44,7 +44,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             ViewBag.sectors = await _sectorService.GetPublishedListAsync();
             ViewBag.attributes = await _attributeService.GetPublishedListAsync();
-            ViewBag.types = await _posTypeService.GetPublishedListAsync();
+            ViewBag.types =( await _posTypeService.GetPublishedListAsync()).Data;
         }
 
         private PosFilters MakeFiltersModel(string slug, string searchKeyword, string[] filters, string[] types, PaginationModel pagination)

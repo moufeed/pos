@@ -16,11 +16,13 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Types
 
         #region Public  Types
 
-        Task<TypeDto> GetPublishedBySlugAsync(string slug);
+        Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug);
 
-        Task<List<TypeDto>> GetPublishedListAsync(bool sortManually = true);
+        Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(bool sortManually = true);
 
-        Task<List<TypeDto>> GetPublishedListAsync(int takeItems, bool sortManually = true);
+        Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true);
+
+       
 
         #endregion
 

@@ -124,7 +124,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private async Task InitAction(PosFormVm model, bool isUpdate = false)
         {
             var types = await _posTypeService.GetPublishedListAsync();
-            ViewBag.TypsSelect = CreateTypeSelect(types, model.TypeId);
+            ViewBag.TypsSelect = CreateTypeSelect(types.Data, model.TypeId);
             ViewBag.sectors = await _sectorService.GetPublishedListAsync();
             var attributes = await _attributeService.GetPublishedListAsync();
             ViewBag.attributes = CreateAttributes(model, attributes, isUpdate);

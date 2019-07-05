@@ -152,8 +152,8 @@ namespace TamTechSDK.Web.Controllers.Portal
             ContactusVM model = new ContactusVM();
             try
             {
-                var types = await _typeService.GetPublishedListAsync();
-                ViewBag.types = types;
+                var types = await _typeService.GetPublishedListAsync(); 
+                ViewBag.types = types.Data;
                 //  ViewBag.Host = _appSettingsService.GetURl();
                 var Regions = await _regionsServices.GetPublishedSelectListAsync(_lang);
                 ViewBag.Regions = new SelectList(Regions, "Value", "Text");

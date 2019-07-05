@@ -17,6 +17,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
     {
         private readonly JsonSerializerSettings _serializerSettings;
         private string _token;
+        private string _currentLang;
+        private bool _passDefaultHeader = true;
+
         public RequestProvider(string token)
         {
             _serializerSettings = new JsonSerializerSettings
@@ -27,6 +30,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             };
             _serializerSettings.Converters.Add(new StringEnumConverter());
             _token = token;
+            _currentLang =   System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         }
 
         public async Task DeleteAsync(string uri)
@@ -68,6 +72,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
         {
             IRequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
             HttpClient httpClient = CreateHttpClient();
+
             HttpResponseMessage response = await httpClient.GetAsync(GetRequestUri<TRequest>(uri, data));
             await HandleResponse<TResult>(response, result);
 
@@ -98,7 +103,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                 {
                     var json = JsonConvert.SerializeObject(data);
                     Type type = typeof(TRequest);
-                    if (type == typeof(List<string>) || type == typeof(List<Guid>))
+                    if (type == typeof(List<string>) || type == typeof(List<Guid>) || type == typeof(List<object>))
                     {
                         var list = JsonConvert.DeserializeObject<List<string>>(json, _serializerSettings);
                         var parameters = "";
@@ -332,6 +337,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             if (!string.IsNullOrEmpty(_token))
             {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+            }
+
+            if (_passDefaultHeader)
+            {
+                httpClient.DefaultRequestHeaders.Add("Accept-Language", _currentLang);
             }
             return httpClient;
         }

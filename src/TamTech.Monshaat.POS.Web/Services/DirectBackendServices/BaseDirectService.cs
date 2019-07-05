@@ -68,6 +68,16 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             return HttpStatusCode.BadRequest;
         }
 
+        public IRequestProviderResult<TResult> ReturnRequestProviderResult<TResult>(TResult data )
+        {
+            IRequestProviderResult<TResult> _resultModel = new RequestProviderResult<TResult>();
+            _resultModel.Success = true;
+            _resultModel.StatusCode = System.Net.HttpStatusCode.OK;
+            _resultModel.Data = data;
+          
+            return _resultModel;
+        }
+
 
         public IRequestProviderResult<TResult> MapRequestProviderResult<TResult>(
            TamTech.ContentService.Core.Domain.Models.Results.IReturnResultModel<TResult> inputResult)
@@ -92,6 +102,8 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
             }
             return _resultModel;
         }
+
+
 
         public IRequestProviderResult<TResult> MapRequestProviderResult<TResult>(
            TamTechBackendSDK.IdentityService.Models.IReturnResultModel<TResult> inputResult)

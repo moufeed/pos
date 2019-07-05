@@ -62,24 +62,26 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             };
         }
 
-        public async Task<TypeDto> GetPublishedBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug)
         {
-            var request = await _typeService.GetPublishedBySlugAsync(slug);
-            return request != null ? request.MapToForntTypeDto() : null;
+            var request = await _typeService.GetPublishedBySlugAsync(slug); 
+            return ReturnRequestProviderResult(request != null ? request.MapToForntTypeDto() : null);
         }
 
-        public async Task<List<TypeDto>> GetPublishedListAsync(bool sortManually = true)
+        public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(bool sortManually = true)
         {
             var request = await _typeService.GetPublishedListAsync(sortManually);
 
-            return request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+            var result = request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+            return ReturnRequestProviderResult(result);
         }
 
-        public async Task<List<TypeDto>> GetPublishedListAsync(int takeItems, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
             var request = await _typeService.GetPublishedListAsync(takeItems, sortManually);
 
-            return request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+           var  result = request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+            return ReturnRequestProviderResult(result);
         }
 
         public async Task<List<SelectListItemModel>> GetSelectListAsync(string lang, bool isOfficial = true)

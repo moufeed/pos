@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.StartUP.MicroServices;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -12,11 +13,17 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                                                  .GetSection(AppSettings.WebApplication_UseMicroServices).Get<bool>();
             if (useMicroServices)
             {
-             //   services._AddBusinessLogicMicroServicesConfigurations(configuration);
+                services.MicroServices_AddProvidersServicesConfigurations();
+                services.MicroServices_AddBackendAPIsSettingsConfigurations(configuration);
+                //   services._AddBusinessLogicMicroServicesConfigurations(configuration);
             }
             else
             {
                 services._AddBusinessLogicDirectBackendServicesConfigurations();
+
+                services.MicroServices_AddProvidersServicesConfigurations();
+                services.MicroServices_AddBackendAPIsSettingsConfigurations(configuration);
+               services._AddBusinessLogicAPIsServicesConfigurations();
             }
         }
     }
