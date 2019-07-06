@@ -15,11 +15,11 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors
 {
-    public class DirectSectorsService : BaseDirectService, ISectorServices
+    public class DirectSectorsService : BaseDirectService, ISectorServices, IPOSSectorServices
     {
-        private readonly IPOSSectorService _sectorservices;
+        private readonly ISectorService _sectorservices;
 
-        public DirectSectorsService(IPOSSectorService sectorServices)
+        public DirectSectorsService(ISectorService sectorServices)
         {
 
             _sectorservices = sectorServices;

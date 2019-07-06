@@ -38,7 +38,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly ISlidersServices _sliderService;
         private readonly IUploadManagerService _uploadManager;
         private IStringLocalizer<PublicBaseController> _localizer;
-        private readonly ISectorServices _sectorService;
+        private readonly IPOSSectorServices _sectorService;
         private readonly IContactService _contactService;
         private readonly IContactTypeService _typeService;
         private readonly IDirectoryServices _serchservices;
@@ -50,7 +50,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     ISlidersServices slidersServices,
                                     IUploadManagerService uploadManager,
                                     IStringLocalizer<PublicBaseController> localizer,
-                                    ISectorServices sectorService,
+                                    IPOSSectorServices sectorService,
                                     IContactService contactService,
                                     IContactTypeService typeService,
                                     IDirectoryServices serchservices,

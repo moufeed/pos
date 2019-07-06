@@ -58,7 +58,6 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             #region Pos Services
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.IStatisticsService, Web.DirectBackendServices.UtilitiesServices.DirectStatisticsService>();
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.ISectorServices, Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService>();
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.Directory.IDirectoryServices, Web.DirectBackendServices.PosServices.Directory.DirectDirectoryService>();
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSAdminServeice, Web.DirectBackendServices.PosServices.Pos.DirectAdminPosServices>();
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSService, Web.DirectBackendServices.PosServices.Pos.DirectPosService>();
@@ -68,8 +67,12 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
 
-
-
+ 
+            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.IPOSSectorServices>((serviceExtension) =>
+            {
+                var service = serviceExtension.GetService<TamTech.ContentService.Services.Sectors.IPOSSectorService>();
+                return new Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService(service);
+            });
 
             //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IPosTypeService>((serviceExtension) =>
             //{

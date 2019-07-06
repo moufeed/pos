@@ -1,7 +1,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Services.APIsServices;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
 { 
@@ -18,6 +21,21 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
              services.AddScoped<IPOSTypeApiSettings, TypeApiSettings>((serviceExtension) =>
             { 
                 return new TypeApiSettings(BaseAPISettings.POSTypesController);
+            });
+
+            services.AddScoped<IPOSSectorApiSettings, SectorApiSettings>((serviceExtension) =>
+            {
+                return new SectorApiSettings(BaseAPISettings.POSSectorsController);
+            });
+
+            services.AddScoped<IPOSAttributeApiSettings, AttributeApiSettings>((serviceExtension) =>
+            {
+                return new AttributeApiSettings(BaseAPISettings.POSAttributesController);
+            });
+
+              services.AddScoped<IPOSValueApiSettings,  ValueApiSettings>((serviceExtension) =>
+            {
+                return new ValueApiSettings(BaseAPISettings.POSAttributesController);
             });
 
 

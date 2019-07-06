@@ -41,7 +41,7 @@ namespace TamTechSDK.Web.Controllers.Portal
     {
         #region properties
         private readonly IPosTypeService _posTypeService;
-        private readonly ISectorServices _sectorService;
+        private readonly IPOSSectorServices _sectorService;
         private readonly IPOSAttributeService _attributeService;
         private readonly IPOSService _posservice;
         private readonly IUploadManagerService _uploadManager;
@@ -54,7 +54,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         public VendorController(
             ITelemetryService telemetryClientService,
             IPosTypeService posTypeService,
-            ISectorServices sectorService,
+            IPOSSectorServices sectorService,
             IPOSAttributeService attributeService,
             IPOSService posservice,
             IUploadManagerService uploadManager,

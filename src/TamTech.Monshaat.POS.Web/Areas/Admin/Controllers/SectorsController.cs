@@ -26,14 +26,14 @@ namespace TamTechSDK.Web.Controllers.Admin
     [Authorize(Policy = ContentSDKPoliciesConstants.POSSectorsAdmin)]
     public class SectorsController : AdminBaseController
     {
-        private readonly ISectorServices _sectorServices;
+        private readonly IPOSSectorServices _sectorServices;
         private readonly IStringLocalizer<AdminBaseController> _localizer;
         private readonly IUploadManagerService _uploadManager;
 
         public SectorsController(
                                     ITelemetryService telemetryClientService,
                                     IStringLocalizer<AdminBaseController> localizer,
-                                    ISectorServices sectorServices,
+                                    IPOSSectorServices sectorServices,
                                     IUploadManagerService uploadManager
 
             ) : base(telemetryClientService, localizer)

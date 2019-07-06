@@ -20,13 +20,13 @@ namespace TamTechSDK.Web.Controllers.Portal
     public class DirectoryController : PublicBaseController
     {
 
-        private readonly ISectorServices _sectorService;
+        private readonly IPOSSectorServices _sectorService;
         private readonly IDirectoryServices _directoryServices;
         private readonly IPOSAttributeService _attributeService;
         private readonly IPosTypeService _posTypeService;
         public DirectoryController(
                                             ITelemetryService telemetryClientService,
-                                            ISectorServices sectorService,
+                                            IPOSSectorServices sectorService,
                                             IDirectoryServices directoryServices,
                                             IPOSAttributeService attributeService,
                                             IPosTypeService posTypeService
