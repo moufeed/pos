@@ -52,20 +52,20 @@ namespace TamTechSDK.Web.Controllers.Admin
             var _lang = GetCurrentDataLang();
 
             var sectors = await _sectorservice.GetSelectListAsync(_lang);
-            if (sectors != null && sectors.Count > 0)
+            if (sectors.Success && sectors.Data?.Count > 0)
             {
-                ViewBag.sectors = new SelectList(sectors, "Value", "Text", model.SectorId);
+                ViewBag.sectors = new SelectList(sectors.Data, "Value", "Text", model.SectorId);
             }
             var types = await _typeService.GetSelectListAsync(_lang);
-            if (types != null && types.Count > 0)
+            if (types.Success && types.Data?.Count > 0)
             {
-                ViewBag.types = new SelectList(types, "Value", "Text", model.TypeId);
+                ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
             }
 
             var status = await _statusService.GetAllSelectListAsync(_lang);
-            if (status != null && status.Count > 0)
+            if (status.Success && status.Data?.Count > 0)
             {
-                ViewBag.statusList = new SelectList(status, "Value", "Text", model.StatusId);
+                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
             }
 
         }

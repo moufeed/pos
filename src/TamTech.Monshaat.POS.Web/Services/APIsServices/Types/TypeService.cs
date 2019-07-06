@@ -68,42 +68,39 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
             throw new NotImplementedException();
         }
 
-        public  async Task<List<TypeDto>> GetAllExceptSoftDeletedAsync(string lang)
+        public Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
         {
             throw new NotImplementedException();
         }
 
-        public  async Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
             throw new NotImplementedException();
         }
 
-        public  async Task<TypeDto> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        public Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
             throw new NotImplementedException();
         }
 
-        public  async Task<PagedResultModel<List<TypeDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
             throw new NotImplementedException();
         }
 
-
-        public  async Task<List<SelectListItemModel>> GetSelectListAsync(string lang, bool isOfficial = true)
+        public Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             throw new NotImplementedException();
         }
 
-        public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public  async Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
+        public Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
         {
             throw new NotImplementedException();
         }
-
-       
     }
 }

@@ -28,35 +28,35 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
             return MapRequestProviderResult(request);
         }
 
-        public async Task<PersonDto> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<PersonDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
         {
             var request = await _vendorSerives.GetByIdExceptSoftDeletedAsync(id, lang);
-            return request?.MapToFrontPersonDto();
+            return ReturnRequestProviderResult(request?.MapToFrontPersonDto());
         }
 
-        public async Task<PagedResultModel<List<PersonDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<PersonDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _vendorSerives.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<PersonDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<PersonDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToFrontPersonDto()).ToList() : new List<PersonDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
-        public async Task<List<VendorStatusHistoryDto>> GetStatusHistoriesListAsync(Guid VId, string lang)
+        public async Task<IRequestProviderResult<List<VendorStatusHistoryDto>>> GetStatusHistoriesListAsync(Guid VId, string lang)
         {
             var result = await _vendorSerives.GetStatusHistoriesListAsync(VId, lang);
 
-            return result?.Select(el => el.MapToVendorStatusHistoryDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(el => el.MapToVendorStatusHistoryDto()).ToList());
         }
 
-        public async Task<List<ProcessActionModel>> GetVendorActions(string lang)
+        public async Task<IRequestProviderResult<List<ProcessActionModel>>> GetVendorActions(string lang)
         {
             var request = await _vendorSerives.GetVendorActionsAsync(lang);
-            return request?.Select(m => m.MapToFrontProcessActionModel()).ToList();
+            return ReturnRequestProviderResult(request?.Select(m => m.MapToFrontProcessActionModel()).ToList());
         }
 
         public async Task<IRequestProviderResult<PersonDto>> SetActionAsync(SetActionModel model)
@@ -73,5 +73,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
             var request = await _vendorSerives.SoftDeleteAsync(id);
             return MapRequestProviderResult(request);
         }
+
+         
     }
 }

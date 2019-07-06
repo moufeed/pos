@@ -71,7 +71,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var settings = await _settingsServices.GetByGroupIdAsync((int)BiogrphyGroupEnum.Information, GetCurrentDataLang());
 
-                return View(settings != null ? settings.MapTOSiteInformationVm() : model);
+                return View(settings.Success && settings.Data != null ? settings.Data.MapTOSiteInformationVm() : model);
             }
             catch (Exception ex)
             {
@@ -155,7 +155,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var settings = await _settingsServices.GetByGroupIdAsync((int)BiogrphyGroupEnum.Biography, GetCurrentDataLang());
 
-                return View(settings != null ? settings.MapTOSiteInformationVm() : model);
+                return View(settings.Success &&  settings.Data != null ? settings.Data.MapTOSiteInformationVm() : model);
             }
             catch (Exception ex)
             {

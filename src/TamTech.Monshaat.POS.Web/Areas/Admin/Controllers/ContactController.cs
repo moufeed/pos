@@ -85,15 +85,15 @@ namespace TamTechSDK.Web.Controllers.Admin
             SortingModel sorting = CreateSortingModel(model.SortBy);
 
             var types = await _typeService.GetSelectListAsync(GetCurrentDataLang(), true);
-            if (types != null && types.Count > 0)
+            if (types.Success && types.Data.Count > 0)
             {
-                ViewBag.types = new SelectList(types, "Value", "Text", model.TypeId);
+                ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
             }
 
             var status = await _statusService.GetAllSelectListAsync(GetCurrentDataLang());
-            if (status != null && status.Count > 0)
+            if (status.Success && status.Data.Count > 0)
             {
-                ViewBag.statusList = new SelectList(status, "Value", "Text", model.StatusId);
+                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
             }
 
             DTFilter filters = new DTFilter

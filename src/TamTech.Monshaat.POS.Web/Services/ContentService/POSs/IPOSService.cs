@@ -26,10 +26,10 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs
 
         Task<IRequestProviderResult<GeneratedSlugModel>> VerifySlugUniqueByNameAsync(string name, Guid? id = null);
 
-        Task<PagedResultModel<List<PosDto>>> GetPOSsForCurrentUserAsync(PosFilters model);
+        Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> GetPOSsForCurrentUserAsync(PosFilters model);
 
 
-        Task<PosDto> GetByIdAndCurrentUserExceptSoftDeletedAsync(Guid id, string lang);
+        Task<IRequestProviderResult<PosDto>> GetByIdAndCurrentUserExceptSoftDeletedAsync(Guid id, string lang);
 
          
 

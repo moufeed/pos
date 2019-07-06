@@ -58,7 +58,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             if (menuItemsTypesList != null)
             {
-                foreach (var typeList in menuItemsTypesList)
+                foreach (var typeList in menuItemsTypesList.Data)
                 {
                     if (typeList.Key.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))
                     {

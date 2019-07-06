@@ -15,26 +15,26 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sectors
     {
         #region Public  Sectors // ----------------------------------------------------- 
 
-        Task<SectorDto> GetPublishedBySlugAsync(string slug);
+        Task<IRequestProviderResult<SectorDto>> GetPublishedBySlugAsync(string slug);
 
-        Task<List<SectorDto>> GetPublishedListAsync(bool sortManually = true);
+        Task<IRequestProviderResult<List<SectorDto>>> GetPublishedListAsync(bool sortManually = true);
 
-        Task<List<SectorDto>> GetPublishedListAsync(int takeItems, bool sortManually = true);
+        Task<IRequestProviderResult<List<SectorDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true);
 
         #endregion  // ------------------------------------------------------------
 
 
         #region Admin Services // ------------------------------------------------------------
 
-        Task<List<SelectListItemModel>> GetSelectListAsync(string lang, bool isOfficial =true);
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial =true);
 
-        Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang);
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang);
 
-        Task<SectorDto> GetByIdExceptSoftDeletedAsync(int id, string lang);
+        Task<IRequestProviderResult<SectorDto>> GetByIdExceptSoftDeletedAsync(int id, string lang);
 
-        Task<List<SectorDto>> GetAllExceptSoftDeletedAsync(string lang);
+        Task<IRequestProviderResult<List<SectorDto>>> GetAllExceptSoftDeletedAsync(string lang);
 
-        Task<PagedResultModel<List<SectorDto>>> GetExceptSoftDeletedAsync(DTFilter model);
+        Task<IRequestProviderResult<PagedResultModel<List<SectorDto>>>> GetExceptSoftDeletedAsync(DTFilter model);
 
         Task<IRequestProviderResult<int>> CreateAsync(CreateSectorModel model);
 

@@ -36,7 +36,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
             if (string.IsNullOrWhiteSpace(app_version))
             {
                 var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.AppVersion);
-                app_version = settings?.Value;
+                app_version = settings.Data?.Value;
             }
 
         }
@@ -47,7 +47,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
         {
             if (!string.IsNullOrWhiteSpace(app_version)) return app_version;
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.AppVersion);
-            app_version = settings?.Value;
+            app_version = settings?.Data?.Value;
             return app_version;
         }
 
@@ -55,7 +55,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
         {
 
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.VendorRoleName);
-            return settings?.Value;
+            return settings?.Data?.Value;
         }
 
 
@@ -63,20 +63,20 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
         {
 
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.AppUrl);
-            return settings?.Value;
+            return settings?.Data?.Value;
         }
 
 
         public async Task<bool> DisplayTokenInWebViewAsync()
         {
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.DisplayTokenInWebView);
-            return settings?.Value == "1";
+            return settings?.Data?.Value == "1";
         }
 
         public async Task<bool> CheckCachedNavbarAsync()
         {
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.CachedNavbar);
-            return settings?.Value == "1";
+            return settings?.Data?.Value == "1";
         }
 
         public async Task<EmailFromInfo> GetEmailSettingsAsync()
@@ -84,12 +84,12 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
 
             var settings = await _settingService.GetEnabledListBySharedKeysAsync(
                 new List<string> { SettingSharedKeysEnum.Email.ToString(), SettingSharedKeysEnum.Email_CC.ToString() });
-            if (settings == null) return null;
+            if (settings.Data == null || !settings.Success) return null;
             EmailFromInfo model = new EmailFromInfo
             {
-                From = settings.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_From.ToString())?.Value,
-                FromName = settings.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_FromName.ToString())?.Value,
-                CC = settings.Where(e => e.SharedKey == SettingSharedKeysEnum.Email_CC.ToString())?.Select(c => c.Value)?.ToList(),
+                From = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_From.ToString())?.Value,
+                FromName = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_FromName.ToString())?.Value,
+                CC = settings.Data.Where(e => e.SharedKey == SettingSharedKeysEnum.Email_CC.ToString())?.Select(c => c.Value)?.ToList(),
             };
             return model;
         }
@@ -97,17 +97,17 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
         public async Task<List<string>> GetMenuItemsTypesAsync()
         {
             var settings = await _settingService.GetEnabledListBySharedKeyAsync(SettingSharedKeysEnum.ModulesOfMenuItemsTypes.ToString());
-            return settings?.Select(s => s.Value)?.ToList();
+            return settings.Data?.Select(s => s.Value)?.ToList();
         }
         public async Task<List<string>> GetNumericalStatisticsNamesAsync()
         {
             var settings = await _settingService.GetEnabledListBySharedKeyAsync(SettingSharedKeysEnum.NumericalStatisticsModulesNames.ToString());
-            return settings?.Select(s => s.Value)?.ToList();
+            return settings.Data?.Select(s => s.Value)?.ToList();
         }
         public async Task<List<StaticMenuItem>> GetStaticPagesAsync()
         {
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.StaticPages);
-            return Helpers.Helpers.Deserialize<List<StaticMenuItem>>(settings?.Value);
+            return Helpers.Helpers.Deserialize<List<StaticMenuItem>>(settings.Data?.Value);
         }
 
         #endregion

@@ -15,11 +15,11 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Values
     {
         #region Public  Values
 
-        Task<ValueDto> GetPublishedBySlugAsync(string slug);
+        Task<IRequestProviderResult<ValueDto>> GetPublishedBySlugAsync(string slug);
 
-        Task<List<ValueDto>> GetPublishedListAsync(bool sortManually = true);
+        Task<IRequestProviderResult<List<ValueDto>>> GetPublishedListAsync(bool sortManually = true);
 
-        Task<List<ValueDto>> GetPublishedListAsync(int takeItems, bool sortManually = true);
+        Task<IRequestProviderResult<List<ValueDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true);
 
         #endregion
 
@@ -27,11 +27,11 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Values
 
         #region Get 
 
-        Task<ValueDto> GetByIdExceptSoftDeletedAsync(int id, string lang);
+        Task<IRequestProviderResult<ValueDto>> GetByIdExceptSoftDeletedAsync(int id, string lang);
 
-        Task<List<ValueDto>> GetAllExceptSoftDeletedAsync(string lang);
+        Task<IRequestProviderResult<List<ValueDto>>> GetAllExceptSoftDeletedAsync(string lang);
 
-        Task<PagedResultModel<List<ValueDto>>> GetExceptSoftDeletedAsync(DTFilter model);
+        Task<IRequestProviderResult<PagedResultModel<List<ValueDto>>>> GetExceptSoftDeletedAsync(DTFilter model);
 
         #endregion
 

@@ -77,7 +77,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus
         {
             if (await _settingsHelpers.CheckCachedNavbarAsync())
             {
-                CashedMenusService._navbar = await GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar);
+                CashedMenusService._navbar = (await GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar)).Data;
             }
         }
 
@@ -94,10 +94,10 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus
 
         #region Service
 
-        public async Task<Dictionary<string, Dictionary<string, string>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
+        public async Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
         {
             var results = await _contentUtilities.GetListsModulesForMenuItemsTypesAsync(model, lang);
-            return results;
+            return ReturnRequestProviderResult(results);
         }
 
 
@@ -112,17 +112,17 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus
         //}
 
 
-        public async Task<MenuDto> GetPublicByKeyAsync(string key)
+        public async Task<IRequestProviderResult<MenuDto>> GetPublicByKeyAsync(string key)
         {
             var result = await _menuService.GetPublicByKeyAsync(key);
-            return result?.MapToFrontendDto();
+            return ReturnRequestProviderResult (result?.MapToFrontendDto());
         }
 
 
-        public async Task<MenuDto> GetPublicBySettingIdAsync(int settingId)
+        public async Task<IRequestProviderResult<MenuDto>> GetPublicBySettingIdAsync(int settingId)
         {
             var result = await _menuService.GetPublicBySettingIdAsync(settingId);
-            return result?.MapToFrontendDto();
+            return ReturnRequestProviderResult(result?.MapToFrontendDto());
         }
 
 

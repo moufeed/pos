@@ -19,42 +19,42 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Setting
         {
             _service = BiographyService;
         }
-        public async Task<List<SettingDto>> GetListByKeysAsync(List<string> keys)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetListByKeysAsync(List<string> keys)
         {
             var result = await _service.GetListByKeysAsync(keys, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult (result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetByGroupIdsAsync(List<int> groupIds)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetByGroupIdsAsync(List<int> groupIds)
         {
             var result = await _service.GetByGroupIdsAsync(groupIds, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetListByIdsAsync(List<int> ids)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetListByIdsAsync(List<int> ids)
         {
             var result = await _service.GetListByIdsAsync(ids, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
 
 
-        public async Task<List<SettingDto>> GetListBySharedKeyAsync(string sharedkey)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetListBySharedKeyAsync(string sharedkey)
         {
             var result = await _service.GetListBySharedKeyAsync(sharedkey, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetListBySharedKeysAsync(List<string> sharedkeys)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetListBySharedKeysAsync(List<string> sharedkeys)
         {
             var result = await _service.GetListBySharedKeysAsync(sharedkeys, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetByGroupIdAsync(int groupId)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetByGroupIdAsync(int groupId)
         {
             var result = await _service.GetByGroupIdAsync(groupId, null);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<SettingDto> GetByIdAsync(int id)
+        public async Task<IRequestProviderResult<SettingDto>> GetByIdAsync(int id)
         {
             var result = await _service.GetByIdAsync(id, null);
-            return result?.MapToFrontDto();
+            return ReturnRequestProviderResult(result?.MapToFrontDto());
         }
 
 
@@ -63,42 +63,42 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Setting
 
 
 
-        public async Task<List<SettingDto>> GetEnabledListByKeysAsync(List<string> keys)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListByKeysAsync(List<string> keys)
         {
             var result = await _service.GetListByKeysAsync(keys, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetEnabledByGroupIdsAsync(List<int> groupIds)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledByGroupIdsAsync(List<int> groupIds)
         {
             var result = await _service.GetByGroupIdsAsync(groupIds, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetEnabledListByIdsAsync(List<int> ids)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListByIdsAsync(List<int> ids)
         {
             var result = await _service.GetListByIdsAsync(ids, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
 
-        public async Task<List<SettingDto>> GetEnabledListBySharedKeyAsync(string sharedkey)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListBySharedKeyAsync(string sharedkey)
         {
             var result = await _service.GetListBySharedKeyAsync(sharedkey, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
 
-        public async Task<List<SettingDto>> GetEnabledListBySharedKeysAsync(List<string> sharedkeys)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListBySharedKeysAsync(List<string> sharedkeys)
         {
             var result = await _service.GetListBySharedKeysAsync(sharedkeys, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<List<SettingDto>> GetEnabledByGroupIdAsync(int groupId)
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledByGroupIdAsync(int groupId)
         {
             var result = await _service.GetByGroupIdAsync(groupId, true);
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontDto()).ToList());
         }
-        public async Task<SettingDto> GetEnabledByIdAsync(int id)
+        public async Task<IRequestProviderResult<SettingDto>> GetEnabledByIdAsync(int id)
         {
             var result = await _service.GetByIdAsync(id, true);
-            return result?.MapToFrontDto();
+            return ReturnRequestProviderResult( result?.MapToFrontDto());
         }
 
 
@@ -106,10 +106,10 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Setting
 
 
 
-        public async Task<List<SettingDto>> GetAllAsync()
+        public async Task<IRequestProviderResult<List<SettingDto>>> GetAllAsync()
         {
             var result = await _service.GetAllAsync();
-            return result?.Select(m => m.MapToFrontDto()).ToList();
+            return ReturnRequestProviderResult( result?.Select(m => m.MapToFrontDto()).ToList());
         }
 
 

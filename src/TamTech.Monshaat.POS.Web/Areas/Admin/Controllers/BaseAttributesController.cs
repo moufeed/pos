@@ -141,8 +141,11 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _attributeService.GetByIdAsync(id, GetCurrentDataLang());
 
-                if (result != null)
-                    return View("Form", result.MapToAttributeVM());
+                if (result.Success)
+                {
+                    return View("Form", result.Data.MapToAttributeVM());
+                }
+                    
 
                 ViewBag.EmptyResponse = true;
 

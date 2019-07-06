@@ -34,22 +34,22 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos
             return MapRequestProviderResult(request);
         }
 
-        public async Task<PosDto> GetByIdAndCurrentUserExceptSoftDeletedAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<PosDto>> GetByIdAndCurrentUserExceptSoftDeletedAsync(Guid id, string lang)
         {
             var request = await _posservices.GetByIdAndCurrentUserExceptSoftDeletedAsync(id, lang);
-            return request?.MapToForntPosDto();
+            return ReturnRequestProviderResult(request?.MapToForntPosDto());
         }
 
-        public async Task<PagedResultModel<List<PosDto>>> GetPOSsForCurrentUserAsync(PosFilters model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> GetPOSsForCurrentUserAsync(PosFilters model)
         {
             var request = await _posservices.GetPOSsForCurrentUserAsync(model.MapToBackPosFilter());
 
-            return new PagedResultModel<List<PosDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<PosDto>>
             {
                 Data = request.Data?.Select(s => s.MapToForntPosDto()).ToList(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
         public async Task<IRequestProviderResult<bool>> SoftDeleteByCurrentUserAsync(Guid id)

@@ -13,11 +13,11 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Vendors
     {
         #region Get
 
-        Task<List<ProcessActionModel>> GetVendorActions(string lang);
+        Task<IRequestProviderResult<List<ProcessActionModel>>> GetVendorActions(string lang);
 
-        Task<PagedResultModel<List<PersonDto>>> GetExceptSoftDeletedAsync(DTFilter model);
+        Task<IRequestProviderResult<PagedResultModel<List<PersonDto>>>> GetExceptSoftDeletedAsync(DTFilter model);
 
-        Task<PersonDto> GetByIdExceptSoftDeletedAsync(Guid id, string lang);
+        Task<IRequestProviderResult<PersonDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang);
         #endregion
 
         #region
@@ -28,7 +28,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Vendors
 
         Task<IRequestProviderResult<bool>> ActivateAsync(ActiveModel model);
 
-        Task<List<VendorStatusHistoryDto>> GetStatusHistoriesListAsync(Guid VId, string lang);
+        Task<IRequestProviderResult<List<VendorStatusHistoryDto>>> GetStatusHistoriesListAsync(Guid VId, string lang);
         #endregion
     }
 }

@@ -143,8 +143,10 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _typeService.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
 
-                if (result != null)
-                    return View("Form", result.MapToTypeVM());
+                if (result.Success)
+                {
+                    return View("Form", result.Data.MapToTypeVM());
+                }
 
                 ViewBag.EmptyResponse = true;
 

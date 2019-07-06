@@ -39,7 +39,7 @@ namespace TamTechSDK.Web.Services.ContentService.Menus.PublicService
 
             if (_navbar == null || _navbar == default(MenuDto) || _navbar.Lang.Equals(lang, StringComparison.InvariantCultureIgnoreCase))
             {
-                _navbar = await _menusServices.GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar);
+                _navbar = (await _menusServices.GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar)).Data;
             }
             return _navbar;
 

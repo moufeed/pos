@@ -37,7 +37,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages
 
 
         #region {Public Pages}  
-        public async Task<PageDto> GetPublicBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)
         {
             var backendpage = await _pageService.GetPublicBySlugAsync(slug);
             if (backendpage == null) return null;
@@ -46,7 +46,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages
                 page.HtmlContent = ((TamTech.ContentService.Services.Pages.Dtos.HtmlPageDto)backendpage).Content;
             else
                 page.SectionsContent = ((TamTech.ContentService.Services.Pages.Dtos.SectionsPageDto)backendpage).Content;
-            return page;
+            return ReturnRequestProviderResult(page);
         }
 
         //public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)

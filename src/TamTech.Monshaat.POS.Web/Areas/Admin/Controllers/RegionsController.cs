@@ -135,8 +135,8 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _regionsServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
 
-                if (result != null)
-                    return View("Form", result.MapToRegionVM());
+                if (result.Success && result.Data != null)
+                    return View("Form", result.Data.MapToRegionVM());
 
                 ViewBag.EmptyResponse = true;
 

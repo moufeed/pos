@@ -37,48 +37,48 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ValuesServices
             return MapRequestProviderResult(result);
         }
 
-        public async Task<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>> GetAllExceptSoftDeletedAsync(string lang)
+        public async Task<IRequestProviderResult<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
             var request = await _valuesServices.GetAllExceptSoftDeletedAsync(lang);
 
-            return request?.Select(s => s.MapToForntValueDto()).ToList();
+            return ReturnRequestProviderResult(request?.Select(s => s.MapToForntValueDto()).ToList());
         }
 
-        public async Task<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        public async Task<IRequestProviderResult<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
             var request = await _valuesServices.GetByIdExceptSoftDeletedAsync(id, lang);
-            return request?.MapToForntValueDto();
+            return ReturnRequestProviderResult(request?.MapToForntValueDto());
         }
 
-        public async Task<TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PagedResultModel<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PagedResultModel<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _valuesServices.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
-            return new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PagedResultModel<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>
+            return ReturnRequestProviderResult(new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PagedResultModel<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>
             {
                 Data = request.Data?.Select(s => s.MapToForntValueDto()).ToList(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new TamTech.Monshaat.POS.Web.Models.Dtos.Pagination.PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
-        public async Task<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto> GetPublishedBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>> GetPublishedBySlugAsync(string slug)
         {
             var request = await _valuesServices.GetPublishedBySlugAsync(slug);
-            return request?.MapToForntValueDto();
+            return ReturnRequestProviderResult(request?.MapToForntValueDto());
         }
 
-        public async Task<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>> GetPublishedListAsync(bool sortManually = true)
+        public async Task<IRequestProviderResult<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>> GetPublishedListAsync(bool sortManually = true)
         {
             var request = await _valuesServices.GetPublishedListAsync(sortManually);
 
-            return request?.Select(s => s.MapToForntValueDto()).ToList();
+            return ReturnRequestProviderResult(request?.Select(s => s.MapToForntValueDto()).ToList());
         }
 
-        public async Task<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>> GetPublishedListAsync(int takeItems, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models.ValueDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
             var request = await _valuesServices.GetPublishedListAsync(takeItems, sortManually);
 
-            return request?.Select(s => s.MapToForntValueDto()).ToList();
+            return ReturnRequestProviderResult(request?.Select(s => s.MapToForntValueDto()).ToList());
         }
 
         public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)

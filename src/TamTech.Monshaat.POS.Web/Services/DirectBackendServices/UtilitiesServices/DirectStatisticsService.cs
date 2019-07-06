@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices.Mapper;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices
 {
-    public class DirectStatisticsService : IStatisticsService
+    public class DirectStatisticsService : BaseDirectService,IStatisticsService
     {
         private readonly TamTech.ContentService.Services.Statistics.IStatisticsService _statisticsService;
 
@@ -33,41 +34,41 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UtilitiesServices
         {
             _statisticsService = statisticsService;
         }
-        public async Task<StatisticsDto> GetContactUsNumericalStatisticsByStatusAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetContactUsNumericalStatisticsByStatusAsync(string lang)
         {
             var result = await _statisticsService.GetContactUsNumericalStatisticsByStatusAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
 
-        public async Task<StatisticsDto> GetContactUsNumericalStatisticsByTypeAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetContactUsNumericalStatisticsByTypeAsync(string lang)
         {
             var result = await _statisticsService.GetContactUsNumericalStatisticsByTypeAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
 
 
-        public async Task<StatisticsDto> GetPOSNumericalStatisticsByStatusAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetPOSNumericalStatisticsByStatusAsync(string lang)
         {
             var result = await _statisticsService.GetPOSNumericalStatisticsByStatusAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
 
-        public async Task<StatisticsDto> GetPOSNumericalStatisticsBySectorAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetPOSNumericalStatisticsBySectorAsync(string lang)
         {
             var result = await _statisticsService.GetPOSNumericalStatisticsBySectorAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
 
-        public async Task<StatisticsDto> GetPOSNumericalStatisticsByTypeAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetPOSNumericalStatisticsByTypeAsync(string lang)
         {
             var result = await _statisticsService.GetPOSNumericalStatisticsByTypeAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
 
-        public async Task<StatisticsDto> GetVendorNumericalStatisticsByStatusAsync(string lang)
+        public async Task<IRequestProviderResult<StatisticsDto>> GetVendorNumericalStatisticsByStatusAsync(string lang)
         {
             var result = await _statisticsService.GetVendorNumericalStatisticsByStatusAsync(lang);
-            return MapResult(result);
+            return ReturnRequestProviderResult(MapResult(result));
         }
     }
 }

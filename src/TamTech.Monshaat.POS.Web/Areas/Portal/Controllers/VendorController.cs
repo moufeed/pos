@@ -127,7 +127,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             ViewBag.TypsSelect = CreateTypeSelect(types.Data, model.TypeId);
             ViewBag.sectors = await _sectorService.GetPublishedListAsync();
             var attributes = await _attributeService.GetPublishedListAsync();
-            ViewBag.attributes = CreateAttributes(model, attributes, isUpdate);
+            ViewBag.attributes = CreateAttributes(model, attributes.Data, isUpdate);
 
         }
         #endregion
@@ -274,13 +274,14 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var request = await _posservice.GetByIdAndCurrentUserExceptSoftDeletedAsync(id, _lang);
-
-                PosFormVm _model = request.MapToPosFormVm();
-                await InitAction(_model, true);
-                ViewBag.UploadedFiles = string.Join(";;", _model.TempImages);
-                ViewBag.UploadedCount = _model.TempImages.Count;
-                return View(_VIEWS["PosForm"], _model);
-
+                if (request.Success)
+                {
+                    PosFormVm _model = request.Data?.MapToPosFormVm();
+                    await InitAction(_model, true);
+                    ViewBag.UploadedFiles = string.Join(";;", _model.TempImages);
+                    ViewBag.UploadedCount = _model.TempImages.Count;
+                    return View(_VIEWS["PosForm"], _model);
+                }
             }
             catch (Exception ex)
             {

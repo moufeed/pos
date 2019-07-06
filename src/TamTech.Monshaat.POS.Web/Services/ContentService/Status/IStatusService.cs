@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models;
 
@@ -18,10 +19,10 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Status
 
         #region Get
 
-        Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang);
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang);
 
 
-        Task<List<StatusDto>> GetAllAsync(string lang); 
+        Task<IRequestProviderResult<List<StatusDto>>> GetAllAsync(string lang); 
         #endregion
 
 

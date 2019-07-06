@@ -58,9 +58,9 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 var page = await _pageService.GetPublicBySlugAsync(slug);
 
-                if (page != null)
+                if (page.Success && page.Data != null)
                 {
-                    var type = page.Type == (int)PageTypeEnum.Sections ? PageTypeEnum.Sections : PageTypeEnum.Html;
+                    var type = page.Data.Type == (int)PageTypeEnum.Sections ? PageTypeEnum.Sections : PageTypeEnum.Html;
                     if (type == PageTypeEnum.Html)
                     {
                         return View($"Preview_{type.ToString()}", page);

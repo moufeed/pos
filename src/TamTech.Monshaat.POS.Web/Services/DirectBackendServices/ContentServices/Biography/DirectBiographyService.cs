@@ -24,16 +24,17 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biograp
             return MapRequestProviderResult(request);
         }
 
-        public async Task<List<BiographyDto>> GetByGroupIdAsync(int groupId, string lang)
+        public async Task<IRequestProviderResult<List<BiographyDto>>> GetByGroupIdAsync(int groupId, string lang)
         {
             var request = await _BiographyService.GetByGroupIdAsync(groupId, lang);
-            return request?.Select(m => m.MapToFrontBiographyDto()).ToList();
+            
+            return ReturnRequestProviderResult(request?.Select(m => m.MapToFrontBiographyDto()).ToList());
         }
 
-        public async Task<List<BiographyDto>> GetAllAsync()
+        public async Task<IRequestProviderResult<List<BiographyDto>>> GetAllAsync()
         {
             var request = await _BiographyService.GetAllAsync();
-            return request?.Select(m => m.MapToFrontBiographyDto()).ToList();
+            return ReturnRequestProviderResult(request?.Select(m => m.MapToFrontBiographyDto()).ToList());
         }
     }
 }

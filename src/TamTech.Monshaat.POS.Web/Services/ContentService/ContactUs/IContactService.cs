@@ -14,10 +14,10 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs
 
         Task<IRequestProviderResult<bool>> ReplayAsync(ReplayContactUsModel model);
 
-        Task<ContactDto> GetByIdAndSetStatusAsync(Guid id, string lang);
-        Task<ContactDto> GetByIdExceptSoftDeletedAsync(Guid id, string lang);
+        Task<IRequestProviderResult<ContactDto>> GetByIdAndSetStatusAsync(Guid id, string lang);
+        Task<IRequestProviderResult<ContactDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang);
 
-        Task<PagedResultModel<List<ContactDto>>> GetExceptSoftDeletedAsync(DTFilter model);
+        Task<IRequestProviderResult<PagedResultModel<List<ContactDto>>>> GetExceptSoftDeletedAsync(DTFilter model);
         
         Task<IRequestProviderResult<Guid>> CreateAsync(CreateModel model);
 

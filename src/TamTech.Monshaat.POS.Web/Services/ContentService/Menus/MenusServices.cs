@@ -44,7 +44,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
         }
 
 
-        public async Task<MenuDto> GetPublicByKeyAndLangAsync(string key, string lang)
+        public async Task<IRequestProviderResult<MenuDto>> GetPublicByKeyAndLangAsync(string key, string lang)
         {
             throw new NotImplementedException();
         }
@@ -270,17 +270,17 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
             return await _requestProvider.PostAsync<Dictionary<string, dynamic>, List<string>>(_backendSettings.GetPublicDynamicMenuItemsTypesListsByTypesAsyncEndpoint, model);
         }
 
-        public Task<Dictionary<string, Dictionary<string, string>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
+        public Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MenuDto> GetPublicByKeyAsync(string lang)
+        public Task<IRequestProviderResult<MenuDto>> GetPublicByKeyAsync(string lang)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MenuDto> GetPublicBySettingIdAsync(int settingId)
+        public Task<IRequestProviderResult<MenuDto>> GetPublicBySettingIdAsync(int settingId)
         {
             throw new NotImplementedException();
         }

@@ -32,58 +32,58 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes
             return MapRequestProviderResult(result);
         }
 
-        public async Task<List<AttributeDto>> GetAllAsync(string lang)
+        public async Task<IRequestProviderResult<List<AttributeDto>>> GetAllAsync(string lang)
         {
             var request = await _AttributeService.GetAllExceptSoftDeletedAsync(lang);
 
-            return request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>());
         }
 
-        public async Task<PagedResultModel<List<AttributeDto>>> GetAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<AttributeDto>>>> GetAsync(DTFilter model)
         {
             var request = await _AttributeService.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
-            return new PagedResultModel<List<AttributeDto>>
+            return ReturnRequestProviderResult( new PagedResultModel<List<AttributeDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
-        public async Task<List<TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public async Task<IRequestProviderResult<List<TamTech.Monshaat.POS.Web.Models.Dtos.SelectList.SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
             var result = await _AttributeService.GetAllSelectListAsync(lang);
 
-            return result?.Select(itm => itm.MapToForntSelectListItemModel()).ToList();
+            return ReturnRequestProviderResult(result?.Select(itm => itm.MapToForntSelectListItemModel()).ToList());
 
         }
 
 
-        public async Task<AttributeDto> GetByIdAsync(int id, string lang)
+        public async Task<IRequestProviderResult<AttributeDto>> GetByIdAsync(int id, string lang)
         {
             var request = await _AttributeService.GetByIdExceptSoftDeletedAsync(id, lang);
-            return request != null ? request.MapToForntAttributeDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToForntAttributeDto() : null);
 
         }
 
-        public async Task<AttributeDto> GetPublishedBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<AttributeDto>> GetPublishedBySlugAsync(string slug)
         {
             var request = await _AttributeService.GetPublishedBySlugAsync(slug);
-            return request != null ? request.MapToForntAttributeDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToForntAttributeDto() : null);
         }
 
-        public async Task<List<AttributeDto>> GetPublishedListAsync(bool sortManually = true)
+        public async Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(bool sortManually = true)
         {
             var request = await _AttributeService.GetPublishedListAsync(sortManually);
 
-            return request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>());
         }
 
-        public async Task<List<AttributeDto>> GetPublishedListAsync(int takeItems, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
             var request = await _AttributeService.GetPublishedListAsync(takeItems, sortManually);
 
-            return request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>());
         }
 
         public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)

@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content.Mapper;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
 {
-    public class DirectContentService : TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities.ICCUServices
+    public class DirectContentService : BaseDirectService,TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities.ICCUServices
     {
 
         private readonly TamTech.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
@@ -22,13 +23,13 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
         #endregion
 
 
-        public async Task<Dictionary<string, NumericalStatisticsDto>> GetNumericalStatisticsAsync(List<string> types, string lang)
+        public async Task<IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> GetNumericalStatisticsAsync(List<string> types, string lang)
         {
             var result = await _contentUtilities.GetNumericalStatisticsAsync(types, lang);
 
             var dec = result.Select(dict => dict).ToDictionary(m => m.Key, m => m.Value.MapToFrontEndNumericalStatisticsDto());
 
-            return dec;
+            return ReturnRequestProviderResult(dec);
 
 
         }
@@ -76,6 +77,11 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
                         "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
             }
             };
+        }
+
+        Task<IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> ICCUServices.GetNumericalStatisticsAsync(List<string> types, string lang)
+        {
+            throw new NotImplementedException();
         }
     }
 }

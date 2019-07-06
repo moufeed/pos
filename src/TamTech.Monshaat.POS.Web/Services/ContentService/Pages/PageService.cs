@@ -140,10 +140,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
             throw new NotImplementedException();
         }
 
-        Task<PageDto> IPageService.GetPublicBySlugAsync(string slug)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public Task<IRequestProviderResult<HtmlPage>> GetPublishedPageHtmlByIdAsync(Guid id)
         {
