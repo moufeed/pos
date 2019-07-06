@@ -602,7 +602,7 @@ $(document).ready(()=>{
         .then(response => {
             if(!response.success){  
                 if (response.errors.length > 0) {
-                    txt = MakeErrorsMsg(response.errors);
+                   let txt = MakeErrorsMsg(response.errors);
                     $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                 }else{
                     $notification.error(window.localization.error , window.localization.something_wrong , 3500, "fa fa-exclamation-circle");
