@@ -158,7 +158,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages
             return MapRequestProviderResult(result);
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishModel data)
         {
             IReturnResultModel<bool> result = await _pageService.PublishHtmlPageAsync(data?.MapToBackend());
             return MapRequestProviderResult(result);
@@ -187,7 +187,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages
             return MapRequestProviderResult(result);
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishModel data)
         {
             IReturnResultModel<bool> result = await _pageService.PublishSectionsPageAsync(data?.MapToBackend());
             return MapRequestProviderResult(result);

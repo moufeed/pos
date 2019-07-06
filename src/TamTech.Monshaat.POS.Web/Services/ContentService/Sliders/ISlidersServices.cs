@@ -32,7 +32,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders
 
         Task<IRequestProviderResult<bool>> DeleteByIdAsync(Guid id);
 
-        Task<IRequestProviderResult<bool>> publishByIdAsync(PublishDTO data);
+        Task<IRequestProviderResult<bool>> publishByIdAsync(PublishModel data);
 
 
 

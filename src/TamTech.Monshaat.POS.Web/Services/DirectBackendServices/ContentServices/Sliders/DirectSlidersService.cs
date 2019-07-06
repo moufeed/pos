@@ -141,7 +141,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders
             return MapRequestProviderResult(result);
         }
 
-        public async Task<IRequestProviderResult<bool>> publishByIdAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<bool>> publishByIdAsync(PublishModel data)
         {
             var result = await _sliderService.PublishAsync(data.MapToBackend());
             return MapRequestProviderResult(result);

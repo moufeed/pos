@@ -38,18 +38,18 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
 
         public async Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug });
+            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually });
+            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually }, PassParamsBy.Route);
             
         }
 
         public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually });
+            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually }, PassParamsBy.Route);
             
         }
 
@@ -59,28 +59,28 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
 
         public async Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang });
+            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>>  GetAllSelectListAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang });
+            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
          }
 
         public async Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
-            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang });
+            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>>  GetExceptSoftDeletedAsync(DTFilter model)
         {
-            return await _requestProvider.GetAsync<PagedResultModel<List<TypeDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint, model);
+            return await _requestProvider.GetAsync<PagedResultModel<List<TypeDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint , model, PassParamsBy.Body);
         }
 
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>>  GetSelectListAsync(string lang, bool isOfficial = true)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetSelectListEndpoint, new List<object> { lang, isOfficial });
+            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetSelectListEndpoint, new List<object> { lang, isOfficial }, PassParamsBy.Route);
         }
 
         #endregion
@@ -99,9 +99,9 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
             return await _requestProvider.PostAsync<bool, UpdateTypeModel>(_apiSettings.EditEndpoint, model);
         } 
 
-        public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
-            return await _requestProvider.PostAsync<bool, PublishDTO>(_apiSettings.PublishEndpoint, model);
+            return await _requestProvider.PostAsync<bool, PublishLookupModel>(_apiSettings.PublishEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)

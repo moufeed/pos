@@ -42,7 +42,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sectors
 
         Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id);
 
-        Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model);
+        Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model);
 
         #endregion  // ------------------------------------------------------------
 

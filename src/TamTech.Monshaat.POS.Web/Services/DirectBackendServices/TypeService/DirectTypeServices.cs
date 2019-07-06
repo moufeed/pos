@@ -104,7 +104,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
 
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
             var result = await _typeService.PublishAsync(model.MapToBackendPuplishModel());
             return MapRequestProviderResult(result);

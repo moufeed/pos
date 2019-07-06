@@ -357,7 +357,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (ModelState.IsValid)
                 {
                     var result = await _sectorServices.SoftDeleteAsync(id);
-                    return ReturnJson(result, id);
+                    return ReturnJsonResult(result, id);
                 }
                 else
                 {
@@ -380,15 +380,15 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 if (ModelState.IsValid)
                 {
-                    PublishDTO data = new PublishDTO
+                    PublishLookupModel data = new PublishLookupModel
                     {
-                        IntId = id,
+                        Id = id,
                         Lang = GetCurrentDataLang()
 
                     };
 
                     var result = await _sectorServices.PublishAsync(data);
-                    return ReturnJson(result, id);
+                    return ReturnJsonResult(result, id);
                 }
                 else
                 {

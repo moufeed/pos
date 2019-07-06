@@ -52,6 +52,47 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             return result;
         }
 
+        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy)
+        { 
+            if(paramsBy == PassParamsBy.Body)
+            {
+                return await SendAsync<TResult, TRequest>(uri, data);
+            }
+            return await GetAsync<TResult, TRequest>(uri, data);
+        }
+
+        public async Task<IRequestProviderResult<TResult>> SendAsync<TResult, TRequest>(string uri, TRequest data)
+        {
+            try
+            {
+                IRequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
+                HttpClient httpClient = CreateHttpClient();
+               // string requestUri = GetRequestUri<TRequest>(uri, data);
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                HttpRequestMessage request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri(uri),
+                    Content = content
+                };
+                HttpResponseMessage response = await httpClient.SendAsync(request);
+                await HandleResponse<TResult>(response, result);
+
+                if (result.Success)
+                {
+                    string serialized = await response.Content.ReadAsStringAsync();
+                    result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Http Request Provider Exception - ", ex);
+            }
+
+        }
+
         public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data)
         {
             try
@@ -69,11 +110,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                 }
                 return result;
             }
-            catch (Exception ex) 
-            { 
-                throw  new Exception("Http Request Provider Exception - ", ex);
+            catch (Exception ex)
+            {
+                throw new Exception("Http Request Provider Exception - ", ex);
             }
-            
+
         }
         public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey)
         {
@@ -120,7 +161,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                         {
                             foreach (string str in list)
                             {
-                                parameters += $"/{str}";
+                                parameters += $"/{WebUtility.UrlEncode(str)}";
                             }
                             return $"{uri}{parameters}";
                         }
@@ -139,7 +180,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                         if (queries.Length > 0)
                         {
                             queries = queries.Remove(queries.Length - 1);
-                            return $"{uri}?{queries}";
+                            return$"{uri}?{ WebUtility.UrlEncode(queries)}";
                         }
                     }
                 }

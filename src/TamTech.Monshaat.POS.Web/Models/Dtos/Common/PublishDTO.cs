@@ -5,24 +5,23 @@ using Newtonsoft.Json;
 
 namespace TamTech.Monshaat.POS.Web.Models.Dtos.Common
 {
-    public class PublishDTO
+    public class PublishLookupModel
     {
-
-        [JsonProperty("id")]
-        public Guid Id { get; set; }
-
         [JsonProperty("lang")]
         public string Lang { get; set; }
 
-        [JsonProperty("intid")]
-        public int IntId { get; set; }
+        [JsonProperty("id")]
+        public int Id { get; set; }
     }
+    public class  PublishModel : BasePublishModel
+    {
+ 
+    } 
 
-    public class ActiveModel : PublishDTO
+    public class ActiveModel : BasePublishModel
     {
 
-    }
-
+    } 
     public class BasePublishModel
     {
          

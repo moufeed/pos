@@ -54,7 +54,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos
             return ReturnRequestProviderResult(request?.Select(el => el.MapToPOSStatusHistoryDto()).ToList());
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishModel model)
         {
             var request = await _posservices.PublishAsync(model.MapToBackendPuplish());
             return MapRequestProviderResult(request);

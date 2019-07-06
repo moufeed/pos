@@ -66,9 +66,9 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 
         Task<IRequestProviderResult<bool>> DeleteSectionsPageAsync(Guid id);
 
-        Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishDTO data);
+        Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishModel data);
 
-        Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishDTO data);
+        Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishModel data);
 
 
         #endregion

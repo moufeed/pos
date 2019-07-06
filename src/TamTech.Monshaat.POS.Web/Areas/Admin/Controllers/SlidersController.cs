@@ -233,7 +233,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             try
             {
-                PublishDTO data = new PublishDTO
+                PublishModel data = new PublishModel
                 {
                     Id = id,
                     Lang = GetCurrentDataLang()

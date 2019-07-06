@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices
     public static class Mapper
     {
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackend(this TamTech.Monshaat.POS.Web.Models.Dtos.Common.PublishDTO frontend)
+        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackend(this TamTech.Monshaat.POS.Web.Models.Dtos.Common.PublishModel frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishModel
             {

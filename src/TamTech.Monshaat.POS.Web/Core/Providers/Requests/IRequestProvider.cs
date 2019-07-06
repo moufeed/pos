@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
     public interface IRequestProvider
     { 
         Task<IRequestProviderResult<TResult>> GetAsync<TResult>(string uri);
-        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data);
+        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy);
         Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey);
         Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, ICollection<string> urlParams = null, string header = "");
 
@@ -18,6 +18,14 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
         Task DeleteAsync(string uri);
         Task<IRequestProviderResult<TResult>> PostMultipartContent<TResult>(string uri, MultipartFormDataContent content, string header = "");
 
+    }
+
+
+    public enum PassParamsBy
+    {
+        Route = 1,
+        QueryString = 2,
+        Body = 3
     }
 }
 

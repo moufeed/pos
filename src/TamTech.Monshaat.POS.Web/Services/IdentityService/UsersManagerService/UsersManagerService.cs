@@ -37,7 +37,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity
         public async Task<IRequestProviderResult<UserModel>> GetUserByUsernameAsync(string username)
         {
             return await _requestProvider.GetAsync<UserModel, List<string>>(
-                        _backendSettings.GetUserByUserNameEndpoint, new List<string> { username});
+                        _backendSettings.GetUserByUserNameEndpoint, new List<string> { username}, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<bool>> RegisterUserAsync(RegisterUserModel data)

@@ -60,17 +60,26 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices
         }
 
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel MapToBackendPuplishModel(this  PublishDTO frontend)
+        //public static TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel MapToBackendPuplishModel(this  PublishModel frontend)
+        //{
+        //    return new TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel
+        //    {
+        //        Id = frontend.IntId,
+        //        Lang = frontend.Lang,
+
+        //    };
+        //}
+           public static TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel MapToBackendPuplishModel(this PublishLookupModel frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishLookupModel
             {
-                Id = frontend.IntId,
+                Id = frontend.Id,
                 Lang = frontend.Lang,
 
             };
         }
 
-        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackendPuplish(this  PublishDTO frontend)
+        public static TamTech.ContentService.Services.Shared.Dtos.PublishModel MapToBackendPuplish(this  PublishModel frontend)
         {
             return new TamTech.ContentService.Services.Shared.Dtos.PublishModel
             {
