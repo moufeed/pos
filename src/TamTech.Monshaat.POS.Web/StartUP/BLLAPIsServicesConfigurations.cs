@@ -2,6 +2,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types;
@@ -9,6 +11,7 @@ using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
@@ -109,6 +112,14 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 var provider = serviceExtension.GetService<IRequestProvider>();
                 var apiSettings = serviceExtension.GetService<IPOSValueApiSettings>();
                 return new ValueService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IContactRegionService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IContactUsRegionApiSettings>();
+                return new RegionService(provider, apiSettings);
             });
 
             /*

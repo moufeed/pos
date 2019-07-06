@@ -14,7 +14,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices
 {
-    public class DirectRegionsServices : BaseDirectService, IRegionService
+    public class DirectRegionsServices : BaseDirectService, IRegionService, IContactRegionService
     {
 
         private readonly TamTech.ContentService.Services.Regions.IRegionService _regionsServices;

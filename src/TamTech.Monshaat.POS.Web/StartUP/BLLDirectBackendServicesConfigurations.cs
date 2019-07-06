@@ -1,6 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
-using TamTech.ContentService.Services.Sections;
-using TamTech.Monshaat.POS.Web.Services.ContentService;
+using Microsoft.Extensions.DependencyInjection; 
 using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies; 
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs; 
 using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
@@ -65,9 +63,12 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.IVendorService, Web.DirectBackendServices.VendorService.DirectVendorService>();
             #endregion
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
+             //   services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IContactRegionService>((serviceExtension) =>
+             //{
+             //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Regions.IContactUsRegionService>();
+             //    return new Web.DirectBackendServices.RegionsServices.DirectRegionsServices(service);
+             //});
 
- 
             //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.IPOSSectorServices>((serviceExtension) =>
             //{
             //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Sectors.IPOSSectorService>();

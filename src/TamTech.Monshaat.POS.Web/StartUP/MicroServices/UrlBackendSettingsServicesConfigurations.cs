@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Services.APIsServices;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
@@ -36,6 +37,11 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
               services.AddScoped<IPOSValueApiSettings,  ValueApiSettings>((serviceExtension) =>
             {
                 return new ValueApiSettings(BaseAPISettings.POSValuesController);
+            });
+
+              services.AddScoped<IContactUsRegionApiSettings,  RegionApiSettings>((serviceExtension) =>
+            {
+                return new RegionApiSettings(BaseAPISettings.CURegionsController);
             });
 
 

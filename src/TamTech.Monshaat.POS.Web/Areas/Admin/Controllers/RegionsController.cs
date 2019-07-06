@@ -20,12 +20,12 @@ namespace TamTechSDK.Web.Controllers.Admin
 {
     public class RegionsController : AdminBaseController
     {
-        private readonly IRegionService _regionsServices;
+        private readonly IContactRegionService _regionsServices;
         private readonly IStringLocalizer<AdminBaseController> _localizer;
 
         public RegionsController(ITelemetryService telemetryClientService,
             IStringLocalizer<AdminBaseController> localizer,
-            IRegionService regionsServices
+            IContactRegionService regionsServices
             ) : base(telemetryClientService, localizer)
         {
             _regionsServices = regionsServices;
@@ -64,9 +64,9 @@ namespace TamTechSDK.Web.Controllers.Admin
                     Descending = sorting.Descending,
                     Search = GenrateSearchParams(model)
                 };
-                var items = await _regionsServices.GetExceptSoftDeletedAsync(_filters);
-
-                return View(items);
+                var result = await _regionsServices.GetExceptSoftDeletedAsync(_filters); 
+                HandelGetingResult(result);
+                return View(VerifySucceed(result) ? result.Data : null);
 
             }
             catch (Exception ex)
@@ -133,10 +133,10 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             try
             {
-                var result = await _regionsServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result.Success && result.Data != null)
-                    return View("Form", result.Data.MapToRegionVM());
+                var result = await _regionsServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang()); 
+                HandelGetingResult(result);
+                if(VerifySucceed(result)) 
+                return View("Form", result.Data.MapToRegionVM());
 
               
 

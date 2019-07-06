@@ -42,7 +42,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IContactService _contactService;
         private readonly IContactTypeService _typeService;
         private readonly IDirectoryServices _serchservices;
-        private readonly IRegionService _regionsServices;
+        private readonly IContactRegionService _regionsServices;
 
         #endregion
         public HomeController(ITelemetryService telemetryClientService,
@@ -54,7 +54,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     IContactService contactService,
                                     IContactTypeService typeService,
                                     IDirectoryServices serchservices,
-                                    IRegionService regionsServices
+                                    IContactRegionService regionsServices
                                     ) : base(telemetryClientService)
         {
             _pageService = pageService;
