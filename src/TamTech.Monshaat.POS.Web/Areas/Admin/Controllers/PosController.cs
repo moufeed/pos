@@ -57,9 +57,13 @@ namespace TamTechSDK.Web.Controllers.Admin
                 ViewBag.sectors = new SelectList(sectors.Data, "Value", "Text", model.SectorId);
             }
             var types = await _typeService.GetSelectListAsync(_lang);
-            if (types.Success && types.Data?.Count > 0)
+            HandelGetingResult(types);
+            if (VerifySucceed(types))
             {
-                ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
+                if (types.Data.Count > 0)
+                {
+                    ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
+                }
             }
 
             var status = await _statusService.GetAllSelectListAsync(_lang);

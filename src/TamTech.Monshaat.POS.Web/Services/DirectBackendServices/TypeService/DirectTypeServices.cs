@@ -39,7 +39,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
         {
             var request = await _typeService.GetAllExceptSoftDeletedAsync(lang);
 
-            return ReturnRequestProviderResult(request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>());
+            var result = request != null ? request.Select(itm => itm.MapToForntTypeDto()).ToList() : new List<TypeDto>();
+
+            return ReturnRequestProviderResult(result);
         }
 
         public async Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
@@ -84,12 +86,15 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             return ReturnRequestProviderResult(result);
         }
 
+
+
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
         {
             var result = await _typeService.GetSelectListAsync(lang, isOfficial);
 
             return ReturnRequestProviderResult(result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>());
 
+            
         }
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
@@ -110,5 +115,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
             var result = await _typeService.SoftDeleteAsync(id);
             return MapRequestProviderResult(result);
         }
+
+      
     }
 }

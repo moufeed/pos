@@ -38,8 +38,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
 
         public async Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<TypeDto, List<string>>(_apiSettings.GetPublishedBySlugEndpoint, new List<string> { slug });
-             
+            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug });
         }
 
         public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(bool sortManually = true)
@@ -54,53 +53,65 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types
             
         }
 
-             #endregion
+        #endregion
 
+        #region Admin / Get
+
+        public async Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang)
+        {
+            return await _requestProvider.GetAsync<List<TypeDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang });
+        }
+
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>>  GetAllSelectListAsync(string lang)
+        {
+            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang });
+         }
+
+        public async Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        {
+            return await _requestProvider.GetAsync<TypeDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang });
+        }
+
+        public async Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>>  GetExceptSoftDeletedAsync(DTFilter model)
+        {
+            return await _requestProvider.GetAsync<PagedResultModel<List<TypeDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint, model);
+        }
+
+
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>>  GetSelectListAsync(string lang, bool isOfficial = true)
+        {
+            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetSelectListEndpoint, new List<object> { lang, isOfficial });
+        }
+
+        #endregion
+
+
+        #region Admin -  Create / Edit / Publish / Delete
 
 
         public async Task<IRequestProviderResult<int>> CreateAsync(CreateTypeModel model)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.PostAsync<int, CreateTypeModel>(_apiSettings.CreateEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> EditAsync(UpdateTypeModel model)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.PostAsync<bool, UpdateTypeModel>(_apiSettings.EditEndpoint, model);
+        } 
+
+        public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        {
+            return await _requestProvider.PostAsync<bool, PublishDTO>(_apiSettings.PublishEndpoint, model);
         }
 
-        public Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
+        public  async Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.PostAsync<bool, DeleteModel<int>>(_apiSettings.SoftDeleteEndpoint, new DeleteModel<int>(id));
         }
 
-        public Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

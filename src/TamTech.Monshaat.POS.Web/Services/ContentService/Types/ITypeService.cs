@@ -28,16 +28,17 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Types
 
         #region Types Manager
 
-        #region Get
-        Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true);
-        Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang);
+        #region Get 
 
-        Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang);
+        Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang); 
 
-        Task<IRequestProviderResult<List<TypeDto>>> GetAllExceptSoftDeletedAsync(string lang);
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang); 
 
-        Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model);
+        Task<IRequestProviderResult<TypeDto>> GetByIdExceptSoftDeletedAsync(int id, string lang); 
 
+        Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model); 
+
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true); 
         #endregion
 
         #region  Publish / Create / Edit / Delete 

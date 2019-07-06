@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,5 +20,17 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices
             _requestProvider = requestProvider;
         }
         #endregion
+    }
+
+
+    public class DeleteModel<T>
+    {
+        public DeleteModel(T id)
+        {
+            Id = id;
+        }
+
+        [JsonProperty("id")]
+        public T Id { get; set; }
     }
 }

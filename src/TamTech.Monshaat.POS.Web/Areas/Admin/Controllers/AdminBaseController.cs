@@ -51,6 +51,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         public dynamic SuccessModel { get { return TempData["SuccessModel"]; } set { TempData["SuccessModel"] = value; } }
 
 
+        public bool VerifySucceed<T>(IRequestProviderResult<T> result)
+        {
+            return result != null && result.Success && result.Data != null; 
+        }
         public void CheckSuccessModel()
         {
             var _successModel = SuccessModel;

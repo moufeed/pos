@@ -4,45 +4,36 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings
 {
-    public class TypeApiSettings : ITypeApiSettings
+    public class TypeApiSettings : BaseAPISettings, ITypeApiSettings, IPOSTypeApiSettings, IContactUsTypeApiSettings
     {
-        public TypeApiSettings()
-        {
 
+        public TypeApiSettings(string controller) : base(controller)
+        {
         }
 
-        const string  apiRoot = "http://localhost:53409/api";
-        const string controller = "CUTypes";
-        const string admin = "Admin";
-        string _portlPath = $"{apiRoot}/{controller}";
-        string _adminPath = $"{apiRoot}/{admin}/{controller}";
+        public string GetPublishedBySlugEndpoint => $"{_PortlPath}/GetPublishedBySlugEndpointAsync";
 
+        public string GetPublishedListEndpoint => $"{_PortlPath}/GetPublishedListAsync";
 
+        public string GetPublishedLimitedListEndpoint => $"{_PortlPath}/GetPublishedLimitedListAsync";
 
+        public string GetSelectListEndpoint => $"{_AdminPath}/GetSelectListAsync";
 
-        public string GetPublishedBySlugEndpoint => $"{_portlPath}/GetPublishedBySlugEndpointAsync";
+        public string GetAllSelectListEndpoint => $"{_AdminPath}/GetAllSelectListAsync";
 
-        public string GetPublishedListEndpoint => $"{_portlPath}/GetPublishedListAsync";
+        public string GetByIdExceptSoftDeletedEndpoint => $"{_AdminPath}/GetByIdExceptSoftDeletedAsync";
 
-        public string GetPublishedLimitedListEndpoint => $"{_portlPath}/GetPublishedLimitedListAsync";
+        public string GetAllExceptSoftDeletedEndpoint => $"{_AdminPath}/GetAllExceptSoftDeletedAsync";
 
-        public string GetSelectListEndpoint => $"{_adminPath}/GetSelectListAsync";
+        public string GetExceptSoftDeletedEndpoint => $"{_AdminPath}/GetExceptSoftDeletedAsync";
 
-        public string GetAllSelectListEndpoint => $"{_adminPath}/GetAllSelectListAsync";
+        public string CreateEndpoint => $"{_AdminPath}/CreateAsync";
 
-        public string GetByIdExceptSoftDeletedEndpoint => $"{_adminPath}/GetByIdExceptSoftDeletedAsync";
+        public string EditEndpoint => $"{_AdminPath}/EditAsync";
 
-        public string GetAllExceptSoftDeletedEndpoint => $"{_adminPath}/GetAllExceptSoftDeletedAsync";
-
-        public string GetExceptSoftDeletedEndpoint => $"{_adminPath}/GetExceptSoftDeletedAsync";
-
-        public string CreateEndpoint => $"{_adminPath}/CreateAsync";
-
-        public string EditEndpoint => $"{_adminPath}/EditAsync";
-
-        public string SoftDeleteEndpoint => $"{_adminPath}/SoftDeleteAsync";
-
-        public string PublishEndpoint => $"{_adminPath}/PublishAsync";
+        public string SoftDeleteEndpoint => $"{_AdminPath}/SoftDeleteAsync";
+ 
+        public string PublishEndpoint => $"{_AdminPath}/PublishAsync";
 
 
 

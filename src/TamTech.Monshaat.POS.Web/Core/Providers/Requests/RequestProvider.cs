@@ -118,11 +118,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                     }
                     else
                     {
-                        var pairs = JsonConvert.DeserializeObject<Dictionary<string, string>>(json, _serializerSettings);
+                        var pairs = JsonConvert.DeserializeObject<Dictionary<string, object>>(json, _serializerSettings);
                         var queries = "";
                         foreach (var pair in pairs)
                         {
-                            if (!string.IsNullOrEmpty(pair.Value))
+                            if (pair.Value != null)
                             {
                                 queries += $"{pair.Key}={pair.Value}&";
                             }
