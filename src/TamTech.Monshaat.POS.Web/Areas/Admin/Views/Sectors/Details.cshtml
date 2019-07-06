@@ -21,7 +21,7 @@
 
 
 
-
+<if include-if='Model != null'>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -108,4 +108,8 @@
         </div>
     </div>
 </div>
+</if>
 
+<if exclude-if="Model != null">
+   <partial name="~/Areas/Admin/Views/Shared/_empty.cshtml"/>
+</if>

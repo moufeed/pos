@@ -110,20 +110,18 @@ namespace TamTechSDK.Web.Controllers.Admin
         {
             try
             {
-                ViewBag.Actions = await _vendorServices.GetVendorActions(GetCurrentDataLang());
+                var _act = await _vendorServices.GetVendorActions(GetCurrentDataLang());
+                ViewBag.Actions = VerifySucceed(_act)  ? _act.Data : new List<ProcessActionModel>();
 
                 var result = await _vendorServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
 
-                if (result != null)
-                {
-                    return View("Details", result);
-                }
+                return View("Details", VerifySucceed(result) ? result.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-            return View(new PersonDto());
+            return View();
         }
 
         [HttpPost("{Culture}/[Area]/[Controller]/Action")]
