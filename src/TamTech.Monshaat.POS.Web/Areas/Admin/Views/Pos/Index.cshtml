@@ -18,7 +18,7 @@
 </div>
 
 
-
+<if include-if="Model != null">
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         @{
@@ -127,15 +127,10 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 @section Scripts{
     <script src="~/Admin/js/pos.min.js"></script>
 } 
+</if>
+<if exclude-if="Model != null">
+   <partial name="~/Areas/Admin/Views/Shared/_empty.cshtml"/>
+</if>

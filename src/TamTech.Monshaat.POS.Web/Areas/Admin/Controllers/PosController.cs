@@ -52,24 +52,13 @@ namespace TamTechSDK.Web.Controllers.Admin
         {
             var _lang = GetCurrentDataLang();
             var sectors = await _sectorservice.GetSelectListAsync(_lang);
-            
-             ViewBag.sectors = new SelectList(VerifySucceed(sectors) ? sectors.Data : new List<SelectListItemModel>(), "Value", "Text", model.SectorId);
+            ViewBag.sectors = new SelectList(VerifySucceed(sectors) ? sectors.Data : new List<SelectListItemModel>(), "Value", "Text", model.SectorId);
            
             var types = await _typeService.GetSelectListAsync(_lang);
-            HandelGetingResult(types);
-            if (VerifySucceed(types))
-            {
-                if (types.Data.Count > 0)
-                {
-                    ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
-                }
-            }
+            ViewBag.types = new SelectList(VerifySucceed(types) ? types.Data : new List<SelectListItemModel>() , "Value", "Text", model.TypeId);
 
             var status = await _statusService.GetAllSelectListAsync(_lang);
-            if (status.Success && status.Data?.Count > 0)
-            {
-                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
-            }
+            ViewBag.statusList = new SelectList(VerifySucceed(status) ? status.Data : new List<SelectListItemModel>(), "Value", "Text", model.StatusId);
 
         }
 
@@ -85,9 +74,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             SortingModel sorting = CreateSortingModel(model.SortBy);
             try
             {
-
                 await init(model);
-
                 DTFilter filters = new DTFilter
                 {
                     Lang = GetCurrentDataLang(),
@@ -99,14 +86,14 @@ namespace TamTechSDK.Web.Controllers.Admin
                 };
 
                 var items = await _posservice.GetExceptSoftDeletedAsync(filters);
-                return View(items);
+                return View(VerifySucceed(items) ? items.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
 
-            return View(new PagedResultModel<List<PosBaseDto>>());
+            return View();
         }
 
         [HttpGet("{Culture}/[Area]/[Controller]/Preview/{id}")]
@@ -114,20 +101,17 @@ namespace TamTechSDK.Web.Controllers.Admin
         {
             try
             {
-                ViewBag.PosActions = await _posservice.GetPOSActionsAsync(GetCurrentDataLang());
+                var _act = await _posservice.GetPOSActionsAsync(GetCurrentDataLang());
+                ViewBag.PosActions = VerifySucceed(_act) ? _act.Data : new List<ProcessActionModel>();
 
                 var result = await _posservice.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result != null)
-                {
-                    return View("Details", result);
-                }
+                return View("Details", VerifySucceed(result) ? result.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-            return View("Details", new PosDto());
+            return View("Details");
         }
 
 
@@ -148,7 +132,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackException(ex);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -214,7 +198,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var result = await _posservice.GetStatusHistoriesListAsync(id, GetCurrentDataLang());
-                return PartialView("~/Areas/Admin/Views/Pos/Partials/_history.cshtml", result);
+                return PartialView("~/Areas/Admin/Views/Pos/Partials/_history.cshtml", VerifySucceed(result) ? result.Data : new List<POSStatusHistoryDto>());
             }
             catch (Exception ex)
             {
