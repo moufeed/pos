@@ -35,7 +35,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
 
               services.AddScoped<IPOSValueApiSettings,  ValueApiSettings>((serviceExtension) =>
             {
-                return new ValueApiSettings(BaseAPISettings.POSAttributesController);
+                return new ValueApiSettings(BaseAPISettings.POSValuesController);
             });
 
 
