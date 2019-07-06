@@ -68,11 +68,11 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
 
  
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.IPOSSectorServices>((serviceExtension) =>
-            {
-                var service = serviceExtension.GetService<TamTech.ContentService.Services.Sectors.IPOSSectorService>();
-                return new Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService(service);
-            });
+            //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.IPOSSectorServices>((serviceExtension) =>
+            //{
+            //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Sectors.IPOSSectorService>();
+            //    return new Web.DirectBackendServices.PosServices.Sectors.DirectSectorsService(service);
+            //});
 
             //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Types.IPosTypeService>((serviceExtension) =>
             //{
@@ -86,16 +86,16 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             //       return new Web.DirectBackendServices.TypeService.DirectTypeServices(service);
             //   });
 
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.IPOSAttributeService>((serviceExtension) =>
-            {
-                var service = serviceExtension.GetService<TamTech.ContentService.Services.Attributes.IPOSAttributeService>();
-                return new Web.DirectBackendServices.PosServices.Attributes.DirectAttributeService(service);
-            });
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Values.IPosValuesService>((serviceExtension) =>
-            {
-                var service = serviceExtension.GetService<TamTech.ContentService.Services.Values.IPOSValueService>();
-                return new Web.DirectBackendServices.ValuesServices.DirectValuesServies(service);
-            });
+            //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.IPOSAttributeService>((serviceExtension) =>
+            //{
+            //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Attributes.IPOSAttributeService>();
+            //    return new Web.DirectBackendServices.PosServices.Attributes.DirectAttributeService(service);
+            //});
+            //services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Values.IPosValuesService>((serviceExtension) =>
+            //{
+            //    var service = serviceExtension.GetService<TamTech.ContentService.Services.Values.IPOSValueService>();
+            //    return new Web.DirectBackendServices.ValuesServices.DirectValuesServies(service);
+            //});
             //  services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.IAttributeService, Web.DirectBackendServices.PosServices.Attributes.DirectAttributeService>();
 
 
