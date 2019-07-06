@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities.Models;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities
@@ -10,7 +11,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilitie
     {
          
 
-        Task<Dictionary<string, NumericalStatisticsDto>> GetNumericalStatisticsAsync(List<string> types, string lang);
+        Task< IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> GetNumericalStatisticsAsync(List<string> types, string lang);
 
     }
 }

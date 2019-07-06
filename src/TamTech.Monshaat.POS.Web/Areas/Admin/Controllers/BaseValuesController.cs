@@ -39,9 +39,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var _attributes = await _attributesServices.GetAllSelectListAsync(GetCurrentDataLang());
-                if (_attributes != null && _attributes.Count > 0)
+                if (_attributes.Success && _attributes.Data.Count > 0)
                 {
-                    ViewBag.attributes = new SelectList(_attributes, "Value", "Text", id != 0 ? id : (int?)null);
+                    ViewBag.attributes = new SelectList(_attributes.Data, "Value", "Text", id != 0 ? id : (int?)null);
                 }
             }
             catch (Exception ex)
@@ -149,10 +149,10 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _valuesServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
 
-                if (result != null)
+                if (result.Success)
                 {
-                    await _GetAttributesList(result.AttId);
-                    return View("Form", result.MapToValueVM());
+                    await _GetAttributesList(result.Data.AttId);
+                    return View("Form", result.Data.MapToValueVM());
                 }
 
                 ViewBag.EmptyResponse = true;

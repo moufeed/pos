@@ -27,32 +27,32 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact
             return MapRequestProviderResult(result);
         }
 
-        public async Task<ContactDto> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<ContactDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
         {
             var request = await _ContactServices.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return request != null ? request.MapToFrontContactDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToFrontContactDto() : null);
 
         }
 
-        public async Task<ContactDto> GetByIdAndSetStatusAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<ContactDto>> GetByIdAndSetStatusAsync(Guid id, string lang)
         {
             var request = await _ContactServices.GetByIdAndSetStatusAsync(id, lang);
 
-            return request != null ? request.MapToFrontContactDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToFrontContactDto() : null);
 
         }
 
-        public async Task<PagedResultModel<List<ContactDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<ContactDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _ContactServices.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<ContactDto>>
+            return ReturnRequestProviderResult(new PagedResultModel <List<ContactDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToFrontContactDto()).ToList() : new List<ContactDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
         public async Task<IRequestProviderResult<bool>> ReplayAsync(ReplayContactUsModel model)

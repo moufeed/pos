@@ -21,37 +21,37 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Pos
         {
             _posservices = posservices;
         }
-        public async Task<PosDto> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
+        public async Task<IRequestProviderResult<PosDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
         {
             var result = await _posservices.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return result != null ? result.MapToForntPosDto() : new PosDto();
+            return ReturnRequestProviderResult(result != null ? result.MapToForntPosDto() : new PosDto());
 
         }
 
-        public async Task<PagedResultModel<List<PosBaseDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<PosBaseDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _posservices.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<PosBaseDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<PosBaseDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToForntPosBaseDto()).ToList() : new List<PosBaseDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
-        public async Task<List<ProcessActionModel>> GetPOSActionsAsync(string lang)
+        public async Task<IRequestProviderResult<List<ProcessActionModel>>> GetPOSActionsAsync(string lang)
         {
             var request = await _posservices.GetPOSActionsAsync(lang);
-            return request?.Select(m => m.MapToFrontProcessActionModel()).ToList();
+            return ReturnRequestProviderResult(request?.Select(m => m.MapToFrontProcessActionModel()).ToList());
         }
 
-        public async Task<List<POSStatusHistoryDto>> GetStatusHistoriesListAsync(Guid posId, string lang)
+        public async Task<IRequestProviderResult<List<POSStatusHistoryDto>>> GetStatusHistoriesListAsync(Guid posId, string lang)
         {
             var request = await _posservices.GetStatusHistoriesListAsync(posId, lang);
 
-            return request?.Select(el => el.MapToPOSStatusHistoryDto()).ToList();
+            return ReturnRequestProviderResult(request?.Select(el => el.MapToPOSStatusHistoryDto()).ToList());
         }
 
         public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)

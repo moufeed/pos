@@ -28,27 +28,27 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors
 
 
         #region public methods
-        public async Task<SectorDto> GetPublishedBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<SectorDto>> GetPublishedBySlugAsync(string slug)
         {
 
             var request = await _sectorservices.GetPublishedBySlugAsync(slug);
 
-            return request != null ? request.MapToForntSectorDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToForntSectorDto() : null);
 
         }
 
-        public async Task<List<SectorDto>> GetPublishedListAsync(bool sortManually = true)
+        public async Task<IRequestProviderResult<List<SectorDto>>> GetPublishedListAsync(bool sortManually = true)
         {
             var request = await _sectorservices.GetPublishedListAsync(sortManually);
 
-            return request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>());
 
         }
-        public async Task<List<SectorDto>> GetPublishedListAsync(int takeItems, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<SectorDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
             var request = await _sectorservices.GetPublishedListAsync(takeItems, sortManually);
 
-            return request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>());
 
         }
 
@@ -56,31 +56,31 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors
 
 
         #region admin methods
-        public async Task<List<SectorDto>> GetAllExceptSoftDeletedAsync(string lang)
+        public async Task<IRequestProviderResult<List<SectorDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
             var request = await _sectorservices.GetAllExceptSoftDeletedAsync(lang);
 
-            return request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>();
+            return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>());
         }
 
-        public async Task<SectorDto> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        public async Task<IRequestProviderResult<SectorDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
             var request = await _sectorservices.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return request != null ? request.MapToForntSectorDto() : null;
+            return ReturnRequestProviderResult(request != null ? request.MapToForntSectorDto() : null);
         }
 
 
-        public async Task<PagedResultModel<List<SectorDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<SectorDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _sectorservices.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<SectorDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<SectorDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToForntSectorDto()).ToList() : new List<SectorDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
 
@@ -121,17 +121,17 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Sectors
 
         }
 
-        public async Task<List<SelectListItemModel>> GetSelectListAsync(string lang, bool isOfficial = true)
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
         {
             var result = await _sectorservices.GetSelectListAsync(lang, isOfficial);
 
-            return result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            return ReturnRequestProviderResult(result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>());
         }
-        public async Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
             var result = await _sectorservices.GetAllSelectListAsync(lang);
 
-            return result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            return ReturnRequestProviderResult(result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>());
         }
 
         #endregion

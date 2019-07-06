@@ -52,7 +52,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Biographies
         public async Task ReloadInfoAsync()
         {
             var dto = await _biographyService.GetAllAsync();
-            _biographyInfo = dto.MapToBiographyInfoModel();
+            _biographyInfo = dto?.Data?.MapToBiographyInfoModel();
             _biographyInfo.Lang = _lang;
 
         }

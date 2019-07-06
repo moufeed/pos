@@ -230,8 +230,10 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _sectorServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
 
-                if (result != null)
-                    return View("Form", result.MapToSectorVM());
+                if (result.Success)
+                {
+                    return View("Form", result.Data?.MapToSectorVM());
+                }
 
                 ViewBag.EmptyResponse = true;
 

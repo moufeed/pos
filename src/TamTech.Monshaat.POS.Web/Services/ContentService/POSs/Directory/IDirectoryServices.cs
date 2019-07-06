@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
 using TamTech.Monshaat.POS.Web.Services.POSs.Models;
@@ -11,10 +12,10 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs.Directory
    public interface IDirectoryServices
     {
 
-        Task<PosDto> GetPublishedBySlugAsync(string slug);
+        Task<IRequestProviderResult<PosDto>> GetPublishedBySlugAsync(string slug);
 
-        Task<PagedResultModel<List<PosDto>>> FindAsync(PosFilters model);
+        Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> FindAsync(PosFilters model);
 
-        Task<int> GetCountOfPublishedAsync(string lang);
+        Task<IRequestProviderResult<int>> GetCountOfPublishedAsync(string lang);
     }
 }

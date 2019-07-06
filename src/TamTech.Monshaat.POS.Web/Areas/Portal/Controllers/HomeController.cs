@@ -109,8 +109,8 @@ namespace TamTechSDK.Web.Controllers.Portal
                 }
 
                 // sectors
-                ViewBag.sectors = await _sectorService.GetPublishedListAsync();
-                ViewBag.TotalCount = await _serchservices.GetCountOfPublishedAsync(_lang);
+                ViewBag.sectors = (await _sectorService.GetPublishedListAsync()).Data;
+                ViewBag.TotalCount = (await _serchservices.GetCountOfPublishedAsync(_lang)).Data;
 
                 //  Benefits
 
@@ -156,7 +156,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 ViewBag.types = types.Data;
                 //  ViewBag.Host = _appSettingsService.GetURl();
                 var Regions = await _regionsServices.GetPublishedSelectListAsync(_lang);
-                ViewBag.Regions = new SelectList(Regions, "Value", "Text");
+                ViewBag.Regions = new SelectList(Regions.Data, "Value", "Text");
             }
             catch (Exception ex)
             {

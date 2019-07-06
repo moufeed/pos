@@ -60,9 +60,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             var _lang = GetCurrentDataLang();
 
             var status = await _statusServices.GetAllSelectListAsync(_lang);
-            if (status != null && status.Count > 0)
+            if (status.Success && status.Data?.Count > 0)
             {
-                ViewBag.statusList = new SelectList(status, "Value", "Text", model.StatusId);
+                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
             }
 
             try

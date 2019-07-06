@@ -35,65 +35,65 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices
             return MapRequestProviderResult(result);
         }
 
-        public async Task<List<RegionDto>> GetAllExceptSoftDeletedAsync(string lang)
+        public async Task<IRequestProviderResult<List<RegionDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
             var result = await _regionsServices.GetAllExceptSoftDeletedAsync(lang);
 
-            return result?.Select(m => m.MapToFrontRegionDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontRegionDto()).ToList());
         }
 
-        public async Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang)
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
             var result = await _regionsServices.GetAllSelectListAsync(lang);
 
-            return result != null ? result.Select(m => m.MapToFrontEndSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            return ReturnRequestProviderResult(result != null ? result.Select(m => m.MapToFrontEndSelectListItemModel()).ToList() : new List<SelectListItemModel>());
         }
 
-        public async Task<RegionDto> GetByIdExceptSoftDeletedAsync(int id, string lang)
+        public async Task<IRequestProviderResult<RegionDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
             var result = await _regionsServices.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            return result?.MapToFrontRegionDto();
+            return ReturnRequestProviderResult(result?.MapToFrontRegionDto());
         }
 
-        public async Task<PagedResultModel<List<RegionDto>>> GetExceptSoftDeletedAsync(DTFilter model)
+        public async Task<IRequestProviderResult<PagedResultModel<List<RegionDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _regionsServices.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            return new PagedResultModel<List<RegionDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<RegionDto>>
             {
                 Data = request.Data?.Select(s => s.MapToFrontRegionDto()).ToList(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
+            });
         }
 
-        public async Task<RegionDto> GetPublishedBySlugAsync(string slug)
+        public async Task<IRequestProviderResult<RegionDto>> GetPublishedBySlugAsync(string slug)
         {
             var result = await _regionsServices.GetPublishedBySlugAsync(slug);
 
-            return result?.MapToFrontRegionDto();
+            return ReturnRequestProviderResult(result?.MapToFrontRegionDto());
         }
 
-        public async Task<List<RegionDto>> GetPublishedListAsync(bool sortManually = true)
+        public async Task<IRequestProviderResult<List<RegionDto>>> GetPublishedListAsync(bool sortManually = true)
         {
             var result = await _regionsServices.GetPublishedListAsync(sortManually);
 
-            return result?.Select(m => m.MapToFrontRegionDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontRegionDto()).ToList());
         }
 
-        public async Task<List<RegionDto>> GetPublishedListAsync(int takeItems, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<RegionDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
             var result = await _regionsServices.GetPublishedListAsync(takeItems, sortManually);
 
-            return result?.Select(m => m.MapToFrontRegionDto()).ToList();
+            return ReturnRequestProviderResult(result?.Select(m => m.MapToFrontRegionDto()).ToList());
         }
 
-        public async Task<List<SelectListItemModel>> GetPublishedSelectListAsync(string lang, bool sortManually = true)
+        public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetPublishedSelectListAsync(string lang, bool sortManually = true)
         {
             var result = await _regionsServices.GetPublishedSelectListAsync(lang, sortManually);
 
-            return result?.Select(itm => itm.MapToForntSelectListItemModel()).ToList();
+            return ReturnRequestProviderResult(result?.Select(itm => itm.MapToForntSelectListItemModel()).ToList());
         }
 
         public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)

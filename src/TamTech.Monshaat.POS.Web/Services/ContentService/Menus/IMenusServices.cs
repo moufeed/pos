@@ -10,15 +10,15 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
     public interface IMenusServices
     {
 
-        Task<Dictionary<string, Dictionary<string, string>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang);
+        Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang);
 
         #region {Public Menus}  
 
         //   Task<IRequestProviderResult<MenuDto>> GetPublicDynamicByKeyAsync(string key);
 
-       Task<MenuDto> GetPublicByKeyAsync( string lang);
+       Task<IRequestProviderResult<MenuDto>> GetPublicByKeyAsync( string lang);
 
-        Task<MenuDto> GetPublicBySettingIdAsync(int settingId);
+        Task<IRequestProviderResult<MenuDto>> GetPublicBySettingIdAsync(int settingId);
         #endregion
 
 

@@ -15,7 +15,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
         #region {Public Pages}   
 
         //Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug);
-        Task<PageDto> GetPublicBySlugAsync(string slug);
+        Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug);
 
         Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(Guid id);
 

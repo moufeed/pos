@@ -48,28 +48,26 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
         {
             var request = await _typeService.GetByIdExceptSoftDeletedAsync(id, lang);
 
-            var result = request != null ? request.MapToForntTypeDto() : null;
+            return ReturnRequestProviderResult(request?.MapToForntTypeDto());
 
-            return ReturnRequestProviderResult(result);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<TypeDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
             var request = await _typeService.GetExceptSoftDeletedAsync(model.MapToBackDTFilter());
 
-            var result = new PagedResultModel<List<TypeDto>>
+            return ReturnRequestProviderResult(new PagedResultModel<List<TypeDto>>
             {
                 Data = request.Data != null ? request.Data.Select(s => s.MapToForntTypeDto()).ToList() : new List<TypeDto>(),
                 Pagination = request.Pagination != null ? request.Pagination.MapToFrontPagination() : new PaginationMetadataModel(),
                 SectionsSlugs = request.SectionsSlugs?.Select(m => m.MapToFrontSlug()).ToList()
-            };
-            return ReturnRequestProviderResult(result);
+            });
         }
 
         public async Task<IRequestProviderResult<TypeDto>> GetPublishedBySlugAsync(string slug)
         {
             var request = await _typeService.GetPublishedBySlugAsync(slug); 
-            return ReturnRequestProviderResult(request != null ? request.MapToForntTypeDto() : null);
+            return ReturnRequestProviderResult(request?.MapToForntTypeDto());
         }
 
         public async Task<IRequestProviderResult<List<TypeDto>>> GetPublishedListAsync(bool sortManually = true)
@@ -92,19 +90,17 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.TypeService
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetSelectListAsync(string lang, bool isOfficial = true)
         {
-            var b_result = await _typeService.GetSelectListAsync(lang, isOfficial);
+            var result = await _typeService.GetSelectListAsync(lang, isOfficial);
 
-            var result = b_result != null ? b_result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
+            return ReturnRequestProviderResult(result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>());
 
-            return ReturnRequestProviderResult(result);
+            
         }
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
-            var b_result = await _typeService.GetAllSelectListAsync(lang);
+            var result = await _typeService.GetAllSelectListAsync(lang);
 
-            var result = b_result != null ? b_result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>();
-
-            return ReturnRequestProviderResult(result);
+            return ReturnRequestProviderResult(result != null ? result.Select(itm => itm.MapToForntSelectListItemModel()).ToList() : new List<SelectListItemModel>());
 
         }
 

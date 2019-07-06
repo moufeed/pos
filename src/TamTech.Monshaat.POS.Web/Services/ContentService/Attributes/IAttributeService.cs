@@ -15,11 +15,11 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Attributes
 
         #region Public  Attributes
 
-        Task<AttributeDto> GetPublishedBySlugAsync(string slug);
+        Task<IRequestProviderResult<AttributeDto>> GetPublishedBySlugAsync(string slug);
 
-        Task<List<AttributeDto>> GetPublishedListAsync(bool sortManually = true);
+        Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(bool sortManually = true);
 
-        Task<List<AttributeDto>> GetPublishedListAsync(int takeItems, bool sortManually = true);
+        Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true);
 
         #endregion
 
@@ -27,13 +27,13 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Attributes
 
         #region Get
 
-        Task<List<SelectListItemModel>> GetAllSelectListAsync(string lang);
+        Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang);
 
-        Task<AttributeDto> GetByIdAsync(int id, string lang);
+        Task<IRequestProviderResult<AttributeDto>> GetByIdAsync(int id, string lang);
 
-        Task<List<AttributeDto>> GetAllAsync(string lang);
+        Task<IRequestProviderResult<List<AttributeDto>>> GetAllAsync(string lang);
 
-        Task<PagedResultModel<List<AttributeDto>>> GetAsync(DTFilter model);
+        Task<IRequestProviderResult<PagedResultModel<List<AttributeDto>>>> GetAsync(DTFilter model);
 
         #endregion
 

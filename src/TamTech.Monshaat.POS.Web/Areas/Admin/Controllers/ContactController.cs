@@ -95,9 +95,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
 
             var status = await _statusService.GetAllSelectListAsync(GetCurrentDataLang());
-            if (status != null && status.Count > 0)
+            if (status.Success && status.Data.Count > 0)
             {
-                ViewBag.statusList = new SelectList(status, "Value", "Text", model.StatusId);
+                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
             }
 
             DTFilter filters = new DTFilter
