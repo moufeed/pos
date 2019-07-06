@@ -1,6 +1,7 @@
 ﻿@model PageDto
 
 
+<if include-if="Model != null">
 
 @{
     ViewData["Title"] = String.IsNullOrEmpty(Model.Title) ? "TamTech" : Model.Title;
@@ -20,7 +21,7 @@
 @section SEO{
     <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
     <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
-    <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="" />
+    <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
 }
 
 
@@ -41,3 +42,15 @@
 <section class="top-footer bg-light-lime pt-50 text-center">
     <img src="~/portal/img/footer.png" alt="footerimage">
 </section>
+
+</if>
+
+
+<if exclude-if="Model != null">
+        @{
+            List<SlugModel> _slugModel = new List<SlugModel>();
+        }
+        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="_slugModel" />
+
+        <partial name="~/Areas/Portal/Views/Shared/partials/_empty.cshtml" />
+</if>

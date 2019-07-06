@@ -79,9 +79,6 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
             };
         }
 
-        Task<IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> ICCUServices.GetNumericalStatisticsAsync(List<string> types, string lang)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

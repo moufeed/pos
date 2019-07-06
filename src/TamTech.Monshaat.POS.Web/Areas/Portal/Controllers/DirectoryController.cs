@@ -80,7 +80,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 var request = await _directoryServices.FindAsync(filters);
                 if (VerifySucceed(request))
                 {
-                    return View(request);
+                    return View(request.Data);
                 }
                 
             }
@@ -99,7 +99,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 var result = await _directoryServices.GetPublishedBySlugAsync(slug);
                 if (VerifySucceed(result))
                 {
-                    return View(result);
+                    return View(result.Data);
                 }
 
             }
@@ -119,14 +119,16 @@ namespace TamTechSDK.Web.Controllers.Portal
                 ViewBag.ReoladScripts = true;
                 PosFilters filters = MakeFiltersModel(slug, search, f, t, pagination);
                 var request = await _directoryServices.FindAsync(filters);
-                return PartialView("~/Areas/Portal/Views/Directory/partials/_results.cshtml", request);
+                if (VerifySucceed(request))
+                {
+                    return PartialView("~/Areas/Portal/Views/Directory/partials/_results.cshtml", request.Data);
+                }
             }
             catch (Exception ex)
             {
                 TrackException(ex);
-                return PartialView("~/Areas/Portal/Views/Directory/partials/_messages.cshtml");
             }
-
+            return PartialView("~/Areas/Portal/Views/Directory/partials/_messages.cshtml");
         }
     }
 }

@@ -15,9 +15,9 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Vendors
 
         #region Get
 
-        Task<PersonDto> GetPersonForCurrentUserAsync(string lang);
+        Task<IRequestProviderResult<PersonDto>> GetPersonForCurrentUserAsync(string lang);
 
-        Task<bool> CheckTheCurrentUserIsRegisteredAsVendorAsync();
+        Task<IRequestProviderResult<bool>> CheckTheCurrentUserIsRegisteredAsVendorAsync();
 
         
 

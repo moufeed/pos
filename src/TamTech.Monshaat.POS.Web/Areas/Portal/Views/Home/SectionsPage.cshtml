@@ -67,3 +67,12 @@
         </section>
 
     </if>
+
+    <if exclude-if="Model != null">
+        @{
+            List<SlugModel> _slugModel = new List<SlugModel>();
+        }
+        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="_slugModel" />
+
+        <partial name="~/Areas/Portal/Views/Shared/partials/_empty.cshtml" />
+    </if>

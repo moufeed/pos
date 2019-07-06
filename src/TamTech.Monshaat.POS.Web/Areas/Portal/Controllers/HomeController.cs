@@ -25,6 +25,8 @@ using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Core.Enums;
 using System.Web;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -73,7 +75,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var page = await _pageService.GetPublishedSectionsBySettingIdAsync(settingId);
-                if (page != null && page.Success)
+                if (VerifySucceed(page))
                 {
                     return View("SectionsPage", page.Data);
                 }
@@ -103,20 +105,29 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 // slider
                 IRequestProviderResult<SliderDto> publicMainSlider = await _sliderService.GetPublishedBySettingIdAsync((int)SettingKeysEnum.HomePageMainSlider);
-                if (publicMainSlider != null && publicMainSlider.Success)
+                if (VerifySucceed(publicMainSlider))
                 {
                     ViewBag.publicMainSlider = publicMainSlider.Data;
                 }
 
                 // sectors
-                ViewBag.sectors = (await _sectorService.GetPublishedListAsync()).Data;
-                ViewBag.TotalCount = (await _serchservices.GetCountOfPublishedAsync(_lang)).Data;
+                var _sectors = await _sectorService.GetPublishedListAsync();
+                if (VerifySucceed(_sectors))
+                {
+                    ViewBag.sectors = _sectors.Data;
+                }
+
+                var _total = await _serchservices.GetCountOfPublishedAsync(_lang);
+                if (VerifySucceed(_total))
+                {
+                    ViewBag.TotalCount = _total.Data;
+                }
 
                 //  Benefits
 
                 IRequestProviderResult<HtmlPage> Benefits = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary1);
 
-                if (Benefits != null && Benefits.Success)
+                if (VerifySucceed(Benefits))
                 {
                     ViewBag.Benefitssummary = Benefits.Data;
                 }
@@ -125,15 +136,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                 // about this initiative
                 IRequestProviderResult<HtmlPage> initiative_Summary = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary2);
 
-                if (initiative_Summary != null && initiative_Summary.Success)
+                if (VerifySucceed(initiative_Summary))
                 {
                     ViewBag.initiativeSummary = initiative_Summary.Data;
                 }
-
-
-
-
-
 
             }
             catch (Exception ex)
@@ -152,18 +158,16 @@ namespace TamTechSDK.Web.Controllers.Portal
             ContactusVM model = new ContactusVM();
             try
             {
-                var types = await _typeService.GetPublishedListAsync(); 
-                ViewBag.types = types.Data;
-                //  ViewBag.Host = _appSettingsService.GetURl();
+                var types = await _typeService.GetPublishedListAsync();
+                ViewBag.types =  VerifySucceed(types) ? types.Data : new List<TypeDto>();
                 var Regions = await _regionsServices.GetPublishedSelectListAsync(_lang);
-                ViewBag.Regions = new SelectList(Regions.Data, "Value", "Text");
+                var _regionsdata = VerifySucceed(Regions) ? Regions.Data : new List<SelectListItemModel>();
+                ViewBag.Regions = new SelectList(_regionsdata, "Value", "Text");
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-
-
             return View(model);
         }
 
@@ -181,12 +185,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 if (ModelState.IsValid)
                 {
-
-                    var tt = HttpUtility.HtmlEncode(model.Message);
-
-
-
-
+                     
                     CreateModel _CreateModel = model.MapToCreateModelWithoutAttachments();
                     if (PreviousUploadFiles)
                     {
@@ -262,28 +261,21 @@ namespace TamTechSDK.Web.Controllers.Portal
                 TrackException(ex);
             }
 
-
             var types = await _typeService.GetPublishedListAsync();
-            ViewBag.types = types;
-
+            ViewBag.types = VerifySucceed(types) ? types.Data : new List<TypeDto>();
             return View(model);
 
         }
         #endregion
 
 
-        public virtual async Task<IActionResult> Success()
-        {
-            return View("/Areas/Portal/Views/Shared/Success.cshtml");
-        }
+        
+       
 
-        public virtual async Task<IActionResult> PrivacyPolicy()
-        {
-            return await GetSectionPage((int)SettingKeysEnum.PrivacyPolicy);
-        }
-        public virtual async Task<IActionResult> TermsofUse()
-        {
-            return await GetSectionPage((int)SettingKeysEnum.TermsofUse);
-        }
+        public virtual async Task<IActionResult> PrivacyPolicy() => await GetSectionPage((int)SettingKeysEnum.PrivacyPolicy);
+
+        public virtual async Task<IActionResult> TermsofUse() => await GetSectionPage((int)SettingKeysEnum.TermsofUse);
+         
+        public virtual IActionResult Success() => View("/Areas/Portal/Views/Shared/Success.cshtml");
     }
 }

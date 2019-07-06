@@ -47,7 +47,7 @@
                         </tr>
                         </thead>
                        <tbody>
-                           <if include-if="Model.Data != null && Model.Data.Count > 0"> 
+                           <if include-if="Model != null && Model.Data.Count > 0"> 
                                @foreach(PersonDto item in Model.Data){
                                    <tr>
                                        <td>@item.Vendor.Name</td>
@@ -85,7 +85,7 @@
                                    </tr>
                                }
                            </if>
-                           <if exclude-if="Model.Data != null && Model.Data.Count > 0">
+                           <if exclude-if="Model != null && Model.Data.Count > 0">
                                  <tr>
                                     <td colspan="7" class="text-center">
                                         <p class="empty_row">
@@ -100,8 +100,10 @@
                 </div>
 
 
-                 <hr class="m-y-2" />
-                <pagination controller-name="vendors" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+                <if include-if="Model != null ">
+                    <hr class="m-y-2" />
+                    <pagination controller-name="vendors" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+                </if>
             </div>
         </div>
     </div>

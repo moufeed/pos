@@ -14,6 +14,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Attributes;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -34,19 +35,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
 
-
-        //public AttributeVM NewTypeVm()
-        //{
-        //    return new AttributeVM()
-        //    {
-        //        Options = new Dictionary<string, bool>
-        //        {
-        //            { "Attachments" , false },
-        //            { "CompanyName" , false },
-        //            { "RegionId" , false }
-        //        }
-        //    };
-        //}
+ 
 
         [HttpGet("{Culture}/[Area]/[controller]")]
         public virtual async Task<IActionResult> Index(Filter model)
@@ -72,14 +61,14 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var types = await _attributeService.GetAsync(filters);
-                return View(types);
+                return View(VerifySucceed(types) ? types.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
 
-            return View(new List<AttributeDto>());
+            return View();
         }
 
 
@@ -141,7 +130,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var result = await _attributeService.GetByIdAsync(id, GetCurrentDataLang());
 
-                if (result.Success)
+                if (VerifySucceed(result))
                 {
                     return View("Form", result.Data.MapToAttributeVM());
                 }

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Telemetry; 
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using Microsoft.AspNetCore.Authorization;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models; 
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
@@ -16,8 +16,8 @@ using TamTech.Monshaat.POS.Web.Core.Filters;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.Services.Upload;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using Microsoft.AspNetCore.Mvc.Rendering; 
-using Microsoft.Extensions.Localization; 
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -30,13 +30,13 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         private readonly IStringLocalizer<AdminBaseController> _localizer;
 
-        // public readonly IHelperService _helperService; 
+
 
 
         public AdminBaseController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer)
             : base(telemetryClientService)
         {
-            //  _helperService = helperService;
+
             ViewData["Area"] = "Admin";
             _localizer = localizer;
         }
@@ -51,18 +51,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         public dynamic SuccessModel { get { return TempData["SuccessModel"]; } set { TempData["SuccessModel"] = value; } }
 
 
-        
-        public void CheckSuccessModel()
-        {
-            var _successModel = SuccessModel;
-            ViewData["SuccessResultMode"] = !string.IsNullOrEmpty(_successModel);
-            ViewData["SuccessModel"] = _successModel;
-            SuccessModel = null;
-        }
-        public void ShowSuccessModel(string msg)
-        {
-            ViewData["SuccessModel"] = msg;
-        }
+
         public void AddErrorModel(string key = "Error", string msg = "General Error!!")
         {
             ModelState.AddModelError(key, msg);
@@ -181,24 +170,6 @@ namespace TamTechSDK.Web.Controllers.Admin
             base.TrackException(exc);
         }
 
-        //public void TrackIfNotFilesDeleted( bool success,
-        //                                          HttpStatusCode statusCode, 
-        //                                          DeleteFilesModelResult resultModel,
-        //                                          DeleteFilesInputModel inputModel )
-        //      {
-        //          if (success)
-        //          {
-        //              var errorlist = resultModel.Results.Where(item => item.Result == DeleteResult.NotDeleted);
-        //              if (errorlist != null && errorlist.Count() > 0)
-        //              {
-        //                  TrackEvent("TrackIfNotFilesDeleted_Result", errorlist);
-        //              }
-        //          }
-        //          else
-        //          {
-        //              TrackEvent("TrackIfNotFilesDeleted_Input",  inputModel.DeletedFiles, statusCode.ToString());
-        //          }
-        //      }
 
 
         public void TrackIfNotFilesDeleted(bool success,
@@ -352,35 +323,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             };
         }
 
-        public async Task<List<UploadFileModel>> GenerateListFilesInfo(IFormFileCollection files, FileTypesEnum type)
-        {
-            List<UploadFileModel> Files = new List<UploadFileModel>();
-            foreach (var file in files)
-            {
-                Files.Add(new UploadFileModel
-                {
-                    Type = type,
-                    FileInfo = await GenerateFileInfo(file)
-                });
-            }
-            return Files;
-        }
 
-        public async Task<List<UploadFileModel>> GenerateListFilesInfo(IFormFileCollection files, Dictionary<string, FileTypesEnum> types, FileTypesEnum defaultType = FileTypesEnum.General)
-        {
-            List<UploadFileModel> Files = new List<UploadFileModel>();
-            foreach (var file in files)
-            {
-                var t = types.ContainsKey(file.Name) ? types[file.Name] : defaultType;
-                Files.Add(new UploadFileModel
-                {
-
-                    Type = t,
-                    FileInfo = await GenerateFileInfo(file)
-                });
-            }
-            return Files;
-        }
 
         public string GetCurrentDataLang()
         {
@@ -443,7 +386,6 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         #endregion
 
-
         public void AddModelStateError(Dictionary<string, List<string>> messages)
         {
             foreach (var res in messages)
@@ -454,11 +396,6 @@ namespace TamTechSDK.Web.Controllers.Admin
                 }
             }
         }
-
-
-
-
-
 
 
     }

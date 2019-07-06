@@ -31,6 +31,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -124,10 +125,14 @@ namespace TamTechSDK.Web.Controllers.Portal
         private async Task InitAction(PosFormVm model, bool isUpdate = false)
         {
             var types = await _posTypeService.GetPublishedListAsync();
-            ViewBag.TypsSelect = CreateTypeSelect(types.Data, model.TypeId);
-            ViewBag.sectors = await _sectorService.GetPublishedListAsync();
+ 
+
+            ViewBag.TypsSelect = VerifySucceed(types) ? CreateTypeSelect(types.Data, model.TypeId) : CreateTypeSelect(new List<TypeDto>(), model.TypeId);
+
+            var _sectors = await _sectorService.GetPublishedListAsync(); ;
+            ViewBag.sectors = VerifySucceed(_sectors) ? _sectors.Data : new List<SectorDto>();
             var attributes = await _attributeService.GetPublishedListAsync();
-            ViewBag.attributes = CreateAttributes(model, attributes.Data, isUpdate);
+            ViewBag.attributes = VerifySucceed(attributes) ?  CreateAttributes(model, attributes.Data, isUpdate) : CreateAttributes(model, new List<AttributeDto>(), isUpdate);
 
         }
         #endregion
@@ -146,7 +151,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                     PageNumber = 1
                 };
                 var result = await _posservice.GetPOSsForCurrentUserAsync(posfilter);
-                return View(result);
+                if (VerifySucceed(result))
+                {
+                    return View(result.Data);
+                }
             }
             catch (Exception ex)
             {
@@ -274,9 +282,9 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var request = await _posservice.GetByIdAndCurrentUserExceptSoftDeletedAsync(id, _lang);
-                if (request.Success)
+                if (VerifySucceed(request))
                 {
-                    PosFormVm _model = request.Data?.MapToPosFormVm();
+                    PosFormVm _model = request.Data.MapToPosFormVm();
                     await InitAction(_model, true);
                     ViewBag.UploadedFiles = string.Join(";;", _model.TempImages);
                     ViewBag.UploadedCount = _model.TempImages.Count;
@@ -455,7 +463,8 @@ namespace TamTechSDK.Web.Controllers.Portal
                 string vendorRole = await _settingsHelpers.GetVendorRoleNameAsync();
                 if (roles != null && roles.All(v => v.Equals(vendorRole, StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    if (await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync())
+                    var _isRegistered = await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync();
+                    if (_isRegistered.Data)
                     {
                         //<<<<< Case 1-A1 : vendor info editing mode  >>>>>
                         if (editMode)
@@ -463,7 +472,11 @@ namespace TamTechSDK.Web.Controllers.Portal
                             try
                             {
                                 var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
-                                return View(_VIEWS["VendorForm"], result?.MapToVendorFormVm());
+                                if (VerifySucceed(result))
+                                {
+                                    return View(_VIEWS["VendorForm"], result.Data.MapToVendorFormVm());
+                                }
+                              
                             }
                             catch (Exception ex)
                             {
@@ -478,7 +491,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                         else
                         {
                             var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
-                            return View(_VIEWS["VendorForm"], result?.MapToVendorFormVm());
+                            if (VerifySucceed(result))
+                            {
+                                return View(_VIEWS["VendorForm"], result.Data.MapToVendorFormVm());
+                            }
                         }
                         //<<<<< Case 1-A2 : Already is registered as vendor >>>>>
                     }
@@ -572,7 +588,11 @@ namespace TamTechSDK.Web.Controllers.Portal
                     {
                         TempData["UpdateSuccess"] = true;
                         var Person = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
-                        return View(_VIEWS["VendorForm"], Person?.MapToVendorFormVm());
+                        if (VerifySucceed(Person))
+                        {
+                            return View(_VIEWS["VendorForm"], Person.Data.MapToVendorFormVm());
+                        }
+                        
 
                     }
                     else if (result.Messages.Count > 0)
@@ -623,7 +643,10 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
-                return View(_VIEWS["VendorInfo"], result?.MapToVendorFormVm());
+                if (VerifySucceed(result))
+                {
+                    return View(_VIEWS["VendorInfo"], result.Data.MapToVendorFormVm());
+                }
             }
             catch (Exception ex)
             {
@@ -672,7 +695,10 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
-                return View("Devinfo", result?.MapToVendorFormVm());
+                if (VerifySucceed(result))
+                {
+                    return View("Devinfo", result.Data.MapToVendorFormVm());
+                }
             }
             catch (Exception ex)
             {

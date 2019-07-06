@@ -19,6 +19,9 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -67,14 +70,29 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var _lang = GetCurrentDataLang();
-                ViewBag.POSByStatus = await _statisticsService.GetPOSNumericalStatisticsByStatusAsync(_lang);
-                ViewBag.POSBySector = await _statisticsService.GetPOSNumericalStatisticsBySectorAsync(_lang);
-                ViewBag.POSByType = await _statisticsService.GetPOSNumericalStatisticsByTypeAsync(_lang);
 
-                ViewBag.VendorByStatus = await _statisticsService.GetVendorNumericalStatisticsByStatusAsync(_lang);
 
-                ViewBag.ContactUsByStatus = await _statisticsService.GetContactUsNumericalStatisticsByStatusAsync(_lang);
-                ViewBag.ContactUsByType = await _statisticsService.GetContactUsNumericalStatisticsByTypeAsync(_lang);
+                var _p_status = await _statisticsService.GetPOSNumericalStatisticsByStatusAsync(_lang);
+                ViewBag.POSByStatus = VerifySucceed(_p_status) ? _p_status.Data  : new StatisticsDto();
+               
+
+                var _p_sectors = await _statisticsService.GetPOSNumericalStatisticsBySectorAsync(_lang);
+                ViewBag.POSBySector = VerifySucceed(_p_sectors) ? _p_sectors.Data : new StatisticsDto();
+
+
+                var _p_type = await _statisticsService.GetPOSNumericalStatisticsByTypeAsync(_lang);
+                ViewBag.POSByType = VerifySucceed(_p_type) ? _p_type.Data : new StatisticsDto();
+
+
+                var _v_status = await _statisticsService.GetVendorNumericalStatisticsByStatusAsync(_lang);;
+                ViewBag.VendorByStatus = VerifySucceed(_v_status) ? _v_status.Data : new StatisticsDto();
+
+
+                var _c_status = await _statisticsService.GetContactUsNumericalStatisticsByStatusAsync(_lang);
+                ViewBag.ContactUsByStatus = VerifySucceed(_c_status) ? _c_status.Data : new StatisticsDto();
+
+                var _c_type = await _statisticsService.GetContactUsNumericalStatisticsByTypeAsync(_lang);
+                ViewBag.ContactUsByType = VerifySucceed(_c_type) ? _c_type.Data : new StatisticsDto();
 
 
                 DTFilter filters = new DTFilter
@@ -86,8 +104,8 @@ namespace TamTechSDK.Web.Controllers.Admin
                     Descending = true,
                     Search = searchParams
                 };
-                var items = await _contactService.GetExceptSoftDeletedAsync(filters);
-                ViewBag.Emails = items;
+                var Emails = await _contactService.GetExceptSoftDeletedAsync(filters);
+                ViewBag.Emails = (VerifySucceed(Emails)) ? Emails.Data : new PagedResultModel<List<ContactDto>>();
             }
             catch (Exception ex)
             {
@@ -96,7 +114,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             //  ViewBag.Host = _settingsHelpers.GetURlAsync();
             var types = await _settingsHelpers.GetNumericalStatisticsNamesAsync();
-            var statistics = await _contentServices.GetNumericalStatisticsAsync(types, GetCurrentDataLang());
+            var statistics = (await _contentServices.GetNumericalStatisticsAsync(types, GetCurrentDataLang())).Data;
             ViewBag.statistics = statistics;
 
             return View();
@@ -116,73 +134,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             return View();
         }
-        [Authorize]
-        public virtual async Task<IActionResult> About()
-        {
-            //GetLanguages();
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            //var result = await _identityService.GetUsersAsync(new GetUsersModel(), accessToken);
-            //ViewBag.count = string.Format("List of Users Count : {0}", result.Data.Count());
-            //PaginationMetadataModel pagination = (PaginationMetadataModel)result.Header;
-
-            //var result = await _identityService.BlockUserAsyncEndpoint("test3");
-            //  await _identityService.UnblockUserAsyncEndpoint("test3");
-
-            //ViewBag.User = result.Success.ToString();
-
-
-            //var GetUserResult = await _identityService.GetUserByUsernameAsync("test3", accessToken);
-            //ViewBag.User = string.Format("NormalizedUserName  : {0}", GetUserResult.Data.NormalizedUserName);
-
-            //RegisterUserModel newuser = new RegisterUserModel
-            //{
-            //    UserName = "a.aktaa.n",
-            //    MobileNumber = "1234567890",
-            //    Password = "P@ss123",
-            //    RolesNames = new List<string> { "WhatcookSuperAdmin", "WhatcookUser" }
-            //   // Email = "a.aktaa@tamtech.solutions"
-            //};
-            //var result = await _identityService.RegisterUserAsync(newuser, accessToken);
-            //var sms =   new Solutions.Common.Services.SMS.Model.SMSModel {
-            //     to = "76894834334",
-            //     body = $"Reset password confirmation code ",
-            //     properties =   new Dictionary<string, string> { { "ReasonOfSend", "ResetPasswordByMobileNumber" }, { "UserId","user id " } }
-            // };
-
-
-            // _iSMSSender.SendAsync(sms);
-
-
-            //try
-            //{
-            //    throw new System.ArgumentException("TamTech.Solutions.Common.Services.Telemetry", "added by a.aktaa for test");
-            //}
-            //catch (Exception ex)
-            //{
-            //    TrackException(ex);
-            //}
-
-            return View();
-        }
-       
-        public virtual IActionResult Contact()
-        {
-            //GetLanguages();
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public virtual IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public virtual IActionResult Biography()
-        {
-            return View();
-        }
-
+          
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public virtual IActionResult Error()
         {

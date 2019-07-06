@@ -6,15 +6,15 @@
     ViewData["Title"] = Localizer["home_page"];
 
 
-    StatisticsDto ContactUsByStatus = ViewBag.ContactUsByStatus != null ? (StatisticsDto)ViewBag.ContactUsByStatus : new StatisticsDto();
-    StatisticsDto ContactUsByType = ViewBag.ContactUsByType != null ? (StatisticsDto)ViewBag.ContactUsByType : new StatisticsDto();
+    StatisticsDto ContactUsByStatus = (StatisticsDto)ViewBag.ContactUsByStatus ;
+    StatisticsDto ContactUsByType = (StatisticsDto)ViewBag.ContactUsByType;
 
 
 
 
-    StatisticsDto POSByStatus = ViewBag.POSByStatus != null ? (StatisticsDto)ViewBag.POSByStatus : new StatisticsDto();
-    StatisticsDto POSBySector = ViewBag.POSBySector != null ? (StatisticsDto)ViewBag.POSBySector : new StatisticsDto();
-    StatisticsDto POSByType = ViewBag.POSByType != null ? (StatisticsDto)ViewBag.POSByType : new StatisticsDto();
+    StatisticsDto POSByStatus = (StatisticsDto)ViewBag.POSByStatus ;
+    StatisticsDto POSBySector = (StatisticsDto)ViewBag.POSBySector ;
+    StatisticsDto POSByType = (StatisticsDto)ViewBag.POSByType;
 
 
 

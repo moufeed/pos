@@ -136,21 +136,5 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
 
-        /* private List<MenuItemDto> _sortMenu(List<MenuItemDto> Menus) {
-             var menu = new List<MenuItemDto>();
-             if (Menus?.Count > 0) {
-                 menu = Menus.OrderBy(m => m.DisplayOrder).ToList();
-                 foreach (var Menu in Menus)
-                 {
-                     if (Menu.MenuItems?.Count > 0)
-                     {
-                         Menu.MenuItems = _sortMenu(Menu.MenuItems);
-                     }
-                 }
-                 return menu;
-             }
-             return menu;
-         }  */
-
     }
 }

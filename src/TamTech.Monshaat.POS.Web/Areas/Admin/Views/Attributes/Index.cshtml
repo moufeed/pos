@@ -52,6 +52,8 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                            <if include-if="Model != null && Model.Data.Count > 0">
                             @foreach (var item in Model.Data)
                             {
 
@@ -154,10 +156,10 @@
                                 </tr>
 
                             }
-
-                            <if include-if='Model.Data.Count == 0'>
+                            </if>
+                            <if exclude-if='Model != null && Model.Data.Count > 0' >
                                 <tr>
-                                    <td colspan="6" class="text-center">
+                                    <td colspan="7" class="text-center">
                                         <p class="empty_row">
                                             <i class='fa fa fa-exclamation-circle'></i>
                                             @Localizer["no_data_table"]
@@ -172,8 +174,10 @@
                 </div>
 
 
-                <hr class="m-y-2" />
-                <pagination controller-name="@activeController" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+                    <if include-if = 'Model != null'>
+                        <hr class="m-y-2" />
+                        <pagination controller-name="@activeController" filter-model="ViewBag.FilterModel" pagniation-model="Model.Pagination" total="true"></pagination>
+                    </if>
             </div>
         </div>
     </div>

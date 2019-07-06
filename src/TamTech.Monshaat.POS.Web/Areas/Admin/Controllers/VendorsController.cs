@@ -16,7 +16,6 @@ using TamTech.Monshaat.POS.Web.Services.Email;
 using TamTech.Monshaat.POS.Web.Services.Email.Models;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
@@ -25,6 +24,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Vendor;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -60,10 +60,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             var _lang = GetCurrentDataLang();
 
             var status = await _statusServices.GetAllSelectListAsync(_lang);
-            if (status.Success && status.Data?.Count > 0)
-            {
-                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
-            }
+            var _items = VerifySucceed(status) ? status.Data : new List<SelectListItemModel>();
+                ViewBag.statusList =   new SelectList(_items, "Value", "Text", model.StatusId)   ;
+            
 
             try
             {
@@ -73,14 +72,14 @@ namespace TamTechSDK.Web.Controllers.Admin
 
                 GetDefaultFiltersList(model, "name");
 
-                List<SelectListItem> visibility = new List<SelectListItem>()
+                ViewBag.visibilityList =  new List<SelectListItem>()
                 {
                      new SelectListItem
                     { Text = _localizer["t_active"] , Value = "1" ,  Selected =  model.Visibility  == 1 },
                       new SelectListItem
                     { Text = _localizer["t_inactive"] , Value = "0" ,  Selected = model.Visibility  == 0 },
                 };
-                ViewBag.visibilityList = visibility;
+               
 
                 SortingModel sorting = CreateSortingModel(model.SortBy);
 
@@ -94,14 +93,14 @@ namespace TamTechSDK.Web.Controllers.Admin
                     Search = GenrateSearchParams(model)
                 };
                 var items = await _vendorServices.GetExceptSoftDeletedAsync(filters);
-                return View(items);
+                return View(VerifySucceed(items) ? items.Data : null );
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
 
-            return View(new PagedResultModel<List<PersonDto>>());
+            return View();
         }
 
 

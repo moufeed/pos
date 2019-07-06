@@ -1,4 +1,7 @@
 ﻿@model PageDto
+
+
+<if include-if="Model != null">
 @{
     ViewData["Title"] = Model.Title;
     Layout = "_Layout";
@@ -21,11 +24,7 @@
     <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
 }
 
-
-
-
-
-
+ 
 
 <section class="section-page py-5">
     <div class="container">
@@ -62,3 +61,13 @@
 <section class="top-footer bg-light-lime pt-50 text-center">
     <img src="~/portal/img/footer.png" alt="footerimage">
 </section>
+</if>
+
+<if exclude-if="Model != null">
+        @{
+            List<SlugModel> _slugModel = new List<SlugModel>();
+        }
+        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="_slugModel" />
+
+        <partial name="~/Areas/Portal/Views/Shared/partials/_empty.cshtml" />
+</if>

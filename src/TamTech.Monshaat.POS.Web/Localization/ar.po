@@ -1,7 +1,8 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: tamtech_cms 0.0.2"
-"Last-Translator: tamtech solution <support@tamtech.solution>"
+"Last-Translator: tantum <support@tantumproj.com>"
 "MIME-Version: 1.0"
 "Content-Type: text/plain; charset=UTF-8"
 "Content-Transfer-Encoding: 8bit"
@@ -1263,116 +1264,9 @@ msgstr "إلغاء النّشر"
 
 msgid "publish_all_images"
 msgstr "نشر كلّ الصّور"
-
-#:products controller
-
-msgid "product_ceation_successfully"
-msgstr "تمّ إنشاء منتَج بنجاح."
-
-msgid "product_updating_successfully"
-msgstr "تمّ تحديث المنتَج بنجاح."
-
-msgid "combination_creation_successfully"
-msgstr "تمّ إنشاء منتَج مخصّص بنجاح."
-
-msgid "attribute_creation_successfully"
-msgstr "تمّ إنشاء سمات منتَج بنجاح."
-
-msgid "attribute_updating_successfully"
-msgstr "تمّ تحديث سمات المنتَج بنجاح."
-
-msgid "attribute_value_creation_successfully"
-msgstr "تمّ إنشاء قيم سمات المنتَج بنجاح."
-
-msgid "attribute_value_updating_successfully"
-msgstr "تمّ تحديث قيم سمات المنتَج بنجاح."
-
-#: product javascript 
-msgid "delete_combination"
-msgstr "حذف المنتَج المخصّص"
-#: products Index.cshtml
-msgctxt "admin.Views.Products.index"
-msgid "Products"
-msgstr "المنتَجات"
-
-msgid "new_product"
-msgstr "منتَج جديد"
-
-#: products List.cshtml
-msgid "Products_list"
-msgstr "قائمة المنتَجات"
-
-#: products Form.cshtml
-msgid "create_product"
-msgstr "إنشاء منتَج."
-
-msgid "edit_product"
-msgstr "تحديث منتَج."
-
-msgid "product_info"
-msgstr "معلومات المنتَج"
-
-msgid "product_specifications"
-msgstr "مواصفات المنتَج"
-
-msgid "product_description"
-msgstr "وصف المنتَج"
-
-msgid "product_pictures"
-msgstr "صور المنتَج"
-
-msgid "product_attributes"
-msgstr "سمات المنتَج"
-
-#: products combination Modal
-msgid "select_new_combination"
-msgstr "اِختر منتَج مخصّص جديد و أدخل التّفاصيل أدناه "
-
-#: _Form_information_tab.cshtml
-msgid "f_short_description"
-msgstr "وصف قصير :"
-
-msgid "f_full_description"
-msgstr "وصف كامل (WEB) :"
-
-msgid "maximum_cart_quantity"
-msgstr "الكميّة القصوى لعربة التّسوّق"
+  
  
-msgid "requires_shipping"
-msgstr "يتطلّب شحن"
-
-msgid "free_shipping"
-msgstr "شحن مجّانيّ"
-
-msgid "weight"
-msgstr "الوزن"
-
-msgid "gram"
-msgstr "غرام"
-
-msgid "millimeter"
-msgstr "ميلّيمتر"
-
-msgid "height"
-msgstr "الإرتفاع"
-
-msgid "length"
-msgstr "الطّول"
-
-msgid "width"
-msgstr "العرض"
-
-#: products _Form_Images_tab.cshtml
-msgid "product_images"
-msgstr "صور المنتَج"
-
-msgid "add_images"
-msgstr "إضافة صور"
-
-msgid "remove_selected_images"
-msgstr "إزالة الصّور المحدّدة"
-
-#: Products _Form_Attributes_tab.cshtml
+ 
 msgid "attributes"
 msgstr "الميزات"
 
@@ -1395,13 +1289,7 @@ msgid "add_combination"
 msgstr "إضافة خصائص"
 
 #: categories controller
-
-msgid "category_creation_successfully"
-msgstr "تمّ إنشاء فئة بنجاح."
-
-#: caegories index.cshtml
-msgid "new_category"
-msgstr "فئة جديدة"
+  
 
 #: home _welcome-panel.cshtml
 msgid "welcome_to_tamcms"
@@ -2116,8 +2004,8 @@ msgstr "محتوى الصفحة الرئيسية"
 msgid "go_to_edit_page"
 msgstr "تعديل البيانات"
 
-msgid ""
-msgstr ""
+msgid "user_manual"
+msgstr "دليل الاستخدام"
 
 msgid ""
 msgstr ""

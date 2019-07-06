@@ -29,28 +29,23 @@ namespace TamTechSDK.Web.Controllers.Portal
         }
         #endregion
 
-
-
-        #region Actions 
-
-        // [HttpGet("[Area]/{lang}/[Controller]/")]
-        [HttpGet]
-        public virtual async Task<IActionResult> Index()
-        {
-            return NotFound();
-        }
-
-
-
+        #region utilities
         public TResult DeserializeFromObject<TResult>(dynamic inputObject)
         {
             string serialized = JsonConvert.SerializeObject(inputObject);
             var handledResult = JsonConvert.DeserializeObject<TResult>(serialized);
             return handledResult;
         }
+        #endregion
 
+        #region Actions 
 
-        // [HttpGet("[Area]/{lang}/[Controller]/{slug}")]
+        
+        [HttpGet]
+        public virtual async Task<IActionResult> Index() => NotFound();
+ 
+
+         
         [ActionName("v")]
         public virtual async Task<ActionResult> Details(string slug)
         {
@@ -58,16 +53,16 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 var page = await _pageService.GetPublicBySlugAsync(slug);
 
-                if (page.Success && page.Data != null)
+                if (VerifySucceed(page))
                 {
                     var type = page.Data.Type == (int)PageTypeEnum.Sections ? PageTypeEnum.Sections : PageTypeEnum.Html;
                     if (type == PageTypeEnum.Html)
                     {
-                        return View($"Preview_{type.ToString()}", page);
+                        return View($"Preview_{type.ToString()}", page.Data);
                     }
                     else
                     {
-                        return View($"Preview_{type.ToString()}", page);
+                        return View($"Preview_{type.ToString()}", page.Data);
                     }
 
 
@@ -88,7 +83,10 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var page = await _pageService.GetPublishedSectionsPageByIdAsync(slug);
-                return View("Preview_Sections", page);
+                if (VerifySucceed(page))
+                {
+                    return View("Preview_Sections", page.Data);
+                }
             }
             catch (Exception ex)
             {
@@ -103,7 +101,10 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var page = await _pageService.GetPublishedHtmlPageByIdAsync(slug);
-                return View("Preview_HtmlPage", page);
+                if (VerifySucceed(page))
+                {
+                    return View("Preview_HtmlPage", page.Data);
+                }
             }
             catch (Exception ex)
             {

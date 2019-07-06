@@ -32,16 +32,16 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
             return MapRequestProviderResult(result);
         }
 
-        public async Task<PersonDto> GetPersonForCurrentUserAsync(string lang)
+        public async Task<IRequestProviderResult<PersonDto>> GetPersonForCurrentUserAsync(string lang)
         {
             var result = await _vendoreService.GetPersonForCurrentUserAsync(lang);
-            return result?.MapToFrontPersonDto();
+            return ReturnRequestProviderResult(result?.MapToFrontPersonDto());
         }
 
-        public async Task<bool> CheckTheCurrentUserIsRegisteredAsVendorAsync()
+        public async Task<IRequestProviderResult<bool>> CheckTheCurrentUserIsRegisteredAsVendorAsync()
         {
             var result = await _vendoreService.CheckTheCurrentUserIsRegisteredAsVendorAsync();
-            return result;
+            return ReturnRequestProviderResult(result);
         }
 
         public async Task<IRequestProviderResult<bool>> VerifyVendorSlugIsUnique(string slug, Guid? vendorId = null)
