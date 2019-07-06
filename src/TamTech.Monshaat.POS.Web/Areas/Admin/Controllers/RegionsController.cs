@@ -138,7 +138,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (result.Success && result.Data != null)
                     return View("Form", result.Data.MapToRegionVM());
 
-                ViewBag.EmptyResponse = true;
+              
 
             }
             catch (Exception ex)

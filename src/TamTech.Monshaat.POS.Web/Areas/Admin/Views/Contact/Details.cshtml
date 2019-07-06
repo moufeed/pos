@@ -14,6 +14,8 @@
 
 
 </div>
+
+<if include-if="Model != null">
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel  p-x-0">
@@ -154,14 +156,13 @@
         </div>
     </div>
 </div>
-
-
-
-
+ 
 @section Scripts{
-
     <partial name="_ValidationScriptsPartial" />
     <script src="~/Admin/js/message.min.js"></script>
-  
-
 } 
+</if>
+
+<if exclude-if="Model != null">
+   <partial name="~/Areas/Admin/Views/Shared/_empty.cshtml"/>
+</if>

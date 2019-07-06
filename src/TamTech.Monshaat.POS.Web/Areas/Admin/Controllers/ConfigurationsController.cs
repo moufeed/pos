@@ -32,8 +32,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var settings = await _settingsServices.GetByGroupIdAsync((int)SettingGroupEnum.General);
-
-                return View(settings);
+                return View(VerifySucceed(settings) ? settings.Data  : null);
             }
             catch (Exception ex)
             {

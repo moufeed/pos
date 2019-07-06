@@ -18,6 +18,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -50,12 +51,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         private async Task init(Filter model)
         {
             var _lang = GetCurrentDataLang();
-
             var sectors = await _sectorservice.GetSelectListAsync(_lang);
-            if (sectors.Success && sectors.Data?.Count > 0)
-            {
-                ViewBag.sectors = new SelectList(sectors.Data, "Value", "Text", model.SectorId);
-            }
+            
+             ViewBag.sectors = new SelectList(VerifySucceed(sectors) ? sectors.Data : new List<SelectListItemModel>(), "Value", "Text", model.SectorId);
+           
             var types = await _typeService.GetSelectListAsync(_lang);
             HandelGetingResult(types);
             if (VerifySucceed(types))

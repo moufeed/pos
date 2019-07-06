@@ -134,10 +134,6 @@ namespace TamTechSDK.Web.Controllers.Admin
                 {
                     return View("Form", result.Data.MapToAttributeVM());
                 }
-                    
-
-                ViewBag.EmptyResponse = true;
-
             }
             catch (Exception ex)
             {

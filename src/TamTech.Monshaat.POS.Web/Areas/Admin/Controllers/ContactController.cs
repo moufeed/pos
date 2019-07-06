@@ -32,6 +32,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Email;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -77,28 +78,18 @@ namespace TamTechSDK.Web.Controllers.Admin
         public async virtual Task<ActionResult> Index(Filter model)
         {
             ViewBag.showReset = new Filter().Equals(model);
-
             ViewBag.FilterModel = model;
-
             GetDefaultFiltersList(model, "fullname");
-
             SortingModel sorting = CreateSortingModel(model.SortBy);
-
             var types = await _typeService.GetSelectListAsync(GetCurrentDataLang(), true);
             HandelGetingResult(types);
-            if (VerifySucceed(types))
-            {
-                if ( types.Data.Count > 0)
-                {
-                    ViewBag.types = new SelectList(types.Data, "Value", "Text", model.TypeId);
-                }
-            }
+
+
+            ViewBag.types = new SelectList(VerifySucceed(types) ? types.Data : new List<SelectListItemModel>(), "Value", "Text", model.TypeId);
+            
 
             var status = await _statusService.GetAllSelectListAsync(GetCurrentDataLang());
-            if (status.Success && status.Data.Count > 0)
-            {
-                ViewBag.statusList = new SelectList(status.Data, "Value", "Text", model.StatusId);
-            }
+            ViewBag.statusList = new SelectList(VerifySucceed(status) ? status.Data : new List<SelectListItemModel>(), "Value", "Text", model.StatusId);
 
             DTFilter filters = new DTFilter
             {
@@ -112,13 +103,13 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var items = await _contactService.GetExceptSoftDeletedAsync(filters);
-                return View(items);
+                return View(VerifySucceed(items) ? items.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-            return View(new PagedResultModel<List<ContactDto>>());
+            return View();
         }
 
 
@@ -129,17 +120,13 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var item = await _contactService.GetByIdAndSetStatusAsync(id, GetCurrentDataLang());
-                if (item != null)
-                {
-                    return View("Details", item);
-                }
-
+                return View("Details", VerifySucceed(item)  ? item.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-            return View("Details", model);
+            return View("Details", null);
         }
 
 
@@ -151,7 +138,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 {
                     var result = await _contactService.ReplayAsync(model.MapToReplyModel());
 
-                    if (result.Success)
+                    if (VerifySucceed(result))
                     {
                         bool Sendemail = await _EmailService.SendAsync(new EmailModel
                         {
@@ -199,113 +186,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
         }
 
-        /*
-        [HttpGet("{Culture}/[Area]/[controller]/new")]
-        public virtual async Task<ActionResult> CreatEmail()
-        {
-            ViewBag.SpecificUser = false;
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            GetUsersModel model = new GetUsersModel();
-            EmailVM EmailMD = new EmailVM();
-            ViewBag.UsersList = new List<SelectListItem> { };
-            var result = await _IdentityService.GetUsersAsync(model);
-             
-            if (result.Success)
-            {
-                ViewBag.UsersList = result.Data != null ? result.Data.Select(m => m.MapToUserModelByEmail()).ToList() : new List<SelectListItem>();
-            }
-
-            return View("CreateEmail", EmailMD );
-        }
-
-        public ViewResult GetViewNewEmailStartup(string username, List<string> emails)
-        {
-                ViewBag.SpecificUser = true;
-                EmailVM EmailMD = new EmailVM();
-                EmailMD.Recipients = emails; ;
-
-                ViewBag.username = username;
-                ViewBag.email = emails[0];
-                return View("CreateEmail", EmailMD);
-        }
-         
-        [HttpGet("{Culture}/[Area]/[controller]/new/{username}/{email}")]
-        public virtual ActionResult NewEmail(string username , string email ,string bt)
-        {
-            ViewBag.route = bt;
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(email))
-            {
-                return GetViewNewEmailStartup(username, new List<string> { email });
-            }
-            return View();
-        }
-         
-        // POST: Email/Create
-        [HttpPost("{Culture}/[Area]/[controller]/create")]  
-        public virtual async Task<ActionResult> Create(EmailVM model ,string bt ,string na, IFormCollection collection)
-        {
-            var count = model.Recipients.Count;
-            // string backToController = Request.Query["bt"].ToString();//collection.ContainsKey("save-continue")
-            string backToController = collection["route"];
-                    Dictionary<string, bool> results = new Dictionary<string, bool>();
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    foreach ( var email  in model.Recipients)
-                    {
-
-                        results.Add(email,
-                                     await _EmailService.SendAsync(new EmailModel
-                                     {
-                                         Email = email,
-                                         Subject = model.Subject,
-                                         HtmlMessage = model.Message,
-                                         Message = Regex.Replace(model.Message, "<.*?>", String.Empty),
-                                         ReasonOfSend = "MessageByWebAdminPanel"
-                                     }));
-
-                    }
-                }
-                catch (Exception ex )
-                {
-                    TrackException(ex);
-                    return View("Error");
-
-                }
-
-                
-
-                if (string.IsNullOrWhiteSpace(backToController))
-                {
-                    return RedirectToAction(nameof(CreatEmail)); 
-                }
-                else
-                {
-                    bool resultValue;
-                     
-                    if (count == 1 && results.TryGetValue( model.Recipients[0], out resultValue))
-                    {
-                        if (resultValue)
-                        { TempData["showSuccessAlert"] = true; }
-                        else
-                        { TempData["showFailedAlert"] = true; }
-
-                        TempData["username"] = model.UserName;
-                        TempData["subject"] = model.Subject;
-                    }
-
-                    return RedirectToAction("Index", backToController);
-                }
-            }
-          
-            return GetViewNewEmailStartup(model.UserName, model.Recipients);
-
-
-        }
-
-
-    */
+        
 
         [HttpPost("{Culture}/[Area]/[controller]/SendJsonEmail")]
         public virtual async Task<JsonResult> SendJsonEmail(EmailVM model)
