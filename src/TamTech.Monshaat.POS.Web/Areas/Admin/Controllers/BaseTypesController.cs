@@ -53,13 +53,9 @@ namespace TamTechSDK.Web.Controllers.Admin
         public virtual async Task<IActionResult> Index(Filter model)
         {
             ViewBag.showReset = new Filter().Equals(model);
-
             ViewBag.FilterModel = model;
-
             GetDefaultFiltersList(model, "name");
-
             SortingModel sorting = CreateSortingModel(model.SortBy);
-
             DTFilter filters = new DTFilter
             {
                 Lang = GetCurrentDataLang(),
@@ -74,10 +70,8 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 var types = await _typeService.GetExceptSoftDeletedAsync(filters);
                 HandelGetingResult(types);
-                if (VerifySucceed(types))
-                {
-                    return View(types.Data);
-                }
+                return View(VerifySucceed(types) ? types.Data : null);
+                
             }
             catch (Exception ex)
             {
@@ -85,7 +79,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
 
 
-            return View(new List<TypeDto>());
+            return View();
         }
         #endregion
 
@@ -151,7 +145,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                   return View("Form", result.Data.MapToTypeVM());
                 }
 
-                ViewBag.EmptyResponse = true;
+               
 
             }
             catch (Exception ex)

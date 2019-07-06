@@ -15,6 +15,7 @@ using TamTech.Monshaat.POS.Web.Core.Mappers.Values;
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -31,18 +32,15 @@ namespace TamTechSDK.Web.Controllers.Admin
             _valuesServices = valuesServices;
             _attributesServices = attributesServices;
         }
-
-
+         
         #region utilities
         private async Task _GetAttributesList(int id = 0)
         {
             try
             {
                 var _attributes = await _attributesServices.GetAllSelectListAsync(GetCurrentDataLang());
-                if (_attributes.Success && _attributes.Data.Count > 0)
-                {
-                    ViewBag.attributes = new SelectList(_attributes.Data, "Value", "Text", id != 0 ? id : (int?)null);
-                }
+                var _attrs = VerifySucceed(_attributes) ? _attributes.Data : new List<SelectListItemModel>();
+                ViewBag.attributes = new SelectList(_attrs, "Value", "Text", id != 0 ? id : (int?)null);
             }
             catch (Exception ex)
             {
@@ -56,14 +54,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         {
 
             ViewBag.showReset = new Filter().Equals(model);
-
             ViewBag.FilterModel = model;
-
             GetDefaultFiltersList(model, "name");
             await _GetAttributesList(model.AttId);
-
             SortingModel sorting = CreateSortingModel(model.SortBy);
-
             DTFilter filters = new DTFilter
             {
                 Lang = GetCurrentDataLang(),
@@ -77,34 +71,25 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var types = await _valuesServices.GetExceptSoftDeletedAsync(filters);
-                return View(types);
+                return View(VerifySucceed(types) ? types.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
 
-            return View(new List<ValueVM>());
+            return View();
         }
-
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Create")]
         public virtual async Task<ActionResult> Create()
         {
 
             await _GetAttributesList();
-
-
-
-            ValueVM model = new ValueVM();
             ViewBag.IsEditMode = false;
-
-            return View("Form", model);
+            return View("Form", new ValueVM());
         }
-
-
-
+          
         [HttpPost("{Culture}/[Area]/[Controller]/Create")]
         public virtual async Task<IActionResult> Create(ValueVM model, IFormCollection collection)
         {
@@ -116,11 +101,10 @@ namespace TamTechSDK.Web.Controllers.Admin
                 {
                     var result = await _valuesServices.CreateAsync(model.MapToCreateValueModel());
 
-                    if (result.Success)
+                    if (VerifySucceed(result))
                     {
                         if (continueEditing)
                         {
-                            ViewBag.IsEditMode = true;
                             return RedirectToAction("Edit", new { id = result.Data });
                         }
 
@@ -136,27 +120,20 @@ namespace TamTechSDK.Web.Controllers.Admin
             await _GetAttributesList();
             return View("Form", model);
         }
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Edit/{id}")]
         public virtual async Task<ActionResult> Edit(int id)
         {
             ViewBag.IsEditMode = true;
-
             ValueVM model = new ValueVM();
-
             try
             {
                 var result = await _valuesServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result.Success)
+                if (VerifySucceed(result))
                 {
                     await _GetAttributesList(result.Data.AttId);
                     return View("Form", result.Data.MapToValueVM());
                 }
-
-                ViewBag.EmptyResponse = true;
-
             }
             catch (Exception ex)
             {
@@ -165,26 +142,18 @@ namespace TamTechSDK.Web.Controllers.Admin
             await _GetAttributesList();
             return View("Form", model);
         }
-
-
-
+         
         [HttpPost("{Culture}/[Area]/[Controller]/Edit/{id}")]
         public virtual async Task<IActionResult> Edit(ValueVM model, IFormCollection collection, string lang)
         {
             bool continueEditing = collection.ContainsKey("save-continue");
-
             try
             {
                 if (ModelState.IsValid)
                 {
                     model.Lang = GetCurrentDataLang();
-
-
                     var result = await _valuesServices.EditAsync(model.MapToUpdateAttributeModel());
-
-
-
-                    if (result.Data)
+                    if (VerifySucceed(result))
                     {
                         if (continueEditing)
                         {
@@ -192,24 +161,19 @@ namespace TamTechSDK.Web.Controllers.Admin
                             await _GetAttributesList(model.AttId);
                             return View("Form", model);
                         }
-
                         return RedirectToAction("Index");
                     }
-
                 }
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-
             await _GetAttributesList(model.AttId);
             ViewBag.IsEditMode = true;
             return View("Form", model);
         }
-
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Publish/{id}")]
         public virtual async Task<JsonResult> PublishAsync(int id)
         {
@@ -239,8 +203,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Delete/{id}")]
         public virtual async Task<JsonResult> DeleteAsync(int id)
         {
@@ -262,7 +225,6 @@ namespace TamTechSDK.Web.Controllers.Admin
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
-
-
+         
     }
 }

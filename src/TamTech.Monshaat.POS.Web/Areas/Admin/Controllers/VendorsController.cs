@@ -141,7 +141,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                     };
 
                     var result = await _vendorServices.SetActionAsync(action);
-                    if (result.Success)
+                    if (VerifySucceed(result))
                     {
                         // This case: The admin approved to vendor
                         if (result.Data.Vendor.Activated)
@@ -188,7 +188,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                     Lang = GetCurrentDataLang()
                 });
 
-                if (response.Success)
+                if (VerifySucceed(response))
                 {
 
                     if (model.Checked)
@@ -221,7 +221,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var result = await _vendorServices.GetStatusHistoriesListAsync(id, GetCurrentDataLang());
-                return PartialView("~/Areas/Admin/Views/Pos/Vendors/_history.cshtml", result);
+                return PartialView("~/Areas/Admin/Views/Pos/Vendors/_history.cshtml", result.Data);
             }
             catch (Exception ex)
             {

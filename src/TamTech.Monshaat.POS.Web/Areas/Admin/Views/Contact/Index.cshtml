@@ -21,6 +21,8 @@
 </div>
 
 
+<if include-if="Model != null">
+  
 
 
 <div class="row">
@@ -137,3 +139,8 @@
     </script>
 
 }
+</if>
+
+<if exclude-if="Model != null">
+   <partial name="~/Areas/Admin/Views/Shared/_empty.cshtml"/>
+</if>
