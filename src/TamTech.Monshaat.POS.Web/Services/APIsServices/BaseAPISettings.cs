@@ -18,6 +18,9 @@
 
         public const string CUTypesController = "CUTypes";
         public const string POSTypesController = "POSTypes";
+        public const string POSSectorsController = "POSSectors";
+        public const string POSAttributesController = "POSAttributes";
+        public const string POSValuesController = "POSValues";
 
     }
 }

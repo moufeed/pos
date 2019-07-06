@@ -29,14 +29,14 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IPOSAdminServeice _posservice;
         private readonly IPosTypeService _typeService;
         private readonly IPosStatusService _statusService;
-        private readonly ISectorServices _sectorservice;
+        private readonly IPOSSectorServices _sectorservice;
 
         public PosController(ITelemetryService telemetryClientService,
                 IStringLocalizer<AdminBaseController> localizer,
                 IPOSAdminServeice posservice,
                 IPosTypeService typeservice,
                 IPosStatusService statusService,
-                ISectorServices sectorservice
+                IPOSSectorServices sectorservice
             ) : base(telemetryClientService, localizer)
         {
 
