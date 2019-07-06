@@ -43,8 +43,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             _localizer = localizer;
 
         }
-
-
+         
         private async Task DeleteFilesAsync(string img)
         {
             try
@@ -61,9 +60,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 TrackExceptionOnly(ex);
             }
         }
-
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]")]
         public virtual async Task<IActionResult> Index(Filter model)
         {
@@ -86,36 +83,31 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             try
             {
-
                 var items = await _sectorServices.GetExceptSoftDeletedAsync(filters);
-                return View(items);
+                return View(VerifySucceed(items)  ? items.Data : null);
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
 
-            return View(new PagedResultModel<List<SectorDto>>());
+            return View();
         }
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Preview/{id}")]
         public virtual async Task<IActionResult> Details(int id)
         {
             try
             {
                 var result = await _sectorServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result != null)
-                {
-                    return View("Details", result);
-                }
+                return View("Details", VerifySucceed(result) ? result.Data : null) ;
+                
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-            return View("Details", new SectorDto());
+            return View("Details");
         }
 
 
@@ -218,9 +210,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             ViewBag.IsEditMode = false;
             return View("Form", model);
         }
-
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Edit/{id}")]
         public virtual async Task<ActionResult> Edit(int id)
         {
@@ -229,32 +219,19 @@ namespace TamTechSDK.Web.Controllers.Admin
             try
             {
                 var result = await _sectorServices.GetByIdExceptSoftDeletedAsync(id, GetCurrentDataLang());
-
-                if (result.Success)
-                {
-                    return View("Form", result.Data?.MapToSectorVM());
-                }
-
-                ViewBag.EmptyResponse = true;
-
+                return View("Form",VerifySucceed(result) ?  result.Data?.MapToSectorVM() : new SectorVM());
             }
             catch (Exception ex)
             {
                 TrackException(ex);
             }
-
             return View("Form", new SectorVM());
         }
-
-
+         
         [HttpPost("{Culture}/[Area]/[Controller]/Edit/{id}")]
         public virtual async Task<IActionResult> Edit(SectorVM model, IFormCollection collection, string lang)
         {
-
-
-
             bool continueEditing = collection.ContainsKey("save-continue");
-
             try
             {
                 if (ModelState.IsValid)
@@ -264,8 +241,6 @@ namespace TamTechSDK.Web.Controllers.Admin
                     var oldIcon = model.Icon;
                     bool newIconUploaded = false;
                     bool newImageUploaded = false;
-
-
 
                     if (model.NewIcon != null)
                     {
@@ -299,7 +274,6 @@ namespace TamTechSDK.Web.Controllers.Admin
                             AddErrorModel(nameof(model.Image), _localizer["image_uploading_error"]);
                         }
                     }
-
 
                     var result = await _sectorServices.EditAsync(model.MapToUpdateSectorModel());
 
@@ -345,10 +319,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             ViewBag.IsEditMode = true;
             return View("Form", model);
         }
-
-
-
-
+         
         [HttpGet("{Culture}/[Area]/[Controller]/Delete/{id}")]
         public virtual async Task<IActionResult> DeleteAsync(int id)
         {
@@ -375,7 +346,6 @@ namespace TamTechSDK.Web.Controllers.Admin
         [HttpGet("{Culture}/[Area]/[Controller]/Publish/{id}")]
         public virtual async Task<JsonResult> PublishAsync(int id)
         {
-            var qs = this.Request.Query[""];
             try
             {
                 if (ModelState.IsValid)
