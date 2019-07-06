@@ -58,7 +58,7 @@
   
   <ItemGroup>
     <Reference Include="TamTech.ContentService.SDK">
-      <HintPath>..\..\..\..\Tamtech\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
+      <HintPath>..\..\..\HelperServices\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
     </Reference>
   </ItemGroup>
 
