@@ -163,7 +163,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                         });
                         if (Sendemail)
                         {
-                            return ReturnJson(result, model);
+                            return ReturnJsonResult(result, model);
                         }
                         else
                         {

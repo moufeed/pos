@@ -23,7 +23,7 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs
 
         Task<IRequestProviderResult<PosBaseDto>> SetActionAsync(UpdatePOSStatus model);
 
-        Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model);
+        Task<IRequestProviderResult<bool>> PublishAsync(PublishModel model);
 
         Task<IRequestProviderResult<List<POSStatusHistoryDto>>> GetStatusHistoriesListAsync(Guid posId, string lang);
     }

@@ -173,7 +173,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         public void TrackIfNotFilesDeleted(bool success,
-                                            HttpStatusCode statusCode,
+                                           HttpStatusCode statusCode,
                                             DeleteFilesModelResult resultModel,
                                             dynamic inputModel)
         {
@@ -191,6 +191,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
         }
 
+      
         public JsonResult ReturnJsonResult<TResult, TModel>(IRequestProviderResult<TResult> result, TModel model)
         {
             JsonResultModel<TResult, TModel> jsonResult = new JsonResultModel<TResult, TModel>();
@@ -198,51 +199,15 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 jsonResult.Model = model;
             }
+            jsonResult.StatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), ((int)result.StatusCode).ToString());
             if (result.Success)
             {
                 jsonResult.Success = true;
-                jsonResult.Result = result.Data;
-                jsonResult.StatusCode = result.StatusCode;
+                jsonResult.Result = result.Data; 
             }
             else
             {
-                jsonResult.Success = false;
-                jsonResult.StatusCode = result.StatusCode;
-
-                foreach (var error in result.Messages)
-                {
-                    var errorMessages = new List<string>();
-
-                    foreach (var errorMessage in error.Value)
-                    {
-                        errorMessages.Add(errorMessage);
-                    }
-
-                    jsonResult.Errors.Add(new KeyValuePair<string, List<string>>(error.Key, errorMessages));
-                }
-            }
-
-            return Json(jsonResult);
-        }
-
-
-        public JsonResult ReturnJson<TResult, TModel>(IRequestProviderResult<TResult> result, TModel model)
-        {
-            JsonResultModel<TResult, TModel> jsonResult = new JsonResultModel<TResult, TModel>();
-            if (model != null)
-            {
-                jsonResult.Model = model;
-            }
-            if (result.Success)
-            {
-                jsonResult.Success = true;
-                jsonResult.Result = result.Data;
-                jsonResult.StatusCode = result.StatusCode;
-            }
-            else
-            {
-                jsonResult.Success = false;
-                jsonResult.StatusCode = result.StatusCode;
+                jsonResult.Success = false; 
 
                 foreach (var error in result.Messages)
                 {

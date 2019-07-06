@@ -96,7 +96,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.RegionsServices
             return ReturnRequestProviderResult(result?.Select(itm => itm.MapToForntSelectListItemModel()).ToList());
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
             var result = await _regionsServices.PublishAsync(model.MapToBackendPuplishModel());
             return MapRequestProviderResult(result);

@@ -184,7 +184,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 if (ModelState.IsValid)
                 {
-                    PublishDTO data = new PublishDTO
+                    PublishModel data = new PublishModel
                     {
                         Id = id,
                         Lang = GetCurrentDataLang()

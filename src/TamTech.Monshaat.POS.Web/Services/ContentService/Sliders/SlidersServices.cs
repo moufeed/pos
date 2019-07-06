@@ -96,7 +96,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders
 			};
 		}
 
-		public async Task<IRequestProviderResult<bool>> publishSliderByIdAsync(PublishDTO data)
+		public async Task<IRequestProviderResult<bool>> publishSliderByIdAsync(PublishModel data)
 		{
 			return new RequestProviderResult<bool>
 			{
@@ -135,7 +135,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders
             throw new NotImplementedException();
         }
 
-        public Task<IRequestProviderResult<bool>> publishByIdAsync(PublishDTO data)
+        public Task<IRequestProviderResult<bool>> publishByIdAsync(PublishModel data)
         {
             throw new NotImplementedException();
         }

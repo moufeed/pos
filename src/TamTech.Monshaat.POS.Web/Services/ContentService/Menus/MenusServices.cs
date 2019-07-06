@@ -40,7 +40,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 
         public async Task<IRequestProviderResult<MenuDto>> GetPublicDynamicByKeyAsync(string key)
         {
-            return await _requestProvider.GetAsync<MenuDto, List<string>>(_backendSettings.GetPublicDynamicByKeyAsyncEndpoint, new List<string> { key });
+            return await _requestProvider.GetAsync<MenuDto, List<string>>(_backendSettings.GetPublicDynamicByKeyAsyncEndpoint, new List<string> { key }, PassParamsBy.Route);
         }
 
 
@@ -208,7 +208,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
             }; */
 
 
-             return await _requestProvider.GetAsync<MenuDto, List<Guid>>(_backendSettings.GetByIdAsyncEndpoint, new List<Guid> { id });
+             return await _requestProvider.GetAsync<MenuDto, List<Guid>>(_backendSettings.GetByIdAsyncEndpoint, new List<Guid> { id }, PassParamsBy.Route);
         }
 
         #endregion

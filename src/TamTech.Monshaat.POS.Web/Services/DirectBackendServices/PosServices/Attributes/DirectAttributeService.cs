@@ -86,7 +86,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.PosServices.Attributes
             return ReturnRequestProviderResult(request != null ? request.Select(s => s.MapToForntAttributeDto()).ToList() : new List<AttributeDto>());
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
             var result = await _AttributeService.PublishAsync(model.MapToBackendPuplishModel());
             return MapRequestProviderResult(result);

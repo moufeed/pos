@@ -38,7 +38,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
         // TODO: language parameter not used yet    - from  dynamic to PageDto
         public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<PageDto, List<string>>(_backendSettings.GetPublicDynamicBySlugAsyncEndpoint, new List<string> { slug });
+            return await _requestProvider.GetAsync<PageDto, List<string>>(_backendSettings.GetPublicDynamicBySlugAsyncEndpoint, new List<string> { slug }, PassParamsBy.Route);
         }
 
 
@@ -50,7 +50,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
         // TODO: language parameter not used yet
         public async Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(Guid id)
         {
-            return await _requestProvider.GetAsync<PageSummary, List<Guid>>(_backendSettings.GetPublicDynamicByIdAsyncEndpoint, new List<Guid> { id });
+            return await _requestProvider.GetAsync<PageSummary, List<Guid>>(_backendSettings.GetPublicDynamicByIdAsyncEndpoint, new List<Guid> { id }, PassParamsBy.Route);
         }
 
         //public async Task<dynamic> GetPublicDynamicBySlugAsync(string slug)
@@ -87,12 +87,12 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 
         public async Task<IRequestProviderResult<HtmlPage>> GetHtmlPageByIdAsync(Guid id, string lang)
         {
-            return await _requestProvider.GetAsync<HtmlPage, List<Guid>>(_backendSettings.GetHtmlPageByIdAsyncEndpoint, new List<Guid> { id });
+            return await _requestProvider.GetAsync<HtmlPage, List<Guid>>(_backendSettings.GetHtmlPageByIdAsyncEndpoint, new List<Guid> { id }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<SectionsPage>> GetSectionsPageByIdAsync(Guid id, string lang)
         {
-            return await _requestProvider.GetAsync<SectionsPage, List<Guid>>(_backendSettings.GetSectionsPageByIdAsyncEndpoint, new List<Guid> { id });
+            return await _requestProvider.GetAsync<SectionsPage, List<Guid>>(_backendSettings.GetSectionsPageByIdAsyncEndpoint, new List<Guid> { id }, PassParamsBy.Route);
         }
 
 
@@ -120,19 +120,19 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
         }
         public async Task<IRequestProviderResult<bool>> DeleteHtmlPageAsync(Guid id)
         {
-            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.DeleteHtmlPageAsyncEndpoint, new List<string> { id.ToString() });
+            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.DeleteHtmlPageAsyncEndpoint, new List<string> { id.ToString() }, PassParamsBy.Route);
         }
         public async Task<IRequestProviderResult<bool>> DeleteSectionsPageAsync(Guid id)
         {
-            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.DeleteSectionsPageAsyncEndpoint, new List<string> { id.ToString() });
+            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.DeleteSectionsPageAsyncEndpoint, new List<string> { id.ToString() }, PassParamsBy.Route);
         }
-        public async Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<bool>> PublishHtmlPageAsync(PublishModel data)
         {
-            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.PublishHtmlPageAsyncEndpoint, new List<string> { data.Id.ToString(), data.Lang });
+            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.PublishHtmlPageAsyncEndpoint, new List<string> { data.Id.ToString(), data.Lang }, PassParamsBy.Route);
         }
-        public async Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishDTO data)
+        public async Task<IRequestProviderResult<bool>> PublishSectionsPageAsync(PublishModel data)
         {
-            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.PublishSectionsPageAsyncEndpoint, new List<string> { data.Id.ToString() , data.Lang });
+            return await _requestProvider.GetAsync<bool, List<string>>(_backendSettings.PublishSectionsPageAsyncEndpoint, new List<string> { data.Id.ToString() , data.Lang }, PassParamsBy.Route);
         }
 
         public Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(string id)

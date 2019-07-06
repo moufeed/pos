@@ -81,7 +81,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ValuesServices
             return ReturnRequestProviderResult(request?.Select(s => s.MapToForntValueDto()).ToList());
         }
 
-        public async Task<IRequestProviderResult<bool>> PublishAsync(PublishDTO model)
+        public async Task<IRequestProviderResult<bool>> PublishAsync(Models.Dtos.Common.PublishLookupModel model)
         {
             var result = await _valuesServices.PublishAsync(model.MapToBackendPuplishModel());
             return MapRequestProviderResult(result);
