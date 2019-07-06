@@ -12,6 +12,7 @@ using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers
 {
@@ -30,6 +31,12 @@ namespace TamTechSDK.Web.Controllers
         #endregion 
 
         #region Methodes
+
+        public bool VerifySucceed<T>(IRequestProviderResult<T> result)
+        {
+            return result != null && result.Success && result.Data != null;
+        }
+
         public virtual void TrackException(Exception exc)
         {
             //

@@ -42,8 +42,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         private async Task InitAction()
         {
 
-            ViewBag.sectors = await _sectorService.GetPublishedListAsync();
-            ViewBag.attributes = await _attributeService.GetPublishedListAsync();
+            ViewBag.sectors = (await _sectorService.GetPublishedListAsync()).Data;
+            ViewBag.attributes = (await _attributeService.GetPublishedListAsync()).Data;
             ViewBag.types =( await _posTypeService.GetPublishedListAsync()).Data;
         }
 
@@ -78,7 +78,11 @@ namespace TamTechSDK.Web.Controllers.Portal
                 ViewBag.ActiveSector = slug;
                 PosFilters filters = MakeFiltersModel(slug, search, f, t, pagination);
                 var request = await _directoryServices.FindAsync(filters);
-                return View(request);
+                if (VerifySucceed(request))
+                {
+                    return View(request);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -93,7 +97,11 @@ namespace TamTechSDK.Web.Controllers.Portal
             try
             {
                 var result = await _directoryServices.GetPublishedBySlugAsync(slug);
-                return View(result);
+                if (VerifySucceed(result))
+                {
+                    return View(result);
+                }
+
             }
             catch (Exception ex)
             {
