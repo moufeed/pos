@@ -11,6 +11,12 @@ namespace TamTech.Monshaat.POS.Web.Services.Email
         Task<bool> SendAsync(EmailModel model,
                        string userId = "",
                        string clientId = "",
-                       List<string> userRoles = null); 
+                       List<string> userRoles = null);
+
+
+        Task<bool> SendEmailAsync(string email, string subject, string message);
+
+
+        
     }
 }

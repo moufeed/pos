@@ -110,7 +110,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
             if (IsActiveResult.Data)
             {
                 var roles = await _userManager.GetRolesAsync(user); ;
-                if (roles != null || roles.Contains(Helpers.VendorRole))
+                if (roles != null && roles.Contains(Helpers.VendorRole))
                 {
                     return true;
                 }
