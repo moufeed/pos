@@ -41,22 +41,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Contact
 
         public async Task<IRequestProviderResult<ContactDto>> GetByIdExceptSoftDeletedAsync(Guid id, string lang)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.GetAsync<ContactDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<ContactDto>>>> GetExceptSoftDeletedAsync(DTFilter model)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.GetAsync<PagedResultModel<List<ContactDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint, model, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<bool>> RemoveReplayAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.PostAsync<bool, DeleteModel<Guid>>(_apiSettings.RemoveReplayEndpoint, new DeleteModel<Guid>(id));
         }
 
         public async Task<IRequestProviderResult<bool>> ReplayAsync(ReplayContactUsModel model)
         {
-            throw new NotImplementedException();
+            return await _requestProvider.PostAsync<bool, ReplayContactUsModel>(_apiSettings.ReplayEndpoint, model);
         }
         #endregion
          
