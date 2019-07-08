@@ -7,6 +7,12 @@ using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry.Settings;
 using System.Linq;
+using FluentValidation;
+using TamTech.Monshaat.POS.UploadService.Validators;
+using TamTech.Monshaat.POS.UploadService.Services;
+using TamTech.Monshaat.POS.UploadService.Configurations; 
+using TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models;
+using Microsoft.AspNetCore.Builder;
 
 namespace TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices
 {
@@ -47,6 +53,28 @@ namespace TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesService
 
                                       return new UploadToLocal(settings, telemetry, environment);
                                   });
+        }
+
+
+
+
+
+        public static void AddUploadService(this IServiceCollection services, IConfiguration Configuration)
+        {
+            services.AddTransient<IValidator<UploadModelDTO>, UploadModelValidator>();
+            services.AddTransient<IUploadService, UploadToLocal>();
+            services.AddTransient<IUploadSettingsConfigurations, UploadSettingsConfigurations>();
+            services.AddTransient<InitializationManager>();
+        }
+
+
+        public static void UseUploadInitializationManager(this IApplicationBuilder app, IConfiguration Configuration)
+        {
+            var uploadManager = app.ApplicationServices.GetService<InitializationManager>();
+            uploadManager.InitializeAsync().Wait();
+            FilesHelper.FileBaseUrl = InitializationManager.UploadInfo.AbsoluteUris[0];
+            FilesHelper.FileType = InitializationManager.UploadInfo.Types[0];
+            InitializationManager.UploadInfo = null;
         }
     }
 }
