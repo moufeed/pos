@@ -83,6 +83,11 @@ msgstr "حساب جديد"
 msgid "register_account"
 msgstr "إنشاء الحساب"
 
+
+msgid "please_log_in_via_sso"
+msgstr "صفحة تسجيل الدخول"
+
+
 msgid ""
 msgstr ""
 
