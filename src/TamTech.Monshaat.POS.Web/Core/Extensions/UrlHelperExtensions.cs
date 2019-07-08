@@ -35,5 +35,20 @@ namespace TamTech.Monshaat.POS.Web.Core.Extensions
             var url = helper.Action(actionName, controllerName, routeValues);
             return url;
         }
+
+
+        /// <summary>
+        /// Extension method to handle localized URL using a dedicated, multi-language custom route.
+        /// for additional info, read the following post:
+        /// https://www.ryadel.com/en/setup-a-multi-language-website-using-asp-net-mvc/
+        /// </summary>
+        public static string FileUrl(this IUrlHelper helper, string actionName, object routeValues = null)
+        {
+            var url = helper.Action(actionName, TamTech.Monshaat.POS.Web.Areas.Portal.Controllers.FilesController.ImgCtrl, routeValues);
+            return url;
+        }
+
+
+
     }
 }
