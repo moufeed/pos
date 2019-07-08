@@ -39,6 +39,7 @@
                         <tr>
                              <th>@Localizer["t_company"]</th>
                             <th>@Localizer["t_supplier"]</th>
+                            <th>@Localizer["commercial_number"]</th>
                             <th>@Localizer["t_email"]</th>
                             <th>@Localizer["t_mobileNumber"]</th>
                             <th>@Localizer["register_status"]</th>
@@ -52,6 +53,7 @@
                                    <tr>
                                        <td>@item.Vendor.Name</td>
                                        <td>@item.FirstName @item.LastName </td>
+                                       <td>@item.Vendor.CommercialNo</td>
                                        <td>@item.Email</td>
                                        <td><span dir="ltr">@item.Mobile</span></td>
                                        <td><span class="badge badge-@item.Vendor.StatusOptions"> @item.Vendor.StatusName</span></td>

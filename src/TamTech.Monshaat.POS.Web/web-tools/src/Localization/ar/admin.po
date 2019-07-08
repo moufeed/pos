@@ -2105,8 +2105,8 @@ msgstr "محتوى الصفحة الرئيسية"
 msgid "go_to_edit_page"
 msgstr "تعديل البيانات"
 
-msgid ""
-msgstr ""
+msgid "commercial_number"
+msgstr "السجل التجاري"
 
 msgid ""
 msgstr ""

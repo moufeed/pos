@@ -21,7 +21,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 context.Response.Headers.Add(
                         "Content-Security-Policy",
                         "default-src 'self'; " +
-                        "img-src 'self'  ; " +
+                        "img-src * 'self'  data: https:; " +
                         "font-src 'self' use.fontawesome.com ; " +
                         "style-src 'self' 'unsafe-inline' use.fontawesome.com stackpath.bootstrapcdn.com; " +
                         "script-src 'self' 'unsafe-inline'  'unsafe-eval' ajax.googleapis.com stackpath.bootstrapcdn.com cdnjs.cloudflare.com;" +

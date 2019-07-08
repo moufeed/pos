@@ -56,5 +56,12 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.VendorService
             var slug = result.Data?.MapToFrontGeneratedSlugModel();
             return ReturnResult(slug, result.Success, MapToHttpStatusCode(result.StatusCode), result.Messages);
         }
+
+        public async Task<IRequestProviderResult<bool>> VerifyCRUniqueAsync(string commercialRegistrationNumber, Guid? vendorId = null)
+        {
+            var result = await _vendoreService.VerifyCRUniqueAsync(commercialRegistrationNumber, vendorId);
+            return MapRequestProviderResult(result);
+        }
     }
 }
+ 
