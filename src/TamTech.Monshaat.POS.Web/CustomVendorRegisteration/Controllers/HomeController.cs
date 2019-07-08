@@ -8,7 +8,8 @@ namespace IdentitySample.Controllers
         [Route("Identity/V/[controller]/[Action]")]
         public IActionResult Index()
         {
-            return View();
+           return Redirect("~/");
+
         }
     }
 }
