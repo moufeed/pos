@@ -594,11 +594,11 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region VALDATE VENDOR COMMERCIAL NUMBER
         [HttpPost]
-        public async virtual Task<JsonResult> ValidateCommercialNoIsExist(string name, Guid id, IFormCollection collection)
+        public async virtual Task<JsonResult> ValidateCommercialNoIsExist(string number, Guid id, IFormCollection collection)
         {
             try
             {
-                var result = await _vendorServis.VerifyCRUniqueAsync(name, id != Guid.Empty ? id : (Guid?)null);
+                var result = await _vendorServis.VerifyCRUniqueAsync(number, id != Guid.Empty ? id : (Guid?)null);
                 if (result.Success)
                 {
                     return Json(result.Data);
