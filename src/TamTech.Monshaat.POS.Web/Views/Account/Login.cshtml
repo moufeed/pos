@@ -23,7 +23,7 @@
                         </h3>
                     </header>
                     <div class="p-x-15 p-y-25">
-                        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData[" ReturnUrl"]" method="post" class="form " role="form">
+                        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form " role="form">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Email" class=" control-label">@Localizer["t_username"]</label>
@@ -37,11 +37,11 @@
                             </div>
 
                             <div class="form-group d-flex justify-content-between align-items-md-center">
-                                <span class="d-inline-flex align-items-center justify-content-around">
+                                @*<span class="d-inline-flex align-items-center justify-content-around">
                                     <input class="tgl tgl-flat toggle__publish" type="checkbox" asp-for="RememberMe" />
                                     <label class="tgl-btn" for="RememberMe"></label>
                                     <label for="RememberMe" class="m-x-15 mt-5 select-none">@Localizer["RememberMe"]</label>
-                                </span>
+                                </span>*@
                                 <button type="submit" class="btn btn-success">@Localizer["login"]</button>
                             </div>
 
@@ -49,7 +49,7 @@
                             <div class="row justify-content-between align-items-center">
                                 <div class="col">
                                     @Localizer["you_dont_have_account"]
-                                    <a asp-action="Register" asp-route-returnurl="@ViewData[" ReturnUrl"]">@Localizer["create_account"]</a>
+                                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@Localizer["create_account"]</a>
                                 </div>
                                 
                             </div>

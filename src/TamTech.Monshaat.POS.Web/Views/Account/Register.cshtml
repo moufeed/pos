@@ -19,7 +19,7 @@
                         </h3>
                     </header>
                     <div class="p-x-15 p-y-25">
-                        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData[" ReturnUrl"]" method="post" class="form " role="form">
+                        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form " role="form">
                             <div asp-validation-summary="All" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Email" class=" control-label">@Localizer["t_username"]</label>
