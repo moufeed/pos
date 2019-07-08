@@ -1,0 +1,53 @@
+
+
+.form-control.is-invalid, .was-validated .form-control:invalid{ 
+    background-position: center $right $input-height-inner-quarter;
+    padding-#{$right}: $input-height-inner;
+    padding-#{$left}: $input-padding-x; 
+}
+
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid{
+    padding-#{$right}: $input-height-inner;
+    padding-#{$left}: $input-padding-x; 
+    background-position: top $input-height-inner-quarter $right $input-height-inner-quarter;
+}
+
+
+.container {
+    @media  (min-width: 1440px){
+        max-width: 1320px;
+    }   
+}
+
+.form-control::placeholder{
+    font-size: 14px; 
+    line-height: 27px;   
+}
+
+.pagination{
+    padding: 0;
+}
+.page-item:last-child .page-link{
+    border-top-#{$right}-radius: .25rem;
+    border-bottom-#{$right}-radius: .25rem;
+
+    border-top-#{$left}-radius: 0;
+    border-bottom-#{$left}-radius: 0;
+}
+.page-item:first-child .page-link {
+    border-top-#{$right}-radius: 0;
+    border-bottom-#{$right}-radius: 0;
+
+    border-top-#{$left}-radius: .25rem;
+    border-bottom-#{$left}-radius: .25rem;
+}
+
+.alert-dismissible .close{
+    #{$right} : 0;
+    #{$left}:auto;
+}
+@include if-rtl{
+    select.form-control{
+        padding : 0 5px;   
+    }
+}

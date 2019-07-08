@@ -1,42 +1,74 @@
 ﻿@model RegisterViewModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = Localizer["new_account"].Value;
 }
 
-<h2>@ViewData["Title"].</h2>
 
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
-    <h4>Create a new account.</h4>
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+<section class=" pt-75  pb-50" data-fix-height>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="text-center mb-25">
+                    <img src="~/Identity/img/logo.png" width="300" />
+                </div>
+                <div class="white-panel p_25">
+                    <header class="mb-15 mt-25 p-x-15">
+                        <h3>
+                            @Localizer["new_account"]
+                        </h3>
+                    </header>
+                    <div class="p-x-15 p-y-25">
+                        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData[" ReturnUrl"]" method="post" class="form " role="form">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Email" class=" control-label">@Localizer["t_username"]</label>
+                                <input asp-for="Email" class="form-control form-control-lg" required />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">@Localizer["password"]</label>
+                                <input asp-for="Password" class="form-control form-control-lg" required  data-rule-minlength="6" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">@Localizer["confirmpassword"]</label>
+                                <input asp-for="ConfirmPassword" class="form-control form-control-lg" required  data-rule-equalTo="#Password"/>
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-success">@Localizer["register_account"]</button>
+                            </div>
+
+                            <hr />
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col">
+                                    @Localizer["you_have_account"]
+                                    <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]">@Localizer["Login"]</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
+</section>
+
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/auth/js/validation.min.js"></script>
+
+    <script>
+        $('.form').validate({
+            errorClass: "invalid_field",
+            validClass: "valid_field",
+            ignore: ".ignore",
+        });
+    </script>
 }
+
+

@@ -1,44 +1,30 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - Identity </title>
-        <link rel="stylesheet" href="~/custom/bootstrap.min.css"></link>
-        <link rel="stylesheet" href="~/custom/site.min.css" asp-append-version="true" />
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">Identity</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2019 - Identity </p>
-            </footer>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="application/xhtml+html; charset=utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" href="~/Portal/img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/Portal/img/favicon.ico" type="image/x-icon">
+ 
+    <link href="~/auth/css/style-rtl.min.css" rel="stylesheet" asp-append-version="true" />
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <header class="main-header"></header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    
+    <footer class="main-footer"></footer>
 
-        <script src="~/custom/jquery-2.1.4.min.js"></script>
-        <script src="~/custom/ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"></script>
-        <script src="~/custom/site.min.js" asp-append-version="true"></script>
-
-        @RenderSection("scripts", required: false)
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="~/auth/js/script.min.js" asp-append-version="true"></script>
+    @RenderSection("scripts", required: false)
+</body>
 </html>

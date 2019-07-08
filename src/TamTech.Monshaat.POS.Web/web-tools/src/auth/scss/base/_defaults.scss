@@ -1,0 +1,153 @@
+body{
+    direction: $dir;
+    text-align: $left;
+    font-family: $font-regular, $font-family-base; 
+    background: $body_background;
+}
+
+//@home
+.section{
+    padding: 50px 0;
+}
+.text_area{
+  
+    font-size:24px ;
+}
+
+// spacing
+@include makeSpacing($lengths); 
+
+//-------------------
+.wrapper{
+    background: $white;
+    padding: 25px;
+    margin-top: 25px;
+    margin-bottom:25px ;
+}
+
+
+.input-validation-error{
+    border-color: $red;
+}
+
+.select-none{
+    user-select: none;   
+}
+
+//--------------------
+.back-to-top{
+    @include fixed(bottom $left , 15px 15px);
+    @include square(40px);
+    background: $white; 
+    text-align: center;
+    line-height: 40px;
+    color: $black;
+    display: none;
+}
+
+ 
+
+.white-panel{
+    background: $white;
+    border-radius: $border-radius;
+    box-shadow: $widget-box-shadow; 
+}
+
+
+//----------------
+@each $color in $colors {
+    .c-#{nth($color,1)} {
+        color: nth($color,2);
+    }
+
+    .bg-#{nth($color,1)} {
+        background-color: nth($color,2);
+    }
+    .btn-#{nth($color,1)}{
+        background-color: nth($color,2);
+        &:hover{
+            background-color:lighten( nth($color,2) ,5%);
+        }
+        &.c-white{
+            &:hover{
+                color: $white;
+            } 
+        }
+    }
+}
+
+
+.b-shadow {
+    box-shadow: 0 1px 3px 0 rgba(238, 215, 215, 0.16);
+}
+
+.validation-summary-errors ul{
+    margin-bottom: 0;
+}
+
+.no-border{
+    border: 0 !important;
+}
+.no-radius{
+    border-radius : 0 !important;
+}
+
+
+.badge{
+    font-weight: normal;
+    &.badge-new , &.badge-Approved{
+        background: $green;
+    }
+    &.badge-read, &.badge-InProrgress{
+        background: $orange;
+    }
+    &.badge-replied{
+        background: $gray-300;
+    }
+    &.badge-Rejected{
+        background: $red;
+    }
+    
+}
+
+.title-underline{
+    span{
+        margin-bottom: 15px;
+        display: inline-block;
+        padding-bottom: 6px;
+        position: relative;
+        &:after{
+            position: absolute;
+            bottom: -10px;
+            #{$left} : 0;
+            content: '';
+            width: 50%; 
+            height: 4px;
+            background: $green;
+        }
+    }
+    
+}
+
+.error, .invalid_field {
+    color: $red;
+}
+label.invalid_field{
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.form-control {
+    &.invalid_field {
+        border-color: $red !important;
+    }
+
+    &.valid_field {
+        border-color: $green !important;
+    }
+
+    &.warning_field {
+        border-color: $orange !important;
+    }
+}

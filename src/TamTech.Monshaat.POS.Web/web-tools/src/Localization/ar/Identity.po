@@ -62,5 +62,29 @@ msgstr "تم تغير كلمة المرور الخاصة بك بنجاح يمك�
 msgid "dashboard"
 msgstr "لوحة التحكم"
 
+msgid "RememberMe"
+msgstr "تذكرني"
+
+msgid "you_dont_have_account"
+msgstr "ليس لديك حساب؟"
+
+msgid "you_have_account"
+msgstr "لديك حساب؟"
+
+msgid "create_account"
+msgstr "إنشاء حساب جديد"
+
+msgid "confirmpassword"
+msgstr "تأكيد كلمة السّر "
+
+msgid "new_account"
+msgstr "حساب جديد"
+
+msgid "register_account"
+msgstr "إنشاء الحساب"
+
+msgid ""
+msgstr ""
+
 msgid ""
 msgstr ""
