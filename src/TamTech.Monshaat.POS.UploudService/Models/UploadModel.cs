@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.UploadService.Enums;
 
-namespace TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models
+namespace TamTech.Monshaat.POS.UploadService.Models
 {
 
     public class UploadModel

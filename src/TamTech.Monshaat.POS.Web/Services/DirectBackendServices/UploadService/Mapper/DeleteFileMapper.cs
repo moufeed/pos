@@ -8,18 +8,18 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
     public static class DeleteFileMapper
     {
 
-        public static TamTechBackendSDK.FileStorageService.Models.DeleteFileInputModel MapDeleteFileInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileInputModel common)
+        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFileInputModel MapDeleteFileInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileInputModel common)
         {
-            return new TamTechBackendSDK.FileStorageService.Models.DeleteFileInputModel
+            return new TamTech.Monshaat.POS.UploadService.Models.DeleteFileInputModel
             {
-                FilePath = common.FilePath,
+                FileName = common.FilePath,
                 Type = common.Type
             };
         }
 
-        public static TamTechBackendSDK.FileStorageService.Models.DeleteFilesInputModel MapDeleteFilesInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesInputModel common)
+        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFilesInputModel MapDeleteFilesInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesInputModel common)
         {
-            return new TamTechBackendSDK.FileStorageService.Models.DeleteFilesInputModel
+            return new TamTech.Monshaat.POS.UploadService.Models.DeleteFilesInputModel
             {
                 DeleteFiles = common.DeletedFiles.Select(f => f.MapDeleteFileInputModel()).ToList()
             };
@@ -27,17 +27,17 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileResult MapDeleteFileResult(this TamTechBackendSDK.FileStorageService.Models.DeleteFileResult nuget)
+        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileResult MapDeleteFileResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFileResult nuget)
         {
             return new TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileResult
             {
-                FilePath = nuget.FilePath,
+                FilePath = nuget.FileName,
                 Result = switchEnum((int)nuget.Result),
                 Type = nuget.Type
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesModelResult MapDeleteFilesModelResult(this TamTechBackendSDK.FileStorageService.Models.DeleteFilesModelResult nuget)
+        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesModelResult MapDeleteFilesModelResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFilesModelResult nuget)
         {
             return new TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesModelResult
             {

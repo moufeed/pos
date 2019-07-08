@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models
+namespace TamTech.Monshaat.POS.UploadService.Models
 {
     public class UploadModelResult
     {

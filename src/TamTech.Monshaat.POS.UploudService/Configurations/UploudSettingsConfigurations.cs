@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Constants;
+using TamTech.Monshaat.POS.UploadService.Constants;
 using TamTech.Monshaat.POS.UploadService.Settings;
 
 namespace TamTech.Monshaat.POS.UploadService.Configurations

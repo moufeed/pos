@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models;
+using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Enums;
 
 namespace TamTech.Monshaat.POS.UploadService.Services

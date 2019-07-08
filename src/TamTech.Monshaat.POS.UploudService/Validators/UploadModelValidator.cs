@@ -1,7 +1,7 @@
 using FluentValidation; 
 using System.IO;
 using System.Linq;
-using TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models;
+using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Configurations;
 using TamTech.Monshaat.POS.UploadService.Settings;
 

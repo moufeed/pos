@@ -1,9 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Configuration;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.AspNetCore.Http; 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
 using TamTech.Monshaat.POS.UploadService.Helpers;
-using TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models;
+using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Configurations;
 using TamTech.Monshaat.POS.UploadService.Settings; 
 
@@ -21,33 +17,23 @@ namespace TamTech.Monshaat.POS.UploadService.Services
     {
         #region props
         private readonly IUploadSettingsConfigurations _appSettings;
-        private ITelemetryClientService _telemetryClientService;
-        private IHostingEnvironment _environment;
+        private ITelemetryClientService _telemetryClientService; 
         private string innerUploadFolderPath;//without domain 
         private string hostName; //domain name without http://  
         private string environmentPath;
         private string UploadServiceAppSettingSectionName;
         private string UploadSettingsSectionName;
-        #endregion
+        #endregion 
 
 
-
-
-
-
-        #region Ctor
-
+        #region Ctor 
         public UploadToLocal
-            (IUploadSettingsConfigurations appSettings, ITelemetryClientService telemetry, IHostingEnvironment env)
+            (IUploadSettingsConfigurations appSettings, ITelemetryClientService telemetry, IHostingEnvironment hostingEnvironment)
         {
             _appSettings = appSettings;
-            _telemetryClientService = telemetry;
-            _environment = env;
-            environmentPath = _environment.WebRootPath;
-            this.UploadServiceAppSettingSectionName = UploadServiceAppSettingSectionName;
-        }
-
-
+            _telemetryClientService = telemetry; 
+            environmentPath = hostingEnvironment.WebRootPath; 
+        } 
 
         #endregion
         public async Task<DeleteFilesModelResult> DeleteAsync(DeleteFilesInputModel deleteFilesInput)

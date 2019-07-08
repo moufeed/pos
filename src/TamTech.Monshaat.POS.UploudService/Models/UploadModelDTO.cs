@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models
+namespace TamTech.Monshaat.POS.UploadService.Models
 {
     public class UploadModelDTO
     {

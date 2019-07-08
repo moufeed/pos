@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.CasAuctions.TamTech.Monshaat.POS.UploadService.Models
+namespace TamTech.Monshaat.POS.UploadService.Models
 {
     public class DeleteFilesModelResult
     {

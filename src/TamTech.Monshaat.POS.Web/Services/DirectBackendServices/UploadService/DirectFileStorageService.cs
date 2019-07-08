@@ -11,12 +11,12 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService
     public class DirectFileStorageService : TamTech.Monshaat.POS.Web.Services.Upload.IUploadService
     {
         #region Props  
-        private readonly TamTechBackendSDK.FileStorageService.Services.IUploadService _fileStorageService;
+        private readonly TamTech.Monshaat.POS.UploadService.Services.IUploadService _fileStorageService;
         #endregion
 
 
         #region Ctors
-        public DirectFileStorageService(TamTechBackendSDK.FileStorageService.Services.IUploadService fileStorageService)
+        public DirectFileStorageService(TamTech.Monshaat.POS.UploadService.Services.IUploadService fileStorageService)
         {
             _fileStorageService = fileStorageService;
         }
@@ -43,7 +43,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService
             IRequestProviderResult<DeleteFilesModelResult> _result = new RequestProviderResult<DeleteFilesModelResult>();
 
 
-            var resultDeleteFiles = await _fileStorageService.DeleteFilesAsync(model.MapDeleteFilesInputModel());
+            var resultDeleteFiles = await _fileStorageService.DeleteAsync(model.MapDeleteFilesInputModel());
             _result.Data = resultDeleteFiles.MapDeleteFilesModelResult();
             _result.Success = true;
             return _result;
