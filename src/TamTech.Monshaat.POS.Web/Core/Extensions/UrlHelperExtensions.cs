@@ -44,7 +44,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Extensions
         /// </summary>
         public static string FileUrl(this IUrlHelper helper, string actionName, object routeValues = null)
         {
-            var url = helper.Action(actionName, TamTech.Monshaat.POS.Web.Areas.Portal.Controllers.FilesController.ImgCtrl, routeValues);
+            var url = helper.Action(actionName, TamTech.Monshaat.POS.Web.Areas.Portal.Controllers.FilesController.ControllerName, routeValues);
             return url;
         }
 

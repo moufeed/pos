@@ -95,7 +95,8 @@
                         <if include-if="Model.Images != null && Model.Images.Count > 0">
                             @foreach (var img in Model.Images)
                             {
-                                <img src="@img" class="img-fluid" alt="@Model.Name">
+                                @*<img src="@img" class="img-fluid" alt="@Model.Name">*@
+                                <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="img-fluid" alt="@Model.Name"/>
                             }
                         </if>
                         <if exclude-if="Model.Images != null && Model.Images.Count > 0">
