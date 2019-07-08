@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,11 +12,16 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
 
     public class FilesController : Controller
     {
-        public const string ImgCtrl = "Files";
+        public const string ControllerName = "Files";
         public const string ImgAction = "View"; 
 
-        private const string _baseDirectory = "~/UploadFolder/avatars";
-        private const string _empty = "~/portal/img/pos-empty.jpg";
+        private const string _baseDirectory = "/UploadFolder/avatars/";
+        private const string _empty = "~/portal/img/empty.jpg";
+        private readonly IHostingEnvironment _hostingEnvironment;
+        public FilesController(IHostingEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
 
 
         //public IActionResult Index()
@@ -22,15 +30,15 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
         //    return View();
         //}
 
-        [HttpGet("[Controller]/[Action]/img")]
+        [HttpGet("[Controller]/[Action]/{img}")]
         public async Task< IActionResult> View([FromRoute] string img)
         {
-
-            if (!System.IO.File.Exists(img))
-                return base.File(_empty, "image/jpg");
+             
+            string imgPath = _hostingEnvironment.WebRootPath + _baseDirectory + img;
+            if ( System.IO.File.Exists(imgPath)) 
             try
             {
-                System.Drawing.Image image = System.Drawing.Image.FromFile(img); 
+                System.Drawing.Image image = System.Drawing.Image.FromFile(imgPath); 
 
                 Response.ContentType = "image/jpeg";
                 Response.Clear();
@@ -59,10 +67,11 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
                 return base.File(newStream, "image/jpeg");
             }
 
-            catch
+            catch(Exception ex)
             {
-                return base.File(_empty, "image/jpg");
+               
             }
+            return base.File(_empty, "image/jpg");
         }
 
     }
