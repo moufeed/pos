@@ -52,7 +52,7 @@
                                                 @foreach (var img in item.Images)
                                                 {
                                                     <a asp-action="pos" asp-route-slug="@item.Slug">
-                                                        <img src="@img" class="pos-image ignore" alt="@item.Name">
+                                                        <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="pos-image ignore" alt="@item.Name">
                                                     </a>
                                                 }
                                             </if>

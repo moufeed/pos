@@ -64,7 +64,8 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
                 outGraphics.Dispose();
                 newStream.Seek(0, SeekOrigin.Begin); //go back to start 
 
-                return base.File(newStream, "image/jpeg");
+               
+                    return base.File(newStream, "image/jpeg");
             }
 
             catch(Exception ex)
