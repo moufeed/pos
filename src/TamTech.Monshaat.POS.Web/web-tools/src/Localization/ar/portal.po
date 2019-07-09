@@ -322,6 +322,11 @@ msgstr "فاكس"
 msgid "name_already_exists"
 msgstr "الاسم موجود مسبقاً"
 
+
+msgid "number_already_exists"
+msgstr "الرقم موجود مسبقاً"
+
+
 msgid "POBox"
 msgstr "صندوق بريد"
 

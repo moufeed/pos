@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks; 
@@ -17,7 +17,7 @@ using System.Security.Principal;
 namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
 {
     // For the POS 
-    [Route("[controller]")]
+    
     public class OAuthController : Controller
     {
         private readonly IEFileIdentityProviderService _eFileService; 
@@ -38,6 +38,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
 
 
         [HttpGet]
+        [Route("[controller]")]
         public async Task<IActionResult> Index(string access_token, string returnUrl)
         {
             var isAuthenticated = await _eFileService.IsAuthenticatedAsync(access_token);
@@ -65,6 +66,51 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
 
 
 
+
+        [Route("OAuth/Login")]
+        [Route("{culture}/portal/OAuth/login")]
+        public async Task<IActionResult> Login(string returnUrl)
+        {
+            if (string.IsNullOrWhiteSpace(returnUrl) || returnUrl.Equals("/"))
+                returnUrl = "/";//$"/{DataCultureHelper.GetCurrent(Request.Query)}";
+
+            var url = returnUrl;
+
+            // var userId = HttpContext.User.Identity.GetUserId();
+
+
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                url = _eFileService.GetLoginUrl(returnUrl);
+            }
+            return Redirect(url);
+        }
+
+
+
+        [HttpGet("OAuth/Logout")]
+        [Route("{culture}/portal/OAuth/Logout")]
+        public async Task<IActionResult> Logout(string returnUrl = null)
+        {
+            //var userId =  HttpContext.User.Identity.GetUserId();
+            //  var user = await _userManager.FindByIdAsync(HttpContext.User.Identity.GetUserId()); 
+            await _signInManager.SignOutAsync();
+            string token = Request.Cookies[Constants.EFileTokenCookieName];
+            if (!string.IsNullOrWhiteSpace(token))
+            {
+                await _eFileService.LogoutAsync(token);
+            }
+
+            RemoveCookie(Constants.EFileTokenCookieName);
+
+            if (string.IsNullOrWhiteSpace(returnUrl) || returnUrl.Equals("/"))
+                returnUrl = "~/";
+
+            return Redirect(returnUrl);
+
+        }
+         
 
         /// <summary>  
         /// set the cookie  

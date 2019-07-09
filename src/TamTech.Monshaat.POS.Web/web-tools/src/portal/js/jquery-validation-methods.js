@@ -54,3 +54,10 @@ $.validator.addMethod("checks", function(value, elem, param) {
 $.validator.addClassRules("checks", {
     checks: 1
 });
+
+
+  
+
+$.validator.addMethod( "commercial", function( value, element, params ) {
+    return  value.length == params
+}, $.validator.format( "Commercial number it has to be {0} digits" ));

@@ -12,7 +12,7 @@
          $totalHeight = $contentHeight + $headerHeaight + $footerHeight + $topFooter,
          $fixedHeight = $documentHeight - $headerHeaight - $footerHeight - $topFooter;
      if ($documentHeight > $totalHeight)
-         $this.css('height', $fixedHeight);
+         $this.css('min-height', $fixedHeight);
 
  }
 

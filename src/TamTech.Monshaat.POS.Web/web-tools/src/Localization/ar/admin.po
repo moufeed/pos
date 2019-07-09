@@ -1994,6 +1994,8 @@ msgstr "تعديل البيانات"
 
 msgid "user_manual"
 msgstr "دليل الاستخدام"
+msgid "commercial_number"
+msgstr "السجل التجاري"
 
 msgid ""
 msgstr ""

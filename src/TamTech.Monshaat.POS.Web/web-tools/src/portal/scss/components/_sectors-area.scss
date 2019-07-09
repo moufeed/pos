@@ -8,7 +8,7 @@
         box-shadow: $box-shadow;
         padding: 25px;
         margin: 15px; 
-        min-height: 205px;
+        min-height: 220px;
         border-radius: 10px; 
         color: $black;
         font-weight: bold;
@@ -24,7 +24,7 @@
     }
     @include if-rtl{
         .owl-nav{
-         
+          
             .owl-prev{
                 i:before{
                     content:  "\f054";

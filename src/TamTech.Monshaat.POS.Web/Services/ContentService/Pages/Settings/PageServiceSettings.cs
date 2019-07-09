@@ -22,7 +22,6 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
 
         #endregion
 
-         
 
         #region {Pages Manager} 
 
@@ -63,8 +62,6 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Settings
         #endregion
 
         #endregion
-
-
 
 
     }

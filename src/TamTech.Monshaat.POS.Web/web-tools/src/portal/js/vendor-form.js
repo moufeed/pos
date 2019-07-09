@@ -20,7 +20,21 @@ $(function () {
                             }
                         } 
                     }
-               } 
+               },
+               CommercialNo :{
+                remote :{
+                    url: $('#CommercialNo').data("remote") , 
+                    type: "post",
+                    data:{
+                        number  : function(){
+                            return $('#CommercialNo').val();
+                        },
+                        Id : function(){
+                            return $('#CommercialNo').data('id');
+                        }
+                    } 
+                }
+           }
          },
         highlight: function (element) {
             $(element).addClass('is-invalid');

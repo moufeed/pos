@@ -16,6 +16,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
 
 
         public const string POSUrl = "/ar/Portal/Vendor";
+        public const string RegisterVendorUrl = "/ar/portal/Vendor/Register";
 
     }
 }

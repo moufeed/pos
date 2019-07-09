@@ -43,7 +43,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IPosTypeService _posTypeService;
         private readonly IPOSSectorServices _sectorService;
         private readonly IPOSAttributeService _attributeService;
-        private readonly IPOSService _posservice;
+      
         private readonly IUploadManagerService _uploadManager;
         private IStringLocalizer<PublicBaseController> _localizer;
         private readonly IVendorService _vendorServis;
@@ -56,7 +56,6 @@ namespace TamTechSDK.Web.Controllers.Portal
             IPosTypeService posTypeService,
             IPOSSectorServices sectorService,
             IPOSAttributeService attributeService,
-            IPOSService posservice,
             IUploadManagerService uploadManager,
             IStringLocalizer<PublicBaseController> localizer,
             IVendorService vendorServis,
@@ -65,7 +64,6 @@ namespace TamTechSDK.Web.Controllers.Portal
             _posTypeService = posTypeService;
             _sectorService = sectorService;
             _attributeService = attributeService;
-            _posservice = posservice;
             _uploadManager = uploadManager;
             _localizer = localizer;
             _vendorServis = vendorServis;
@@ -76,10 +74,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region utilities
 
         private readonly static Dictionary<string, string> _VIEWS = new Dictionary<string, string> {
-            { "PosForm", "~/Areas/Portal/Views/Vendor/PosForm.cshtml" },
             {"VendorForm","~/Areas/Portal/Views/Vendor/VendorForm.cshtml" },
             {"VendorInfo","~/Areas/Portal/Views/Vendor/VendorInfo.cshtml" },
-
         };
 
         private List<SelectListItem> CreateTypeSelect(List<TypeDto> types, int TypeId = 0)
@@ -139,313 +135,11 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region index
         [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        public virtual async Task<IActionResult> Index()
-        {
-            ViewBag.ID = HttpContext.User.Identity.GetUserId();
-            try
-            {
-                var posfilter = new PosFilters
-                {
-                    Lang = _lang,
-                    PageSize = 100,
-                    PageNumber = 1
-                };
-                var result = await _posservice.GetPOSsForCurrentUserAsync(posfilter);
-                if (VerifySucceed(result))
-                {
-                    return View(result.Data);
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-            return View();
-        }
+        public virtual async Task<IActionResult> Index() => RedirectToAction("index", "pos");
+        
         #endregion
 
-        #region Pos   
-
-        #region Create Pos
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        [ServiceFilter(typeof(AuthorizeEFile))]
-        public virtual async Task<IActionResult> CreatePOS()
-        {
-            PosFormVm model = new PosFormVm();
-            await InitAction(model);
-            return View(_VIEWS["PosForm"], model);
-        }
-
-
-
-
-        [HttpPost]
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        [ServiceFilter(typeof(AuthorizeEFile))]
-        public virtual async Task<IActionResult> CreatePOS(PosFormVm model, IFormCollection collection)
-        {
-            List<AttachmentModel> Attachments = new List<AttachmentModel>();
-            bool PreviousUploadFiles = collection.ContainsKey("UploadedFiles");
-            var _UploadedFiles = new List<string>();
-            int UpCount = 0;
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    CreatePosModel _CreateModel = model.MapToCreateModelWithoutAttachments();
-
-                    if (PreviousUploadFiles)
-                    {
-                        string urlstring = collection["UploadedFiles"];
-                        if (urlstring.Length > 0)
-                        {
-                            _UploadedFiles = urlstring.Split(";;").ToList();
-
-                            foreach (var url in _UploadedFiles)
-                            {
-                                Attachments.Add(MakeAttachment(url));
-                                UpCount++;
-                            }
-                        }
-                    }
-                    if (model.Attachments != null && model.Attachments.Count > 0)
-                    {
-                        int index = 0;
-                        List<IFormFile> _files = model.Attachments;
-                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.POSImage);
-                        var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
-
-                        foreach (var item in uploadResult.URLs)
-                        {
-
-                            if (item.Success)
-                            {
-                                Attachments.Add(MakeAttachment(item.URL));
-                                _UploadedFiles.Add(item.URL);
-                                UpCount++;
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
-                            }
-
-                            index++;
-                        }
-
-                        if (!TryValidateModel(model))
-                        {
-                            await InitAction(model);
-                            return View(_VIEWS["PosForm"], model);
-                        }
-
-                    }
-                    _CreateModel.Attachments = Attachments;
-
-                    var sendRequest = await _posservice.CreateAsync(_CreateModel);
-
-                    if (sendRequest.Success)
-                    {
-                        TempData["CreatePosSuccess"] = true;
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        if (sendRequest.Messages.Count > 0)
-                        {
-                            AddModelStateError(sendRequest.Messages);
-                            ViewBag.UploadedFiles = string.Join(";;", _UploadedFiles);
-                            ViewBag.UploadedCount = UpCount;
-                            TryValidateModel(model);
-                            await InitAction(model);
-                            return View(_VIEWS["PosForm"], model);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-
-
-            await InitAction(model);
-            return View(_VIEWS["PosForm"], model);
-        }
-
-        #endregion
-
-        #region Edit POS
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        [ServiceFilter(typeof(AuthorizeEFile))]
-        public virtual async Task<IActionResult> EditPOS(Guid id)
-        {
-            try
-            {
-                var request = await _posservice.GetByIdAndCurrentUserExceptSoftDeletedAsync(id, _lang);
-                if (VerifySucceed(request))
-                {
-                    PosFormVm _model = request.Data.MapToPosFormVm();
-                    await InitAction(_model, true);
-                    ViewBag.UploadedFiles = string.Join(";;", _model.TempImages);
-                    ViewBag.UploadedCount = _model.TempImages.Count;
-                    return View(_VIEWS["PosForm"], _model);
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-            PosFormVm model = new PosFormVm();
-            await InitAction(model);
-            return View(_VIEWS["PosForm"], model);
-        }
-
-
-
-        [HttpPost]
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        [ServiceFilter(typeof(AuthorizeEFile))]
-        public virtual async Task<IActionResult> EditPos(PosFormVm model, IFormCollection collection)
-        {
-
-            List<AttachmentModel> Attachments = new List<AttachmentModel>();
-            bool PreviousUploadFiles = collection.ContainsKey("UploadedFiles");
-            List<string> _UploadedFiles = new List<string>();
-            int UpCount = 0;
-
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    UpdatePosModel _UpdateModel = model.MapToUpdateModelWithoutAttachments();
-
-                    if (PreviousUploadFiles)
-                    {
-                        string urlstring = collection["UploadedFiles"];
-                        if (urlstring.Length > 0)
-                        {
-                            _UploadedFiles = urlstring.Split(";;").ToList();
-
-                            foreach (var url in _UploadedFiles)
-                            {
-                                Attachments.Add(MakeAttachment(url));
-                                UpCount++;
-                            }
-                        }
-                    }
-                    if (model.Attachments != null && model.Attachments.Count > 0)
-                    {
-                        int index = 0;
-                        List<IFormFile> _files = model.Attachments;
-                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.General);
-                        var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
-
-                        foreach (var item in uploadResult.URLs)
-                        {
-
-                            if (item.Success)
-                            {
-                                Attachments.Add(MakeAttachment(item.URL));
-                                _UploadedFiles.Add(item.URL);
-                                UpCount++;
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
-                            }
-
-                            index++;
-                        }
-
-                        if (!TryValidateModel(model))
-                        {
-                            await InitAction(model);
-                            return View(_VIEWS["PosForm"], model);
-                        }
-
-                    }
-                    _UpdateModel.Attachments = Attachments;
-
-                    var sendRequest = await _posservice.EditAsync(_UpdateModel);
-
-                    if (sendRequest.Success)
-                    {
-                        TempData["UpdatePosSuccess"] = true;
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        if (sendRequest.Messages.Count > 0)
-                        {
-                            AddModelStateError(sendRequest.Messages);
-                            ViewBag.UploadedFiles = string.Join(";;", _UploadedFiles);
-                            ViewBag.UploadedCount = UpCount;
-                            TryValidateModel(model);
-                            await InitAction(model);
-                            return View(_VIEWS["PosForm"], model);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-
-
-            await InitAction(model);
-            return View(_VIEWS["PosForm"], model);
-
-        }
-
-        #endregion
-
-        #region Delete POS
-        [ServiceFilter(typeof(AuthorizeEFile))]
-        public virtual async Task<JsonResult> DeletePos(Guid id)
-        {
-
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var result = await _posservice.SoftDeleteByCurrentUserAsync(id);
-                    return Json(new { success = result.Success });
-                }
-                return Json(new { success = false });
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-
-            return Json(new { success = false });
-        }
-        #endregion
-
-        #region Validate POS Name 
-        [HttpPost]
-        public async virtual Task<JsonResult> ValidatePosNameIsExist(string name, Guid id)
-        {
-
-            try
-            {
-                var result = await _posservice.VerifySlugUniqueByNameAsync(name, id != Guid.Empty ? id : (Guid?)null);
-                if (result.Success)
-                {
-                    return Json(result.Data.Unique);
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-
-            return Json(new { success = false });
-        }
-
-        #endregion
-        #endregion
+      
 
         #region Vendors
 
@@ -612,6 +306,31 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
+
+        #region VALDATE VENDOR COMMERCIAL NUMBER
+        [HttpPost]
+        public async virtual Task<JsonResult> ValidateCommercialNoIsExist(string number, Guid id, IFormCollection collection)
+        {
+            try
+            {
+                var result = await _vendorServis.VerifyCRUniqueAsync(number, id != Guid.Empty ? id : (Guid?)null);
+                if (result.Success)
+                {
+                    return Json(result.Data);
+                }
+            }
+            catch (Exception ex)
+            {
+                TrackException(ex);
+            }
+
+            return Json(new { success = false });
+        }
+        #endregion
+
+        
+
+
         #region VALDATE VENDOR NAME
         [HttpPost]
         public async virtual Task<JsonResult> ValidateVendorNameIsExist(string name, Guid id, IFormCollection collection)
@@ -657,35 +376,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
-        #region Global
-        [HttpPost("{Culture}/[Area]/[Controller]/DeleteImage")]
-        public async virtual Task<JsonResult> DeleteImage(string img)
-        {
-            try
-            {
-                if (!string.IsNullOrWhiteSpace(img))
-                {
-                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.General } };
-                     IRequestProviderResult<DeleteFilesModelResult> uploadResult =
-                        await _uploadManager.DeleteFilesAsync(deleteInputModel);
-                    if (uploadResult.Success)
-                    {
-                        return Json(new { success = true });
-                    }
-                    TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-            return Json(new { success = false });
-        }
-
-
-
-
-        #endregion
+       
 
 
         // just for development
