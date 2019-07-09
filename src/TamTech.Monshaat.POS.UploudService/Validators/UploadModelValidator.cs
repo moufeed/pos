@@ -1,4 +1,4 @@
-using FluentValidation; 
+using FluentValidation;
 using System.IO;
 using System.Linq;
 using TamTech.Monshaat.POS.UploadService.Models;
@@ -7,14 +7,40 @@ using TamTech.Monshaat.POS.UploadService.Settings;
 
 namespace TamTech.Monshaat.POS.UploadService.Validators
 {
-    public class UploadModelValidator : AbstractValidator<UploadModelDTO>
+    public class UploadModelValidator : AbstractValidator<UploadModel>
     {
-        public UploadModelValidator(IUploadSettingsConfigurations appSettings)
+        public FormFilesValidator(FileTypeSettings settings)
         {
-            FileTypeSettings[] settings = appSettings.GetFileTypeSettings();
+            RuleFor(files => files).NotNull();
+            RuleFor(files => files.Count).GreaterThan(0);
 
-            RuleFor(uploadModel => uploadModel.UploadFiles).NotNull();
-            RuleFor(uploadModel => uploadModel.UploadFiles.Count).GreaterThan(0);
+            RuleFor(files => files).Custom((files, context) =>
+            {
+                foreach (var file in files)
+                {
+                    context = new FileValidation().ValidateFile(file, settings, context);
+                }
+            });
+        }
+        public UploadModelValidator(FileTypeSettings settings)
+        {
+            RuleFor(files => files).NotNull();
+            RuleFor(files => files.UploadFiles).NotNull();
+            RuleFor(files => files.UploadFiles.Count).GreaterThan(0);
+
+            this.When(x => LanguageEnum.EN == lang && !x.Published_en, () =>
+            {
+                RuleFor(x => x.Title_en).Must(x => !string.IsNullOrWhiteSpace(x)).WithName("Could not publish").WithMessage("Can not publish when the item does not have an Title");//The MainImage field is required
+
+            });
+            RuleFor(files => files).Custom((files, context) =>
+            {
+                foreach (var file in files)
+                {
+                    context = new FileValidation().ValidateFile(file, settings, context);
+                }
+            });
+
 
             RuleFor(uploadModel => uploadModel).Custom((uploadModel, context) =>
             {

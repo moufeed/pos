@@ -14,7 +14,7 @@ namespace TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesService
     {
         public static void DirectBackendServices_AddFilesServicesConfigurationsConfigurations(this IServiceCollection services, IConfiguration configuration)
         { 
-            services.AddTransient<IValidator<UploadModelDTO>, UploadModelValidator>();
+            services.AddTransient<IValidator<UploadDTO>, UploadDtoValidator>();
             services.AddTransient<IUploadService, UploadToLocal>();
             services.AddScoped<IUploadSettingsConfigurations, UploadSettingsConfigurations>(); 
 

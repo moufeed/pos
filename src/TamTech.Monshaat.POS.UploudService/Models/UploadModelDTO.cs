@@ -6,9 +6,9 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.UploadService.Models
 {
-    public class UploadModelDTO
+    public class UploadDTO
     {
-        public List<UploadFileModelDTO> UploadFiles { get; set; }
+        public List<UploadFileDTO> UploadFiles { get; set; }
 
         public UploadModel ToUploadModel()
         {
@@ -29,7 +29,7 @@ namespace TamTech.Monshaat.POS.UploadService.Models
         }
     }
     //[FluentValidation.Attributes.Validator(typeof(UploadModelValidator))]
-    public class UploadFileModelDTO
+    public class UploadFileDTO
     {
         [Required]
         public IFormFile FileBinary { get; set; }

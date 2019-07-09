@@ -36,7 +36,7 @@ namespace TamTech.Monshaat.POS.UploadService.Services
         } 
 
         #endregion
-        public async Task<DeleteFilesModelResult> DeleteAsync(DeleteFilesInputModel deleteFilesInput)
+        public async Task<IResultModel<DeleteFilesModelResult>> DeleteAsync(DeleteFilesInputModel deleteFilesInput)
         {
             var result = new DeleteFilesModelResult
             {
@@ -93,7 +93,7 @@ namespace TamTech.Monshaat.POS.UploadService.Services
 
 
 
-        public async Task<UploadModelResult> UploadAsync(UploadModel uploadModel)
+        public async Task<IResultModel<UploadModelResult>> UploadAsync(UploadModel uploadModel)
         {
             innerUploadFolderPath = "\\" + _appSettings.GetUploadPath();
             hostName = _appSettings.GetDomainName();
@@ -154,7 +154,7 @@ namespace TamTech.Monshaat.POS.UploadService.Services
 
        
 
-        public Task<UploadModelResult> UploadAsync(string prefix, string type, List<IFormFile> files, int ImageOption = 1)
+        public Task<IResultModel<UploadModelResult>> UploadAsync(string prefix, string type, List<IFormFile> files, int ImageOption = 1)
         {
             throw new NotImplementedException();
         }
