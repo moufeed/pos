@@ -16,7 +16,10 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload.Models
         public FileTypesEnum Type { get; set; }
 
         [Required]
-        public UploadFileInfo FileInfo  { get; set; } 
+        public UploadFileInfo FileInfo  { get; set; }
+
+
+        public string ContentType { get; set; }
     }
 
    

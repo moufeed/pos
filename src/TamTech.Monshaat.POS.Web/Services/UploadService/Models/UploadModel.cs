@@ -20,6 +20,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload.Models
         public string FileNamePrefix { get; set; }
         [Required]
         public string type { get; set; }
+        public string ContentType { get; set; }
         public string FileName { get; set; }
 
     }

@@ -57,12 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TamTech.ContentService.SDK">
-      <HintPath>..\..\..\..\Tamtech\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Areas\Admin\Views\Home\Biography.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -134,6 +128,12 @@
 
   <ItemGroup>
     <Folder Include="Services\APIsServices\Menus\Settings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TamTech.ContentService.SDK">
+      <HintPath>..\..\..\..\HelperServices\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1Development_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

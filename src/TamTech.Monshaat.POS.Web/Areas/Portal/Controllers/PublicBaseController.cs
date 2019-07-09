@@ -81,9 +81,10 @@ namespace TamTechSDK.Web.Controllers.Portal
         {
             List<UploadFileModel> Files = new List<UploadFileModel>();
             foreach (var file in files)
-            {
+            {         
                 Files.Add(new UploadFileModel
                 {
+                    ContentType = file.ContentType,
                     Type = type,
                     FileInfo = await GenerateFileInfo(file)
                 });

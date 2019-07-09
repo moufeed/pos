@@ -51,7 +51,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
             {
                 uploadFile.FileInfo.type = GetType(uploadFile.Type.ToString());
                 uploadFile.FileInfo.FileNamePrefix = $"{uploadFile.Type}_{uploadFile.Id ?? ""}_";
-
+                
                 uploadModel.UploadFile.Add(uploadFile.FileInfo); 
                 
             }

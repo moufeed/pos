@@ -15,7 +15,8 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
                 FileNamePrefix = common.FileNamePrefix,
                 Type = common.type,
                 Stream = common.Stream,
-                FileName = common.FileName
+                FileName = common.FileName,
+                ContentType = common.ContentType
             };
         }
 

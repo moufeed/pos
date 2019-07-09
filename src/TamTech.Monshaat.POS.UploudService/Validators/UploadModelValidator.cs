@@ -64,7 +64,8 @@ namespace TamTech.Monshaat.POS.UploadService.Validators
                         context.AddFailure($"{file.FileName} نوع محتوى الملف غير مسموح تحميله");
                     }
 
-                }     
+                }
+              var contenttype =    MimeTypes.ScanFileForMimeType(file.Stream);
 
                 if (!settings.GetAllowedExtensions().Contains(fileExtension))
                 {
