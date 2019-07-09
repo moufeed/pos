@@ -1,7 +1,7 @@
 
 var loadGrecaptcha = function(val) {
         grecaptcha.render('grecaptcha', {
-        'sitekey' : '6LfCyKAUAAAAACiJ9Xri1zrJhsBI7sT7czRMbqvr'
+        'sitekey' : '6LfByKwUAAAAAHPhLqsK4ifj93GyiH4d9h7DcJar'
     });
     };
 
