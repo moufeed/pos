@@ -1,7 +1,7 @@
 
 var loadGrecaptcha = function(val) {
         grecaptcha.render('grecaptcha', {
-        'sitekey' : '6LfCyKAUAAAAACiJ9Xri1zrJhsBI7sT7czRMbqvr'
+        'sitekey' : '6LfByKwUAAAAAHPhLqsK4ifj93GyiH4d9h7DcJar'
     });
     };
 
@@ -16,9 +16,9 @@ var RecaptchaCallback = function(){
 
 
 var $form = $('#contact-form');
-
+ 
 $form.validate(
-    {
+    { 
           errorClass: "invalid-feedback",
           validClass: "valid-feedback",
           ignore: ".ignore",
