@@ -135,11 +135,8 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region index
         [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
-        public virtual async Task<IActionResult> Index()
-        {
-            
-            return View();
-        }
+        public virtual async Task<IActionResult> Index() => RedirectToAction("index", "pos");
+        
         #endregion
 
       
@@ -354,35 +351,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
-        #region Global
-        [HttpPost("{Culture}/[Area]/[Controller]/DeleteImage")]
-        public async virtual Task<JsonResult> DeleteImage(string img)
-        {
-            try
-            {
-                if (!string.IsNullOrWhiteSpace(img))
-                {
-                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.General } };
-                     IRequestProviderResult<DeleteFilesModelResult> uploadResult =
-                        await _uploadManager.DeleteFilesAsync(deleteInputModel);
-                    if (uploadResult.Success)
-                    {
-                        return Json(new { success = true });
-                    }
-                    TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                TrackException(ex);
-            }
-            return Json(new { success = false });
-        }
-
-
-
-
-        #endregion
+       
 
 
         // just for development

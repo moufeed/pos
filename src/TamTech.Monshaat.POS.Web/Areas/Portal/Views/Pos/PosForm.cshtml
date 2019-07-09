@@ -75,17 +75,19 @@
                                             <button class="btn btn-link position-absolute delete-image" data-href="@Url.Action("DeleteImage" ,"Vendor")" data-image="@img" type="button" data-target="#img-@ind">
                                                 <i class="far fa-times-circle"></i>
                                             </button>
-                                            <img src="@img" class="img-thumbnail" width="150" />
+                                            <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="img-thumbnail" width="150" />
                                         </span>
                                         ind++;
                                     }
                                 }
                             </div>
                         </if>
-
+                        @{
+                        int maxImages = 8;
+                        }
                         <div class="attachment-area form-group" data-id="Attachments">
                             <label>@Localizer["add_images"] <small class="fas fa-star-of-life fz-6"></small></label>
-                            <div class="box__input @(ViewBag.UploadedCount == 3 ? "disabled" :"") ">
+                            <div class="box__input @(ViewBag.UploadedCount == maxImages ? "disabled" :"") ">
                                 <label for="Attachments">
                                     <i class="fas fa-cloud-upload-alt"></i>
                                 </label>
@@ -96,14 +98,14 @@
                                        accept="image/png, image/jpeg"
                                        multiple
                                        @(ViewBag.UploadedCount > 0 ? "" : "required")
-                                       data-rule-filemaximum="@(ViewBag.UploadedCount > 0 ? (8 - ViewBag.UploadedCount) : 8 )" @(ViewBag.UploadedCount == 8 ? "disabled" : "") />
+                                       data-rule-filemaximum="@(ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages )" @(ViewBag.UploadedCount == maxImages ? "disabled" : "") />
                                 <label for="Attachments" class="file-btn" data-text="@Localizer["choose_file"]">
                                     <strong> @Localizer["choose_file"]</strong>
                                 </label>
 
                             </div>
                             <span asp-validation-for="Attachments" class="text-danger invalid_field Attachments-errors"></span>
-                            <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["add_pos_images", ViewBag.UploadedCount > 0 ? (8 - ViewBag.UploadedCount) : 8 ]  </small>
+                            <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["add_pos_images", ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages ]  </small>
                         </div>
                     </div>
 
