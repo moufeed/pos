@@ -36,7 +36,7 @@ $(document).ready(function(){
                     if(data.success){
                         $('#actionform').trigger("reset");
                         $notification.success("",window.localization.processed_successfully, 2000, "fa fa-check");
-                        $('#statustext').html('<span class="badge badge-'+data.result.vendor.statusOptions+'">'+data.result.vendor.statusName+'</span>' );
+                        $('#statustext').html('<span class="badge badge-'+data.result.vendor.statusoptions+'">'+data.result.vendor.statusname+'</span>' );
                            if(data.result.vendor.activated){
                              $('#published').html('<span class="c-green"><i class="fa fa-check" aria-hidden="true"></i>'+window.localization.active+'</span>');
                          }else{

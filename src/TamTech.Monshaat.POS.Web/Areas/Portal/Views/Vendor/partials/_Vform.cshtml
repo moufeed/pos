@@ -37,10 +37,12 @@
             <label asp-for="CommercialNo">
                 @Localizer["commercial_registration_no"] <small class="fas fa-star-of-life fz-6"></small>
             </label>
-            <input asp-for="CommercialNo" type="text" class="form-control"
+            <input asp-for="CommercialNo" type="number" class="form-control"
                    placeholder="@Localizer["commercial_registration_no"]" 
-                   data-remote='@Url.Action("ValidateCommercialNoIsExist","Vendor")' 
+                   data-remote='@Url.Action("ValidateCommercialNoIsExist","Vendor")'  
                    data-msg-remote="@Localizer["number_already_exists"]" 
+                   data-rule-commercial="10"
+                   data-id="@(FormAction.Equals("Edit",StringComparison.OrdinalIgnoreCase) ? Model.VendorId.ToString() :"")"
                    required>
             <span asp-validation-for="CommercialNo" class="text-danger invalid_field"></span>
         </div>
