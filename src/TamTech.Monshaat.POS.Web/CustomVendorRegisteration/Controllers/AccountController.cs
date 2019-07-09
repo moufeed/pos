@@ -56,6 +56,9 @@ namespace IdentitySample.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+
+            returnUrl = TamTech.Monshaat.POS.EFile2.Utilities.Constants.RegisterVendorUrl;
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -108,6 +111,8 @@ namespace IdentitySample.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+            returnUrl = TamTech.Monshaat.POS.EFile2.Utilities.Constants.RegisterVendorUrl;
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
