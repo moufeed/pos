@@ -1,0 +1,14 @@
+@import './animate.css/base';
+
+ 
+
+@import 
+'./animate.css/fading_entrances/fadeIn',
+'./animate.css/fading_entrances/fadeInDown',
+'./animate.css/fading_entrances/fadeInUp'
+;  
+
+.animate{
+    opacity: 0;
+    visibility: hidden;
+}

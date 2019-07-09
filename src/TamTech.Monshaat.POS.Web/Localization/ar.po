@@ -2006,6 +2006,8 @@ msgstr "تعديل البيانات"
 
 msgid "user_manual"
 msgstr "دليل الاستخدام"
+msgid "commercial_number"
+msgstr "السجل التجاري"
 
 msgid ""
 msgstr ""
@@ -2336,6 +2338,11 @@ msgstr "فاكس"
 msgid "name_already_exists"
 msgstr "الاسم موجود مسبقاً"
 
+
+msgid "number_already_exists"
+msgstr "الرقم موجود مسبقاً"
+
+
 msgid "POBox"
 msgstr "صندوق بريد"
 
@@ -2479,6 +2486,35 @@ msgstr "تم تغير كلمة المرور الخاصة بك بنجاح يمك�
 
 msgid "dashboard"
 msgstr "لوحة التحكم"
+
+msgid "RememberMe"
+msgstr "تذكرني"
+
+msgid "you_dont_have_account"
+msgstr "ليس لديك حساب؟"
+
+msgid "you_have_account"
+msgstr "لديك حساب؟"
+
+msgid "create_account"
+msgstr "إنشاء حساب جديد"
+
+msgid "confirmpassword"
+msgstr "تأكيد كلمة السّر "
+
+msgid "new_account"
+msgstr "حساب جديد"
+
+msgid "register_account"
+msgstr "إنشاء الحساب"
+
+
+msgid "please_log_in_via_sso"
+msgstr "صفحة تسجيل الدخول"
+
+
+msgid ""
+msgstr ""
 
 msgid ""
 msgstr ""

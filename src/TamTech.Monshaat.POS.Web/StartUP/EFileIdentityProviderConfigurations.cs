@@ -8,7 +8,7 @@ using TamTech.Monshaat.POS.EFile2.Utilities;
 using TamTech.Monshaat.POS.EFile2.Utilities.Filters;
 using TamTech.Monshaat.POS.EFile2.Utilities.Services;
 using TamTech.Monshaat.POS.EFile2.Utilities.Settings;
-using TamTech.Monshaat.POS.Web.MinistryServices.EFile2; 
+using TamTech.Monshaat.POS.Web.MinistryServices.EFile2;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTechSDK.Web.Services;
 

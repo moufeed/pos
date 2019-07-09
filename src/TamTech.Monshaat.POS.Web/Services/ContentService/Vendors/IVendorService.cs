@@ -33,6 +33,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Vendors
 
         Task<IRequestProviderResult<GeneratedSlugModel>> VerifyVendorSlugUniqueByNameAsync(string name, Guid? id = null);
 
+        Task<IRequestProviderResult<bool>> VerifyCRUniqueAsync(string commercialRegistrationNumber, Guid? vendorId = null);
         #endregion
         #endregion
     }

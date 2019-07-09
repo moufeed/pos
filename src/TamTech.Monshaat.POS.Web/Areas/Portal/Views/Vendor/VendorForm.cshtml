@@ -22,6 +22,7 @@
                             @Localizer[FormAction.Equals("edit", StringComparison.OrdinalIgnoreCase) ? "edit_information" : "vedor_register"]
                         </h3>
                     </if>
+                </header>
                     <if include-if='Model == null'>
                         <div class="white-panel p_25">
                             <if include-if="ViewBag.ActivateAccessDeniedForAdmins">
@@ -32,7 +33,7 @@
                             </if>
                         </div>
                     </if>
-                </header>
+                
                 <if include-if='Model != null'>
                    @*
                     <h1>Model.VendorCanEdit : @Model.VendorCanEdit</h1>

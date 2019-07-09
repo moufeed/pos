@@ -49,5 +49,21 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.EmailServices
 
             return await _emailSender.SendEmail(email);
         }
+
+        public async Task<bool> SendEmailAsync(string email, string subject, string message)
+        {
+            var setting = await _settingsHelpers.GetEmailSettingsAsync();
+            var _emailModel = new TamTechBackendSDK.EmailService.Models.EmailModel
+            { 
+                From = setting.From,
+                Html = message,
+                ReasonOfSend = subject,
+                Subject = subject,
+                Text = message,
+                Recipients = new List<string> { email },
+                CC = setting.CC
+            };
+            return await _emailSender.SendEmail(_emailModel);
+        }
     }
 }

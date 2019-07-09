@@ -1,0 +1,20 @@
+.top-footer-img{
+    max-width: 100%;
+}
+.main-footer{
+    padding: 25px 0;
+    background: $footer_background;
+    
+    &,p{
+        color: $footer_color;
+    }
+    p:last-child{
+        margin-bottom: 0;
+    }
+    a{
+        color: $yellow;
+        &:hover{
+            color: lighten($yellow,25%);
+        }
+    }
+}
