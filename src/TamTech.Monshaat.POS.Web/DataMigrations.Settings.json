@@ -71,16 +71,7 @@
       "Value": "a.aktaa@tamtech.solutions",
       "Description": "DirectBackendSDK_EmailService_Settings",
       "Enabled": true
-    },
-    {
-      "Id": 53,
-      "GroupId": 1,
-      "SharedKey": "Email_CC",
-      "Key": "Email_CC2",
-      "Value": "m.jobakji@tamtech.solutions",
-      "Description": "DirectBackendSDK_EmailService_Settings",
-      "Enabled": true
-    },
+    }, 
     {
       "Id": 60,
       "GroupId": 6,
