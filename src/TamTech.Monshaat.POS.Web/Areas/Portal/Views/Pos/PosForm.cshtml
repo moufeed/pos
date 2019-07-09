@@ -72,7 +72,7 @@
                                     if (!string.IsNullOrEmpty(img))
                                     {
                                         <span id="img-@ind">
-                                            <button class="btn btn-link position-absolute delete-image" data-href="@Url.Action("DeleteImage" ,"Vendor")" data-image="@img" type="button" data-target="#img-@ind">
+                                            <button class="btn btn-link position-absolute delete-image" data-href="@Url.Action("DeleteImage")" data-image="@img" type="button" data-target="#img-@ind">
                                                 <i class="far fa-times-circle"></i>
                                             </button>
                                             <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="img-thumbnail" width="150" />
