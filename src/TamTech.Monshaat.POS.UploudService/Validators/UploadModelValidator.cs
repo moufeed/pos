@@ -1,85 +1,84 @@
-using FluentValidation;
+﻿using FluentValidation;
 using System.IO;
 using System.Linq;
 using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Configurations;
 using TamTech.Monshaat.POS.UploadService.Settings;
+using FluentValidation.Validators;
+using Microsoft.AspNetCore.StaticFiles;
+using System;
 
 namespace TamTech.Monshaat.POS.UploadService.Validators
 {
     public class UploadModelValidator : AbstractValidator<UploadModel>
     {
-        public FormFilesValidator(FileTypeSettings settings)
-        {
-            RuleFor(files => files).NotNull();
-            RuleFor(files => files.Count).GreaterThan(0);
-
-            RuleFor(files => files).Custom((files, context) =>
-            {
-                foreach (var file in files)
-                {
-                    context = new FileValidation().ValidateFile(file, settings, context);
-                }
-            });
-        }
-        public UploadModelValidator(FileTypeSettings settings)
+      
+        public UploadModelValidator(FileTypeSettings[] settings)
         {
             RuleFor(files => files).NotNull();
             RuleFor(files => files.UploadFiles).NotNull();
             RuleFor(files => files.UploadFiles.Count).GreaterThan(0);
 
-            this.When(x => LanguageEnum.EN == lang && !x.Published_en, () =>
+            this.When(x => x.UploadFiles != null && x.UploadFiles != null  && x.UploadFiles.Count > 0   , () =>
             {
-                RuleFor(x => x.Title_en).Must(x => !string.IsNullOrWhiteSpace(x)).WithName("Could not publish").WithMessage("Can not publish when the item does not have an Title");//The MainImage field is required
-
-            });
-            RuleFor(files => files).Custom((files, context) =>
-            {
-                foreach (var file in files)
+                RuleFor(model => model).Custom((model, context) =>
                 {
-                    context = new FileValidation().ValidateFile(file, settings, context);
-                }
-            });
+                   var sett  =  settings.FirstOrDefault(s => s.Type == model.UploadFiles[0].Type);
 
+                    foreach (var file in model.UploadFiles)
+                    {
+                        context = new UploadFileValidation().ValidateFile(file, sett, context);
+                    }
+                });
 
-            RuleFor(uploadModel => uploadModel).Custom((uploadModel, context) =>
-            {
-                foreach (var file in uploadModel.UploadFiles)
+            });    
+        
+        }
+        public class UploadFileValidation
+        {
+            public CustomContext ValidateFile(UploadFileModel file, FileTypeSettings settings, CustomContext context)
+            {  
+                if (file.Stream == null)
                 {
-                    var validationsFromSettings = settings.Where(s => s.Type == file.Type).SingleOrDefault();
-                    if (validationsFromSettings == null)
-                    {
-                        context.AddFailure($"{file.Type} file type is not allowed");
-                        continue;
-                    }
-
-                    if (file.FileBinary == null)
-                    {
-                        context.AddFailure($"{file.Type} file type is not uploaded successfully");
-                        continue;
-                    }
-
-                    if (file.FileBinary.Length > validationsFromSettings.MaxSize)
-                    {
-                        context.AddFailure($"{file.FileBinary.FileName} file size is greater than the allowed max size");
-                    }
-
-                    var fileExtension = GetExtension(file.FileBinary.FileName);
-
-                    if (!validationsFromSettings.GetAllowedExtensions().Contains(fileExtension))
-                    {
-                        context.AddFailure($"{file.FileBinary.FileName} is not allowed file type.");
-                    }
-
+                    context.AddFailure("حدث خطأ اثناء تحميل الملف");
+                    return context;
                 }
+
+                if (file.Stream.Length > settings.MaxSize)
+                {
+                    context.AddFailure($"{file.FileName} حجم الملف أكبر من الحد المسموح به - {settings.MaxSize/ 1024}");
+                }
+
+                var fileExtension = Path.GetExtension(file.FileName).ToLower();
+
+                if (!settings.GetAllowedExtensions().Contains(fileExtension))
+                {
+                    context.AddFailure($"{file.FileName} نوع الملف غير مسموح تحميله");
+                }
+                else
+                {
+                    string contentType;
+                    var mapping = new FileExtensionContentTypeProvider().Mappings.TryGetValue(".jpg", out contentType);
+                    if(!mapping)
+                    {
+                        context.AddFailure($"{file.FileName} نوع محتوى الملف غير مسموح تحميله");
+                    }
+
+                }     
+
+                if (!settings.GetAllowedExtensions().Contains(fileExtension))
+                {
+                    context.AddFailure($"{file.FileName} is not allowed file type.");
+                }
+                return context;
             }
-
-            );
         }
 
         public string GetExtension(string fileName)
         {
             return Path.GetExtension(fileName).ToLower();
         }
+
+     
     }
 }

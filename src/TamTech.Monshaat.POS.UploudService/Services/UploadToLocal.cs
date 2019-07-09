@@ -9,11 +9,13 @@ using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
 using TamTech.Monshaat.POS.UploadService.Helpers;
 using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Configurations;
-using TamTech.Monshaat.POS.UploadService.Settings; 
+using TamTech.Monshaat.POS.UploadService.Settings;
+using TamTech.Monshaat.POS.UploadService.Validators;
+using FluentValidation;
 
 namespace TamTech.Monshaat.POS.UploadService.Services
 {
-    public class UploadToLocal : IUploadService
+    public class UploadToLocal : BaseService, IUploadService
     {
         #region props
         private readonly IUploadSettingsConfigurations _appSettings;
@@ -88,13 +90,21 @@ namespace TamTech.Monshaat.POS.UploadService.Services
                     file.Result = DeleteResultEnum.NotDeleted;
                 }
             }
-            return result;
+            return ReturnProcessResult (true , result);
         }
 
 
 
         public async Task<IResultModel<UploadModelResult>> UploadAsync(UploadModel uploadModel)
         {
+
+            var stypeSettings = _appSettings.GetFileTypeSettings();
+           
+            var  validation = new UploadModelValidator(stypeSettings).Validate(uploadModel );
+            if (!validation.IsValid  )
+            {
+                return ReturnFailure<UploadModelResult>(validation);
+            }
             innerUploadFolderPath = "\\" + _appSettings.GetUploadPath();
             hostName = _appSettings.GetDomainName();
             //ie: hostName = www.blabla.com
@@ -149,7 +159,8 @@ namespace TamTech.Monshaat.POS.UploadService.Services
                 }
             }
             //dispose?
-            return uploadResult;
+       //     return uploadResult;
+            return ReturnProcessResult(true, uploadResult);
         }
 
        
