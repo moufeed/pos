@@ -212,7 +212,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                     {
                         int index = 0;
                         List<IFormFile> _files = model.Attachments;
-                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.General);
+                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.POSImage);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
                         foreach (var item in uploadResult.URLs)

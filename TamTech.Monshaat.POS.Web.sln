@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.EFile2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83F9BC64-F998-4383-8D37-B7913B95EDCF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.UploadService", "src\TamTech.Monshaat.POS.UploudService\TamTech.Monshaat.POS.UploadService.csproj", "{749A70BC-9334-4BE2-BB70-92705C62B235}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{0222A301-54C3-4300-BE6D-858F3DE9E157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0222A301-54C3-4300-BE6D-858F3DE9E157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0222A301-54C3-4300-BE6D-858F3DE9E157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749A70BC-9334-4BE2-BB70-92705C62B235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749A70BC-9334-4BE2-BB70-92705C62B235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749A70BC-9334-4BE2-BB70-92705C62B235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749A70BC-9334-4BE2-BB70-92705C62B235}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F04C6AF5-27AE-4300-B7D8-5BC367316D05} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 		{0222A301-54C3-4300-BE6D-858F3DE9E157} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
+		{749A70BC-9334-4BE2-BB70-92705C62B235} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 	EndGlobalSection
 EndGlobal

@@ -48,18 +48,17 @@
     <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" /> 
     <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" /> 
     <PackageReference Include="TamTechBackendSDK.EmailService" Version="0.0.1.9" />
-    <PackageReference Include="TamTechBackendSDK.FileStorageService" Version="0.0.0.7" />
     <PackageReference Include="TamTechBackendSDK.IdentityService" Version="0.0.1.3" />
-    <PackageReference Include="TamTechBackendSDK.SMSService" Version="0.0.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TamTech.Monshaat.POS.EFile2.Utilities\TamTech.Monshaat.POS.EFile2.Utilities.csproj" />
+    <ProjectReference Include="..\TamTech.Monshaat.POS.UploudService\TamTech.Monshaat.POS.UploadService.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="TamTech.ContentService.SDK">
-      <HintPath>..\..\..\..\Tamtech\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
+      <HintPath>..\..\..\..\HelperServices\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
     </Reference>
   </ItemGroup>
 
