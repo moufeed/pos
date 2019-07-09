@@ -177,7 +177,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             int UpCount = 0;
             try
             {
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     CreatePosModel _CreateModel = model.MapToCreateModelWithoutAttachments();
 
@@ -218,7 +218,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
                             index++;
                         }
-
+                        
                         if (!TryValidateModel(model))
                         {
                             await InitAction(model);
