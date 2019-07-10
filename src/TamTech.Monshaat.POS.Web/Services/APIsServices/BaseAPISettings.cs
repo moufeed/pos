@@ -23,5 +23,13 @@
         public const string POSValuesController = "POSValues";
         public const string CURegionsController = "CURegions";
 
+
+        public const string POSController = "POS";
+        public const string POSofVendorController = "Vendor/POS";
+        public const string DirectoryController = "Directory/POS";
+        public const string ContactUsController = "ContactUs";
+
+        public const string VendorsController = "Vendors";
+
     }
 }

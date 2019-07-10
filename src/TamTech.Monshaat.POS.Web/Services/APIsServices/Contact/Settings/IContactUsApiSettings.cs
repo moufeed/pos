@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings
 {
-    public interface IcontactApiSettings
+    public interface IContactUsApiSettings
     {
 
         string CreateEndpoint { get; }

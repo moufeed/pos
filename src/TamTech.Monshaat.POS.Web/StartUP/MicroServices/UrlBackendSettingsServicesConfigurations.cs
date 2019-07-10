@@ -2,10 +2,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Services.APIsServices;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
 { 
@@ -45,7 +49,42 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
             });
 
 
+            services.AddScoped<IPosAdminApiSettings, PosAdminApiSettings>((serviceExtension) =>
+            {
+                return new PosAdminApiSettings(BaseAPISettings.POSController);
+            });
+                                                                 
 
+            services.AddScoped<IPosApiSettings, PosApiSettings>((serviceExtension) =>
+            {
+                return new PosApiSettings(BaseAPISettings.POSofVendorController);
+            });
+
+                      
+            services.AddScoped<IDirectoryApiSettings, DirectoryApiSettings>((serviceExtension) =>
+            {
+                return new DirectoryApiSettings(BaseAPISettings.DirectoryController);
+            });
+
+                        
+            services.AddScoped<IContactUsApiSettings, ContactUsApiSettings>((serviceExtension) =>
+            {
+                return new ContactUsApiSettings(BaseAPISettings.ContactUsController);
+            });
+                  
+                        
+            services.AddScoped<IVendorAdminApiSettings, VendorAdminApiSettings>((serviceExtension) =>
+            {
+                return new VendorAdminApiSettings(BaseAPISettings.VendorsController);
+            });
+                                             
+                        
+            services.AddScoped<IVendorApiSettings, VendorApiSettings>((serviceExtension) =>
+            {
+                return new VendorApiSettings(BaseAPISettings.VendorsController);
+            });
+
+                          
             //services.AddScoped<IUploadBackendSettings, UploadBackendSettings>((serviceExtension) =>
             //{
             //    var url = configuration

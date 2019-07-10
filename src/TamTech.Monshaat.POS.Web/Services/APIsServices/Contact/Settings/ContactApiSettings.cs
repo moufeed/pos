@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings
 {
-    public class ContactApiSettings : BaseAPISettings, IcontactApiSettings
+    public class ContactUsApiSettings : BaseAPISettings, IContactUsApiSettings
     {
-        public ContactApiSettings(string controller) : base(controller)
+        public ContactUsApiSettings(string controller) : base(controller)
         {
         }
 

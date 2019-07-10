@@ -16,11 +16,11 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Contact
     {
         #region prop
         private readonly IRequestProvider _requestProvider;
-        private readonly IcontactApiSettings _apiSettings;
+        private readonly IContactUsApiSettings _apiSettings;
         #endregion
 
         #region ctor
-        public ContactService(IRequestProvider requestProvider , IcontactApiSettings apiSettings) : base(requestProvider)
+        public ContactService(IRequestProvider requestProvider , IContactUsApiSettings apiSettings) : base(requestProvider)
         {
             _requestProvider = requestProvider;
             _apiSettings = apiSettings;
