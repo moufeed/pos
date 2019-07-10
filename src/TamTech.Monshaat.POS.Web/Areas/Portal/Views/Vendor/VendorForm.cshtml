@@ -70,12 +70,16 @@
     <script src="~/Portal/js/vendor.f.min.js"></script>
 
     <if include-if='TempData.ContainsKey("RegisterSuccess")'>
-        @TempData.Remove("RegisterSuccess");
+        @{ 
+            TempData.Remove("RegisterSuccess");
+        }
         <partial name="~/Areas/Portal/Views/Vendor/partials/_RegisterSuccessModal.cshtml" />
     </if>
 
     <if include-if='TempData.ContainsKey("UpdateSuccess")'>
-        @TempData.Remove("UpdateSuccess");
+        @{
+            TempData.Remove("UpdateSuccess");
+        }
         <partial name="~/Areas/Portal/Views/Vendor/partials/_UpdateSuccessModal.cshtml" />
     </if>
 

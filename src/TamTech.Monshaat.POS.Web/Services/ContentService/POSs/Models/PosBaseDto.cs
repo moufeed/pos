@@ -9,6 +9,7 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs.Models
     {
         [JsonProperty("vendorname")]
         public string VendorName { get; set; }
+
         [JsonProperty("vendorwebsite")]
         public string VendorWebsite { get; set; }
         [JsonProperty("vendorphone")]

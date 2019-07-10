@@ -28,13 +28,13 @@ namespace TamTechSDK.Web.Controllers.Admin
     {
 
 
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
 
 
 
 
-        public AdminBaseController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer)
-            : base(telemetryClientService)
+        public AdminBaseController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer)
+          : base(telemetryClientService, localizer)
         {
 
             ViewData["Area"] = "Admin";
@@ -44,18 +44,11 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
 
-        private const bool _disableSuccessMode = false;
-        private const string _successMsg = "The process has successfully.";
-        private const string _errorMsg = "General Error!!";
-        private const string _expMsg = "There was an error executing the process!";
-        public dynamic SuccessModel { get { return TempData["SuccessModel"]; } set { TempData["SuccessModel"] = value; } }
+       
 
 
 
-        public void AddErrorModel(string key = "Error", string msg = "General Error!!")
-        {
-            ModelState.AddModelError(key, msg);
-        }
+      
         public void HandelGetingResult(dynamic result)
         {
             var disableSuccessMode = true;
@@ -68,98 +61,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
 
-        public void HandelResult(dynamic result,
-                                                bool disableSuccessMode = _disableSuccessMode,
-                                                string successMsg = _successMsg,
-                                                string errorMsg = _errorMsg,
-                                                string expMsg = _expMsg)
-        {
-            ModelState.Clear();
-            //ViewData["MessageInfoState"] = 
-            ViewData["SuccessResultMode"] = false;
-            ViewData["ErrorResultMode"] = false;
-            ViewData["ExpResultMode"] = false;
-            ViewData["WarningResultMode"] = false;
-            ViewData["InfoResultMode"] = false;
-
-            switch (result.StatusCode)
-            {
-                case HttpStatusCode.OK:
-                    {
-                        SuccessModel = successMsg;
-                        ModelState.Clear();
-                        ViewData["SuccessResultMode"] = !disableSuccessMode;
-                        break;
-                    }
-                case HttpStatusCode.BadRequest:
-                    {
-                        if (result.Messages != null)
-                        {
-                            foreach (var item in result.Messages)
-                            {
-                                foreach (var msg in item.Value)
-                                {
-                                    AddErrorModel(item.Key, msg);
-                                }
-                            }
-                        }
-                        else AddErrorModel();
-                        ViewData["ErrorResultMode"] = true;
-                        break;
-                    }
-                case HttpStatusCode.InternalServerError:
-                    {
-                        AddErrorModel("Internal Server Error", result.Exception.Message);
-                        ViewData["ExpResultMode"] = true;
-                        break;
-                    }
-                case HttpStatusCode.Unauthorized:
-                    {
-                        AddErrorModel("Unauthorized", "Unauthorized!");
-                        ViewData["ErrorResultMode"] = true;
-                        break;
-                    }
-                case HttpStatusCode.NotFound:
-                    {
-                        AddErrorModel("Not Found", "Not Found!");
-                        ViewData["ErrorResultMode"] = true;
-                        break;
-                    }
-                case HttpStatusCode.Created:
-                    {
-                        if (successMsg == _successMsg)
-                            SuccessModel = "The item creation was successfully.";
-                        else
-                            SuccessModel = successMsg;
-                        ViewData["SuccessResultMode"] = true;
-                        ModelState.Clear();
-                        break;
-                    }
-                case HttpStatusCode.NotModified:
-                    {
-                        SuccessModel = "Not Modified.";
-                        ViewData["WarningResultMode"] = true;
-                        ModelState.Clear();
-                        break;
-                    }
-
-                case HttpStatusCode.NoContent:
-                    {
-                        SuccessModel = "No Content.";
-                        ViewData["InfoResultMode"] = true;
-                        ModelState.Clear();
-                        break;
-                    }
-                default:
-                    {
-                        AddErrorModel(result.StatusCode.ToString(), result.StatusCode.ToString());
-                        ViewData["WarningResultMode"] = true;
-                        break;
-                    }
-
-            }
-
-        }
+       
         public override void TrackException(Exception exc)
         {
             AddErrorModel("Exeption", exc.Message);

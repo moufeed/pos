@@ -112,7 +112,7 @@ $('.toggle_status').on("click",function(){
 
                response.then(response => {
                    if (!response.success && response.errors.length > 0) {
-                        txt = MakeErrorsMsg(response.errors);
+                    let txt = MakeErrorsMsg(response.errors);
                         $notification.error("", txt, 3500, "fa fa-exclamation-circle");
                    }
 
@@ -132,7 +132,7 @@ $('.toggle_status').on("click",function(){
 
              response.then(response => {
                  if (!response.success && response.errors.length > 0) {
-                     txt = MakeErrorsMsg(response.errors);
+                 let txt = MakeErrorsMsg(response.errors);
                      $notification.error("", txt, 3500, "fa fa-exclamation-circle");
                  }
 
@@ -177,7 +177,7 @@ $('#EmailModal').on('hidden.bs.modal', () => $('#NewEmail').trigger("reset") );
             })
             request.then(response=> {
                  if (!response.success && response.errors.length > 0) {
-                     txt = MakeErrorsMsg(response.errors);
+                 let txt = MakeErrorsMsg(response.errors);
                         if ($("#NewEmail").find(".alert").length > 0) {
                             $("#NewEmail").find(".alert .content").html(txt)
                         }else{

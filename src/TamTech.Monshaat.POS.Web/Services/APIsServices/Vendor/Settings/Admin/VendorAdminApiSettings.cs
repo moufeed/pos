@@ -11,7 +11,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings
         {
         }
 
-        public string GetVendorActionsEndpoint => $"{_AdminPath}/GetVendorActions";
+        public string GetVendorActionsEndpoint => $"{_AdminPath}/GetVendorActionsAsync";
 
         public string GetExceptSoftDeletedEndpoint => $"{_AdminPath}/GetExceptSoftDeletedAsync";
 

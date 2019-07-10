@@ -6,6 +6,7 @@ using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.Models.Shared;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.POSs;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
@@ -60,7 +61,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Pos
 
         public async Task<IRequestProviderResult<GeneratedSlugModel>> VerifySlugUniqueByNameAsync(string name, Guid? id = null)
         {
-            return await _requestProvider.GetAsync<GeneratedSlugModel, List<object>>(_apiSettings.VerifySlugUniqueEndpoint, new List<object> { name, id }, PassParamsBy.Route);
+            return await _requestProvider.GetAsync<GeneratedSlugModel, VerifyNameModel<Guid?>>(_apiSettings.VerifySlugUniqueByNameEndpoint, new VerifyNameModel<Guid?>(){ Name= name, Id = id }, PassParamsBy.Body);
         }
     }
 }

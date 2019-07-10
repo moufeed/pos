@@ -32,14 +32,14 @@ namespace TamTechSDK.Web.Controllers.Admin
     public class VendorsController : AdminBaseController
     {
         private readonly IVendorAdminServices _vendorServices;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
         private readonly IVendorStatusService _statusServices;
         private readonly IEmailSenderService _emailSender;
         private readonly IdentityUtilities _identityUtilities;
         private readonly IUsersManagerService _usersManagerService;
         public VendorsController(
             ITelemetryService telemetryClientService,
-            IStringLocalizer<AdminBaseController> localizer,
+            IStringLocalizer<BaseController> localizer,
             IVendorAdminServices vendorServices,
             IVendorStatusService statusServices,
             IdentityUtilities identityUtilities,

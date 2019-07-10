@@ -34,7 +34,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         IPageService _pageService;
         IStringConverters _stringConverters;
         IUploadManagerService _uploadManager;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
         #endregion
 
 
@@ -43,7 +43,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                               IPageService pageService,
                               IUploadManagerService uploadManager,
                               IStringConverters stringConverters,
-                               IStringLocalizer<AdminBaseController> localizer)
+                               IStringLocalizer<BaseController> localizer)
                              : base(telemetryClientService, localizer)
         {
             this._pageService = pageService;

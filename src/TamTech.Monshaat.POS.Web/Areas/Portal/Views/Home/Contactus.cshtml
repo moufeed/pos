@@ -122,11 +122,16 @@
                             <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["acceptable_formats"] <span>txt,doc,docx,xls,xlsx,pdf,jpg,png</span></small>
                         </div>
 
-                     
-                            @*<div class="form-group">
-                                <div id="grecaptcha" data-callback="RecaptchaCallback" ></div>
-                                <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
-                            </div>*@
+                        
+                        <div class="form-group">
+                            <environment exclude="development">
+                                <div id="grecaptcha" data-callback="RecaptchaCallback" data-sitekey="6LfByKwUAAAAAHPhLqsK4ifj93GyiH4d9h7DcJar"></div>
+                            </environment>
+                            <environment include="development">
+                                <div id="grecaptcha" data-callback="RecaptchaCallback" data-sitekey=" 6LfCyKAUAAAAACiJ9Xri1zrJhsBI7sT7czRMbqvr"></div>
+                            </environment>
+                            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                        </div>
                         
                         <div class="form-group text-left">
                             <button type="submit" class="btn btn-success p-x-50">
@@ -142,6 +147,7 @@
 
 
 @section Footer{
+     
     <script src="~/Portal/js/plugins/select2.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?onload=loadGrecaptcha&render=explicit&hl=ar" async defer></script>
     <script src="~/Portal/js/validation.min.js"></script>

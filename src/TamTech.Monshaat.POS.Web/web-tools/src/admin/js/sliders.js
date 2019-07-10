@@ -24,7 +24,7 @@ $(document).ready(() => {
                             } else {
                                 var errors = data.errors;
                                 if (errors.length > 0) {
-                                    txt = MakeErrorsMsg(errors);
+                                let txt = MakeErrorsMsg(errors);
                                     $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                                 }
                             }
@@ -79,7 +79,7 @@ $(document).on("click", ".toggle_publish_slider_item", function (event) {
             } else {
                 var errors = data.errors;
                             if (errors.length > 0) {
-                                txt = MakeErrorsMsg(errors);
+                            let txt = MakeErrorsMsg(errors);
                                 $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                             }
                             $this.find('.fa').removeClass().addClass(className);
@@ -91,4 +91,3 @@ $(document).on("click", ".toggle_publish_slider_item", function (event) {
             $notification.error(errorTitle, jqXHR.statusText, 2000, "fa fa-exclamation-circle");
         });
 })
-  

@@ -60,7 +60,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Pos
 
         public async Task<IRequestProviderResult<PosBaseDto>> SetActionAsync(UpdatePOSStatus model)
         {
-            return await _requestProvider.PostAsync<PosBaseDto, UpdatePOSStatus>(_apiSettings.PublishEndpoint, model);
+            return await _requestProvider.PostAsync<PosBaseDto, UpdatePOSStatus>(_apiSettings.SetActionEndpoint, model);
         }
 
         public async Task<IRequestProviderResult<bool>> SoftDeleteAsync(Guid id)

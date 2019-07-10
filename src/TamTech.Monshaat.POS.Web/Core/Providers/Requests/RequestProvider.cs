@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
@@ -161,7 +162,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                         {
                             foreach (string str in list)
                             {
-                                parameters += $"/{WebUtility.UrlEncode(str)}";
+                                
+                                parameters += $"/{HttpUtility.UrlEncode(str)}";
                             }
                             return $"{uri}{parameters}";
                         }
@@ -180,7 +182,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                         if (queries.Length > 0)
                         {
                             queries = queries.Remove(queries.Length - 1);
-                            return$"{uri}?{ WebUtility.UrlEncode(queries)}";
+                            return$"{uri}?{ HttpUtility.UrlEncode(queries)}";
                         }
                     }
                 }

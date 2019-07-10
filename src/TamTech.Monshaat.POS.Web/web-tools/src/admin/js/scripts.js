@@ -308,7 +308,7 @@ function RemoveItem (table , itm ){
                     }else{
                         var errors = data.errors;
                         if (errors.length > 0) {
-                            txt = MakeErrorsMsg(errors);
+                        let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                         }
                     }
@@ -555,6 +555,7 @@ const MakeErrorsMsg = (errors)=>{
 
     let txt = "";
     errors.forEach((el)=>{
+       
         txt += `<strong>${window.localization[el.key]}</strong>`;
         let div = "<div>";
         el.value.map((vl)=> div += `${vl}<br/>`)
@@ -628,3 +629,5 @@ async function async_fetch(url, body, headers) {
     })
     return await response.json();
 }
+
+const refreshHistory =  url => $.get(url, data  => $( "#history" ).html( data ) );  

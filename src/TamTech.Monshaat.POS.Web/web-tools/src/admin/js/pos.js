@@ -22,7 +22,7 @@ $(document).ready(function(){
                     }else{ 
                         var errors = data.errors;
                             if (errors.length > 0) {
-                                txt = MakeErrorsMsg(errors);
+                            let txt = MakeErrorsMsg(errors);
                                 $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                             } 
                     }
@@ -60,8 +60,8 @@ $(document).ready(function(){
             }
         },
         submitHandler:function(form){
-            var action = $(form).attr("action");
-            var history = $(form).data('history');
+            let action = $(form).attr("action");
+             
             $.ajax({
                 url: action , 
                 type: "POST",             
@@ -79,11 +79,17 @@ $(document).ready(function(){
                          }else{
                             $('#published').html('<span class="c-red"><i class="fa fa-times" aria-hidden="true"></i>'+window.localization.unpublished+'</span>');
                          }
-                         refreshHistory(history);
+                         refreshHistory($(form).data('history'));
+                        setTimeout(()=>{
+                            $('a[href="#history"]').click();
+                            $('#history').addClass('active in');
+                            $('a[href="#form"]').parent().remove();
+                            $('#form').remove();  
+                        },500)
                     }else{
                         var errors = data.errors;
                         if (errors.length > 0) {
-                            txt = MakeErrorsMsg(errors);
+                        let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                         }
                     }
@@ -95,9 +101,3 @@ $(document).ready(function(){
    }
    
 })
-
-function refreshHistory(url){
-    $.get(url, function( data ) {
-        $( "#history" ).html( data );
-      });  
-} 

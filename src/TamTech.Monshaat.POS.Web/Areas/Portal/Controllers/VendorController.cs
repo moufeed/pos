@@ -45,7 +45,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IPOSAttributeService _attributeService;
       
         private readonly IUploadManagerService _uploadManager;
-        private IStringLocalizer<PublicBaseController> _localizer;
+        private IStringLocalizer<BaseController> _localizer;
         private readonly IVendorService _vendorServis;
         private readonly SettingsHelpers _settingsHelpers;
         #endregion
@@ -57,9 +57,9 @@ namespace TamTechSDK.Web.Controllers.Portal
             IPOSSectorServices sectorService,
             IPOSAttributeService attributeService,
             IUploadManagerService uploadManager,
-            IStringLocalizer<PublicBaseController> localizer,
+            IStringLocalizer<BaseController> localizer,
             IVendorService vendorServis,
-                                    SettingsHelpers settingsHelpers) : base(telemetryClientService)
+                                    SettingsHelpers settingsHelpers) : base(telemetryClientService ,localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;

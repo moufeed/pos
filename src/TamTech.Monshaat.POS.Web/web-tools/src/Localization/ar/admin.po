@@ -573,6 +573,9 @@ msgstr "الأسم الكامل"
 msgid "l_name"
 msgstr "الأسم"
 
+msgid "l_title"
+msgstr "العنوان"
+
 msgid "l_email"
 msgstr "البريد الألكتروني"
 
@@ -1996,6 +1999,36 @@ msgid "user_manual"
 msgstr "دليل الاستخدام"
 msgid "commercial_number"
 msgstr "السجل التجاري"
+
+msgid "Internal_Server_Error"
+msgstr "500 خطأ الخادم الداخلي"
+
+msgid "Internal_Server_Error_message"
+msgstr "للاسف هناك خطأ ما يرجى المحاولة بعد قليل"
+
+msgid "Unauthorized"
+msgstr "401 غير مصرح"
+
+msgid "Unauthorized_msg"
+msgstr "لاتملك الصلاحيات للوصول للصفحة المطلوبة"
+
+msgid "not_found"
+msgstr "404 غير موجود"
+
+msgid "not_found_msg"
+msgstr "الرابط المطلوب غير موجود"
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
+
+msgid ""
+msgstr ""
 
 msgid ""
 msgstr ""

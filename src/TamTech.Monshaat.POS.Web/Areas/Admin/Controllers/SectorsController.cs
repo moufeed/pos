@@ -27,12 +27,12 @@ namespace TamTechSDK.Web.Controllers.Admin
     public class SectorsController : AdminBaseController
     {
         private readonly IPOSSectorServices _sectorServices;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
         private readonly IUploadManagerService _uploadManager;
 
         public SectorsController(
                                     ITelemetryService telemetryClientService,
-                                    IStringLocalizer<AdminBaseController> localizer,
+                                    IStringLocalizer<BaseController> localizer,
                                     IPOSSectorServices sectorServices,
                                     IUploadManagerService uploadManager
 
@@ -374,4 +374,3 @@ namespace TamTechSDK.Web.Controllers.Admin
 
     }
 }
-

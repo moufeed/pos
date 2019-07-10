@@ -11,6 +11,7 @@ using TamTech.Monshaat.POS.Web.Services.Identity.Auth.Models;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Core.Validations;
+using Microsoft.Extensions.Localization;
 
 namespace TamTechSDK.Web.Controllers.Identity
 {
@@ -26,8 +27,8 @@ namespace TamTechSDK.Web.Controllers.Identity
 
         #region Ctors 
         public AuthController(ITelemetryService telemetryClientService, IAuthService accountsService,
-            IExpressionValidation expressionValidation)
-            : base(telemetryClientService)
+            IExpressionValidation expressionValidation, IStringLocalizer<BaseController> localizer)
+            : base(telemetryClientService, localizer)
         {
             _expressionValidation = expressionValidation;
             _accountsService = accountsService;

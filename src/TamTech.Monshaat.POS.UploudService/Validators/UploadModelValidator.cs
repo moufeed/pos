@@ -65,7 +65,7 @@ namespace TamTech.Monshaat.POS.UploadService.Validators
                     }
 
                 }
-              var contenttype =    MimeTypes.ScanFileForMimeType(file.Stream);
+            //  var contenttype =    MimeTypes.ScanFileForMimeType(file.Stream);
 
                 if (!settings.GetAllowedExtensions().Contains(fileExtension))
                 {

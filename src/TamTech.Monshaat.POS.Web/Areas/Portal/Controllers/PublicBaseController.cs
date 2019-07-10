@@ -31,8 +31,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         public readonly string _culture;
 
 
-        public PublicBaseController(ITelemetryService telemetryClientService)
-             : base(telemetryClientService)
+        public PublicBaseController(ITelemetryService telemetryClientService , IStringLocalizer<BaseController> localizer)
+          : base(telemetryClientService, localizer)
         {
 
             _lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -112,7 +112,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             string _Extension;
             string _path;
             string _localURl;
-            string _url = (URl.Contains("http://") || URl.Contains("https://")) ? URl : $"https://localhost{URl}";
+            string _url = (URl.Contains("http://") || URl.Contains("https://")) ? URl : $"https://localhost/" + URl ;
 
 
             Uri uri = new Uri(_url);

@@ -1,13 +1,8 @@
 
-var loadGrecaptcha = function(val) {
-        grecaptcha.render('grecaptcha', {
-        'sitekey' : '6LfByKwUAAAAAHPhLqsK4ifj93GyiH4d9h7DcJar'
-    });
-    };
+var loadGrecaptcha = () =>  grecaptcha.render('grecaptcha', { })
 
-var RecaptchaCallback = function(){
-    $('#hiddenRecaptcha').val(true).valid()
-}
+ 
+var RecaptchaCallback =  ()=> $('#hiddenRecaptcha').val(true).valid();
 
 
 

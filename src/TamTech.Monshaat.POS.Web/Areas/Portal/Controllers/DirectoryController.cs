@@ -14,6 +14,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using Microsoft.Extensions.Localization;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -29,8 +30,9 @@ namespace TamTechSDK.Web.Controllers.Portal
                                             IPOSSectorServices sectorService,
                                             IDirectoryServices directoryServices,
                                             IPOSAttributeService attributeService,
-                                            IPosTypeService posTypeService
-                                        ) : base(telemetryClientService)
+                                            IPosTypeService posTypeService,
+                                            IStringLocalizer<BaseController>  localizer
+                                        ) : base(telemetryClientService, localizer)
         {
             _sectorService = sectorService;
             _directoryServices = directoryServices;

@@ -2,6 +2,12 @@ using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors;
@@ -10,11 +16,17 @@ using TamTech.Monshaat.POS.Web.Services.APIsServices.Types;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.POSs;
+using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -122,7 +134,56 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 return new RegionService(provider, apiSettings);
             });
 
-            /*
+
+
+            services.AddTransient<IDirectoryServices>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IDirectoryApiSettings>();
+                return new DirectoryService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IContactService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IContactUsApiSettings>();
+                return new ContactService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IPOSAdminServeice>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IPosAdminApiSettings>();
+                return new PosAdminService(provider, apiSettings);
+            });
+
+            services.AddTransient<IPOSService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IPosApiSettings>();
+                return new PosService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IVendorAdminServices>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IVendorAdminApiSettings>();
+                return new VendoradminService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IVendorService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IVendorApiSettings>();
+                return new VendorService(provider, apiSettings);
+            });
+
+
+            /* 
 
             
            

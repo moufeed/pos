@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs.Models
     {
         [JsonProperty("lang")]
         public string Lang { get; set; }
-        [JsonProperty("posid")]
+        [JsonProperty("id")]
         public Guid POSId { get; set; }
 
         [JsonProperty("actionid")]

@@ -12,7 +12,9 @@ function getGroups(form){
             }
         }) 
     }
+  
     return groups;
+
 }
  $(function () { 
     var $form = $('#createPosForm');
@@ -96,14 +98,14 @@ function getGroups(form){
 
     var $inputs =  $form.find('div.attribute').find('input[type="checkbox"],input[type="radio"]');
         $inputs.on('change',function(){
-            $container = $(this).parents('div.attribute');
+          let  $container = $(this).parents('div.attribute');
             $container.find('.btn-opt-cancel').show();
         })
         
     //  clear options ----------------
 
     $('.btn-opt-cancel').on('click',function(){
-        $container = $(this).parents('div.attribute');
+        let $container = $(this).parents('div.attribute');
         $container.find('input[type="checkbox"],input[type="radio"]').each(function(){
             $(this).prop("checked" ,false)
             $(this).valid();

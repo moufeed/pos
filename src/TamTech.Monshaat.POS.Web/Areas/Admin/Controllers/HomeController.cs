@@ -45,7 +45,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         public HomeController(ITelemetryService telemetryClientService,
             SettingsHelpers settingsHelpers,
              IUploadManagerService uploadManager,
-             IStringLocalizer<AdminBaseController> localizer,
+             IStringLocalizer<BaseController> localizer,
              ICCUServices contentServices,
              IContactService contactService,
              IStatisticsService statisticsService)

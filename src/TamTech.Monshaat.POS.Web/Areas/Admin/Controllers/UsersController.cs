@@ -29,14 +29,14 @@ namespace TamTechSDK.Web.Controllers.Admin
         #region Props 
         IUsersManagerService _IdentityService;
         IRolesService _rolesService;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
         #endregion
 
         #region Ctors
         public UsersController(ITelemetryService telemetryClientService,
                                IUsersManagerService identityService,
                                 IRolesService rolesService,
-                                IStringLocalizer<AdminBaseController> localizer)
+                                IStringLocalizer<BaseController> localizer)
             : base(telemetryClientService, localizer)
         {
 

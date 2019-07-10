@@ -21,11 +21,11 @@ namespace TamTechSDK.Web.Controllers.Admin
     public abstract class BaseAttributesController : AdminBaseController
     {
         public readonly IAttributeService _attributeService;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
 
 
         public BaseAttributesController(ITelemetryService telemetryClientService,
-            IStringLocalizer<AdminBaseController> localizer,
+            IStringLocalizer<BaseController> localizer,
              IAttributeService attributeService)
             : base(telemetryClientService, localizer)
         {

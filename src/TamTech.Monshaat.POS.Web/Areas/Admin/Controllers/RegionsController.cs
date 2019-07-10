@@ -21,10 +21,10 @@ namespace TamTechSDK.Web.Controllers.Admin
     public class RegionsController : AdminBaseController
     {
         private readonly IContactRegionService _regionsServices;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
 
         public RegionsController(ITelemetryService telemetryClientService,
-            IStringLocalizer<AdminBaseController> localizer,
+            IStringLocalizer<BaseController> localizer,
             IContactRegionService regionsServices
             ) : base(telemetryClientService, localizer)
         {

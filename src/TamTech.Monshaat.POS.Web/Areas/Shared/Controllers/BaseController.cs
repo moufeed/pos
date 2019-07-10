@@ -13,20 +13,27 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-
+using Microsoft.Extensions.Localization;
 namespace TamTechSDK.Web.Controllers
 {
 
     public class BaseController : Controller
     {
         #region Props 
-      //  public readonly ITelemetryClientService _telemetryClientService;
+       
+        private readonly IStringLocalizer<BaseController> _localizer;
+
+        private const bool _disableSuccessMode = false;
+        private const string _successMsg = "The process has successfully.";
+        private const string _errorMsg = "General Error!!";
+        private const string _expMsg = "There was an error executing the process!";
         #endregion
 
         #region Ctors
-        public BaseController(ITelemetryService telemetryClientService)
+        public BaseController(ITelemetryService telemetryClientService , IStringLocalizer<BaseController> localizer)
         {
-         //   _telemetryClientService = telemetryClientService;
+            //   _telemetryClientService = telemetryClientService;
+            _localizer = localizer;
         }
         #endregion 
 
@@ -129,6 +136,108 @@ namespace TamTechSDK.Web.Controllers
         }
         #endregion
 
+
+        public void AddErrorModel(string key = "Error", string msg = "General Error!!")
+        {
+            ModelState.AddModelError(key, msg);
+        }
+
+
+        
+        public dynamic SuccessModel { get { return TempData["SuccessModel"]; } set { TempData["SuccessModel"] = value; } }
+
+        public void HandelResult(dynamic result,
+                                               bool disableSuccessMode = _disableSuccessMode,
+                                               string successMsg = _successMsg,
+                                               string errorMsg = _errorMsg,
+                                               string expMsg = _expMsg)
+        {
+            ModelState.Clear();
+            //ViewData["MessageInfoState"] = 
+            ViewData["SuccessResultMode"] = false;
+            ViewData["ErrorResultMode"] = false;
+            ViewData["ExpResultMode"] = false;
+            ViewData["WarningResultMode"] = false;
+            ViewData["InfoResultMode"] = false;
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    {
+                        SuccessModel = successMsg;
+                        ModelState.Clear();
+                        ViewData["SuccessResultMode"] = !disableSuccessMode;
+                        break;
+                    }
+                case HttpStatusCode.BadRequest:
+                    {
+                        if (result.Messages != null)
+                        {
+                            foreach (var item in result.Messages)
+                            {
+                                foreach (var msg in item.Value)
+                                {
+                                    AddErrorModel(item.Key, msg);
+                                }
+                            }
+                        }
+                        else AddErrorModel();
+                        ViewData["ErrorResultMode"] = true;
+                        break;
+                    }
+                case HttpStatusCode.InternalServerError:
+                    {
+                        AddErrorModel("Internal_Server_Error", _localizer["Internal_Server_Error_message"]); //result.Exception.Message
+                        ViewData["ExpResultMode"] = true;
+                        break;
+                    }
+                case HttpStatusCode.Unauthorized:
+                    {
+                        AddErrorModel("Unauthorized" , _localizer["Unauthorized_msg"]);
+                        ViewData["ErrorResultMode"] = true;
+                        break;
+                    }
+                case HttpStatusCode.NotFound:
+                    {
+                        AddErrorModel("not_found" , _localizer["not_found_msg"]);
+                        ViewData["ErrorResultMode"] = true;
+                        break;
+                    }
+                case HttpStatusCode.Created:
+                    {
+                        if (successMsg == _successMsg)
+                            SuccessModel = "The item creation was successfully.";
+                        else
+                            SuccessModel = _localizer[successMsg];
+                        ViewData["SuccessResultMode"] = true;
+                        ModelState.Clear();
+                        break;
+                    }
+                case HttpStatusCode.NotModified:
+                    {
+                        SuccessModel = "Not Modified.";
+                        ViewData["WarningResultMode"] = true;
+                        ModelState.Clear();
+                        break;
+                    }
+
+                case HttpStatusCode.NoContent:
+                    {
+                        SuccessModel = "No Content.";
+                        ViewData["InfoResultMode"] = true;
+                        ModelState.Clear();
+                        break;
+                    }
+                default:
+                    {
+                        AddErrorModel(result.StatusCode.ToString(), result.StatusCode.ToString());
+                        ViewData["WarningResultMode"] = true;
+                        break;
+                    }
+
+            }
+
+        }
 
         #region Filter Methods
         public SortingModel CreateSortingModel(string sortKey)

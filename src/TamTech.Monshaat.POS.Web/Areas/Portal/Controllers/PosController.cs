@@ -41,7 +41,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IPOSAttributeService _attributeService;
         private readonly IPOSService _posservice;
         private readonly IUploadManagerService _uploadManager;
-        private IStringLocalizer<PublicBaseController> _localizer;
+        private IStringLocalizer<BaseController> _localizer;
         private readonly SettingsHelpers _settingsHelpers;
         #endregion
 
@@ -53,8 +53,8 @@ namespace TamTechSDK.Web.Controllers.Portal
             IPOSAttributeService attributeService,
             IPOSService posservice,
             IUploadManagerService uploadManager,
-            IStringLocalizer<PublicBaseController> localizer,
-            SettingsHelpers settingsHelpers) : base(telemetryClientService)
+            IStringLocalizer<BaseController> localizer,
+            SettingsHelpers settingsHelpers) : base(telemetryClientService, localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;
@@ -177,7 +177,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             int UpCount = 0;
             try
             {
-                if (!ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     CreatePosModel _CreateModel = model.MapToCreateModelWithoutAttachments();
 
@@ -237,15 +237,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                     }
                     else
                     {
-                        if (sendRequest.Messages.Count > 0)
-                        {
-                            AddModelStateError(sendRequest.Messages);
-                            ViewBag.UploadedFiles = string.Join(";;", _UploadedFiles);
-                            ViewBag.UploadedCount = UpCount;
-                            TryValidateModel(model);
-                            await InitAction(model);
-                            return View("PosForm", model);
-                        }
+                        HandelResult(sendRequest);
+                        ViewBag.UploadedFiles = string.Join(";;", _UploadedFiles);
+                        ViewBag.UploadedCount = UpCount;
+                        TryValidateModel(model);
                     }
                 }
             }
@@ -474,5 +469,3 @@ namespace TamTechSDK.Web.Controllers.Portal
 
     }
 }
-
- 

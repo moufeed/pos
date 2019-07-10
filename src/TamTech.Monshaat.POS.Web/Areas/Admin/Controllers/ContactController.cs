@@ -46,12 +46,12 @@ namespace TamTechSDK.Web.Controllers.Admin
         IContactService _contactService;
         IContactTypeService _typeService;
         IContactUsStatusService _statusService;
-        IStringLocalizer<AdminBaseController> _localizer;
+        IStringLocalizer<BaseController> _localizer;
         public ContactController(
             IUsersManagerService IdentityService,
             IEmailSenderService emailService,
             ITelemetryService telemetryClientService,
-            IStringLocalizer<AdminBaseController> localizer,
+            IStringLocalizer<BaseController> localizer,
             IContactService contactService,
             IContactTypeService typeService,
             IContactUsStatusService statusService
@@ -155,7 +155,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                         else
                         {
                             var remove = await _contactService.RemoveReplayAsync(model.Id);
-                            ModelState.AddModelError(_localizer["send_error"], _localizer["try_again_later"]);
+                            ModelState.AddModelError("send_error", _localizer["try_again_later"]);
                             return ReturnJsonErrorResult(ModelState, model);
                         }
                     }

@@ -27,6 +27,7 @@ const defaultLocalization ={
     "email_reply":"an email  with your reply has been sent",
     "StatusId" : "Status",
     "processed_successfully" :"Your request has been processed successfully",
+    "send_error" :"Send error",
 // AR
     "Slug_ar" : "الاسم اللطيف",
     "Title_ar" :"العنوان",
@@ -41,28 +42,7 @@ const defaultLocalization ={
     "MainImage_en" :"Main image",
     "VideoUrl_en" :"Video Url",
     "Content_en" :"Content", 
-    "Image_en" :"Main image",
-//FR  
-    "Slug_fr" :"Slug",
-    "Title_fr" :"Title",
-    "MainImage_fr" :"Main image",
-    "VideoUrl_fr" :"Video Url",
-    "Content_fr" :"Content ",
-    "Image_fr" :"Main image",
-//TR
-    "Slug_tr" :"Slug",
-    "Title_tr" :"Başlık",
-    "MainImage_tr" :"Ana Resim",
-    "VideoUrl_tr" :"Video linki",
-    "Content_tr" :"İçerik",
-    "Image_tr" :"Ana Resim",
-//DE
-    "Slug_de" :"Slug",
-    "Title_de" :"Title",
-    "MainImage_de" :"Main image",
-    "VideoUrl_de" :"Video Url",
-    "Content_de" :"Content ",
-    "Image_de" :"Main image",
+    "Image_en" :"Main image"
 }
 
 window.localization = $.extend({}, defaultLocalization ,window.customLocalization || {}); 

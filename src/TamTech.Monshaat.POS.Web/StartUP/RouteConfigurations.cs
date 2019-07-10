@@ -57,7 +57,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                                              constraints: new { culture = CultureConstants.Constraint }
                                 );
 
-
+                        /*
                         mvcRoutes.MapRoute(
                             name: "CreatePOS",
                                            template: "{culture}/{area}/{controller}/pos/create",
@@ -85,7 +85,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                                );
 
 
-
+    */
                         mvcRoutes.MapRoute(
                                             name: "default",
                                             template: "{culture}/{area}/{controller}/{action}/{*slug}",

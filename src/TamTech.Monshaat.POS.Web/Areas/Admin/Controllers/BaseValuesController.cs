@@ -24,9 +24,9 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         public readonly IValueService _valuesServices;
         public readonly IAttributeService _attributesServices;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
 
-        public BaseValuesController(ITelemetryService telemetryClientService, IStringLocalizer<AdminBaseController> localizer,
+        public BaseValuesController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer,
             IValueService valuesServices, IAttributeService attributesServices) : base(telemetryClientService, localizer)
         {
             _valuesServices = valuesServices;

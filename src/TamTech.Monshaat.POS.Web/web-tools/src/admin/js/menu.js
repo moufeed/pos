@@ -75,7 +75,7 @@ $(document).on('change', '.toggle_visibility', function (e) {
     .done((response) => {
         if (!response.success) {
             if (response.errors.length > 0) {
-                txt = MakeErrorsMsg(response.errors);
+            let txt = MakeErrorsMsg(response.errors);
                 $notification.error("", txt, 3500, "fa fa-exclamation-circle");
             }else{
                 $notification.error(window.localization.error, window.localization.something_wrong, 3500, "fa fa-exclamation-circle");
@@ -127,7 +127,7 @@ $(document).on('click','.delete-menuitem' ,function(e){
                }else{ 
                 var errors = data.errors;
                 if (errors.length > 0) {
-                    txt = MakeErrorsMsg(errors);
+                let txt = MakeErrorsMsg(errors);
                     $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                 }
                }
@@ -237,7 +237,7 @@ const SaveItem = ($this)=> {
             $input.val(tmpVal);
             
             if (errors.length > 0) {
-                txt = MakeErrorsMsg(errors);
+            let txt = MakeErrorsMsg(errors);
                 $notification.error("", txt , 3500, "fa fa-exclamation-circle");
             }
         } 
@@ -335,7 +335,7 @@ $(document).on("click", ".delete__menu", function (event) {
                     } else {
                         var errors = data.errors;
                         if (errors.length > 0) {
-                            txt = MakeErrorsMsg(errors);
+                        let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                         }
                     }

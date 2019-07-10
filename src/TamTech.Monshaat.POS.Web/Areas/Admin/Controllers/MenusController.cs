@@ -25,14 +25,14 @@ namespace TamTechSDK.Web.Controllers.Admin
         #region Props 
         public readonly IMenusServices _MenusServices;
         private readonly SettingsHelpers _settingsHelpers;
-        private readonly IStringLocalizer<AdminBaseController> _localizer;
+        private readonly IStringLocalizer<BaseController> _localizer;
         private int _MenuMaxLevels { get; set; } = 0;
         #endregion
 
 
         #region Ctors
         public MenusController(ITelemetryService telemetryClientService, IMenusServices MenusServices,
-            IStringLocalizer<AdminBaseController> localizer, SettingsHelpers settingsHelpers)
+            IStringLocalizer<BaseController> localizer, SettingsHelpers settingsHelpers)
             : base(telemetryClientService, localizer)
         {
             _MenusServices = MenusServices;

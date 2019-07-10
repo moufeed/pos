@@ -37,7 +37,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IEmailSenderService _emailSender;
         private readonly ISlidersServices _sliderService;
         private readonly IUploadManagerService _uploadManager;
-        private IStringLocalizer<PublicBaseController> _localizer;
+        private IStringLocalizer<BaseController> _localizer;
         private readonly IPOSSectorServices _sectorService;
         private readonly IContactService _contactService;
         private readonly IContactTypeService _typeService;
@@ -49,13 +49,13 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     IPageService pageService,
                                     ISlidersServices slidersServices,
                                     IUploadManagerService uploadManager,
-                                    IStringLocalizer<PublicBaseController> localizer,
+                                    IStringLocalizer<BaseController> localizer,
                                     IPOSSectorServices sectorService,
                                     IContactService contactService,
                                     IContactTypeService typeService,
                                     IDirectoryServices serchservices,
                                     IContactRegionService regionsServices
-                                    ) : base(telemetryClientService)
+                                    ) : base(telemetryClientService ,localizer)
         {
             _pageService = pageService;
             _sliderService = slidersServices;
@@ -238,7 +238,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
                     var sendRequest = await _contactService.CreateAsync(_CreateModel);
-
+                    
                     if (sendRequest.Success)
                     {
                         TempData["ContactSuccess"] = true;
@@ -246,13 +246,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                     }
                     else
                     {
-                        if (sendRequest.Messages.Count > 0)
-                        {
-                            AddModelStateError(sendRequest.Messages);
-                            ViewBag.UploadedFiles = _UploadedFiles;
-                            TryValidateModel(model);
-                            return View(model);
-                        }
+                        HandelResult(sendRequest);
+                        ViewBag.UploadedFiles = _UploadedFiles;
+                        TryValidateModel(model);
+                         
                     }
                 }
             }

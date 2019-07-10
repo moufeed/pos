@@ -83,7 +83,7 @@ $(document).ready(() => {
             } else {
                 var errors = data.errors;
                 //if (errors.length > 0) {
-                //    txt = MakeErrorsMsg(errors);
+                //let txt = MakeErrorsMsg(errors);
                 //    $notification.error("", txt, 3500, "fa fa-exclamation-circle");
                 //}
             }
@@ -139,9 +139,3 @@ $(document).ready(() => {
 
    
 }); //
-
-
- 
-
-
-

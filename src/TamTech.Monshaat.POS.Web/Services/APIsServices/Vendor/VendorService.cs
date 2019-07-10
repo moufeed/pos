@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.Models.Shared;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
@@ -62,7 +63,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor
 
         public async Task<IRequestProviderResult<GeneratedSlugModel>> VerifyVendorSlugUniqueByNameAsync(string name, Guid? id = null)
         {
-            return await _requestProvider.GetAsync<GeneratedSlugModel, List<object>>(_apiSettings.VerifyVendorSlugUniqueByNameEndpoint, new List<object> { name, id }, PassParamsBy.Route);
+            return await _requestProvider.GetAsync<GeneratedSlugModel, VerifyNameModel<Guid?>>(_apiSettings.VerifyVendorSlugUniqueByNameEndpoint, new VerifyNameModel<Guid?>() { Name = name, Id = id }, PassParamsBy.Body);
         }
     }
 }

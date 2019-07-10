@@ -41,11 +41,12 @@ $(document).ready(function(){
                              $('#published').html('<span class="c-green"><i class="fa fa-check" aria-hidden="true"></i>'+window.localization.active+'</span>');
                          }else{
                             $('#published').html('<span class="c-red"><i class="fa fa-times" aria-hidden="true"></i>'+window.localization.inactive+'</span>');
-                         }   
+                         }
+                         refreshHistory($(form).data('history'));    
                     }else{
                         var errors = data.errors;
                         if (errors.length > 0) {
-                            txt = MakeErrorsMsg(errors);
+                        let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                         }
                     }
@@ -87,7 +88,7 @@ $('.toggle__Activate').on('change',function(){
                         $this.prop("checked",!status)
                         var errors = res.errors;
                         if (errors.length > 0) {
-                            txt = MakeErrorsMsg(errors);
+                        let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");
                         }
                     }
