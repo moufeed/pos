@@ -42,7 +42,13 @@ $(document).ready(function(){
                          }else{
                             $('#published').html('<span class="c-red"><i class="fa fa-times" aria-hidden="true"></i>'+window.localization.inactive+'</span>');
                          }
-                         refreshHistory($(form).data('history'));    
+                         refreshHistory($(form).data('history'));   
+                         setTimeout(()=>{
+                            $('a[href="#history"]').click();
+                            $('#history').addClass('active in');
+                            $('a[href="#form"]').parent().remove();
+                            $('#form').remove();  
+                        },500)  
                     }else{
                         var errors = data.errors;
                         if (errors.length > 0) {

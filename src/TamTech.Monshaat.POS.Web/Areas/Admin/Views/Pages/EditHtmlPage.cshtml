@@ -144,7 +144,11 @@
                             <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
                                 @if (Model.MainImage != null)
                                 {
-                                    <img src="@Model.MainImage" style="max-width:300px" data-seo-image="@Model.MainImage" class="img-thumbnail m-b3">
+                                    string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(Model.MainImage), type = FileTypesEnum.PageMainImage });
+                                    
+                                    <img src="@url" style="max-width:300px" data-seo-image="@Model.MainImage" class="img-thumbnail m-b3">
+
+
                                     <input type="hidden" asp-for="MainImage" />
                                 }
                                 <label class="form-control clearfix uploadfile">

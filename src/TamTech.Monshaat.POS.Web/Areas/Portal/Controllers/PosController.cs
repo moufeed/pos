@@ -202,7 +202,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                         var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.POSImage);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
-                        foreach (var item in uploadResult.URLs)
+                        foreach (var item in uploadResult.Data.URLs)
                         {
 
                             if (item.Success)
@@ -319,25 +319,29 @@ namespace TamTechSDK.Web.Controllers.Portal
                     {
                         int index = 0;
                         List<IFormFile> _files = model.Attachments;
-                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.General);
+                        var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.POSImage);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
-                        foreach (var item in uploadResult.URLs)
+                        if (uploadResult.Success)
                         {
-
-                            if (item.Success)
+                            foreach (var item in uploadResult.Data.URLs)
                             {
-                                Attachments.Add(MakeAttachment(item.URL));
-                                _UploadedFiles.Add(item.URL);
-                                UpCount++;
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
-                            }
 
-                            index++;
+                                if (item.Success)
+                                {
+                                    Attachments.Add(MakeAttachment(item.URL));
+                                    _UploadedFiles.Add(item.URL);
+                                    UpCount++;
+                                }
+                                else
+                                {
+                                    ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
+                                }
+
+                                index++;
+                            }
                         }
+                        HandelResult(uploadResult);
 
                         if (!TryValidateModel(model))
                         {
@@ -441,7 +445,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 if (!string.IsNullOrWhiteSpace(img))
                 {
-                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.General } };
+                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.POSImage } };
                     IRequestProviderResult<DeleteFilesModelResult> uploadResult =
                        await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     if (uploadResult.Success)

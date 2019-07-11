@@ -17,8 +17,10 @@
                                         <if include-if="item.Images != null && item.Images.Count > 0">
                                             @foreach (var img in item.Images)
                                             {
+                                                 string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(img), type = FileTypesEnum.POSImage });
+
                                                 <a asp-action="pos" asp-route-slug="@item.Slug">
-                                                    <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img }) " class="img-fluid" alt="@item.Name">
+                                                    <img src="@_url " class="img-fluid" alt="@item.Name">
                                                 </a>
                                             }
                                         </if>

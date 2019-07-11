@@ -56,7 +56,11 @@
                                 <tr id="tr-@item.Id">
                                     <td class="text-center">
                                         <div class="tabel-img-circle">
-                                            <img src="@(!string.IsNullOrEmpty(item.Icon) ? item.Icon : Url.Content("~/Admin/img/noimage.jpg")) " alt="" width="75" />
+                                            @{ 
+                                                string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(item.Icon), type = FileTypesEnum.SectorIcon });
+                                                string _icon = !string.IsNullOrEmpty(item.Icon) ? _url : Url.Content("~/Admin/img/noimage.jpg");
+                                            }
+                                            <img src="@_icon" alt="" width="75" />
                                         </div>
                                     </td>
                                     <td style="min-width:150px">

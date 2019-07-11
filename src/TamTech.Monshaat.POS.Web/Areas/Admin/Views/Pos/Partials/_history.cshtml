@@ -4,31 +4,21 @@
     <table class="table table-middle table-striped posts-table" id="sectorsTable">
         <thead>
             <tr>
+                <th width="200">@Localizer["l_date"]</th>
                 <th>@Localizer["previous_status"]</th>
                 <th>@Localizer["action_name"]</th>
                 <th>@Localizer["current_status_name"]</th>
-                <th width="150">@Localizer["l_date"]</th>
             </tr>
         </thead>
         <tbody>
             @foreach (POSStatusHistoryDto item in Model)
             {
-                <tr>
-                    <td>
-                        <p class="p-y-2 m-0">
-                            @item.PreviousStatusName
-                        </p>
-
-
-                    </td>
-                    <td>
-                        @item.ActionName<br>
-
-                    </td>
-                    <td>@item.CurrentStatusName</td>
-                    <td dir="ltr" class="text-center">@item.ProcessDate.ToString("yyyy/MM/dd -  hh:mm tt") </td>
-
-                </tr>
+            <tr>
+                <td dir="ltr" class="text-center">@item.ProcessDate.ToString("yyyy/MM/dd -  hh:mm tt") </td>
+                <td><span> @item.PreviousStatusName </span> </td>
+                <td><span>@item.ActionName</span> </td>
+                <td><span>@item.CurrentStatusName</span></td>
+            </tr>
             }
         </tbody>
     </table>

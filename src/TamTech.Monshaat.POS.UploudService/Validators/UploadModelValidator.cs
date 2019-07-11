@@ -50,27 +50,23 @@ namespace TamTech.Monshaat.POS.UploadService.Validators
                 }
 
                 var fileExtension = Path.GetExtension(file.FileName).ToLower();
-
-                if (!settings.GetAllowedExtensions().Contains(fileExtension))
+                //.jpg;.png;.jpeg,.gif;.jp2;.j2k;.jpf;.jpx;.jpm;.mj2; .jpe;.jif;.jfif;.jfi
+                var ssssss = settings.GetAllowedExtensions();
+                if (!ssssss.Contains(fileExtension))
                 {
                     context.AddFailure($"{file.FileName} نوع الملف غير مسموح تحميله");
                 }
-                else
-                {
-                    string contentType;
-                    var mapping = new FileExtensionContentTypeProvider().Mappings.TryGetValue(".jpg", out contentType);
-                    if(!mapping)
-                    {
-                        context.AddFailure($"{file.FileName} نوع محتوى الملف غير مسموح تحميله");
-                    }
+                //else
+                //{
+                //    string contentType;
+                //    var mapping = new FileExtensionContentTypeProvider().Mappings.TryGetValue(".jpg", out contentType);
+                //    if(!mapping)
+                //    {
+                //        context.AddFailure($"{file.FileName} نوع محتوى الملف غير مسموح تحميله");
+                //    }
 
-                }
-            //  var contenttype =    MimeTypes.ScanFileForMimeType(file.Stream);
-
-                if (!settings.GetAllowedExtensions().Contains(fileExtension))
-                {
-                    context.AddFailure($"{file.FileName} is not allowed file type.");
-                }
+                //}
+        
                 return context;
             }
         }

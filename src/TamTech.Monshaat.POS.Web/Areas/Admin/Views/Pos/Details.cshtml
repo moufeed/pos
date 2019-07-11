@@ -139,8 +139,9 @@
 
                         @foreach (var item in Model.Images)
                         {
+                           
                             <div class="col-sm-6 col-md-2">
-                                <img src="@item" alt="@Model.Name" class="img-thumbnail ">
+                                <img src="@Url.FileUrl(CommonConstants.ImgAction, new { img = item, type = FileTypesEnum.POSImage })" alt="@Model.Name" class="img-thumbnail ">
                             </div>
                         }
                     </div>

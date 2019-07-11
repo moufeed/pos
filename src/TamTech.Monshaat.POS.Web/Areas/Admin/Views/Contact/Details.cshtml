@@ -102,48 +102,54 @@
                             <div class="row">
                                 @foreach (var attch in Model.Attachments)
                                 {
-                                    <div class="col-md-2 col-sm-3 col-xs-6">
-                                        @if (Regex.IsMatch(attch, "(.jpg|.png)$"))
-                                        {
-                                            <div class="attachment-box">
-                                                <div class="att-img">
-                                                    <img src="@attch" alt="image" />
-                                                </div>
-                                                <div>
-                                                    <a data-toggle="tooltip"
-                                                       data-placement="top"
-                                                       title="@Localizer["download"]"
-                                                       href="@attch" class="btn btn-link"
-                                                       download target="_blank"><i class="fa fa-download"></i></a>
-
-                                                    <a data-toggle="tooltip"
-                                                       data-placement="top"
-                                                       title="@Localizer["view"]"
-                                                       href="@attch" class="btn btn-link"
-                                                       target="_blank"><i class="fa fa-eye"></i></a>
-
-                                                </div>
+                                <div class="col-md-2 col-sm-3 col-xs-6">
+                                    @if (Regex.IsMatch(attch, "(.jpg|.png)$"))
+                                    {
+                                        <div class="attachment-box">
+                                            <div class="att-img">
+                                                @{
+                                                    string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = attch, type = FileTypesEnum.ContactUsFile });
+                                                }
+                                                <img src="@_url" alt="image" />
                                             </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="attachment-box">
-                                                <div class="att-file">
-                                                    <span>
-                                                        <i class="fa fa-file @(System.IO.Path.GetExtension(attch).Replace(".",""))"></i>
-                                                        <small class="text-capitalize">@(System.IO.Path.GetExtension(attch).Replace(".", ""))</small>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <a data-toggle="tooltip"
-                                                       data-placement="top"
-                                                       title="@Localizer["download"]"
-                                                       href="@attch" class="btn btn-link"
-                                                       download target="_blank"><i class="fa fa-download"></i></a>
-                                                </div>
+                                            <div>
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["download"]"
+                                                   href="@attch" class="btn btn-link"
+                                                   download target="_blank"><i class="fa fa-download"></i></a>
+
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["view"]"
+                                                   href="@attch" class="btn btn-link"
+                                                   target="_blank"><i class="fa fa-eye"></i></a>
+
                                             </div>
-                                        }
-                                    </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                       
+                                            string _urlFile = Url.FileUrl(CommonConstants.ImgAction, new { img = attch, type = FileTypesEnum.ContactUsFile });
+                                       
+                                        <div class="attachment-box">
+                                            <div class="att-file">
+                                                <span>
+                                                    <i class="fa fa-file @(System.IO.Path.GetExtension(attch).Replace(".",""))"></i>
+                                                    <small class="text-capitalize">@(System.IO.Path.GetExtension(attch).Replace(".", ""))</small>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <a data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="@Localizer["download"]"
+                                                   href="@_urlFile" class="btn btn-link"
+                                                   download target="_blank"><i class="fa fa-download"></i></a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                                 }
                             </div>
 

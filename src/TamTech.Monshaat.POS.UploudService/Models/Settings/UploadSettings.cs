@@ -23,7 +23,7 @@ namespace TamTech.Monshaat.POS.UploadService.Settings
 
         public List<string> GetAllowedExtensions()
         {
-            return AllowedExtensions.Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries).Select(s => s.ToLowerInvariant()).ToList();
+            return AllowedExtensions.Split(new char[] { ',' }, System.StringSplitOptions.RemoveEmptyEntries).Select(s => s.ToLowerInvariant()).ToList();
         }
     }
 }

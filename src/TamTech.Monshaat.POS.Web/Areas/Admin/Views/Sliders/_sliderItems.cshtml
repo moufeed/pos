@@ -33,7 +33,8 @@
                                 }
                                 else
                                 {
-                                    <img src="@item.MainImage" alt="@item.Title" class="img-responsive">
+                                     string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(item.MainImage), type = FileTypesEnum.SliderItemMainImage });
+                                    <img src="@url" alt="@item.Title" class="img-responsive">
                                 }
                             </figure>
 

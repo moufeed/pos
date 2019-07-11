@@ -49,8 +49,8 @@
                                     <div class="tabel-img-circle">
                                         @if (!string.IsNullOrEmpty(item.MainImage))
                                         {
-
-                                            <img src="@item.MainImage" alt="" width="60" />
+                                         string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(item.MainImage), type = FileTypesEnum.PageMainImage });
+                                            <img src="@url" alt="" width="60" />
                                         }
                                         else
                                         {

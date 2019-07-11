@@ -10,9 +10,9 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
 {
     public interface IUploadManagerService 
     {
-        Task<UploadModelResult> UploadListFilesAsync(List<UploadFileModel> files);
+        Task<IRequestProviderResult<UploadModelResult>> UploadListFilesAsync(List<UploadFileModel> files);
 
-        Task<UploadedFileURL> UploadFileAsync(UploadFileInfo file, FileTypesEnum type, object id =  null);
+        Task<IRequestProviderResult<UploadedFileURL>> UploadFileAsync(UploadFileInfo file, FileTypesEnum type, object id =  null);
 
         Task<IRequestProviderResult<DeleteFilesModelResult>> DeleteFilesAsync(Dictionary<string, FileTypesEnum> urlImgs);
 

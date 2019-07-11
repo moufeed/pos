@@ -93,10 +93,10 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (model.NewLogo != null)
                     {
                         UploadFileInfo _fileInfo = await GenerateFileInfo(model.NewLogo);
-                        UploadedFileURL _upload_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.General);
+                        IRequestProviderResult<UploadedFileURL> _upload_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.General);
                         if (_upload_result.Success)
                         {
-                            model.Logo = _upload_result.URL;
+                            model.Logo = _upload_result.Data.URL;
                             newLogoUploaded = true;
                         }
                         else

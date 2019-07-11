@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,11 +21,10 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        [Required]
+        
         [JsonProperty("mainimage")]
         public string MainImage { get; set; }
 
-        [Required]
         [JsonProperty("url")]
         public string Url { get; set; }
 
@@ -36,5 +36,8 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
+
+        [Required]
+        public IFormFile NewFile { get; set; }
     }
 }

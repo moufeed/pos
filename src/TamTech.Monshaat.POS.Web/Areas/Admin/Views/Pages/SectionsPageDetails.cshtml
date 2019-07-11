@@ -108,7 +108,8 @@
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         @if (Model.MainImage != null)
                         {
-                            <img src="@Model.MainImage" class="img-responsive" />
+                             string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(Model.MainImage), type = FileTypesEnum.PageMainImage });
+                            <img src="@url" class="img-responsive" />
                         }
                     </div>
                 </div>

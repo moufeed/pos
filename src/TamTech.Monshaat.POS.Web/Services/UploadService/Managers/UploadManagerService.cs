@@ -44,7 +44,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
             }
         }
         #endregion
-           public async Task<UploadModelResult> UploadListFilesAsync(List<UploadFileModel> files )
+           public async Task<IRequestProviderResult<UploadModelResult>> UploadListFilesAsync(List<UploadFileModel> files )
         {
             UploadModel uploadModel = new UploadModel { UploadFile = new List<UploadFileInfo>()};
             foreach (var uploadFile in files)
@@ -58,22 +58,32 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
 
             IRequestProviderResult<UploadModelResult> uploadResult = await _uploadService.UploadsFilesAsync(uploadModel);
 
+            IRequestProviderResult<UploadModelResult> result = new RequestProviderResult<UploadModelResult>
+            {
+                Header = uploadResult.Header,
+                JsonHeader = uploadResult.JsonHeader,
+                Messages = uploadResult.Messages,
+                Success = uploadResult.Success,
+                StatusCode = uploadResult.StatusCode,
+                Data = uploadResult.Data
+            };
+
             if (uploadResult.Success)
             {
                 for(int i=0; i< uploadResult.Data.URLs.Count; i++ )
                 {
-                    uploadResult.Data.URLs[i].TypeEnum = GetFileName(uploadResult.Data.URLs[i].Type);
+                    result.Data.URLs[i].TypeEnum = GetFileName(uploadResult.Data.URLs[i].Type);
                 }
-                return uploadResult.Data;
+                
             }
 
-            return null;
+            return result;
 
         }
 
 
 
-        public async Task<UploadedFileURL> UploadFileAsync(UploadFileInfo file, FileTypesEnum type, object id)
+        public async Task<IRequestProviderResult<UploadedFileURL>> UploadFileAsync(UploadFileInfo file, FileTypesEnum type, object id)
         {
             file.type = GetType(type.ToString());
             file.FileNamePrefix = $"{type}_{id ?? ""}_";
@@ -84,15 +94,23 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
 
             IRequestProviderResult<UploadModelResult> uploadResult = await _uploadService.UploadsFilesAsync(UploadModel);
 
+            IRequestProviderResult<UploadedFileURL> result = new RequestProviderResult<UploadedFileURL>
+            {
+                Header = uploadResult.Header,
+                JsonHeader = uploadResult.JsonHeader,
+                Messages = uploadResult.Messages,
+                StatusCode = uploadResult.StatusCode,
+                Success = uploadResult.Success,
+            };
             if (uploadResult.Success)
             {
                 foreach (UploadedFileURL fileResult in uploadResult.Data.URLs)
                 {
-                  //  fileResult.Success = true;
-                    return fileResult;
+                     result.Data = fileResult;
+                 
                 }
-            } 
-            return null; 
+            }
+            return result;
         }
 
 
@@ -165,9 +183,9 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
         SliderItemMainImage,  
         SectorIcon,
         SectorMainImage,
-    ContactUsFile,
-    VendorFile,
-    POSImage,
-
+        ContactUsFile,
+        VendorFile,
+        POSImage,
+        EditorImages
     }
 }

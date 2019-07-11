@@ -79,7 +79,7 @@
                             }
 
                             <label class="form-control clearfix uploadfile">
-                                <input type="file" name="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*"
+                                <input type="file" asp-for="NewFile" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*"
                                        data-rule-filesize="800" required />
                                 <span class="url">@Localizer["choose_file"]</span>
                                 <span class="file-btn"><i class="fa fa-search"></i>@Localizer["Browse"]</span>

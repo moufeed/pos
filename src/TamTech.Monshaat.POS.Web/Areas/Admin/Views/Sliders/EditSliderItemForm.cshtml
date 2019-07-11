@@ -80,7 +80,8 @@
 
                             @if (!string.IsNullOrEmpty(Model.MainImage))
                             {
-                                <img src="@Model.MainImage" style="max-width:300px" class="img-thumbnail m-b3">
+                                 string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(Model.MainImage), type = FileTypesEnum.SliderItemMainImage });
+                                <img src="@url" style="max-width:300px" class="img-thumbnail m-b3">
                                 <input type="hidden" name="MainImage" value="@Model.MainImage" required />
                             }
 

@@ -94,9 +94,12 @@
                     <div class="owl-carousel pos-images" data-singleitem="true" data-dots="true" data-rtl="true">
                         <if include-if="Model.Images != null && Model.Images.Count > 0">
                             @foreach (var img in Model.Images)
-                            {
-                                @*<img src="@img" class="img-fluid" alt="@Model.Name">*@
-                                <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="img-fluid" alt="@Model.Name"/>
+                            { 
+
+                               
+                                    string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(img), type = FileTypesEnum.POSImage });
+                              
+                                <img src="@_url" class="img-fluid" alt="@Model.Name"/>
                             }
                         </if>
                         <if exclude-if="Model.Images != null && Model.Images.Count > 0">

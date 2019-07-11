@@ -311,11 +311,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
 
                         if (upload_result.Success)
                         {
-                            model.MainImage = upload_result.URL;
+                            model.MainImage = upload_result.Data.URL;
                             newImageUploaded = true;
                         }
                     }
@@ -390,11 +390,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
 
                         if (upload_result.Success)
                         {
-                            model.MainImage = upload_result.URL;
+                            model.MainImage = upload_result.Data.URL;
                             newImageUploaded = true;
                         }
                     }
@@ -488,11 +488,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
 
                         if (upload_result.Success)
                         {
-                            model.MainImage = upload_result.URL;
+                            model.MainImage = upload_result.Data.URL;
                             newImageUploaded = true;
                         }
                     }
@@ -563,11 +563,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.PageMainImage);
 
                         if (upload_result.Success)
                         {
-                            model.MainImage = upload_result.URL;
+                            model.MainImage = upload_result.Data.URL;
                         }
                     }
 

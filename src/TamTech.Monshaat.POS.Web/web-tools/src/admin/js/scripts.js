@@ -555,8 +555,8 @@ const MakeErrorsMsg = (errors)=>{
 
     let txt = "";
     errors.forEach((el)=>{
-       
-        txt += `<strong>${window.localization[el.key]}</strong>`;
+       let title = window.localization[el.key] || window.localization["error"];
+        txt += `<strong>${title}</strong>`;
         let div = "<div>";
         el.value.map((vl)=> div += `${vl}<br/>`)
         div += "</div>";

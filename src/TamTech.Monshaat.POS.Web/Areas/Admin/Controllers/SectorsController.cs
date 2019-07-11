@@ -137,10 +137,10 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (model.NewIcon != null)
                     {
                         UploadFileInfo fileInfo = await GenerateFileInfo(model.NewIcon);
-                        UploadedFileURL upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SectorIcon);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SectorIcon);
                         if (upload_result.Success)
                         {
-                            model.Icon = upload_result.URL;
+                            model.Icon = upload_result.Data.URL;
                             newIconUploaded = true;
                         }
                         else
@@ -152,10 +152,10 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (model.NewMainImage != null)
                     {
                         UploadFileInfo _fileInfo = await GenerateFileInfo(model.NewMainImage);
-                        UploadedFileURL _upload_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.SectorMainImage);
+                        IRequestProviderResult<UploadedFileURL> _upload_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.SectorMainImage);
                         if (_upload_result.Success)
                         {
-                            model.Image = _upload_result.URL;
+                            model.Image = _upload_result.Data.URL;
                             newImageUploaded = true;
                         }
                         else
@@ -245,11 +245,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (model.NewIcon != null)
                     {
                         UploadFileInfo fileInfo = await GenerateFileInfo(model.NewIcon);
-                        UploadedFileURL upload_Icon_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SectorIcon);
+                        IRequestProviderResult<UploadedFileURL> upload_Icon_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SectorIcon);
 
                         if (upload_Icon_result.Success)
                         {
-                            model.Icon = upload_Icon_result.URL;
+                            model.Icon = upload_Icon_result.Data.URL;
                             newIconUploaded = true;
                         }
                         else
@@ -261,11 +261,11 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (model.NewMainImage != null)
                     {
                         UploadFileInfo _fileInfo = await GenerateFileInfo(model.NewMainImage);
-                        UploadedFileURL upload_Icon_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.SectorMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_Icon_result = await _uploadManager.UploadFileAsync(_fileInfo, FileTypesEnum.SectorMainImage);
 
                         if (upload_Icon_result.Success)
                         {
-                            model.Image = upload_Icon_result.URL;
+                            model.Image = upload_Icon_result.Data.URL;
                             newImageUploaded = true;
                         }
 

@@ -79,7 +79,7 @@
                                             <button class="btn btn-link position-absolute delete-image" data-href="@Url.Action("DeleteImage")" data-image="@img" type="button" data-target="#img-@ind">
                                                 <i class="far fa-times-circle"></i>
                                             </button>
-                                            <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img })" class="img-thumbnail" width="150" />
+                                            <img src="@Url.FileUrl(CommonConstants.ImgAction,  new { img =  img ,type = FileTypesEnum.POSImage })" class="img-thumbnail" width="150" />
                                         </span>
                                         ind++;
                                     }
@@ -133,7 +133,10 @@
                                                         <img src="~/Portal/img/icons/sector.png" alt="@item.Name" />
                                                     </if>
                                                     <if exclude-if="string.IsNullOrEmpty(item.Icon)">
-                                                        <img src="@item.Icon" alt="@item.Name" />
+                                                        @{ 
+                                                               string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(item.Icon), type = FileTypesEnum.SectorIcon });
+                                                        }
+                                                        <img src="@_url" alt="@item.Name" />
                                                     </if>
                                                 </span>
                                                 <b class="d-block mt-5">

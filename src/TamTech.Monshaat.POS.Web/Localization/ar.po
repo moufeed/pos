@@ -650,6 +650,10 @@ msgstr "لا توجد بيانات متوفرة"
 msgid  "upload_failed"
 msgstr "<strong>عفواً! </strong>&nbsp;&nbsp;فشِل الرّفع."
 
+
+msgid  "upload_failed_text"
+msgstr "عفواً!  فشِل الرّفع."
+
 msgid "email_has_been_sent"
 msgstr "البريد الإلكترونيّ ذو العنوان <strong>{0}</strong> أُرسل للمستخدم <strong>{1}</strong>بنجاح"
 

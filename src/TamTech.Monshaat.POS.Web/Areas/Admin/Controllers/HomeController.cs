@@ -22,6 +22,9 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
+using TamTech.Monshaat.POS.Web.Core.Helpers;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -151,12 +154,25 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (_files.Count > 0)
                 {
                     var fileInfo = await GenerateFileInfo(_files[0]);
-                    var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.General);
-
+                    IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.EditorImages);
                     if (upload_result.Success)
                     {
-                        return Json(new { upload_result.URL });
+                        var result = new RequestProviderResult<UploadedFileURL>
+                        {
+                            Data = upload_result.Data,
+                            Success = upload_result.Success,
+                            Messages = upload_result.Messages,
+                            StatusCode = upload_result.StatusCode,
+                            Header = upload_result.StatusCode,
+                            JsonHeader = upload_result.JsonHeader
+                        };
+                        string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(upload_result.Data.URL), type = FileTypesEnum.EditorImages });
+                        result.Data.URL = _url;
+                        return Json(result);
                     }
+                   
+
+                    return Json(upload_result);
                 }
             }
             catch (Exception ex)

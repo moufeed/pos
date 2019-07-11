@@ -101,8 +101,11 @@
                     {
                         <div class="col-md-12 col-sm-12 " id="@item.Id">
                             <div class="gi-card">
-                                <a href="@item.MainImage" class="gi-image" data-lightbox="images" data-title="@item.Title">
-                                    <img src="@item.MainImage">
+                                @{ 
+                                      string url = Url.FileUrl(CommonConstants.ImgAction, new { img =  Helpers.GetFileNameFromUrl(item.MainImage), type = FileTypesEnum.SliderItemMainImage });
+                                }
+                                <a href="@url" class="gi-image" data-lightbox="images" data-title="@item.Title">
+                                    <img src="@url">
                                 </a>
                                 <div class="gi-info">
 

@@ -307,24 +307,25 @@ namespace TamTechSDK.Web.Controllers.Admin
             var oldimg = model.MainImage;
             bool newImageUploaded = false;
 
-
-
+            if (ModelState.IsValid)
+            {
             try
             {
                 if (_files.Count > 0)
                 {
                     var fileInfo = await GenerateFileInfo(_files[0]);
-                    var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SliderItemMainImage);
+                    IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SliderItemMainImage);
                     if (upload_result.Success)
                     {
-                        model.MainImage = upload_result.URL;
+                        model.MainImage = upload_result.Data.URL;
                         newImageUploaded = true;
                     }
                     else
                     {
-                        AddErrorModel(nameof(model.MainImage), _localizer["image_uploading_error"]);
+                            HandelResult(upload_result);
+                       // AddErrorModel(nameof(model.MainImage), _localizer["image_uploading_error"]);
                         PrepareCreating();
-                        return View("FormGallery", model);
+                        return View("CreateSliderItemForm", model);
                     }
                 }
 
@@ -361,11 +362,11 @@ namespace TamTechSDK.Web.Controllers.Admin
             catch (Exception ex)
             {
                 TrackException(ex);
-                throw;
+              
             }
 
-
-            return View("CreateSliderItemForm", new SliderItemDto());
+            }
+            return View("CreateSliderItemForm", model);
         }
 
 
@@ -431,15 +432,15 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SliderItemMainImage);
+                        IRequestProviderResult<UploadedFileURL> upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SliderItemMainImage);
                         if (upload_result.Success)
                         {
-                            model.MainImage = upload_result.URL;
+                            model.MainImage = upload_result.Data.URL;
                             newImageUploaded = true;
                         }
                         else
                         {
-                            AddErrorModel(nameof(model.MainImage), _localizer["image_uploading_error"]);
+                            HandelResult(upload_result);
                             PrepareCreating();
                             return View("EditSliderItemForm", model);
                         }

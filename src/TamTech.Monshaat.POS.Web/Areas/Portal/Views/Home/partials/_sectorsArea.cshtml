@@ -22,7 +22,6 @@
                                    data-rtl="true" data-nav="true">
                                 @foreach (SectorDto item in Sectors)
                                 {
-                                    
                                         <a asp-route-slug="@item.Slug" asp-action="index" asp-controller="Directory" title="@item.Name"  data-id="@item.Id" data-slug="@item.Slug"
                                         class="sector-link text-center white-panel d-flex flex-column justify-content-between align-items-center @(ViewBag.ActiveSector == item.Slug ? "active" : "")">
                                             <span>
@@ -32,7 +31,8 @@
                                                 }
                                                 else
                                                 {
-                                                    <img src="@item.Image" alt="@item.Name" class="ignore" />
+                                                    string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(item.Image), type = FileTypesEnum.SectorMainImage });
+                                                    <img src="@_url" alt="@item.Name" class="ignore" />
                                                 }
                                             </span>
                                             <span>
@@ -47,3 +47,4 @@
             </section>
         </if>
     </if>
+

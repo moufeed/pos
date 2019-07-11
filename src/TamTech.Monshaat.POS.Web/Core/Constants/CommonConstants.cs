@@ -7,6 +7,6 @@ namespace TamTech.Monshaat.POS.Web.Core.Constants
 {
     public class CommonConstants
     {
-       public const string ImgAction = TamTech.Monshaat.POS.Web.Areas.Portal.Controllers.FilesController.ImgAction;
+       public const string ImgAction = TamTech.Monshaat.POS.Web.Areas.Shared.Controllers.FilesController.ImgAction;
     }
 }

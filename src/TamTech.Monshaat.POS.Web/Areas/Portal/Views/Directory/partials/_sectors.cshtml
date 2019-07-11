@@ -24,7 +24,8 @@
                                 }
                                 else
                                 {
-                                    <img src="@item.Icon" alt="@item.Name" class="ignore" />
+                                    string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(item.Icon), type = FileTypesEnum.SectorIcon });
+                                    <img src="@_url" alt="@item.Name" class="ignore" />
                                 }
                             </span>
                             <span>

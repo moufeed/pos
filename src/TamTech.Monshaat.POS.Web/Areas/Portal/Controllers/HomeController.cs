@@ -207,7 +207,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                         var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.ContactUsFile);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
-                        foreach (var item in uploadResult.URLs)
+                        foreach (var item in uploadResult.Data.URLs)
                         {
 
                             if (item.Success)

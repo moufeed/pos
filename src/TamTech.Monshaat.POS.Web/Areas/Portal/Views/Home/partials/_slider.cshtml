@@ -18,13 +18,16 @@
                     {
                         @if (string.Equals("_full", slide.UrlTarget))
                         {
-                            <div class="swiper-slide d-flex   align-items-center @slide.Url _full">
-                                <img src="@slide.MainImage" alt="@slide.Title" class="main-img" />
-                                <div class="position-absolute slide-info">
-                                    <h2 class="animate" data-animate="fadeInDown"> @slide.Title </h2>
-                                    <a asp-controller="directory" asp-action="index" class="btn btn-light mt-4 btn-lg animate" data-animate="fadeInUp">@Localizer["pos_directory"]</a>
-                                </div>
-                            </div>
+                    <div class="swiper-slide d-flex   align-items-center @slide.Url _full">
+                        @{
+                            string url = Url.FileUrl(CommonConstants.ImgAction, new { img = slide.MainImage, type = FileTypesEnum.SliderItemMainImage });
+                        }
+                        <img src="@url" alt="@slide.Title" class="main-img" />
+                        <div class="position-absolute slide-info">
+                            <h2 class="animate" data-animate="fadeInDown"> @slide.Title </h2>
+                            <a asp-controller="directory" asp-action="index" class="btn btn-light mt-4 btn-lg animate" data-animate="fadeInUp">@Localizer["pos_directory"]</a>
+                        </div>
+                    </div>
                         }
                         @if (string.Equals("_half", slide.UrlTarget))
                         {
@@ -36,7 +39,10 @@
                                             <a asp-controller="directory" asp-action="index" class="btn btn-light mt-4 btn-lg animate" data-animate="fadeInUp">@Localizer["pos_directory"]</a>
                                         </div>
                                         <div class="col-md-6">
-                                            <img src="@slide.MainImage" alt="@slide.Title" class="half_image" />
+                                            @{
+                                                string url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(slide.MainImage), type = FileTypesEnum.SliderItemMainImage });
+                                            }
+                                            <img src="@url" alt="@slide.Title" class="half_image" />
                                         </div>
 
                                     </div>

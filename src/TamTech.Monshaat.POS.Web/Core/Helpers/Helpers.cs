@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
- 
+using System;
+using System.Linq;
+
 namespace TamTech.Monshaat.POS.Web.Core.Helpers
 {
     public class Helpers
@@ -21,5 +23,16 @@ namespace TamTech.Monshaat.POS.Web.Core.Helpers
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
+
+
+        public static string GetFileNameFromUrl(string URl)
+        {
+            string _url = (URl.Contains("http://") || URl.Contains("https://")) ? URl : $"https://localhost/" + URl;
+            Uri uri = new Uri(_url);
+            var filename = uri.Segments.Last();
+            return filename;
+        }
+
+         
     }
 }

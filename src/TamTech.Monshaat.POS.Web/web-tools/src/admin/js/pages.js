@@ -17,7 +17,7 @@ $(document).on("click",".remove_page",function(){
     let ajax_url = $this.data('url');
     $Confirm({},function(result){
         if (result.value) {
-            $.ajax(ajaxrequest = {
+            $.ajax({
                 url: ajax_url,
                     type: 'GET',
                     cache: false,

@@ -46,153 +46,168 @@
 
         <div class="x_panel">
             <div class="x_content">
-                @if (!Model.Locked && ViewBag.IsEditMode)
-                {
-                    <div class="text-right flip">
-                        <label asp-for="Published">
-                            <input type="checkbox"
-                                   asp-for="Published"
-                                   class="toggle_switch toggle__publish"
-                                   data-toggle="tooltip"
-                                   id="publish-post"
-                                   data-placement="@(activeLang == "ar" ? "right" : "left")"
-                                   data-url="@Url.AdminUrl("PublishAsync","sectors" , new { id = Model.Id})"
-                                   title="@Localizer["publish_unpublish"]" />
+                
+
+                <form asp-action="@(ViewBag.IsEditMode ? "edit" : "create")"
+                      method="post"
+                      class="form-horizontal forn-new form-label-left"
+                      id="sectorForm" enctype="multipart/form-data">
+
+
+                    @if (!Model.Locked && ViewBag.IsEditMode)
+                    {
+                       
+                        <div class="text-right flip">
+                            <label asp-for="Published">
+                                <input type="checkbox"
+                                       asp-for="Published"
+                                       class="toggle_switch toggle__publish"
+                                       data-toggle="tooltip"
+                                       id="publish-post"
+                                       data-placement="@(activeLang == "ar" ? "right" : "left")"
+                                       data-url="@Url.AdminUrl("PublishAsync","sectors" , new { id = Model.Id})"
+                                       title="@Localizer["publish_unpublish"]" />
+                            </label>
+                        </div>
+                    }
+
+                    <input type="hidden" name="Lang" value="@activeLang" />
+
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="All" class="alert alert-danger"></div>
+                    }
+
+                    @if (ViewBag.IsEditMode)
+                    {
+                        <input type="hidden" asp-for="Id" class="ut-id" />
+
+                    }
+                    <input type="hidden" asp-for="IsOfficial" class="ut-id" value="true" />
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Name" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_name"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            <input asp-for="Name" class="form-control" required data-seo-name />
+                            <span asp-validation-for="Name" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Slug" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_slug"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            @if (Model.Locked)
+                            {
+                                <div class="input-group input-locked">
+
+                                    <p class="form-control-static">@Model.Slug</p>
+                                    <span class="input-group-addon"
+                                          data-toggle="tooltip"
+                                          data-placement="top"
+                                          title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <input type="text" asp-for="Slug" class="form-control" required data-rule-slug="true" />
+                            }
+
+                            <span asp-validation-for="Slug" class="text-danger invalid_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Image" class="control-label col-md-2 col-sm-3 col-xs-12 ">
+                            @Localizer["f_main_image"]
+                            <small class="help-block">@Localizer["show_within_a_home_page"]</small>
                         </label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+
+                            @if (!string.IsNullOrEmpty(Model.Image))
+                            {
+
+                                string _url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(Model.Image), type = FileTypesEnum.SectorMainImage });
+                                string _image = !string.IsNullOrEmpty(Model.Image) ? _url : Url.Content("~/Admin/img/noimage.jpg");
+
+
+
+                                <img src="@_image" style="max-width:300px" class="img-thumbnail m-b3" data-seo-image="@_image">
+                                <input type="hidden" name="Image" value="@Model.Image" />
+                            }
+
+                            <label class="form-control clearfix uploadfile">
+                                <input type="file" asp-for="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="800" />
+                                <span class="url">@Localizer["choose_file"]</span>
+                                <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
+                            </label>
+                            <label id="NewMainImage-error" class="invalid_field" for="NewMainImage" style="display:none;"></label>
+                            <span asp-validation-for="Icon" class="text-danger invalid_field"></span>
+                        </div>
                     </div>
-                }
 
-            <form asp-action="@(ViewBag.IsEditMode ? "edit" : "create")"
-                  method="post"
-                  class="form-horizontal forn-new form-label-left"
-                  id="sectorForm" enctype="multipart/form-data">
-                <input type="hidden" name="Lang" value="@activeLang" />
 
-                @if (!ViewData.ModelState.IsValid)
-                {
-                    <div asp-validation-summary="All" class="alert alert-danger"></div>
-                }
-
-                @if (ViewBag.IsEditMode)
-                {
-                    <input type="hidden" asp-for="Id" class="ut-id" />
-
-                }
-                <input type="hidden" asp-for="IsOfficial" class="ut-id" value="true" />
-
-                <div class="form-group clearfix">
-                    <label asp-for="Name" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_name"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
-                        <input asp-for="Name" class="form-control" required data-seo-name />
-                        <span asp-validation-for="Name" class="text-danger invalid_field"></span>
-                    </div>
-                </div>
-
-                <div class="form-group clearfix">
-                    <label asp-for="Slug" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_slug"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
-                        @if (Model.Locked)
-                        {
-                            <div class="input-group input-locked">
-
-                                <p class="form-control-static">@Model.Slug</p>
-                                <span class="input-group-addon"
-                                      data-toggle="tooltip"
-                                      data-placement="top"
-                                      title="@Localizer["locked_by_system"]"><i class="fa fa-lock"></i></span>
-                            </div>
-
-                        }
-                        else
-                        {
-                            <input type="text" asp-for="Slug" class="form-control" required data-rule-slug="true" />
-                        }
-
-                        <span asp-validation-for="Slug" class="text-danger invalid_field"></span>
-                    </div>
-                </div>
-
-                <div class="form-group clearfix">
-                    <label asp-for="Image" class="control-label col-md-2 col-sm-3 col-xs-12 ">
-                        @Localizer["f_main_image"]
-                        <small class="help-block">@Localizer["show_within_a_home_page"]</small>
+                    <div class="form-group clearfix">
+                        <label asp-for="Icon" class="control-label col-md-2 col-sm-3 col-xs-12 ">
+                            @Localizer["f_icon"]<br />
+                            <small class="help-block">@Localizer["show_within_a_pos_page"]</small>
                         </label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
 
-                        @if (!string.IsNullOrEmpty(Model.Image))
-                        {
-                            <img src="@Model.Image" style="max-width:300px" class="img-thumbnail m-b3" data-seo-image="@Model.Image">
-                            <input type="hidden" name="Image" value="@Model.Image" />
-                        }
+                            @if (!string.IsNullOrEmpty(Model.Icon))
+                            {
+                                string __url = Url.FileUrl(CommonConstants.ImgAction, new { img = Helpers.GetFileNameFromUrl(Model.Icon), type = FileTypesEnum.SectorIcon });
+                                string _Icon = !string.IsNullOrEmpty(Model.Icon) ? __url : Url.Content("~/Admin/img/noimage.jpg");
 
-                        <label class="form-control clearfix uploadfile">
-                            <input type="file" asp-for="NewMainImage" id="NewMainImage" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="800" />
-                            <span class="url">@Localizer["choose_file"]</span>
-                            <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
-                        </label>
-                        <label id="NewMainImage-error" class="invalid_field" for="NewMainImage" style="display:none;"></label>
-                        <span asp-validation-for="Icon" class="text-danger invalid_field"></span>
+                                <img src="@_Icon" style="max-width:150px" class="img-thumbnail m-b3" data-seo-image="@_Icon">
+                                <input type="hidden" name="Icon" value="@Model.Icon" />
+                            }
+
+                            <label class="form-control clearfix uploadfile">
+                                <input type="file" asp-for="NewIcon" id="NewIcon" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="300" />
+                                <span class="url">@Localizer["choose_file"]</span>
+                                <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
+                            </label>
+                            <label id="NewIcon-error" class="invalid_field" for="NewIcon" style="display:none;"></label>
+                            <span asp-validation-for="Icon" class="text-danger invalid_field"></span>
+                        </div>
                     </div>
-                </div>
 
-
-                <div class="form-group clearfix">
-                    <label asp-for="Icon" class="control-label col-md-2 col-sm-3 col-xs-12 ">
-                        @Localizer["f_icon"]<br/>
-                        <small class="help-block">@Localizer["show_within_a_pos_page"]</small>
-                        </label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
-
-                        @if (!string.IsNullOrEmpty(Model.Icon))
-                        {
-                            <img src="@Model.Icon" style="max-width:150px" class="img-thumbnail m-b3" data-seo-image="@Model.Icon">
-                            <input type="hidden" name="Icon" value="@Model.Icon" />
-                        }
-
-                        <label class="form-control clearfix uploadfile">
-                            <input type="file" asp-for="NewIcon" id="NewIcon" class="upload-input" data-text="@Localizer["choose_file"]" accept="image/*" data-rule-filesize="300" />
-                            <span class="url">@Localizer["choose_file"]</span>
-                            <span class="file-btn"><i class="fa fa-search"></i> @Localizer["Browse"]</span>
-                        </label>
-                        <label id="NewIcon-error" class="invalid_field" for="NewIcon" style="display:none;"></label>
-                        <span asp-validation-for="Icon" class="text-danger invalid_field"></span>
+                    <div class="form-group clearfix">
+                        <label asp-for="DisplayOrder" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            @if (activeLang != CultureConstants.DefaultCulture.Lang && ViewBag.IsEditMode)
+                            {
+                                <input asp-for="DisplayOrder" class="form-control" min="0" disabled />
+                            }
+                            else
+                            {
+                                <input asp-for="DisplayOrder" class="form-control" min="0" />
+                            }
+                            <span asp-validation-for="DisplayOrder" class="text-danger invalid_field"></span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group clearfix">
-                    <label asp-for="DisplayOrder" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_display_order"]</label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
-                        @if (activeLang != CultureConstants.DefaultCulture.Lang && ViewBag.IsEditMode)
-                        {
-                            <input asp-for="DisplayOrder" class="form-control" min="0" disabled />
-                        }
-                        else
-                        {
-                            <input asp-for="DisplayOrder" class="form-control" min="0" />
-                        }
-                        <span asp-validation-for="DisplayOrder" class="text-danger invalid_field"></span>
+
+
+                    <div class="form-group clearfix">
+                        <label asp-for="Description" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_description"] </label>
+                        <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
+                            <textarea asp-for="Description" class="form-control" rows="5" maxlength="1000" data-seo-description></textarea>
+                            <span asp-validation-for="Description" class="text-danger invalid_field"></span>
+                        </div>
                     </div>
-                </div>
 
 
-
-                <div class="form-group clearfix">
-                    <label asp-for="Description" class="control-label col-md-2 col-sm-3 col-xs-12 ">@Localizer["f_description"] </label>
-                    <div class="col-md-10 col-lg-9 col-sm-9 col-xs-12">
-                        <textarea asp-for="Description" class="form-control" rows="5" maxlength="1000" data-seo-description></textarea>
-                        <span asp-validation-for="Description" class="text-danger invalid_field"></span>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-2 col-sm-offset-4 col-sm-6 col-xs-12 ">
+                            <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@((ViewBag.IsEditMode) ? Localizer["Update"]  : Localizer["Create"] )">
+                            <input type="submit" class="btn btn-info p-x-5   ut-continue-btn" name="save-continue" value="@Localizer["save_and_continue"]">
+                        </div>
                     </div>
-                </div>
 
-
-                <div class="form-group">
-                    <div class="col-md-6 col-md-offset-2 col-sm-offset-4 col-sm-6 col-xs-12 ">
-                        <input type="submit" class="btn btn-success p-x-5 ut-save-btn" name="save" value="@((ViewBag.IsEditMode) ? Localizer["Update"]  : Localizer["Create"] )">
-                        <input type="submit" class="btn btn-info p-x-5   ut-continue-btn" name="save-continue" value="@Localizer["save_and_continue"]">
-                    </div>
-                </div>
-
-            </form>
+                </form>
             </div>
         </div>
     </div>

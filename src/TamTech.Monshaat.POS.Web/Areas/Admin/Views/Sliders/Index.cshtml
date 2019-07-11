@@ -32,7 +32,7 @@
                     <table class="table table-middle table-striped sliders-table" id="SlidersTable">
                         <thead>
                             <tr>
-                                <th width="100" class="text-center">@Localizer["t_image"]</th>
+                               
                                 <th class="index" style="min-width:150px">@Localizer["t_title"]</th>
                                 <th style="min-width:100px">@Localizer["t_key"]</th>
                                 <th style="min-width:200px">@Localizer["t_summary"]</th>
@@ -45,21 +45,7 @@
                             {
 
                             <tr id="tr-@item.Id">
-                                <td class="text-center">
-
-                                    <div class="tabel-img-circle">
-                                        @if (!string.IsNullOrEmpty(item.MainImage))
-                                        {
-
-                                            <img src="@item.MainImage" alt="" width="60" />
-                                        }
-                                        else
-                                        {
-                                            <img src="~/Admin/img/noimage.jpg" alt="" width="75" />
-                                        }
-                                    </div>
-
-                                </td>
+                                 
                                 <td class="index"> @item.Title  </td>
                                 <td>@item.Key</td>
                                 <td>
