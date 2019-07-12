@@ -2,12 +2,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Services.APIsServices;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography.settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Status;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Status.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
 
@@ -84,7 +89,44 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
                 return new VendorApiSettings(BaseAPISettings.VendorsController);
             });
 
-                          
+
+            services.AddScoped<IStatisticsApiSettings, StatisticsApiSettings>((serviceExtension) =>
+            {
+                return new StatisticsApiSettings(BaseAPISettings.StatisticsController);
+            });
+
+
+              services.AddScoped<ICCUApiSettings, CCUServiceSettings>((serviceExtension) =>
+            {
+                return new CCUServiceSettings(BaseAPISettings.COmmonContentUtilitiesController);
+            });
+
+
+            services.AddScoped<IPosStatusApiSettings, StatusApiSettings>((serviceExtension) =>
+            {
+                return new StatusApiSettings(BaseAPISettings.POSStatus);
+            });
+
+            services.AddScoped<IVendorStatusApiSettings, StatusApiSettings>((serviceExtension) =>
+            {
+                return new StatusApiSettings(BaseAPISettings.VendorStatus);
+            });
+
+            services.AddScoped<IContactUsStatusApiSettings, StatusApiSettings>((serviceExtension) =>
+            {
+                return new StatusApiSettings(BaseAPISettings.CSStatus);
+            });
+
+             services.AddScoped<IBiographyApiSettings, BiographyApiSettings>((serviceExtension) =>
+            {
+                return new BiographyApiSettings(BaseAPISettings.BiographiesController);
+            });
+
+            services.AddScoped<ISettingsApiSettings, SettingsApiSettings>((serviceExtension) =>
+            {
+                return new SettingsApiSettings(BaseAPISettings.SettingsController);
+            });
+
             //services.AddScoped<IUploadBackendSettings, UploadBackendSettings>((serviceExtension) =>
             //{
             //    var url = configuration

@@ -27,9 +27,18 @@
         public const string POSController = "POS";
         public const string POSofVendorController = "Vendor/POS";
         public const string DirectoryController = "Directory/POS";
-        public const string ContactUsController = "ContactUs";
-
+        public const string ContactUsController = "ContactUs"; 
         public const string VendorsController = "Vendors";
+
+        public const string StatisticsController = "Statistics";
+        public const string COmmonContentUtilitiesController = "CCU";
+
+        public const string VendorStatus = "VendorStatus";
+        public const string POSStatus = "POSStatus";
+        public const string CSStatus = "CSStatus";
+
+        public const string BiographiesController = "Biographies";
+        public const string SettingsController = "Settings";
 
     }
 }

@@ -33,6 +33,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(UserActivityFilter))]
     [ServiceFilter(typeof(UserContextUpdatedFilter))]
+   
     public class PosController : PublicBaseController
     {
         #region properties

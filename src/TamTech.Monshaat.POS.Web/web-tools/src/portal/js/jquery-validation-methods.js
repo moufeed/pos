@@ -61,3 +61,28 @@ $.validator.addClassRules("checks", {
 $.validator.addMethod( "commercial", function( value, element, params ) {
     return  value.length == params
 }, $.validator.format( "Commercial number it has to be {0} digits" ));
+
+
+ 
+ 
+$.validator.addMethod( "FileSize", function( value, element, param ) {
+    
+    console.log(value, element, param )
+
+    if ( this.optional( element ) ) {
+		return true;
+    }
+    
+    if ( $( element ).attr( "type" ) === "file" ) {
+		if ( element.files && element.files.length ) {
+			for ( var i = 0; i < element.files.length; i++ ) {
+                 
+				if ( (element.files[ i ].size / 1024).toFixed() > param ) {
+					return false;
+				}
+			}
+		}
+	}
+
+
+}, $.validator.format( "File size must not exceed {0} kilobytes each." ));

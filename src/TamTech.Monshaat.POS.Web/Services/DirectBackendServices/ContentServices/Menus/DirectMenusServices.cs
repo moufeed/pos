@@ -21,13 +21,13 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus
         #region Props  
         private readonly SettingsHelpers _settingsHelpers;
         private readonly TamTech.ContentService.Services.Menus.IMenuService _menuService;
-        private readonly TamTech.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
+        private readonly TamTech.ContentService.Services.Utilities.Content.ICCUService _contentUtilities;
         #endregion
 
 
         #region Ctors
         public DirectMenusServices(TamTech.ContentService.Services.Menus.IMenuService menuService,
-            TamTech.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities,
+            TamTech.ContentService.Services.Utilities.Content.ICCUService contentUtilities,
             SettingsHelpers settingsHelpers
             )
         {

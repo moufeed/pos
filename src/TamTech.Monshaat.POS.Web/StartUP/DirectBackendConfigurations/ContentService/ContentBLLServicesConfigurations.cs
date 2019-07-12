@@ -45,7 +45,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentSe
             services.AddScoped<IIdentityHelper, HttpContextHelper>();
 
 
-            services.AddTransient<IContentUtilities, ContentUtilities>();
+            services.AddTransient<ICCUService, CCUService>();
             services.AddTransient<PageServiceManager, PageServiceManager>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IProductService, ProductService>();

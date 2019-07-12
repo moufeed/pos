@@ -132,29 +132,35 @@ namespace TamTech.Monshaat.POS.Web.Areas.Shared.Controllers
                     {
                         Response.ContentType =   _contenttype;
                     }
-                    if (FileIsImage(_contenttype))
-                    {
-                        Image image = Image.FromFile(_filePath);
-                        Bitmap outImage = new Bitmap(image);
-                        Graphics outGraphics = Graphics.FromImage(outImage);
-                        outGraphics.CompositingQuality = CompositingQuality.HighSpeed;
-                        outGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                        outGraphics.CompositingMode = CompositingMode.SourceCopy;
-                        outGraphics.DrawImage(image, 0, 0, outImage.Width, outImage.Height);
-                        outGraphics.Dispose();
-                        image.Dispose();
-                        Stream newStream = new MemoryStream();
-                        outImage.Save(newStream, GetFormat(_extension.ToLower()));
-                        outImage.Dispose();
-                        outGraphics.Dispose();
-                        newStream.Seek(0, SeekOrigin.Begin);
-                        return base.File(newStream, _hasType ? _contenttype : "application/octet-stream");
-                    }
-                    else
-                    {
-                        FileStream fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read);
-                        return base.File(fs, _hasType ? _contenttype : "application/octet-stream");
-                    }
+
+                    FileStream fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read);
+                    return base.File(fs, _hasType ? _contenttype : "application/octet-stream");
+
+
+                    //if (FileIsImage(_contenttype))
+                    //{
+                    //    Image image = Image.FromFile(_filePath);
+                    //    Bitmap outImage = new Bitmap(image);
+                    //    Graphics outGraphics = Graphics.FromImage(outImage);
+                    //    outGraphics.CompositingQuality = CompositingQuality.HighSpeed;
+                    //    outGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    //    outGraphics.CompositingMode = CompositingMode.SourceCopy;
+                    //    outGraphics.DrawImage(image, 0, 0, outImage.Width, outImage.Height);
+                    //    outGraphics.Dispose();
+                    //    image.Dispose();
+                    //    Stream newStream = new MemoryStream();
+                    //    outImage.Save(newStream, GetFormat(_extension.ToLower()));
+                    //    outImage.Dispose();
+                    //    outGraphics.Dispose();
+                    //    newStream.Seek(0, SeekOrigin.Begin);
+                    //    return base.File(newStream, _hasType ? _contenttype : "application/octet-stream");
+                    //}
+                    //else
+                    //{
+
+                    //}
+
+
                 }
                 catch (Exception ex)
                 { }

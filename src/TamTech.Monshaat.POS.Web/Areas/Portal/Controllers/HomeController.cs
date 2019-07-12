@@ -30,6 +30,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
+   
     public class HomeController : PublicBaseController
     {
         #region prop
@@ -173,6 +174,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         [HttpPost]
+ 
         public virtual async Task<IActionResult> ContactUs(ContactusVM model, IFormCollection collection)
         {
 
@@ -207,22 +209,26 @@ namespace TamTechSDK.Web.Controllers.Portal
                         var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.ContactUsFile);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
-                        foreach (var item in uploadResult.Data.URLs)
+                        if (uploadResult.Success)
                         {
-
-                            if (item.Success)
+                            foreach (var item in uploadResult.Data.URLs)
                             {
-                                Attachments.Add(MakeAttachment(item.URL));
-                                _UploadedFiles += $"{item.URL};;";
-                                UpCount++;
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
-                            }
 
-                            index++;
+                                if (item.Success)
+                                {
+                                    Attachments.Add(MakeAttachment(item.URL));
+                                    _UploadedFiles += $"{item.URL};;";
+                                    UpCount++;
+                                }
+                                else
+                                {
+                                    ModelState.AddModelError(_files[index].Name, _localizer["felled_uploading_error", _files[index].FileName]);
+                                }
+
+                                index++;
+                            }
                         }
+                        HandelResult(uploadResult);
 
                         if (!TryValidateModel(model))
                         {

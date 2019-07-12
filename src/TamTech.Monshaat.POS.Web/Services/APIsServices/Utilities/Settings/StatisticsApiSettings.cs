@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings
 {
-    public class UtilitiesApiSettings : BaseAPISettings, IUtilitiesApiSettings
+    public class StatisticsApiSettings : BaseAPISettings, IStatisticsApiSettings
     {
-        public UtilitiesApiSettings(string controller) : base(controller)
+        public StatisticsApiSettings(string controller) : base(controller)
         {
         }
 

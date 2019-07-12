@@ -2,6 +2,8 @@ using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography.settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory;
@@ -12,16 +14,27 @@ using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Status;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Status.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities;
+using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor;
 using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
@@ -183,9 +196,66 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             });
 
 
-            /* 
 
+            services.AddTransient<ICCUServices>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<ICCUApiSettings>();
+                return new CCUServices(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IStatisticsService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IStatisticsApiSettings>();
+                return new StatisticsService(provider, apiSettings);
+            });
+
+
+
+
+            services.AddTransient<IContactUsStatusService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IContactUsStatusApiSettings>();
+                return new StatusService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IPosStatusService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IPosStatusApiSettings>();
+                return new StatusService(provider, apiSettings);
+            });
+
+
+            services.AddTransient<IVendorStatusService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IVendorStatusApiSettings>();
+                return new StatusService(provider, apiSettings);
+            });
+
+             services.AddTransient<IBiographyService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<IBiographyApiSettings>();
+                return new BiographyService(provider, apiSettings);
+            });
+
+            services.AddTransient<ISettingService>((serviceExtension) =>
+            {
+                var provider = serviceExtension.GetService<IRequestProvider>();
+                var apiSettings = serviceExtension.GetService<ISettingsApiSettings>();
+                return new SettingsService(provider, apiSettings);
+
+            });
             
+ 
+            /* 
+             
            
 
 

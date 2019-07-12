@@ -12,10 +12,10 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content
     public class DirectContentService : BaseDirectService,TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities.ICCUServices
     {
 
-        private readonly TamTech.ContentService.Services.Utilities.Content.IContentUtilities _contentUtilities;
+        private readonly TamTech.ContentService.Services.Utilities.Content.ICCUService _contentUtilities;
         #region Ctors
         public DirectContentService(
-                    TamTech.ContentService.Services.Utilities.Content.IContentUtilities contentUtilities)
+                    TamTech.ContentService.Services.Utilities.Content.ICCUService contentUtilities)
         {
 
             _contentUtilities = contentUtilities;

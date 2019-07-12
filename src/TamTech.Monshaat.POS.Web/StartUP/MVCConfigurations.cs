@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO.Compression;
+using System.Linq;
 using TamTech.Monshaat.POS.Web.Core.Attributes;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
@@ -22,9 +25,17 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
             services.Configure<RouteOptions>(options => options.LowercaseUrls = false);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.AllowAnyOrigin());
+            });
+
             services.AddMvc(mvc =>
                 {
+                    mvc.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     mvc.Conventions.Add(new ControllerNameAttributeConvention());
+
                 })
                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddFluentValidation();
@@ -35,31 +46,31 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
 
             //#region Response Compression
-            //services.Configure<GzipCompressionProviderOptions>(option =>
-            //{
-            //    option.Level = CompressionLevel.Fastest;
-            //});
+            services.Configure<GzipCompressionProviderOptions>(option =>
+            {
+                option.Level = CompressionLevel.Fastest;
+            });
 
-            //services.AddResponseCompression(options =>
-            //{ 
-            //    options.EnableForHttps = true;
-            //    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
-            //    {
-            //        "application/xml",
-            //        "text/xml",
-            //        "application/json",
-            //        "text/json",
-            //        "image/svg+xml",
-            //        "application/font-woff2",
-            //        "application/x-font-ttf",
-            //        "font/ttf",
-            //        "font/eot",
-            //        "font/otf",
-            //        "font/opentype"
-            //    }); 
-            //    options.Providers.Add<GzipCompressionProvider>(); 
-            //});
-            //#endregion
+            services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+                {
+                    "application/xml",
+                    "text/xml",
+                    "application/json",
+                    "text/json",
+                    "image/svg+xml",
+                    "application/font-woff2",
+                    "application/x-font-ttf",
+                    "font/ttf",
+                    "font/eot",
+                    "font/otf",
+                    "font/opentype"
+                });
+                options.Providers.Add<GzipCompressionProvider>();
+            });
+ 
         }
     }
 }

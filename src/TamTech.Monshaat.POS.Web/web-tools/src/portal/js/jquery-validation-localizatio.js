@@ -28,5 +28,6 @@ if(window.website.lang ==  'ar'){
         mobileKSA : "رجاء إدخال رقم جوال صالح",
         zipcode : "رجاء إدخال رمز بريدي صالح",
         commercial : $.validator.format( "رقم السجل التجاري يجب ان يحتوي على  <b>{0}</b>  خانات" ),
+        FileSize : $.validator.format( "حجم الملف يجب ان لايتجاوز <b>{0}</b> كيلو بايت" )
     } );
-}   
+}  

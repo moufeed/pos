@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -18,5 +19,8 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models
 
         [JsonProperty("Options")]
         public string Options { get; set; }
+
+
+       
     }
 }

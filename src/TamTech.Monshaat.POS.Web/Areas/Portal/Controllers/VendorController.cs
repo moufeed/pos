@@ -37,6 +37,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(UserActivityFilter))]
     [ServiceFilter(typeof(UserContextUpdatedFilter))]
+
     public class VendorController : PublicBaseController
     {
         #region properties

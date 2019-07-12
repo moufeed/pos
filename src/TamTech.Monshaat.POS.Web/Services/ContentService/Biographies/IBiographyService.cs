@@ -16,3 +16,4 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Biographies
         Task<IRequestProviderResult<List<BiographyDto>>> GetAllAsync();
     }
 }
+

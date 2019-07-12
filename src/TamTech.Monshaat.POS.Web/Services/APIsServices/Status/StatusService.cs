@@ -31,7 +31,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Status
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
         #endregion
 

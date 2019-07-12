@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Status.Settings
 {
-    public class StatusApiSettings : BaseAPISettings, IStatusApiSettings
+    public class StatusApiSettings : BaseAPISettings, IStatusApiSettings , IVendorStatusApiSettings , IPosStatusApiSettings , IContactUsStatusApiSettings
     {
         public StatusApiSettings(string controller) : base(controller)
         {

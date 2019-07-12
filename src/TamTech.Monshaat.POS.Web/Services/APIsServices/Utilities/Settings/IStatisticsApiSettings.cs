@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings
 {
-    public interface IUtilitiesApiSettings
+    public interface IStatisticsApiSettings
     {
         string GetPOSNumericalStatisticsByStatusEndpoint { get; }
 
