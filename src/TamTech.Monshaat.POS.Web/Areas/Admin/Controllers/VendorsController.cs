@@ -28,7 +28,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.VendorAdmin)]
+ //   [Authorize(Policy = ContentSDKPoliciesConstants.VendorAdmin)]
     public class VendorsController : AdminBaseController
     {
         private readonly IVendorAdminServices _vendorServices;

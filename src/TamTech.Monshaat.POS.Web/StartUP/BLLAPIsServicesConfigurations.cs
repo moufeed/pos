@@ -1,31 +1,32 @@
 using Microsoft.Extensions.DependencyInjection; 
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography.settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Status;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Status.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Types;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Values;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
@@ -38,6 +39,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.Services.Identity;
 using TamTech.Monshaat.POS.Web.Services.POSs;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
 
@@ -252,8 +254,14 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 return new SettingsService(provider, apiSettings);
 
             });
-            
- 
+
+
+            #region Identity Service       
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUsersManagerService, UsersManagerService>();
+            services.AddTransient<IRolesService, RolesService>();      
+            #endregion
+
             /* 
              
            
@@ -271,14 +279,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
             #endregion
 
-            #region Identity Service 
-
-            services.AddTransient<IAuthService, TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.DirectAuthService>();
-            services.AddTransient<IUsersManagerService, TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.UsersMenager.DirectUserMenagerServices>();
-            services.AddTransient<IRolesService, TamTech.Monshaat.POS.Web.DirectBackendServices.IdentityService.RolesService.DirectRolesService>();
-
-
-            #endregion
+            
 
             */
         }

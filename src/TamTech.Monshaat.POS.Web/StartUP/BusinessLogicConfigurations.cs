@@ -9,22 +9,15 @@ namespace TamTech.Monshaat.POS.Web.StartUP
     {
         public static void AddBusinessLogicServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-            bool useMicroServices = configuration.GetSection(AppSettings.WebApplicationSettings)
-                                                 .GetSection(AppSettings.WebApplication_UseMicroServices).Get<bool>();
-            if (useMicroServices)
-            {
-                services.MicroServices_AddProvidersServicesConfigurations();
-                services.MicroServices_AddBackendAPIsSettingsConfigurations(configuration);
-                //   services._AddBusinessLogicMicroServicesConfigurations(configuration);
-            }
-            else
-            {
+         
                 services._AddBusinessLogicDirectBackendServicesConfigurations();
 
                 services.MicroServices_AddProvidersServicesConfigurations();
+
                 services.MicroServices_AddBackendAPIsSettingsConfigurations(configuration);
+
                services._AddBusinessLogicAPIsServicesConfigurations();
-            }
+             
         }
     }
 }

@@ -19,7 +19,7 @@ using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.SlidersContentAdmin)]
+  //  [Authorize(Policy = ContentSDKPoliciesConstants.SlidersContentAdmin)]
     public class SlidersController : AdminBaseController
     {
         #region prop

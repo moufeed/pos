@@ -9,7 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
-    <PackageReference Include="TamTechBackendSDK.IdentityService" Version="0.0.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj" />
   </ItemGroup>
 
 </Project>

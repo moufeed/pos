@@ -10,6 +10,7 @@ namespace TamTech.Monshaat.POS.Web.Controllers
     {
         [Route("admin")]
         public IActionResult RedirectToDashboard()
+
         {
             return RedirectToAction("index", "Home", new { Area = "Admin" });
         }

@@ -1,20 +1,21 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TamTech.Monshaat.POS.Web.Services.APIsServices;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Attributes.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Biography.settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Contact.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Directory.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Pos.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Regions.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Sectors.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Settings.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Status;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Status.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Types.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Utilities.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Values.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.Services.Identity.Settings;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
 { 
@@ -137,6 +138,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
             //    return new UploadBackendSettings(url);
             //});
 
+            services.AddScoped<IIdentityBackendSettings, IdentityBackendSettings>();
 
             //services.AddScoped<IIdentityBackendSettings, IdentityBackendSettings>((serviceExtension) =>
             //{
@@ -167,6 +169,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
             //services.AddScoped<IBrandServiceSettings, BrandServiceSettings>();
             //services.AddScoped<ICategoryServiceSettings, CategoryServiceSettings>(); 
             //services.AddScoped<IMenusServicesSettings, MenusServicesSettings>();
+
 
 
 

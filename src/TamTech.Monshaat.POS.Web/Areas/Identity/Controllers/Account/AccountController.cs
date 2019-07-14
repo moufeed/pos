@@ -1,43 +1,19 @@
-using IdentityModel;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Web;
-using Microsoft.Extensions.Configuration;
-using TamTechBackendSDK.IdentityService.Models;
-using TamTechBackendSDK.IdentityService.Services;
-using TamTech.Monshaat.POS.Web.Core.Filters;
+ using Microsoft.AspNetCore.Mvc;    
+using TamTech.Monshaat.POS.Web.Core.Filters;    
 
 namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
 {
     [Area("Identity")]
     [ServiceFilter(typeof(AdminFilter))]
-    public class AccountController : IdentityServer4.Quickstart.UI.AccountController
+    public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AccountController
     {
-        public AccountController(IIdentityServerInteractionService interaction,
-                                 IClientStore clientStore,
-                                 IAuthenticationSchemeProvider schemeProvider,
-                                 IEventService events,
-                                 UserManager<ApplicationUser> userManager,
-                                 SignInManager<ApplicationUser> signInManager,
-                                 IConfiguration configuration,
-                                 IUserManagerService userManagerService,
-                                 TamTechBackendSDK.IdentityService.Services.Configurations.AppSettings.IWebApplicationSettingsService IdentityServiceAppSettings)
-            : base(interaction, clientStore, schemeProvider, events, userManager, signInManager, configuration, userManagerService, IdentityServiceAppSettings)
+
+        public AccountController(TamTech.Monshaat.POS.IdentityService.Services.IAuthTamService authTamService) : base(authTamService)
         {
         }
+
+
+
 
 
         /// <summary>

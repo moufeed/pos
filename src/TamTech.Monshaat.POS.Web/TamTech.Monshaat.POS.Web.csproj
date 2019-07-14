@@ -9,26 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\Services\**" />
-    <Compile Remove="StartUP\DirectBackendConfigurations\IdentityService\RequestPipeline\**" />
     <Compile Remove="Areas\Portal\Data\**" />
     <Compile Remove="Areas\Portal\Models\**" />
     <Compile Remove="Areas\Portal\Views\Home\partials\Index\**" />
     <Compile Remove="wwwroot\Shop\**" />
-    <Content Remove="Core\Services\**" />
-    <Content Remove="StartUP\DirectBackendConfigurations\IdentityService\RequestPipeline\**" />
     <Content Remove="Areas\Portal\Data\**" />
     <Content Remove="Areas\Portal\Models\**" />
     <Content Remove="Areas\Portal\Views\Home\partials\Index\**" />
     <Content Remove="wwwroot\Shop\**" />
-    <EmbeddedResource Remove="Core\Services\**" />
-    <EmbeddedResource Remove="StartUP\DirectBackendConfigurations\IdentityService\RequestPipeline\**" />
     <EmbeddedResource Remove="Areas\Portal\Data\**" />
     <EmbeddedResource Remove="Areas\Portal\Models\**" />
     <EmbeddedResource Remove="Areas\Portal\Views\Home\partials\Index\**" />
     <EmbeddedResource Remove="wwwroot\Shop\**" />
-    <None Remove="Core\Services\**" />
-    <None Remove="StartUP\DirectBackendConfigurations\IdentityService\RequestPipeline\**" />
     <None Remove="Areas\Portal\Data\**" />
     <None Remove="Areas\Portal\Models\**" />
     <None Remove="Areas\Portal\Views\Home\partials\Index\**" />
@@ -36,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="FluentValidation" Version="8.4.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" /> 
@@ -48,11 +41,12 @@
     <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" /> 
     <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" /> 
     <PackageReference Include="TamTechBackendSDK.EmailService" Version="0.0.1.9" />
-    <PackageReference Include="TamTechBackendSDK.IdentityService" Version="0.0.1.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TamTech.Monshaat.POS.EFile2.Utilities\TamTech.Monshaat.POS.EFile2.Utilities.csproj" />
+    <ProjectReference Include="..\TamTech.Monshaat.POS.IdentityService\TamTech.Monshaat.POS.IdentityService.csproj" />
+    <ProjectReference Include="..\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj" />
     <ProjectReference Include="..\TamTech.Monshaat.POS.UploudService\TamTech.Monshaat.POS.UploadService.csproj" />
   </ItemGroup>
 
@@ -127,13 +121,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\APIsServices\Menus\Settings\" />
+    <Reference Include="TamTech.ContentService.SDK">
+      <HintPath>..\..\..\..\HelperServices\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TamTech.ContentService.SDK">
-      <HintPath>..\..\..\..\Tamtech\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
-    </Reference>
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1Development_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

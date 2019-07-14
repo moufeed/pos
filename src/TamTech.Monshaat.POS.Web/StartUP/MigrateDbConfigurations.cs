@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.IdentityService;
+using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;    
+using TamTech.ContentService.Core.EFCore.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -13,15 +13,16 @@ namespace TamTech.Monshaat.POS.Web.StartUP
     {
         public static void SeedData(this IApplicationBuilder app, IHostingEnvironment env, IConfiguration configuration)
         {
-            bool useMicroServices = configuration.GetSection(AppSettings.WebApplicationSettings)
-                .GetSection(AppSettings.WebApplication_UseMicroServices).Get<bool>();
 
-            if (!useMicroServices)
+
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                app.UseDataMigrationsOfIdentityService(env, configuration);
-                app.UseDataMigrationsOfContentService(env, configuration);
-                app.UseDataMigrationsOfPOS(env, configuration);
+                scope.ServiceProvider.GetService<POSdbContext>().Database.Migrate();
             }
+
+            app.UseDataMigrationsOfContentService(env, configuration);
+                app.UseDataMigrationsOfPOS(env, configuration);
+           
 
 
         }

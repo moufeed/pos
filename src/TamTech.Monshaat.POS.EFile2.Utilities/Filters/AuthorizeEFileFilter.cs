@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Routing;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;
-using TamTechBackendSDK.IdentityService.Models;
+using Microsoft.AspNetCore.Authentication;
+using TamTech.Monshaat.POS.EFile2.Utilities.Services;  
 
 namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
 {
@@ -14,13 +14,12 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
 
     public class AuthorizeEFile : ActionFilterAttribute, IActionFilter
     {
-        private readonly IEFileIdentityProviderService _eFileService; 
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEFileIdentityProviderService _eFileService;    
 
-        public AuthorizeEFile(IEFileIdentityProviderService eFileService, SignInManager<ApplicationUser> signInManager)
+        public AuthorizeEFile(IEFileIdentityProviderService eFileService )
         {
             _eFileService = eFileService;
-            _signInManager = signInManager;
+            
         }
 
         public async override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -33,7 +32,8 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
                 var efile_access_token = controller.Request.Cookies[Constants.EFileTokenCookieName];
                 if (string.IsNullOrWhiteSpace(efile_access_token))
                 {
-                    await _signInManager.SignOutAsync();
+                    await controller.HttpContext.SignOutAsync();
+                   // await HttpContext.SignOutAsync();
                     context.Result = RedirectToRegisterVendor();
                     return;
                 }
@@ -42,7 +42,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
                 bool isAuthenticated = await _eFileService.IsAuthenticatedAsync(efile_access_token);
                 if (!isAuthenticated)
                 {
-                    await _signInManager.SignOutAsync();
+                    await controller.HttpContext.SignOutAsync();
                     controller.Response.Cookies.Delete(Constants.EFileTokenCookieName);
                     context.Result = RedirectToRegisterVendor();
                     return;
@@ -52,7 +52,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
                 var username = await _eFileService.GetUsernameByAccessTokenAsync(efile_access_token);
                 if (username != controller.HttpContext.User.Identity.GetUsername())
                 {
-                    await _signInManager.SignOutAsync();
+                    await controller.HttpContext.SignOutAsync();// await _signInManager.SignOutAsync();
                     controller.Response.Cookies.Delete(Constants.EFileTokenCookieName);
                     await _eFileService.LogoutAsync(efile_access_token);
                     context.Result = RedirectToRegisterVendor();

@@ -36,7 +36,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.ContactUsAdmin)]
+    //[Authorize(Policy = ContentSDKPoliciesConstants.ContactUsAdmin)]
     public class ContactController : AdminBaseController
     {
 

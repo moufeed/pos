@@ -27,7 +27,7 @@ using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 namespace TamTechSDK.Web.Controllers.Admin
 {
 
-    [Authorize(Policy = ContentSDKPoliciesConstants.PagesContentAdmin)]
+   // [Authorize(Policy = ContentSDKPoliciesConstants.PagesContentAdmin)]
     public class PagesController : AdminBaseController
     {
         #region Props 

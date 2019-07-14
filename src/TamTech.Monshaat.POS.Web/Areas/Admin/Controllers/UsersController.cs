@@ -22,7 +22,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.UsersAdmin)]
+ //   [Authorize(Policy = ContentSDKPoliciesConstants.UsersAdmin)]
 
     public class UsersController : AdminBaseController
     {
@@ -173,9 +173,15 @@ namespace TamTechSDK.Web.Controllers.Admin
         [HttpGet("{Culture}/[Area]/[Controller]/Account/{username}")]
         public virtual async Task<IActionResult> Details(string username)
         {
+         var us =    await _IdentityService.CheckUserAccountIsActivatedAsync(new UserNameModel{UserName = username });
+         
             try
             {
                 var result = await _IdentityService.GetUserByUsernameAsync(username);
+
+                result.Data.UserName = us.Data.ToString();
+
+                var ressdsult = await _IdentityService.BlockUserAsync(new UserNameModel { UserName = username });
                 if (result.Success)
                 {
                     //   ViewBag.BlockEndpointUrl = $"{GetCurrentDataLang()}/admin/Users/Block/{username}";// _IdentityBackendSettings.BlockUserAsyncEndpoint;
@@ -189,7 +195,6 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
 
             return View();
-
         }
 
 

@@ -6,9 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using TamTech.ContentService.Core.EFCore.Contexts;
+using TamTech.Monshaat.POS.IdentityService;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.StartUP;
+using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
 
 namespace TamTech.Monshaat.POS.Web
 {
@@ -35,11 +37,14 @@ namespace TamTech.Monshaat.POS.Web
 
             services.AddFiltersConfigurations();
 
-            services.AddAuthenticationConfigurations(Configuration);
+
+            services.AddIdentityService();
+
+      //      services.AddAuthenticationConfigurations(Configuration);
 
             services.AddCommonServicesConfigurations(Configuration);
 
-            services.AddBackendMicroservicesConfigurations(Configuration);
+            services.AddBackendContentServiceConfigurations(Configuration);
 
             services.AddBusinessLogicServicesConfigurations(Configuration);
 
@@ -55,37 +60,24 @@ namespace TamTech.Monshaat.POS.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                scope.ServiceProvider.GetService<POSdbContext>().Database.Migrate();
-            }
 
-            app.SeedData(env, Configuration);
-
-
+            app.SeedData(env, Configuration);  
+            string cachePeriod;
             if (env.IsDevelopment())
             {
                 // app.UseBrowserLink(); from web admin panel
                 app.UseDeveloperExceptionPage();
-
+                cachePeriod = "600";
 
             }
             else
             {
                 app.UseExceptionHandler("/error/500");
                 app.UseHsts();
+                cachePeriod = "86400";
             }
-
-
-            app.UseXSSProtection(env, Configuration);
-
-            //app.UseHttpsRedirection();
-            //app.UseStaticFiles();
-            //app.UseCookiePolicy();
-
-
-
-            var cachePeriod = env.IsDevelopment() ? "600" : "86400";
+                
+            app.UseXSSProtection(env, Configuration);    
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
@@ -95,55 +87,15 @@ namespace TamTech.Monshaat.POS.Web
             });
             app.UseResponseCompression();
             app.UseStatusCodePagesWithRedirects("/error/{0}");
-            app.InitializeMapper();
-            app.UseAuthentication();
-            bool useMicroServices = Configuration.GetSection(AppSettings.WebApplicationSettings)
-                .GetSection(AppSettings.WebApplication_UseMicroServices).Get<bool>();
-            if (!useMicroServices)
-            {
-                app.UseIdentityServer();
-            }
-
+            app.InitializeMapper();    
             app.UseSettings(env, Configuration);
+            app.ConfigureIdentityService(env);
 
             app.UseResponseCompression();
 
-            app.UseAppRouter(Configuration, new CultureManager().LocalizationOptions);
+            app.UseMvcAndRoute(Configuration, new CultureManager().LocalizationOptions);
 
 
         }
     }
-}
-//public class RouteConfig
-//{
-//    public static void RegisterRoutes(RouteCollection routes)
-//    {
-//        routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-//        routes.MapRoute(
-//            name: "Default",
-//            url: "{controller}/{action}/{id}",
-//            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-//            namespaces: new string[] { "Portal.Areas.PortalAdmin.Controllers" }
-//        ).DataTokens.Add("Area", "PortalAdmin");
-//    }
-//}
-/*
- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Steps of Reference token  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Actors: 
-1 – Identity server. 
-2 – API.		 (identity.api)
-3 – Client.	(AdminPanel)
-
-API:
-In AddIdentityServerAuthentication method Add ApiSecret = "apisecret" option 
-
-Client:
-Set AccessTokenType = AccessTokenType.Reference via database.
-Go to Clients table in identity server DB and set AccessTokenType  field (1) value.
-
-
-Identity server: 
-Go to ApiSecret table in identity server database and add new record 
-{ApiResourceId = API Id (identity.api id), Type = "SharedSecret", Value = "apisecret".Sha256())}
- */
+}    

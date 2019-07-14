@@ -9,7 +9,7 @@ using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.POSTypesAdmin)]
+   // [Authorize(Policy = ContentSDKPoliciesConstants.POSTypesAdmin)]
     public class PosTypesController : BaseTypesController
     {
         public PosTypesController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer,

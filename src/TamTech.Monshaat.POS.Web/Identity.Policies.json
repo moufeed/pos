@@ -1,0 +1,142 @@
+﻿{
+  "Policies": [
+    {
+      "SDK": "Identity",
+      "Key": "ConfirmMobileNumber",
+      "Value": "TAMCMS_UsersAdmin",
+      "Comment": "This role should be to any user that needs to confirm his/her mobile number. This role is to be used in TAMCMS in the Future and It's part of TamTechIdentity"
+    },
+    {
+      "SDK": "Identity",
+      "Key": "ResendMobileConfirmationCode",
+      "Value": "TAMCMS_UsersAdmin",
+      "Comment": "This role should be to any user that needs to confirm his/her mobile number. This role is to be used in TAMCMS in the Future and It's part of TamTechIdentity"
+    },
+    {
+      "SDK": "Identity",
+      "Key": "ChangePassword",
+      "Value": "TAMCMS_UsersAdmin",
+      "Comment": "This role should be to any user that needs to confirm his/her mobile number. This role is to be used in TAMCMS in the Future and It's part of TamTechIdentity"
+    },
+    {
+      "SDK": "Identity",
+      "Key": "UsersManager",
+      "Value": "TAMCMS_UsersAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "MenusContentAdmin",
+      "Value": "TAMCMS_MenusContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "SlidersContentAdmin",
+      "Value": "TAMCMS_SlidersContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "PagesContentAdmin",
+      "Value": "TAMCMS_PagesContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "UsersAdmin",
+      "Value": "TAMCMS_UsersAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "GalleriesContentAdmin",
+      "Value": "TAMCMS_GalleriesContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "ServicesContentAdmin",
+      "Value": "TAMCMS_ServicesContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "PostsContentAdmin",
+      "Value": "TAMCMS_PostsContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "PostsEditor",
+      "Value": "TAMCMS_PostsEditor"
+    },
+    {
+      "SDK": "Content",
+      "Key": "PostAuthor",
+      "Value": "TAMCMS_PostAuthor"
+    },
+    {
+      "SDK": "Content",
+      "Key": "ProductsContentAdmin",
+      "Value": "TAMCMS_ProductsContentAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "DashboardAdmin",
+      "Value": "TAMCMS_ContactUsAdmin,TAMCMS_ContactUsTypesAdmin,TAMCMS_ContactUsStatusAdmin,TAMCMS_POSAdmin,TAMCMS_POSTypesAdmin,TAMCMS_POSSectorsAdmin,TAMCMS_POSStatusAdmin,TAMCMS_POSAttributesAdmin,TAMCMS_VendorAdmin,TAMCMS_MenusContentAdmin,TAMCMS_SlidersContentAdmin,TAMCMS_PagesContentAdmin,TAMCMS_UsersAdmin,TAMCMS_GalleriesContentAdmin,TAMCMS_ServicesContentAdminTAMCMS_PostsContentAdmin,TAMCMS_PostsEditor,TAMCMS_PostAuthor,TAMCMS_ProductsContentAdmin,TAMCMS_RequestAdmin,TAMCMS_TestimonialsAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "ContactUsAdmin",
+      "Value": "TAMCMS_ContactUsAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "ContactUsTypesAdmin",
+      "Value": "TAMCMS_ContactUsTypesAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "ContactUsStatusAdmin",
+      "Value": "TAMCMS_ContactUsStatusAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "POSAdmin",
+      "Value": "TAMCMS_POSAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "POSTypesAdmin",
+      "Value": "TAMCMS_POSTypesAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "POSSectorsAdmin",
+      "Value": "TAMCMS_POSSectorsAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "POSStatusAdmin",
+      "Value": "TAMCMS_POSStatusAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "POSAttributesAdmin",
+      "Value": "TAMCMS_POSAttributesAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "VendorAdmin",
+      "Value": "TAMCMS_VendorAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "RequestAdmin",
+      "Value": "TAMCMS_RequestAdmin"
+    },
+    {
+      "SDK": "Content",
+      "Key": "TestimonialsAdmin",
+      "Value": "TAMCMS_TestimonialsAdmin"
+    },
+    {
+      "SDK": "Web",
+      "Key": "Vendor",
+      "Value": "TAMCMS_Vendor"
+    }
+  ]
+}

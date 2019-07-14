@@ -18,7 +18,7 @@ using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.MenusContentAdmin)]
+  //  [Authorize(Policy = ContentSDKPoliciesConstants.MenusContentAdmin)]
     public class MenusController : AdminBaseController
     {
 

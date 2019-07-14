@@ -21,8 +21,8 @@ namespace TamTech.Monshaat.POS.Web.Areas.Shared.Controllers
     public class FilesController : Controller
     {
 
-        public const string ControllerName = "Files";
-        public const string ImgAction = "View";
+    //    public const string ControllerName = "Files";
+    //    public const string ImgAction = "View";
         public const string _empty = "~/portal/img/empty.jpg";
         public const string _uploadDirectoary = "UploadFolder";
         public readonly IHostingEnvironment _hostingEnvironment;

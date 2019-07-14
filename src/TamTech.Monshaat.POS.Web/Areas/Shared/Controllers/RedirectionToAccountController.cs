@@ -18,7 +18,7 @@ namespace TamTech.Monshaat.POS.Web.Controllers
                 {
                     return RedirectToAction("login", "OAuth", new { returnUrl });
                 }
-                return RedirectToAction("login", "account", new { Area = "Identity", Lang = "en", returnUrl });
+                return RedirectToAction("login", "account", new { Area = "Identity" , ReturnUrl = returnUrl });
 
             }
             else

@@ -30,7 +30,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 {
 
     [Area("Admin")]
-    [Authorize(Policy = ContentSDKPoliciesConstants.DashboardAdmin)]
+  //  [Authorize(Policy = ContentSDKPoliciesConstants.DashboardAdmin)]
     public class HomeController : AdminBaseController
     {
 

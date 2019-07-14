@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83F9BC64-F99
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.UploadService", "src\TamTech.Monshaat.POS.UploudService\TamTech.Monshaat.POS.UploadService.csproj", "{749A70BC-9334-4BE2-BB70-92705C62B235}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.IdentityService", "src\TamTech.Monshaat.POS.IdentityService\TamTech.Monshaat.POS.IdentityService.csproj", "{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamTech.Monshaat.POS.SDK", "src\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj", "{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{749A70BC-9334-4BE2-BB70-92705C62B235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749A70BC-9334-4BE2-BB70-92705C62B235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749A70BC-9334-4BE2-BB70-92705C62B235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +49,10 @@ Global
 		{F04C6AF5-27AE-4300-B7D8-5BC367316D05} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 		{0222A301-54C3-4300-BE6D-858F3DE9E157} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 		{749A70BC-9334-4BE2-BB70-92705C62B235} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
+		{9B570963-2EDC-4C48-B8C3-DDE966A5BF81} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
+		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6B10E00-930A-41E5-BF94-81CD1F065E7C}
 	EndGlobalSection
 EndGlobal

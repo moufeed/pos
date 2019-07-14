@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
-using TamTechBackendSDK.IdentityService.Models.UserManager;
-using TamTechBackendSDK.IdentityService.Models.Users; 
+using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;     
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
 
 
@@ -20,10 +18,10 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             {
                 cfg.ContentService_InitializeMapper();
 
-                cfg.CreateMap<RegisterUserModel, CreateUserVM>();
-                cfg.CreateMap<CreateUserDto, RegisterUserModel>()
-                    .ForMember(model => model.RolesNames,
-                        opt => opt.MapFrom(dto => dto.Roles));
+                //cfg.CreateMap<RegisterUserModel, CreateUserVM>();
+                //cfg.CreateMap<CreateUserDto, RegisterUserModel>()
+                //    .ForMember(model => model.RolesNames,
+                //        opt => opt.MapFrom(dto => dto.Roles));
 
  
 
@@ -34,21 +32,21 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                     .ForMember(dest => dest.Value,
                         opts => opts.MapFrom(src => src.Key));
 
-                cfg.CreateMap<UserModel, SelectListItem>()
-                    .ForMember(dest => dest.Text,
-                        opts => opts.MapFrom(src => src.UserName))
+                //cfg.CreateMap<UserModel, SelectListItem>()
+                //    .ForMember(dest => dest.Text,
+                //        opts => opts.MapFrom(src => src.UserName))
 
-                    .ForMember(dest => dest.Value,
-                        opts => opts.MapFrom(src => src.Email));
+                //    .ForMember(dest => dest.Value,
+                //        opts => opts.MapFrom(src => src.Email));
 
 
                 // for identity self securing automapper , this might not be used at all
                 // I just coppied this for now 
-                cfg.CreateMap<TamTechBackendSDK.IdentityService.Models.ApplicationUser,
-                        TamTechBackendSDK.IdentityService.Models.Users.UserModel>()
-                    .ForMember(model => model.MobileNumber, opt => opt.MapFrom(sur => sur.PhoneNumber))
-                    .ForMember(model => model.MobileNumberConfirmed,
-                        opt => opt.MapFrom(sur => sur.PhoneNumberConfirmed));
+                //cfg.CreateMap<TamTechBackendSDK.IdentityService.Models.ApplicationUser,
+                //        TamTechBackendSDK.IdentityService.Models.Users.UserModel>()
+                //    .ForMember(model => model.MobileNumber, opt => opt.MapFrom(sur => sur.PhoneNumber))
+                //    .ForMember(model => model.MobileNumberConfirmed,
+                //        opt => opt.MapFrom(sur => sur.PhoneNumberConfirmed));
 
             });
 

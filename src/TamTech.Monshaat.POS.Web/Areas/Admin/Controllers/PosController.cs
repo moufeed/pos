@@ -22,7 +22,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.POSAdmin)]
+  //  [Authorize(Policy = ContentSDKPoliciesConstants.POSAdmin)]
     public class PosController : AdminBaseController
     {
 

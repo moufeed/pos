@@ -1,18 +1,11 @@
 ﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
-using Microsoft.AspNetCore.Mvc;
-using TamTech.Monshaat.POS.EFile2.Utilities; 
-using IdentityServer4.Services; 
-using Microsoft.AspNetCore.Identity;  
-using TamTechBackendSDK.IdentityService.Models;
-using IdentityServer4.Quickstart.UI;
-using TamTechBackendSDK.Common.Extensions;  
+using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Mvc;              
 using Microsoft.AspNetCore.Http;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;
-using TamTech.Monshaat.POS.EFile2.Utilities.Filters;
-using System.Security.Principal;
+using TamTech.Monshaat.POS.EFile2.Utilities.Services;    
 
 namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
 {
@@ -20,20 +13,14 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
     
     public class OAuthController : Controller
     {
-        private readonly IEFileIdentityProviderService _eFileService; 
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;  
+        private readonly IEFileIdentityProviderService _eFileService;    
         private readonly IdentityUtilities _identityUtilities;  
 
         public OAuthController(IEFileIdentityProviderService eFileService,
-            IdentityUtilities posIdentityHelper,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager )  
+            IdentityUtilities posIdentityHelper )  
         {
             _eFileService = eFileService;
-            _identityUtilities = posIdentityHelper; 
-            _userManager = userManager;
-            _signInManager = signInManager;  
+            _identityUtilities = posIdentityHelper;       
         }
 
 
@@ -95,7 +82,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
         {
             //var userId =  HttpContext.User.Identity.GetUserId();
             //  var user = await _userManager.FindByIdAsync(HttpContext.User.Identity.GetUserId()); 
-            await _signInManager.SignOutAsync();
+            await HttpContext.SignOutAsync(); 
             string token = Request.Cookies[Constants.EFileTokenCookieName];
             if (!string.IsNullOrWhiteSpace(token))
             {
@@ -141,24 +128,4 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
     }
 }
 
-
-
-//[HttpGet("Login")]
-//[SecurityHeaders]
-//public async Task<IActionResult> Login(string returnUrl)
-//{
-//    //ViewBag.Token = await HttpContext.GetTokenAsync("access_token");
-//    //ViewBag.Id = HttpContext.User.Identity.GetUserId();
-//    //var claims = HttpContext.User.Identity.GetClaims();
-
-//    if (string.IsNullOrWhiteSpace(returnUrl) || returnUrl.Equals("/"))
-//        returnUrl = $"/{DataCultureHelper.GetCurrent(Request.Query)}";
-//    var url = returnUrl;
-//    //   <<<<<<<<<<<<<<<< check is already authenticated!   >>>>>>>>>>>>>>>>>>
-//    var userId = HttpContext.User.Identity.GetUserId();
-//   if (string.IsNullOrWhiteSpace(userId))
-//    {
-//          url = _eFileService.GetLoginUrl(returnUrl);
-//    } 
-//    return Redirect(url);
-//}
+  

@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings
+{
+    public class StatisticsApiSettings : BaseAPISettings, IStatisticsApiSettings
+    {
+        public StatisticsApiSettings(string controller) : base(controller)
+        {
+        }
+
+        public string GetPOSNumericalStatisticsByStatusEndpoint => $"{_AdminPath}/GetPOSNumericalStatisticsByStatusAsync";
+
+        public string GetPOSNumericalStatisticsBySectorEndpoint => $"{_AdminPath}/GetPOSNumericalStatisticsBySectorAsync";
+
+        public string GetPOSNumericalStatisticsByTypeEndpoint => $"{_AdminPath}/GetPOSNumericalStatisticsByTypeAsync";
+
+        public string GetVendorNumericalStatisticsByStatusEndpoint => $"{_AdminPath}/GetVendorNumericalStatisticsByStatusAsync";
+
+        public string GetContactUsNumericalStatisticsByStatusEndpoint => $"{_AdminPath}/GetContactUsNumericalStatisticsByStatusAsync";
+
+        public string GetContactUsNumericalStatisticsByTypeEndpoint => $"{_AdminPath}/GetContactUsNumericalStatisticsByTypeAsync";
+    }
+}

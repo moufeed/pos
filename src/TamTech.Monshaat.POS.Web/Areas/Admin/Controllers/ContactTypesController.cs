@@ -11,7 +11,7 @@ using TamTech.Monshaat.POS.Web.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    [Authorize(Policy = ContentSDKPoliciesConstants.ContactUsTypesAdmin)]
+  //  [Authorize(Policy = ContentSDKPoliciesConstants.ContactUsTypesAdmin)]
     [ControllerName("contact-types")]
     public class ContactTypesController : BaseTypesController
     {
