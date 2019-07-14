@@ -31,6 +31,8 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 
         string AddUserToRolesEndpoint { get; }
 
+        string SignupByNameEndpoint{ get; }
+
  
     }
 }

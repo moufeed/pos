@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TamTech.Monshaat.POS.IdentityService\TamTech.Monshaat.POS.IdentityService.csproj" />
     <ProjectReference Include="..\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj" />
   </ItemGroup>
 

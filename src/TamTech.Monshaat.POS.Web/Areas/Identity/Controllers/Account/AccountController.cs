@@ -1,5 +1,6 @@
- using Microsoft.AspNetCore.Mvc;    
-using TamTech.Monshaat.POS.Web.Core.Filters;    
+using Microsoft.AspNetCore.Mvc;
+using TamTech.Monshaat.POS.IdentityService.Services;
+using TamTech.Monshaat.POS.Web.Core.Filters;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
 {
@@ -8,9 +9,11 @@ namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
     public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AccountController
     {
 
-        public AccountController(TamTech.Monshaat.POS.IdentityService.Services.IAuthTamService authTamService) : base(authTamService)
+        public AccountController(IAuthTamService authTamService, ITokenTamService tokenTamService) : base(authTamService, tokenTamService)
         {
         }
+
+
 
 
 

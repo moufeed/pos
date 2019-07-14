@@ -51,6 +51,7 @@ namespace TamTech.Monshaat.POS.IdentityService
             }).AddJsonFormatters();
 
             services.AddTransient<IAuthTamService, AuthTamService>();
+            services.AddTransient<ITokenTamService, TokenTamService>();
 
 
         }

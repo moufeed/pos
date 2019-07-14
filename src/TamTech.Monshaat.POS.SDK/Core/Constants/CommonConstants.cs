@@ -10,5 +10,6 @@ namespace TamTech.Monshaat.POS.Web.Core.Constants
         public const string ImgAction = FilesImgAction; 
         public const string FilesControllerName = "Files";
         public const string FilesImgAction = "View";
+      
     }
 }
