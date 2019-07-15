@@ -15,6 +15,7 @@ using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Core.Mappers;
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -24,6 +25,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         #region Props 
         public readonly IMenusServices _MenusServices;
+        public readonly ICCUServices _cCUServices;
         private readonly SettingsHelpers _settingsHelpers;
         private readonly IStringLocalizer<BaseController> _localizer;
         private int _MenuMaxLevels { get; set; } = 0;
@@ -32,12 +34,13 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         #region Ctors
         public MenusController(ITelemetryService telemetryClientService, IMenusServices MenusServices,
-            IStringLocalizer<BaseController> localizer, SettingsHelpers settingsHelpers)
+           ICCUServices  cCUServices, IStringLocalizer<BaseController> localizer, SettingsHelpers settingsHelpers)
             : base(telemetryClientService, localizer)
         {
             _MenusServices = MenusServices;
             _localizer = localizer;
             _settingsHelpers = settingsHelpers;
+            _cCUServices = cCUServices;
         }
         #endregion
 
@@ -54,7 +57,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         private async Task GetMenuItemsTypesListsAsync(string lang)
         {
             List<string> types = await _settingsHelpers.GetMenuItemsTypesAsync();
-            var menuItemsTypesList = (await _MenusServices.GetListsModulesForMenuItemsTypesAsync(types, lang));
+            var menuItemsTypesList = (await _cCUServices.GetListsModulesForMenuItemsTypesAsync(types, lang));
 
             if (menuItemsTypesList != null)
             {

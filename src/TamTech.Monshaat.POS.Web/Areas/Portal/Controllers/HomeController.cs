@@ -36,7 +36,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region prop
         private readonly IPageService _pageService;
         private readonly IEmailSenderService _emailSender;
-        private readonly ISlidersServices _sliderService;
+        private readonly ISliderServices _sliderService;
         private readonly IUploadManagerService _uploadManager;
         private IStringLocalizer<BaseController> _localizer;
         private readonly IPOSSectorServices _sectorService;
@@ -48,7 +48,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
         public HomeController(ITelemetryService telemetryClientService,
                                     IPageService pageService,
-                                    ISlidersServices slidersServices,
+                                    ISliderServices slidersServices,
                                     IUploadManagerService uploadManager,
                                     IStringLocalizer<BaseController> localizer,
                                     IPOSSectorServices sectorService,

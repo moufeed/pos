@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settings;
@@ -26,10 +27,8 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
             _requestProvider = requestProvider;
             _apiSettings = apiSettings;
         }
-        #endregion
-
-
-       
+        #endregion        
+      
 
         #region public 
         public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)
@@ -74,8 +73,19 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
         #region Get
         public async Task<IRequestProviderResult<PagesList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang)
         {
-            //todo
-            //return await _requestProvider.GetAsync<PagesList, List<object>>(_apiSettings.GetAllEndpoint, new List<object> { id }, PassParamsBy.Route);
+            int pn = 0;
+            Int32.TryParse(pagination.PageNumber, out pn);
+            DTFilter model = new DTFilter
+            {
+                PageNumber = pn,
+                PageSize = pagination.PageSize,
+                Search = searchParams,
+                Descending = sorting.Descending,
+                SortBy = sorting.SortBy,
+                Lang = lang,
+
+            };
+           return await _requestProvider.GetAsync<PagesList, DTFilter>(_apiSettings.GetAllEndpoint, model, PassParamsBy.Body);
             throw new NotImplementedException();
         }
 

@@ -24,13 +24,13 @@ namespace TamTechSDK.Web.Controllers.Admin
     {
         #region prop
         public IUploadManagerService _uploadManager;
-        public ISlidersServices _sliderService;
+        public ISliderServices _sliderService;
         private readonly IStringLocalizer<BaseController> _localizer;
         #endregion
 
 
         #region constructor
-        public SlidersController(ITelemetryService telemetryClientService, ISlidersServices sliderService, IUploadManagerService uploadManager,
+        public SlidersController(ITelemetryService telemetryClientService, ISliderServices sliderService, IUploadManagerService uploadManager,
            IStringLocalizer<BaseController> localizer)
             : base(telemetryClientService, localizer)
         {

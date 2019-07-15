@@ -40,5 +40,14 @@
         public const string BiographiesController = "Biographies";
         public const string SettingsController = "Settings";
 
+
+        public const string MenusController = "Menus";
+        public const string MenuItemsController = "MenuItems";
+
+        public const string SlidersController = "Sliders";
+        public const string SliderItemsController = "SliderItems";
+
+        public const string PagesController = "Pages";
+
     }
 }

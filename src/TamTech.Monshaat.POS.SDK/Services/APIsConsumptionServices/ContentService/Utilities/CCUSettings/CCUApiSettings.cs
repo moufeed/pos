@@ -10,6 +10,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Se
         {
         }
 
-        public string GetNumericalStatisticsAsync => $"{_AdminPath}/GetNumericalStatisticsAsync";
+        public string GetNumericalStatisticsEndpoint => $"{_AdminPath}/GetNumericalStatisticsAsync";
+        public string GetListsModulesForMenuItemsTypesEndpoint => $"{_AdminPath}/GetListsModulesForMenuItemsTypesAsync";
     }
 }

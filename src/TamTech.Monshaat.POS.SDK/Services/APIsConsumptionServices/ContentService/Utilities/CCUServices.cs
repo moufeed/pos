@@ -26,6 +26,17 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
             _apiSettings = apiSettings;
 
         }
+
+        public async Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang)
+        {
+            CCUModel<List<string>> Data = new CCUModel<List<string>>()
+            {
+                Lang = lang,
+                Types = model
+            };
+            return await _requestProvider.GetAsync<Dictionary<string, Dictionary<string, string>>, CCUModel<List<string>>>(_apiSettings.GetListsModulesForMenuItemsTypesEndpoint , Data, PassParamsBy.Body);
+        }
+
         public async  Task<IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> GetNumericalStatisticsAsync(List<string> types, string lang)
         {
             CCUModel<List<string>> Data = new CCUModel<List<string>>()
@@ -33,7 +44,10 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
                 Lang = lang,
                 Types = types
             };
-            return await _requestProvider.GetAsync<Dictionary<string, NumericalStatisticsDto>, CCUModel<List<string>>>(_apiSettings.GetNumericalStatisticsAsync, Data, PassParamsBy.Body);
+            return await _requestProvider.GetAsync<Dictionary<string, NumericalStatisticsDto>, CCUModel<List<string>>>(_apiSettings.GetNumericalStatisticsEndpoint, Data, PassParamsBy.Body);
         }
+
+
+
     }
 }

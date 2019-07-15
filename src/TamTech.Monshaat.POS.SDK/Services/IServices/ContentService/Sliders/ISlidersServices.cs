@@ -7,7 +7,7 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders
 {
-    public interface ISlidersServices
+    public interface ISliderServices
 	{
 
         #region Sliders

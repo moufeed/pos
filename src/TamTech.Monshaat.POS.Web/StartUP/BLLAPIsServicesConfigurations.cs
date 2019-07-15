@@ -9,6 +9,8 @@ using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions;
@@ -17,6 +19,7 @@ using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types;
@@ -31,9 +34,12 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
@@ -254,6 +260,9 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                 return new SettingsService(provider, apiSettings);
 
             });
+            services.AddScoped<IMenusServices,  MenusServices>();
+            services.AddTransient<IPageService,  PageService>();
+             services.AddTransient<ISliderServices, SliderService>();
 
 
             #region Identity Service       

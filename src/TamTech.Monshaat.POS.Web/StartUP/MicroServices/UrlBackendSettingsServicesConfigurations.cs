@@ -5,16 +5,19 @@ using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Setti
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;  
 using TamTech.Monshaat.POS.Web.Services.Identity.Settings;
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
@@ -126,49 +129,36 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
             services.AddScoped<ISettingsApiSettings, SettingsApiSettings>((serviceExtension) =>
             {
                 return new SettingsApiSettings(BaseAPISettings.SettingsController);
+            });  
+
+            services.AddScoped<IMenuApiSettings,  MenuApiSettings>((serviceExtension) =>
+            {
+                return new MenuApiSettings(BaseAPISettings.MenusController);
             });
 
-            //services.AddScoped<IUploadBackendSettings, UploadBackendSettings>((serviceExtension) =>
-            //{
-            //    var url = configuration
-            //    .GetSection(AppSettings.MicroServicesSettings)
-            //    .GetSection(AppSettings.MicroServices_UploadService)
-            //    .GetValue<string>("Url");
+                 services.AddScoped<IMenuItemApiSettings,  MenuItemApiSettings>((serviceExtension) =>
+            {
+                return new MenuItemApiSettings(BaseAPISettings.MenuItemsController);
+            });
 
-            //    return new UploadBackendSettings(url);
-            //});
+
+            services.AddScoped<ISliderApiSettings,  SliderApiSettings>((serviceExtension) =>
+            {
+                return new SliderApiSettings(BaseAPISettings.SlidersController);
+            });
+
+            services.AddScoped<ISliderItemApiSettings,  SliderItemApiSettings>((serviceExtension) =>
+            {
+                return new SliderItemApiSettings(BaseAPISettings.SliderItemsController);
+            });   
+
+            services.AddScoped<IPagesApiSettings,  PagesApiSettings>((serviceExtension) =>
+            {
+                return new  PagesApiSettings(BaseAPISettings.PagesController);
+            });   
 
             services.AddScoped<IIdentityBackendSettings, IdentityBackendSettings>();
-
-            //services.AddScoped<IIdentityBackendSettings, IdentityBackendSettings>((serviceExtension) =>
-            //{
-            //    var url = configuration
-            //    .GetSection(AppSettings.MicroServicesSettings)
-            //    .GetSection(AppSettings.MicroServices_IdentityService)
-            //    .GetValue<string>("Url");
-
-            //    return new IdentityBackendSettings(url);
-            //});
-
-            //services.AddScoped<IContentsServiceSettings, ContentsServiceSettings>((serviceExtension) =>
-            //{
-            //    var url = configuration
-            //    .GetSection(AppSettings.MicroServicesSettings)
-            //    .GetSection(AppSettings.MicroServices_ContentsService)
-            //    .GetValue<string>("Url");
-
-            //    return new ContentsServiceSettings(url);
-            //});
-
-
-
-
-            //services.AddScoped<IPageServiceSettings, PageServiceSettings>();
-            //services.AddScoped<IProductManagerServiceSettings, ProductManagerServiceSettings>();
-            //services.AddScoped<IProductServiceSettings, ProductServiceSettings>();
-            //services.AddScoped<IBrandServiceSettings, BrandServiceSettings>();
-            //services.AddScoped<ICategoryServiceSettings, CategoryServiceSettings>(); 
-            //services.AddScoped<IMenusServicesSettings, MenusServicesSettings>();
+            
 
 
 

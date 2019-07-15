@@ -13,5 +13,8 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilitie
 
         Task< IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> GetNumericalStatisticsAsync(List<string> types, string lang);
 
+
+        Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang);
+
     }
 }

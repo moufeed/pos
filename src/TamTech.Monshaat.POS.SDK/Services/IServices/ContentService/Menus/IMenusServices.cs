@@ -10,8 +10,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
     public interface IMenusServices
     {
 
-        Task<IRequestProviderResult<Dictionary<string, Dictionary<string, string>>>> GetListsModulesForMenuItemsTypesAsync(List<string> model, string lang);
-
+      
         #region {Public Menus}  
 
         //   Task<IRequestProviderResult<MenuDto>> GetPublicDynamicByKeyAsync(string key);
@@ -63,8 +62,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
         Task<IRequestProviderResult<bool>> DeleteMenuItemAsync(MenuItemKeysDto model);
 
 
-        Task<IRequestProviderResult<Dictionary<string, dynamic>>> GetPublicDynamicMenuItemsTypesListsByTypesAsync(List<string> model , string lang);
-        #endregion
+         #endregion
 
         #endregion
 

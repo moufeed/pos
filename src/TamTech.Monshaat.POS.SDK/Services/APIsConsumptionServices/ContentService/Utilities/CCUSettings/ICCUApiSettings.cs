@@ -6,7 +6,8 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Se
 {
     public interface ICCUApiSettings
     {
-        string GetNumericalStatisticsAsync { get; }
+        string GetNumericalStatisticsEndpoint { get; }
+        string GetListsModulesForMenuItemsTypesEndpoint { get; }
 
       
     }

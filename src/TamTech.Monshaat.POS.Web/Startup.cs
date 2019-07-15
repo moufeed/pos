@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;                            
 using TamTech.Monshaat.POS.IdentityService;
+using TamTech.Monshaat.POS.Web.AppStartup.DirectBackendServices.EmailService;
+using TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.StartUP;                     
@@ -44,6 +46,8 @@ namespace TamTech.Monshaat.POS.Web
 
           //  services.AddBackendContentServiceConfigurations(Configuration);
 
+            services.DirectBackendServices_AddFilesServicesConfigurationsConfigurations(Configuration);
+            services.DirectBackendServices_AddEmailServicesConfigurations(Configuration);
             services.AddBusinessLogicServicesConfigurations(Configuration);
 
             services.AddEFileIdentityProviderConfigurations(Configuration);
