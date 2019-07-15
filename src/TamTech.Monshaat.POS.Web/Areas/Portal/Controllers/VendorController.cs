@@ -217,7 +217,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 // When AccessDenied is false will the <<<<"please Login/Signup via SSO">>>> message be activated
                 ViewBag.ActivateAccessDeniedForAdmins = false;
             }
-            return View(_VIEWS["VendorForm"], model);
+            return View(_VIEWS["VendorForm"]);
         }
 
 
@@ -372,7 +372,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             {
                 TrackException(ex);
             }
-            return View(_VIEWS["VendorInfo"], new VendorFormVm());
+            return View(_VIEWS["VendorInfo"]);
         }
 
         #endregion

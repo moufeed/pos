@@ -143,6 +143,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 {
                     return View(result.Data);
                 }
+                
             }
             catch (Exception ex)
             {

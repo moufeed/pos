@@ -27,6 +27,7 @@ using TamTech.Monshaat.POS.Web.Core.Enums;
 using System.Web;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using System.Text;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -280,5 +281,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         public virtual async Task<IActionResult> TermsofUse() => await GetSectionPage((int)SettingKeysEnum.TermsofUse);
          
         public virtual IActionResult Success() => View("/Areas/Portal/Views/Shared/Success.cshtml");
+
+        
     }
 }

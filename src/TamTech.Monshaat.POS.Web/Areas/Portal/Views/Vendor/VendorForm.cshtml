@@ -11,18 +11,22 @@
 }
 <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
 
-<section class="create-vendor-page pt-75  pb-50" data-fix-height>
-    <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-md-11 col-lg-8">
-                <header class="vendor-form-header mb-35">
-                    <if exclude-if="Model != null && Model.VendorId != Guid.Empty &&  (IsVendorRole == null || !(bool)IsVendorRole )">
-                        <h3 class="mb-25">
-                            @Localizer[FormAction.Equals("edit", StringComparison.OrdinalIgnoreCase) ? "edit_information" : "vedor_register"]
-                        </h3>
-                    </if>
-                </header>
+<if include-if="Model != null">
+
+
+    <section class="create-vendor-page pt-75  pb-50" data-fix-height>
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-11 col-lg-8">
+                    <header class="vendor-form-header mb-35">
+                        <if exclude-if="Model != null && Model.VendorId != Guid.Empty &&  (IsVendorRole == null || !(bool)IsVendorRole )">
+                            <h3 class="mb-25">
+                                @Localizer[FormAction.Equals("edit", StringComparison.OrdinalIgnoreCase) ? "edit_information" : "vedor_register"]
+                            </h3>
+                        </if>
+                    </header>
                     <if include-if='Model == null'>
                         <div class="white-panel p_25">
                             <if include-if="ViewBag.ActivateAccessDeniedForAdmins">
@@ -33,54 +37,60 @@
                             </if>
                         </div>
                     </if>
-                
-                <if include-if='Model != null'>
-                   @*
-                    <h1>Model.VendorCanEdit : @Model.VendorCanEdit</h1>
-                    <h1>Model.Register : @(FormAction.Equals("Register") && Model.VendorId == Guid.Empty)</h1>
-                    <h1>Model.edit : @(FormAction.Equals("edit") && Model.VendorId != Guid.Empty)</h1>    
-                   *@
 
-                    <if include-if='
-                        (FormAction.Equals("Register") && Model.VendorId == Guid.Empty) || 
+                    <if include-if='Model != null'>
+                        @*
+                            <h1>Model.VendorCanEdit : @Model.VendorCanEdit</h1>
+                            <h1>Model.Register : @(FormAction.Equals("Register") && Model.VendorId == Guid.Empty)</h1>
+                            <h1>Model.edit : @(FormAction.Equals("edit") && Model.VendorId != Guid.Empty)</h1>
+                        *@
+
+                        <if include-if='
+                        (FormAction.Equals("Register") && Model.VendorId == Guid.Empty) ||
                         ( Model.VendorCanEdit && (FormAction.Equals("edit") && Model.VendorId != Guid.Empty )) '>
-                        <partial name="~/Areas/Portal/Views/Vendor/partials/_Vform.cshtml" model="Model" />
-                    </if>
+                            <partial name="~/Areas/Portal/Views/Vendor/partials/_Vform.cshtml" model="Model" />
+                        </if>
 
-                    <if include-if='
+                        <if include-if='
                          (  FormAction.Equals("Register") && Model.VendorId != Guid.Empty) ||
 
                          (!Model.VendorCanEdit &&FormAction.Equals("edit") && Model.VendorId != Guid.Empty )'>
 
-                        <partial name="~/Areas/Portal/Views/Vendor/partials/_VInfo.cshtml" model="Model" />
+                            <partial name="~/Areas/Portal/Views/Vendor/partials/_VInfo.cshtml" model="Model" />
+                        </if>
                     </if>
-                </if>
+                </div>
             </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
-
-<partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
+    <partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
 
 
-@section Footer{
+    @section Footer{
 
-    <script src="~/Portal/js/validation.min.js"></script>
-    <script src="~/Portal/js/vendor.f.min.js"></script>
+        <script src="~/Portal/js/validation.min.js"></script>
+        <script src="~/Portal/js/vendor.f.min.js"></script>
 
-    <if include-if='TempData.ContainsKey("RegisterSuccess")'>
-        @{ 
-            TempData.Remove("RegisterSuccess");
-        }
-        <partial name="~/Areas/Portal/Views/Vendor/partials/_RegisterSuccessModal.cshtml" />
-    </if>
+        <if include-if='TempData.ContainsKey("RegisterSuccess")'>
+            @{
+                TempData.Remove("RegisterSuccess");
+            }
+            <partial name="~/Areas/Portal/Views/Vendor/partials/_RegisterSuccessModal.cshtml" />
+        </if>
 
-    <if include-if='TempData.ContainsKey("UpdateSuccess")'>
-        @{
-            TempData.Remove("UpdateSuccess");
-        }
-        <partial name="~/Areas/Portal/Views/Vendor/partials/_UpdateSuccessModal.cshtml" />
-    </if>
+        <if include-if='TempData.ContainsKey("UpdateSuccess")'>
+            @{
+                TempData.Remove("UpdateSuccess");
+            }
+            <partial name="~/Areas/Portal/Views/Vendor/partials/_UpdateSuccessModal.cshtml" />
+        </if>
 
-}
+    }
+</if>
+
+
+<if exclude-if="Model != null">
+    <partial name="~/Areas/Portal/Views/Shared/partials/_Error_widget.cshtml" />
+</if>

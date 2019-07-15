@@ -33,7 +33,6 @@ namespace TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentSe
             dataSource.Settings = set.Settings;
             POSDataMigrationsManager dataMigrationManager = new POSDataMigrationsManager(dataSource, app);
             dataMigrationManager.Migrate();
-
         }
     }
 }
