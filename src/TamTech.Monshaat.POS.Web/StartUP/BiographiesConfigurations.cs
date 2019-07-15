@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using TamTech.ContentService.Core.Domain.Models;
-using TamTech.ContentService.Data;
+using Microsoft.Extensions.Configuration;   
 
 namespace TamTech.Monshaat.POS.Web.StartUP.ContentService
 {

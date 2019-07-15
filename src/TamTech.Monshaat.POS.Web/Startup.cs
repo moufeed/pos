@@ -4,13 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
-using TamTech.ContentService.Core.EFCore.Contexts;
+using System.Linq;                            
 using TamTech.Monshaat.POS.IdentityService;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
-using TamTech.Monshaat.POS.Web.StartUP;
-using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;
+using TamTech.Monshaat.POS.Web.StartUP;                     
 
 namespace TamTech.Monshaat.POS.Web
 {
@@ -44,7 +42,7 @@ namespace TamTech.Monshaat.POS.Web
 
             services.AddCommonServicesConfigurations(Configuration);
 
-            services.AddBackendContentServiceConfigurations(Configuration);
+          //  services.AddBackendContentServiceConfigurations(Configuration);
 
             services.AddBusinessLogicServicesConfigurations(Configuration);
 
@@ -61,7 +59,7 @@ namespace TamTech.Monshaat.POS.Web
         {
 
 
-            app.SeedData(env, Configuration);  
+         //   app.SeedData(env, Configuration);  
             string cachePeriod;
             if (env.IsDevelopment())
             {

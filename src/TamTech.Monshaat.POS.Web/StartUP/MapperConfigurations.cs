@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using TamTech.Monshaat.POS.Web.StartUP.DirectBackendConfigurations.ContentService;     
+using System.Text;                        
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
 
 
@@ -16,7 +15,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
         {
             AutoMapper.Mapper.Initialize(cfg =>
             {
-                cfg.ContentService_InitializeMapper();
+              //  cfg.ContentService_InitializeMapper();
 
                 //cfg.CreateMap<RegisterUserModel, CreateUserVM>();
                 //cfg.CreateMap<CreateUserDto, RegisterUserModel>()

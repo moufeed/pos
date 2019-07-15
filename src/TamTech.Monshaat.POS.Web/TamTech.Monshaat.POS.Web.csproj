@@ -121,12 +121,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TamTech.ContentService.SDK">
-      <HintPath>..\..\..\..\HelperServices\ContentService\src\TamTech.ContentService.SDK\bin\Debug\netcoreapp2.2\TamTech.ContentService.SDK.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
 
