@@ -22,7 +22,7 @@ namespace TamTech.Monshaat.POS.Web
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
              WebHost.CreateDefaultBuilder(args)
                  .UseApplicationInsights()
-                 .UseKestrel()
+                 .UseKestrel(c => c.AddServerHeader = false)
                  .UseIISIntegration()
                  .UseStartup<Startup>();
 
