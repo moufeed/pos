@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Settings;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 {

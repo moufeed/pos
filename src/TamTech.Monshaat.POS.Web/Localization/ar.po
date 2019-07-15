@@ -2399,7 +2399,7 @@ msgid "add_pos"
 msgstr "إضافة نظام نقطة بيع"
 
 msgid "your_account_has_been_created"
-msgstr "آهلا {0} ، تم إنشاء حسابكم في منشآت بنجاح"
+msgstr "آهلا {0} ، تم إنشاء حسابكم في النظام بنجاح"
 
 msgid "you_can_add_pos"
 msgstr "يمكنك الأن إضافة أنظمة نقاط البيع الخاص بك "
@@ -2458,8 +2458,11 @@ msgstr "حدث خطأ ما"
 msgid "try_to_refresh_this_page"
 msgstr "لايمكننا الحصول على المعلومات الأن. الرجاء المحاولة مجدداً في وقت لاحق"
 
-msgid ""
-msgid ""
+msgid "error_title"
+msgstr "خطأ غير محدد "
+
+msgid "error_txt"
+msgstr "حدث خطأ ما . يرجى إعادة تحميل الصفحة المطلوبة من جديد اذا استمرت المشكلة في الظهور يرجى  التواصل معنا"
 
 msgid "your_are_blocked_title"
 msgstr "للأسف تم حظر حسابك من قبل المدير"
