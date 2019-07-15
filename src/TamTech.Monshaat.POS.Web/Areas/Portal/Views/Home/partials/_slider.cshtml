@@ -2,11 +2,11 @@
 @{
     var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 }
+ 
 
-<if include-if="(ViewBag.publicMainSlider != null)">
-    @{
-        SliderDto mainSlider = (SliderDto)ViewBag.publicMainSlider;
-    }
+@if(ViewBag.publicMainSlider != null){
+
+    SliderDto mainSlider = (SliderDto)ViewBag.publicMainSlider;
     <if include-if="mainSlider.Items != null && mainSlider.Items.Count > 0">
         <section class="main-slider">
 
@@ -55,6 +55,4 @@
             </div>
         </section>
     </if>
-</if>
-
- 
+}

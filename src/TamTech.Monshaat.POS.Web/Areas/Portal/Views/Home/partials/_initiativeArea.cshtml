@@ -1,5 +1,5 @@
-﻿ <if include-if="(ViewBag.initiativeSummary != null)">
-     @{ HtmlPage HtmlPage =ViewBag.initiativeSummary == null ? new  HtmlPage():(HtmlPage)ViewBag.initiativeSummary; }
+﻿@if (ViewBag.initiativeSummary != null) { 
+    HtmlPage HtmlPage =ViewBag.initiativeSummary == null ? new  HtmlPage():(HtmlPage)ViewBag.initiativeSummary; 
     <section class="section initiative-Area">
         <div class="container">
             <div class="row text-center">
@@ -12,4 +12,4 @@
             </div>
         </div>
     </section>
-</if>
+}

@@ -71,22 +71,11 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
         #region admin
 
         #region Get
-        public async Task<IRequestProviderResult<PagesList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang)
+        public async Task<IRequestProviderResult<PagesList>> GetAllAsync(DTFilter model)
         {
-            int pn = 0;
-            Int32.TryParse(pagination.PageNumber, out pn);
-            DTFilter model = new DTFilter
-            {
-                PageNumber = pn,
-                PageSize = pagination.PageSize,
-                Search = searchParams,
-                Descending = sorting.Descending,
-                SortBy = sorting.SortBy,
-                Lang = lang,
-
-            };
+            
            return await _requestProvider.GetAsync<PagesList, DTFilter>(_apiSettings.GetAllEndpoint, model, PassParamsBy.Body);
-            throw new NotImplementedException();
+          
         }
 
         public async Task<IRequestProviderResult<HtmlPage>> GetHtmlPageByIdAsync(Guid id, string lang)

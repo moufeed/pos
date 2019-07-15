@@ -23,6 +23,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -135,14 +136,23 @@ namespace TamTechSDK.Web.Controllers.Admin
             };
 
             SortingModel sorting = CreateSortingModel(model.SortBy);
+           
+            DTFilter _filters = new DTFilter
+            {
+                Lang = GetCurrentDataLang(),
+                PageSize = model.PageSize,
+                PageNumber = model.PageNumber,
+                SortBy = sorting.SortBy,
+                Descending = sorting.Descending,
+                Search = GenrateSearchParams(model)
+            };
 
-
-
+             
             try
             {
-                // CheckSuccessModel();
+                // CheckSuccessModel(); 
 
-                var result = await _pageService.GetAllAsync(pagination, GenrateSearchParams(model), sorting, GetCurrentDataLang());
+                var result = await _pageService.GetAllAsync(_filters);
 
                 if (result.Success)
                 {
@@ -156,7 +166,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 TrackException(ex);
             }
 
-            return View(new List<PageDto>());
+            return View();
         }
 
         [HttpGet("{Culture}/[Area]/[Controller]/Delete/{type}/{id}")]

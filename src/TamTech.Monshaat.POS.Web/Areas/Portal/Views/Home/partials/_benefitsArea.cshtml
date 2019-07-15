@@ -1,7 +1,6 @@
 ﻿
-    <if include-if="ViewBag.Benefitssummary != null">
-        @{ HtmlPage  Bpage = (HtmlPage)ViewBag.Benefitssummary; }
-
+ @if(ViewBag.Benefitssummary != null) { 
+         HtmlPage  Bpage = (HtmlPage)ViewBag.Benefitssummary; 
         <section class="benfits-area section">
             <div class="container">
                 <div class="row">
@@ -12,4 +11,4 @@
                 @Html.Raw(Bpage.Content)
             </div>
         </section>
-    </if>
+}

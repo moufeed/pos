@@ -6,6 +6,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 {
@@ -41,7 +42,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 
         #region {Get} 
 
-        Task<IRequestProviderResult<PagesList>> GetAllAsync(PaginationModel pagination, Dictionary<string, object> searchParams, SortingModel sorting, string lang);
+        Task<IRequestProviderResult<PagesList>> GetAllAsync(DTFilter model);
         //Task<IRequestProviderResult<HtmlPage>> GetHtmlPageBySlugAsync(string slug);
 
         //Task<IRequestProviderResult<SectionsPage>> GetSectionsPageBySlugAsync(string slug);

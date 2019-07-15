@@ -1,22 +1,22 @@
 ﻿
 @{
-    ViewData["Title"] =  @Localizer["site_title"];
+    ViewData["Title"] = @Localizer["site_title"];
     Layout = "_Layout";
     var lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
     ViewData["PageClass"] = "homepage";
 }
 
-
 <partial name="~/Areas/Portal/Views/Home/partials/_slider.cshtml" />
+
 <partial name="~/Areas/Portal/Views/Home/partials/_sectorsArea.cshtml" />
-<partial name="~/Areas/Portal/Views/Home/partials/_benefitsArea.cshtml"/>
+<partial name="~/Areas/Portal/Views/Home/partials/_benefitsArea.cshtml" />
 <partial name="~/Areas/Portal/Views/Home/partials/_initiativeArea.cshtml" />
 @*<partial name="~/Areas/Portal/Views/Home/partials/_directoryArea.cshtml" />*@
 <partial name="~/Areas/Portal/Views/Home/partials/_contactArea.cshtml" />
 
- 
- 
-@section Footer{ 
+
+
+@section Footer{
     <script src="~/Portal/js/slider.min.js"></script>
     <script src="~/Portal/js/carousel.min.js"></script>
 }

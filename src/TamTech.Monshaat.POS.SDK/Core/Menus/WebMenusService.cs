@@ -31,7 +31,8 @@ namespace TamTechSDK.Web.Services.ContentService.Menus.PublicService
 
         public async Task<MenuDto> GetNavbarMenuAsync()
         {
-            return (await _menusServices.GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar)).Data;
+            var request = await _menusServices.GetPublicBySettingIdAsync((int)SettingKeysEnum.Navbar);
+            return request.Data;
         }
 
         #endregion

@@ -1,8 +1,7 @@
-﻿ 
-    <if include-if="ViewBag.sectors != null">
-        @{ 
-            List<SectorDto> Sectors = (List<SectorDto>)ViewBag.sectors;
-        }
+﻿ @if (ViewBag.sectors != null)
+ {
+        List<SectorDto> Sectors = (List<SectorDto>)ViewBag.sectors;
+      
         <if include-if="Sectors.Count > 0">
             <section class="sectors-area">
                 <div class="container">
@@ -46,5 +45,5 @@
                 </div>
             </section>
         </if>
-    </if>
+ }
 

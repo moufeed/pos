@@ -6,6 +6,8 @@
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
+
+
 <div class="clearfix">
     <div class="page-title">
         <div class="title_left">
@@ -18,7 +20,8 @@
         </div>
     </div>
 </div>
-
+<if include-if="Model != null">
+    
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
@@ -215,3 +218,8 @@
         $('.select_picker').select2();
     </script>
 }
+
+</if>
+<if exclude-if="Model != null">
+   <partial name="~/Areas/Admin/Views/Shared/_empty.cshtml"/>
+</if>

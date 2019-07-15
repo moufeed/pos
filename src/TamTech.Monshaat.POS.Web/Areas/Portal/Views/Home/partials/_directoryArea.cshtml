@@ -1,16 +1,19 @@
-<section class="directory-area section">
-    <div class="container">
-        <div class="row justify-content-center bg-white d-content">
-            <div class="col-12 col-md-4 col-lg-3 ">
-                <img src="~/Portal/img/pos.svg" alt="" class="pos-img">
-            </div>
-            <div class="col-12 col-md-8 col-lg-8">
+@if (ViewBag.TotalCount != null)
+{
+    <section class="directory-area section">
+        <div class="container">
+            <div class="row justify-content-center bg-white d-content">
+                <div class="col-12 col-md-4 col-lg-3 ">
+                    <img src="~/Portal/img/pos.svg" alt="" class="pos-img">
+                </div>
+                <div class="col-12 col-md-8 col-lg-8">
                     @{
-                        int Total =  ViewBag.TotalCount != null ? (int)ViewBag.TotalCount : 0;
+                        int Total = ViewBag.TotalCount != null ? (int)ViewBag.TotalCount : 0;
                     }
-                    <p class="total-pos">@Localizer["total_of_pos",Total]</p>
+                    <p class="total-pos">@Localizer["total_of_pos", Total]</p>
                     <a asp-action="index" asp-controller="Directory" class="btn btn-primary p-x-30 mt-25 p-y-10">@Localizer["pos_directory"]</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}

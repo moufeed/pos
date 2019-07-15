@@ -38,10 +38,19 @@ namespace TamTech.Monshaat.POS.Web.Core.TagHelpers
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = null;
-            var menu = await _publicMenusService.GetNavbarMenuAsync();
-            if (menu != null && menu.MenuItems != null)
+            try
             {
-                output.Content.SetHtmlContent(Print_UL(menu.MenuItems));
+                var menu = await _publicMenusService.GetNavbarMenuAsync();
+                if (menu != null && menu.MenuItems != null)
+                {
+                    output.Content.SetHtmlContent(Print_UL(menu.MenuItems));
+                }
+            }
+            catch (Exception ex)
+            {
+                var test = ex;
+                output.Content.SetContent("");
+
             }
         }
 
