@@ -13,16 +13,13 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
     public class CCUServices : BaseAPIService, ICCUServices
     {
 
-        #region Props 
-        private readonly IRequestProvider _requestProvider;
-
+        #region Props          
         private readonly ICCUApiSettings _apiSettings;
         #endregion
 
 
         public CCUServices(IRequestProvider requestProvider, ICCUApiSettings apiSettings) : base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {      
             _apiSettings = apiSettings;
 
         }
@@ -34,7 +31,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
                 Lang = lang,
                 Types = model
             };
-            return await _requestProvider.GetAsync<Dictionary<string, Dictionary<string, string>>, CCUModel<List<string>>>(_apiSettings.GetListsModulesForMenuItemsTypesEndpoint , Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<Dictionary<string, Dictionary<string, string>>, CCUModel<List<string>>>(_apiSettings.GetListsModulesForMenuItemsTypesEndpoint , Data, PassParamsBy.Body);
         }
 
         public async  Task<IRequestProviderResult<Dictionary<string, NumericalStatisticsDto>>> GetNumericalStatisticsAsync(List<string> types, string lang)
@@ -44,7 +41,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
                 Lang = lang,
                 Types = types
             };
-            return await _requestProvider.GetAsync<Dictionary<string, NumericalStatisticsDto>, CCUModel<List<string>>>(_apiSettings.GetNumericalStatisticsEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<Dictionary<string, NumericalStatisticsDto>, CCUModel<List<string>>>(_apiSettings.GetNumericalStatisticsEndpoint, Data, PassParamsBy.Body);
         }
 
 

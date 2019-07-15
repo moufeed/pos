@@ -12,9 +12,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
 {
     public class SettingsService : BaseAPIService ,ISettingService
     {
-        #region Props 
-        private readonly IRequestProvider _requestProvider;
-
+        #region Props                       
         private readonly ISettingsApiSettings _apiSettings;
         #endregion
 
@@ -22,8 +20,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
         #region Ctors
         public SettingsService(IRequestProvider requestProvider, ISettingsApiSettings apiSettings)
             : base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {         
             _apiSettings = apiSettings;
         }
         #endregion
@@ -31,7 +28,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetByGroupIdAsync(int groupId)
         {
-            return await _requestProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetByGroupIdEndpoint, new List<object> { groupId }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetByGroupIdEndpoint, new List<object> { groupId }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetByGroupIdsAsync(List<int> groupIds)
@@ -40,18 +37,18 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
             {
                  Data = groupIds, 
             };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetByGroupIdsEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetByGroupIdsEndpoint, Data, PassParamsBy.Body);
               
         }
 
         public async Task<IRequestProviderResult<SettingDto>> GetByIdAsync(int id)
         {
-            return await _requestProvider.GetAsync<SettingDto, List<object>>(_apiSettings.GetByIdEndpoint, new List<object> { id }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<SettingDto, List<object>>(_apiSettings.GetByIdEndpoint, new List<object> { id }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledByGroupIdAsync(int groupId)
         {
-            return await _requestProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetByGroupIdEndpoint, new List<object> { groupId  }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetByGroupIdEndpoint, new List<object> { groupId  }, PassParamsBy.Route);
             
         }
 
@@ -61,12 +58,12 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
             {
                 Data = groupIds 
             };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetByGroupIdsEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetByGroupIdsEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<SettingDto>> GetEnabledByIdAsync(int id)
         {
-            return await _requestProvider.GetAsync<SettingDto, List<object>>(_apiSettings.GetByIdEndpoint, new List<object> { id}, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<SettingDto, List<object>>(_apiSettings.GetByIdEndpoint, new List<object> { id}, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListByIdsAsync(List<int> ids)
@@ -76,7 +73,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
                  {
                      Data = ids, 
                  };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetListByIdsEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetListByIdsEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListByKeysAsync(List<string> keys)
@@ -86,12 +83,12 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
                  {
                      Data = keys, 
                  };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListByKeysEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListByKeysEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListBySharedKeyAsync(string sharedkey)
         {
-             return await _requestProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetListBySharedKeyEndpoint, new List<object> { sharedkey }, PassParamsBy.Route);
+             return await ReqProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetListBySharedKeyEndpoint, new List<object> { sharedkey }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetEnabledListBySharedKeysAsync(List<string> sharedkeys)
@@ -101,7 +98,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
              {
                   Data = sharedkeys, 
              };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListBySharedKeysEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListBySharedKeysEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetListByIdsAsync(List<int> ids)
@@ -112,7 +109,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
               {
                   Data = ids, 
               };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetListByIdsEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<int>>>(_apiSettings.GetListByIdsEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetListByKeysAsync(List<string> keys)
@@ -121,12 +118,12 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
             {
                 Data = keys, 
             };
-            return await _requestProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListByKeysEndpoint, Data, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<List<SettingDto>, ApiRequestModel<List<string>>>(_apiSettings.GetListByKeysEndpoint, Data, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<List<SettingDto>>> GetListBySharedKeyAsync(string sharedkey)
         {
-            return await _requestProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetListBySharedKeyEndpoint, new List<object> { sharedkey }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SettingDto>, List<object>>(_apiSettings.GetListBySharedKeyEndpoint, new List<object> { sharedkey }, PassParamsBy.Route);
         }
     }
 }

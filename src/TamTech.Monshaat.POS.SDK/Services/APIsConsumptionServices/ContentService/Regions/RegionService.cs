@@ -17,9 +17,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
     public   class RegionService : BaseAPIService, IRegionService ,  IContactRegionService
     {
 
-        #region Props 
-        private readonly IRequestProvider _requestProvider;
-
+        #region Props    
         private readonly IRegionApiSettings _apiSettings;
         #endregion
 
@@ -27,8 +25,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
         #region Ctors
         public RegionService(IRequestProvider requestProvider, IRegionApiSettings apiSettings)
             :base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {        
             _apiSettings = apiSettings;
         }
         #endregion
@@ -38,24 +35,24 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
 
         public async Task<IRequestProviderResult<RegionDto>> GetPublishedBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<RegionDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<RegionDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<RegionDto>>> GetPublishedListAsync(bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually }, PassParamsBy.Route);
             
         }
 
         public async Task<IRequestProviderResult<List<RegionDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually }, PassParamsBy.Route);
             
         } 
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetPublishedSelectListAsync(string lang, bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetPublishedSelectListEndpoint, new List<object> { lang, sortManually }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetPublishedSelectListEndpoint, new List<object> { lang, sortManually }, PassParamsBy.Route);
         }
 
         #endregion
@@ -64,22 +61,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
 
         public async Task<IRequestProviderResult<List<RegionDto>>> GetAllExceptSoftDeletedAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<RegionDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>>  GetAllSelectListAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
          }
 
         public async Task<IRequestProviderResult<RegionDto>> GetByIdExceptSoftDeletedAsync(int id, string lang)
         {
-            return await _requestProvider.GetAsync<RegionDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<RegionDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<RegionDto>>>>  GetExceptSoftDeletedAsync(DTFilter model)
         {
-            return await _requestProvider.GetAsync<PagedResultModel<List<RegionDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint , model, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<PagedResultModel<List<RegionDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint , model, PassParamsBy.Body);
         }
 
 
@@ -93,22 +90,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
 
         public async Task<IRequestProviderResult<int>> CreateAsync(CreateRegionModel model)
         {
-            return await _requestProvider.PostAsync<int, CreateRegionModel>(_apiSettings.CreateEndpoint, model);
+            return await ReqProvider.PostAsync<int, CreateRegionModel>(_apiSettings.CreateEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> EditAsync(UpdateRegionModel model)
         {
-            return await _requestProvider.PostAsync<bool, UpdateRegionModel>(_apiSettings.EditEndpoint, model);
+            return await ReqProvider.PostAsync<bool, UpdateRegionModel>(_apiSettings.EditEndpoint, model);
         } 
 
         public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
-            return await _requestProvider.PostAsync<bool, PublishLookupModel>(_apiSettings.PublishEndpoint, model);
+            return await ReqProvider.PostAsync<bool, PublishLookupModel>(_apiSettings.PublishEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
         {
-            return await _requestProvider.PostAsync<bool, DeleteModel<int>>(_apiSettings.SoftDeleteEndpoint, new DeleteModel<int>(id));
+            return await ReqProvider.PostAsync<bool, DeleteModel<int>>(_apiSettings.SoftDeleteEndpoint, new DeleteModel<int>(id));
         }
 
      

@@ -13,25 +13,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status
 {
     public class StatusService : BaseAPIService, IStatusService , IContactUsStatusService, IPosStatusService, IVendorStatusService
     {
-        #region Props 
-        private readonly IRequestProvider _requestProvider;
-
+        #region Props               
         private readonly IStatusApiSettings _apiSettings;
 
         public StatusService(IRequestProvider requestProvider , IStatusApiSettings apiSettings) : base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {     
             _apiSettings = apiSettings;
         }
 
         public async Task<IRequestProviderResult<List<StatusDto>>> GetAllAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<StatusDto>, List<object>>(_apiSettings.GetAllEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<StatusDto>, List<object>>(_apiSettings.GetAllEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
         #endregion
 

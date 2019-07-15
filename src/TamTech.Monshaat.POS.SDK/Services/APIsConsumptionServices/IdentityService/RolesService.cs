@@ -10,16 +10,14 @@ using TamTech.Monshaat.POS.Web.Services.Identity;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService
 {
-    public class RolesService : IRolesService
-    {
-        private readonly IRequestProvider _requestProvider;
+    public class RolesService : BaseAPIService,IRolesService
+    {                                     
         private readonly IIdentityBackendSettings _backendSettings;     
 
         public RolesService(IRequestProvider requestProvider,
                                IIdentityBackendSettings backendSettings
-                               )
-        {
-            _requestProvider = requestProvider;
+                               ) : base(requestProvider)
+        {                
             _backendSettings = backendSettings;
         }
 
@@ -30,13 +28,13 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
 
         public async Task<IEnumerable<RoleModel>> GetAllAsync()
         {
-            var result = await _requestProvider.GetAsync<IEnumerable<RoleModel>>(_backendSettings.GetRolesEndpoint);
+            var result = await ReqProvider.GetAsync<IEnumerable<RoleModel>>(_backendSettings.GetRolesEndpoint);
             return  GetResult<IEnumerable<RoleModel>>(result);
         }
 
         public async Task<IEnumerable<RoleModel>> GetUserRolesAsync(string name)
         {
-            var result = await _requestProvider.GetAsync<IEnumerable<RoleModel>>(_backendSettings.GetUserRolesEndpoint);
+            var result = await ReqProvider.GetAsync<IEnumerable<RoleModel>>(_backendSettings.GetUserRolesEndpoint);
             return GetResult<IEnumerable<RoleModel>>(result);
         }
 

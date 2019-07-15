@@ -16,52 +16,50 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos
 {
     public class PosService : BaseAPIService , IPOSService
     {
-        #region prop
-        private readonly IRequestProvider _requestProvider;
+        #region prop      
         private readonly IPosApiSettings _apiSettings;
         #endregion
 
         #region ctor
         public PosService(IRequestProvider requestProvider, IPosApiSettings apiSettings) : base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {            
             _apiSettings = apiSettings;
         }
         #endregion
 
         public async Task<IRequestProviderResult<Guid>> CreateAsync(CreatePosModel model)
         {
-            return await _requestProvider.PostAsync<Guid, CreatePosModel>(_apiSettings.CreateEndpoint, model);
+            return await ReqProvider.PostAsync<Guid, CreatePosModel>(_apiSettings.CreateEndpoint, model);
         }
 
         public async Task<IRequestProviderResult<bool>> EditAsync(UpdatePosModel model)
         {
-            return await _requestProvider.PostAsync<bool, UpdatePosModel>(_apiSettings.EditEndpoint, model);
+            return await ReqProvider.PostAsync<bool, UpdatePosModel>(_apiSettings.EditEndpoint, model);
         }
 
         public async Task<IRequestProviderResult<PosDto>> GetByIdAndCurrentUserExceptSoftDeletedAsync(Guid id, string lang)
         {
-            return await _requestProvider.GetAsync<PosDto, List<object>>(_apiSettings.GetByIdAndCurrentUserExceptSoftDeletedEndpoint, new List<object> { id , lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<PosDto, List<object>>(_apiSettings.GetByIdAndCurrentUserExceptSoftDeletedEndpoint, new List<object> { id , lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> GetPOSsForCurrentUserAsync(PosFilters model)
         {
-            return await _requestProvider.GetAsync<PagedResultModel<List<PosDto>>, PosFilters>(_apiSettings.GetPOSsForCurrentUserEndpoint, model , PassParamsBy.Body);
+            return await ReqProvider.GetAsync<PagedResultModel<List<PosDto>>, PosFilters>(_apiSettings.GetPOSsForCurrentUserEndpoint, model , PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<bool>> SoftDeleteByCurrentUserAsync(Guid id)
         {
-            return await _requestProvider.PostAsync<bool, DeleteModel<Guid>>(_apiSettings.SoftDeleteByCurrentUserEndpoint, new DeleteModel<Guid>(id));
+            return await ReqProvider.PostAsync<bool, DeleteModel<Guid>>(_apiSettings.SoftDeleteByCurrentUserEndpoint, new DeleteModel<Guid>(id));
         }
 
         public async Task<IRequestProviderResult<bool>> VerifySlugUniqueAsync(string slug, Guid? id = null)
         {
-            return await _requestProvider.GetAsync<bool, List<object>>(_apiSettings.VerifySlugUniqueEndpoint, new List<object> { slug, id }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<bool, List<object>>(_apiSettings.VerifySlugUniqueEndpoint, new List<object> { slug, id }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<GeneratedSlugModel>> VerifySlugUniqueByNameAsync(string name, Guid? id = null)
         {
-            return await _requestProvider.GetAsync<GeneratedSlugModel, VerifyNameModel<Guid?>>(_apiSettings.VerifySlugUniqueByNameEndpoint, new VerifyNameModel<Guid?>(){ Name= name, Id = id }, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<GeneratedSlugModel, VerifyNameModel<Guid?>>(_apiSettings.VerifySlugUniqueByNameEndpoint, new VerifyNameModel<Guid?>(){ Name= name, Id = id }, PassParamsBy.Body);
         }
     }
 }

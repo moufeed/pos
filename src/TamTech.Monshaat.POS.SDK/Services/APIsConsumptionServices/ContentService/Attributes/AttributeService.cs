@@ -17,8 +17,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
     public   class AttributeService : BaseAPIService, IAttributeService , IPOSAttributeService 
     {
 
-        #region Props 
-        private readonly IRequestProvider _requestProvider;
+        #region Props      
 
         private readonly IAttributeApiSettings _apiSettings;
         #endregion
@@ -27,8 +26,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
         #region Ctors
         public AttributeService(IRequestProvider requestProvider, IAttributeApiSettings apiSettings)
             :base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {                                   
             _apiSettings = apiSettings;
         }
         #endregion
@@ -38,18 +36,18 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
 
         public async Task<IRequestProviderResult<AttributeDto>> GetPublishedBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<AttributeDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<AttributeDto, List<object>>(_apiSettings.GetPublishedBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetPublishedListEndpoint, new List<object> { sortManually }, PassParamsBy.Route);
             
         }
 
         public async Task<IRequestProviderResult<List<AttributeDto>>> GetPublishedListAsync(int takeItems, bool sortManually = true)
         {
-            return await _requestProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetPublishedLimitedListEndpoint, new List<object> { takeItems, sortManually }, PassParamsBy.Route);
             
         }
 
@@ -62,22 +60,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
 
         public async Task<IRequestProviderResult<List<AttributeDto>>> GetAllAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<AttributeDto>, List<object>>(_apiSettings.GetAllExceptSoftDeletedEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<List<SelectListItemModel>>> GetAllSelectListAsync(string lang)
         {
-            return await _requestProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<List<SelectListItemModel>, List<object>>(_apiSettings.GetAllSelectListEndpoint, new List<object> { lang }, PassParamsBy.Route);
          }
 
         public async Task<IRequestProviderResult<AttributeDto>> GetByIdAsync(int id, string lang)
         {
-            return await _requestProvider.GetAsync<AttributeDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<AttributeDto, List<object>>(_apiSettings.GetByIdExceptSoftDeletedEndpoint, new List<object> { id, lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PagedResultModel<List<AttributeDto>>>> GetAsync(DTFilter model)
         {
-            return await _requestProvider.GetAsync<PagedResultModel<List<AttributeDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint , model, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<PagedResultModel<List<AttributeDto>>, DTFilter>(_apiSettings.GetExceptSoftDeletedEndpoint , model, PassParamsBy.Body);
         }
  
         #endregion
@@ -88,22 +86,22 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
 
         public async Task<IRequestProviderResult<int>> CreateAsync(CreateAttributeModel model)
         {
-            return await _requestProvider.PostAsync<int, CreateAttributeModel>(_apiSettings.CreateEndpoint, model);
+            return await ReqProvider.PostAsync<int, CreateAttributeModel>(_apiSettings.CreateEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> EditAsync(UpdateAttributeModel model)
         {
-            return await _requestProvider.PostAsync<bool, UpdateAttributeModel>(_apiSettings.EditEndpoint, model);
+            return await ReqProvider.PostAsync<bool, UpdateAttributeModel>(_apiSettings.EditEndpoint, model);
         } 
 
         public  async Task<IRequestProviderResult<bool>> PublishAsync(PublishLookupModel model)
         {
-            return await _requestProvider.PostAsync<bool, PublishLookupModel>(_apiSettings.PublishEndpoint, model);
+            return await ReqProvider.PostAsync<bool, PublishLookupModel>(_apiSettings.PublishEndpoint, model);
         }
 
         public  async Task<IRequestProviderResult<bool>> SoftDeleteAsync(int id)
         {
-            return await _requestProvider.PostAsync<bool, DeleteModel<int>>(_apiSettings.SoftDeleteEndpoint, new DeleteModel<int>(id));
+            return await ReqProvider.PostAsync<bool, DeleteModel<int>>(_apiSettings.SoftDeleteEndpoint, new DeleteModel<int>(id));
         }
 
         #endregion

@@ -9,16 +9,12 @@ using TamTech.Monshaat.POS.Web.Services.Identity.Settings;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService
 {
-    public class AuthService : IAuthService
-    {
-        private readonly IRequestProvider _requestProvider;
+    public class AuthService : BaseAPIService, IAuthService
+    {                                      
         private readonly IIdentityBackendSettings _backendSettings;
 
-        public AuthService(IRequestProvider requestProvider,
-            IIdentityBackendSettings backendSettings
-        )
-        {
-            _requestProvider = requestProvider;
+        public AuthService(IRequestProvider requestProvider,      IIdentityBackendSettings backendSettings  )    :base(requestProvider)   
+        {              
             _backendSettings = backendSettings;
         }
 
@@ -39,7 +35,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
 
         public async Task<IRequestProviderResult<UserModel>> SignupByNameAsync(SignupByName model) 
         {
-            return await _requestProvider.PostAsync<UserModel, SignupByName>(_backendSettings.RegisterUserAsyncEndpoint, model);
+            return await ReqProvider.PostAsync<UserModel, SignupByName>(_backendSettings.RegisterUserAsyncEndpoint, model);
         }
     }
 }

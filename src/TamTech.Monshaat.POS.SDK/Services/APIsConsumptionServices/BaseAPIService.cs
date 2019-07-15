@@ -10,14 +10,14 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices
     public class BaseAPIService
     {
         #region Props 
-        private readonly IRequestProvider _requestProvider; 
+        public readonly IRequestProvider ReqProvider; 
         #endregion
 
 
         #region Ctors
         public BaseAPIService(IRequestProvider requestProvider)
         {
-            _requestProvider = requestProvider;
+            ReqProvider = requestProvider;
         }
         #endregion
     }

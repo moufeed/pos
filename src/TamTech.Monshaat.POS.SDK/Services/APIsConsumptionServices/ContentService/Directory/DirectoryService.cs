@@ -15,32 +15,30 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory
     public class DirectoryService : BaseAPIService, IDirectoryServices
     {
 
-        #region prop
-        private readonly IRequestProvider _requestProvider;
+        #region prop                    
         private readonly IDirectoryApiSettings  _apiSettings;
         #endregion
 
         #region ctor
         public DirectoryService(IRequestProvider requestProvider, IDirectoryApiSettings apiSettings) : base(requestProvider)
-        {
-            _requestProvider = requestProvider;
+        {             
             _apiSettings = apiSettings;
         }
         #endregion
 
         public async Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> FindAsync(PosFilters model)
         {
-            return await _requestProvider.GetAsync<PagedResultModel<List<PosDto>>, PosFilters>(_apiSettings.FindEndPoint, model, PassParamsBy.Body);
+            return await ReqProvider.GetAsync<PagedResultModel<List<PosDto>>, PosFilters>(_apiSettings.FindEndPoint, model, PassParamsBy.Body);
         }
 
         public async Task<IRequestProviderResult<int>> GetCountOfPublishedAsync(string lang)
         {
-            return await _requestProvider.GetAsync<int, List<object>>(_apiSettings.GetCountOfPublishedEndPoint, new List<object> {  lang }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<int, List<object>>(_apiSettings.GetCountOfPublishedEndPoint, new List<object> {  lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<PosDto>> GetPublishedBySlugAsync(string slug)
         {
-            return await _requestProvider.GetAsync<PosDto, List<object>>(_apiSettings.GetPublishedBySlugEndPoint, new List<object> { slug }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<PosDto, List<object>>(_apiSettings.GetPublishedBySlugEndPoint, new List<object> { slug }, PassParamsBy.Route);
         }
     }
 }
