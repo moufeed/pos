@@ -1,0 +1,10 @@
+User-agent: msnbot
+Crawl-delay: 120
+Disallow: /admin/
+Disallow: /lib/
+Disallow: /*.xml$
+
+User-agent: *
+Disallow: /admin/
+Disallow: /lib/
+Disallow: /*.xml$

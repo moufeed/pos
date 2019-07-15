@@ -148,65 +148,70 @@
         </section>
     </if>
 
+
+
+
+
+
+
+
+    <div class="modal fade" id="DeletePosModal" tabindex="-1" role="dialog" aria-labelledby="DeletePosModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p_25">
+                    <p>@Localizer["remove_pos_from_system"]</p>
+
+                </div>
+                <div class="modal-footer no-border">
+                    <button type="button" class="btn btn-outline-danger p-x-25" id="delete-pos">@Localizer["delete"]</button>
+                    <button type="button" class="btn btn-link c-gray" data-dismiss="modal">@Localizer["cancel"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal modal-reason fade" tabindex="-1" role="dialog" id="ReasonPosModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong>@Localizer["current_status"]</strong>
+                        <span class="badge badge-pill c-white" id="pos_status"></span>
+                    </div>
+                    <hr />
+                    <strong>@Localizer["l_notes"]</strong>
+                    <p class="reason pt-10 c-gray-dark" id="reason-text"></p>
+                </div>
+                <div class="modal-footer no-border">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">@Localizer["close"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @section Footer{
+        <script src="~/Portal/js/carousel.min.js"></script>
+        <script src="~/Portal/js/vendor.min.js"></script>
+
+
+        <script>
+            $('#ReasonPosModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var note = button.data('msg');
+                var status = button.data('status');
+                var options = button.data('options');
+                var modal = $(this);
+                modal.find('#reason-text').html(note);
+                modal.find('#pos_status').html(status).addClass(options);
+            })
+        </script>
+    }
+
 </if>
 
-
-
-
-
-
-
-<div class="modal fade" id="DeletePosModal" tabindex="-1" role="dialog" aria-labelledby="DeletePosModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body p_25">
-                <p>@Localizer["remove_pos_from_system"]</p>
-
-            </div>
-            <div class="modal-footer no-border">
-                <button type="button" class="btn btn-outline-danger p-x-25" id="delete-pos">@Localizer["delete"]</button>
-                <button type="button" class="btn btn-link c-gray" data-dismiss="modal">@Localizer["cancel"]</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal modal-reason fade" tabindex="-1" role="dialog" id="ReasonPosModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <strong>@Localizer["current_status"]</strong>
-                    <span class="badge badge-pill c-white" id="pos_status"></span>
-                </div>
-                <hr />
-                <strong>@Localizer["l_notes"]</strong>
-                <p class="reason pt-10 c-gray-dark" id="reason-text"></p>
-            </div>
-            <div class="modal-footer no-border">
-                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">@Localizer["close"]</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-@section Footer{
-    <script src="~/Portal/js/carousel.min.js"></script>
-    <script src="~/Portal/js/vendor.min.js"></script>
-
-
-    <script>
-        $('#ReasonPosModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget)
-          var note = button.data('msg');
-          var status = button.data('status');
-          var options = button.data('options');
-          var modal = $(this);
-          modal.find('#reason-text').html(note);
-          modal.find('#pos_status').html(status).addClass(options);
-        })
-    </script>
-}
+<if exclude-if="Model != null">
+    <partial name="~/Areas/Portal/Views/Shared/partials/_Error_widget.cshtml" />
+</if>

@@ -6,26 +6,36 @@
 }
 
 <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
-<section class="create-vendor-page pt-75  pb-50" data-fix-height>
-    <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-md-11 col-lg-8">
-                <header class="vendor-form-header mb-35">
-                    <h3 class="mb-25">
-                        @Localizer["vedor_info"]
-                    </h3>
-                </header>
-                <partial name="partials/_VInfo.cshtml" model="Model" />
+<if include-if="Model != null">
+
+    <section class="create-vendor-page pt-75  pb-50" data-fix-height>
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-11 col-lg-8">
+                    <header class="vendor-form-header mb-35">
+                        <h3 class="mb-25">
+                            @Localizer["vedor_info"]
+                        </h3>
+                    </header>
+                    <partial name="partials/_VInfo.cshtml" model="Model" />
+                </div>
             </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
-
-<partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
+    <partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
 
 
-@section Footer{
+    @section Footer{
 
-}
+    }
+
+</if>
+
+
+<if exclude-if="Model != null">
+    <partial name="~/Areas/Portal/Views/Shared/partials/_Error_widget.cshtml" />
+</if>
