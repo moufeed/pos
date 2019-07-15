@@ -13,34 +13,32 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Sett
         {
         }
 
+        #region public
+        public string GetPublishedBySettingIdEndpoint => $"{_PortlPath}/GetPublicBySettingIdAsync";
 
-        public string GetPublishedBySettingIdEndpoint => $"{_PortlPath}/GetPublishedBySettingIdAsync";
-
+        #endregion
 
         #region manager
 
-        public string GetAllEndpoint => $"{_AdminPath}/GetAllAsync";
+        #region Get
 
-        public string GetByIdEndpoint => $"{_AdminPath}/GetByIdAsync";
+        public string GetAllEndpoint => $"{_AdminPath}/GetAllExceptSoftDeletedAsync";
 
-        public string CreateEndpoint => $"{_AdminPath}/CreateASync";
+        public string GetByIdEndpoint => $"{_AdminPath}/GetByIdExceptSoftDeletedAsync";
+        #endregion
 
-        public string UpdateEndpoint => $"{_AdminPath}/UpdateAsync";
+        #region Create / Edit / Publish / Delete
 
-        public string DeleteByIdEndpoint => $"{_AdminPath}/DeleteByIdAsync";
+        public string CreateEndpoint => $"{_AdminPath}/CreateAsync";
 
-        public string publishByIdEndpoint => $"{_AdminPath}/publishByIdAsync";
+        public string UpdateEndpoint => $"{_AdminPath}/EditAsync";
 
-        public string GetSliderItemByIdEndpoint => $"{_AdminPath}/GetSliderItemByIdAsync";
+        public string DeleteByIdEndpoint => $"{_AdminPath}/SoftDeleteAsync";
 
-        public string CreateSliderItemEndpoint => $"{_AdminPath}/CreateSliderItemASync";
+        public string publishByIdEndpoint => $"{_AdminPath}/PublishAsync";
 
-        public string UpdateSliderItemEndpoint => $"{_AdminPath}/UpdateSliderItemAsync";
-
-        public string publishSliderItemByIdEndpoint => $"{_AdminPath}/publishSliderItemByIdAsync";
-
-        public string DeleteSliderItemByIdEndpoint => $"{_AdminPath}/DeleteSliderItemByIdAsync";
-
+    
+        #endregion
         #endregion
     }
 }

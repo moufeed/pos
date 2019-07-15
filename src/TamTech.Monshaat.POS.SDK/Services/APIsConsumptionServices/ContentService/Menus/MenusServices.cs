@@ -14,13 +14,13 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 
         #region Props 
         private readonly IRequestProvider _requestProvider;
-        private readonly IMenusServicesSettings _backendSettings;
+        private readonly IMenuApiSettings _backendSettings;
         #endregion
 
 
         #region Ctors
         public MenusServices(IRequestProvider requestProvider,
-                               IMenusServicesSettings backendSettings
+                               IMenuApiSettings backendSettings
                                )
         {
             _requestProvider = requestProvider;
@@ -37,7 +37,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 
 
         #region {Public Menus}  
-
+                                   
         public async Task<IRequestProviderResult<MenuDto>> GetPublicDynamicByKeyAsync(string key)
         {
             return await _requestProvider.GetAsync<MenuDto, List<string>>(_backendSettings.GetPublicDynamicByKeyAsyncEndpoint, new List<string> { key }, PassParamsBy.Route);
@@ -233,7 +233,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 
         public async Task<IRequestProviderResult<bool>> DeleteByIdAsync(Guid id)
         {
-            var result = await _requestProvider.PostAsync<bool, Guid>(_backendSettings.DeleteAsyncEndpoint, id);
+            var result = await _requestProvider.PostAsync<bool, Guid>(_backendSettings.SoftDeleteAsyncEndpoint, id);
             return result;
         }
 

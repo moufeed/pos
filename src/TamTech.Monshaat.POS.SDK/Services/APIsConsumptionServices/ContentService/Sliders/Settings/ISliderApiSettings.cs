@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Sett
     public interface ISliderApiSettings
     {
 
-        #region Sliders
+      
 
         #region Public Slider
 
@@ -17,11 +17,14 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Sett
 
         #endregion
 
-        #region  GetAll / Get / Create / Edit / Delete / Publish
-
+        #region  Get       
         string GetAllEndpoint { get; }
 
-        string GetByIdEndpoint { get; }
+        string GetByIdEndpoint { get; }     
+        #endregion
+
+
+        #region  GetAll / Get / Create / Edit / Delete / Publish
 
         string CreateEndpoint { get; }
 
@@ -35,28 +38,9 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Sett
 
         #endregion
 
-        #endregion
+       
 
-
-
-        #region Slider Items 
-
-        #region  Get / Create / Edit / Delete / Publish
-
-
-        string GetSliderItemByIdEndpoint { get; }
-
-        string CreateSliderItemEndpoint { get; }
-
-        string UpdateSliderItemEndpoint { get; }
-
-        string publishSliderItemByIdEndpoint { get; }
-
-        string DeleteSliderItemByIdEndpoint { get; }
-
-        #endregion
-
-        #endregion
+        
     }
 }
 

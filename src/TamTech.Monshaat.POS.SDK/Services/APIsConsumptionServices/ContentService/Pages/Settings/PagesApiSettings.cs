@@ -12,49 +12,50 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settin
         }
 
 
-        #region get 
-            #region public
-            public string GetPublicBySlugEndpoint => $"{_PortlPath}/Async";
 
-            public string GetPublicPageSummaryByIdEndpoint => $"{_PortlPath}/Async";
+        #region public
+        public string GetPublicBySlugEndpoint => $"{_PortlPath}/GetPublicBySlugAsync";
 
-            public string GetPublishedHtmlPageByIdEndpoint => $"{_PortlPath}/Async";
+        public string GetPublicPageSummaryByIdEndpoint => $"{_PortlPath}/GetPublicByIdAsync";
 
-            public string GetPublishedSectionsPageByIdEndpoint => $"{_PortlPath}/Async";
+        public string GetPublishedHtmlPageByIdEndpoint => $"{_PortlPath}/GetPublishedHtmlByIdAsync";
 
-            public string GetPublishedBySettingIdEndpoint => $"{_PortlPath}/Async";
+        public string GetPublishedSectionsPageByIdEndpoint => $"{_PortlPath}/GetPublishedSectionsByIdAsync";
 
-            public string GetPublishedHtmlBySettingIdEndpoint => $"{_PortlPath}/Async";
+        public string GetPublishedBySettingIdEndpoint => $"{_PortlPath}/GetPublishedBySettingIdAsync";
 
-            public string GetPublishedSectionsBySettingIdEndpoint => $"{_PortlPath}/Async";
+        public string GetPublishedHtmlBySettingIdEndpoint => $"{_PortlPath}/GetPublishedHtmlBySettingIdAsync";
 
-            #endregion
+        public string GetPublishedSectionsBySettingIdEndpoint => $"{_PortlPath}/GetPublishedSectionsBySettingIdAsync";
+
+        #endregion
 
 
-        public string GetAllEndpoint => $"{_AdminPath}/Async";
+        #region Admin 
+        public string GetAllEndpoint => $"{_AdminPath}/GetAllExceptSoftDeletedAsync";
 
-        public string GetHtmlPageByIdEndpoint => $"{_AdminPath}/Async";
+        public string GetHtmlPageByIdEndpoint => $"{_AdminPath}/GetHtmlPageByIdAsync";
 
-        public string GetSectionsPageByIdEndpoint => $"{_AdminPath}/Async";
+        public string GetSectionsPageByIdEndpoint => $"{_AdminPath}/GetSectionsPageByIdAsync";
 
         #endregion
 
 
 
-        public string CreateHtmlPageEndpoint =>  $"{_AdminPath}/Async";
+        public string CreateHtmlPageEndpoint => $"{_AdminPath}/CreateAsync";
 
-        public string CreateSectionsPageEndpoint =>  $"{_AdminPath}/Async";
+        public string CreateSectionsPageEndpoint => $"{_AdminPath}/CreateAsync";
 
-        public string EditHtmlPageEndpoint =>  $"{_AdminPath}/Async";
+        public string EditHtmlPageEndpoint => $"{_AdminPath}/EditAsync";
 
-        public string EditSectionsPageEndpoint =>  $"{_AdminPath}/Async";
+        public string EditSectionsPageEndpoint => $"{_AdminPath}/EditAsync";
 
-        public string DeleteHtmlPageEndpoint =>  $"{_AdminPath}/Async";
+        public string DeleteHtmlPageEndpoint => $"{_AdminPath}/SoftDeleteHtmlPageAsync";
 
-        public string DeleteSectionsPageEndpoint =>  $"{_AdminPath}/Async";
+        public string DeleteSectionsPageEndpoint => $"{_AdminPath}/SoftDeleteSectionsPageAsync";
 
-        public string PublishHtmlPageEndpoint =>  $"{_AdminPath}/Async";
+        public string PublishHtmlPageEndpoint => $"{_AdminPath}/PublishHtmlPageAsync";
 
-        public string PublishSectionsPageEndpoint =>  $"{_AdminPath}/Async";
+        public string PublishSectionsPageEndpoint => $"{_AdminPath}/PublishSectionsPageAsync";
     }
 }
