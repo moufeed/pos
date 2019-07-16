@@ -11,6 +11,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settin
         #region {Public Pages}   
 
 
+        string GetAllPublishedSlugsEndpoint { get; }
         string GetPublicBySlugEndpoint { get; }
 
         string GetPublicPageSummaryByIdEndpoint { get; }

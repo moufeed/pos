@@ -38,7 +38,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             await httpClient.DeleteAsync(uri);
         }
 
-        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult>(string uri)
+        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult>(string uri ,bool hasJsonContent = false)
         {
             IRequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
             HttpClient httpClient = CreateHttpClient();
@@ -48,18 +48,22 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             if (result.Success)
             {
                 string serialized = await response.Content.ReadAsStringAsync();
-                result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                        result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                if (hasJsonContent)
+                {
+                    result.JsonContent = serialized;
+                }
             }
             return result;
         }
 
-        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy)
+        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy, bool hasJsonContent = false)
         { 
             if(paramsBy == PassParamsBy.Body)
             {
                 return await SendAsync<TResult, TRequest>(uri, data);
             }
-            return await GetAsync<TResult, TRequest>(uri, data);
+            return await GetAsync<TResult, TRequest>(uri, data , hasJsonContent);
         }
 
         public async Task<IRequestProviderResult<TResult>> SendAsync<TResult, TRequest>(string uri, TRequest data)
@@ -94,7 +98,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
 
         }
 
-        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data)
+        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, bool hasJsonContent = false)
         {
             try
             {
@@ -107,7 +111,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                 if (result.Success)
                 {
                     string serialized = await response.Content.ReadAsStringAsync();
-                    result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                        result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                    if (hasJsonContent)
+                    {
+                        result.JsonContent = serialized;
+                    }
                 }
                 return result;
             }
@@ -117,7 +125,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             }
 
         }
-        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey)
+        public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey, bool hasJsonContent = false)
         {
             IRequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
             HttpClient httpClient = CreateHttpClient();
@@ -128,7 +136,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             if (result.Success)
             {
                 string serialized = await response.Content.ReadAsStringAsync();
-                result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                    result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+                if (hasJsonContent)
+                {
+                    result.JsonContent = serialized;
+                }
                 try
                 {
                     if (hederKey != null)

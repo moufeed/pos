@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,9 +9,11 @@ using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settings;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
@@ -18,20 +22,45 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
     {
         #region prop              
         private readonly IPagesApiSettings _apiSettings;
+    
         #endregion
 
         #region ctor
-        public PageService(IRequestProvider requestProvider, IPagesApiSettings apiSettings) : base(requestProvider)
+        public PageService(IRequestProvider requestProvider, IPagesApiSettings apiSettings ) : base(requestProvider)
         {          
             _apiSettings = apiSettings;
+            
         }
-        #endregion        
-      
+        #endregion
+
 
         #region public 
+
+        public async Task<IRequestProviderResult<List<SlugModel>>> GetAllPublishedSlugsAsync()
+        {
+            return await ReqProvider.GetAsync<List<SlugModel>>(_apiSettings.GetAllPublishedSlugsEndpoint);
+        }
+
+
         public async Task<IRequestProviderResult<PageDto>> GetPublicBySlugAsync(string slug)
         {
-            return await ReqProvider.GetAsync<PageDto, List<object>>(_apiSettings.GetPublicBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route);
+            var request = await ReqProvider.GetAsync<PageDto, List<object>>(_apiSettings.GetPublicBySlugEndpoint, new List<object> { slug }, PassParamsBy.Route ,true);
+            JsonSerializerSettings _serializerSettings = new JsonSerializerSettings();
+            if (request.Success)
+            {
+                if (request.Data.Type == (int)PageTypeEnum.Sections)
+                {
+                    var _sectionsPage = JsonConvert.DeserializeObject<SectionsPage>(request.JsonContent, _serializerSettings);
+                    request.Data.SectionsContent = _sectionsPage.Content;
+                }
+                else
+                {
+                    var htmlpage = JsonConvert.DeserializeObject<HtmlPage>(request.JsonContent, _serializerSettings);
+                    request.Data.HtmlContent = htmlpage.Content;
+                }
+            }
+
+            return request;
         }
 
         public async Task<IRequestProviderResult<PageSummary>> GetPublicPageSummaryByIdAsync(Guid id)
@@ -132,6 +161,8 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
         {
             return await ReqProvider.PostAsync<bool, DeleteModel<Guid>>(_apiSettings.DeleteSectionsPageEndpoint, new DeleteModel<Guid>(id));
         }
+
+       
 
         #endregion
         #endregion

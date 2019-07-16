@@ -12,5 +12,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Se
         string FindEndPoint { get; }
 
         string GetCountOfPublishedEndPoint { get; }
+
+        string GetAllPublishedSlugsEndPoint { get; }
     }
 }

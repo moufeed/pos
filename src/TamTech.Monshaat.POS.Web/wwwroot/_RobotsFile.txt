@@ -3,8 +3,10 @@ Crawl-delay: 120
 Disallow: /admin/
 Disallow: /lib/
 Disallow: /*.xml$
+Disallow: /editor/
 
 User-agent: *
 Disallow: /admin/
 Disallow: /lib/
 Disallow: /*.xml$
+Disallow: /editor/

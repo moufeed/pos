@@ -1,6 +1,8 @@
 ﻿
 
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace TamTech.Monshaat.POS.Web.Models.Dtos.Slugs
 {
@@ -11,5 +13,13 @@ namespace TamTech.Monshaat.POS.Web.Models.Dtos.Slugs
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
+
+        [JsonProperty("modifieddate")]
+        public DateTime ModifiedDate { get; set; }
+
+        [JsonProperty("slugs")]
+        public Dictionary<string,string> Slugs { get; set; }
+
+        public Guid Id { get; set; }
     }
 }

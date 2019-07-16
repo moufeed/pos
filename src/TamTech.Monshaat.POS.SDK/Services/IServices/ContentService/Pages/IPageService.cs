@@ -7,6 +7,7 @@ using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
 {
@@ -41,7 +42,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages
         #region {Pages Manager} 
 
         #region {Get} 
-
+        Task<IRequestProviderResult<List<SlugModel>>> GetAllPublishedSlugsAsync();
         Task<IRequestProviderResult<PagesList>> GetAllAsync(DTFilter model);
         //Task<IRequestProviderResult<HtmlPage>> GetHtmlPageBySlugAsync(string slug);
 

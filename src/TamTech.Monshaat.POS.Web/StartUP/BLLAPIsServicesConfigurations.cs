@@ -262,7 +262,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             });
             services.AddScoped<IMenusServices,  MenusServices>();
             services.AddTransient<IPageService,  PageService>();
-             services.AddTransient<ISliderServices, SliderService>();
+            services.AddTransient<ISliderServices, SliderService>();
 
 
             #region Identity Service       
