@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
@@ -18,6 +19,15 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
             _backendSettings = backendSettings;
         }
 
+        public async Task<IRequestProviderResult<bool>> ResetPOSAdminPasswordAsync(ResetPOSAdminPasswordModel model, string secretKey, string secretValue)
+        {
+            return await ReqProvider.PostAsync<bool, ResetPOSAdminPasswordModel>(_backendSettings.RegisterUserAsyncEndpoint, model,
+                new Dictionary<string, string> { { secretKey, secretValue } });
+        }            
+        public async Task<IRequestProviderResult<UserModel>> SignupByNameAsync(SignupByName model)
+        {
+            return await ReqProvider.PostAsync<UserModel, SignupByName>(_backendSettings.RegisterUserAsyncEndpoint, model);
+        }
         public Task<IRequestProviderResult<bool>> ChangePassword(ChangePassword model)
         {
             throw new NotImplementedException();
@@ -33,9 +43,8 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
             throw new NotImplementedException();
         }
 
-        public async Task<IRequestProviderResult<UserModel>> SignupByNameAsync(SignupByName model) 
-        {
-            return await ReqProvider.PostAsync<UserModel, SignupByName>(_backendSettings.RegisterUserAsyncEndpoint, model);
-        }
+     
+
+       
     }
 }

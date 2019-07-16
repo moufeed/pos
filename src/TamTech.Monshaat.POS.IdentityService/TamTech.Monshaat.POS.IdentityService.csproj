@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -7,6 +7,11 @@
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TamTech.Monshaat.POS.MCIServices\TamTech.Monshaat.POS.MCIServices.csproj" />
+    <ProjectReference Include="..\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj" />
   </ItemGroup>
 
 </Project>

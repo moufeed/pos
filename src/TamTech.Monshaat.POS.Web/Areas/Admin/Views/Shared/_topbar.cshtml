@@ -16,12 +16,12 @@
             </div>
 
 
-            @using IdentityServer4.Extensions
+           
             @{
                 string name = null;
                 if (!true.Equals(ViewData["signed-out"]))
                 {
-                    name = Context.User?.GetDisplayName();
+                    name = Context.User?.Identity.GetUsername();// Context.User?.GetDisplayName();
                 }
             }
 

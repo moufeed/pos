@@ -27,6 +27,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Helpers
 
         public static string GetFileNameFromUrl(string URl)
         {
+            if (string.IsNullOrWhiteSpace(URl)) return URl;
             string _url = (URl.Contains("http://") || URl.Contains("https://")) ? URl : $"https://localhost/" + URl;
             Uri uri = new Uri(_url);
             var filename = uri.Segments.Last();

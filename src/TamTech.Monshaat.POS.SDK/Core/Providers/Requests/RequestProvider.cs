@@ -191,28 +191,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             return uri;
         }
 
-        //public async Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, string token)
-        //{
-        //    IRequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
-
-        //    HttpClient httpClient = CreateHttpClient(token);
-
-        //    var content = new StringContent(JsonConvert.SerializeObject(data));
-        //    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-        //    HttpResponseMessage response = await httpClient.GetAsync(uri,);
-
-
-        //    await HandleResponse<TResult>(response, result);
-
-        //    if (result.Success)
-        //    {
-        //        string serialized = await response.Content.ReadAsStringAsync();
-        //        result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
-        //    }
-        //    return result;
-        //}
-
+      
         private async Task HandleResponse<TResult>(HttpResponseMessage response, IRequestProviderResult<TResult> result)
         {
             result.StatusCode = response.StatusCode;
@@ -253,10 +232,23 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             }
         }
 
-        public async Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, ICollection<string> urlParams, string header)
-        {
-            RequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
+       
+        public async Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, Dictionary<string, string> header)
+        { 
+            HttpClient httpClient = CreateHttpClient();    
+            if (header != null)
+            {
+                foreach (var h in header)
+                {
+                    httpClient.DefaultRequestHeaders.Add(h.Key, h.Value);
+                }        
+            } 
+            
+            return await PostAsync<TResult, TRequest>(uri, data, httpClient);
+        }
 
+        public async Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, ICollection<string> urlParams, string header)
+        {   
             HttpClient httpClient = CreateHttpClient();
 
             if (!string.IsNullOrEmpty(header))
@@ -274,18 +266,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                 uri = $"{uri}{parameters}";
 
             }
-            var content = new StringContent(JsonConvert.SerializeObject(data));
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await httpClient.PostAsync(uri, content);
-
-            await HandleResponse<TResult>(response, result);
-            if (result.Success)
-            {
-                string serialized = await response.Content.ReadAsStringAsync();
-                result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
-            }
-            return result;
+            return await PostAsync<TResult, TRequest>(uri, data, httpClient);
         }
+
 
         public async Task<IRequestProviderResult<TResult>> PostAsync<TResult>(string uri, string data, string clientId, string clientSecret)
         {
@@ -311,6 +294,25 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
             }
             return result;
         }
+
+
+        private async Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, HttpClient httpClient)
+        {
+            RequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
+
+            var content = new StringContent(JsonConvert.SerializeObject(data));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await httpClient.PostAsync(uri, content);
+
+            await HandleResponse<TResult>(response, result);
+            if (result.Success)
+            {
+                string serialized = await response.Content.ReadAsStringAsync();
+                result.Data = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
+            }
+            return result;
+        }
+
 
 
         public async Task<IRequestProviderResult<TResult>> PostMultipartContent<TResult>(string uri, MultipartFormDataContent content, string header = "")
@@ -422,7 +424,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
 
             httpClient.DefaultRequestHeaders.Add(parameter, Guid.NewGuid().ToString());
         }
-
+   
         private void AddBasicAuthenticationHeader(HttpClient httpClient, string clientId, string clientSecret)
         {
             if (httpClient == null)

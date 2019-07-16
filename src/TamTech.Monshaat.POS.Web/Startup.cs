@@ -6,11 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;                            
 using TamTech.Monshaat.POS.IdentityService;
+using TamTech.Monshaat.POS.MCI.APISimulator;
+using TamTech.Monshaat.POS.MCIServices;
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackendServices.EmailService;
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices;
 using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
-using TamTech.Monshaat.POS.Web.StartUP;                     
+using TamTech.Monshaat.POS.Web.StartUP;                      
 
 namespace TamTech.Monshaat.POS.Web
 {
@@ -54,7 +56,8 @@ namespace TamTech.Monshaat.POS.Web
 
             services.AddFluentValidationConfigurations();
 
-
+            services.AddMCIServicesConfigurations();
+            services.AddMCIAPISimulatorConfigurations();
 
         }
 

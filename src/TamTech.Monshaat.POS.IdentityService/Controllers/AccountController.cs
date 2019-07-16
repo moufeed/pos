@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
+using TamTech.Monshaat.POS.Web.Services.Identity;
 
 namespace TamTech.Monshaat.POS.IdentityService.Controllers
 {     
@@ -24,6 +25,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
         #region Props  
         private readonly IAuthTamService _authTamService;
         private readonly ITokenTamService _tokenTamService;
+        private readonly IAuthService _authService;
         #endregion
 
         #region Ctors  
@@ -67,16 +69,14 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
             }
                      
 
-            var token = await   _tokenTamService.GetTokenAsync(model.Username);
-
-           //if(token.IsError)
-           // {   
-           //     ModelState.AddModelError(nameof(model.Username), token.Error);
-           //     return View(BuildLoginViewModel(model));
-           // }
+            var token = await   _tokenTamService.GetTokenAsync(model.Username);    
             if (token == null)
             {
-                ModelState.AddModelError("token", "can't generate token!");
+              //  ResetPOSAdminPasswordAsync
+            }
+               if (token == null)
+            {
+                ModelState.AddModelError("token", "Failed to invoke identifier!");
                 return View(BuildLoginViewModel(model));
             }
                   

@@ -17,12 +17,13 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
     {    
         public async Task<TokenModel> GetTokenAsync(string username)
         {
+            string p = "asdfasdf";// $"{Constants.SecretKey}{username}";
             if (string.IsNullOrWhiteSpace(username)) return null;
             var client = new TokenClient("http://localhost:50383/connect/token", "password_client", "h8yI4DydzI5ZsKCMGTs9hfTdI1vRS3qfTo9Go92q3aM=");
 
-            var token = await client.RequestResourceOwnerPasswordAsync(username, $"{Constants.SecretKey}{username}", scope: "offline_access content.api openid profile") ;
-          
-             if (token.IsError || string.IsNullOrWhiteSpace( token.AccessToken))
+            var token = client.RequestResourceOwnerPasswordAsync(username, p, scope: "offline_access content.api openid profile").GetAwaiter().GetResult();
+           
+            if (token.IsError || string.IsNullOrWhiteSpace( token.AccessToken))
              {
                  return null;
              }

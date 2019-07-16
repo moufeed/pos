@@ -12,7 +12,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
         Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey);
         Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, ICollection<string> urlParams = null, string header = "");
 
-       
+        Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, Dictionary<string, string> header);
+
         Task<IRequestProviderResult<TResult>> PostAsync<TResult>(string uri, string data, string clientId, string clientSecret);
         Task<IRequestProviderResult<TResult>> PutAsync<TResult, TRequest>(string uri, TRequest data,  string header = "");
         Task DeleteAsync(string uri);
