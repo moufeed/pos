@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28218.60
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29021.104
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.Web", "src\TamTech.Monshaat.POS.Web\TamTech.Monshaat.POS.Web.csproj", "{F04C6AF5-27AE-4300-B7D8-5BC367316D05}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.Upload
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.IdentityService", "src\TamTech.Monshaat.POS.IdentityService\TamTech.Monshaat.POS.IdentityService.csproj", "{9B570963-2EDC-4C48-B8C3-DDE966A5BF81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamTech.Monshaat.POS.SDK", "src\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj", "{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.SDK", "src\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj", "{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
