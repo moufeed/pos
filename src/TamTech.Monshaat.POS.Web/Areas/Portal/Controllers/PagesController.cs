@@ -64,8 +64,6 @@ namespace TamTechSDK.Web.Controllers.Portal
                     {
                         return View($"Preview_{type.ToString()}", page.Data);
                     }
-
-
                 }
             }
             catch (Exception ex)

@@ -17,6 +17,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
 
         string JsonHeader { get; set; } 
 
+        string JsonContent { get; set; }
+
         void AddError(string key, string errorMessage); 
     }
 

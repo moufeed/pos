@@ -16,5 +16,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Se
         public string FindEndPoint =>  $"{_PortlPath}/FindAsync";
 
         public string GetCountOfPublishedEndPoint =>  $"{_PortlPath}/GetCountOfPublishedAsync";
+
+        public string GetAllPublishedSlugsEndPoint => $"{_PortlPath}/GetAllPublishedSlugsAsync";
     }
 }

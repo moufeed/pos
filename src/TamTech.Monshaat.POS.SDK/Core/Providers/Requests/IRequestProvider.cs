@@ -7,9 +7,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
 {
     public interface IRequestProvider
     { 
-        Task<IRequestProviderResult<TResult>> GetAsync<TResult>(string uri);
-        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy);
-        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey);
+        Task<IRequestProviderResult<TResult>> GetAsync<TResult>(string uri ,bool hasJsonContent = false);
+        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest>(string uri, TRequest data, PassParamsBy paramsBy, bool hasJsonContent = false);
+        Task<IRequestProviderResult<TResult>> GetAsync<TResult, TRequest, THeader>(string uri, TRequest data, string hederKey, bool hasJsonContent = false);
         Task<IRequestProviderResult<TResult>> PostAsync<TResult, TRequest>(string uri, TRequest data, ICollection<string> urlParams = null, string header = "");
 
        

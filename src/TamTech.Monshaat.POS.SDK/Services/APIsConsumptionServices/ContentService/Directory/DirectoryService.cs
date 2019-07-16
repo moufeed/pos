@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
 using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
@@ -29,6 +30,11 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory
         public async Task<IRequestProviderResult<PagedResultModel<List<PosDto>>>> FindAsync(PosFilters model)
         {
             return await ReqProvider.GetAsync<PagedResultModel<List<PosDto>>, PosFilters>(_apiSettings.FindEndPoint, model, PassParamsBy.Body);
+        }
+
+        public async Task<IRequestProviderResult<List<SlugModel>>> GetAllPublishedSlugsAsync()
+        {
+            return await ReqProvider.GetAsync<List<SlugModel>>(_apiSettings.GetAllPublishedSlugsEndPoint);
         }
 
         public async Task<IRequestProviderResult<int>> GetCountOfPublishedAsync(string lang)

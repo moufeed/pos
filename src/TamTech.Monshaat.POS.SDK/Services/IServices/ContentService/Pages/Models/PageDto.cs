@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
@@ -43,12 +44,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models
         public Dictionary<string, string> SectionsContent { get; set; } = new Dictionary<string, string>();
 
         public string Key { get; set; }
+         
 
     }
-
-   
-
-
-
-
 }

@@ -14,6 +14,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settin
 
 
         #region public
+        public string GetAllPublishedSlugsEndpoint => $"{_PortlPath}/GetAllPublishedSlugsAsync";
         public string GetPublicBySlugEndpoint => $"{_PortlPath}/GetPublicBySlugAsync";
 
         public string GetPublicPageSummaryByIdEndpoint => $"{_PortlPath}/GetPublicByIdAsync";
