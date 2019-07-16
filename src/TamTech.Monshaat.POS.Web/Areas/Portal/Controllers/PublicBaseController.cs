@@ -26,7 +26,7 @@ namespace TamTechSDK.Web.Controllers.Portal
     {
 
 
-
+        public static int HtmlRenderCounter = 0;     
         public readonly string _lang;
         public readonly string _culture;
 
@@ -37,8 +37,9 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             _lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             _culture = CultureInfo.CurrentCulture.Name;
+            HtmlRenderCounter = 1;
 
-        }
+       }
 
 
 
