@@ -6,7 +6,7 @@
     List<SlugModel> SlugModel = new List<SlugModel>();
 }
 
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+    <vc:header slugs="Model.SectionsSlugs"></vc:header>
 
 <if include-if="Model != null">
     <if include-if="   Model.Data != null">

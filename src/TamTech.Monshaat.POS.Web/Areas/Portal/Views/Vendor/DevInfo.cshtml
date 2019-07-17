@@ -2,10 +2,10 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = Localizer["vedor_register"];
-    List<SlugModel> SlugModel = new List<SlugModel>();
+   
 }
 
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+    <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 <section class="create-vendor-page pt-75  pb-50" data-fix-height>
     <div class="container">
 

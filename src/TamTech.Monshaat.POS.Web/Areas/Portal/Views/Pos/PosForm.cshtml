@@ -4,14 +4,12 @@
     Layout = "_Layout";
     ViewData["Title"] = Localizer["pos_details"];
 
-    List<SlugModel> SlugModel = new List<SlugModel>();
-
     string FormAction = ViewContext.RouteData.Values["Action"].ToString();
 
     string EditAction = "EditPOS";
 
 }
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+    <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 <section class="create-pos-page pt-75  pb-50">
     <div class="container">

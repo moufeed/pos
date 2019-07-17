@@ -3,14 +3,14 @@
     Layout = "_Layout";
     ViewData["Title"] = Localizer["vedor_register"];
 
-    List<SlugModel> SlugModel = new List<SlugModel>();
+   
 
     string FormAction = ViewContext.RouteData.Values["Action"].ToString();
 
     var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.EFile2.Utilities.Helpers.VendorRole, StringComparison.InvariantCultureIgnoreCase);
 }
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
-
+ 
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 <if include-if="Model != null">
 

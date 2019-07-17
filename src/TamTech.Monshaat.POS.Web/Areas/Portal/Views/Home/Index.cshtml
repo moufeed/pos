@@ -6,13 +6,55 @@
     ViewData["PageClass"] = "homepage";
 }
 
-<partial name="~/Areas/Portal/Views/Home/partials/_slider.cshtml" />
+ 
+<vc:slider></vc:slider>
 
-<partial name="~/Areas/Portal/Views/Home/partials/_sectorsArea.cshtml" />
-<partial name="~/Areas/Portal/Views/Home/partials/_benefitsArea.cshtml" />
-<partial name="~/Areas/Portal/Views/Home/partials/_initiativeArea.cshtml" />
-@*<partial name="~/Areas/Portal/Views/Home/partials/_directoryArea.cshtml" />*@
-<partial name="~/Areas/Portal/Views/Home/partials/_contactArea.cshtml" />
+<vc:sectors-list></vc:sectors-list>
+ 
+@if (ViewBag.Benefitssummary != null)
+{
+    HtmlPage Bpage = (HtmlPage)ViewBag.Benefitssummary;
+    <section class="benfits-area section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-75 mt-55">
+                    <h3 class="area-title">@Bpage.Title</h3>
+                </div>
+            </div>
+            @Html.Raw(Bpage.Content)
+        </div>
+    </section>
+}
+@if (ViewBag.initiativeSummary != null)
+{
+    HtmlPage HtmlPage = ViewBag.initiativeSummary == null ? new HtmlPage() : (HtmlPage)ViewBag.initiativeSummary;
+    <section class="section initiative-Area">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 i-content">
+                    <h3 class="area-title">@HtmlPage.Title</h3>
+                    <div class="content">
+                        @Html.Raw(HtmlPage.Content)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="contact-area section bg-lime pt-100 ">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center text_area">
+                <p class="text_area">@Localizer["conatact_area_msg"]  <a asp-action="ContactUs" asp-controller="home" class="btn btn-primary m-x-15">@Localizer["send_message"]</a></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="top-footer bg-lime pt-50 text-center">
+    <img src="~/portal/img/footer.png" alt="footerimage" class="img-fluid">
+</section>
 
 
 

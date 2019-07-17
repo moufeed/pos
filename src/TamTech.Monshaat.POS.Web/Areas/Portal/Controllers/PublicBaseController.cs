@@ -26,7 +26,8 @@ namespace TamTechSDK.Web.Controllers.Portal
     {
 
 
-        public static int HtmlRenderCounter = 0;     
+        public static int HtmlRenderCounter = 0;
+      
         public readonly string _lang;
         public readonly string _culture;
 

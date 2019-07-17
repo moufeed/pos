@@ -1,12 +1,13 @@
 ﻿@model PagedResultModel<List<PosDto>>
 @{
     Layout = "_Layout";
-    ViewData["Title"] = Localizer["pos_directory"];
-
-    List<SlugModel> SlugModel = new List<SlugModel>();
+    ViewData["Title"] = Localizer["pos_directory"];   
 }
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
-  
+
+<vc:header slugs="Model.SectionsSlugs"></vc:header>
+ 
+ 
+
 <section class="directory-page ">
     <div class="d-header">
         <div class="container">
@@ -20,7 +21,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
     <div class="results-wrapper pb-50">

@@ -1,11 +1,11 @@
 ﻿@model  PosDto
 @{
     Layout = "_Layout";
-    ViewData["Title"] = Localizer["pos_details"];
-
-    List<SlugModel> SlugModel = new List<SlugModel>();
+    ViewData["Title"] = Localizer["pos_details"]; 
 }
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+ 
+
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 <if include-if="Model != null">
     <section class="pos-page pt-75">

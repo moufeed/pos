@@ -1,0 +1,152 @@
+﻿@using System.Globalization;
+@using System.Text;
+@using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums;
+@using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
+
+@functions{
+
+    #region Menu
+
+    private readonly Dictionary<string, string> paths = new Dictionary<string, string>
+           {
+                     
+                      { MenuItemTypeEnum.page.ToString()  , $"/{CultureInfo.CurrentCulture.Name}/portal/pages/v" },
+                      { MenuItemTypeEnum.staticpage.ToString()  , $"/{CultureInfo.CurrentCulture.Name}/portal" }
+  
+                   };
+
+    private string Print_UL(List<MenuItemDto> MenuItems)
+    {
+
+
+        StringBuilder stringBuilder = new StringBuilder($"<ul class=\"navbar-nav  \">");
+
+        if (MenuItems?.Count > 0)
+        {
+            foreach (MenuItemDto Menu in MenuItems)
+            {
+                if (Menu.ItemType == MenuItemTypeEnum.dropdown.ToString())
+                {
+                    Print_Li_Dropdown(Menu, stringBuilder);
+                }
+                else
+                {
+                    Print_Li(Menu, stringBuilder);
+                }
+            }
+        }
+
+        stringBuilder.Append("</ul>");
+        return stringBuilder.ToString();
+    }
+
+
+    private void Create_Nav_Item(MenuItemDto Menu, StringBuilder stringBuilder, string path = "")
+    {
+        string li = "<li class=\"nav-item\">";
+        li += $"<a class=\"nav-link\" href=\"{ path }/{ Menu.Url }\">{Menu.Title}</a>";
+        li += "</li>";
+        stringBuilder.Append(li);
+    }
+
+    private void Print_Li(MenuItemDto Menu, StringBuilder stringBuilder)
+    {
+
+
+        #region static page
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            Create_Nav_Item(Menu, stringBuilder, (string)paths[MenuItemTypeEnum.staticpage.ToString()]);
+        }
+        #endregion
+
+        #region page
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            Create_Nav_Item(Menu, stringBuilder, (string)paths[MenuItemTypeEnum.page.ToString()]);
+        }
+        #endregion
+
+
+
+       
+
+        #region Url
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            var target = (Menu.UrlTarget?.Length > 0) ? Menu.UrlTarget : "_blank";
+            var classs = (Menu.Url.StartsWith('#')) ? "scroll-link" : "";
+            string li = "<li class=\"nav-item\">";
+            li += $"<a class=\"nav-link {classs}\"  href=\"{Menu.Url}\" target=\"{target}\">{Menu.Title}</a>";
+            li += "</li>";
+            stringBuilder.Append(li);
+        }
+        #endregion
+
+        #region gallery
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.gallery.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            Create_Nav_Item(Menu, stringBuilder, (string)paths[MenuItemTypeEnum.gallery.ToString()]);
+        }
+        #endregion
+
+    }
+
+
+    private void Print_Li_Dropdown(MenuItemDto menu, StringBuilder stringBuilder)
+    {
+        string li = "<li class=\"nav-item dropdown\">";
+        li += $" <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">{menu.Title}</a>";
+        li += " <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">";
+        li += Create_DropdownItems(menu);
+        li += "</div>";
+        li += "</li>";
+        stringBuilder.Append(li);
+    }
+
+    private string Create_DropdownItems(MenuItemDto menu)
+    {
+        string link = string.Empty;
+        if (menu.MenuItems?.Count > 0)
+        {
+            foreach (MenuItemDto Menu in menu.MenuItems)
+            {
+                link += Create_Dropdown_Link(Menu);
+            }
+        }
+        return link;
+    }
+
+    private string Create_Dropdown_Link(MenuItemDto Menu)
+    {
+        string link = string.Empty;
+        string path = string.Empty;
+
+        
+         if (Menu.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            path = (string)paths[MenuItemTypeEnum.staticpage.ToString()];
+        }
+        else if (Menu.ItemType.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            path = (string)paths[MenuItemTypeEnum.page.ToString()];
+        }
+       
+        #region Url
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            var target = (Menu.UrlTarget?.Length > 0) ? Menu.UrlTarget : "_blank";
+            link = $"<a class=\"dropdown-item\"  href=\"{Menu.Url}\" target=\"{target}\">{Menu.Title}</a>";
+            return link;
+        }
+        #endregion
+
+        link = $"<a class=\"dropdown-item\" href=\"{ path }/{ Menu.Url }\">{Menu.Title}</a>";
+
+        return link;
+    }
+
+    #endregion
+}
+
+@Html.Raw(Print_UL(Model))

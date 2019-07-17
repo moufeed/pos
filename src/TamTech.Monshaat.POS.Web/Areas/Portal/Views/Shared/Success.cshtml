@@ -4,10 +4,10 @@
     Layout = "_Layout";
     ViewData["Title"] = Localizer["success"];
 
-    List<SlugModel> SlugModel = new List<SlugModel>();
+   
 }
  
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+    <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 <section data-fix-height class="pt-50">
     <div class="container">
         <div class="row justify-content-center align-items-center">
