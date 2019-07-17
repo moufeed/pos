@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
 
 namespace TamTech.Monshaat.POS.Web.Services.ContentService.Menus
 {
     public interface IPortalMenusService
     {
-        Task<MenuDto> GetNavbarMenuAsync();
+        Task<IRequestProviderResult<MenuDto>> GetNavbarMenuAsync();
     }
 }

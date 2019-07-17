@@ -4,11 +4,10 @@
     Layout = "_Layout";
     ViewData["Title"] = Localizer["contact_us"];
 
-    List<SlugModel> SlugModel = new List<SlugModel>();
 }
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+    
 
-
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 <section class="contact-page page">
     <div class="container">

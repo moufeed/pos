@@ -37,10 +37,10 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region prop
         private readonly IPageService _pageService;
         private readonly IEmailSenderService _emailSender;
-        private readonly ISliderServices _sliderService;
+        
         private readonly IUploadManagerService _uploadManager;
         private IStringLocalizer<BaseController> _localizer;
-        private readonly IPOSSectorServices _sectorService;
+       
         private readonly IContactService _contactService;
         private readonly IContactTypeService _typeService;
         private readonly IDirectoryServices _serchservices;
@@ -49,10 +49,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
         public HomeController(ITelemetryService telemetryClientService,
                                     IPageService pageService,
-                                    ISliderServices slidersServices,
                                     IUploadManagerService uploadManager,
                                     IStringLocalizer<BaseController> localizer,
-                                    IPOSSectorServices sectorService,
                                     IContactService contactService,
                                     IContactTypeService typeService,
                                     IDirectoryServices serchservices,
@@ -60,10 +58,8 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     ) : base(telemetryClientService ,localizer)
         {
             _pageService = pageService;
-            _sliderService = slidersServices;
             _uploadManager = uploadManager;
             _localizer = localizer;
-            _sectorService = sectorService;
             _contactService = contactService;
             _typeService = typeService;
             _serchservices = serchservices;
@@ -101,23 +97,14 @@ namespace TamTechSDK.Web.Controllers.Portal
                 return RedirectToAction(TamTech.Monshaat.POS.EFile2.Utilities.Constants.IndexAction,
                                         TamTech.Monshaat.POS.EFile2.Utilities.Constants.OAuthController, new { access_token, returnUrl });
             }
-
+            System.Diagnostics.Debug.WriteLine("CCCCCCCCCCCCCCCCCCCCCC");
             // ViewBag.Host = _appSettingsService.GetURl();
             try
             {
-                // slider
-                IRequestProviderResult<SliderDto> publicMainSlider = await _sliderService.GetPublishedBySettingIdAsync((int)SettingKeysEnum.HomePageMainSlider);
-                if (VerifySucceed(publicMainSlider))
-                {
-                    ViewBag.publicMainSlider = publicMainSlider.Data;
-                }
+                
 
-                // sectors
-                var _sectors = await _sectorService.GetPublishedListAsync();
-                if (VerifySucceed(_sectors))
-                {
-                    ViewBag.sectors = _sectors.Data;
-                }
+                 
+              
 
                 var _total = await _serchservices.GetCountOfPublishedAsync(_lang);
                 if (VerifySucceed(_total))
@@ -149,7 +136,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 TrackException(ex);
             }
 
-
+            
             return View();
         }
 

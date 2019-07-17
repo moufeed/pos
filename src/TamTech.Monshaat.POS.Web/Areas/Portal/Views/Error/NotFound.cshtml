@@ -1,15 +1,13 @@
 ﻿@{
+ 
     ViewData["Title"] = 404;
     ViewData["pageTitle"] = 404;
 }
 
+ 
+ 
 
-
-@{
-List<SlugModel> SlugModel = new List<SlugModel>();
-}
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
-
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 <section class="error-page">
     <div class="container">
@@ -33,3 +31,4 @@ List<SlugModel> SlugModel = new List<SlugModel>();
     <img src="~/portal/img/footer.png" alt="footerimage">
 </section>
 
+ 

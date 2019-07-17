@@ -1,56 +1,53 @@
 ﻿@model PageDto
 
 
-<if include-if="Model != null">
+    <if include-if="Model != null">
 
-@{
-    ViewData["Title"] = String.IsNullOrEmpty(Model.Title) ? "TamTech" : Model.Title;
-    Layout = "_Layout";
-    ViewData["ImageURl"] = @Url.Content("~/portal/img/about.jpg");
-    ViewData["pageTitle"] = @Model.Title;
+        @{
+            ViewData["Title"] = String.IsNullOrEmpty(Model.Title) ? "TamTech" : Model.Title;
+            Layout = "_Layout";
+            ViewData["ImageURl"] = @Url.Content("~/portal/img/about.jpg");
+            ViewData["pageTitle"] = @Model.Title;
 
-    ViewBag.ItemId = Model.Id;
-    ViewBag.Action = "EditHtmlPage";
+            ViewBag.ItemId = Model.Id;
+            ViewBag.Action = "EditHtmlPage";
 
-}
-<partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="Model.Slugs" />
+        }
+      
 
-
-
-
-@section SEO{
-    <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
-    <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
-    <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
-}
+        <vc:header slugs="Model.Slugs"></vc:header>
 
 
+        @section SEO{
+            <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
+            <meta name="keywords" content="@(String.Join(',', Model.Keywords))">
+            <partial name="~/Areas/Portal/Views/Shared/partials/_SEO.cshtml" model="Model.SEOMarkup" />
+        }
 
 
 
 
-<section class="section-page html-page py-5 mt-50" data-fix-height>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                @Html.Raw(Model.HtmlContent)
+
+
+        <section class="section-page html-page py-5 mt-50" data-fix-height>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @Html.Raw(Model.HtmlContent)
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="top-footer bg-light-lime pt-50 text-center">
-    <img src="~/portal/img/footer.png" alt="footerimage">
-</section>
+        <section class="top-footer bg-light-lime pt-50 text-center">
+            <img src="~/portal/img/footer.png" alt="footerimage">
+        </section>
 
-</if>
+    </if>
 
 
 <if exclude-if="Model != null">
-        @{
-            List<SlugModel> _slugModel = new List<SlugModel>();
-        }
-        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="_slugModel" />
+        <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
         <partial name="~/Areas/Portal/Views/Shared/partials/_empty.cshtml" />
 </if>

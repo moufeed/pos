@@ -2,6 +2,7 @@
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor accessor
 
 @{
+    Layout = null;
     SEODataModel SModel = new SEODataModel();
     if (!string.IsNullOrEmpty(Model))
     {

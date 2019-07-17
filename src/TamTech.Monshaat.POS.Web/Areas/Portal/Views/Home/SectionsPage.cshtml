@@ -11,10 +11,7 @@
         }
 
 
-        @{
-            List<SlugModel> SlugModel = new List<SlugModel>();
-        }
-        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="SlugModel" />
+        <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
         @section SEO{
             <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
@@ -69,10 +66,8 @@
     </if>
 
     <if exclude-if="Model != null">
-        @{
-            List<SlugModel> _slugModel = new List<SlugModel>();
-        }
-        <partial name="~/Areas/Portal/Views/Shared/partials/_Header.cshtml" model="_slugModel" />
+       
+        <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
         <partial name="~/Areas/Portal/Views/Shared/partials/_empty.cshtml" />
     </if>

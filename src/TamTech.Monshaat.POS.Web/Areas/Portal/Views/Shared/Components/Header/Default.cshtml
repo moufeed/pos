@@ -1,24 +1,16 @@
+﻿
+@model IEnumerable<SlugModel>
+@{
 
-@model List<SlugModel>
-@{ 
-    string _lang = null;
-    string controller = null;
-    string action = null;
-    TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography.BiographyInfoVm biographiesInfo = null;
+
     if (TamTechSDK.Web.Controllers.Portal.PublicBaseController.HtmlRenderCounter == 1)
     {
-        _lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-        controller = ViewContext.RouteData.Values["Controller"].ToString();
-        action = ViewContext.RouteData.Values["Action"].ToString();
-        ViewBag.IsLoogedIn = User.Identity.IsAuthenticated &&
-       TamTech.Monshaat.POS.EFile2.Utilities.Helpers.VendorRole.Equals(User.Identity.GetUserRolesCommaSeparated(), StringComparison.InvariantCultureIgnoreCase);
-        if (ViewBag.BiographyLogo == null)
-        {
-            @inject TamTech.Monshaat.POS.Web.Core.Biographies.IBiographiesManager _biographiesManager
-            biographiesInfo = (await _biographiesManager.GetInfoAsync());
-            ViewBag.BiographyLogo = biographiesInfo.Logo;
-        }
-        
+        string _lang = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+        string action = ViewContext.RouteData.Values["Action"].ToString();
+
+
+
     }
 
 }
@@ -39,10 +31,9 @@
                         <if exclude-if="ViewBag.IsLoogedIn">
                             <a asp-action="Register" asp-controller="Vendor" class="btn btn-white mx-15">@Localizer["vedor_register"]</a>
                         </if>
-                        <partial name="~/Areas/Portal/Views/Shared/partials/_UserMenu.cshtml" />
+                        <partial name="~/Areas/Portal/Views/Shared/Components/Header/_UserMenu.cshtml" />
                     </div>
-
-
+                     
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Menu" aria-controls="Menu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -51,10 +42,14 @@
 
 
                     <div class="collapse navbar-collapse main_menu" id="Menu">
-                        @if (TamTechSDK.Web.Controllers.Portal.PublicBaseController.HtmlRenderCounter == 1)
-                        {
-                                <menu></menu> 
-                        }  
+
+                        <vc:menu></vc:menu>
+
+                        @*@if (TamTechSDK.Web.Controllers.Portal.PublicBaseController.HtmlRenderCounter == 1)
+                         {
+                                 <menu></menu>
+                        }*@
+
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <if exclude-if="ViewBag.IsLoogedIn">
@@ -70,7 +65,7 @@
                 <if exclude-if="ViewBag.IsLoogedIn">
                     <a asp-action="Register" asp-controller="Vendor" class="btn btn-white mx-15 mt-5">@Localizer["vedor_register"]</a>
                 </if>
-                <partial name="~/Areas/Portal/Views/Shared/partials/_UserMenu.cshtml" />
+                <partial name="~/Areas/Portal/Views/Shared/Components/Header/_UserMenu.cshtml" />
             </div>
         </div>
     </div>
