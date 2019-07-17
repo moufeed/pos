@@ -21,7 +21,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
             if (model == null || string.IsNullOrWhiteSpace(model.Username)|| string.IsNullOrWhiteSpace(model.Password)) return null;
             var client = new TokenClient("http://localhost:50383/connect/token", "password_client", "h8yI4DydzI5ZsKCMGTs9hfTdI1vRS3qfTo9Go92q3aM=");
 
-            var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: "offline_access content.api openid profile").GetAwaiter().GetResult();
+            var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: "offline_access content.api identity.api openid profile").GetAwaiter().GetResult();
            
             if (token.IsError || string.IsNullOrWhiteSpace( token.AccessToken))
              {

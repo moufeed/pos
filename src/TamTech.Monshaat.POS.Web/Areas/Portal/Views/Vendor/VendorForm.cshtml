@@ -12,7 +12,7 @@
  
 <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
-<if include-if="Model != null">
+@*<if include-if="Model != null">*@
 
 
     <section class="create-vendor-page pt-75  pb-50" data-fix-height>
@@ -88,9 +88,9 @@
         </if>
 
     }
-</if>
+@*</if> 
 
 
-<if exclude-if="Model != null">
+ <if exclude-if="Model != null">
     <partial name="~/Areas/Portal/Views/Shared/partials/_Error_widget.cshtml" />
-</if>
+</if>*@
