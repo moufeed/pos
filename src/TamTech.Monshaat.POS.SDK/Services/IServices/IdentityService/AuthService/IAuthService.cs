@@ -10,13 +10,10 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity
 {
     public  interface IAuthService
     {
+        Task<IRequestProviderResult<bool>> ValidateVendorCredentialAsync(SignupByName model, string secretKey, string secretValue);
 
-        Task<IRequestProviderResult<bool>> SigninOrSignupPOSAdminAsync(SignupByName model, string secretKey, string secretValue);
-
-        Task<IRequestProviderResult<bool>> ResetPOSAdminPasswordAsync(ResetPOSAdminPasswordModel model, string secretKey, string secretValue);
-
-        Task<IRequestProviderResult<UserModel>> SignupByNameAsync(SignupByName model);
-
+        Task<IRequestProviderResult<bool>> ValidatePOSAdminCredentialAsync(SignupByName model, string secretKey, string secretValue);
+     
         Task<IRequestProviderResult<bool>> GenerateResetPasswordByEmailSendig(string email);
 
         Task<IRequestProviderResult<bool>> ResetPassword(ResetPassword model);

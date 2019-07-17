@@ -14,6 +14,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
         public const string VendorController = "Vendor";
         public const string RegisterAction = "Register";
 
+        public const string UserSecret = "%i#-u&9}/8g|KX7>.!{A~$";
 
         public const string POSUrl = "/ar/Portal/Vendor";
         public const string RegisterVendorUrl = "/ar/portal/Vendor/Register";

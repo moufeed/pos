@@ -62,10 +62,10 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
         public string GetUserRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/roles/GetUserRolesAsync";
 
         public string AddUserToRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/usersmanager/AddUserToVendorRoleAsync";
+  
+        public string ValidatePOSAdminCredentialEndpoint => $"{IdentityEndpointBase}/api/0.1/users/ValidatePOSAdminCredentialAsync";
 
-        public string SignupByNameEndpoint => $"{IdentityEndpointBase}/api/0.1/users/SignupByNameAsync";
-        public string ResetPOSAdminPasswordEndpoint => $"{IdentityEndpointBase}/api/0.1/users/ResetPOSAdminPasswordAsync";
-        public string SigninOrSignupPOSAdminEndpoint => $"{IdentityEndpointBase}/api/0.1/users/SigninOrSignupPOSAdminAsync";
+        public string ValidateVendorCredentialEndpoint => $"{IdentityEndpointBase}/api/0.1/users/ValidateVendorCredentialAsync";
        
     }
 }

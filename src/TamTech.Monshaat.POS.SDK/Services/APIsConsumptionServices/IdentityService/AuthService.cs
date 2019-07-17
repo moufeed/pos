@@ -21,23 +21,17 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
 
 
 
-        public async Task<IRequestProviderResult<bool>> SigninOrSignupPOSAdminAsync(SignupByName model, string secretKey, string secretValue)
+        public async Task<IRequestProviderResult<bool>> ValidateVendorCredentialAsync(SignupByName model, string secretKey, string secretValue)
         {   
-            return await ReqProvider.PostAsync<bool, SignupByName>(_backendSettings.SigninOrSignupPOSAdminEndpoint, model,
+            return await ReqProvider.PostAsync<bool, SignupByName>(_backendSettings.ValidateVendorCredentialEndpoint, model,
                 new Dictionary<string, string> { { secretKey, secretValue } });
-        }
+        }    
 
-
-        public async Task<IRequestProviderResult<bool>> ResetPOSAdminPasswordAsync(ResetPOSAdminPasswordModel model, string secretKey, string secretValue)
-        {
-            return await ReqProvider.PostAsync<bool, ResetPOSAdminPasswordModel>(_backendSettings.ResetPOSAdminPasswordEndpoint, model,
+        public async Task<IRequestProviderResult<bool>> ValidatePOSAdminCredentialAsync(SignupByName model, string secretKey, string secretValue)
+        {   
+            return await ReqProvider.PostAsync<bool, SignupByName>(_backendSettings.ValidatePOSAdminCredentialEndpoint, model,
                 new Dictionary<string, string> { { secretKey, secretValue } });
-        }     
-      
-        public async Task<IRequestProviderResult<UserModel>> SignupByNameAsync(SignupByName model)
-        {
-            return await ReqProvider.PostAsync<UserModel, SignupByName>(_backendSettings.RegisterUserAsyncEndpoint, model);
-        }
+        }   
 
         public Task<IRequestProviderResult<bool>> ChangePassword(ChangePassword model)
         {

@@ -10,20 +10,9 @@ using TamTech.Monshaat.POS.IdentityService.Services;
 namespace TamTech.Monshaat.POS.IdentityService
 {
     public static class POSIdentityServiceStartup
-    {
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
-
-        //public IConfiguration Configuration { get; }
-
+    {       
         public static void AddIdentityService(this IServiceCollection services)
-        {
-
-
-
-
+        {       
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>

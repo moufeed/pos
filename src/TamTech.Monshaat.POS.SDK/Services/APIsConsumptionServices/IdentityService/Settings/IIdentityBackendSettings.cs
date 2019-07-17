@@ -30,11 +30,10 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
         string GetUserRolesEndpoint { get; }
 
         string AddUserToRolesEndpoint { get; }
+                                                
+        string ValidatePOSAdminCredentialEndpoint { get; }
 
-        string SignupByNameEndpoint{ get; }
-
-        string ResetPOSAdminPasswordEndpoint { get; }
-        string SigninOrSignupPOSAdminEndpoint { get; }
+        string ValidateVendorCredentialEndpoint { get; }
 
  
     }

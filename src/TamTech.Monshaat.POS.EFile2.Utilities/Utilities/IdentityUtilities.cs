@@ -55,17 +55,26 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
 
             if (string.IsNullOrWhiteSpace(username)) return false;
 
-            var info = await _usersManagerService.GetUserByUsernameAsync(username);
-            if (info.Data == null || !info.Success)
+            string pass = $"{Constants.UserSecret}{username}";
+            /// << check user credential 'username-password' at identity server and register user when not existed  >>  
+            var checkedIdS4 = await _authService.ValidatePOSAdminCredentialAsync(
+                                                                    new Web.Services.Identity.Auth.Models.SignupByName
+                                                                    {
+                                                                        Username = username,
+                                                                        Password = pass
+                                                                    }
+                                                                    , TamTech.Monshaat.POS.IdentityService.Utilities.Constants.IDS4ApiKey
+                                                                    , TamTech.Monshaat.POS.IdentityService.Utilities.Constants.IDS4SecretValue);
+            if (!checkedIdS4.Success || !checkedIdS4.Data)
             {
-              var  result = await _authService.SignupByNameAsync(new SignupByName
-                {
-                    Username = username,
-                    Password = $"{TamTech.Monshaat.POS.IdentityService.Utilities.Constants.SecretKey}{username}",
-                });
-               
+                return false; 
             }
-            var token = await _tokenTamService.GetTokenAsync(username);      
+           
+            var token = await _tokenTamService.GetTokenAsync(new IdentityService.Models.GetTokenModel
+            {
+                Username = username,
+                Password = pass
+            });      
             if (token == null)
             {
                 return false;

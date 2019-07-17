@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
 {
    public interface ITokenTamService
     {
-        Task<TokenModel> GetTokenAsync(string username);
+        Task<TokenModel> GetTokenAsync(GetTokenModel model);
 
         Task<List<Claim>> GetUserClaimsAsync(string accessToken);
     }

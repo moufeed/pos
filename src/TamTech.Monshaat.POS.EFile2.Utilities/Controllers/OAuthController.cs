@@ -1,26 +1,22 @@
-﻿    using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Mvc;              
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;    
+using TamTech.Monshaat.POS.EFile2.Utilities.Services;
 
 namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
-{
-    // For the POS 
-    
+{     
     public class OAuthController : Controller
     {
-        private readonly IEFileIdentityProviderService _eFileService;    
-        private readonly IdentityUtilities _identityUtilities;  
+        private readonly IEFileIdentityProviderService _eFileService;
+        private readonly IdentityUtilities _identityUtilities;
 
         public OAuthController(IEFileIdentityProviderService eFileService,
-            IdentityUtilities posIdentityHelper )  
+            IdentityUtilities posIdentityHelper)
         {
             _eFileService = eFileService;
-            _identityUtilities = posIdentityHelper;       
+            _identityUtilities = posIdentityHelper;
         }
 
 
@@ -29,13 +25,13 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
         public async Task<IActionResult> Index(string access_token, string returnUrl)
         {
             var isAuthenticated = await _eFileService.IsAuthenticatedAsync(access_token);
-            if(isAuthenticated)
+            if (isAuthenticated)
             {
-                var result = await _identityUtilities.Signup(access_token); 
-                if(result)
+                var result = await _identityUtilities.Signup(access_token);
+                if (result)
                 {
-                    SetCookie( Constants.EFileTokenCookieName, access_token, Helpers.LogoutAfterMinutes); 
-                  var username =await _eFileService.GetUsernameByAccessTokenAsync(access_token); 
+                    SetCookie(Constants.EFileTokenCookieName, access_token, Helpers.LogoutAfterMinutes);
+                    var username = await _eFileService.GetUsernameByAccessTokenAsync(access_token);
                     if (await _identityUtilities.CheckAciveVendor(username))
                     {
                         return Redirect(Constants.POSUrl);
@@ -46,9 +42,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
             {
                 return Redirect(returnUrl);
             }
-            //if (!String.IsNullOrWhiteSpace($"{returnUrl}?isAuthenticated={isAuthenticated}"))
-            //    return Redirect(returnUrl);
-            return Redirect("~/"); 
+            return Redirect("~/");
         }
 
 
@@ -63,10 +57,6 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
 
             var url = returnUrl;
 
-            // var userId = HttpContext.User.Identity.GetUserId();
-
-
-
             if (!User.Identity.IsAuthenticated)
             {
                 url = _eFileService.GetLoginUrl(returnUrl);
@@ -80,9 +70,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
         [Route("{culture}/portal/OAuth/Logout")]
         public async Task<IActionResult> Logout(string returnUrl = null)
         {
-            //var userId =  HttpContext.User.Identity.GetUserId();
-            //  var user = await _userManager.FindByIdAsync(HttpContext.User.Identity.GetUserId()); 
-            await HttpContext.SignOutAsync(); 
+            await HttpContext.SignOutAsync();
             string token = Request.Cookies[Constants.EFileTokenCookieName];
             if (!string.IsNullOrWhiteSpace(token))
             {
@@ -97,7 +85,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
             return Redirect(returnUrl);
 
         }
-         
+
 
         /// <summary>  
         /// set the cookie  
@@ -128,4 +116,3 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
     }
 }
 
-  
