@@ -50,15 +50,11 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginTamInputModel model)
         {
-
+            /// <<  validate model state  >>  
             if (!ModelState.IsValid) return View( BuildLoginViewModel(model));
 
-            //if(string.IsNullOrWhiteSpace(model.Username) || string.IsNullOrWhiteSpace(model.Password))
-            //{
-            //    return BadRequest("The Username and Password is required");  
-            //}
-            var adResult = await _authTamService.LoginAsync(new LoginTamModel()
-                                                            {
+            /// << external authentication provider  >>  
+            var adResult = await _authTamService.LoginAsync(new LoginTamModel()  {
                                                                 Username = model.Username,
                                                                 Password = model.Password
                                                             });
@@ -67,8 +63,8 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
                 ModelState.AddModelError(nameof(model.Username) , "The Username or Password is wrong!");
                 return View(BuildLoginViewModel(model));
             }
-                     
 
+            /// << external authentication provider  >>  
             var token = await   _tokenTamService.GetTokenAsync(model.Username);    
             if (token == null)
             {
