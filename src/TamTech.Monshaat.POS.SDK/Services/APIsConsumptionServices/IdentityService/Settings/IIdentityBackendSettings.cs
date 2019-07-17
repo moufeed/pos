@@ -33,6 +33,9 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 
         string SignupByNameEndpoint{ get; }
 
+        string ResetPOSAdminPasswordEndpoint { get; }
+        string SigninOrSignupPOSAdminEndpoint { get; }
+
  
     }
 }

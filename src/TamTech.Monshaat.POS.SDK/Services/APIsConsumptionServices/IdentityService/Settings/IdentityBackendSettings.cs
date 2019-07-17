@@ -64,5 +64,8 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
         public string AddUserToRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/usersmanager/AddUserToVendorRoleAsync";
 
         public string SignupByNameEndpoint => $"{IdentityEndpointBase}/api/0.1/users/SignupByNameAsync";
+        public string ResetPOSAdminPasswordEndpoint => $"{IdentityEndpointBase}/api/0.1/users/ResetPOSAdminPasswordAsync";
+        public string SigninOrSignupPOSAdminEndpoint => $"{IdentityEndpointBase}/api/0.1/users/SigninOrSignupPOSAdminAsync";
+       
     }
 }
