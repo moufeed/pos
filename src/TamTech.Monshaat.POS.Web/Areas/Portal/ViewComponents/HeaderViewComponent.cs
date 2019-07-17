@@ -27,7 +27,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
             BiographyInfoVm biographiesInfo = await _biographiesManager.GetInfoAsync() ;
             ViewBag.BiographyLogo = biographiesInfo.Logo;
 
-            return View(Slugs);
+            return View("~/Areas/Portal/Views/Shared/Components/Header/Default.cshtml",Slugs);
         }
     }
 }

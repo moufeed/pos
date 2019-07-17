@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.Identi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.SDK", "src\TamTech.Monshaat.POS.SDK\TamTech.Monshaat.POS.SDK.csproj", "{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamTech.Monshaat.POS.MCIServices", "src\TamTech.Monshaat.POS.MCIServices\TamTech.Monshaat.POS.MCIServices.csproj", "{C1A5ED11-BB03-4F68-A305-BB70A33E36D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.MCIServices", "src\TamTech.Monshaat.POS.MCIServices\TamTech.Monshaat.POS.MCIServices.csproj", "{C1A5ED11-BB03-4F68-A305-BB70A33E36D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamTech.Monshaat.POS.MCI.APISimulator", "src\TamTech.Monshaat.POS.MCI.APISimulator\TamTech.Monshaat.POS.MCI.APISimulator.csproj", "{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TamTech.Monshaat.POS.MCI.APISimulator", "src\TamTech.Monshaat.POS.MCI.APISimulator\TamTech.Monshaat.POS.MCI.APISimulator.csproj", "{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamTech.Monshaat.POS.Front", "TamTech.Monshaat.POS.Front\TamTech.Monshaat.POS.Front.csproj", "{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{EF6DC64A-BE1D-4F32-8458-D8D740D23FDB} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 		{C1A5ED11-BB03-4F68-A305-BB70A33E36D9} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 		{BEA7A801-0CDC-4F42-9B06-06804B5D2FA4} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
+		{19BFFF3C-AA24-4EF7-9F1A-396EE1B79812} = {83F9BC64-F998-4383-8D37-B7913B95EDCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6B10E00-930A-41E5-BF94-81CD1F065E7C}

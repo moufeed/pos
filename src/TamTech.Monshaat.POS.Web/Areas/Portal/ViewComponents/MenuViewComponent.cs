@@ -16,7 +16,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
     {
         private readonly IPortalMenusService _publicMenusService;
         private static int conter = 0;
-        private Dictionary<string, string> paths;
+        
 
         public MenuViewComponent(IPortalMenusService publicMenusService)
         {
@@ -36,18 +36,16 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
                 var menu = await _publicMenusService.GetNavbarMenuAsync();
                 if (menu.Success)
                 {
-                    ViewData["conter"] = conter;
-                    return View(menu.Data.MenuItems);
+                    ViewData["counter"] = conter;
+                    return View("~/Areas/Portal/Views/Shared/Components/menu/Default.cshtml",menu.Data.MenuItems);
                 }
             }
             catch (Exception ex)
             {
                  
             }
-            return View();
+            return View("~/Areas/Portal/Views/Shared/Components/menu/Default.cshtml");
         }
-
-
-
+ 
     }
 }
