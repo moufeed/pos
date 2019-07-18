@@ -50,7 +50,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
 
                 // Case 3 : when username of EFile2 does not match username of (Http Context Identity)...
                 var username = await _eFileService.GetUsernameByAccessTokenAsync(efile_access_token);
-                if (username != controller.HttpContext.User.Identity.GetUsername())
+                if (username != controller.HttpContext.User.Identity.GetUserName())
                 {
                     await controller.HttpContext.SignOutAsync();// await _signInManager.SignOutAsync();
                     controller.Response.Cookies.Delete(Constants.EFileTokenCookieName);
@@ -94,7 +94,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
     public static class IdentityExtensions
     {
 
-        public static string GetUsername(this IIdentity identity)
+        public static string GetUserName(this IIdentity identity)
         {
             var claim = ((System.Security.Claims.ClaimsIdentity)identity).Claims.SingleOrDefault(c => c.Type == "preferred_username");
             return claim?.Value;
