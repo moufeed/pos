@@ -21,6 +21,7 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
         #region  Endpoints Urls     
 
         public string AuthenticateByAD => $"{_apirUrl}/MCIAPISimulator/v1/GateWayApi/AuthenticateByAD";
+        public string GetAllPersonsForCR => $"{_apirUrl}/MCIAPISimulator/v1/GateWayApi/GetAllPersonsForCR";
 
         #endregion
 

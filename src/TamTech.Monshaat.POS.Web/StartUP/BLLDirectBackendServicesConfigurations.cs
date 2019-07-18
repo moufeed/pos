@@ -107,11 +107,11 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
             #endregion
 
-            #region Email Service 
+            //#region Email Service 
 
-            services.AddTransient<IEmailSenderService, TamTech.Monshaat.POS.Web.DirectBackendServices.EmailServices.DirectEmailServices>();
+            //services.AddTransient<IEmailSenderService, TamTech.Monshaat.POS.Web.DirectBackendServices.EmailServices.DirectEmailServices>();
 
-            #endregion
+            //#endregion
 
             //#region Identity Service 
 

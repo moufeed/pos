@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TamTech.Monshaat.POS.IdentityService.Services;
+using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
 using TamTech.Monshaat.POS.Web.Core.Filters;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 
@@ -10,7 +11,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
     public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AdmibAccountController
     {
 
-        public AccountController(IAuthTamService authTamService, ITokenTamService tokenTamService, IAuthService authService)
+        public AccountController(IExternalAuthService authTamService, ITokenTamService tokenTamService, IAuthService authService)
             : base(authTamService, tokenTamService, authService)
         {
         }

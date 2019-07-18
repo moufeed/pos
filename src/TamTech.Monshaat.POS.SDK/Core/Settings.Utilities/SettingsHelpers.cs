@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
-using TamTech.Monshaat.POS.Web.Services.Email.Settings;
+using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;    
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
 
 namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
@@ -79,20 +78,20 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
             return settings?.Data?.Value == "1";
         }
 
-        public async Task<EmailFromInfo> GetEmailSettingsAsync()
-        {
+        //public async Task<EmailFromInfo> GetEmailSettingsAsync()
+        //{
 
-            var settings = await _settingService.GetEnabledListBySharedKeysAsync(
-                new List<string> { SettingSharedKeysEnum.Email.ToString(), SettingSharedKeysEnum.Email_CC.ToString() });
-            if (settings.Data == null || !settings.Success) return null;
-            EmailFromInfo model = new EmailFromInfo
-            {
-                From = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_From.ToString())?.Value,
-                FromName = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_FromName.ToString())?.Value,
-                CC = settings.Data.Where(e => e.SharedKey == SettingSharedKeysEnum.Email_CC.ToString())?.Select(c => c.Value)?.ToList(),
-            };
-            return model;
-        }
+        //    var settings = await _settingService.GetEnabledListBySharedKeysAsync(
+        //        new List<string> { SettingSharedKeysEnum.Email.ToString(), SettingSharedKeysEnum.Email_CC.ToString() });
+        //    if (settings.Data == null || !settings.Success) return null;
+        //    EmailFromInfo model = new EmailFromInfo
+        //    {
+        //        From = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_From.ToString())?.Value,
+        //        FromName = settings.Data.FirstOrDefault(e => e.Key == SettingKeysEnum.Email_FromName.ToString())?.Value,
+        //        CC = settings.Data.Where(e => e.SharedKey == SettingSharedKeysEnum.Email_CC.ToString())?.Select(c => c.Value)?.ToList(),
+        //    };
+        //    return model;
+        //}
 
         public async Task<List<string>> GetMenuItemsTypesAsync()
         {

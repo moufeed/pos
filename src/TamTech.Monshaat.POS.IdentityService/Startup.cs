@@ -38,8 +38,7 @@ namespace TamTech.Monshaat.POS.IdentityService
                 options.AddPolicy("Vendor", policy =>
                     policy.RequireRole("TAMCMS_Vendor"));
             }).AddJsonFormatters();
-
-            services.AddTransient<IAuthTamService, AuthTamService>();
+                 
             services.AddTransient<ITokenTamService, TokenTamService>();
 
 

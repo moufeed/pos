@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
+using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
+using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications.Models;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 
 namespace TamTech.Monshaat.POS.IdentityService.Controllers
@@ -15,15 +17,15 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
     public abstract class AdmibAccountController : Controller
     {
         #region Props  
-        private readonly IAuthTamService _authTamService;
+        private readonly IExternalAuthService _externalAuthService;
         private readonly ITokenTamService _tokenTamService;
         private readonly IAuthService _authService;
         #endregion
 
         #region Ctors  
-        public AdmibAccountController(IAuthTamService authTamService, ITokenTamService tokenTamService, IAuthService authService)
+        public AdmibAccountController(IExternalAuthService externalAuthService, ITokenTamService tokenTamService, IAuthService authService)
         {
-            _authTamService = authTamService;
+            _externalAuthService = externalAuthService;
             _tokenTamService = tokenTamService;
             _authService = authService;
         }
@@ -48,7 +50,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
 
 
             /// << external authentication provider  >>  
-            var adResult = await _authTamService.LoginAsync(new LoginTamModel()
+            var adResult = await _externalAuthService.LoginAsync(new ExternalLoginModel()
             {
                 Username = model.Username,
                 Password = model.Password

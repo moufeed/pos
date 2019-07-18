@@ -7,5 +7,6 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
    public interface IMCIApiSettings
     {     
          string AuthenticateByAD { get; }    
+         string GetAllPersonsForCR { get; }    
     }
 }
