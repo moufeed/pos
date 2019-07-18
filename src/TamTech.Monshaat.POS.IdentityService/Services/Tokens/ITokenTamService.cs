@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.IdentityService.Models;
+using TamTech.Monshaat.POS.Web.Core.Enums;
 
 namespace TamTech.Monshaat.POS.IdentityService.Services
 {
@@ -11,6 +12,6 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
     {
         Task<TokenModel> GetTokenAsync(GetTokenModel model);
 
-        Task<List<Claim>> GetUserClaimsAsync(string accessToken);
+        Task<List<Claim>> GetUserClaimsAsync(string accessToken, PermissionTypeEnum permission);
     }
 }

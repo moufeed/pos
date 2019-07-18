@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
+using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 
 namespace TamTech.Monshaat.POS.IdentityService.Services
 {
@@ -32,29 +34,66 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
         }
 
 
-        public async Task<List<Claim>> GetUserClaimsAsync(string accessToken)
+        public async Task<List<Claim>> GetUserClaimsAsync(string accessToken, PermissionTypeEnum permission)
         {
             var info = await SendAsync("http://localhost:50383/connect/userinfo", accessToken);
 
             if (info == null) return null;
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(Constants.JWTClaimName, accessToken)
+                new Claim(Constants.JWTClaimName, accessToken)  ,    
+            
             };
+          
 
+            bool isVendor = false;
             foreach (var pair in info)
-            {
+            {   
                 var val = pair.Value.ToString();
                 if (!string.IsNullOrWhiteSpace(val) && val.StartsWith('[') && val.EndsWith(']'))
                 {
+                    bool isUserRole = (permission == PermissionTypeEnum.User &&
+                            "Role".Equals(pair.Key, StringComparison.InvariantCultureIgnoreCase));
+
                     var value = JsonConvert.DeserializeObject<List<string>>(val);
-                    value.ForEach(c => claims.Add(new Claim(pair.Key, c)));
+                    foreach (var v in value)
+                    {
+                        claims.Add(new Claim(pair.Key, v));
+
+                        
+                        if (isUserRole && SettingsHelpers.VendorRoleName.Equals(v))
+                        {
+                            isVendor = true;
+                        }
+                    }   
+                     
                 }
                 else
                 {
                     claims.Add(new Claim(pair.Key, val));
                 }
             }
+
+            /// <  add Admin permission when permission type is Admin.  > 
+            if (permission == PermissionTypeEnum.Admin)
+            {
+                claims.Add(new Claim(Constants.PermissionClaimName, permission.ToString()));
+            }
+            else
+            {
+                /// <  add Vendor permission when the user has a Vender role.  > 
+                if (isVendor)
+                {
+                    claims.Add(new Claim(Constants.PermissionClaimName, PermissionTypeEnum.Vendor.ToString()));
+                }
+                else
+                {   /// <  add Vendor permission when the user has not a role.  > 
+                    claims.Add(new Claim(Constants.PermissionClaimName, permission.ToString()));
+                }
+            }
+                
+               
+
 
             return claims;
 
@@ -95,4 +134,6 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
             }
         }
     }
+
+   
 }

@@ -13,7 +13,9 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
 
         #region Props  
         private readonly ISettingService _settingService;
-        public static string app_version;
+
+        public static string AppVersion;
+         public static string VendorRoleName;
         // public static string app_Url; 
         #endregion
 
@@ -32,29 +34,34 @@ namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
         #region Utilities
         public async Task PrepareCashedSettingsAsync()
         {
-            if (string.IsNullOrWhiteSpace(app_version))
+            if (string.IsNullOrWhiteSpace(AppVersion) || string.IsNullOrWhiteSpace(VendorRoleName))
             {
-                var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.AppVersion);
-                app_version = settings.Data?.Value;
+                var settings = await _settingService.GetEnabledListByIdsAsync(
+                    new List<int> { (int)SettingKeysEnum.AppVersion, (int)SettingKeysEnum.VendorRoleName });
+                if (settings.Success == true)
+                {
+                    AppVersion = settings.Data?.SingleOrDefault(s => s.Id == (int)SettingKeysEnum.AppVersion)?.Value;
+                    VendorRoleName = settings.Data?.SingleOrDefault(s => s.Id == (int)SettingKeysEnum.VendorRoleName)?.Value;
+                }
             }
-
         }
 
 
 
         public async Task<string> GetVersionAsync()
         {
-            if (!string.IsNullOrWhiteSpace(app_version)) return app_version;
+            if (!string.IsNullOrWhiteSpace(AppVersion)) return AppVersion;
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.AppVersion);
-            app_version = settings?.Data?.Value;
-            return app_version;
+            AppVersion = settings?.Data?.Value;
+            return AppVersion;
         }
 
         public async Task<string> GetVendorRoleNameAsync()
         {
-
+            if (!string.IsNullOrWhiteSpace(VendorRoleName)) return VendorRoleName;
             var settings = await _settingService.GetByIdAsync((int)SettingKeysEnum.VendorRoleName);
-            return settings?.Data?.Value;
+            VendorRoleName = settings?.Data?.Value;
+            return VendorRoleName;
         }
 
 

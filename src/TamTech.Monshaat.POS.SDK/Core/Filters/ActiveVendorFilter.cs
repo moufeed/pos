@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.Core.Enums;
 using TamTech.Monshaat.POS.Web.Core.Extensions;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
 
 namespace TamTech.Monshaat.POS.Web.Core.Filters
 {
-    public class UserActivityFilter : ActionFilterAttribute, IActionFilter
+    public class ActiveVendor : ActionFilterAttribute, IActionFilter
     {
         private readonly IUsersManagerService _usersManagerService;
 
-        public UserActivityFilter(IUsersManagerService usersManagerService)
+        public ActiveVendor(IUsersManagerService usersManagerService)
         {
             _usersManagerService = usersManagerService;
         }
@@ -25,15 +26,26 @@ namespace TamTech.Monshaat.POS.Web.Core.Filters
             {
                 if (controller.HttpContext.User.Identity.IsAuthenticated)
                 {
-                    var IsActiveResult = await _usersManagerService.CheckUserAccountIsActivatedAsync(new UserNameModel { UserName = controller.HttpContext.User.Identity.GetUsername() });
-
-                    if (!IsActiveResult.Data)
-                    { 
+                    if (controller.HttpContext.User.Identity.GetPermission() == PermissionTypeEnum.Admin.ToString())
+                    {
                         context.Result = new RedirectToRouteResult(new RouteValueDictionary {
+                                      { "Controller","account" },
+                                      { "Action", "AccessDenied" },
+                                      { "Area", "Identity" }});
+                        return;
+                    }
+                    else
+                    {    
+                        var IsActiveResult = await _usersManagerService.CheckUserAccountIsActivatedAsync(new UserNameModel { UserName = controller.HttpContext.User.Identity.GetUsername() });
+
+                        if (!IsActiveResult.Data)
+                        {
+                            context.Result = new RedirectToRouteResult(new RouteValueDictionary {
                                       { "Controller","account" },
                                       { "Action", "blocked" },
                                       { "Area", "Identity" }});
-                        return;
+                            return;
+                        }
                     }
                 }
 

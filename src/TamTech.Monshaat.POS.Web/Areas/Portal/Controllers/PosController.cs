@@ -31,8 +31,8 @@ using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
-    [ServiceFilter(typeof(UserActivityFilter))]
-    [ServiceFilter(typeof(UserContextUpdatedFilter))]
+    [ServiceFilter(typeof(ActiveVendor))]
+    [ServiceFilter(typeof(UserContextUpdated))]
    
     public class PosController : PublicBaseController
     {

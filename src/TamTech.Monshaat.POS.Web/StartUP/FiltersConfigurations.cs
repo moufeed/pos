@@ -8,8 +8,8 @@ namespace TamTech.Monshaat.POS.Web.StartUP
         public static void AddFiltersConfigurations(this IServiceCollection services)
         {
 
-            services.AddScoped<UserContextUpdatedFilter>();
-            services.AddScoped<UserActivityFilter>();
+            services.AddScoped<UserContextUpdated>();
+            services.AddScoped<ActiveVendor>();
             services.AddTransient<AdminFilter>();
             //  services.AddTransient<MenuFilter>(); 
         }

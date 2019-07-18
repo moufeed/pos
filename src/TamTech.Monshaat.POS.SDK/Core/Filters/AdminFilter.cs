@@ -13,7 +13,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Filters
             if (controller != null)
             {
 
-                controller.ViewBag.AppVersion = SettingsHelpers.app_version; 
+                controller.ViewBag.AppVersion = SettingsHelpers.AppVersion; 
             } 
 
         }

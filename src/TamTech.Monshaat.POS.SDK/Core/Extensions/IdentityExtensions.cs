@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal; 
+using System.Security.Principal;
+using TamTech.Monshaat.POS.Web.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.Core.Extensions
 {
@@ -43,6 +44,12 @@ namespace TamTech.Monshaat.POS.Web.Core.Extensions
         {
             var result = ((System.Security.Claims.ClaimsIdentity)identity).Claims.Where(c => c.Type == "role").Select(v => v.Value).ToList();
             return String.Join(",", result);
+        }
+
+        public static string GetPermission(this IIdentity identity)
+        {
+            var claim = ((System.Security.Claims.ClaimsIdentity)identity).Claims.SingleOrDefault(c => c.Type == CommonConstants.PermissionClaimName);
+            return claim?.Value;
         }
 
         public static string GetAccessToken(this IIdentity identity)

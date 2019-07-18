@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.EFile2.Utilities.Services;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 using TamTech.Monshaat.POS.Web.Services.Identity.Auth.Models;
 using TamTech.Monshaat.POS.Web.Services.Identity.Models;
@@ -79,7 +81,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
             {
                 return false;
             }  
-            var claims = await _tokenTamService.GetUserClaimsAsync(token.AccessToken);
+            var claims = await _tokenTamService.GetUserClaimsAsync(token.AccessToken, PermissionTypeEnum.User);
 
 
             await _httpContext.SignInAsync(
@@ -106,7 +108,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
             var res = await _usersManagerService.AddUserToRolesAsync(new AddUserToRolesModel 
             {
                       UserName = username    ,
-                RolesNames = new List<string> { Helpers.VendorRole }
+                RolesNames = new List<string> { SettingsHelpers.VendorRoleName }
             });
             return res.Success;
         }
@@ -118,7 +120,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
             if (IsActiveResult.Data)
             {
                 var roles = await _rolesService.GetUserRolesAsync(username); ;
-                if (roles != null && roles.Select(r => r.Name).Contains(Helpers.VendorRole))
+                if (roles != null && roles.Select(r => r.Name).Contains(SettingsHelpers.VendorRoleName))
                 {
                     return true;
                 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.Core.Biographies;
 using TamTech.Monshaat.POS.Web.Core.Extensions;
+using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
 
@@ -22,7 +23,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(List<SlugModel> Slugs  = null)
         {
             ViewBag.IsLoogedIn = User.Identity.IsAuthenticated &&
-            TamTech.Monshaat.POS.EFile2.Utilities.Helpers.VendorRole.Equals(User.Identity.GetUserRolesCommaSeparated(), StringComparison.InvariantCultureIgnoreCase);
+            SettingsHelpers.VendorRoleName.Equals(User.Identity.GetUserRolesCommaSeparated(), StringComparison.InvariantCultureIgnoreCase);
 
             BiographyInfoVm biographiesInfo = await _biographiesManager.GetInfoAsync() ;
             ViewBag.BiographyLogo = biographiesInfo.Logo;
