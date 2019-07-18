@@ -47,31 +47,38 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
           
 
             bool isVendor = false;
+            bool claimTypeIsRole = false;
+            string vendoRoleName = "";
             foreach (var pair in info)
-            {   
+            {
+
+               if (permission == PermissionTypeEnum.User &&
+                     "Role".Equals(pair.Key, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    claimTypeIsRole = true;
+                }
                 var val = pair.Value.ToString();
                 if (!string.IsNullOrWhiteSpace(val) && val.StartsWith('[') && val.EndsWith(']'))
-                {
-                    bool isUserRole = (permission == PermissionTypeEnum.User &&
-                            "Role".Equals(pair.Key, StringComparison.InvariantCultureIgnoreCase));
-
+                {     
                     var value = JsonConvert.DeserializeObject<List<string>>(val);
                     foreach (var v in value)
                     {
                         claims.Add(new Claim(pair.Key, v));
-
-                        
-                        if (isUserRole && SettingsHelpers.VendorRoleName.Equals(v))
+                        if (claimTypeIsRole && SettingsHelpers.VendorRoleName.Equals(v))
                         {
                             isVendor = true;
                         }
-                    }   
-                     
+                    } 
                 }
                 else
                 {
                     claims.Add(new Claim(pair.Key, val));
+                    if (claimTypeIsRole && SettingsHelpers.VendorRoleName.Equals(val))
+                    {
+                        isVendor = true;
+                    }
                 }
+               
             }
 
             /// <  add Admin permission when permission type is Admin.  > 

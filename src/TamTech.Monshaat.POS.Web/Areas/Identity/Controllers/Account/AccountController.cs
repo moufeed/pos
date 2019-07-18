@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
+using TamTech.Monshaat.POS.Web.Core.Extensions;
 using TamTech.Monshaat.POS.Web.Core.Filters;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 
@@ -28,7 +29,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
         /// <param name="returnUrl"></param>
         /// <returns></returns>
         public IActionResult AccessDenied(string returnUrl = "")
-        {
+        {     
             return View();
         }
 

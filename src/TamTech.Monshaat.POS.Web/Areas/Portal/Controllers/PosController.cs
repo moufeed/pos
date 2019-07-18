@@ -126,7 +126,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region index
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+     //   [Authorize]
         public virtual async Task<IActionResult> Index()
         {
             ViewBag.ID = HttpContext.User.Identity.GetUserId();
@@ -156,7 +156,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region Pos   
 
         #region Create Pos
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        [Authorize]
         [ServiceFilter(typeof(AuthorizeEFile))]
         public virtual async Task<IActionResult> CreatePOS()
         {
@@ -169,7 +169,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         [HttpPost]
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        [Authorize]
         [ServiceFilter(typeof(AuthorizeEFile))]
         public virtual async Task<IActionResult> CreatePOS(PosFormVm model, IFormCollection collection)
         {
@@ -259,7 +259,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region Edit POS
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        [Authorize]
         [ServiceFilter(typeof(AuthorizeEFile))]
         public virtual async Task<IActionResult> EditPOS(Guid id)
         {
@@ -287,7 +287,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         [HttpPost]
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        [Authorize]
         [ServiceFilter(typeof(AuthorizeEFile))]
         public virtual async Task<IActionResult> EditPos(PosFormVm model, IFormCollection collection)
         {

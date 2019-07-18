@@ -16,7 +16,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
 
         public const string UserSecret = "%i#-u&9}/8g|KX7>.!{A~$";
 
-        public const string POSUrl = "/ar/Portal/Vendor";
+        public const string POSUrl = "/ar/Portal/pos";
         public const string RegisterVendorUrl = "/ar/portal/Vendor/Register";
 
     }

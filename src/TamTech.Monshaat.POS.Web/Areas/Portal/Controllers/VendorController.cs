@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.EFile2.Utilities.Filters;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;      
+using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;   
+using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
@@ -18,15 +18,15 @@ using TamTech.Monshaat.POS.Web.Services.Upload;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
 using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Core.Extensions;      
+using TamTech.Monshaat.POS.Web.Core.Extensions;
 using TamTech.Monshaat.POS.Web.Core.Mappers.Vendor;
 using TamTech.Monshaat.POS.Web.Core.Filters;
 using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
 using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;     
+using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
 using TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister;
-using TamTech.Monshaat.POS.SDK.Core.Authorizations;     
+using TamTech.Monshaat.POS.SDK.Core.Authorizations;
 using TamTech.Monshaat.POS.Web.Core.Enums;
 
 namespace TamTechSDK.Web.Controllers.Portal
@@ -40,7 +40,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IPosTypeService _posTypeService;
         private readonly IPOSSectorServices _sectorService;
         private readonly IPOSAttributeService _attributeService;
-      
+
         private readonly IUploadManagerService _uploadManager;
         private IStringLocalizer<BaseController> _localizer;
         private readonly IVendorService _vendorServis;
@@ -58,7 +58,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             IStringLocalizer<BaseController> localizer,
             IVendorService vendorServis,
                                     SettingsHelpers settingsHelpers,
-                                    ICRService cRService) : base(telemetryClientService ,localizer)
+                                    ICRService cRService) : base(telemetryClientService, localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;
@@ -68,7 +68,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             _vendorServis = vendorServis;
             _settingsHelpers = settingsHelpers;
             _cRService = cRService;
-            
+
         }
         #endregion
 
@@ -122,20 +122,20 @@ namespace TamTechSDK.Web.Controllers.Portal
         private async Task InitAction(PosFormVm model, bool isUpdate = false)
         {
             var types = await _posTypeService.GetPublishedListAsync();
- 
+
 
             ViewBag.TypsSelect = VerifySucceed(types) ? CreateTypeSelect(types.Data, model.TypeId) : CreateTypeSelect(new List<TypeDto>(), model.TypeId);
 
             var _sectors = await _sectorService.GetPublishedListAsync(); ;
             ViewBag.sectors = VerifySucceed(_sectors) ? _sectors.Data : new List<SectorDto>();
             var attributes = await _attributeService.GetPublishedListAsync();
-            ViewBag.attributes = VerifySucceed(attributes) ?  CreateAttributes(model, attributes.Data, isUpdate) : CreateAttributes(model, new List<AttributeDto>(), isUpdate);
+            ViewBag.attributes = VerifySucceed(attributes) ? CreateAttributes(model, attributes.Data, isUpdate) : CreateAttributes(model, new List<AttributeDto>(), isUpdate);
 
         }
         #endregion
 
         #region index
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        [Authorize]
         public virtual async Task<IActionResult> Index() => RedirectToAction("index", "pos");
 
         #endregion
@@ -148,57 +148,42 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region CREATE VENDOR
         [NonAction]
-        public  async Task<VendorFormVm> GetPersonAsync()
+        public async Task<VendorFormVm> GetPersonAsync()
         {
             var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
             if (VerifySucceed(result))
             {
-                return    result.Data.MapToVendorFormVm() ;
+                return result.Data.MapToVendorFormVm();
             }
 
-           return null;
+            return null;
         }
-        [NonAction]
-        public async Task<IActionResult> NewPrepareVendorForm(bool editMode)
-        {          
+       
+        [Authorize]
+        public virtual async Task<IActionResult> Register()
+        {
             string userPermission = HttpContext.User.Identity.GetPermission();
             if (User.Identity.IsAuthenticated)
             {
                 if (userPermission == PermissionTypeEnum.Vendor.ToString())
-                {
-                    if (editMode)
-                    {   
-                        return View(_VIEWS["VendorForm"], await GetPersonAsync());
-                    }
+                {    
                     return RedirectToAction("edit");
                 }
-                if (userPermission == PermissionTypeEnum.User.ToString() && !editMode)
-                {
+                else
+                {    
                     bool registeredVendor = (await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync()).Data;
                     if (registeredVendor)
                     {
                         return RedirectToAction("Info");
-                    }      
-                }
-                return View(_VIEWS["VendorForm"], new VendorFormVm());
+                    }
+
+                    return View(_VIEWS["VendorForm"]);     
+                }     
             }
-
-            if (editMode)
-            {
-                return RedirectToAction("Register");
+            else
+            {     
+                return View(_VIEWS["VendorForm"]);
             }
-
-            return View(_VIEWS["VendorForm"] );
-
-        }        
-     public virtual async Task<IActionResult> Login()
-        {
-            return View();
-        }
-        [Authorize]
-        public virtual async Task<IActionResult> Register()
-        {
-            return await NewPrepareVendorForm(false);
         }
 
 
@@ -240,8 +225,26 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         [Authorize]
         public virtual async Task<IActionResult> Edit()
-        {    
-            return await NewPrepareVendorForm(true);
+        {
+            string userPermission = HttpContext.User.Identity.GetPermission();
+            if (User.Identity.IsAuthenticated)
+            {
+                var person = await GetPersonAsync();
+
+                if (userPermission == PermissionTypeEnum.Vendor.ToString() 
+                    || (person != null && person.VendorCanEdit))
+                {   
+                        return View(_VIEWS["VendorForm"], person);   
+                }
+                else
+                {     
+                        return RedirectToAction("Info");   
+                }  
+            }
+            else
+            {  
+                    return RedirectToAction("Register");   
+            }
         }
 
         [HttpPost]
@@ -262,7 +265,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                         {
                             return View(_VIEWS["VendorForm"], Person.Data.MapToVendorFormVm());
                         }
-                        
+
 
                     }
                     else if (result.Messages.Count > 0)
@@ -306,18 +309,18 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         [HttpPost]
-        public async virtual Task<JsonResult> ValidateVendorBelongsToCR(string crNumber )
+        public async virtual Task<JsonResult> ValidateVendorBelongsToCR(string crNumber)
         {
             try
             {
-             var username = HttpContext.User.Identity.GetUsername();     
-             var result =  await  _cRService.CheckNationalIdBelongsToCR(new TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister.Models.CRIncludeNationalIdModel
+                var username = HttpContext.User.Identity.GetUsername();
+                var result = await _cRService.CheckNationalIdBelongsToCR(new TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister.Models.CRIncludeNationalIdModel
                 {
                     CommercialRegister = crNumber,
                     NationalId = HttpContext.User.Identity.GetUsername()
-                });   
-                 
-                    return Json(new { success = result.Successed });     
+                });
+
+                return Json(new { success = result.Successed });
             }
             catch (Exception ex)
             {
@@ -336,7 +339,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         public async virtual Task<JsonResult> ValidateVendorNameIsExist(string name, Guid id, IFormCollection collection)
         {
             try
-            {    
+            {
                 var result = await _vendorServis.VerifyVendorSlugUniqueByNameAsync(name, id != Guid.Empty ? id : (Guid?)null);
                 if (result.Success)
                 {
@@ -358,7 +361,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region VENDOR INFO
 
 
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        //  [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
         public virtual async Task<IActionResult> Info()
         {
             try
@@ -378,11 +381,11 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
-       
+
 
 
         // just for development
-        [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        //      [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
         public virtual async Task<IActionResult> Devinfo()
         {
             try

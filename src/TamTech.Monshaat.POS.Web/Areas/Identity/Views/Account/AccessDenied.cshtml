@@ -22,5 +22,11 @@
             <p class="">
                 @Localizer["Access_is_denied_msg", homePage]
             </p>
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+        <h4> المستخدم :  @Context.User.Identity.GetUsername()</h4>
+        <h4> الصلاحيات :   @Context.User.Identity.GetPermission()</h4>
+            }
+
         </div>
     </div>
