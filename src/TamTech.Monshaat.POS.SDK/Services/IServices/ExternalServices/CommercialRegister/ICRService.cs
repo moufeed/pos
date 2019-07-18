@@ -8,6 +8,6 @@ namespace TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister
 {
     public interface ICRService
     {
-        Task<CRIncludeNationalIdResultModel> CheckCRIncludePerson(CRIncludeNationalIdModel model);
+        Task<CRIncludeNationalIdResultModel> CheckNationalIdBelongsToCR(CRIncludeNationalIdModel model);
     }
 }

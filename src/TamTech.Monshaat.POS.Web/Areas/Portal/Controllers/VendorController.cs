@@ -32,6 +32,7 @@ using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
+using TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -49,6 +50,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         private IStringLocalizer<BaseController> _localizer;
         private readonly IVendorService _vendorServis;
         private readonly SettingsHelpers _settingsHelpers;
+        private readonly ICRService _cRService;
         #endregion
 
         #region constructor
@@ -60,7 +62,8 @@ namespace TamTechSDK.Web.Controllers.Portal
             IUploadManagerService uploadManager,
             IStringLocalizer<BaseController> localizer,
             IVendorService vendorServis,
-                                    SettingsHelpers settingsHelpers) : base(telemetryClientService ,localizer)
+                                    SettingsHelpers settingsHelpers,
+                                    ICRService cRService) : base(telemetryClientService ,localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;
@@ -69,6 +72,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             _localizer = localizer;
             _vendorServis = vendorServis;
             _settingsHelpers = settingsHelpers;
+            _cRService = cRService;
         }
         #endregion
 
@@ -327,9 +331,33 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             return Json(new { success = false });
         }
+
+
+
+        [HttpPost]
+        public async virtual Task<JsonResult> ValidateVendorBelongsToCR(string crNumber )
+        {
+            try
+            {
+             var username = HttpContext.User.Identity.GetUsername();     
+             var result =  await  _cRService.CheckNationalIdBelongsToCR(new TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister.Models.CRIncludeNationalIdModel
+                {
+                    CommercialRegister = crNumber,
+                    NationalId = HttpContext.User.Identity.GetUsername()
+                });   
+                 
+                    return Json(new { success = result.Successed });     
+            }
+            catch (Exception ex)
+            {
+                TrackException(ex);
+            }
+
+            return Json(new { success = false });
+        }
         #endregion
 
-        
+
 
 
         #region VALDATE VENDOR NAME
@@ -337,7 +365,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         public async virtual Task<JsonResult> ValidateVendorNameIsExist(string name, Guid id, IFormCollection collection)
         {
             try
-            {
+            {    
                 var result = await _vendorServis.VerifyVendorSlugUniqueByNameAsync(name, id != Guid.Empty ? id : (Guid?)null);
                 if (result.Success)
                 {
@@ -351,6 +379,8 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             return Json(new { success = false });
         }
+
+
         #endregion
         #endregion
 

@@ -20,7 +20,7 @@ namespace TamTech.Monshaat.POS.MCIServices.Services
         }
         #endregion
 
-        public async Task<CRIncludeNationalIdResultModel> CheckCRIncludePerson(CRIncludeNationalIdModel model)
+        public async Task<CRIncludeNationalIdResultModel> CheckNationalIdBelongsToCR(CRIncludeNationalIdModel model)
         {
             if (string.IsNullOrWhiteSpace(model.CommercialRegister) || string.IsNullOrWhiteSpace(model.NationalId))
                 return null;
