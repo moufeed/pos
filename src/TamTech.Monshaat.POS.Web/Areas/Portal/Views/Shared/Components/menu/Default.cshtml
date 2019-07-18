@@ -8,11 +8,11 @@
     #region Menu
 
     private readonly Dictionary<string, string> paths = new Dictionary<string, string>
-           {
-                     
+{
+
                       { MenuItemTypeEnum.page.ToString()  , $"/{CultureInfo.CurrentCulture.Name}/portal/pages/v" },
                       { MenuItemTypeEnum.staticpage.ToString()  , $"/{CultureInfo.CurrentCulture.Name}/portal" }
-  
+
                    };
 
     private string Print_UL(List<MenuItemDto> MenuItems)
@@ -69,7 +69,7 @@
 
 
 
-       
+
 
         #region Url
         if (Menu.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
@@ -96,7 +96,10 @@
     private void Print_Li_Dropdown(MenuItemDto menu, StringBuilder stringBuilder)
     {
         string li = "<li class=\"nav-item dropdown\">";
-        li += $" <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">{menu.Title}</a>";
+        li += $" <a class=\"nav-link dropdown-toggle\" href=\"#\"" +
+                $" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"" +
+                $" aria-haspopup=\"true\" aria-expanded=\"false\">{menu.Title}</a>";
+
         li += " <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">";
         li += Create_DropdownItems(menu);
         li += "</div>";
@@ -122,8 +125,7 @@
         string link = string.Empty;
         string path = string.Empty;
 
-        
-         if (Menu.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))
+        if (Menu.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))
         {
             path = (string)paths[MenuItemTypeEnum.staticpage.ToString()];
         }
@@ -131,7 +133,7 @@
         {
             path = (string)paths[MenuItemTypeEnum.page.ToString()];
         }
-       
+
         #region Url
         if (Menu.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))
         {
@@ -144,10 +146,16 @@
         link = $"<a class=\"dropdown-item\" href=\"{ path }/{ Menu.Url }\">{Menu.Title}</a>";
 
         return link;
+
     }
+
+
 
     #endregion
 }
+@if (Model != null)
+{
+    @Html.Raw(Print_UL(Model.MenuItems))
+}
 
-@Html.Raw(Print_UL(Model))
  
