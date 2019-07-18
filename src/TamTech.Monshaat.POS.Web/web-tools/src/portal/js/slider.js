@@ -1,6 +1,6 @@
 
 
-var mainSwiper = new Swiper('.swiper-container', {
+let mainSwiper = new Swiper('.swiper-container', {
     speed: 800,
     spaceBetween: 0,
     init :false,
@@ -12,21 +12,21 @@ var mainSwiper = new Swiper('.swiper-container', {
 
 
  
-mainSwiper.on("init slideChange", function(){
+mainSwiper.on("init slideChange", ()=>{
      
-    var slide = $(mainSwiper.slides[mainSwiper.activeIndex]);
+  let slide = $(mainSwiper.slides[mainSwiper.activeIndex]);
 
-        slide.find('[data-animate]').each(function(i,item){
+        slide.find('[data-animate]').each((i,item)=>{
 
             $(item).addClass('animate');
 
-            var Classs = 'animated ' + $(item).data("animate");
+            let Classs = 'animated ' + $(item).data("animate");
 
-           setTimeout(function(){
+           setTimeout(()=>{
 
             $(item).removeClass('animate').addClass(Classs);
 
-            $(item).on('animationend', function() {
+            $(item).on('animationend', ()=> {
                 $(item).removeClass(Classs);
              })
 

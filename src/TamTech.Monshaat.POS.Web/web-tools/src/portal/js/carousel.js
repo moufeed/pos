@@ -1,31 +1,32 @@
  if ($().owlCarousel) {
-    function LoadCarousel(){
-        $('.owl-carousel').each(function() {
-            var $carousel = $(this);
-            var data = $carousel.data();
+ 
+    const  LoadCarousel = ()=>{
+        $('.owl-carousel').each( (index,_carousel)=> {
+            var $carousel = $(_carousel);
+            var  data = $carousel.data();
+             
+            let loop           = data.loop          ? data.loop         : false,
+                margin         = data.margin        ? data.margin       : 10,
+                nav            = data.nav           ? data.nav          : false,
+                prev           = data.prev          ? data.prev         : '<i class="fas fa-chevron-left"></i>',
+                next           = data.next          ? data.next         : '<i class="fas fa-chevron-right"></i>',
+                dots           = data.dots          ? data.dots         : false,
+                center         = data.center        ? data.center       : false,
+                items          = data.items         ? data.items        : 6,
+                autoplay       = data.autoplay      ? data.autoplay     : false,
+                timeout        = data.timeout       ? data.timeout      : 5000,
+                hoverPause     = data.pause         ? data.pause        : true,
+                xsItems        = data.xsItems       ? data.xsItems      : 1,
+                smItems        = data.smItems       ? data.smItems      : 2,
+                mdItems        = data.mdItems       ? data.mdItems      : 3,
+                lgItems        = data.lgItems       ? data.lgItems      : 6, 
+                xlItems        = data.xlItems       ? data.xlItems      : 7 ,  
+                rtl            = data.rtl           ? data.rtl          : false,
+                owlOptions     = data.owlOptions    ? data.owlOptions   : false,
+                slideBy        = data.slideby       ? data.slideby      : 1,
+                singleItem     = data.singleitem    ? data.singleitem   : false;
     
-            var loop = data.loop ? data.loop : false,
-                margin = (data.margin || data.margin === 0) ? data.margin : 10,
-                nav = data.nav ? data.nav : false,
-                prev = data.prev ? data.prev : '<i class="fas fa-chevron-left"></i>',
-                next = data.next ? data.next : '<i class="fas fa-chevron-right"></i>',
-                dots = data.dots ? data.dots : false,
-                center = data.center ? data.center : false,
-                items = data.items ? data.items : 6,
-                autoplay = data.autoplay ? data.autoplay : false,
-                timeout = data.timeout ? data.timeout : 5000,
-                hoverPause  = (data.pause) ? data.pause : true,
-                xsItems = data.xsItems ? data.xsItems : 1,
-                smItems = data.smItems ? data.smItems : 2,
-                mdItems = data.mdItems ? data.mdItems : 3,
-                lgItems = data.lgItems ? data.lgItems : 6, 
-                xlItems = data.xlItems ? data.xlItems : 7 ,  
-                rtl = data.rtl ? data.rtl : false,
-                owlOptions = data.owlOptions ?   data.owlOptions : false,
-                slideBy  = data.slideby ? data.slideby : 1,
-                singleItem = data.singleitem ? data.singleitem : false;
-    
-                var options = {
+                let options = {
                     autoplay                : autoplay,
                     autoplayTimeout         : timeout,
                     autoplayHoverPause      : hoverPause,
@@ -61,11 +62,7 @@
                     }
                 };
             }
-    
-    
-    
-    
-            
+     
             $carousel.owlCarousel( (owlOptions) ? owlOptions : options)
             
         })

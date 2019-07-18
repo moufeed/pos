@@ -37,7 +37,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
                 if (menu.Success)
                 {
                     ViewData["counter"] = conter;
-                    return View("~/Areas/Portal/Views/Shared/Components/menu/Default.cshtml",menu.Data.MenuItems);
+                    return View("~/Areas/Portal/Views/Shared/Components/menu/Default.cshtml",menu.Data);
                 }
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@ let ListFiles = [
         ]
     },{
         output: "slider.js",
-        es6: false,
+        es6: true,
         inputs: [
             './node_modules/swiper/dist/js/swiper.min.js',
             `${portal_src}/js/slider.js`
@@ -35,7 +35,7 @@ let ListFiles = [
         ]
     },{
         output: "carousel.js",
-        es6: false,
+        es6: true,
         inputs: [
             './node_modules/owl.carousel/dist/owl.carousel.min.js',
             `${portal_src}/js/carousel.js`
@@ -43,7 +43,7 @@ let ListFiles = [
     },{
         output: "directory.js",
         es6: true,
-        inputs: [
+        inputs: [ 
              `${portal_src}/js/directory.js`
         ]
     },{
