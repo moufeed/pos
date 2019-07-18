@@ -101,7 +101,7 @@ namespace TamTech.Monshaat.POS.Web
             app.UseResponseCompression();
 
             app.UseMvcAndRoute(Configuration, new CultureManager().LocalizationOptions);
-
+            app.UseCookiePolicy();
 
         }
     }

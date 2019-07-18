@@ -33,6 +33,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.SDK.Core.Constants;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -146,7 +147,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                             Subject = model.Subject != null ? model.Subject : _localizer["response_email", model.ReplyType],
                             HtmlMessage = model.Replay,
                             Message = Regex.Replace(model.Replay, "<.*?>", String.Empty),
-                            ReasonOfSend = _localizer["respond_to_the", model.ReplyType]
+                            ReasonOfSend = EmailTemplates.Inquiry
                         });
                         if (Sendemail)
                         {

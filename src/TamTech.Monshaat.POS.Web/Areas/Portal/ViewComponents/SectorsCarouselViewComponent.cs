@@ -25,14 +25,14 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
                 var _sectors = await _sectorService.GetPublishedListAsync();
                 if (_sectors != null && _sectors.Success && _sectors.Data != null)
                 {
-                    return View(_sectors.Data);
+                    return View("~/Areas/Portal/Views/Shared/Components/SectorsList/Default.cshtml",_sectors.Data);
                 }
             }
             catch (Exception ex)
             {
-                return View(ex.Message);
+                return View("~/Areas/Portal/Views/Shared/Components/SectorsList/Default.cshtml",ex.Message);
             }
-            return View();
+            return View("~/Areas/Portal/Views/Shared/Components/SectorsList/Default.cshtml");
         }
     }
 }

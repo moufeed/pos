@@ -25,6 +25,7 @@ using TamTech.Monshaat.POS.Web.Models.VMs.Shared;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.SDK.Core.Constants;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -159,7 +160,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                             Subject = "وزارة التجارةوالاستثمار - منشآت",
                             HtmlMessage = EmailMessage,
                             Message = string.IsNullOrEmpty(model.Notes) ? EmailMessage : Regex.Replace(model.Notes, "<.*?>", String.Empty),
-                            ReasonOfSend = "response"
+                            ReasonOfSend = result.Data.Vendor.Activated ? EmailTemplates.RequestAcceptance : EmailTemplates.RegisterRejection
                         };
                         var emailsender = await _emailSender.SendAsync(_email);
                     }

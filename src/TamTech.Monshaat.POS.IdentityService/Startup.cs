@@ -48,7 +48,7 @@ namespace TamTech.Monshaat.POS.IdentityService
         public static void ConfigureIdentityService(this IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            app.UseCookiePolicy();
+           
             app.UseAuthentication();
 
 

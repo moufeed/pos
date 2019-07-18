@@ -22,6 +22,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers
                 DisplayOrder = vm.DisplayOrder,
                 AuthorName = vm.AuthorName,
                 Key = vm.Key,
+               
             };
         }
 
@@ -197,8 +198,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers
                 MetaDescription = vm.MetaDescription,
                 DisplayOrder = vm.DisplayOrder,
                 AuthorName = vm.AuthorName,
-                Key = vm.Key,
-
+                Key = vm.Key
+            
             };
         }
 

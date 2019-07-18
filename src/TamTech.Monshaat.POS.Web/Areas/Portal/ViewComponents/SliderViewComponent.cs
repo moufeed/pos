@@ -25,7 +25,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
                 IRequestProviderResult<SliderDto> publicMainSlider = await _sliderService.GetPublishedBySettingIdAsync((int)SettingKeysEnum.HomePageMainSlider);
                 if (publicMainSlider != null && publicMainSlider.Success && publicMainSlider.Data != null)
                 {
-                    return View(publicMainSlider.Data);
+                    return View("~/Areas/Portal/Views/Shared/Components/Slider/Default.cshtml",publicMainSlider.Data);
                 }
 
             }
@@ -33,7 +33,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
             {
                 
             }
-            return View();
+            return View("~/Areas/Portal/Views/Shared/Components/Slider/Default.cshtml");
         }
 
     }
