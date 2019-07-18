@@ -22,7 +22,7 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models
         public string Title { get; set; }
 
         
-        [JsonProperty("mainimage")]
+        [JsonProperty("image")]
         public string MainImage { get; set; }
 
         [JsonProperty("url")]

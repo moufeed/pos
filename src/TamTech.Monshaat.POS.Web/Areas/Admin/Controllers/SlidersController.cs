@@ -300,6 +300,8 @@ namespace TamTechSDK.Web.Controllers.Admin
         public async virtual Task<IActionResult> CreateItem(CreateSliderItemDto model, Guid sliderId, string sliderTitle, IFormCollection collection)
         {
 
+            ViewBag.SliderId = sliderId;
+            ViewBag.SliderTitle = sliderTitle;
 
             var _collection = collection;
             var _files = _collection.Files;
@@ -409,6 +411,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         [HttpPost("{Culture}/[Area]/[Controller]/items/Edit/{sliderId}/{slideId}")]
         public async virtual Task<IActionResult> EditItem(UpdateSliderItemDto model, Guid sliderId, IFormCollection collection)
         {
+
+            ViewBag.SliderId = sliderId;
+        
+
             ModelState.Clear();
 
             var _collection = collection;

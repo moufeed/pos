@@ -205,12 +205,13 @@ const SaveItem = ($this)=> {
     if(type == "dropdown"){
         dataRequest["url"] =  $tr.find('.url-control').val() ;
     }
-    
+    console.log(dataRequest)
     $.ajax({
         url: edit_url,
         type: 'POST',
-        dataType: "json",
-        data: dataRequest
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: {}
     })
     .done((data)=>{
         

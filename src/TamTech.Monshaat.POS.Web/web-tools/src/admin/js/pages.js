@@ -28,7 +28,7 @@ $(document).on("click",".remove_page",function(){
                         $notification.success(window.localization.deleted ,window.localization.item_deleted , 2000, "fa fa-check");
                         $this.parents('tr')[0].remove();
                     }else{
-                        var errors = data.errors;
+                        var errors = response.errors;
                         if (errors.length > 0) {
                         let txt = MakeErrorsMsg(errors);
                             $notification.error("", txt , 3500, "fa fa-exclamation-circle");

@@ -46,13 +46,17 @@ namespace TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models
         public string MetaDescription { get; set; }
         [JsonProperty("key")]
         public string Key { get; set; }
-         
+
+        [JsonProperty("publisheddate")]
         public DateTime? PublishedDate { get; set; }
 
+        [JsonProperty("modifieddate")]
         public DateTime? ModifiedDate { get; set; }
 
+        [JsonProperty("seomarkup")]
         public string SEOMarkup { get; set; }
 
-         
+        [JsonProperty("locked")]
+        public bool Locked { get; set; }
     }
 }

@@ -154,7 +154,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
         [HttpGet("{Culture}/[Area]/[Controller]/Create")]
-        public virtual ActionResult Create(string Culture)
+        public  ActionResult Create(string Culture)
         {
             PrepareCreating();
             return View("CreateForm", new MenuLiteDto());
@@ -195,7 +195,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         [HttpGet("{Culture}/[Area]/[Controller]/Edit/{id}")]
-        public virtual async Task<ActionResult> Edit(Guid id)
+        public  async Task<ActionResult> Edit(Guid id)
         {
             //GetLanguages();
 
@@ -227,7 +227,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
         [HttpPost("{Culture}/[Area]/[Controller]/Edit/{id}")]
-        public virtual async Task<ActionResult> Edit(EditMenuVM model, IFormCollection collection)
+        public  async Task<ActionResult> Edit(EditMenuVM model, IFormCollection collection)
         {
             try
             {
@@ -282,7 +282,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         //Action Return : json
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Create")]
-        public virtual async Task<ActionResult> CreateMenuItemAsync(CreateMenuItemDto model)
+        public  async Task<ActionResult> CreateMenuItemAsync(CreateMenuItemDto model)
         {
 
             try
@@ -302,9 +302,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             return RedirectToAction("Edit", new { id = model.MenuId });
         }
 
-
+         
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Edit")]
-        public virtual async Task<ActionResult> EditMenuItemAsync(UpdateMenuItemDto model)
+        public  async Task<ActionResult> EditMenuItemAsync(UpdateMenuItemDto model)
         {
 
             try
