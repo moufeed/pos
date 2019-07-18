@@ -312,7 +312,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
         {
             RequestProviderResult<TResult> result = new RequestProviderResult<TResult>();
 
-            var content = new StringContent(JsonConvert.SerializeObject(data));
+            var JsonData = JsonConvert.SerializeObject(data);
+            var content = new StringContent(JsonData);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             HttpResponseMessage response = await httpClient.PostAsync(uri, content);
 

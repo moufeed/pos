@@ -19,6 +19,10 @@ using TamTech.Monshaat.POS.Web.Core.Constants;
 using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.Services.Email;
+using TamTech.Monshaat.POS.Web.Services.Email.Models;
+using System.Text.RegularExpressions;
+using TamTech.Monshaat.POS.SDK.Core.Constants;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -30,13 +34,14 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IPosTypeService _typeService;
         private readonly IPosStatusService _statusService;
         private readonly IPOSSectorServices _sectorservice;
-
+        private readonly IEmailSenderService _emailSender;
         public PosController(ITelemetryService telemetryClientService,
                 IStringLocalizer<BaseController> localizer,
                 IPOSAdminServeice posservice,
                 IPosTypeService typeservice,
                 IPosStatusService statusService,
-                IPOSSectorServices sectorservice
+                IPOSSectorServices sectorservice,
+                IEmailSenderService emailSender
             ) : base(telemetryClientService, localizer)
         {
 
@@ -44,6 +49,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             _typeService = typeservice;
             _statusService = statusService;
             _sectorservice = sectorservice;
+            _emailSender = emailSender;
         }
 
 
@@ -123,6 +129,19 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (ModelState.IsValid)
                 {
                     var result = await _posservice.SetActionAsync(model);
+
+                    if (result.Success)
+                    {
+                        EmailModel _email = new EmailModel
+                        {
+                            Email = result.Data.VendorEmail,
+                            Subject = "وزارة التجارةوالاستثمار - منشآت",
+                            HtmlMessage = model.Notes,
+                            Message = string.IsNullOrEmpty(model.Notes) ? model.Notes : Regex.Replace(model.Notes, "<.*?>", String.Empty),
+                            ReasonOfSend = result.Data.Approved? EmailTemplates.RequestAcceptance : EmailTemplates.RequestRejection
+                        };
+                        var emailsender = await _emailSender.SendAsync(_email);
+                    }
                     return ReturnJsonResult(result, model);
                 }
                 else

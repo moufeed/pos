@@ -55,5 +55,11 @@ namespace TamTech.Monshaat.POS.Web.Services.POSs.Models
 
         [JsonProperty("actionable")]
         public bool Actionable { get; set; }
+
+        [JsonProperty("approved")]
+        public bool Approved { get; set; }
+
+        [JsonProperty("vendoremail")]
+        public string VendorEmail { get; set; }
     }
 }
