@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using TamTechBackendSDK.Common.Services.ApplicationInsightsTelemetry;
+using System.Threading.Tasks;     
 using TamTech.Monshaat.POS.UploadService.Helpers;
 using TamTech.Monshaat.POS.UploadService.Models;
 using TamTech.Monshaat.POS.UploadService.Configurations;
@@ -19,7 +18,7 @@ namespace TamTech.Monshaat.POS.UploadService.Services
     {
         #region props
         private readonly IUploadSettingsConfigurations _appSettings;
-        private ITelemetryClientService _telemetryClientService; 
+        /*private ITelemetryClientService _telemetryClientService;*/ 
         private string innerUploadFolderPath;//without domain 
         private string hostName; //domain name without http://  
         private string environmentPath;
@@ -30,10 +29,10 @@ namespace TamTech.Monshaat.POS.UploadService.Services
 
         #region Ctor 
         public UploadToLocal
-            (IUploadSettingsConfigurations appSettings, ITelemetryClientService telemetry, IHostingEnvironment hostingEnvironment)
+            (IUploadSettingsConfigurations appSettings,/* ITelemetryClientService telemetry,*/ IHostingEnvironment hostingEnvironment)
         {
             _appSettings = appSettings;
-            _telemetryClientService = telemetry; 
+           /* _telemetryClientService = telemetry; */
             environmentPath = hostingEnvironment.WebRootPath; 
         } 
 
@@ -82,11 +81,11 @@ namespace TamTech.Monshaat.POS.UploadService.Services
                 }
                 catch (Exception exc)
                 {
-                    _telemetryClientService.TrackException(exc, new Dictionary<string, string>
+                   /* _telemetryClientService.TrackException(exc, new Dictionary<string, string>
                         {
                             {"FilePath",filePath },
                             {"Type",file.Type }
-                        });
+                        });*/
                     file.Result = DeleteResultEnum.NotDeleted;
                 }
             }

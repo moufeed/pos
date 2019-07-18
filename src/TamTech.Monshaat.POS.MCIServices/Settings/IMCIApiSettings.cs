@@ -8,5 +8,6 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
     {     
          string AuthenticateByAD { get; }    
          string GetAllPersonsForCR { get; }    
+         string SendEmail { get; }    
     }
 }

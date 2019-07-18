@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.MCIServices.Settings
 {
-   public class MCIApiSettings
+   public class MCIApiSettings : IMCIApiSettings
     {
         #region Props      
         private readonly string _apirUrl;
@@ -22,6 +22,7 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
 
         public string AuthenticateByAD => $"{_apirUrl}/AuthenticateByAD";
         public string GetAllPersonsForCR => $"{_apirUrl}/GetAllPersonsForCR";
+        public string SendEmail => $"{_apirUrl}/SendEmail";
 
         #endregion
 

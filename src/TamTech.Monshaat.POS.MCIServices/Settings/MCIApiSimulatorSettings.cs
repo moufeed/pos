@@ -22,6 +22,7 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
 
         public string AuthenticateByAD => $"{_apirUrl}/MCIAPISimulator/v1/GateWayApi/AuthenticateByAD";
         public string GetAllPersonsForCR => $"{_apirUrl}/MCIAPISimulator/v1/GateWayApi/GetAllPersonsForCR";
+        public string SendEmail => $"{_apirUrl}/MCIAPISimulator/v1/GateWayApi/SendEmail";
 
         #endregion
 

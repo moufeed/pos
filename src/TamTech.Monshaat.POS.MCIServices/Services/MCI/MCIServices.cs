@@ -45,7 +45,7 @@ namespace TamTech.Monshaat.POS.MCIServices
 
         public async Task<IRequestProviderResult<BaseResultModel>> SendEmail(SendEmailModel model)
         {
-            return await _requestProvider.PostAsync<BaseResultModel, SendEmailModel>(_apiSettings.GetAllPersonsForCR, model,
+            return await _requestProvider.PostAsync<BaseResultModel, SendEmailModel>(_apiSettings.SendEmail, model,
                   new Dictionary<string, string> { { _apiKey, _apiSecret } });
 
 
