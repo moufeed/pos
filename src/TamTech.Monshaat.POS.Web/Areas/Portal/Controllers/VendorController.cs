@@ -141,16 +141,79 @@ namespace TamTechSDK.Web.Controllers.Portal
         #region index
         [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
         public virtual async Task<IActionResult> Index() => RedirectToAction("index", "pos");
-        
+
         #endregion
 
-      
+
 
         #region Vendors
 
 
 
         #region CREATE VENDOR
+        //[NonAction]
+        //public async Task<IActionResult> NewPrepareVendorForm()
+        //{
+        //    VendorFormVm model = null;
+        //    //<<<<< Case 1 :  Not anonymous user >>>>>
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        var roles = HttpContext.User.Identity.GetUserRoles();
+        //        string vendorRole = await _settingsHelpers.GetVendorRoleNameAsync();
+        //        if (roles != null && roles.All(v => v.Equals(vendorRole, StringComparison.InvariantCultureIgnoreCase)))
+        //        {
+        //            var _isRegistered = await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync();
+        //            if (_isRegistered.Data)
+        //            {
+                        
+        //                var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.EFile2.Utilities.Helpers.VendorRole, StringComparison.InvariantCultureIgnoreCase);
+        //                if (IsVendorRole != null && (bool)IsVendorRole)
+        //                {
+        //                    return RedirectToAction("edit");
+        //                }
+        //                else
+        //                {
+        //                    var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
+        //                    if (VerifySucceed(result))
+        //                    {
+        //                        return View(_VIEWS["VendorForm"], result.Data.MapToVendorFormVm());
+        //                    }
+        //                }
+        //                //<<<<< Case 1-A2 : Already is registered as vendor >>>>>
+        //            }
+        //            else
+        //            {
+        //                //<<<<< Case 1-B1 : vendor info editing mode  >>>>>
+        //                if (editMode)
+        //                {
+        //                    return RedirectToAction("register");
+        //                }
+        //                //<<<<< Case 1-B2 : Is not registered as a vendor (active Registeration Form)  >>>>>
+        //                model = new VendorFormVm();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // When AccessDenied is true will the "Access Denied" message be activated
+        //            ViewBag.ActivateAccessDeniedForAdmins = true;
+        //        }
+
+        //    }
+        //    //<<<<< Case 2 :  Anonymous user (active view message) >>>>>
+        //    else
+        //    {
+        //        // When AccessDenied is false will the <<<<"please Login/Signup via SSO">>>> message be activated
+        //        ViewBag.ActivateAccessDeniedForAdmins = false;
+        //    }
+        //    return View(_VIEWS["VendorForm"]);
+        //}
+
+
+
+
+
+
+
         [NonAction]
         public async Task<IActionResult> PrepareVendorForm(bool editMode)
         {
