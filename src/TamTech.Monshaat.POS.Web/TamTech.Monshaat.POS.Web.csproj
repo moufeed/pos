@@ -55,7 +55,7 @@
     <Content Update="Areas\Admin\Views\Home\Biography.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Admin\Views\Menus\partials\_urlTap.cshtml">
+    <Content Update="Areas\Admin\Views\Menus\partials\_urlForm.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\Shared\partials\_LanguageTabs.cshtml">

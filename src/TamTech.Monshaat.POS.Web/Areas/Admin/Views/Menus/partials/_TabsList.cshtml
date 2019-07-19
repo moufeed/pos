@@ -3,25 +3,20 @@
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 <ul class="nav nav-tabs navs-line" role="tablist">
-    <if include-if="AdminModules.PagesModule">
-        <li role="presentation" class="active" data-type="Page">
-            <a href="#@MenuItemTypeEnum.page.ToString()"
-               aria-controls="@MenuItemTypeEnum.page.ToString()"
-               role="tab"
-               data-toggle="tab"
-               class="ut-page-tab"><strong>@Localizer["page"]</strong></a>
-        </li>
-    </if>
-     
-     
-        <li role="presentation" data-type="dropdown">
-            <a href="#@MenuItemTypeEnum.dropdown.ToString()"
-               aria-controls="@MenuItemTypeEnum.dropdown.ToString()"
-               role="tab"
-               class="ut-submenu-tab"
-               data-toggle="tab"><strong>@Localizer["parent_menu"]</strong></a>
-        </li>
-    
+    <li role="presentation" class="active" data-type="Page">
+        <a href="#@MenuItemTypeEnum.page.ToString()"
+           aria-controls="@MenuItemTypeEnum.page.ToString()"
+           role="tab"
+           data-toggle="tab"
+           class="ut-page-tab"><strong>@Localizer["page"]</strong></a>
+    </li>
+    <li role="presentation" data-type="dropdown">
+        <a href="#@MenuItemTypeEnum.dropdown.ToString()"
+           aria-controls="@MenuItemTypeEnum.dropdown.ToString()"
+           role="tab"
+           class="ut-submenu-tab"
+           data-toggle="tab"><strong>@Localizer["parent_menu"]</strong></a>
+    </li>
     <li role="presentation" data-type="Url">
         <a href="#@MenuItemTypeEnum.url.ToString()"
            aria-controls="@MenuItemTypeEnum.url.ToString()"
@@ -29,7 +24,6 @@
            class="ut-link"
            data-toggle="tab"><strong>@Localizer["link"]</strong></a>
     </li>
-
     <li role="presentation" data-type="staticpage">
         <a href="#@MenuItemTypeEnum.staticpage.ToString()"
            aria-controls="@MenuItemTypeEnum.staticpage.ToString()"
@@ -37,6 +31,22 @@
            class="ut-staticpage-tab"
            data-toggle="tab"><strong>@Localizer["static_page"]</strong></a>
     </li>
-    
-   
 </ul>
+
+
+
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="@MenuItemTypeEnum.page.ToString()">
+        <partial name="~/Areas/Admin/Views/Menus/partials/_pageForm.cshtml" model="new MenuItemVm()" />
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.url.ToString()">
+        <partial name="~/Areas/Admin/Views/Menus/partials/_urlForm.cshtml" model="new MenuItemVm()" />
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.staticpage.ToString()">
+        <partial name="~/Areas/Admin/Views/Menus/partials/_staticpageForm.cshtml" model="new MenuItemVm()" />
+    </div>
+    <div role="tabpanel" class="tab-pane fade " id="@MenuItemTypeEnum.dropdown.ToString()">
+        <partial name="~/Areas/Admin/Views/Menus/partials/_dropdownForm.cshtml" model="new MenuItemVm()" />
+    </div>
+</div>

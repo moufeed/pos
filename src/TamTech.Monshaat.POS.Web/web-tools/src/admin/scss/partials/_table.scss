@@ -76,7 +76,7 @@ table{
                 display: inline-block;
             }
             &:last-child(){
-                div:not(.collapse):not(.text-right)  {
+                div:not(.collapse):not(.text-right):not(.modal) {
                  display: flex;
                 }
              }

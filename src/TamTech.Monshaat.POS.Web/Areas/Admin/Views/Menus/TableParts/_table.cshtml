@@ -1,0 +1,32 @@
+﻿@model MenuItemDto
+
+    <table class="table table-middle table-hover">
+        <thead>
+            <tr>
+                <th width="80"> @Localizer["t_order"] </th>
+                <th> @Localizer["t_title"] </th>
+                <th> @Localizer["t_url"] </th>
+                <th> @Localizer["t_type"] </th>
+                <th width="150" class="text-center">@Localizer["t_visibility"]</th>
+                <th width="200" class="text-center">@Localizer["t_actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+             @if (Model.MenuItems?.Count > 0)
+               {
+                 <partial name="~/Areas/Admin/Views/Menus/TableParts/_tr.cshtml"  model="Model"/>
+               }
+
+            <tr class="tfooter">
+                <td colspan='6'>
+                    <div class="text-right p-t2">
+                        <button class="btn btn-add btn-info ut-additem-btn" data-toggle="modal" data-target="#MenuItemModal" data-root="false" data-key="@Model.Key">
+                            <i class="fa fa-plus"></i>
+                            @Localizer["add_Item"]
+                        </button>
+                     </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        

@@ -18,10 +18,10 @@ $(document).ready(function(){
         let $modal = $(this)
         var key = null; 
         if(!isRoot){
-            key = $(button.closest(".submenu")).data('key');
+            key = $(button).data('key');
 
             var level = key +"";
-        console.log(level , MenuMaxLevels , $modal)
+         
             if(level.split('_').length == (MenuMaxLevels - 1)){
                 $modal.find('li[data-type="dropdown"]').addClass('hidden');   
             }else{
@@ -29,7 +29,7 @@ $(document).ready(function(){
             }
 
         } 
-        var parentKey = $modal.find("input[name=\"parentKey\"]");
+        var parentKey = $modal.find("input[name=\"ParentKey\"]");
         parentKey.each(function(index, element)  {
             $(element).val(key)
         }); 
@@ -40,21 +40,6 @@ $(document).ready(function(){
 
 }) 
 
-
-//btn-link-pup
-
-
-//------------------------------------------------------------------
-//#region    toggle Publish   button 
-//------------------------------------------------------------------
-
-//------------------------------------------------------------------
-//#endregion #8
-
-
-//------------------------------------------------------------------
-//#region   publish & unpublish  
-//------------------------------------------------------------------
 
  
 
@@ -142,7 +127,7 @@ $(document).on('click','.delete-menuitem' ,function(e){
     })
     
 })
-
+/*
 function toggle($input,$order,$this){
     $input.attr("disabled","disabled");
     $order.attr("disabled","disabled");
@@ -203,15 +188,16 @@ const SaveItem = ($this)=> {
     }
 
     if(type == "dropdown"){
-        dataRequest["url"] =  $tr.find('.url-control').val() ;
+        dataRequest["url"] =  $tr.find('.url-control').val() ; 
     }
-    console.log(dataRequest)
+
     $.ajax({
         url: edit_url,
-        type: 'POST',
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        data: {}
+        type: 'POST', 
+        contentType: 'application/json; charset=utf-8', 
+        dataType: 'json', 
+        //crossDomain :false,
+        data: dataRequest
     })
     .done((data)=>{
         
@@ -230,7 +216,7 @@ const SaveItem = ($this)=> {
             }
             
             /* toggle($input,$order,$this);
-            $tr.find(".btn-cancel").addClass("hidden"); */
+            $tr.find(".btn-cancel").addClass("hidden"); *//*
 
         }else{ 
             $this.find(".fa").removeClass().addClass('fa fa-floppy-o');
@@ -314,6 +300,21 @@ $(document).on('click',".cancel-menuitem",function(event){
  
 })
 
+*/
+ 
+//----------------------------------------------------------------
+
+function getText($el,$target){
+    $($target).val($($el).find("option:selected").text())
+}
+$('#page-Url').on('change',function(){
+        getText(this,'#page-Title')
+})
+$('#Static-page-Url').on('change',function(){
+         getText(this,'#staticpage-Title')
+})
+
+
 $(document).on("click", ".delete__menu", function (event) {
     event.preventDefault();
     var $this = $(this),
@@ -347,29 +348,4 @@ $(document).on("click", ".delete__menu", function (event) {
     });
 
 
-})
- 
-//----------------------------------------------------------------
-
-function getText($el,$target){
-    $($target).val($($el).find("option:selected").text())
-}
-$('#page-Url').on('change',function(){
-        getText(this,'#page-Title')
-})
-$('#Static-page-Url').on('change',function(){
-         getText(this,'#staticpage-Title')
-})
-$('#servics-Url').on('change',function(){
-        getText(this,'#service-Title')
-})
-$('#gallery-Url').on('change',function(){
-        getText(this,'#gallery-Title')
-})
-$('#section-Url').on('change',function(){
-    getText(this,'#section-Title')
-})
-
-$('#section_of_service-Url').on('change',function(){
-    getText(this,'#section_of_service-Title')
 })
