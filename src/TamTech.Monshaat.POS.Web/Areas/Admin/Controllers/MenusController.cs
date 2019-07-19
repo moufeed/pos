@@ -16,6 +16,7 @@ using TamTech.Monshaat.POS.Web.Core.Mappers;
 using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
 using TamTech.Monshaat.POS.Web.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
+using TamTech.Monshaat.POS.SDK.Models.VMs.Admin.Menus;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -68,45 +69,12 @@ namespace TamTechSDK.Web.Controllers.Admin
                         ViewBag.PagesSelectList = new SelectList(typeList.Value, "Key", "Value");
                         continue;
                     }
-                    if (typeList.Key.Equals(MenuItemTypeEnum.service.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ViewBag.ServicesSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
-                    if (typeList.Key.Equals(MenuItemTypeEnum.gallery.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ViewBag.GalleriesSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
-                    if (typeList.Key.Equals(MenuItemTypeEnum.section.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ViewBag.SectionsSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
-                    if (typeList.Key.Equals(MenuItemTypeEnum.post.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ViewBag.PostsSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
+                     
+                    
+                    
 
-                    if (typeList.Key.Equals(MenuItemTypeEnum.product.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        ViewBag.ProductsSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
-
-                    if (typeList.Key.Equals(MenuItemTypeEnum.section_of_service.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        ViewBag.section_of_serviceSelectList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
-                    if (typeList.Key.Equals(MenuItemTypeEnum.section_of_gallery.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        ViewBag.section_of_galleryList = new SelectList(typeList.Value, "Key", "Value");
-                        continue;
-                    }
+                     
+  
                 }
             }
 
@@ -154,7 +122,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
         [HttpGet("{Culture}/[Area]/[Controller]/Create")]
-        public virtual ActionResult Create(string Culture)
+        public  ActionResult Create(string Culture)
         {
             PrepareCreating();
             return View("CreateForm", new MenuLiteDto());
@@ -194,8 +162,9 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
 
+      
         [HttpGet("{Culture}/[Area]/[Controller]/Edit/{id}")]
-        public virtual async Task<ActionResult> Edit(Guid id)
+        public  async Task<ActionResult> Edit(Guid id)
         {
             //GetLanguages();
 
@@ -227,7 +196,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
 
         [HttpPost("{Culture}/[Area]/[Controller]/Edit/{id}")]
-        public virtual async Task<ActionResult> Edit(EditMenuVM model, IFormCollection collection)
+        public  async Task<ActionResult> Edit(EditMenuVM model, IFormCollection collection)
         {
             try
             {
@@ -282,15 +251,26 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         //Action Return : json
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Create")]
-        public virtual async Task<ActionResult> CreateMenuItemAsync(CreateMenuItemDto model)
+        public  async Task<ActionResult> CreateMenuItemAsync(MenuItemVm  model)
         {
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    model.Lang = GetCurrentDataLang();
-                    var result = await _MenusServices.CreateMenuItemAsync(model);
+                    CreateMenuItemDto _model = new CreateMenuItemDto
+                    {
+                        DisplayOrder = model.DisplayOrder,
+                        UrlTarget = model.UrlTarget,
+                        Url = model.Url,
+                        Title = model.Title,
+                        ItemType = model.ItemType,
+                        Lang = model.Lang,
+                        MenuId = model.MenuId,
+                        ParentKey = model.ParentKey
+                    };
+                     
+                    var result = await _MenusServices.CreateMenuItemAsync(_model);
                     return RedirectToAction("Edit", new { id = model.MenuId });
                 }
                 return RedirectToAction("Edit", new { id = model.MenuId });
@@ -302,9 +282,9 @@ namespace TamTechSDK.Web.Controllers.Admin
             return RedirectToAction("Edit", new { id = model.MenuId });
         }
 
-
+         
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Edit")]
-        public virtual async Task<ActionResult> EditMenuItemAsync(UpdateMenuItemDto model)
+        public  async Task<ActionResult> EditMenuItemAsync(UpdateMenuItemDto model)
         {
 
             try

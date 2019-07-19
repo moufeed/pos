@@ -151,13 +151,17 @@
         }
     }
 }
-
-.forn-new {
+ 
+.form-control{
+    height: 40px; box-shadow :none;
+}
+.form-new {
+    input.form-control ,.form-control-static{  @extend %inputStyle; }  
     .form-group {
         .control-label { 
             text-align: $left;
         }
-        .form-control ,.form-control-static{  @extend %inputStyle; }  
+       
 
         .form-control-static{
             height: auto !important;

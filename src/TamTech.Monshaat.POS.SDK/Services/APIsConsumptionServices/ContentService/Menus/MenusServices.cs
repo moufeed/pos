@@ -56,12 +56,12 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus
 
         public async Task<IRequestProviderResult<List<MenuLiteDto>>> GetAllAsync(string lang)
         {
-            return await ReqProvider.GetAsync<List<MenuLiteDto>>(_menuApiSettings.GetAllAsyncEndpoint);
+            return await ReqProvider.GetAsync<List<MenuLiteDto> ,List<object>>(_menuApiSettings.GetAllAsyncEndpoint, new List<object> { lang }, PassParamsBy.Route);
         }
 
         public async Task<IRequestProviderResult<MenuDto>> GetByIdAsync(Guid id, string lang)
         {
-            return await ReqProvider.GetAsync<MenuDto, List<Guid>>(_menuApiSettings.GetByIdAsyncEndpoint, new List<Guid> { id }, PassParamsBy.Route);
+            return await ReqProvider.GetAsync<MenuDto, List<object>>(_menuApiSettings.GetByIdAsyncEndpoint, new List<object> { id , lang }, PassParamsBy.Route);
         }
 
         #endregion

@@ -16,9 +16,9 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settin
 
         public string EditMenuItemAsyncEndpoint => $"{_AdminPath}/EditAsync";
 
-        public string DeleteMenuItemAsyncEndpoint => $"{_AdminPath}/PublishAsync";
+        public string  PublishMenuItemAsyncEndpoint => $"{_AdminPath}/PublishAsync";
 
-        public string PublishMenuItemAsyncEndpoint => $"{_AdminPath}/HardDeleteAsync";
+        public string DeleteMenuItemAsyncEndpoint => $"{_AdminPath}/HardDeleteAsync";
 
 
         #endregion  

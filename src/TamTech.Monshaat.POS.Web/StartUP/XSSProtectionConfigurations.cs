@@ -15,6 +15,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
              
             app.Use(async (context, next) =>
             {
+                context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
                 context.Response.Headers.Add("X-Xss-Protection", "1");
                 context.Response.Headers.Add("X-Frame-Options", "DENY");
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");

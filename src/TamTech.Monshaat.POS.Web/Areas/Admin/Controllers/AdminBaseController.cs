@@ -22,7 +22,7 @@ namespace TamTechSDK.Web.Controllers.Admin
 {
     [Area("Admin")]
     [ServiceFilter(typeof(AdminFilter))]
-    [Authorize]
+     [Authorize]
     public abstract class AdminBaseController : BaseController
     {
 

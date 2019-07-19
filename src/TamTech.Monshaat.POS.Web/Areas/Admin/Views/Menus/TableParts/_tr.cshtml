@@ -1,0 +1,135 @@
+﻿@model MenuItemDto
+@{
+    List<string> targets = new List<string> { "_blank", "_self", "_parent", "_top" };
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    int index = 0;
+}
+
+@functions {
+
+    public MenuItemVm MapToMenuItemVm(MenuItemDto itm)
+    {
+        return new MenuItemVm
+        {
+            DisplayOrder = itm.DisplayOrder,
+            UrlTarget = itm.UrlTarget,
+            Url = itm.Url,
+            Title = itm.Title,
+            ItemType = itm.ItemType,
+            Lang = itm.Lang,
+            Key = itm.Key,
+            RootMenuId =  ViewBag.Id
+        };
+    }
+}
+
+@foreach (var item in Model.MenuItems)
+{
+    <tr data-key="@item.Key" data-type="@item.ItemType" class="ut-tr-@item.ItemType">
+        <td class="text-center">
+            <span>@item.DisplayOrder</span>
+        </td>
+        <td>
+            <input type="text" class="form-control input-title ut-input-title" value="@item.Title" disabled />
+        </td>
+        <td>
+
+            @if (!string.IsNullOrEmpty(item.UrlTarget))
+            {
+                <span class="badge badge-pill badge-secondary">@item.UrlTarget</span>
+            }
+            <span>@item.Url</span>
+
+        </td>
+        <td>
+            <span class="form-control-static">@item.ItemType </span>
+        </td>
+
+        <td>
+
+            <span data-toggle="tooltip"
+                  data-placement="@(activeLang == "ar" ? "right" : "left")"
+                  data-status="true"
+                  title="@Localizer["t_unpublish"] / @Localizer["t_publish"]">
+
+                <input class="tgl tgl-flat toggle_visibility"
+                       data-root="@ViewBag.Id"
+                       id="@item.Key"
+                       type="checkbox"
+                       @((item.Published) ? "<text> checked </text>" : "") />
+                <label class="tgl-btn" for="@item.Key"></label>
+            </span>
+
+        </td>
+        <td class="text-right">
+            <if include-if="(item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))">
+                <a class="btn btn-link btn-values btn-round btn-submenu"
+                   role="button"
+                   data-key="@item.Key"
+                   aria-expanded="false"
+                   aria-controls="collapse-@index">
+                    <span data-toggle="tooltip"
+                          title="@Localizer["submenu"]"
+                          data-placement="top">
+                        <i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </if>
+
+            <a data-object='@Html.Raw(Json.Serialize(@item))'
+               data-toggle="modal" data-target="#item-@index"
+               class="btn btn-edit edit-menuitem btn-round ut-@item.ItemType-edit">
+                <i class="fa fa-edit " data-toggle="tooltip"
+                   data-placement="@(activeLang == "ar" ? "right" : "left")"
+                   title="@Localizer["edit"]"></i>
+            </a>
+
+            <a data-toggle="tooltip"
+               data-placement="@(activeLang == "ar" ? "right" : "left")"
+               data-key="@item.Key"
+               data-root="@ViewBag.Id"
+               data-type='@item.ItemType'
+               data-url="@Url.AdminUrl("DeleteAsync","menus",new { rootmenuid = ViewBag.Id , Key=item.Key})"
+               title="@Localizer["remove"]"
+               class="btn btn-remove delete-menuitem btn-round ut-delete-btn"><i class="fa fa-trash-o "></i></a>
+
+        </td>
+    </tr>
+
+    <if include-if="item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase)">
+        <tr class="submenu ut-submenu-@item.Key" data-key="@item.Key">
+            <td colspan="6">
+                <div class="collapse collapse-box" id="collapse-@index">
+                    <partial name="~/Areas/Admin/Views/Menus/TableParts/_table.cshtml" model="item" />
+                </div>
+            </td>
+        </tr>
+    </if>
+    <!-- Modal -->
+    <div class="modal fade" id="item-@index" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <if include-if="@(item.ItemType.Equals(MenuItemTypeEnum.dropdown.ToString(), StringComparison.OrdinalIgnoreCase))">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_dropdownForm.cshtml" model="MapToMenuItemVm(item)" />
+                    </if>
+                    <if include-if="@(item.ItemType.Equals(MenuItemTypeEnum.page.ToString(), StringComparison.OrdinalIgnoreCase))">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_pageForm.cshtml"model="MapToMenuItemVm(item)" />
+                    </if>
+                    <if include-if="@(item.ItemType.Equals(MenuItemTypeEnum.staticpage.ToString(), StringComparison.OrdinalIgnoreCase))">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_staticpageForm.cshtml" model="MapToMenuItemVm(item)" />
+                    </if>
+                    <if include-if="@(item.ItemType.Equals(MenuItemTypeEnum.url.ToString(), StringComparison.OrdinalIgnoreCase))">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_urlForm.cshtml" model="MapToMenuItemVm(item)" />
+                    </if>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    index++;
+}

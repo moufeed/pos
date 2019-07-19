@@ -30,7 +30,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
             }
             catch (Exception ex)
             {
-                return View("~/Areas/Portal/Views/Shared/Components/SectorsList/Default.cshtml",ex.Message);
+                 
             }
             return View("~/Areas/Portal/Views/Shared/Components/SectorsList/Default.cshtml");
         }
