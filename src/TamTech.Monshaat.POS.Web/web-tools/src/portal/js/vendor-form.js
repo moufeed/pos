@@ -10,21 +10,21 @@ $(function () {
             CompanyName :{
                     remote :{
                         url: $('#CompanyName').data("remote") , 
-                        type: "post",
+                        type: "get",
                         data:{
                             Name  : function(){
                                 return $('#CompanyName').val();
                             },
                             Id : function(){
                                 return $('#CompanyName').data('id');
-                            }
+                            } 
                         } 
                     }
                },
                CommercialNo :{
                 remote :{
                     url: $('#CommercialNo').data("remote") , 
-                    type: "post",
+                    type: "get",
                     data:{
                         number  : function(){
                             return $('#CommercialNo').val();

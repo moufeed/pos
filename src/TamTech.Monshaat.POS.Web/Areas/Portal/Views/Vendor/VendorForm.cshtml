@@ -31,7 +31,10 @@
 </section>
 <partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
 @section Footer{
- 
+
+
+    <script src="~/Portal/js/validation.min.js"></script>
+    <script src="~/Portal/js/vendor.f.min.js"></script>
 
     <if include-if='TempData.ContainsKey("RegisterSuccess")'>
         @{

@@ -28,6 +28,7 @@
             </label>
             <input type="text" asp-for="CompanyName" class="form-control" placeholder="@Localizer["compnay_name"]" required 
                 data-rule-minlength="3"
+               
                 data-remote='@Url.Action("ValidateVendorNameIsExist","Vendor")' 
                 data-msg-remote="@Localizer["name_already_exists"]" 
                 data-id="@(FormAction.Equals("Edit",StringComparison.OrdinalIgnoreCase) ? Model.VendorId.ToString() :"")">
@@ -35,11 +36,12 @@
         </div>
         <div class="form-group">
              
-            <label asp-for="CommercialNo">
+            <label asp-for="CommercialNo"> 
                 @Localizer["commercial_registration_no"] <small class="fas fa-star-of-life fz-6"></small>
             </label>
             <input asp-for="CommercialNo" type="number" class="form-control"
                    placeholder="@Localizer["commercial_registration_no"]" 
+                   data-rule-crvendor='@Url.Action("ValidateVendorBelongsToCR","Vendor")'
                    data-remote='@Url.Action("ValidateCommercialNoIsExist","Vendor")'  
                    data-msg-remote="@Localizer["number_already_exists"]" 
                    data-rule-commercial="10"

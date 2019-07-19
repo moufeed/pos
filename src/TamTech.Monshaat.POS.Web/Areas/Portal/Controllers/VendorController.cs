@@ -287,7 +287,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         #region VALDATE VENDOR COMMERCIAL NUMBER
-        [HttpPost]
+        [HttpGet]
         public async virtual Task<JsonResult> ValidateCommercialNoIsExist(string number, Guid id, IFormCollection collection)
         {
             try
@@ -308,7 +308,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
 
-        [HttpPost]
+        [HttpGet]
         public async virtual Task<JsonResult> ValidateVendorBelongsToCR(string crNumber)
         {
             try
@@ -335,7 +335,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         #region VALDATE VENDOR NAME
-        [HttpPost]
+        [HttpGet]
         public async virtual Task<JsonResult> ValidateVendorNameIsExist(string name, Guid id, IFormCollection collection)
         {
             try

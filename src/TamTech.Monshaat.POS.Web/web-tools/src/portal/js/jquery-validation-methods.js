@@ -58,17 +58,24 @@ $.validator.addClassRules("checks", {
 
   
 
+$.validator.addMethod( "crvendor", function( value, element, url ) {
+    var resutl = false;
+    $.ajaxSetup({async:false});
+    $.get( `${url}?crNumber=${value}` ,   data  => resutl =  data.success );
+    return resutl;
+}, $.validator.format( "Commercial number  is not belongs to your account" ));
+
+  
+
 $.validator.addMethod( "commercial", function( value, element, params ) {
     return  value.length == params
 }, $.validator.format( "Commercial number it has to be {0} digits" ));
 
-
+ 
  
  
 $.validator.addMethod( "FileSize", function( value, element, param ) {
-    
-    console.log(value, element, param )
-
+     
     if ( this.optional( element ) ) {
 		return true;
     }
