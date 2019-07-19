@@ -1,0 +1,52 @@
+﻿ 
+@{
+    Layout = "~/Areas/Portal/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Localizer["vedor_register"];
+    string FormAction = ViewContext.RouteData.Values["Action"].ToString();
+    var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.Web.Core.Settings.Utilities.SettingsHelpers.VendorRoleName, StringComparison.InvariantCultureIgnoreCase);
+}
+
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
+
+@*<if include-if="Model != null">*@
+
+
+<section class="create-vendor-page pt-75  pb-50" data-fix-height>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-11 col-lg-8">
+                <header class="vendor-form-header mb-35">
+                         <h3 class="mb-25">
+                            @Localizer["login"]
+                        </h3> 
+                </header> 
+                    <div class="white-panel p_25">
+                        <partial name="~/Areas/Portal/Views/Vendor/partials/_Login.cshtml" />
+                    </div> 
+            </div>
+        </div>
+
+    </div>
+</section>
+<partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
+@section Footer{
+
+    <script src="~/Portal/js/validation.min.js"></script>
+    <script src="~/Portal/js/vendor.f.min.js"></script>
+
+    <if include-if='TempData.ContainsKey("RegisterSuccess")'>
+        @{
+                TempData.Remove("RegisterSuccess");
+        }
+        <partial name="~/Areas/Portal/Views/Vendor/partials/_RegisterSuccessModal.cshtml" />
+    </if>
+
+    <if include-if='TempData.ContainsKey("UpdateSuccess")'>
+        @{
+                TempData.Remove("UpdateSuccess");
+        }
+        <partial name="~/Areas/Portal/Views/Vendor/partials/_UpdateSuccessModal.cshtml" />
+    </if>
+
+} 

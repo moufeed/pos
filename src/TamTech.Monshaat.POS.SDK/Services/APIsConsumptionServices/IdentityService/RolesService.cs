@@ -34,7 +34,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityServ
 
         public async Task<IEnumerable<RoleModel>> GetUserRolesAsync(string name)
         {
-            var result = await ReqProvider.GetAsync<IEnumerable<RoleModel>>(_backendSettings.GetUserRolesEndpoint);
+            var result = await ReqProvider.GetAsync<IEnumerable<RoleModel>, List<string>>(_backendSettings.GetUserRolesEndpoint, new List<string> { name }, PassParamsBy.Route);
             return GetResult<IEnumerable<RoleModel>>(result);
         }
 

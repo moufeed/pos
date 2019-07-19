@@ -16,7 +16,8 @@ namespace TamTech.Monshaat.POS.Web.Controllers
             {
                 if (!returnUrl.Contains("admin", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return RedirectToAction("login", "OAuth", new { returnUrl });
+                   // return RedirectToAction("login", "OAuth", new { returnUrl });
+                    return RedirectToAction("login", "OAuth", new { Area = "Portal", ReturnUrl = returnUrl });
                 }
                 return RedirectToAction("login", "account", new { Area = "Identity" , ReturnUrl = returnUrl });
 

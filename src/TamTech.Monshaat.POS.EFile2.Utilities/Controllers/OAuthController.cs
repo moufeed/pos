@@ -46,11 +46,16 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Controllers
         }
 
 
+        [Route("{culture}/portal/OAuth/login")]
+        public async Task<IActionResult> Login(string returnUrl)
+        {
+            return View("~/Areas/Portal/Views/Vendor/Login.cshtml");
+        }
 
 
         [Route("OAuth/Login")]
-        [Route("{culture}/portal/OAuth/login")]
-        public async Task<IActionResult> Login(string returnUrl)
+      //  [Route("{culture}/portal/OAuth/login")]
+        public async Task<IActionResult> LoginDirect(string returnUrl)
         {
             if (string.IsNullOrWhiteSpace(returnUrl) || returnUrl.Equals("/"))
                 returnUrl = "/";//$"/{DataCultureHelper.GetCurrent(Request.Query)}";

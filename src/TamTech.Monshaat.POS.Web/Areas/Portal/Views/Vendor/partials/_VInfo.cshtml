@@ -9,7 +9,7 @@
  
     <div class="vendor-form">
         <div class="white-panel p-y-45 p-x-35">
-            <if exclude-if='string.Equals(FormAction ,"info" ,StringComparison.OrdinalIgnoreCase)'>
+            <if exclude-if='Model.Activated'>
                 <div class="form-group">
                     <div class="form-row justify-content-between">
                         <label asp-for="StatusName" class="col-md-3">
@@ -98,7 +98,7 @@
                     <label asp-for="WebsiteUrl">@Localizer["website"]  </label>
                     <span class="form-control-plaintext">@Model.WebsiteUrl</span>
                 </div>
-                <if exclude-if='string.Equals(FormAction ,"info" ,StringComparison.OrdinalIgnoreCase)'>
+                @*<if exclude-if='string.Equals(FormAction ,"info" ,StringComparison.OrdinalIgnoreCase)'>*@
                     <div class="form-group mt-25 d-flex justify-content-end">
                         <a asp-action="index" asp-controller="home" class="btn btn-outline-primary">
                             @Localizer["back_to_hompage"]
@@ -112,6 +112,6 @@
 
                         </if>
                     </div>
-                </if>
+                @*</if>*@
 </div>
     </div>

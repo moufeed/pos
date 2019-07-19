@@ -9,6 +9,7 @@ using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications.Models;
+using TamTech.Monshaat.POS.Web.Core.Enums;
 using TamTech.Monshaat.POS.Web.Services.Identity;
 
 namespace TamTech.Monshaat.POS.IdentityService.Controllers
@@ -90,7 +91,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
             }
 
             /// << call claims principal from identity server4  >>  
-            var claims = await _tokenTamService.GetUserClaimsAsync(token.AccessToken);
+            var claims = await _tokenTamService.GetUserClaimsAsync(token.AccessToken, PermissionTypeEnum.Admin);
 
 
             /// << Signin to context  >>  

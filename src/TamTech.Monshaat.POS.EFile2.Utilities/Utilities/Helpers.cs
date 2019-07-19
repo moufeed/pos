@@ -7,25 +7,25 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities
     public class Helpers
     {
         #region Props
-        public static string VendorRole
-        {
-            get
-            {
-                return vendorRole;
-            }
-            set
-            {
-                if (!vendorRoleIsLocked)
-                {
-                    vendorRoleIsLocked = true;
-                    vendorRole = value;
-                }
-            }
+        //public static string VendorRole
+        //{
+        //    get
+        //    {
+        //        return vendorRole;
+        //    }
+        //    set
+        //    {
+        //        if (!vendorRoleIsLocked)
+        //        {
+        //            vendorRoleIsLocked = true;
+        //            vendorRole = value;
+        //        }
+        //    }
 
-        }
+        //}
 
-        private static string vendorRole;
-        private static bool vendorRoleIsLocked;
+        //private static string vendorRole;
+        //private static bool vendorRoleIsLocked;
 
           public static int LogoutAfterMinutes
         {

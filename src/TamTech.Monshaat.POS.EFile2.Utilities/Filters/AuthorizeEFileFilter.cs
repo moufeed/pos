@@ -6,7 +6,8 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;  
+using TamTech.Monshaat.POS.EFile2.Utilities.Services;
+using TamTech.Monshaat.POS.Web.Core.Extensions;
 
 namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
 {
@@ -50,7 +51,7 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
 
                 // Case 3 : when username of EFile2 does not match username of (Http Context Identity)...
                 var username = await _eFileService.GetUsernameByAccessTokenAsync(efile_access_token);
-                if (username != controller.HttpContext.User.Identity.GetUserName())
+                if (username != controller.HttpContext.User.Identity.GetUsername())
                 {
                     await controller.HttpContext.SignOutAsync();// await _signInManager.SignOutAsync();
                     controller.Response.Cookies.Delete(Constants.EFileTokenCookieName);
@@ -83,24 +84,6 @@ namespace TamTech.Monshaat.POS.EFile2.Utilities.Filters
     }
 
     
-
-    //public class CustomActionFilter : ActionFilterAttribute
-    //{
-    //    public override void OnActionExecuting(ActionExecutingContext filterContext)
-    //    {
-    //        filterContext.Result = new Http403Result();
-    //    }
-    //}
-    public static class IdentityExtensions
-    {
-
-        public static string GetUserName(this IIdentity identity)
-        {
-            var claim = ((System.Security.Claims.ClaimsIdentity)identity).Claims.SingleOrDefault(c => c.Type == "preferred_username");
-            return claim?.Value;
-        }
-
-
-    }
+     
 }
 

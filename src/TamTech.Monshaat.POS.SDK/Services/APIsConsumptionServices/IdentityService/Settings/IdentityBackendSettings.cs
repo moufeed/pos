@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
         private string _identityServiceUrl;
 
 
-        public IdentityBackendSettings(string identityServiceUrl = "http://localhost:50383/")
+        public IdentityBackendSettings(string identityServiceUrl = "http://localhost:50383")
         {
             _identityServiceUrl = identityServiceUrl;
            
@@ -61,7 +61,7 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 
         public string GetUserRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/roles/GetUserRolesAsync";
 
-        public string AddUserToRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/usersmanager/AddUserToVendorRoleAsync";
+        public string AddUserToRolesEndpoint => $"{IdentityEndpointBase}/api/0.1/usersmanager/AddUserToRolesAsync";
   
         public string ValidatePOSAdminCredentialEndpoint => $"{IdentityEndpointBase}/api/0.1/users/ValidatePOSAdminCredentialAsync";
 

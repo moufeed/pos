@@ -11,11 +11,11 @@ namespace TamTech.Monshaat.POS.Web.Core.Filters
 {
 
 
-    public class UserContextUpdatedFilter : ActionFilterAttribute, IActionFilter
+    public class UserContextUpdated : ActionFilterAttribute, IActionFilter
     {
         private readonly IRolesService _reolsService;
 
-        public UserContextUpdatedFilter(IRolesService reolsService)
+        public UserContextUpdated(IRolesService reolsService)
         {
             _reolsService = reolsService;
         }
