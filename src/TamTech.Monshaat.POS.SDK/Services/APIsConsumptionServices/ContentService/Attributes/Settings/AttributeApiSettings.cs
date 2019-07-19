@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings
 {
     public class AttributeApiSettings : BaseAPISettings, IAttributeApiSettings, IPOSAttributeApiSettings
     {
 
-        public AttributeApiSettings(string controller) : base(controller)
+        public AttributeApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

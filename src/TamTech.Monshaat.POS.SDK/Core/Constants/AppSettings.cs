@@ -5,6 +5,12 @@ namespace TamTech.Monshaat.POS.Web.Core.Constants
     {
         public const string WebApplicationSettings = "WebApplicationSettings";
 
+        public const string BackendApiSettings = "BackendApiSettings";
+        public const string MCIApiSettings = "MCIApiSettings";
+        public const string Url = "Url";
+        public const string ApiKey = "ApiKey";
+        public const string EnableFakeApiForTesting = "EnableFakeApiForTesting";
+
       
 
         public const string Routing_DefaultArea = "Routing_DefaultArea";

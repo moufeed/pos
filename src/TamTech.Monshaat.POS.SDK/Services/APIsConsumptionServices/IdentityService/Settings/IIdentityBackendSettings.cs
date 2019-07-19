@@ -6,9 +6,9 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
 {
      public interface IIdentityBackendSettings
     {
-        string ClientId { get; }
-        string ClientSecret { get; }
-        string IdentityEndpointBase { get; }
+       // string ClientId { get; }
+      //  string ClientSecret { get; }
+      //  string IdentityEndpointBase { get; }
         string IdentityEndpoint { get; }
         string UserInfoEndpoint { get; }
         string TokenEndpoint { get; }

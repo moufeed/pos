@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings
 {
     public class BiographyApiSettings : BaseAPISettings, IBiographyApiSettings
     {
-        public BiographyApiSettings(string controller) : base(controller)
+        public BiographyApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

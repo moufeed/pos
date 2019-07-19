@@ -1,8 +1,7 @@
 ﻿using IdentityModel.Client;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Generic;       
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,18 +11,28 @@ using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
 using TamTech.Monshaat.POS.Web.Core.Enums;
 using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.IdentityService.Services
 {
     public class TokenTamService : ITokenTamService
-    {    
+    {
+
+        private readonly BackendApiSettingsModel _settings;
+
+        public TokenTamService(BackendApiSettingsModel settings)
+        {
+            _settings = settings;
+            _settings.Url = _settings.Url.TrimEnd('/');
+        }
+
         public async Task<TokenModel> GetTokenAsync(GetTokenModel model)
         {
             
             if (model == null || string.IsNullOrWhiteSpace(model.Username)|| string.IsNullOrWhiteSpace(model.Password)) return null;
-            var client = new TokenClient("http://localhost:50383/connect/token", "password_client", "h8yI4DydzI5ZsKCMGTs9hfTdI1vRS3qfTo9Go92q3aM=");
+            var client = new TokenClient($"{_settings.Url}/connect/token", _settings.ClientId, _settings.ClientSecret);
 
-            var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: "offline_access content.api identity.api openid profile").GetAwaiter().GetResult();
+            var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: _settings.ClientScope).GetAwaiter().GetResult();
            
             if (token.IsError || string.IsNullOrWhiteSpace( token.AccessToken))
              {
@@ -36,7 +45,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
 
         public async Task<List<Claim>> GetUserClaimsAsync(string accessToken, PermissionTypeEnum permission)
         {
-            var info = await SendAsync("http://localhost:50383/connect/userinfo", accessToken);
+            var info = await SendAsync($"{_settings.Url}/connect/userinfo", accessToken);
 
             if (info == null) return null;
             List<Claim> claims = new List<Claim>()
@@ -47,8 +56,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
           
 
             bool isVendor = false;
-            bool claimTypeIsRole = false;
-            string vendoRoleName = "";
+            bool claimTypeIsRole = false;    
             foreach (var pair in info)
             {
 

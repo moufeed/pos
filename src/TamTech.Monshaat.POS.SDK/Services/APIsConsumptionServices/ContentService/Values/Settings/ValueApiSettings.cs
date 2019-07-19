@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings
 {
     public class ValueApiSettings : BaseAPISettings, IValueApiSettings, IPOSValueApiSettings
     {
 
-        public ValueApiSettings(string controller) : base(controller)
+        public ValueApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

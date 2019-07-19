@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings
 {
     public class VendorAdminApiSettings : BaseAPISettings, IVendorAdminApiSettings
     {
-        public VendorAdminApiSettings(string controller) : base(controller)
+        public VendorAdminApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings
 {
     public class RegionApiSettings : BaseAPISettings, IRegionApiSettings,  IContactUsRegionApiSettings
     {
 
-        public RegionApiSettings(string controller) : base(controller)
+        public RegionApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 
