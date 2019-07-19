@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Settings
 {
@@ -9,7 +6,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Sett
     {
 
 
-        public SliderApiSettings(string controller) : base(controller)
+        public SliderApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

@@ -14,11 +14,12 @@ namespace TamTech.Monshaat.POS.Web.StartUP
         {
             services.AddEFile2Configurations(configuration);
 
-            services.AddTransient<IEFileIdentityProviderService, EFileIdentityProviderService>((serviceExtension) =>
-            {
-                EFileServiceModelSettings Settings = configuration.GetSection("EFileServiceSettings").Get<EFileServiceModelSettings>();
-                return new EFileIdentityProviderService(Settings);
-            });
+            services.AddTransient<IEFileIdentityProviderService, FakeEFileIdentityProviderService>();
+            //services.AddTransient<IEFileIdentityProviderService, EFileIdentityProviderService>((serviceExtension) =>
+            //{
+            //    EFileServiceModelSettings Settings = configuration.GetSection("EFileServiceSettings").Get<EFileServiceModelSettings>();
+            //    return new EFileIdentityProviderService(Settings);
+            //});
         }
     }
 }

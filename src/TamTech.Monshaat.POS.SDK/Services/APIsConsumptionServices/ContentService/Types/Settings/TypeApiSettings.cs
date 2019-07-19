@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings
 {
     public class TypeApiSettings : BaseAPISettings, ITypeApiSettings, IPOSTypeApiSettings, IContactUsTypeApiSettings
     {
 
-        public TypeApiSettings(string controller) : base(controller)
+        public TypeApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

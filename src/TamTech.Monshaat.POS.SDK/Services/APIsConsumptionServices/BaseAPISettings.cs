@@ -1,15 +1,17 @@
-﻿namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
+
+namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices
 {
     public class BaseAPISettings
     {
-        private const string apiRoot = "https://localhost:44327/api";
-        private const string admin = "Admin";
+        private const string admin = "Admin";   
         public readonly string _PortlPath;
         public readonly string _AdminPath;
 
 
-        public BaseAPISettings(string controller)
-        { 
+        public BaseAPISettings(BackendApiSettingsModel settings, string controller)
+        {
+             string apiRoot =  $"{settings.Url.TrimEnd('/')}/api";
             _PortlPath = $"{apiRoot}/{controller}";
             _AdminPath = $"{apiRoot}/{admin}/{controller}";
         }

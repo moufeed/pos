@@ -11,9 +11,9 @@ namespace TamTech.Monshaat.POS.MCIServices.Settings
         #endregion         
 
         #region Ctors     
-        public MCIApiSimulatorSettings()
+        public MCIApiSimulatorSettings(string apiUrl)
         {
-            _apirUrl = "https://localhost:44327";
+            _apirUrl = apiUrl;
         }
         #endregion
 

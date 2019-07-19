@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settings
 {
     public class PagesApiSettings : BaseAPISettings, IPagesApiSettings
     {
-        public PagesApiSettings(string controller) : base(controller)
+        public PagesApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 

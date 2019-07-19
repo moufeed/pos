@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;      
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;                            
 using TamTech.Monshaat.POS.IdentityService;    
-using TamTech.Monshaat.POS.MCIServices;
-using TamTech.Monshaat.POS.SDK.Core.Authorizations;
+using TamTech.Monshaat.POS.MCIServices;        
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices;    
 using TamTech.Monshaat.POS.Web.Core.Cultures;
 using TamTech.Monshaat.POS.Web.StartUP;                      
@@ -39,7 +36,7 @@ namespace TamTech.Monshaat.POS.Web
             services.AddFiltersConfigurations();
 
 
-            services.AddIdentityService();
+            services.AddIdentityService(Configuration);
 
       //      services.AddAuthenticationConfigurations(Configuration);
 
@@ -55,7 +52,7 @@ namespace TamTech.Monshaat.POS.Web
 
             services.AddFluentValidationConfigurations();
 
-            services.AddMCIServicesConfigurations();
+            services.AddMCIServicesConfigurations(Configuration);
 
             //services.AddTransient<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
 
 namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settings
 {
@@ -8,7 +6,7 @@ namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settin
     {
 
 
-        public MenuApiSettings(string controller) : base(controller)
+        public MenuApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
         {
         }
 
