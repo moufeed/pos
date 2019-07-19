@@ -3,7 +3,7 @@
     var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
 }
 
-    <form asp-action="CreateMenuItemAsync" asp-controller="menus" method="post"
+    <form asp-action="@Model.FormAction" asp-controller="menus" method="post"
           class="form-horizontal form-new form-label-left p-x-5 p-y-3 ut-staticpage-form">
         @if (!ViewData.ModelState.IsValid)
         {
@@ -11,7 +11,7 @@
                 @Html.ValidationSummary()
             </div>
         }
-        <input type="hidden" asp-for="MenuId" value="@ViewBag.Id" />
+        <input type="hidden" asp-for="MenuId" value="@ViewBag.MenuId" />
         <input type="hidden" asp-for="ItemType" value="@MenuItemTypeEnum.staticpage.ToString()" />
         <input type="hidden" asp-for="ParentKey" value="" />
         <input type="hidden" asp-for="Lang" value="@activeLang" />
@@ -43,8 +43,8 @@
             </div>
         </div>
         <div class=" clearfix text-right">
-
-            <input type="submit" value="@Localizer["add_to_menu"]" class="btn btn-success ut-staticpage-send">
+            @{ string btn = Model.FormAction.Equals("EditMenuItemAsync") ? "edit" : "add_to_menu"; }
+            <input type="submit" value="@Localizer[btn]" class="btn btn-success ut-staticpage-send">
             <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
         </div>
 

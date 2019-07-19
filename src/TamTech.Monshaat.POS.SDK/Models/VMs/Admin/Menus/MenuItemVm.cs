@@ -26,5 +26,6 @@ namespace TamTech.Monshaat.POS.SDK.Models.VMs.Admin.Menus
 
         public string Key { get; set; }
 
+        public string FormAction { get; set; } = "EditMenuItemAsync";
     }
 }

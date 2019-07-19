@@ -39,5 +39,10 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
     }
 
 
+    public class RequestProviderErrors
+    {
+        public Dictionary<string, List<string>> Errors { get; set; }
 
+        public HttpStatusCode StatusCode { get; set; }
+    }
 }

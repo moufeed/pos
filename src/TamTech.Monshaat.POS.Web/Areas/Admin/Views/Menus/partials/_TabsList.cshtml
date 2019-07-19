@@ -38,15 +38,15 @@
 
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="@MenuItemTypeEnum.page.ToString()">
-        <partial name="~/Areas/Admin/Views/Menus/partials/_pageForm.cshtml" model="new MenuItemVm()" />
+        <partial name="~/Areas/Admin/Views/Menus/partials/_pageForm.cshtml" model="@(new MenuItemVm() { FormAction = "CreateMenuItemAsync" } )" />
     </div>
     <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.url.ToString()">
-        <partial name="~/Areas/Admin/Views/Menus/partials/_urlForm.cshtml" model="new MenuItemVm()" />
+        <partial name="~/Areas/Admin/Views/Menus/partials/_urlForm.cshtml" model="@(new MenuItemVm() { FormAction = "CreateMenuItemAsync" } )" />
     </div>
     <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.staticpage.ToString()">
-        <partial name="~/Areas/Admin/Views/Menus/partials/_staticpageForm.cshtml" model="new MenuItemVm()" />
+        <partial name="~/Areas/Admin/Views/Menus/partials/_staticpageForm.cshtml" model="@(new MenuItemVm() { FormAction = "CreateMenuItemAsync" } )" />
     </div>
     <div role="tabpanel" class="tab-pane fade " id="@MenuItemTypeEnum.dropdown.ToString()">
-        <partial name="~/Areas/Admin/Views/Menus/partials/_dropdownForm.cshtml" model="new MenuItemVm()" />
+        <partial name="~/Areas/Admin/Views/Menus/partials/_dropdownForm.cshtml" model="@(new MenuItemVm() { FormAction = "CreateMenuItemAsync" } )" />
     </div>
 </div>

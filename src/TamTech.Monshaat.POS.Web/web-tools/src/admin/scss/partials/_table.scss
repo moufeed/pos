@@ -75,11 +75,13 @@ table{
                 line-height: 20px;
                 display: inline-block;
             }
-            &:last-child(){
+            /* &:last-child(){
+               
                 div:not(.collapse):not(.text-right):not(.modal) {
                  display: flex;
                 }
-             }
+              
+             } */
         }
         
     }

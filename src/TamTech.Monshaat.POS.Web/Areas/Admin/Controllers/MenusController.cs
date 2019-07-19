@@ -249,6 +249,7 @@ namespace TamTechSDK.Web.Controllers.Admin
         #region {Menu Items}  Create / Edit / Delete / Publish 
 
 
+       
         //Action Return : json
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Create")]
         public  async Task<ActionResult> CreateMenuItemAsync(MenuItemVm  model)
@@ -271,9 +272,10 @@ namespace TamTechSDK.Web.Controllers.Admin
                     };
                      
                     var result = await _MenusServices.CreateMenuItemAsync(_model);
-                    return RedirectToAction("Edit", new { id = model.MenuId });
+                    
+                    //HandelResult(result);
                 }
-                return RedirectToAction("Edit", new { id = model.MenuId });
+                 
             }
             catch (Exception ex)
             {
@@ -284,27 +286,33 @@ namespace TamTechSDK.Web.Controllers.Admin
 
          
         [HttpPost("{Culture}/[Area]/[Controller]/Items/Edit")]
-        public  async Task<ActionResult> EditMenuItemAsync(UpdateMenuItemDto model)
+        public  async Task<ActionResult> EditMenuItemAsync(MenuItemVm  model)
         {
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    model.Lang = GetCurrentDataLang();
-                    var result = await _MenusServices.EditMenuItemAsync(model);
-                    return ReturnJsonResult(result, model);
-                }
-                else
-                {
-                    return ReturnJsonErrorResult(ModelState, model);
+                    UpdateMenuItemDto _model = new UpdateMenuItemDto
+                    {
+                        DisplayOrder = model.DisplayOrder,
+                        UrlTarget = model.UrlTarget,
+                        Url = model.Url,
+                        Title = model.Title,
+                        ItemType = model.ItemType,
+                        Lang = model.Lang,
+                        Key = model.Key,
+                        RootMenuId = model.MenuId
+                    };
+                    var result = await _MenusServices.EditMenuItemAsync(_model);
+                      
                 }
             }
             catch (Exception ex)
             {
                 TrackException(ex);
-                return ReturnJsonErrorResult(ex.Message, model);
             }
+            return RedirectToAction("Edit", new { id = model.MenuId });
         }
 
 

@@ -24,8 +24,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
 
 
 
-
-
+  
 
 
 

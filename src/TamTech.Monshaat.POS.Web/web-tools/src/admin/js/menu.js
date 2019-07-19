@@ -12,15 +12,15 @@ $(document).ready(function(){
  
 
 
-    $('#MenuItemModal').on('show.bs.modal', function (event) {
+    $('#MenuItemModal,.edit-items-modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)  
         var isRoot = button.data('root');
         let $modal = $(this)
         var key = null; 
         if(!isRoot){
-            key = $(button).data('key');
+            key = $(button).data('key'); 
 
-            var level = key +"";
+            var level = key +""; 
          
             if(level.split('_').length == (MenuMaxLevels - 1)){
                 $modal.find('li[data-type="dropdown"]').addClass('hidden');   
@@ -32,8 +32,9 @@ $(document).ready(function(){
         var parentKey = $modal.find("input[name=\"ParentKey\"]");
         parentKey.each(function(index, element)  {
             $(element).val(key)
+            
         }); 
-        })
+        }) 
  
        
     

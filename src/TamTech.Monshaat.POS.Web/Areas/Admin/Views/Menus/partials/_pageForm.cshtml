@@ -5,7 +5,7 @@
 
 
 
-<form asp-action="CreateMenuItemAsync" asp-controller="menus"
+<form asp-action="@Model.FormAction" asp-controller="menus"
       method="post"
       class="form-horizontal form-new form-label-left p-x-5 p-y-3 ut-page-form"
       id="PageMenuItem">
@@ -16,10 +16,11 @@
         </div>
     }
 
-        <input type="hidden" asp-for="MenuId" value="@ViewBag.Id" />
+        <input type="hidden" asp-for="MenuId" value="@ViewBag.MenuId" />
         <input type="hidden" asp-for="ItemType" value="@MenuItemTypeEnum.page.ToString()" />
         <input type="hidden" asp-for="ParentKey" value="" />
         <input type="hidden" asp-for="Lang" value="@activeLang" />
+        <input type="hidden" asp-for="Key" value="@Model.Key" />
 
     <div class="form-group clearfix">
         <label class="control-label col-md-3 col-sm-4"> @Localizer["f_title"] <i class="fa fa-asterisk c-red fz-10 "></i></label>
@@ -52,7 +53,8 @@
     </div>
 
     <div class=" clearfix text-right">
-        <input type="submit" value="@Localizer["add_to_menu"]" class="btn btn-success ut-page-send">
+        @{ string btn = Model.FormAction.Equals("EditMenuItemAsync") ? "edit" : "add_to_menu"; }
+        <input type="submit" value="@Localizer[btn]" class="btn btn-success ut-page-send">
         <a href="@Url.AdminUrl("CreateHtmlPage","pages")" class="btn btn-info">@Localizer["create_page"]</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["close"]</button>
     </div>

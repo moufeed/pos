@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewData["Title"] = Localizer["create_items"];
+
+
+
+    var activeLang = DataCultureHelper.GetCurrent(Context.Request.Query);
+    ViewBag.activeLang = activeLang;
+}
+
+
+
+<div class="clearfix">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>@ViewData["Title"] <small></small></h3>
+        </div>
+        <div class="title_right">
+
+             
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+
+        @{
+            ViewBag.LanguageTabsRouteValues = new Microsoft.AspNetCore.Routing.RouteValueDictionary { };
+        }
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/partials/_LanguageTabs.cshtml")
+
+        <div class="x_panel p-x-0">
+            <div class="x_content">
+                
+                <ul class="nav nav-tabs navs-line" role="tablist">
+                    <li role="presentation" class="active" data-type="Page">
+                        <a href="#@MenuItemTypeEnum.page.ToString()"
+                           aria-controls="@MenuItemTypeEnum.page.ToString()"
+                           role="tab"
+                           data-toggle="tab"
+                           class="ut-page-tab"><strong>@Localizer["page"]</strong></a>
+                    </li>
+                    <li role="presentation" data-type="dropdown">
+                        <a href="#@MenuItemTypeEnum.dropdown.ToString()"
+                           aria-controls="@MenuItemTypeEnum.dropdown.ToString()"
+                           role="tab"
+                           class="ut-submenu-tab"
+                           data-toggle="tab"><strong>@Localizer["parent_menu"]</strong></a>
+                    </li>
+                    <li role="presentation" data-type="Url">
+                        <a href="#@MenuItemTypeEnum.url.ToString()"
+                           aria-controls="@MenuItemTypeEnum.url.ToString()"
+                           role="tab"
+                           class="ut-link"
+                           data-toggle="tab"><strong>@Localizer["link"]</strong></a>
+                    </li>
+                    <li role="presentation" data-type="staticpage">
+                        <a href="#@MenuItemTypeEnum.staticpage.ToString()"
+                           aria-controls="@MenuItemTypeEnum.staticpage.ToString()"
+                           role="tab"
+                           class="ut-staticpage-tab"
+                           data-toggle="tab"><strong>@Localizer["static_page"]</strong></a>
+                    </li>
+                </ul>
+
+
+
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="@MenuItemTypeEnum.page.ToString()">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_pageForm.cshtml" model="new MenuItemVm()" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.url.ToString()">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_urlForm.cshtml" model="new MenuItemVm()" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="@MenuItemTypeEnum.staticpage.ToString()">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_staticpageForm.cshtml" model="new MenuItemVm()" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="@MenuItemTypeEnum.dropdown.ToString()">
+                        <partial name="~/Areas/Admin/Views/Menus/partials/_dropdownForm.cshtml" model="new MenuItemVm()" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section Styles{
+    <link href="~/Admin/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/Admin/lib/select2/dist/js/select2.min.js"></script>
+    <script src="~/Admin/js/validator.min.js"></script>
+    <script>
+        var edit_url = '@Url.AdminUrl("EditMenuItemAsync" , "menus" )';
+        var publishUrl = '@Url.AdminUrl("PublishMenuItemAsync", "menus")';
+        var MenuMaxLevels = @ViewBag.MenuMaxLevels ;
+    </script>
+    <script src="~/Admin/js/menu.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $('.select_picker').select2({ dir: "ltr" });
+
+    </script>
+}
+

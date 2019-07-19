@@ -154,8 +154,9 @@
                                 </thead>
                                 <tbody>
                                     @{ 
+                                        ViewBag.MenuId = Model.Id;
                                         ViewBag.Id = Model.Id;
-
+                                        
                                         MenuItemDto _model = new MenuItemDto
                                         {
                                             Title = Model.Title,
@@ -180,7 +181,6 @@
 
             </div>
             <div class="x_footer m-t3 p-x-3">
-
                 <button class="btn btn-add btn-info ut-root-additem" data-toggle="modal" data-target="#MenuItemModal" data-root="true">
                     <i class="fa fa-plus"></i>
                     @Localizer["add_Item"]
@@ -222,10 +222,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content ut-modal">
             <div class="content">
-
                 <partial name="partials/_TabsList.cshtml" />
-
-               
             </div>
         </div>
     </div>

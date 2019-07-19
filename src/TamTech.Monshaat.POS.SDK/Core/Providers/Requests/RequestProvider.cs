@@ -206,6 +206,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
       
         private async Task HandleResponse<TResult>(HttpResponseMessage response, IRequestProviderResult<TResult> result)
         {
+          
             result.StatusCode = response.StatusCode;
             if (!response.IsSuccessStatusCode)
             {
@@ -233,8 +234,8 @@ namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
                 {
                     try
                     {
-                        Dictionary<string, List<string>> errors = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(content, _serializerSettings);
-                        result.Messages = errors;
+                        var errors = JsonConvert.DeserializeObject<RequestProviderErrors> (content, _serializerSettings);
+                        result.Messages = errors.Errors;
                     }
                     catch (Exception exc)
                     {
