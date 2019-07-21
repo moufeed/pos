@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 
 namespace TamTech.Monshaat.POS.IdentityService.Utilities
 {

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Values;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Values.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values
 {
     public   class ValueService : BaseAPIService, IValueService , IPosValuesService
     {

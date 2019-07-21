@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models
 {
     //public class ResultModel<T> : IResultModel<T>
     //{

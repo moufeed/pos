@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.Identity.Models;
-using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
-using TamTech.Monshaat.POS.Web.Services.Identity.Settings;
-using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.IdentityService
 {
     public class UsersManagerService : BaseAPIService,  IUsersManagerService
     {                                                

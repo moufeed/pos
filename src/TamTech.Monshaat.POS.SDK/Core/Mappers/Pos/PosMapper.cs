@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Services.POSs.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Pos
 {
     public static class PosMapper
     {
-        public static TamTech.Monshaat.POS.Web.Services.POSs.Models.CreatePosModel MapToCreateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos.PosFormVm item)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models.CreatePosModel MapToCreateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos.PosFormVm item)
         {
             return new  CreatePosModel
             {
@@ -34,7 +34,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
 
 
 
-        public static UpdatePosModel MapToUpdateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos.PosFormVm item)
+        public static UpdatePosModel MapToUpdateModelWithoutAttachments(this TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos.PosFormVm item)
         {
             return new UpdatePosModel
             {
@@ -59,10 +59,10 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
 
 
 
-        public static List<TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationModel> MapToBackSpecifications(this List<Specification> specification)
+        public static List<TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models.SpecificationModel> MapToBackSpecifications(this List<Specification> specification)
         {
 
-            var result = new List<TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationModel>();
+            var result = new List<TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models.SpecificationModel>();
 
             foreach (Specification item in specification)
             {
@@ -91,7 +91,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
         }
 
 
-        public static PosFormVm MapToPosFormVm(this TamTech.Monshaat.POS.Web.Services.POSs.Models.PosDto item)
+        public static PosFormVm MapToPosFormVm(this TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models.PosDto item)
         {
             return new PosFormVm
             {
@@ -117,7 +117,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Pos
         }
 
 
-        public static Specification MapToSpecification(this TamTech.Monshaat.POS.Web.Services.POSs.Models.SpecificationDto item)
+        public static Specification MapToSpecification(this TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models.SpecificationDto item)
         {
             return new Specification
             {

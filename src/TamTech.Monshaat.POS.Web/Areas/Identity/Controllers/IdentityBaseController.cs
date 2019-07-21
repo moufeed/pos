@@ -3,8 +3,8 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Core.Cultures;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Identity
 {

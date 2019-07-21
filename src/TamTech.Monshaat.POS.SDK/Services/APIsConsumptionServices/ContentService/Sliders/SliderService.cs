@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sliders.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sliders
 {
     public class SliderService : BaseAPIService , ISliderServices
     {

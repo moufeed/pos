@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Extensions;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests; 
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests; 
 
 namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
 { 

@@ -1,7 +1,4 @@
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Configuration;   
 using TamTech.Monshaat.POS.UploadService.Constants;
 using TamTech.Monshaat.POS.UploadService.Settings;
 
@@ -67,12 +64,7 @@ namespace TamTech.Monshaat.POS.UploadService.Configurations
         }
          
 
-        public AzureBlobStorageSettings GetAzureBlobStorageSettings()
-        {
-            AzureBlobStorageSettings settings = _configuration.GetSection(_azureBlobStorageSettings).Get<AzureBlobStorageSettings>();
-            return settings;
-        }
-
+      
 
         public ThumbnailSettings GetThumbnailSettings()
         {

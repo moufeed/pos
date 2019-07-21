@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
 {

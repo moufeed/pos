@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net; 
 
-namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models
 {
     public class RequestProviderResult<T> : IRequestProviderResult<T>
     {

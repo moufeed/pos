@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO.Compression;
 using System.Linq;
-using TamTech.Monshaat.POS.Web.Core.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Core.Attributes;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -32,8 +32,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             });
 
             services.AddMvc(mvc =>
-                {
-                    mvc.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                {      
                     mvc.Conventions.Add(new ControllerNameAttributeConvention());
 
                 })

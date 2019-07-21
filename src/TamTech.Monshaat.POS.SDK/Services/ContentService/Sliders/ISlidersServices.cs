@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
+
+namespace TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders
+{
+    public interface ISliderServices
+	{
+
+        #region Sliders
+
+        #region Public Slider
+
+        //Task<IRequestProviderResult<SliderDto>> GetPublicByKeyAsync(string key);
+
+        Task<IRequestProviderResult<SliderDto>> GetPublishedBySettingIdAsync(int settingId);
+
+        #endregion
+
+        #region  GetAll / Get / Create / Edit / Delete / Publish
+
+        Task<IRequestProviderResult<List<SliderDto>>> GetAllAsync(string lang);
+
+        Task<IRequestProviderResult<SliderDto>> GetByIdAsync(Guid id , string lang);
+
+        Task<IRequestProviderResult<Guid>> CreateASync(CreateSliderDto slider);
+
+        Task<IRequestProviderResult<bool>> UpdateAsync(UpdateSliderDto slider);
+
+        Task<IRequestProviderResult<bool>> DeleteByIdAsync(Guid id);
+
+        Task<IRequestProviderResult<bool>> publishByIdAsync(PublishModel data);
+
+
+
+        #endregion
+
+        #endregion
+
+
+
+        #region Slider Items 
+
+        #region  Get / Create / Edit / Delete / Publish
+
+
+        Task<IRequestProviderResult<SliderItemDto>> GetSliderItemByIdAsync(SliderItemKeysDto model , string lang);
+
+        Task<IRequestProviderResult<Guid>> CreateSliderItemASync(CreateSliderItemDto slider);
+
+        Task<IRequestProviderResult<bool>> UpdateSliderItemAsync(UpdateSliderItemDto slider);
+
+        Task<IRequestProviderResult<bool>> publishSliderItemByIdAsync(SliderItemKeysDto model);
+
+        Task<IRequestProviderResult<bool>> DeleteSliderItemByIdAsync(SliderItemKeysDto modle);
+
+        #endregion
+
+        #endregion
+
+    }
+}

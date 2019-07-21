@@ -1,7 +1,7 @@
 ﻿
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
 
-namespace TamTech.Monshaat.POS.Web.Models.Portal.Partials
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Portal.Partials
 {
     public class FooterVm
     {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biography.settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biography
 {
     public class BiographyService : BaseAPIService, IBiographyService
     {

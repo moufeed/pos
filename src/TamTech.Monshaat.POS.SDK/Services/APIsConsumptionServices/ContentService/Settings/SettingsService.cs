@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Settings
 {
     public class SettingsService : BaseAPIService ,ISettingService
     {

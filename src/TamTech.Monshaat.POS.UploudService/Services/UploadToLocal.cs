@@ -21,9 +21,7 @@ namespace TamTech.Monshaat.POS.UploadService.Services
         /*private ITelemetryClientService _telemetryClientService;*/ 
         private string innerUploadFolderPath;//without domain 
         private string hostName; //domain name without http://  
-        private string environmentPath;
-        private string UploadServiceAppSettingSectionName;
-        private string UploadSettingsSectionName;
+        private string environmentPath;                     
         #endregion 
 
 

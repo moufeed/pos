@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;                        
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.User;
 
 
 namespace TamTech.Monshaat.POS.Web.StartUP

@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using TamTech.Monshaat.POS.Web.Core.Mappers;
-using TamTech.Monshaat.POS.Web.Services.Identity;
-using TamTech.Monshaat.POS.Web.Services.Identity.Settings;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
-using TamTech.Monshaat.POS.Web.Services.Identity.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.User;
-using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.User;
+using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

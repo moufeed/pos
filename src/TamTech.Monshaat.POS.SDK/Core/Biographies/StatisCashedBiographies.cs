@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Biography;
 
-namespace TamTech.Monshaat.POS.Web.Core.Biographies
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Biographies
 {
     public class StatisCashedBiographies : IBiographiesManager
     {

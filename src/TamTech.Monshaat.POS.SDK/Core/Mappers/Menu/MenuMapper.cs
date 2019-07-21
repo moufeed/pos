@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Menus;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers
 {
     public static class MenuMapper
     {

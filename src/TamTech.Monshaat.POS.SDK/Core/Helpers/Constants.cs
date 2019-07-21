@@ -1,6 +1,6 @@
 ﻿ 
 
-namespace TamTech.Monshaat.POS.Web.Core.Helpers
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Helpers
 {
    public class Constants
     {

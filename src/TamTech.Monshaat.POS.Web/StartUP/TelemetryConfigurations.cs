@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq; 
-using TamTech.Monshaat.POS.Web.Core.Telemetry; 
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry; 
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

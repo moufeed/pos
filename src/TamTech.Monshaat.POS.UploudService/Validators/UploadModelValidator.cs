@@ -1,12 +1,9 @@
 ﻿using FluentValidation;
 using System.IO;
 using System.Linq;
-using TamTech.Monshaat.POS.UploadService.Models;
-using TamTech.Monshaat.POS.UploadService.Configurations;
+using TamTech.Monshaat.POS.UploadService.Models;       
 using TamTech.Monshaat.POS.UploadService.Settings;
-using FluentValidation.Validators;
-using Microsoft.AspNetCore.StaticFiles;
-using System;
+using FluentValidation.Validators;       
 
 namespace TamTech.Monshaat.POS.UploadService.Validators
 {

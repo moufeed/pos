@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
-using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 
-namespace TamTech.Monshaat.POS.Web.Core.Extensions
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Extensions
 {
     public static class IdentityExtensions
     {

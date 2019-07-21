@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;  
 
-namespace TamTech.Monshaat.POS.Web.Core.TagHelpers
+namespace TamTech.Monshaat.POS.Web.SDK.Core.TagHelpers
 {
     public class IfTagHelper : TagHelper
     {

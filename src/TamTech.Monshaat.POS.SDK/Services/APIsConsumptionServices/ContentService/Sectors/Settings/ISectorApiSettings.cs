@@ -1,4 +1,4 @@
-﻿namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings
+﻿namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors.Settings
 {
     public interface ISectorApiSettings
     {

@@ -1,6 +1,6 @@
-﻿using TamTech.Monshaat.POS.Web.Models.Shared;
+﻿using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biography.settings
 {
     public class BiographyApiSettings : BaseAPISettings, IBiographyApiSettings
     {

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using TamTech.Monshaat.POS.UploadService.Settings;
 
 namespace TamTech.Monshaat.POS.UploadService.Configurations
@@ -12,9 +9,7 @@ namespace TamTech.Monshaat.POS.UploadService.Configurations
 
         string GetUploadPath();
 
-        string GetDomainName();
-          
-        AzureBlobStorageSettings GetAzureBlobStorageSettings();
+        string GetDomainName();    
 
         ThumbnailSettings GetThumbnailSettings();
     }

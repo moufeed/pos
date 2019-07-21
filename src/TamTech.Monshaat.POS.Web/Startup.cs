@@ -5,23 +5,25 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;                            
 using TamTech.Monshaat.POS.IdentityService;    
-using TamTech.Monshaat.POS.MCIServices;        
+using TamTech.Monshaat.POS.MCI.Services;
+using TamTech.Monshaat.POS.SDK.Core.Context;
 using TamTech.Monshaat.POS.Web.AppStartup.DirectBackEndServices.FilesServices;    
-using TamTech.Monshaat.POS.Web.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
 using TamTech.Monshaat.POS.Web.StartUP;                      
+using TamTech.Monshaat.POS.Web.StartUP.MicroServices;                      
 
 namespace TamTech.Monshaat.POS.Web
 {
     public class Startup
     {
+        public IConfiguration _configuration { get; }
 
         public Startup(IConfiguration configuration)
         {
 
-            Configuration = configuration;
+             _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,31 +35,36 @@ namespace TamTech.Monshaat.POS.Web
 
             services.AddCompressionConfigurations();
 
-            services.AddFiltersConfigurations();
+            services.AddFiltersConfigurations();  
 
+            services.AddIdentityServiceConfigurations(_configuration);   
 
-            services.AddIdentityService(Configuration);
+            services.AddCommonServicesConfigurations(_configuration);           
 
-      //      services.AddAuthenticationConfigurations(Configuration);
+            services.DirectBackendServices_AddFilesServicesConfigurationsConfigurations(_configuration);
 
-            services.AddCommonServicesConfigurations(Configuration);
+            services._AddBusinessLogicDirectBackendServicesConfigurations();
 
-          //  services.AddBackendContentServiceConfigurations(Configuration);
+            services.MicroServices_AddProvidersServicesConfigurations();
 
-            services.DirectBackendServices_AddFilesServicesConfigurationsConfigurations(Configuration);
+            services.MicroServices_AddBackendAPIsSettingsConfigurations(_configuration);
 
-            services.AddBusinessLogicServicesConfigurations(Configuration);
+            services.AddBLLAPIsServicesConfigurations();
 
-            services.AddEFileIdentityProviderConfigurations(Configuration);
+            services.AddEFileIdentityProviderConfigurations(_configuration);
 
             services.AddFluentValidationConfigurations();
 
-            services.AddMCIServicesConfigurations(Configuration);
+            services.AddMCIServicesConfigurations(_configuration);
+
+            services.AddMCIAPISimulatorConfigurations(_configuration);
+          
 
             //services.AddTransient<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
 
             //services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,7 +88,7 @@ namespace TamTech.Monshaat.POS.Web
                 cachePeriod = "86400";
             }
                 
-            app.UseXSSProtection(env, Configuration);    
+            app.UseXSSProtection(env, _configuration);    
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
@@ -92,12 +99,12 @@ namespace TamTech.Monshaat.POS.Web
             app.UseResponseCompression();
             app.UseStatusCodePagesWithRedirects("/error/{0}");
             app.InitializeMapper();    
-            app.UseSettings(env, Configuration);
+            app.UseSettings(env, _configuration);
             app.ConfigureIdentityService(env);
-
+           // app.UseCustomHttpContext();
             app.UseResponseCompression();
 
-            app.UseMvcAndRoute(Configuration, new CultureManager().LocalizationOptions);
+            app.UseMvcAndRoute(_configuration, new CultureManager().LocalizationOptions);
             app.UseCookiePolicy();
 
         }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using TamTech.Monshaat.POS.Web.Core.Validations.Settings;
-namespace TamTech.Monshaat.POS.Web.Core.Validations
+using TamTech.Monshaat.POS.Web.SDK.Core.Validations.Settings;
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Validations
 {
     public class ExpressionValidation : IExpressionValidation
     {

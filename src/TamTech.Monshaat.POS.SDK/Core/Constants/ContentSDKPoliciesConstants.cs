@@ -1,6 +1,6 @@
 ﻿ 
 
-namespace TamTech.Monshaat.POS.Web.Core.Constants
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
 {
     public static class ContentSDKPoliciesConstants
     {

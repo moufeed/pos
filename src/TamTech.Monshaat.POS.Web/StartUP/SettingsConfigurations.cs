@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

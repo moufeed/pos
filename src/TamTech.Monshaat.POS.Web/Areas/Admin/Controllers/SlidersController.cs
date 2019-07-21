@@ -5,17 +5,18 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Slider;
-using TamTech.Monshaat.POS.Web.Core.Cultures;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Slider;
+using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sliders;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -292,12 +293,12 @@ namespace TamTechSDK.Web.Controllers.Admin
 
             ViewBag.SliderId = sliderId;
             ViewBag.SliderTitle = sliderTitle;
-            return View("CreateSliderItemForm", new CreateSliderItemDto());
+            return View("CreateSliderItemForm", new CreateSliderItemVm());
         }
 
 
         [HttpPost("{Culture}/[Area]/[Controller]/items/Create/{sliderId}")]
-        public async virtual Task<IActionResult> CreateItem(CreateSliderItemDto model, Guid sliderId, string sliderTitle, IFormCollection collection)
+        public async virtual Task<IActionResult> CreateItem(CreateSliderItemVm model, Guid sliderId, string sliderTitle, IFormCollection collection)
         {
 
             ViewBag.SliderId = sliderId;
@@ -332,7 +333,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 }
 
 
-                var result = await _sliderService.CreateSliderItemASync(model);
+                var result = await _sliderService.CreateSliderItemASync(model.MapSliderItemDto());
 
                 if (result.Success)
                 {

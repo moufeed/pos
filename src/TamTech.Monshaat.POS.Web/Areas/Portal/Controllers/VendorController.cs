@@ -7,27 +7,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.EFile2.Utilities.Filters;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Core.Extensions;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Vendor;
-using TamTech.Monshaat.POS.Web.Core.Filters;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
+using TamTech.Monshaat.POS.MCI.EFile2.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Vendor;
+using TamTech.Monshaat.POS.Web.SDK.Core.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.vendor;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors.Models;
 using TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister;
 using TamTech.Monshaat.POS.SDK.Core.Authorizations;
-using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -194,7 +194,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         {
             try
             {
-                if (ModelState.IsValid)
+             //   if (ModelState.IsValid)
                 {
                     CreatePersonModel _CreateModel = model.MapVendorFormVmToCreatePersonModelWithoutAttachments();
                     var result = await _vendorServis.CreateAsync(_CreateModel);

@@ -1,8 +1,8 @@
 ﻿using System;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Page;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Page;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers
 {
     public static class PageMapper
     {

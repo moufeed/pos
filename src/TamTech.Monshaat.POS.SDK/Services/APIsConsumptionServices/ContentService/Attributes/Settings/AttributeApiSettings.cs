@@ -1,6 +1,6 @@
-﻿using TamTech.Monshaat.POS.Web.Models.Shared;
+﻿using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attributes.Settings
 {
     public class AttributeApiSettings : BaseAPISettings, IAttributeApiSettings, IPOSAttributeApiSettings
     {

@@ -5,26 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Services.Identity; 
-using TamTech.Monshaat.POS.Web.Core.Extensions;
-using TamTech.Monshaat.POS.Web.Models.VMs;
-using TamTech.Monshaat.POS.Web.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity; 
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Http;
-using TamTech.Monshaat.POS.Web.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Services.ContentService;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
-using TamTech.Monshaat.POS.Web.Core.Helpers;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContentCommonUtilities;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Helpers;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -62,12 +62,9 @@ namespace TamTechSDK.Web.Controllers.Admin
         }
         #endregion
 
-
-
-
+        
         public virtual async Task<IActionResult> Index()
-        {
-
+        {           
             Dictionary<string, object> searchParams = new Dictionary<string, object>();
             searchParams.Add("StatusId", 1);
             try

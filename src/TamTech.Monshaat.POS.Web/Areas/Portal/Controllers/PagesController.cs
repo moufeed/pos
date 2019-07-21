@@ -4,11 +4,11 @@ using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {

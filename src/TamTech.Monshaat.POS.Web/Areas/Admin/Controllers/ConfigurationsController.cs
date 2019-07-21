@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

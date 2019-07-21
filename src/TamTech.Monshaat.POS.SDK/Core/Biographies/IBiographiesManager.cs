@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
 
-namespace TamTech.Monshaat.POS.Web.Core.Biographies
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Biographies
 {
     public interface IBiographiesManager
     {

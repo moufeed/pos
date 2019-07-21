@@ -9,9 +9,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTech.Monshaat.POS.Web.Models.Shared;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
 namespace TamTech.Monshaat.POS.IdentityService.Services
 {

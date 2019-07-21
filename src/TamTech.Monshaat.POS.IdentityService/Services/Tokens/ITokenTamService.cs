@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TamTech.Monshaat.POS.IdentityService.Models;
-using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
 
 namespace TamTech.Monshaat.POS.IdentityService.Services
 {

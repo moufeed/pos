@@ -4,19 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pages.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pages
 {
     public class PageService : BaseAPIService, IPageService
     {

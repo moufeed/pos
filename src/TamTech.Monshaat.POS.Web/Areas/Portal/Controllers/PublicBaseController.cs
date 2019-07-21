@@ -9,14 +9,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Attachments;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
-using TamTech.Monshaat.POS.Web.Core.Filters;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Attachments;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {

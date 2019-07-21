@@ -1,6 +1,6 @@
 ﻿ 
 
-namespace TamTech.Monshaat.POS.Web.Core.Cultures
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Cultures
 {
     public class CultureModel
     {

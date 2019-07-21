@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks; 
 
-namespace TamTech.Monshaat.POS.Web.Core.Constants
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
 {
     public class CommonConstants
     {

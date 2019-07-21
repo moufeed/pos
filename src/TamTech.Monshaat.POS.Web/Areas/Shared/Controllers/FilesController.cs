@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.FileTypes;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Shared.Controllers
 {

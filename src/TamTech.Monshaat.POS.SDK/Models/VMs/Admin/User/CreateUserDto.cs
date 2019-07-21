@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.User
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.User
 {
     public class CreateUserDto
     {

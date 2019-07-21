@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Models.Shared;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
-using TamTech.Monshaat.POS.Web.Services.POSs;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
-using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pos.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pos
 {
     public class PosService : BaseAPIService , IPOSService
     {

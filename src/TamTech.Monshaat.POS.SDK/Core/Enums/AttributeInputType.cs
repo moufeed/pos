@@ -1,5 +1,5 @@
 ﻿
-namespace TamTech.Monshaat.POS.Web.Core.Enums
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Enums
 {
     public enum AttributeChoiceType
     {

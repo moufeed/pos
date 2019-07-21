@@ -31,7 +31,7 @@
         <div class="p-0 dropdown-menu" aria-labelledby="languageMenu">
 
 
-            @foreach (var culture in TamTech.Monshaat.POS.Web.Core.Cultures.CultureConstants.CulturesList)
+            @foreach (var culture in TamTech.Monshaat.POS.Web.SDK.Core.Cultures.CultureConstants.CulturesList)
             {
 
                 if (!string.Equals(_lang, culture.Lang, StringComparison.OrdinalIgnoreCase))
@@ -76,7 +76,7 @@ else
             @_lang.ToUpper()
         </a>
         <div class="p-0 dropdown-menu" aria-labelledby="languageMenu">
-            @foreach (var culture in TamTech.Monshaat.POS.Web.Core.Cultures.CultureConstants.CulturesList)
+            @foreach (var culture in TamTech.Monshaat.POS.Web.SDK.Core.Cultures.CultureConstants.CulturesList)
             {
                 if (!string.Equals(_lang, culture.Lang, StringComparison.OrdinalIgnoreCase))
                 {

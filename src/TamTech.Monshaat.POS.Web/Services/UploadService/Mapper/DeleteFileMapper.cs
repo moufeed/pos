@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
     public static class DeleteFileMapper
     {
 
-        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFileInputModel MapDeleteFileInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileInputModel common)
+        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFileInputModel MapDeleteFileInputModel(this TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFileInputModel common)
         {
             return new TamTech.Monshaat.POS.UploadService.Models.DeleteFileInputModel
             {
@@ -17,7 +17,7 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
             };
         }
 
-        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFilesInputModel MapDeleteFilesInputModel(this TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesInputModel common)
+        public static TamTech.Monshaat.POS.UploadService.Models.DeleteFilesInputModel MapDeleteFilesInputModel(this TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFilesInputModel common)
         {
             return new TamTech.Monshaat.POS.UploadService.Models.DeleteFilesInputModel
             {
@@ -27,9 +27,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileResult MapDeleteFileResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFileResult nuget)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFileResult MapDeleteFileResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFileResult nuget)
         {
-            return new TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFileResult
+            return new TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFileResult
             {
                 FilePath = nuget.FileName,
                 Result = switchEnum((int)nuget.Result),
@@ -37,9 +37,9 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesModelResult MapDeleteFilesModelResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFilesModelResult nuget)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFilesModelResult MapDeleteFilesModelResult(this TamTech.Monshaat.POS.UploadService.Models.DeleteFilesModelResult nuget)
         {
-            return new TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteFilesModelResult
+            return new TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteFilesModelResult
             {
 
                 Results = nuget.Results.Select(d => d.MapDeleteFileResult()).ToList()
@@ -50,20 +50,20 @@ namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper
 
 
 
-        public static TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteResult switchEnum(int p1)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteResult switchEnum(int p1)
         {
             switch (p1)
             {
                 case 1:
-                    return TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteResult.Deleted;
+                    return TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteResult.Deleted;
 
                 case 2:
-                    return TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteResult.NotExist;
+                    return TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteResult.NotExist;
 
                 case 0:
-                    return TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteResult.NotDeleted;
+                    return TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteResult.NotDeleted;
                 default:
-                    return TamTech.Monshaat.POS.Web.Services.Upload.Models.DeleteResult.NotDeleted;
+                    return TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models.DeleteResult.NotDeleted;
             }
 
         }

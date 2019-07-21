@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;  
+using TamTech.Monshaat.POS.MCI.EFile2.Services;  
 
 namespace TamTech.Monshaat.POS.Web.MinistryServices.EFile2
 {
@@ -30,11 +30,11 @@ namespace TamTech.Monshaat.POS.Web.MinistryServices.EFile2
                 case "A":
                     return "1099800391";
                 case "B":
-                    return "1099999999";
-                case "C":
                     return "1099999998";
+                case "C":
+                    return "1099999996";
                 case "D":
-                    return "1099999997";
+                    return "1099999994";
             }
         }
 

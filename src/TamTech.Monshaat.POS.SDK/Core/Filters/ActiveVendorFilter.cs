@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Core.Extensions;
-using TamTech.Monshaat.POS.Web.Services.Identity;
-using TamTech.Monshaat.POS.Web.Services.Identity.Models.Params;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models.Params;
 
-namespace TamTech.Monshaat.POS.Web.Core.Filters
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Filters
 {
     public class ActiveVendor : ActionFilterAttribute, IActionFilter
     {

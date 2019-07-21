@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor
 {
     public class VendoradminService : BaseAPIService, IVendorAdminServices
     {

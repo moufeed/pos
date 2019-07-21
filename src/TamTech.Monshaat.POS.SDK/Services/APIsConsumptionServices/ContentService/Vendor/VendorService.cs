@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Models.Shared;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor
 {
     public class VendorService : BaseAPIService, IVendorService
     {
