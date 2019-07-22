@@ -24,7 +24,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                         "Content-Security-Policy",
                         "default-src 'self'; " +
                         "img-src * 'self'  data: https:; " +
-                        "font-src 'self' use.fontawesome.com ; " +
+                        "font-src 'self' data: use.fontawesome.com ; " +
                         "style-src 'self' 'unsafe-inline' use.fontawesome.com stackpath.bootstrapcdn.com; " +
                         "script-src 'self' 'unsafe-inline'  'unsafe-eval' ajax.googleapis.com stackpath.bootstrapcdn.com cdnjs.cloudflare.com www.google.com www.gstatic.com;" +
                         "frame-src 'self' www.google.com;" +

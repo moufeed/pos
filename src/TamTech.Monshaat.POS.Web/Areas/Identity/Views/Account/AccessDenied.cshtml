@@ -12,21 +12,25 @@
             <img src="~/Identity/img/logo.png" width="350" />
 
         </header>
+        @if (Context.User.Identity.IsAuthenticated)
+        {
+            <p style="display: flex; justify-content: space-between;   margin : 0 15px 15px;">
+                <span>المستخدم  : <strong> @Context.User.Identity.GetUsername()</strong></span>
+                <span>الصلاحيات  : <strong> @Context.User.Identity.GetPermission()</strong></span>
+            </p>
 
+        }
         <div class="form-wrap text-center white-panel p_15">
             <h4> @Localizer["Access_is_denied"]</h4>
-
+             
             @{
                 string homePage = $"<a href='{Url.Action("index", "home", new { Area = "portal" })}'  class='btn btn-link'>{Localizer["to_home_page"].Value}</a>";
             }
             <p class="">
                 @Localizer["Access_is_denied_msg", homePage]
             </p>
-            @if (Context.User.Identity.IsAuthenticated)
-            {
-        <h4> المستخدم :  @Context.User.Identity.GetUsername()</h4>
-        <h4> الصلاحيات :   @Context.User.Identity.GetPermission()</h4>
-            }
+
+
 
         </div>
     </div>
