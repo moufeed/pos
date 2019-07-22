@@ -6,6 +6,9 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.vendor
 {
+
+   
+
     public class VendorFormVm
     {
         public string Name { get; set; }
@@ -72,11 +75,11 @@ namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.vendor
         public string StatusOptions { get; set; }
 
 
-        public bool Activated { get; set; }
+        public bool? Activated { get; set; }
 
-        public bool AdminCanSetAction { get; set; }
+        public bool? AdminCanSetAction { get; set; }
 
-        public bool VendorCanEdit { get; set; }
+        public bool? VendorCanEdit { get; set; }
         public string Notes { get; set; }
 
 

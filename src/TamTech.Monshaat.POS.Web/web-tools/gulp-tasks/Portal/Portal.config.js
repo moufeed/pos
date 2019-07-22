@@ -50,7 +50,7 @@ let ListFiles = [
         output: "pos.f.js",
         es6: true,
         inputs: [
-            `${portal_src}/js/Upload.js`,
+           // `${portal_src}/js/Upload.js`,
              `${portal_src}/js/pos-form.js`
         ]
     },

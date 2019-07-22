@@ -194,7 +194,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         {
             try
             {
-             //   if (ModelState.IsValid)
+               if (ModelState.IsValid)
                 {
                     CreatePersonModel _CreateModel = model.MapVendorFormVmToCreatePersonModelWithoutAttachments();
                     var result = await _vendorServis.CreateAsync(_CreateModel);
@@ -232,7 +232,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 var person = await GetPersonAsync();
 
                 if (userPermission == PermissionTypeEnum.Vendor.ToString() 
-                    || (person != null && person.VendorCanEdit))
+                    || (person != null && person.VendorCanEdit == true ))
                 {   
                         return View(_VIEWS["VendorForm"], person);   
                 }

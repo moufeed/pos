@@ -20,10 +20,10 @@
 
     StatisticsDto VendorByStatus = ViewBag.VendorByStatus != null ? (StatisticsDto)ViewBag.VendorByStatus : new StatisticsDto();
 
-
-    ViewBag.TotalPos = POSByStatus.Data.Sum();
-    ViewBag.VendorTotal = VendorByStatus.Data.Sum();
-    ViewBag.ContactUsTotal = ContactUsByStatus.Data.Sum();
+ 
+    ViewBag.TotalPos =  POSByStatus.Data != null && POSByStatus.Data.Count() > 0 ? POSByStatus.Data.Sum() : 0;
+    ViewBag.VendorTotal =  VendorByStatus.Data != null && VendorByStatus.Data.Count() > 0 ? VendorByStatus.Data.Sum() : 0;
+    ViewBag.ContactUsTotal =  ContactUsByStatus.Data != null && ContactUsByStatus.Data.Count() > 0 ? ContactUsByStatus.Data.Sum() : 0;
 }
 
 
@@ -48,21 +48,21 @@
                         <h4>@Localizer["Pos-status"]</h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var posDataByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Data.ToArray());
-                            var posLabelsByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Labels.ToArray());
-                        }
-                        <if include-if="@POSByStatus.Data.Count > 0">
+                       
+                        <if include-if="POSByStatus.Data != null && POSByStatus.Data.Count > 0">
+                            @{
+                                var posDataByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Data.ToArray());
+                                var posLabelsByStatus = Newtonsoft.Json.JsonConvert.SerializeObject(POSByStatus.Labels.ToArray());
+                            }
                             <canvas class="chart-widget"
                                     data-chart-values="@posDataByStatus"
                                     data-labels='@posLabelsByStatus'
                                     data-legend-postion="right"
                                     data-legend-display="false"
                                     data-chart-type="doughnut"
-                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"
-                                    ></canvas>
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@POSByStatus.Data.Count > 0">
+                        <if exclude-if="POSByStatus.Data != null && POSByStatus.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>
@@ -78,21 +78,21 @@
                         <h4>@Localizer["Pos-sector"]</h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var posDataBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Data.ToArray());
-                            var posLabelsBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Labels.ToArray());
-                        }
-                        <if include-if="@POSBySector.Data.Count > 0">
+                       
+                        <if include-if="POSBySector.Data != null && POSBySector.Data.Count > 0">
+                            @{
+                                var posDataBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Data.ToArray());
+                                var posLabelsBySector = Newtonsoft.Json.JsonConvert.SerializeObject(POSBySector.Labels.ToArray());
+                            }
                             <canvas class="chart-widget"
                                     data-chart-type="polarArea"
                                     data-chart-values="@posDataBySector"
                                     data-labels='@posLabelsBySector'
                                     data-legend-postion="right"
                                     data-legend-display="true"
-                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"
-                                    ></canvas>
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@POSBySector.Data.Count > 0">
+                        <if exclude-if="POSBySector.Data != null && POSBySector.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>
@@ -108,19 +108,20 @@
                         <h4>@Localizer["Pos-type"]</h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var posDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Data.ToArray());
-                            var posLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Labels.ToArray());
-                        }
-                        <if include-if="@POSByType.Data.Count > 0">
+                      
+                        <if include-if="POSByType.Data != null && POSByType.Data.Count > 0">
+                            @{
+                                var posDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Data.ToArray());
+                                var posLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(POSByType.Labels.ToArray());
+                            }
                             <canvas class="chart-widget"
                                     data-chart-values="@posDataByType"
                                     data-labels='@posLabelsByType'
                                     data-legend-postion="right"
                                     data-legend-display="true"
-                                     data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
+                                    data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@POSByType.Data.Count > 0">
+                        <if exclude-if="POSByType.Data != null &&  POSByType.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>
@@ -147,11 +148,12 @@
                         <h4>@Localizer["vendors"]</h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var VendorData = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Data.ToArray());
-                            var VendorLabels = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Labels.ToArray());
-                        }
-                        <if include-if="@VendorByStatus.Data.Count > 0">
+                       
+                        <if include-if="VendorByStatus.Data != null && VendorByStatus.Data.Count > 0">
+                            @{
+                                var VendorData = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Data.ToArray());
+                                var VendorLabels = Newtonsoft.Json.JsonConvert.SerializeObject(VendorByStatus.Labels.ToArray());
+                            }
                             <canvas class="chart-widget" style="max-height:100%"
                                     data-chart-type="doughnut"
                                     data-chart-values="@VendorData"
@@ -160,7 +162,7 @@
                                     data-legend-postion="right"
                                     data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@VendorByStatus.Data.Count > 0">
+                        <if exclude-if="VendorByStatus.Data != null &&  VendorByStatus.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>
@@ -177,11 +179,12 @@
                         <h4>@Localizer["Messages-status"]</h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var ContactUsData = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Data.ToArray());
-                            var ContactUsLabels = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Labels.ToArray());
-                        }
-                        <if include-if="@ContactUsByStatus.Data.Count > 0">
+                      
+                        <if include-if="ContactUsByStatus.Data != null && ContactUsByStatus.Data.Count > 0">
+                            @{
+                                var ContactUsData = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Data.ToArray());
+                                var ContactUsLabels = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByStatus.Labels.ToArray());
+                            }
                             <canvas class="chart-widget" style="max-height:100%"
                                     data-chart-type="doughnut"
                                     data-chart-values="@ContactUsData"
@@ -190,7 +193,7 @@
                                     data-legend-postion="right"
                                     data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@ContactUsByStatus.Data.Count > 0">
+                        <if exclude-if="ContactUsByStatus.Data != null &&  ContactUsByStatus.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>
@@ -206,11 +209,12 @@
                         <h4>@Localizer["Messages-types"] </h4>
                     </div>
                     <div class="x_content p-3">
-                        @{
-                            var ContactUsDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Data.ToArray());
-                            var ContactUsLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Labels.ToArray());
-                        }
-                        <if include-if="@ContactUsByType.Data.Count > 0">
+                      
+                        <if include-if="ContactUsByType.Data != null && ContactUsByType.Data.Count > 0">
+                            @{
+                                var ContactUsDataByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Data.ToArray());
+                                var ContactUsLabelsByType = Newtonsoft.Json.JsonConvert.SerializeObject(ContactUsByType.Labels.ToArray());
+                            }
                             <canvas class="chart-widget" style="max-height:100%"
                                     data-chart-type="bar"
                                     data-chart-values="@ContactUsDataByType"
@@ -219,7 +223,7 @@
                                     data-legend-postion="right"
                                     data-legend-fontfamily="'tl-medium','rw-regular',Roboto,Arial,'Droid Sans',sans-serif"></canvas>
                         </if>
-                        <if exclude-if="@ContactUsByType.Data.Count > 0">
+                        <if exclude-if="ContactUsByType.Data != null &&  ContactUsByType.Data.Count > 0">
                             <div class="text-center no-messages">
                                 <i class="fa fa-ban m-b5" aria-hidden="true"></i>
                                 <p class="lead"> @Localizer["there_this_data"]</p>

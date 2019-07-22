@@ -83,3 +83,5 @@
  }) 
 
  })
+
+ const GetFileExtension = filename => (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : undefined;

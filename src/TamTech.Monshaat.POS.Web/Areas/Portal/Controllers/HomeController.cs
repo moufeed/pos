@@ -97,7 +97,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 return RedirectToAction(TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.IndexAction,
                                         TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.OAuthController, new { access_token, returnUrl });
             }
-            System.Diagnostics.Debug.WriteLine("CCCCCCCCCCCCCCCCCCCCCC");
+            
             // ViewBag.Host = _appSettingsService.GetURl();
             try
             {

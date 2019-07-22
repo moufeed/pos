@@ -56,22 +56,27 @@ $.validator.addClassRules("checks", {
 });
 
 
-  
-
-$.validator.addMethod( "crvendor", function( value, element, url ) {
-    var resutl = false;
-    $.ajaxSetup({async:false});
-    $.get( `${url}?crNumber=${value}` ,   data  => resutl =  data.success );
-    return resutl;
-}, $.validator.format( "Commercial number  is not belongs to your account" ));
-
-  
 
 $.validator.addMethod( "commercial", function( value, element, params ) {
     return  value.length == params
 }, $.validator.format( "Commercial number it has to be {0} digits" ));
 
+  
+
+$.validator.addMethod( "crvendor", function( value, element, url ) {
+    var resutl = false;
+   
+    let commercial = $(element).attr('data-rule-commercial');
+    var iscommercial = jQuery.validator.methods.commercial.call(this, value, element , commercial);
  
+    if(iscommercial){
+    $.ajaxSetup({async:false});
+    $.get( `${url}?crNumber=${value}` ,  data  => resutl =  data.success );
+    }
+    return resutl;
+}, "Commercial number  is not belongs to your account" );
+
+  
  
  
 $.validator.addMethod( "FileSize", function( value, element, param ) {
