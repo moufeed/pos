@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using TamTech.Monshaat.POS.MCI.EFile2.Services;
 using TamTech.Monshaat.POS.MCI.EFile2.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 
 namespace TamTech.Monshaat.POS.MCI.EFile2.Controllers
 {     
@@ -32,7 +33,7 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Controllers
                 var result = await _identityUtilities.Signup(access_token);
                 if (result)
                 {
-                    SetCookie(Constants.EFileTokenCookieName, access_token, Helpers.LogoutAfterMinutes);
+                    SetCookie(Constants.EFileTokenCookieName, access_token, Helpers.DurationOfLogin);
                     var username = await _eFileService.GetUsernameByAccessTokenAsync(access_token);
                     if (await _identityUtilities.CheckAciveVendor(username))
                     {
@@ -108,7 +109,7 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Controllers
             if (expireTime.HasValue)
                 option.Expires = DateTime.Now.AddMinutes(expireTime.Value);
             else
-                option.Expires = DateTime.Now.AddMinutes(10);
+                option.Expires = DateTime.Now.AddMinutes(CommonConstants.DefaultDurationOfLogin);
 
             Response.Cookies.Append(key, value, option);
         }

@@ -92,7 +92,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
         public const string EnableSeedUsersAndRoles = "EnableSeedUsersAndRoles";
         public const string EnableSeedIdentityServerSettings = "EnableSeedIdentityServerSettings";
         public const string WebApplication_VendorRoleName = "WebApplication_VendorRoleName";
-        public const string LogoutAfterMinutes = "LogoutAfterMinutes";
+        public const string DurationOfLogin = "DurationOfLogin";
 
 
         public const string StaticPages = "StaticPages";

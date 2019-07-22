@@ -25,25 +25,25 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Utilities
         //private static string vendorRole;
         //private static bool vendorRoleIsLocked;
 
-          public static int LogoutAfterMinutes
+          public static int DurationOfLogin
         {
             get
             {
-                return logoutAfterMinutes;
+                return durationOfLogin;
             }
             set
             {
-                if (!logoutAfterMinutesIsLocked)
+                if (!durationOfLoginIsLocked)
                 {
-                    logoutAfterMinutesIsLocked = true;
-                    logoutAfterMinutes = value;
+                    durationOfLoginIsLocked = true;
+                    durationOfLogin = value;
                 }
             }
 
         }
 
-        private static int logoutAfterMinutes;
-        private static bool logoutAfterMinutesIsLocked;
+        private static int durationOfLogin;
+        private static bool durationOfLoginIsLocked;
 
 
         #endregion

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
@@ -15,12 +16,18 @@ namespace TamTech.Monshaat.POS.IdentityService
     public static class POSIdentityServiceStartup
     {       
         public static void AddIdentityServiceConfigurations(this IServiceCollection services, IConfiguration configuration)
-        {       
-
+        {
+            int durationOfLogin = configuration.GetSection(AppSettings.WebApplicationSettings)
+                                           .GetValue<int>(AppSettings.DurationOfLogin);
+            if (durationOfLogin <= 0)
+            {
+                durationOfLogin = CommonConstants.DefaultDurationOfLogin;
+            };
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                     .AddCookie(options =>
                     {
                         options.Cookie.HttpOnly = true;
+                       // options.Cookie.Expiration = TimeSpan.FromMinutes(1);  
                         options.Cookie.SecurePolicy = CookieSecurePolicy.None;
                         //    ? CookieSecurePolicy.None : CookieSecurePolicy.Always;
                         options.Cookie.SameSite = SameSiteMode.Lax;
@@ -28,6 +35,8 @@ namespace TamTech.Monshaat.POS.IdentityService
                         options.LoginPath = "/Account/Login";
                         options.LogoutPath = "/Account/Logout";
                         options.AccessDeniedPath = "/Account/AccessDenied";
+                         options.SlidingExpiration = true;
+                         options.ExpireTimeSpan = TimeSpan.FromMinutes(durationOfLogin);
                     });
             services.Configure<CookiePolicyOptions>(options =>
             {
