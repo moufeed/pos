@@ -1,13 +1,4 @@
-﻿@model LoggedOutViewModel
-
-@{
-    // set this so the layout rendering sees an anonymous user
-    ViewData["signed-out"] = true;
-}
-
-
-
-
+﻿  
 
 @{
     ViewBag.bodyClass = "logedout_page";
@@ -45,46 +36,26 @@
  
 </svg>
 
-    @{
-        Model.PostLogoutRedirectUri = Url.Action("login", "account");
-    }
+   
     <h1>@Localizer["You_are_now_logged_out"]</h1>
     <div class="alert alert-logout">
 
-        @if (Model.PostLogoutRedirectUri != null)
-        {
+       
         <p>
 
             @{
-                string login = $"<a href='{Model.PostLogoutRedirectUri}' class=' btn-link PostLogoutRedirectUri alert-link'>{Localizer["Login"].Value}</a>";
+                string login = $"<a href='{Url.Action("login", "account")}' class=' btn-link PostLogoutRedirectUri alert-link'>{Localizer["Login"].Value}</a>";
                 string homePage = $"<a href='{Url.Action("index", "home", new { Area = "portal" })}'  class='btn-link'>{Localizer["to_home_page"].Value}</a>";
             }
             @Localizer["return_to_login_or_homepage",login ,homePage ]
          
         </p>
-        }
+        
 
     </div>
-    @if (Model.SignOutIframeUrl != null)
-    {
-        <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
-    }
+    
 </div>
 
 
 
-
-@section scripts
-    {
-    @if (Model.AutomaticRedirectAfterSignOut)
-    {
-        <script>
-            window.addEventListener("load", function () {
-                var a = document.querySelector("a.PostLogoutRedirectUri");
-                if (a) {
-                    window.location = a.href;
-                }
-            });
-        </script>
-    }
-}
+ 

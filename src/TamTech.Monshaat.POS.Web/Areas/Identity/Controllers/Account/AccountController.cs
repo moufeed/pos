@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
 {
     [Area("Identity")]
     [ServiceFilter(typeof(AdminFilter))]
-    public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AdmibAccountController
+    public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AdminAccountController
     {
 
         public AccountController(IExternalAuthService authTamService, ITokenTamService tokenTamService, IAuthService authService)

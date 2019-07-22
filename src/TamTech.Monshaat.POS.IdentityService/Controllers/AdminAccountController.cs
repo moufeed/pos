@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
+using TamTech.Monshaat.POS.SDK.Models.VMs.Identity;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
@@ -16,7 +17,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Auth.Models;
 namespace TamTech.Monshaat.POS.IdentityService.Controllers
 {
 
-    public abstract class AdmibAccountController : Controller
+    public abstract class AdminAccountController : Controller
     {
         #region Props  
         private readonly IExternalAuthService _externalAuthService;
@@ -25,7 +26,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
         #endregion
 
         #region Ctors  
-        public AdmibAccountController(IExternalAuthService externalAuthService, ITokenTamService tokenTamService, IAuthService authService)
+        public AdminAccountController(IExternalAuthService externalAuthService, ITokenTamService tokenTamService, IAuthService authService)
         {
             _externalAuthService = externalAuthService;
             _tokenTamService = tokenTamService;
@@ -106,11 +107,20 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
             {
                 return Redirect(model.ReturnUrl);
             }
-            return Redirect("~/");
+            return RedirectToAction("Index", "Home",new { Area = "Admin"});          
 
         }
         #endregion
 
+
+
+        [HttpGet]
+        public async Task<IActionResult> Logout(string returnUrl)
+        {
+            await HttpContext.SignOutAsync();
+
+            return View("LoggedOut",new LoggedOutViewModel());
+        }
         #region Utilities  
         private LoginTamViewModel BuildLoginViewModel(string returnUrl)
         {
