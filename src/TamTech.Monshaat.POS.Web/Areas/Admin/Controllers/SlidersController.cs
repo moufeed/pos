@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
-using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
-using TamTech.Monshaat.POS.Web.SDK.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;        
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
-using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Slider;
-using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Slider;  
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
@@ -20,7 +18,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sliders;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-  //  [Authorize(Policy = ContentSDKPoliciesConstants.SlidersContentAdmin)]
+  [Authorize(Policy = PolicyConstants.SlidersContentAdmin)]
     public class SlidersController : AdminBaseController
     {
         #region prop

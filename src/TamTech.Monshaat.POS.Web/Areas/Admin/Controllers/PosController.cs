@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.Generic;     
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;     
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status;
 using TamTech.Monshaat.POS.Web.SDK.Services.POSs;
@@ -26,7 +24,8 @@ using TamTech.Monshaat.POS.SDK.Core.Constants;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-  //  [Authorize(Policy = ContentSDKPoliciesConstants.POSAdmin)]
+   
+   [Authorize(Policy = PolicyConstants.POSAdmin)]
     public class PosController : AdminBaseController
     {
 

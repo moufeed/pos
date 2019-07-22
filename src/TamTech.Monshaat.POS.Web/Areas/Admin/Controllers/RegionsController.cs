@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.Generic;  
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +14,12 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Regions;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Regions;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
+    [Authorize(Policy = PolicyConstants.AdminAccess)]
     public class RegionsController : AdminBaseController
     {
         private readonly IContactRegionService _regionsServices;

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.Generic;    
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +13,12 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Biography;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Biographies;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
+    [Authorize(Policy = PolicyConstants.BiographiesAdmin)]
     public class SettingsController : AdminBaseController
     {
 

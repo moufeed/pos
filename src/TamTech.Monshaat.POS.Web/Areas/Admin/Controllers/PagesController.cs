@@ -11,9 +11,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Enums;
 using TamTech.Monshaat.POS.Web.SDK.Core.Helpers.Converters;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Page;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
-using TamTech.Monshaat.POS.Web.SDK.Services.Upload.FileTypes;
+using Microsoft.AspNetCore.Mvc.Rendering;        
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
 using Microsoft.AspNetCore.Authorization;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
@@ -26,9 +24,8 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
 
 namespace TamTechSDK.Web.Controllers.Admin
-{
-
-   // [Authorize(Policy = ContentSDKPoliciesConstants.PagesContentAdmin)]
+{   
+ [Authorize(Policy = PolicyConstants.PagesContentAdmin)]
     public class PagesController : AdminBaseController
     {
         #region Props 

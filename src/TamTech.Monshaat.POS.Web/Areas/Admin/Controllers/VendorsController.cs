@@ -22,10 +22,12 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.SDK.Core.Constants;
 using TamTech.Monshaat.POS.MCI.EFile2.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
- //   [Authorize(Policy = ContentSDKPoliciesConstants.VendorAdmin)]
+   [Authorize(Policy = PolicyConstants.VendorAdmin)]
     public class VendorsController : AdminBaseController
     {
         private readonly IVendorAdminServices _vendorServices;

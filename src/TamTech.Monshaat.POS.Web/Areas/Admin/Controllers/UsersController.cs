@@ -7,14 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using TamTech.Monshaat.POS.Web.SDK.Core.Mappers;
-using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
-using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;      
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
 using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models.Params;
 using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models;
-using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.User;
-using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.User;   
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.Extensions.Localization;
@@ -22,8 +20,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
- //   [Authorize(Policy = ContentSDKPoliciesConstants.UsersAdmin)]
-
+   [Authorize(Policy = PolicyConstants.UsersAdmin)]    
     public class UsersController : AdminBaseController
     {
         #region Props 

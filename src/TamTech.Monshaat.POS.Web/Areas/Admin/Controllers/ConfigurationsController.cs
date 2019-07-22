@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System;     
+using System.Threading.Tasks;    
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
+
+    [Authorize(Policy = PolicyConstants.ConfigurationsAdmin)]
     public class ConfigurationsController : AdminBaseController
     {
 

@@ -17,12 +17,14 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;  
+
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
     [Area("Admin")]
     [ServiceFilter(typeof(AdminFilter))]
-     [Authorize]
+    [Authorize(Policy = PolicyConstants.AdminAccess)]
     public abstract class AdminBaseController : BaseController
     {
 

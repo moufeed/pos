@@ -1,43 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Generic;    
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;   
+using Microsoft.AspNetCore.Authorization;  
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;       
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status;           
 using TamTech.Monshaat.POS.Web.SDK.Services.Email;
 using TamTech.Monshaat.POS.Web.SDK.Services.Email.Models;
-using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
-using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models;
-using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Models.Params;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types.Models;
-using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
-using TamTech.Monshaat.POS.Web.SDK.Core.Mappers;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;        
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;     
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;    
 using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Contact;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Contact;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Email;
-using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;   
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.SDK.Core.Constants;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-    //[Authorize(Policy = ContentSDKPoliciesConstants.ContactUsAdmin)]
+    [Authorize(Policy = PolicyConstants.ContactUsAdmin)]       
     public class ContactController : AdminBaseController
     {
 

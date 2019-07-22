@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;    
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +10,10 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes.Models;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;   
 
 namespace TamTechSDK.Web.Controllers.Admin
-{
+{   
     public abstract class BaseAttributesController : AdminBaseController
     {
         public readonly IAttributeService _attributeService;

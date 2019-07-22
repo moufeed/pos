@@ -23,7 +23,7 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-  //  [Authorize(Policy = ContentSDKPoliciesConstants.POSSectorsAdmin)]
+    [Authorize(Policy = PolicyConstants.POSSectorsAdmin)]
     public class SectorsController : AdminBaseController
     {
         private readonly IPOSSectorServices _sectorServices;

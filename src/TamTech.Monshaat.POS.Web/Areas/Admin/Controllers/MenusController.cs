@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -10,17 +9,18 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Enums;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;
-using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;  
 using TamTech.Monshaat.POS.Web.SDK.Core.Mappers;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Menus;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContentCommonUtilities;
-using TamTech.Monshaat.POS.SDK.Models.VMs.Admin.Menus;
+using TamTech.Monshaat.POS.SDK.Models.VMs.Admin.Menus; 
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
-  //  [Authorize(Policy = ContentSDKPoliciesConstants.MenusContentAdmin)]
+    [Authorize(Policy = PolicyConstants.MenusContentAdmin)]
     public class MenusController : AdminBaseController
     {
 

@@ -12,8 +12,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Http;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
-using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.SDK.Services.ContentService;
+using Microsoft.Extensions.Localization;     
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics;
@@ -27,10 +26,8 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
-{
-
-    [Area("Admin")]
-  //  [Authorize(Policy = ContentSDKPoliciesConstants.DashboardAdmin)]
+{       
+    [Authorize(Policy = PolicyConstants.DashboardAdmin)]
     public class HomeController : AdminBaseController
     {
 
