@@ -9,7 +9,7 @@
  
     <div class="vendor-form">
         <div class="white-panel p-y-45 p-x-35">
-            <if exclude-if='Model.Activated'>
+            <if exclude-if='(bool)Model.Activated'>
                 <div class="form-group">
                     <div class="form-row justify-content-between">
                         <label asp-for="StatusName" class="col-md-3">
@@ -104,7 +104,7 @@
                             @Localizer["back_to_hompage"]
                         </a>
 
-                        <if include-if='Model.VendorCanEdit'>
+                        <if include-if='(bool)Model.VendorCanEdit'>
 
                             <a asp-action="edit" asp-controller="vendor" class="btn btn-outline-info m-x-15">
                                 @Localizer["go_to_edit_page"]
