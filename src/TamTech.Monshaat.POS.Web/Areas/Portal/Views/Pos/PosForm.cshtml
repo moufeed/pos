@@ -87,28 +87,32 @@
                         @{
                         int maxImages = 8;
                         }
-                        <div class="attachment-area form-group" data-id="Attachments">
-                            <label>@Localizer["add_images"] <small class="fas fa-star-of-life fz-6"></small></label>
-                            <div class="box__input @(ViewBag.UploadedCount == maxImages ? "disabled" :"") ">
-                                <label for="Attachments">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                </label>
+                    <div class="attachment-area form-group" data-id="addImages">
+                        <label>@Localizer["add_images"] <small class="fas fa-star-of-life fz-6"></small></label>
+                        <div class="box__input @(ViewBag.UploadedCount == maxImages ? "disabled" :"") ">
+                            <label for="Attachments">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </label>
 
-                                <input type="file" name="Attachments" id="Attachments" class="box__file"
-                                       data-multiple-caption="{count} @Localizer["files_selected"]"
-                                       aria-describedby="AttachmentsHelp"
-                                       accept="image/png, image/jpeg"
-                                       multiple
-                                       @(ViewBag.UploadedCount > 0 ? "" : "required")
-                                       data-rule-filemaximum="@(ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages )" @(ViewBag.UploadedCount == maxImages ? "disabled" : "") />
-                                <label for="Attachments" class="file-btn" data-text="@Localizer["choose_file"]">
-                                    <strong> @Localizer["choose_file"]</strong>
-                                </label>
+                            <input type="file" id="addImages"
+                                   class="box__file input-file"
+                                   accept="image/png, image/jpeg" 
+                                   name="NewImage"
+                                   data-msg-require_from_group="@Localizer["upload_at_least_one_file"]"
+                                   data-maximages="@(ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages)"
+                                   />
+                            <label for="addImages" class="file-btn">
+                                <strong> @Localizer["choose_file"]</strong>
+                            </label>
 
-                            </div>
-                            <span asp-validation-for="Attachments" class="text-danger invalid_field Attachments-errors"></span>
-                            <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["add_pos_images", ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages ]  </small>
                         </div>
+                        <span asp-validation-for="Attachments" class="text-danger invalid_field Attachments-errors"></span>
+                        <small id="AttachmentsHelp" class="form-text text-muted">@Localizer["add_pos_images", ViewBag.UploadedCount > 0 ? (maxImages - ViewBag.UploadedCount) : maxImages]  </small>
+
+                    
+                        <ul class="list-unstyled list-files" id="files-info"></ul>
+                        <div id="inputsfiles" class="hidden"> </div>
+                    </div>
                     </div>
 
                     <div class="step white-panel " data-step="2">
@@ -170,6 +174,8 @@
                             @Localizer[(FormAction == "CreatePOS") ? "add" : "update"]
                         </button>
                     </div>
+
+                    
                 </form>
             </div>
         </div>

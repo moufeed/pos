@@ -16,7 +16,7 @@ showFiles(e.target.files);
 
 
 /*
-//  to remember
+//   Remember This
 //  There is no cross-browser way to upload dragged & dropped files without Ajax. Some browsers (IE and Firefox)
 //  do not allow setting the value of a file input, which then could be submitted to server in a usual way
 

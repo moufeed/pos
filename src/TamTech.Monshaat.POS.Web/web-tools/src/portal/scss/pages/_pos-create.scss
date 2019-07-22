@@ -157,3 +157,26 @@
         }
     }
 }
+
+.list-files{
+    padding: 15px;
+    li{
+        display: grid;
+        grid-template-columns: 65px auto 25px;
+    }
+    .file-icon{
+        font-size: 45px;
+        color: $gray-500;  
+    }
+    .file-info{
+        strong, small{
+            display: block;
+        }
+        strong{
+            font-weight: normal;
+        }
+        small{
+            color: $gray-500
+        }
+    }
+}

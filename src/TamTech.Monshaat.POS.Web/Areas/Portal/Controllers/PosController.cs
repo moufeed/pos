@@ -197,10 +197,10 @@ namespace TamTechSDK.Web.Controllers.Portal
                             }
                         }
                     }
-                    if (model.Attachments != null && model.Attachments.Count > 0)
+                    if (collection.Files != null && collection.Files.Count > 0)
                     {
                         int index = 0;
-                        List<IFormFile> _files = model.Attachments;
+                        List<IFormFile> _files = collection.Files.ToList();
                         var filesInfo = await GenerateListFilesInfo(_files, FileTypesEnum.POSImage);
                         var uploadResult = await _uploadManager.UploadListFilesAsync(filesInfo);
 
