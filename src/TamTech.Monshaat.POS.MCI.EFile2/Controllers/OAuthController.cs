@@ -25,6 +25,7 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Controllers
         [Route("[controller]")]
         public async Task<IActionResult> Index(string access_token, string returnUrl)
         {
+
             var isAuthenticated = await _eFileService.IsAuthenticatedAsync(access_token);
             if (isAuthenticated)
             {
@@ -37,6 +38,7 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Controllers
                     {
                         return Redirect(Constants.POSUrl);
                     }
+                    return RedirectToAction(Constants.RegisterAction, Constants.VendorController, new { Area = "Portal" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))
