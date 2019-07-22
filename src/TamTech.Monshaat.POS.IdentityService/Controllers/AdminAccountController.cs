@@ -60,7 +60,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
             });
             if (!adResult.Successed)
             {
-                ModelState.AddModelError(nameof(model.Username), "The Username or Password is wrong!");
+                ModelState.AddModelError(nameof(model.Username), "اسم المستخدم أو كلمة المرور خطأ!");
                 return View(BuildLoginViewModel(model));
             }
 
@@ -76,7 +76,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
                                                                     , Constants.IDS4SecretValue);
             if (!checkedIdS4.Success || !checkedIdS4.Data)
             {
-                ModelState.AddModelError("credential", "Failed to invoke identifier!");
+                ModelState.AddModelError("credential", "فشل أثناء التعرف على المسخدم");  //Failed to invoke identifier!
                 return View(BuildLoginViewModel(model));
             }
 
@@ -88,7 +88,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
             });
             if (token == null)
             {
-                ModelState.AddModelError("token", "Failed to invoke token!");
+                ModelState.AddModelError("token", "فشل أثناء الحصول على رمز المستخدم");   //"Failed to invoke token!"
                 return View(BuildLoginViewModel(model));
             }
 
