@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters; 
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
 
-namespace TamTech.Monshaat.POS.Web.Core.Filters
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Filters
 { 
     public class AdminFilter : ActionFilterAttribute, IActionFilter
     {  

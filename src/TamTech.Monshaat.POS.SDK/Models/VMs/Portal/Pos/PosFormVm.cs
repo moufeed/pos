@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes.Models;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos
 {
 
 

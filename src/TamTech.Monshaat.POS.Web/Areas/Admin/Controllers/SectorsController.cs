@@ -6,20 +6,20 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Sectors;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sectors;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

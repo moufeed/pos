@@ -1,6 +1,6 @@
-﻿using TamTech.Monshaat.POS.Web.Models.Shared;
+﻿using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Menus.Settings
 {
     public class MenuApiSettings : BaseAPISettings, IMenuApiSettings
     {

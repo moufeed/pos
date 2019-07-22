@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Models.Dtos.Token
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Token
 {
     public class UserToken
     {

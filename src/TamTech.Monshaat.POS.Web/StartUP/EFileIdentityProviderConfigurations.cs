@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection; 
-using TamTech.Monshaat.POS.EFile2.Utilities;      
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;
-using TamTech.Monshaat.POS.EFile2.Utilities.Settings;
+using TamTech.Monshaat.POS.MCI.EFile2;      
+using TamTech.Monshaat.POS.MCI.EFile2.Services;
+using TamTech.Monshaat.POS.MCI.EFile2.Settings;
 using TamTech.Monshaat.POS.Web.MinistryServices.EFile2; 
 
 

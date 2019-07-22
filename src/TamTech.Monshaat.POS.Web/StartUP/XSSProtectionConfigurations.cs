@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System; 
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
@@ -12,7 +12,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
     {
         public static void UseXSSProtection(this IApplicationBuilder app, IHostingEnvironment env, IConfiguration Configuration)
         {
-             
+
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -30,7 +30,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
                         "frame-src 'self' www.google.com;" +
                         "connect-src 'self';");
                 await next();
-            }); 
+            });
         }
     }
 }

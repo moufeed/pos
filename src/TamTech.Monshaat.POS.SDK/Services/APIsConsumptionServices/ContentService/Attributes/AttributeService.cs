@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attributes
 {
     public   class AttributeService : BaseAPIService, IAttributeService , IPOSAttributeService 
     {

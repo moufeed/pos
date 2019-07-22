@@ -1,12 +1,12 @@
-﻿using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Contact;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
+﻿using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Contact;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Contactus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Contact
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Contact
 {
     public static class ContactMapper
     {
-        public static TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models.CreateModel MapToCreateModelWithoutAttachments(this ContactusVM item)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models.CreateModel MapToCreateModelWithoutAttachments(this ContactusVM item)
         {
             return new  CreateModel
             {
@@ -26,7 +26,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Contact
             };
         }
 
-        public static TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models.ReplayContactUsModel MapToReplyModel(this ReplayVm item)
+        public static TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models.ReplayContactUsModel MapToReplyModel(this ReplayVm item)
         {
             return new  ReplayContactUsModel
             {

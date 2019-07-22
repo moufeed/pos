@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Menus
 {
     public class EditMenuVM
     {

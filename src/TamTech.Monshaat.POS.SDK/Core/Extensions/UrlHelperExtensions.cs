@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using TamTech.Monshaat.POS.Web.Core.Constants;
+﻿using Microsoft.AspNetCore.Mvc;   
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 
-namespace TamTech.Monshaat.POS.Web.Core.Extensions
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Extensions
 {
     public static class UrlHelperExtensions
     {

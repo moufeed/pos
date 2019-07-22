@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;    
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;    
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Menus;
 
-namespace TamTech.Monshaat.POS.Web.Core.Settings.Utilities
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities
 {
     public class SettingsHelpers
     {

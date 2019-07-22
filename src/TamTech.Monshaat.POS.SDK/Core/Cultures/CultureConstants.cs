@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TamTech.Monshaat.POS.Web.Core.Cultures
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Cultures
 
 {
     public static class CultureConstants

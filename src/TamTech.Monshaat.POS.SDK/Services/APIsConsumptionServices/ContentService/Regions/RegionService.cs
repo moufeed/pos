@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Regions.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Regions
 {
     public   class RegionService : BaseAPIService, IRegionService ,  IContactRegionService
     {

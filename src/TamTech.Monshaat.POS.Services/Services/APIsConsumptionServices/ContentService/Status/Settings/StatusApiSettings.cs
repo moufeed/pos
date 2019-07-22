@@ -1,0 +1,15 @@
+﻿using TamTech.Monshaat.POS.Web.Models.Shared;
+
+namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings
+{
+    public class StatusApiSettings : BaseAPISettings, IStatusApiSettings , IVendorStatusApiSettings , IPosStatusApiSettings , IContactUsStatusApiSettings
+    {
+        public StatusApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        {
+        }
+
+        public string GetAllSelectListEndpoint => $"{_AdminPath}/GetAllSelectListAsync";
+
+        public string GetAllEndpoint => $"{_AdminPath}/GetAllAsync";
+    }
+}

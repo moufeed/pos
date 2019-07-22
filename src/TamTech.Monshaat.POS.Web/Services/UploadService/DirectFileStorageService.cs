@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.Mapper;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 
 namespace TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService
 {
-    public class DirectFileStorageService :  TamTech.Monshaat.POS.Web.Services.Upload.IUploadService
+    public class DirectFileStorageService :  TamTech.Monshaat.POS.Web.SDK.Services.Upload.IUploadService
     {
         #region Props  
         private readonly TamTech.Monshaat.POS.UploadService.Services.IUploadService _fileStorageService;

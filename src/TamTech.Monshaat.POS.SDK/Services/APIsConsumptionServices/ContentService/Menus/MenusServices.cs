@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;    
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Menus.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;    
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Menus
 {
     public class MenusServices : BaseAPIService ,IMenusServices
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography
 {
     public class Class
     {

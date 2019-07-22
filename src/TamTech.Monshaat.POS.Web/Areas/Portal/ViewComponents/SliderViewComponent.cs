@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
 {

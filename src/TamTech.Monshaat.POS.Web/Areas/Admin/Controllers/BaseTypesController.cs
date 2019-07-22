@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types.Models;
 using TamTechSDK.Web.Controllers.Admin;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Types;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Types;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Types;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Types;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

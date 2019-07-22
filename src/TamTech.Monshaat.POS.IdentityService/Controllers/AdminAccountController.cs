@@ -9,8 +9,9 @@ using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications.Models;
-using TamTech.Monshaat.POS.Web.Core.Enums;
-using TamTech.Monshaat.POS.Web.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity.Auth.Models;
 
 namespace TamTech.Monshaat.POS.IdentityService.Controllers
 {
@@ -65,7 +66,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Controllers
 
             /// << check user credential 'username-password' at identity server and register user when not existed  >>  
             var checkedIdS4 = await _authService.ValidatePOSAdminCredentialAsync(
-                                                                    new Web.Services.Identity.Auth.Models.SignupByName
+                                                                    new  SignupByName
                                                                     {
                                                                         Username = model.Username,
                                                                         Password = model.Password

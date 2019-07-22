@@ -1,8 +1,8 @@
 ﻿using EFileServiceReference;
 using System;
 using System.Threading.Tasks; 
-using TamTech.Monshaat.POS.EFile2.Utilities.Services;
-using TamTech.Monshaat.POS.EFile2.Utilities.Settings; 
+using TamTech.Monshaat.POS.MCI.EFile2.Services;
+using TamTech.Monshaat.POS.MCI.EFile2.Settings; 
 
 namespace TamTech.Monshaat.POS.Web.MinistryServices.EFile2
 {

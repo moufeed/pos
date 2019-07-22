@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Core.Biographies;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Biography;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Biographies;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

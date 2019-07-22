@@ -5,14 +5,14 @@ using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.Core.Extensions;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
 using Microsoft.AspNetCore.Authorization;
-using TamTech.Monshaat.POS.Web.Services.Upload.Models; 
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models; 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using Microsoft.Extensions.Localization;
 namespace TamTechSDK.Web.Controllers
 {

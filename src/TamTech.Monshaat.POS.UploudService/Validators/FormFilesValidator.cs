@@ -1,9 +1,6 @@
-using FluentValidation;
-using FluentValidation.Validators;
+using FluentValidation;       
 using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq; 
+using System.Collections.Generic; 
 using TamTech.Monshaat.POS.UploadService.Settings;
 
 namespace TamTech.Monshaat.POS.UploadService.Validators

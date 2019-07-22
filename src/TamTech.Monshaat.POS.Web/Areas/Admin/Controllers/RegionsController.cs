@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Regions;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Regions;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {

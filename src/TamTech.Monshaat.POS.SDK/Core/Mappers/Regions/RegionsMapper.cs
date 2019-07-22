@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Regions;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Regions
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Regions
 {
     public static class RegionsMapper
     {

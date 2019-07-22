@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Localization.Routing;
 using System.Collections.Generic;
 using System.Globalization; 
 
-namespace TamTech.Monshaat.POS.Web.Core.Cultures
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Cultures
 {
     public class CultureManager
     {

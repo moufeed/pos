@@ -1,7 +1,7 @@
 ﻿using System;  
-using TamTech.Monshaat.POS.Web.Models.Shared;
+using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
-namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.Identity.Settings
 {
     public class IdentityBackendSettings : IIdentityBackendSettings
     {
@@ -34,37 +34,37 @@ namespace TamTech.Monshaat.POS.Web.Services.Identity.Settings
         public string LogoutCallback => $"{_identityServiceUrl}/signout-callback-oidc";
 
 
-        public string GetUsersEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/Get";
+        public string GetUsersEndpoint => $"{_identityServiceUrl}/api/usersmanager/Get";
 
-        public string GetUserByUserNameEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/GetByUserName";
+        public string GetUserByUserNameEndpoint => $"{_identityServiceUrl}/api/usersmanager/GetByUserName";
 
-        public string RegisterUserAsyncEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/RegisterAsync";
+        public string RegisterUserAsyncEndpoint => $"{_identityServiceUrl}/api/usersmanager/RegisterAsync";
 
-        public string BlockUserAsyncEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/BlockAsync";
+        public string BlockUserAsyncEndpoint => $"{_identityServiceUrl}/api/usersmanager/BlockAsync";
 
-        public string UnblockUserAsyncEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/UnblockAsync";
+        public string UnblockUserAsyncEndpoint => $"{_identityServiceUrl}/api/usersmanager/UnblockAsync";
 
-        public string GetRolesEndpoint => $"{_identityServiceUrl}/api/0.1/roles/Get";
+        public string GetRolesEndpoint => $"{_identityServiceUrl}/api/roles/Get";
 
 
 
-        public string SignupEndpoint => $"{_identityServiceUrl}/api/0.1/users/signupbymobilenumber";
+        public string SignupEndpoint => $"{_identityServiceUrl}/api/users/signupbymobilenumber";
 
-        public string ConfirmnumberEndpoint => $"{_identityServiceUrl}/api/0.1/users/confirmmobilenumber";
+        public string ConfirmnumberEndpoint => $"{_identityServiceUrl}/api/users/confirmmobilenumber";
 
-        public string UpdateMobileNumber => $"{_identityServiceUrl}/api/0.1/users/updatemobilenumber";
+        public string UpdateMobileNumber => $"{_identityServiceUrl}/api/users/updatemobilenumber";
 
         public string ChangePasswordEndPoint => throw new NotImplementedException();
 
-        public string CheckUserAccountIsActivatedEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/CheckUserAccountIsActivatedAsync";
+        public string CheckUserAccountIsActivatedEndpoint => $"{_identityServiceUrl}/api/usersmanager/CheckUserAccountIsActivatedAsync";
 
-        public string GetUserRolesEndpoint => $"{_identityServiceUrl}/api/0.1/roles/GetUserRolesAsync";
+        public string GetUserRolesEndpoint => $"{_identityServiceUrl}/api/roles/GetUserRolesAsync";
 
-        public string AddUserToRolesEndpoint => $"{_identityServiceUrl}/api/0.1/usersmanager/AddUserToRolesAsync";
+        public string AddUserToRolesEndpoint => $"{_identityServiceUrl}/api/usersmanager/AddUserToRolesAsync";
   
-        public string ValidatePOSAdminCredentialEndpoint => $"{_identityServiceUrl}/api/0.1/users/ValidatePOSAdminCredentialAsync";
+        public string ValidatePOSAdminCredentialEndpoint => $"{_identityServiceUrl}/api/users/ValidatePOSAdminCredentialAsync";
 
-        public string ValidateVendorCredentialEndpoint => $"{_identityServiceUrl}/api/0.1/users/ValidateVendorCredentialAsync";
+        public string ValidateVendorCredentialEndpoint => $"{_identityServiceUrl}/api/users/ValidateVendorCredentialAsync";
        
     }
 }

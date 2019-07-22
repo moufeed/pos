@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Page
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Page
 {
     public class SectionsPageEditingVM
     {

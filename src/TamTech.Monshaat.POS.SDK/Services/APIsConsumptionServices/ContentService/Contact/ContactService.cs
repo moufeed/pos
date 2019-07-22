@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact
 {
     public class ContactService : BaseAPIService, IContactService
     {

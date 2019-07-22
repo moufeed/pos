@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact.Settings
 {
     public interface IContactUsApiSettings
     {

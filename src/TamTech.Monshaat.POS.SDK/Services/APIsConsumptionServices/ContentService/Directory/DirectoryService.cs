@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
-using TamTech.Monshaat.POS.Web.Services.POSs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Directory
 {
     public class DirectoryService : BaseAPIService, IDirectoryServices
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Core.Helpers.Converters
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Helpers.Converters
 {
     public interface IStringConverters
     {

@@ -3,7 +3,7 @@
     Layout = "~/Areas/Portal/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = Localizer["vedor_register"];
     string FormAction = ViewContext.RouteData.Values["Action"].ToString();
-    var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.Web.Core.Settings.Utilities.SettingsHelpers.VendorRoleName, StringComparison.InvariantCultureIgnoreCase);
+    var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities.SettingsHelpers.VendorRoleName, StringComparison.InvariantCultureIgnoreCase);
 }
 
 <vc:header slugs="@(new List<SlugModel>())"></vc:header>

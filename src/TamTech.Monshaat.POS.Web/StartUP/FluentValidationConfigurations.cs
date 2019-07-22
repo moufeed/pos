@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;  
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Pos;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Pos;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

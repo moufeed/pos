@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace TamTech.Monshaat.POS.Web.Models.Dtos.Slugs
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs
 {
     public class GeneratedSlugModel
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sliders;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Slider
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Slider
 {
     public static class SliderMapper
     {
@@ -124,6 +124,40 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Slider
                 DisplayOrder = Dto.DisplayOrder,
                 Published = Dto.Published
 
+            };
+        }
+        public static CreateSliderItemVm MapSliderItemVm(this CreateSliderItemDto vm)
+        {
+            return new CreateSliderItemVm
+            {
+                DisplayOrder = vm.DisplayOrder,
+                Lang = vm.Lang,
+                MainImage = vm.MainImage,
+                NewFile = vm.NewFile,
+                SliderId = vm.SliderId,
+                Summary = vm.Summary,
+                Title = vm.Title,
+                Url = vm.Url,
+                UrlTarget = vm.UrlTarget
+
+            };
+        }
+
+
+        public static CreateSliderItemDto MapSliderItemDto(this CreateSliderItemVm vm)
+        {
+            return new CreateSliderItemDto
+            {
+                DisplayOrder = vm.DisplayOrder,
+                Lang = vm.Lang,
+                MainImage = vm.MainImage,
+                NewFile = vm.NewFile,
+                SliderId = vm.SliderId,
+                Summary = vm.Summary,
+                Title = vm.Title,
+                Url = vm.Url,
+                UrlTarget = vm.UrlTarget 
+                 
             };
         }
 

@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using SimpleMvcSitemap;
 using SimpleMvcSitemap.Translations;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Portal.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings
+﻿namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values.Settings
 {
     public interface IValueApiSettings
     {

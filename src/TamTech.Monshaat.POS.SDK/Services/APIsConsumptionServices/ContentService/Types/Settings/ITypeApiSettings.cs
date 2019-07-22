@@ -1,4 +1,4 @@
-﻿namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings
+﻿namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Types.Settings
 {
     public interface ITypeApiSettings
     {

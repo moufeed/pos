@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilities.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilities
 {
    public class StatisticsService : BaseAPIService, IStatisticsService
     {

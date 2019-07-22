@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Status.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Status.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Status
 {
     public class StatusService : BaseAPIService, IStatusService , IContactUsStatusService, IPosStatusService, IVendorStatusService
     {

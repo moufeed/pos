@@ -8,9 +8,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 
-namespace TamTech.Monshaat.POS.Web.Core.Providers.Requests
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests
 {
     public class RequestProvider : IRequestProvider
     {

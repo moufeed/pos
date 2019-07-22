@@ -6,9 +6,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Enums;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus.Models;
 
 namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
 {

@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Sliders
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sliders
 {
     public class UpdateSliderVm
     {

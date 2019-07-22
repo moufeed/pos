@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Values.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Values;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Values.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Values;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Values
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Values
 {
     public static class ValuesMapper
     {

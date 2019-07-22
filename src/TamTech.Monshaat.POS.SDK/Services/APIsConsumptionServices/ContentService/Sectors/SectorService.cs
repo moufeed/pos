@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Common;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Filter;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Common;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors.Models;
 
-namespace TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors
+namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors
 {
     public   class SectorService : BaseAPIService, ISectorServices, IPOSSectorServices 
     {

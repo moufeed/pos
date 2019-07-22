@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Models.VMs.Admin.Vendor
+namespace TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Vendor
 {
     public class VendorActivationVM
     {

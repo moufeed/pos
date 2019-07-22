@@ -7,14 +7,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Services;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Models.Shared;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
 namespace TamTech.Monshaat.POS.IdentityService
 {
     public static class POSIdentityServiceStartup
     {       
-        public static void AddIdentityService(this IServiceCollection services, IConfiguration configuration)
+        public static void AddIdentityServiceConfigurations(this IServiceCollection services, IConfiguration configuration)
         {       
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -48,14 +48,14 @@ namespace TamTech.Monshaat.POS.IdentityService
 
             services.AddScoped<ITokenTamService>((serviceExtension) =>
             {
-                BackendApiSettingsModel settingsService = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
-                BackendApiSettingsModel settings = new BackendApiSettingsModel
-                {
-                    Url = settingsService.IDS4Url,
-                    ClientId = settingsService.ClientId,
-                    ClientSecret = settingsService.ClientSecret,
-                    ClientScope = settingsService.ClientScope,
-                };
+                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                //BackendApiSettingsModel settings = new BackendApiSettingsModel
+                //{
+                //    Url = settingsService.IDS4Url,
+                //    ClientId = settingsService.ClientId,
+                //    ClientSecret = settingsService.ClientSecret,
+                //    ClientScope = settingsService.ClientScope,
+                //};
                 return new TokenTamService(settings);
             });
 

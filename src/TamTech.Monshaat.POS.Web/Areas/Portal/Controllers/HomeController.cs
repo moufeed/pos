@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using System.Linq;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs.Models;
-using TamTech.Monshaat.POS.Web.Services.Email;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.Email;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.Contactus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Core.Mappers.Contact;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Attachments;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
-using TamTech.Monshaat.POS.Web.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.Contactus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Contact;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Attachments;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
 using System.Web;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types.Models;
-using TamTech.Monshaat.POS.Web.Models.Dtos.SelectList;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
 using System.Text;
 
 namespace TamTechSDK.Web.Controllers.Portal
@@ -94,8 +94,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         {
             if (!string.IsNullOrWhiteSpace(access_token))
             {
-                return RedirectToAction(TamTech.Monshaat.POS.EFile2.Utilities.Constants.IndexAction,
-                                        TamTech.Monshaat.POS.EFile2.Utilities.Constants.OAuthController, new { access_token, returnUrl });
+                return RedirectToAction(TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.IndexAction,
+                                        TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.OAuthController, new { access_token, returnUrl });
             }
             System.Diagnostics.Debug.WriteLine("CCCCCCCCCCCCCCCCCCCCCC");
             // ViewBag.Host = _appSettingsService.GetURl();

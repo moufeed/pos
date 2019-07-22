@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TamTech.Monshaat.POS.Web.Models.Shared
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Shared
 {
     public class BackendApiSettingsModel
     {
@@ -10,6 +10,6 @@ namespace TamTech.Monshaat.POS.Web.Models.Shared
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
         public string ClientScope { get; set; }
-        public string IDS4Url { get; set; }
+      //  public string IDS4Url { get; set; }
     }
 }

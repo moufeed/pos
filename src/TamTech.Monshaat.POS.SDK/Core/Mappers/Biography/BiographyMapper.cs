@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic; 
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies.Models;
-using TamTech.Monshaat.POS.Web.Models.VMs.Admin.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Biographies;
 using Newtonsoft.Json; 
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Biography
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Biography
 {
     public static class BiographyMapper
     {

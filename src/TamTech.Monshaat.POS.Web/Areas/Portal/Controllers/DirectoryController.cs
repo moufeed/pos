@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Pagination;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Sort;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory.Models;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.Core.Telemetry;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory.Models;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using Microsoft.Extensions.Localization;
 
 namespace TamTechSDK.Web.Controllers.Portal

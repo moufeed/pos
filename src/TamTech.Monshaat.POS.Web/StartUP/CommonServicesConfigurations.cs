@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using TamTech.Monshaat.POS.Web.Core.Biographies;
-using TamTech.Monshaat.POS.Web.Core.Settings.Utilities;
-using TamTech.Monshaat.POS.Web.Core.Constants;
-using TamTech.Monshaat.POS.Web.Core.Helpers.Converters;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus; 
-using TamTech.Monshaat.POS.Web.Services.Upload;
-using TamTech.Monshaat.POS.Web.Services.Upload.FileTypes;
+using TamTech.Monshaat.POS.Web.SDK.Core.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using TamTech.Monshaat.POS.Web.SDK.Core.Helpers.Converters;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus; 
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload;
+using TamTech.Monshaat.POS.Web.SDK.Services.Upload.FileTypes;
 using TamTechSDK.Web.Services.ContentService.Menus.PublicService;
-using TamTech.Monshaat.POS.Web.Core.Validations;
+using TamTech.Monshaat.POS.Web.SDK.Core.Validations;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {

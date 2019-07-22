@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TamTech.Monshaat.POS.Web.Models.VMs.Portal.vendor;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Portal.vendor;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors.Models;
 
-namespace TamTech.Monshaat.POS.Web.Core.Mappers.Vendor
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Vendor
 {
     public static class VendorMapper
     {
@@ -41,7 +41,7 @@ namespace TamTech.Monshaat.POS.Web.Core.Mappers.Vendor
             };
         }
 
-        public static  VendorFormVm MapToVendorFormVm(this TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.Models.PersonDto item)
+        public static  VendorFormVm MapToVendorFormVm(this TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors.Models.PersonDto item)
         {
             return new  VendorFormVm
             {

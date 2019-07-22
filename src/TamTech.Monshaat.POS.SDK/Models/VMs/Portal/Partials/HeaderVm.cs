@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.Models.VMs.Shared.Biography;
-using TamTech.Monshaat.POS.Web.Models.Dtos.Slugs;
+using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
 
-namespace TamTech.Monshaat.POS.Web.Models.Portal.Partials
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Portal.Partials
 {
     public class HeaderVm
     {

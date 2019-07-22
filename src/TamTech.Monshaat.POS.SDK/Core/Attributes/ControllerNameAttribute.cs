@@ -1,6 +1,6 @@
 ﻿using System; 
 
-namespace TamTech.Monshaat.POS.Web.Core.Attributes
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Attributes
 {
    public class ControllerNameAttribute : Attribute
     {

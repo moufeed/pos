@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels; 
 using System.Linq; 
 
-namespace TamTech.Monshaat.POS.Web.Core.Attributes
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Attributes
 {
    public class ControllerNameAttributeConvention : IControllerModelConvention
     {

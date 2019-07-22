@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
  
 
-namespace TamTech.Monshaat.POS.Web.Core.Cultures
+namespace TamTech.Monshaat.POS.Web.SDK.Core.Cultures
 {
     public static class DataCultureHelper
     {

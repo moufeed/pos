@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace TamTech.Monshaat.POS.Web.Models.Dtos.Attachments
+namespace TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Attachments
 {
     public class AttachmentModel
     {

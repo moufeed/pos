@@ -1,114 +1,65 @@
 using Microsoft.Extensions.DependencyInjection; 
-using TamTech.Monshaat.POS.Web.Core.Providers.Requests;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Attributes.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Biography.settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Contact.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Directory.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.IdentityService;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Menus;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pages;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Pos.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Regions.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sectors.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Settings.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Sliders;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Status.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Types.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Utilities.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Values.Settings;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor;
-using TamTech.Monshaat.POS.Web.Services.APIsConsumptionServices.Vendor.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Attributes;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Biographies;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContactUs;
-using TamTech.Monshaat.POS.Web.Services.ContentService.ContentCommonUtilities;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Menus;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Pages;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Regions;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sectors;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Settings;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Sliders;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Statistics;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Status;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Types;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Values;
-using TamTech.Monshaat.POS.Web.Services.ContentService.Vendors;
-using TamTech.Monshaat.POS.Web.Services.Identity;
-using TamTech.Monshaat.POS.Web.Services.POSs;
-using TamTech.Monshaat.POS.Web.Services.POSs.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attributes.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biography;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biography.settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Directory;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Directory.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.IdentityService;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pos;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pos.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Regions.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Settings.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Status;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Status.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Types;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Types.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilities.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor;
+using TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Biographies;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContentCommonUtilities;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Menus;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Regions;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sliders;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Statistics;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Status;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Values;
+using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Vendors;
+using TamTech.Monshaat.POS.Web.SDK.Services.Identity;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs;
+using TamTech.Monshaat.POS.Web.SDK.Services.POSs.Directory;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
     public static class BLLAPIsServicesConfigurations
     {
-        public static void _AddBusinessLogicAPIsServicesConfigurations(this IServiceCollection services)
+        public static void AddBLLAPIsServicesConfigurations(this IServiceCollection services)
         {
-            /*
-            #region Contents Service 
-             
-            services.AddScoped<IMenusServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Menus.DirectMenusServices>();
-                services.AddTransient<IPageService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Pages.DirectPagesService>();
-             services.AddTransient<ICCUServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Content.DirectContentService>();
-            services.AddTransient<ISlidersServices, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Sliders.DirectSlidersService>();
-              services.AddTransient<IContactService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Contact.DirectContactService>();
-            services.AddTransient<IBiographyService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Biography.DirectBiographyService>();
-            services.AddTransient<ISettingService, TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Settings.DirectSettingService>();
-
-
-
-          
-          
-
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IContactUsStatusService>((serviceExtension) =>
-            {
-                var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IContactStatusService>();
-                return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
-            });
-
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IPosStatusService>((serviceExtension) =>
-            {
-                var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IPOSStatusService>();
-                return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
-            });
-
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Status.IVendorStatusService>((serviceExtension) =>
-            {
-                var backendService = serviceExtension.GetService<TamTech.ContentService.Services.Statuses.IVendorStatusService>();
-                return new TamTech.Monshaat.POS.Web.DirectBackendServices.ContentServices.Status.DirectSatusService(backendService);
-            });
-
-
+            #region Identity Service       
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUsersManagerService, UsersManagerService>();
+            services.AddTransient<IRolesService, RolesService>();
             #endregion
-
-            /*
-            #region Pos Services
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Statistics.IStatisticsService, Web.DirectBackendServices.UtilitiesServices.DirectStatisticsService>();
-
-              services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.Directory.IDirectoryServices, Web.DirectBackendServices.PosServices.Directory.DirectDirectoryService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSAdminServeice, Web.DirectBackendServices.PosServices.Pos.DirectAdminPosServices>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.POSs.IPOSService, Web.DirectBackendServices.PosServices.Pos.DirectPosService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.IVendorAdminServices, Web.DirectBackendServices.VendorService.DirectAdminVendorService>();
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Vendors.IVendorService, Web.DirectBackendServices.VendorService.DirectVendorService>();
-            #endregion
-            
-            services.AddTransient<TamTech.Monshaat.POS.Web.Services.ContentService.Regions.IRegionService, Web.DirectBackendServices.RegionsServices.DirectRegionsServices>();
-
-
-
-            */
-          
 
             services.AddTransient<IPosTypeService>((serviceExtension) =>
             {
@@ -265,32 +216,9 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             services.AddTransient<ISliderServices, SliderService>();
 
 
-            #region Identity Service       
-            services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<IUsersManagerService, UsersManagerService>();
-            services.AddTransient<IRolesService, RolesService>();      
-            #endregion
-
-            /* 
-             
            
 
-
-            #region Upload Service 
-
-            services.AddTransient<IUploadService, TamTech.Monshaat.POS.Web.DirectBackendServices.UploadService.DirectFileStorageService>();
-
-            #endregion
-
-            #region Email Service 
-
-            services.AddTransient<IEmailSenderService, TamTech.Monshaat.POS.Web.DirectBackendServices.EmailServices.DirectEmailServices>();
-
-            #endregion
-
-            
-
-            */
+          
         }
     }
 }
