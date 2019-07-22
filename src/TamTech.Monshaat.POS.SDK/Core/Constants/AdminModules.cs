@@ -19,7 +19,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
 
         public const bool Regions = true;
 
-        public const bool Settings = true;
+        public const bool Settings = false;
 
     }
 }

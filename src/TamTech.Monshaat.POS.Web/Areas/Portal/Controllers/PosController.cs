@@ -33,7 +33,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(ActiveVendor))]
     [ServiceFilter(typeof(UserContextUpdated))]
-   
+    [Authorize(Policy = PolicyConstants.POSOwner)]
     public class PosController : PublicBaseController
     {
         #region properties

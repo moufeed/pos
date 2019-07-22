@@ -24,6 +24,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
 
         public const string VendorAdmin = "VendorAdmin";
         public const string Vendor = "Vendor";
+        public const string POSOwner = "POSOwner";
 
         public const string MenusContentAdmin = "MenusContentAdmin";
         public const string SlidersContentAdmin = "SlidersContentAdmin";

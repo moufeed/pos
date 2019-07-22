@@ -33,6 +33,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(ActiveVendor))]
     [ServiceFilter(typeof(UserContextUpdated))]
+    [Authorize(Policy = PolicyConstants.Vendor)]
     //[PermissionAuthorize("User,Vendor")]
     public class VendorController : PublicBaseController
     {
@@ -370,7 +371,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                 if (VerifySucceed(result))
                 {
                     return View(_VIEWS["VendorInfo"], result.Data.MapToVendorFormVm());
-                }
+                }    
             }
             catch (Exception ex)
             {

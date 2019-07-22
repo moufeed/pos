@@ -58,7 +58,8 @@ namespace TamTech.Monshaat.POS.IdentityService
                 return new List<string> { val };
             }
             var adminClaimPolicy = new AuthorizationPolicyBuilder().RequireClaim(CommonConstants.PermissionClaimName, new List<string> { PermissionTypeEnum.Admin.ToString() }).Build();
-            var vendorClaimPolicy = new AuthorizationPolicyBuilder().RequireClaim(CommonConstants.PermissionClaimName, new List<string> { PermissionTypeEnum.Vendor.ToString() }).Build();
+            var vendorClaimPolicy = new AuthorizationPolicyBuilder().RequireClaim(CommonConstants.PermissionClaimName, new List<string> { PermissionTypeEnum.User.ToString(), PermissionTypeEnum.Vendor.ToString() }).Build();
+            var posClaimPolicy = new AuthorizationPolicyBuilder().RequireClaim(CommonConstants.PermissionClaimName, new List<string> { PermissionTypeEnum.Vendor.ToString() }).Build();
              services.AddMvcCore().AddAuthorization(options =>
                 {
                     options.AddPolicy(PolicyConstants.AuthenticatedUser, new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build());
@@ -89,6 +90,7 @@ namespace TamTech.Monshaat.POS.IdentityService
                     options.AddPolicy(PolicyConstants.POSAttributesAdmin,      adminClaimPolicy);
                     options.AddPolicy(PolicyConstants.VendorAdmin,             adminClaimPolicy);
                     options.AddPolicy(PolicyConstants.Vendor, vendorClaimPolicy);
+                    options.AddPolicy(PolicyConstants.POSOwner, posClaimPolicy);
 
 
         }); ;
