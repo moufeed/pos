@@ -180,7 +180,7 @@ function getGroups(form){
                     <strong>${this.files[0].name}</strong>
                     <small dir="ltr">${(this.files[0].size / 1024).toFixed(2)} MB</small>
                 </p>
-                <button class="btn btn-link btn-remove-file" data-id="${$index}"><i class="fas fa-times"></i></button>
+                <button class="btn btn-link btn-remove-file btn-file-cancel" data-id="${$index}"><i class="fas fa-times"></i></button>
             </li>`);
       
         $el.wrap('<form>').closest('form').get(0).reset();
