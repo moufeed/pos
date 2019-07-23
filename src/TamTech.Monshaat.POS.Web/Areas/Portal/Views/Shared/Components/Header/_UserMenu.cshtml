@@ -1,15 +1,17 @@
-﻿@{
+﻿@model UserMenuVm
+@{
+
     Layout = null;
 }
 <div class="dropdown usermenu">
-    <if include-if="User.Identity.IsAuthenticated ">
+    <if include-if="Model.IsAuthenticated">
         <button class="btn btn-white p-x-15 m-x-5" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
             <i class="fas fa-ellipsis-v"></i>
             <i class="fas fa-user"></i>
         </button>
         <div class="dropdown-menu">
-            <if include-if="ViewBag.IsLoogedIn">
+            <if include-if="Model.IsVendor">
                 <a class="dropdown-item" asp-action="info" asp-controller="Vendor">
                     <i class="far fa-address-card"></i>
                     @Localizer["supplier_information"]
@@ -27,7 +29,7 @@
             <a class="dropdown-item" href="/OAuth/Logout"><i class="fas fa-sign-out-alt"></i> @Localizer["Logout"]</a>
         </div>
     </if>
-    <if exclude-if="User.Identity.IsAuthenticated">
+    <if exclude-if="Model.IsAuthenticated">
         <a href="/OAuth/Login?returnUrl=@Context.Request.Path"
            class="btn btn-white p-x-15 m-x-5 m-t5"
            title="@Localizer["login"]"

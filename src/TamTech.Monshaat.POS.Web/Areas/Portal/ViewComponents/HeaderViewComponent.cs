@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;     
+using System.Collections.Generic;    
 using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.SDK.Core.Biographies;
-using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
-using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
+using TamTech.Monshaat.POS.Web.SDK.Core.Biographies;      
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Slugs;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Biography;
 
@@ -22,9 +18,9 @@ namespace TamTech.Monshaat.POS.Web.Areas.Portal.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync(List<SlugModel> Slugs  = null)
         {
-            ViewBag.IsLoogedIn = User.Identity.IsAuthenticated &&
+            /*  ViewBag.IsLoogedIn = User.Identity.IsAuthenticated &&
             SettingsHelpers.VendorRoleName.Equals(User.Identity.GetUserRolesCommaSeparated(), StringComparison.InvariantCultureIgnoreCase);
-
+            */
             BiographyInfoVm biographiesInfo = await _biographiesManager.GetInfoAsync() ;
             ViewBag.BiographyLogo = biographiesInfo.Logo;
 
