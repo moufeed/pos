@@ -2,39 +2,50 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = Localizer["vedor_register"];
-    
+
 }
 
-    <vc:header slugs="@(new List<SlugModel>())"></vc:header>
+<vc:header slugs="@(new List<SlugModel>())"></vc:header>
+@*@{var claims = User.Identity.GetClaims();}
+@foreach (var claim in claims)
+{
+    if (claim.Type == "jwt")
+    { continue; }
+    <p>
+        <span><strong>claim : </strong> @claim.Type</span>
+        <span><strong>value:</strong> @claim.Value</span>
+    </p>
+}
+<h3>ContextRoles :  @ViewBag.ContextRoles</h3>
+<h3>ContextRolesNames :  @ViewBag.ContextRolesNames</h3>
+<h3>GetUserRolesAsync :  @ViewBag.GetUserRolesAsync</h3>
+<h3> RedirectToLogout : @ViewBag.RedirectToLogout</h3>*@
 
+<section class="create-vendor-page pt-75  pb-50" data-fix-height>
+    <div class="container">
 
-
-    <section class="create-vendor-page pt-75  pb-50" data-fix-height>
-        <div class="container">
-           
-                <div class="row justify-content-center">
-                    <div class="col-md-11 col-lg-8">
-                        <header class="vendor-form-header mb-35">
-                            <h3 class="mb-25">
-                                @Localizer["vedor_info"]
-                            </h3>
-                        </header>
-                        <if include-if="Model != null">
-                            <partial name="partials/_VInfo.cshtml" model="Model" />
-                        </if>
-                    </div>
-                </div>
-           
+        <div class="row justify-content-center">
+            <div class="col-md-11 col-lg-8">
+                <header class="vendor-form-header mb-35">
+                    <h3 class="mb-25">
+                        @Localizer["vedor_info"]
+                    </h3>
+                </header>
+                <if include-if="Model != null">
+                    <partial name="partials/_VInfo.cshtml" model="Model" />
+                </if>
+            </div>
         </div>
-    </section>
 
-    <partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
+    </div>
+</section>
 
-
-    @section Footer{
-
-    }
+<partial name="~/Areas/Portal/Views/Shared/partials/_TopFooter.cshtml" />
 
 
+@section Footer{
 
- 
+}
+
+
+

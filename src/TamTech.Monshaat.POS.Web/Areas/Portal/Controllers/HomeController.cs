@@ -28,6 +28,7 @@ using System.Web;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types.Models;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -45,6 +46,8 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IContactTypeService _typeService;
         private readonly IDirectoryServices _serchservices;
         private readonly IContactRegionService _regionsServices;
+        private readonly ILogger _logger;
+
 
         #endregion
         public HomeController(ITelemetryService telemetryClientService,
@@ -54,7 +57,8 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     IContactService contactService,
                                     IContactTypeService typeService,
                                     IDirectoryServices serchservices,
-                                    IContactRegionService regionsServices
+                                    IContactRegionService regionsServices,
+                                    ILogger<HomeController> logger
                                     ) : base(telemetryClientService ,localizer)
         {
             _pageService = pageService;
@@ -64,6 +68,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             _typeService = typeService;
             _serchservices = serchservices;
             _regionsServices = regionsServices;
+            _logger = logger;
         }
 
         #region Utilities
@@ -91,7 +96,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         [HttpGet]
         public virtual async Task<IActionResult> Index([FromQuery]string access_token, [FromQuery]string returnUrl)
-        {
+        {        
             if (!string.IsNullOrWhiteSpace(access_token))
             {
                 return RedirectToAction(TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.IndexAction,

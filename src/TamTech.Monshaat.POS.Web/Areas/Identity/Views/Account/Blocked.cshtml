@@ -14,13 +14,18 @@
 
     </header>
 
-
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <p style="display: flex; justify-content: space-between;   margin : 0 15px 15px;">
+            <span>المستخدم  : <strong> @Context.User.Identity.GetUsername()</strong></span> 
+        </p> 
+    }
     <div class="form-wrap text-center white-panel p_15">
-         <h4> @Localizer["your_are_blocked_title"]</h4>
+        <h4> @Localizer["your_are_blocked_title"]</h4>
 
-        @{ 
-            string contact_us = $"<a href='{Url.Action("contactus","home",new { Area = "portal" })}' class='btn btn-link'>{Localizer["contact_us"].Value}</a>";
-            string homePage = $"<a href='{Url.Action("index","home",new { Area = "portal" })}'  class='btn btn-link'>{Localizer["to_home_page"].Value}</a>";
+        @{
+            string contact_us = $"<a href='{Url.Action("contactus", "home", new { Area = "portal" })}' class='btn btn-link'>{Localizer["contact_us"].Value}</a>";
+            string homePage = $"<a href='{Url.Action("index", "home", new { Area = "portal" })}'  class='btn btn-link'>{Localizer["to_home_page"].Value}</a>";
         }
         <p class="">
             @Localizer["your_blocked_action", contact_us, homePage]

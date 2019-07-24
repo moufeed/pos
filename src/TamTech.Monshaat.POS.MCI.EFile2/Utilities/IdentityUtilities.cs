@@ -58,7 +58,7 @@ namespace TamTech.Monshaat.POS.MCI.EFile2.Utilities
 
             string pass = $"{Constants.UserSecret}{username}";
             /// << check user credential 'username-password' at identity server and register user when not existed  >>  
-            var checkedIdS4 = await _authService.ValidatePOSAdminCredentialAsync(
+            var checkedIdS4 = await _authService.ValidateVendorCredentialAsync(
                                                                     new SignupByName
                                                                     {
                                                                         Username = username,

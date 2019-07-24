@@ -3,14 +3,27 @@
     Layout = "_Layout";
     ViewData["Title"] = Localizer["vedor_register"];
     string FormAction = ViewContext.RouteData.Values["Action"].ToString();
-    var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities.SettingsHelpers.VendorRoleName, StringComparison.InvariantCultureIgnoreCase);
+    // var IsVendorRole = User.Identity.GetUserRolesCommaSeparated()?.Equals(TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities.SettingsHelpers.VendorRoleName, StringComparison.InvariantCultureIgnoreCase);
+    var IsVendorRole = User.Identity.IsAuthenticated && PermissionTypeEnum.Vendor.ToString().Equals(User.Identity.GetPermission());
 }
 
 <vc:header slugs="@(new List<SlugModel>())"></vc:header>
 
 @*<if include-if="Model != null">*@
-
-
+@*@{var claims = User.Identity.GetClaims();}
+@foreach (var claim in claims)
+{
+    if (claim.Type == "jwt")
+    { continue; }
+    <p>
+        <span><strong>claim : </strong> @claim.Type</span>
+        <span><strong>value:</strong> @claim.Value</span>
+    </p>
+}
+<h3>ContextRoles :  @ViewBag.ContextRoles</h3>
+<h3>ContextRolesNames :  @ViewBag.ContextRolesNames</h3> 
+<h3>GetUserRolesAsync :  @ViewBag.GetUserRolesAsync</h3>
+<h3> RedirectToLogout : @ViewBag.RedirectToLogout</h3>*@
 <section class="create-vendor-page pt-75  pb-50" data-fix-height>
     <div class="container">
 
