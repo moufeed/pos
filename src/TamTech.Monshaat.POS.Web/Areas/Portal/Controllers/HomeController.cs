@@ -46,7 +46,6 @@ namespace TamTechSDK.Web.Controllers.Portal
         private readonly IContactTypeService _typeService;
         private readonly IDirectoryServices _serchservices;
         private readonly IContactRegionService _regionsServices;
-        private readonly ILogger _logger;
 
 
         #endregion
@@ -59,7 +58,7 @@ namespace TamTechSDK.Web.Controllers.Portal
                                     IDirectoryServices serchservices,
                                     IContactRegionService regionsServices,
                                     ILogger<HomeController> logger
-                                    ) : base(telemetryClientService ,localizer)
+                                    ) : base(telemetryClientService , logger, localizer)
         {
             _pageService = pageService;
             _uploadManager = uploadManager;
@@ -67,8 +66,9 @@ namespace TamTechSDK.Web.Controllers.Portal
             _contactService = contactService;
             _typeService = typeService;
             _serchservices = serchservices;
-            _regionsServices = regionsServices;
-            _logger = logger;
+            _regionsServices = regionsServices;   
+
+
         }
 
         #region Utilities
@@ -96,49 +96,48 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         [HttpGet]
         public virtual async Task<IActionResult> Index([FromQuery]string access_token, [FromQuery]string returnUrl)
-        {        
+        {
+            //_logger.LogInformation("a.aktaa log");
+            //_logger.LogError("a.aktaa logError");
+
             if (!string.IsNullOrWhiteSpace(access_token))
             {
                 return RedirectToAction(TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.IndexAction,
                                         TamTech.Monshaat.POS.MCI.EFile2.Utilities.Constants.OAuthController, new { access_token, returnUrl });
             }
-            
-            // ViewBag.Host = _appSettingsService.GetURl();
+            IRequestProviderResult<int>  total = null;
+            IRequestProviderResult<HtmlPage> benefits = null;
+            IRequestProviderResult<HtmlPage> initiative_Summary = null;   
             try
-            {
-                
-
-                 
-              
-
-                var _total = await _serchservices.GetCountOfPublishedAsync(_lang);
-                if (VerifySucceed(_total))
+            {   
+                 total = await _serchservices.GetCountOfPublishedAsync(_lang);
+                if (VerifySucceed(total))
                 {
-                    ViewBag.TotalCount = _total.Data;
+                    ViewBag.TotalCount = total.Data;
                 }
 
                 //  Benefits
 
-                IRequestProviderResult<HtmlPage> Benefits = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary1);
+                benefits = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary1);
 
-                if (VerifySucceed(Benefits))
+                if (VerifySucceed(benefits))
                 {
-                    ViewBag.Benefitssummary = Benefits.Data;
+                    ViewBag.Benefitssummary = benefits.Data;
                 }
 
 
                 // about this initiative
-                IRequestProviderResult<HtmlPage> initiative_Summary = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary2);
+                initiative_Summary = await _pageService.GetPublishedHtmlBySettingIdAsync((int)SettingKeysEnum.HomePageSummary2);
 
                 if (VerifySucceed(initiative_Summary))
                 {
                     ViewBag.initiativeSummary = initiative_Summary.Data;
                 }
-
+               
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex,  total, benefits, initiative_Summary);
             }
 
             
@@ -250,11 +249,11 @@ namespace TamTechSDK.Web.Controllers.Portal
                         TryValidateModel(model);
                          
                     }
-                }
+                }       
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             var types = await _typeService.GetPublishedListAsync();

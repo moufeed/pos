@@ -9,6 +9,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Enums;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Pages.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
@@ -22,8 +23,11 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         #region Ctors
-        public PagesController(ITelemetryService telemetryClientService, IPageService pageService , IStringLocalizer<BaseController> localizer)
-            : base(telemetryClientService , localizer)
+        public PagesController(ITelemetryService telemetryClientService, 
+                    IPageService pageService ,
+                    ILogger<PagesController> logger,
+                    IStringLocalizer<BaseController> localizer)
+            : base(telemetryClientService , logger, localizer)
         {
             this._pageService = pageService;
         }
@@ -68,7 +72,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, slug);
             }
             return RedirectToNotFound(slug);
 
@@ -88,7 +92,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, slug);
             }
             return View("Preview_Sections");
         }
@@ -106,7 +110,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, slug);
             }
             return View("Preview_HtmlPage");
         }

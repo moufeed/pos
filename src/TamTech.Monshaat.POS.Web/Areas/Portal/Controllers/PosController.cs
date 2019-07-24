@@ -28,11 +28,14 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors.Models;
+using Microsoft.Extensions.Logging;
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Pagination;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(ActiveVendor))]
     [ServiceFilter(typeof(UserContextUpdated))]
+    [ServiceFilter(typeof(AuthorizeEFile))]
     [Authorize(Policy = PolicyConstants.POSOwner)]
     public class PosController : PublicBaseController
     {
@@ -54,8 +57,9 @@ namespace TamTechSDK.Web.Controllers.Portal
             IPOSAttributeService attributeService,
             IPOSService posservice,
             IUploadManagerService uploadManager,
-            IStringLocalizer<BaseController> localizer,
-            SettingsHelpers settingsHelpers) : base(telemetryClientService, localizer)
+            SettingsHelpers settingsHelpers,
+            ILogger<PosController> logger,
+            IStringLocalizer<BaseController> localizer) : base(telemetryClientService, logger, localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;
@@ -68,7 +72,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region utilities
- 
+
 
         private List<SelectListItem> CreateTypeSelect(List<TypeDto> types, int TypeId = 0)
         {
@@ -125,10 +129,10 @@ namespace TamTechSDK.Web.Controllers.Portal
         }
         #endregion
 
-        #region index
-     //   [Authorize]
+        #region index    
         public virtual async Task<IActionResult> Index()
         {
+            IRequestProviderResult<PagedResultModel<List<PosDto>>> result = null;
             ViewBag.ID = HttpContext.User.Identity.GetUserId();
             try
             {
@@ -138,16 +142,16 @@ namespace TamTechSDK.Web.Controllers.Portal
                     PageSize = 100,
                     PageNumber = 1
                 };
-                var result = await _posservice.GetPOSsForCurrentUserAsync(posfilter);
+                  result = await _posservice.GetPOSsForCurrentUserAsync(posfilter);
                 if (VerifySucceed(result))
                 {
                     return View(result.Data);
                 }
-                
+
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, result);
             }
             return View();
         }
@@ -155,22 +159,28 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #region Pos   
 
-        #region Create Pos
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        #region Create Pos      
+
         public virtual async Task<IActionResult> CreatePOS()
         {
             PosFormVm model = new PosFormVm();
-            await InitAction(model);
+            try
+            {
+
+                await InitAction(model);
+                return View("PosForm", model);
+            }
+            catch (Exception ex)
+            {
+                TrackException(ex, model);
+            }
             return View("PosForm", model);
         }
 
 
 
 
-        [HttpPost]
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        [HttpPost]      
         public virtual async Task<IActionResult> CreatePOS(PosFormVm model, IFormCollection collection)
         {
             List<AttachmentModel> Attachments = new List<AttachmentModel>();
@@ -220,7 +230,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
                             index++;
                         }
-                        
+
                         if (!TryValidateModel(model))
                         {
                             await InitAction(model);
@@ -248,7 +258,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -258,9 +268,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
-        #region Edit POS
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        #region Edit POS              
         public virtual async Task<IActionResult> EditPOS(Guid id)
         {
             try
@@ -277,7 +285,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             PosFormVm model = new PosFormVm();
             await InitAction(model);
@@ -287,8 +295,6 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
         [HttpPost]
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
         public virtual async Task<IActionResult> EditPos(PosFormVm model, IFormCollection collection)
         {
 
@@ -377,7 +383,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -388,8 +394,7 @@ namespace TamTechSDK.Web.Controllers.Portal
 
         #endregion
 
-        #region Delete POS
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        #region Delete POS         
         public virtual async Task<JsonResult> DeletePos(Guid id)
         {
 
@@ -404,7 +409,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
 
             return Json(new { success = false });
@@ -426,7 +431,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, name, id);
             }
 
             return Json(new { success = false });
@@ -435,9 +440,9 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
         #endregion
 
-    
 
-        
+
+
 
         #region Global
         [HttpPost("{Culture}/[Area]/[Controller]/DeleteImage")]
@@ -459,7 +464,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, img);
             }
             return Json(new { success = false });
         }
@@ -470,7 +475,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
 
-       
+
 
 
     }

@@ -28,11 +28,14 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Sectors.Models;
 using TamTech.Monshaat.POS.Services.ExternalServices.CommercialRegister;
 using TamTech.Monshaat.POS.SDK.Core.Authorizations;
 using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using Microsoft.Extensions.Logging;
+using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 
 namespace TamTechSDK.Web.Controllers.Portal
 {
     [ServiceFilter(typeof(ActiveVendor))]
     [ServiceFilter(typeof(UserContextUpdated))]
+    [ServiceFilter(typeof(AuthorizeEFile))]
     [Authorize(Policy = PolicyConstants.Vendor)]
     //[PermissionAuthorize("User,Vendor")]
     public class VendorController : PublicBaseController
@@ -56,10 +59,11 @@ namespace TamTechSDK.Web.Controllers.Portal
             IPOSSectorServices sectorService,
             IPOSAttributeService attributeService,
             IUploadManagerService uploadManager,
-            IStringLocalizer<BaseController> localizer,
             IVendorService vendorServis,
-                                    SettingsHelpers settingsHelpers,
-                                    ICRService cRService) : base(telemetryClientService, localizer)
+            ICRService cRService,
+             SettingsHelpers settingsHelpers,
+             ILogger<VendorController> logger,
+            IStringLocalizer<BaseController> localizer) : base(telemetryClientService, logger, localizer)
         {
             _posTypeService = posTypeService;
             _sectorService = sectorService;
@@ -136,7 +140,7 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region index
-        [Authorize]
+  
         public virtual async Task<IActionResult> Index() => RedirectToAction("index", "pos");
 
         #endregion
@@ -159,43 +163,49 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             return null;
         }
-       
-        [Authorize]
+
+     
         public virtual async Task<IActionResult> Register()
         {
-            string userPermission = HttpContext.User.Identity.GetPermission();
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                if (userPermission == PermissionTypeEnum.Vendor.ToString())
-                {    
-                    return RedirectToAction("edit");
+                string userPermission = HttpContext.User.Identity.GetPermission();
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (userPermission == PermissionTypeEnum.Vendor.ToString())
+                    {
+                        return RedirectToAction("edit");
+                    }
+                    else
+                    {
+                        bool registeredVendor = (await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync()).Data;
+                        if (registeredVendor)
+                        {
+                            return RedirectToAction("Info");
+                        }
+
+                        return View(_VIEWS["VendorForm"]);
+                    }
                 }
                 else
-                {    
-                    bool registeredVendor = (await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync()).Data;
-                    if (registeredVendor)
-                    {
-                        return RedirectToAction("Info");
-                    }
-
-                    return View(_VIEWS["VendorForm"]);     
-                }     
+                {
+                    return View(_VIEWS["VendorForm"]);
+                }
             }
-            else
-            {     
-                return View(_VIEWS["VendorForm"]);
+            catch (Exception ex)
+            {
+                TrackException(ex);
             }
+            return View(_VIEWS["VendorForm"]);
         }
 
 
-        [HttpPost]
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        [HttpPost]     
         public virtual async Task<IActionResult> Register(VendorFormVm model)
         {
             try
             {
-               if (ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     CreatePersonModel _CreateModel = model.MapVendorFormVmToCreatePersonModelWithoutAttachments();
                     var result = await _vendorServis.CreateAsync(_CreateModel);
@@ -215,7 +225,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             //  await InitAction(model);
             return View(_VIEWS["VendorForm"], model);
@@ -223,34 +233,40 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region EDIT VENDOR
-
-        [Authorize]
+                     
         public virtual async Task<IActionResult> Edit()
         {
-            string userPermission = HttpContext.User.Identity.GetPermission();
+            VendorFormVm person = null;
+            try
+            {
+                string userPermission = HttpContext.User.Identity.GetPermission();
             if (User.Identity.IsAuthenticated)
             {
-                var person = await GetPersonAsync();
+                  person = await GetPersonAsync();
 
-                if (userPermission == PermissionTypeEnum.Vendor.ToString() 
-                    || (person != null && person.VendorCanEdit == true ))
-                {   
-                        return View(_VIEWS["VendorForm"], person);   
+                if (userPermission == PermissionTypeEnum.Vendor.ToString()
+                    || (person != null && person.VendorCanEdit == true))
+                {
+                    return View(_VIEWS["VendorForm"], person);
                 }
                 else
-                {     
-                        return RedirectToAction("Info");   
-                }  
+                {
+                    return RedirectToAction("Info");
+                }
             }
             else
-            {  
-                    return RedirectToAction("Register");   
+            {
+                return RedirectToAction("Register");
+                }
             }
+            catch (Exception ex)
+            {
+                TrackException(ex, person);
+            }
+            return View(_VIEWS["VendorForm"]);
         }
 
-        [HttpPost]
-        [Authorize]
-        [ServiceFilter(typeof(AuthorizeEFile))]
+        [HttpPost]       
         public virtual async Task<IActionResult> Edit(VendorFormVm model)
         {
             try
@@ -277,7 +293,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -301,7 +317,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, number, id);
             }
 
             return Json(new { success = false });
@@ -325,7 +341,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, crNumber);
             }
 
             return Json(new { success = false });
@@ -349,7 +365,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, name, id);
             }
 
             return Json(new { success = false });
@@ -360,22 +376,21 @@ namespace TamTechSDK.Web.Controllers.Portal
         #endregion
 
         #region VENDOR INFO
-
-
-        //  [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+                                                                    
         public virtual async Task<IActionResult> Info()
         {
+            IRequestProviderResult<PersonDto> result = null;
             try
             {
-                var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
+                  result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
                 if (VerifySucceed(result))
                 {
                     return View(_VIEWS["VendorInfo"], result.Data.MapToVendorFormVm());
-                }    
+                }
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, result);
             }
             return View(_VIEWS["VendorInfo"]);
         }
@@ -385,13 +400,13 @@ namespace TamTechSDK.Web.Controllers.Portal
 
 
 
-        // just for development
-        //      [Authorize(Policy = ContentSDKPoliciesConstants.Vendor)]
+        // just for development              
         public virtual async Task<IActionResult> Devinfo()
         {
+            IRequestProviderResult<PersonDto> result = null;
             try
             {
-                var result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
+                  result = await _vendorServis.GetPersonForCurrentUserAsync(_lang);
                 if (VerifySucceed(result))
                 {
                     return View("Devinfo", result.Data.MapToVendorFormVm());
@@ -399,7 +414,7 @@ namespace TamTechSDK.Web.Controllers.Portal
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, result);
             }
             return View("Devinfo", new VendorFormVm());
         }
@@ -408,41 +423,4 @@ namespace TamTechSDK.Web.Controllers.Portal
     }
 }
 
-
-
-//public virtual async Task<IActionResult> Register()
-//{
-//    VendorFormVm model = null;
-
-//    //<<<<< Case 1 :  Not anonymous user >>>>>
-//    if (User.Identity.IsAuthenticated)
-//    {
-//        var roles = HttpContext.User.Identity.GetUserRoles();
-//        if (roles != null && roles.All(v => _appSettings.GetVendorRolesName().Contains(v)))
-//        {
-//            if (await _vendorServis.CheckTheCurrentUserIsRegisteredAsVendorAsync())
-//            {
-//                //<<<<< Case 1-A : Already is registered as vendor >>>>>
-//                return RedirectToAction("edit");
-//            }
-//            else
-//            {
-//                //<<<<< Case 1-B : Is not registered as a vendor (active Registeration Form)  >>>>>
-//                model = new VendorFormVm();
-//            }
-//        }
-//        else
-//        {
-//            // When AccessDenied is true will the "Access Denied" message be activated
-//            ViewBag.ActivateAccessDeniedForAdmins = true;
-//        }
-
-//    }
-//    //<<<<< Case 2 :  Anonymous user (active view message) >>>>>
-//    else
-//    {
-//        // When AccessDenied is false will the <<<<"please Login/Signup via SSO">>>> message be activated
-//        ViewBag.ActivateAccessDeniedForAdmins = false;
-//    }
-//    return View(_VIEWS["VendorForm"], model);
-//}
+          
