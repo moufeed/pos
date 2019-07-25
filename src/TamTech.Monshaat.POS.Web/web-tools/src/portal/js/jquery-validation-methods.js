@@ -81,6 +81,7 @@ $.validator.addMethod( "crvendor", function( value, element, url ) {
  
 $.validator.addMethod( "FileSize", function( value, element, param ) {
      
+   
     if ( this.optional( element ) ) {
 		return true;
     }
@@ -88,13 +89,10 @@ $.validator.addMethod( "FileSize", function( value, element, param ) {
     if ( $( element ).attr( "type" ) === "file" ) {
 		if ( element.files && element.files.length ) {
 			for ( var i = 0; i < element.files.length; i++ ) {
-                 
-				if ( (element.files[ i ].size / 1024).toFixed() > param ) {
-					return false;
-				}
+					return (element.files[ i ].size / 1024).toFixed(2) < param ;
 			}
 		}
 	}
-
+return false;
 
 }, $.validator.format( "File size must not exceed {0} kilobytes each." ));
