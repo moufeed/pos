@@ -163,7 +163,17 @@ function getGroups(form){
         }
     }); 
  })
+ function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
 
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
 
  let $index = 0;
 
@@ -178,7 +188,7 @@ function getGroups(form){
         $("#files-info").append(`<li id="file-${$index}">
                 <i class="far fa-file file-icon"></i> <p class="file-info">
                     <strong>${this.files[0].name}</strong>
-                    <small dir="ltr">${(this.files[0].size / 1024).toFixed(2)} MB</small>
+                    <small dir="ltr">${formatBytes(this.files[0].size )} </small>
                 </p>
                 <button class="btn btn-link btn-remove-file btn-file-cancel" data-id="${$index}"><i class="fas fa-times"></i></button>
             </li>`);

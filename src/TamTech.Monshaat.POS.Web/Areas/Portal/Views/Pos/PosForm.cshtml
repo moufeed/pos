@@ -87,6 +87,7 @@
                         @{
                         int maxImages = 8;
                         }
+                        
                     <div class="attachment-area form-group" data-id="addImages">
                         <label>@Localizer["add_images"] <small class="fas fa-star-of-life fz-6"></small></label>
                         <div class="box__input @(ViewBag.UploadedCount == maxImages ? "disabled" :"") ">
@@ -95,7 +96,7 @@
                             </label>
 
                             <input type="file" id="addImages"
-                                   class="box__file input-file"
+                                   class="box__file input-file  @(ViewBag.UploadedCount > 0 ? "ignore" : "")"
                                    accept="image/png, image/jpeg" 
                                    name="NewImage"
                                    data-msg-require_from_group="@Localizer["upload_at_least_one_file"]"
