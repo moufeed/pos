@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Types.Se
     public class TypeApiSettings : BaseAPISettings, ITypeApiSettings, IPOSTypeApiSettings, IContactUsTypeApiSettings
     {
 
-        public TypeApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public TypeApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

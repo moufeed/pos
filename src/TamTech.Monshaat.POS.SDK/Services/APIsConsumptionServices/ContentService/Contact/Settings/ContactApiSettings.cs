@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Contact.
 {
     public class ContactUsApiSettings : BaseAPISettings, IContactUsApiSettings
     {
-        public ContactUsApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public ContactUsApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

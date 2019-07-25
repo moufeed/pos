@@ -101,7 +101,7 @@ namespace TamTech.Monshaat.POS.IdentityService
 
             services.AddScoped<ITokenTamService>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 ILogger<TokenTamService> logger = serviceExtension.GetRequiredService<ILogger<TokenTamService>>();
                 //BackendApiSettingsModel settings = new BackendApiSettingsModel
                 //{

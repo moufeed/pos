@@ -6,7 +6,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sliders.
     {
 
 
-        public SliderItemApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public SliderItemApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

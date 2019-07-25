@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilitie
 {
     public class StatisticsApiSettings : BaseAPISettings, IStatisticsApiSettings
     {
-        public StatisticsApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public StatisticsApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

@@ -20,10 +20,10 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
     public class TokenTamService : ITokenTamService
     {
 
-        private readonly BackendApiSettingsModel _settings;
+        private readonly BackendApiSettings _settings;
         public readonly ILogger _logger;
 
-        public TokenTamService(BackendApiSettingsModel settings, ILogger<TokenTamService> logger)
+        public TokenTamService(BackendApiSettings settings, ILogger<TokenTamService> logger)
         {
             _settings = settings;
             _settings.Url = _settings.Url.TrimEnd('/');

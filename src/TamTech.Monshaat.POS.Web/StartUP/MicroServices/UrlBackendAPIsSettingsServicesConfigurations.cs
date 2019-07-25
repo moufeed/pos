@@ -31,166 +31,166 @@ namespace TamTech.Monshaat.POS.Web.StartUP.MicroServices
             services.AddSingleton((serviceExtension) =>
             {
                 return configuration.GetSection(AppSettings.BackendApiSettings)
-                                                                  .Get<BackendApiSettingsModel>();
+                                                                  .Get<BackendApiSettings>();
             });
 
             services.AddScoped<IContactUsTypeApiSettings, TypeApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new TypeApiSettings(settings, BaseAPISettings.CUTypesController);
             });
 
             services.AddScoped<IPOSTypeApiSettings, TypeApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new TypeApiSettings(settings, BaseAPISettings.POSTypesController);
             });
 
             services.AddScoped<IPOSSectorApiSettings, SectorApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new SectorApiSettings(settings, BaseAPISettings.POSSectorsController);
             });
 
             services.AddScoped<IPOSAttributeApiSettings, AttributeApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new AttributeApiSettings(settings, BaseAPISettings.POSAttributesController);
             });
 
             services.AddScoped<IPOSValueApiSettings, ValueApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new ValueApiSettings(settings, BaseAPISettings.POSValuesController);
            });
 
             services.AddScoped<IContactUsRegionApiSettings, RegionApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new RegionApiSettings(settings, BaseAPISettings.CURegionsController);
            });
 
 
             services.AddScoped<IPosAdminApiSettings, PosAdminApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new PosAdminApiSettings(settings, BaseAPISettings.POSController);
             });
 
 
             services.AddScoped<IPosApiSettings, PosApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new PosApiSettings(settings, BaseAPISettings.POSofVendorController);
             });
 
 
             services.AddScoped<IDirectoryApiSettings, DirectoryApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new DirectoryApiSettings(settings, BaseAPISettings.DirectoryController);
             });
 
 
             services.AddScoped<IContactUsApiSettings, ContactUsApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new ContactUsApiSettings(settings, BaseAPISettings.ContactUsController);
             });
 
 
             services.AddScoped<IVendorAdminApiSettings, VendorAdminApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new VendorAdminApiSettings(settings, BaseAPISettings.VendorsController);
             });
 
 
             services.AddScoped<IVendorApiSettings, VendorApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new VendorApiSettings(settings, BaseAPISettings.VendorsController);
             });
 
 
             services.AddScoped<IStatisticsApiSettings, StatisticsApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new StatisticsApiSettings(settings, BaseAPISettings.StatisticsController);
             });
 
 
             services.AddScoped<ICCUApiSettings, CCUServiceSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new CCUServiceSettings(settings, BaseAPISettings.COmmonContentUtilitiesController);
             });
 
 
             services.AddScoped<IPosStatusApiSettings, StatusApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new StatusApiSettings(settings, BaseAPISettings.POSStatus);
             });
 
             services.AddScoped<IVendorStatusApiSettings, StatusApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new StatusApiSettings(settings, BaseAPISettings.VendorStatus);
             });
 
             services.AddScoped<IContactUsStatusApiSettings, StatusApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new StatusApiSettings(settings, BaseAPISettings.CSStatus);
             });
 
             services.AddScoped<IBiographyApiSettings, BiographyApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new BiographyApiSettings(settings, BaseAPISettings.BiographiesController);
             });
 
             services.AddScoped<ISettingsApiSettings, SettingsApiSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 return new SettingsApiSettings(settings, BaseAPISettings.SettingsController);
             });
 
             services.AddScoped<IMenuApiSettings, MenuApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new MenuApiSettings(settings, BaseAPISettings.MenusController);
            });
 
             services.AddScoped<IMenuItemApiSettings, MenuItemApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new MenuItemApiSettings(settings, BaseAPISettings.MenuItemsController);
            });
 
 
             services.AddScoped<ISliderApiSettings, SliderApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new SliderApiSettings(settings, BaseAPISettings.SlidersController);
            });
 
             services.AddScoped<ISliderItemApiSettings, SliderItemApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new SliderItemApiSettings(settings, BaseAPISettings.SliderItemsController);
            });
 
             services.AddScoped<IPagesApiSettings, PagesApiSettings>((serviceExtension) =>
            {
-               BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+               BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                return new PagesApiSettings(settings, BaseAPISettings.PagesController);
            });
 
             services.AddScoped<IIdentityBackendSettings>((serviceExtension) =>
             {
-                BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                BackendApiSettings settings = serviceExtension.GetRequiredService<BackendApiSettings>();
                 //BackendApiSettingsModel settings = new BackendApiSettingsModel
                 //{
                 //    Url = settingsService.IDS4Url, 

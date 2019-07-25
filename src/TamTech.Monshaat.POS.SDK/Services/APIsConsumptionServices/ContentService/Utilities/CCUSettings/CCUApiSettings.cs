@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Utilitie
 {
     public class CCUServiceSettings : BaseAPISettings , ICCUApiSettings
     {
-        public CCUServiceSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public CCUServiceSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

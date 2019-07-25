@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Vendor.S
 {
     public class VendorApiSettings : BaseAPISettings, IVendorApiSettings
     {
-        public VendorApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public VendorApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

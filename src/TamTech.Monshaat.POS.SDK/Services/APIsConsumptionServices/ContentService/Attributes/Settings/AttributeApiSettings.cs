@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Attribut
     public class AttributeApiSettings : BaseAPISettings, IAttributeApiSettings, IPOSAttributeApiSettings
     {
 
-        public AttributeApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public AttributeApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

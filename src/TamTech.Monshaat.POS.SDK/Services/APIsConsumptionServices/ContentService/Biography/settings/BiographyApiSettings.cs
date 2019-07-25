@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Biograph
 {
     public class BiographyApiSettings : BaseAPISettings, IBiographyApiSettings
     {
-        public BiographyApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public BiographyApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

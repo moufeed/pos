@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Regions.
     public class RegionApiSettings : BaseAPISettings, IRegionApiSettings,  IContactUsRegionApiSettings
     {
 
-        public RegionApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public RegionApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

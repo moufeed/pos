@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Sectors.
     public class SectorApiSettings : BaseAPISettings, ISectorApiSettings, IPOSSectorApiSettings
     {
 
-        public SectorApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public SectorApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

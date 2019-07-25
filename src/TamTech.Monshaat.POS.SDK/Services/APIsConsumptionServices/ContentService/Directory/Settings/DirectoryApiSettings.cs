@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Director
 {
     public class DirectoryApiSettings : BaseAPISettings, IDirectoryApiSettings
     {
-        public DirectoryApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public DirectoryApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

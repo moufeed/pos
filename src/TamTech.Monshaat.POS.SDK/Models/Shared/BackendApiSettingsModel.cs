@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.Web.SDK.Models.Shared
 {
-    public class BackendApiSettingsModel
+    public class BackendApiSettings
     {
         public string Url { get; set; }
         public string ClientId { get; set; }

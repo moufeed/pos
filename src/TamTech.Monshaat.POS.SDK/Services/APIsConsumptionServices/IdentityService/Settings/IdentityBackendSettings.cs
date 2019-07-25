@@ -8,7 +8,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.Identity.Settings
         private string  _identityServiceUrl;
 
 
-        public IdentityBackendSettings(BackendApiSettingsModel settings  )
+        public IdentityBackendSettings(BackendApiSettings settings  )
         {
             _identityServiceUrl = settings.Url.TrimEnd('/');
            

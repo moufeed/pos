@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Values.S
     public class ValueApiSettings : BaseAPISettings, IValueApiSettings, IPOSValueApiSettings
     {
 
-        public ValueApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public ValueApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

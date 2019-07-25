@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pos.Sett
 {
     public class PosApiSettings : BaseAPISettings, IPosApiSettings
     {
-        public PosApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public PosApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

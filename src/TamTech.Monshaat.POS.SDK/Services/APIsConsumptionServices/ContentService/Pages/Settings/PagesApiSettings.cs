@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Pages.Se
 {
     public class PagesApiSettings : BaseAPISettings, IPagesApiSettings
     {
-        public PagesApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public PagesApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

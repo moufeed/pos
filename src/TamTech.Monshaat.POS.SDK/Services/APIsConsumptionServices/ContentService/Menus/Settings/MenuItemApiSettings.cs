@@ -6,7 +6,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Menus.Se
     {
 
 
-        public MenuItemApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public MenuItemApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

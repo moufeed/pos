@@ -4,7 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices.Status.S
 {
     public class StatusApiSettings : BaseAPISettings, IStatusApiSettings , IVendorStatusApiSettings , IPosStatusApiSettings , IContactUsStatusApiSettings
     {
-        public StatusApiSettings(BackendApiSettingsModel settings, string controller) : base(settings, controller)
+        public StatusApiSettings(BackendApiSettings settings, string controller) : base(settings, controller)
         {
         }
 

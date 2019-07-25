@@ -9,7 +9,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Services.APIsConsumptionServices
         public readonly string _AdminPath;
 
 
-        public BaseAPISettings(BackendApiSettingsModel settings, string controller)
+        public BaseAPISettings(BackendApiSettings settings, string controller)
         {
              string apiRoot =  $"{settings.Url.TrimEnd('/')}/api";
             _PortlPath = $"{apiRoot}/{controller}";
