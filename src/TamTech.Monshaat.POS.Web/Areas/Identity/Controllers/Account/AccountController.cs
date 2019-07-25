@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using TamTech.Monshaat.POS.IdentityService.Services;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
 using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
@@ -11,9 +12,13 @@ namespace TamTech.Monshaat.POS.Web.Areas.Identity.Controllers
     [ServiceFilter(typeof(AdminFilter))]
     public class AccountController : TamTech.Monshaat.POS.IdentityService.Controllers.AdminAccountController
     {
+        
 
-        public AccountController(IExternalAuthService authTamService, ITokenTamService tokenTamService, IAuthService authService)
-            : base(authTamService, tokenTamService, authService)
+        public AccountController(IExternalAuthService authTamService, 
+            ITokenTamService tokenTamService,
+            IAuthService authService,
+             ILogger<AccountController> logger)
+            : base(authTamService, tokenTamService, authService, logger)
         {
         }
 

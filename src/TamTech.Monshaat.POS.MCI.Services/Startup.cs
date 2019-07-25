@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using TamTech.Monshaat.POS.MCI.Services.Services;
 using TamTech.Monshaat.POS.MCI.Services.Settings;
 using TamTech.Monshaat.POS.SDK.Services.ExternalServices.Authentications;
@@ -25,8 +26,8 @@ namespace TamTech.Monshaat.POS.MCI.Services
                 {
                     IHttpContextAccessor httpContextAccessor = serviceExtension.GetRequiredService<IHttpContextAccessor>();
                     //BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
-                    return new MCIApiSimulatorSettings(httpContextAccessor,null);
-                });  
+                    return new MCIApiSimulatorSettings(httpContextAccessor, null);
+                });
             }
             else
             {
@@ -36,17 +37,18 @@ namespace TamTech.Monshaat.POS.MCI.Services
                                                      .GetSection(AppSettings.Url)
                                                                    .Get<string>();
                     return new MCIApiSettings(apiUrl);
-                }) ;
+                });
             }
-           
-            services.AddTransient<IMCIServices>((serviceExtension) =>    
+
+            services.AddTransient<IMCIServices>((serviceExtension) =>
             {
                 IRequestProvider provider = serviceExtension.GetRequiredService<IRequestProvider>();
+                ILogger<MCIServices> logger = serviceExtension.GetRequiredService<ILogger<MCIServices>>();
                 IMCIApiSettings settings = serviceExtension.GetRequiredService<IMCIApiSettings>();
                 string apiSecret = configuration.GetSection(AppSettings.MCIApiSettings)
                                                    .GetSection(AppSettings.ApiKey)
                                                                  .Get<string>();
-                return new MCIServices(provider, settings, apiSecret);
+                return new MCIServices(provider, settings, apiSecret, logger);
             });
 
             services.AddTransient<IExternalAuthService, ADAuthService>();
@@ -54,6 +56,6 @@ namespace TamTech.Monshaat.POS.MCI.Services
             services.AddTransient<IEmailSenderService, EmailSenderService>();
 
         }
-       
+
     }
 }

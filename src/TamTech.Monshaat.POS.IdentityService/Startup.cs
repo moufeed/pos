@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using TamTech.Monshaat.POS.IdentityService.Models;
@@ -101,6 +102,7 @@ namespace TamTech.Monshaat.POS.IdentityService
             services.AddScoped<ITokenTamService>((serviceExtension) =>
             {
                 BackendApiSettingsModel settings = serviceExtension.GetRequiredService<BackendApiSettingsModel>();
+                ILogger<TokenTamService> logger = serviceExtension.GetRequiredService<ILogger<TokenTamService>>();
                 //BackendApiSettingsModel settings = new BackendApiSettingsModel
                 //{
                 //    Url = settingsService.IDS4Url,
@@ -108,7 +110,7 @@ namespace TamTech.Monshaat.POS.IdentityService
                 //    ClientSecret = settingsService.ClientSecret,
                 //    ClientScope = settingsService.ClientScope,
                 //};
-                return new TokenTamService(settings);
+                return new TokenTamService(settings, logger);
             });
 
         }
