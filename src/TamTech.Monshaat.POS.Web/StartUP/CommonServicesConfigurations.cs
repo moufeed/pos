@@ -37,7 +37,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
             services.AddScoped<IUploadManagerService, UploadManagerService>((serviceExtension) =>
             {
                 List<FileTypesSettingsModel> Settings = configuration.GetSection(AppSettings.WebApplicationSettings)
-                    .GetSection(AppSettings.WebApplication_FilesTypesSettings)
+                    .GetSection(AppSettings.App_FilesTypesSettings)
                     .GetSection(AppSettings.FilesTypes)
                     .Get<List<FileTypesSettingsModel>>();
                 var uploadService = serviceExtension.GetRequiredService<IUploadService>();
@@ -47,7 +47,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
 
             bool CacheMenus = configuration.GetSection(AppSettings.WebApplicationSettings)
-                .GetSection(AppSettings.WebApplication_CacheMenus)
+                .GetSection(AppSettings.App_CacheMenus)
                 .Get<bool>();
             if (CacheMenus)
             {

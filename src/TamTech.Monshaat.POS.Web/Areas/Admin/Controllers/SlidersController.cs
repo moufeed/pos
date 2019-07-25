@@ -15,6 +15,7 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sliders;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -29,9 +30,12 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         #region constructor
-        public SlidersController(ITelemetryService telemetryClientService, ISliderServices sliderService, IUploadManagerService uploadManager,
+        public SlidersController(ITelemetryService telemetryClientService,
+            ISliderServices sliderService, 
+            IUploadManagerService uploadManager,
+              ILogger<SlidersController> logger,
            IStringLocalizer<BaseController> localizer)
-            : base(telemetryClientService, localizer)
+            : base(telemetryClientService, logger, localizer)
         {
             _sliderService = sliderService;
             _uploadManager = uploadManager;
@@ -140,7 +144,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 }
                 catch (Exception ex)
                 {
-                    TrackException(ex);
+                    TrackException(ex, model);
                 }
 
             }
@@ -171,7 +175,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
 
             }
 
@@ -201,7 +205,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View("EditSliderForm", model);
         }
@@ -220,7 +224,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
 
@@ -244,7 +248,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
 
@@ -270,7 +274,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("Details", model);
         }
@@ -362,7 +366,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex,model,   sliderId,  sliderTitle);
               
             }
 
@@ -400,7 +404,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, sliderId, slideId, sliderTitle);
 
             }
 
@@ -478,7 +482,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model, sliderId);
             }
 
             return View("EditSliderItemForm", model);
@@ -503,7 +507,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex,  sliderId, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -524,7 +528,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, sliderId, id); TrackException(ex);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
 

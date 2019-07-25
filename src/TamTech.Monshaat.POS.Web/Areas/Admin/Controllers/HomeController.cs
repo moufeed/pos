@@ -24,6 +24,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContactUs.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Helpers;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {       
@@ -45,11 +46,12 @@ namespace TamTechSDK.Web.Controllers.Admin
         public HomeController(ITelemetryService telemetryClientService,
             SettingsHelpers settingsHelpers,
              IUploadManagerService uploadManager,
+               ILogger<HomeController> logger,
              IStringLocalizer<BaseController> localizer,
              ICCUServices contentServices,
              IContactService contactService,
              IStatisticsService statisticsService)
-            : base(telemetryClientService, localizer)
+            : base(telemetryClientService, logger, localizer)
         {
             _settingsHelpers = settingsHelpers;
             _uploadManager = uploadManager;
@@ -117,20 +119,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             return View();
         }
 
-
-        [HttpGet]
-        [Authorize]
-        public virtual async Task<IActionResult> Token()
-        {
-            ViewBag.Enabled = _settingsHelpers.DisplayTokenInWebViewAsync();
-            if (ViewBag.Enabled)
-            {
-                ViewBag.id_token = await HttpContext.GetTokenAsync("id_token");
-                ViewBag.access_token = await HttpContext.GetTokenAsync("access_token");
-                ViewBag.refresh_token = await HttpContext.GetTokenAsync("refresh_token");
-            }
-            return View();
-        }
+       
           
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public virtual IActionResult Error()
@@ -171,7 +160,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex,collection);
             }
             return Json(new { });
         }

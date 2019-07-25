@@ -17,6 +17,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.ContentCommonUtilitie
 using TamTech.Monshaat.POS.SDK.Models.VMs.Admin.Menus; 
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -35,8 +36,10 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         #region Ctors
         public MenusController(ITelemetryService telemetryClientService, IMenusServices MenusServices,
-           ICCUServices  cCUServices, IStringLocalizer<BaseController> localizer, SettingsHelpers settingsHelpers)
-            : base(telemetryClientService, localizer)
+           ICCUServices  cCUServices,
+             ILogger<MenusController> logger,
+           IStringLocalizer<BaseController> localizer, SettingsHelpers settingsHelpers)
+            : base(telemetryClientService, logger, localizer)
         {
             _MenusServices = MenusServices;
             _localizer = localizer;
@@ -153,7 +156,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -189,7 +192,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
 
             return View("EditForm", new EditMenuVM());
@@ -219,7 +222,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             //GetLanguages();
@@ -238,7 +241,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
 
@@ -279,7 +282,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return RedirectToAction("Edit", new { id = model.MenuId });
         }
@@ -310,7 +313,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return RedirectToAction("Edit", new { id = model.MenuId });
         }
@@ -336,7 +339,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -359,7 +362,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }

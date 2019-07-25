@@ -34,7 +34,7 @@ namespace TamTech.Monshaat.POS.Web.Areas.Shared.Controllers
             _hostingEnvironment = hostingEnvironment;
              
             _fileTypesSettings = configuration.GetSection(AppSettings.WebApplicationSettings)
-                                .GetSection(AppSettings.WebApplication_FilesTypesSettings)
+                                .GetSection(AppSettings.App_FilesTypesSettings)
                                 .GetSection(AppSettings.FilesTypes)
                                 .Get<List<FileTypesSettingsModel>>();
         }

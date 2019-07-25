@@ -1,38 +1,63 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using System.Collections.Generic;
+using TamTech.Monshaat.POS.SDK.Models.Settings;
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 
 namespace TamTech.Monshaat.POS.Web.StartUP
 {
     public static class LogsConfigurations
     {
-        public static IServiceCollection AddLogsConfigurations(this IServiceCollection services)
+        public static  void AddLogsConfigurations(this IServiceCollection services)
         {
-            
-
-            return services;
+               
         }
 
-        public static IApplicationBuilder UseLogsConfiguration(this IApplicationBuilder app, ILoggerFactory loggerFactory)
+        public static void UseLogsConfigurations(this IApplicationBuilder app, IConfiguration configuration ,ILoggerFactory loggerFactory)
         {
-          //  Log.Logger = new LoggerConfiguration()
-          //// Restricts logs to: Debug, Information, Warning, Error and Fatal
-          //.MinimumLevel.Debug()
-          //// Logs Information, Warning, Error and Fatal to "info-logs.txt" file
-          //.WriteTo.File(path: "Logs/info-logs.txt", restrictedToMinimumLevel: LogEventLevel.Information)
-          //// Logs Error and Fatal to "error-logs.txt" file
-          //.WriteTo.File(path: "Logs/error-logs.txt", restrictedToMinimumLevel: LogEventLevel.Error)
-          //.CreateLogger();
+            List<SeriLogSettingsModel> settings = configuration.GetSection(AppSettings.Logging)  
+                                                               .GetSection(AppSettings.SeriLog)
+                                                               .Get<List<SeriLogSettingsModel>>();
+            if(settings!= null)
 
-
-          loggerFactory.AddFile("Logs/info-log-pos-app-{Date}.txt", LogLevel.Information);//,LogLevel.Information,null,true, 10000);
-          loggerFactory.AddFile("Logs/warning---log-pos-app-{Date}.txt", LogLevel.Warning);//,LogLevel.Information,null,true, 10000);
-           
-
-            return app;
+                foreach (var item in settings)
+                {
+                    loggerFactory.AddFile(
+                        item.PathFormat,
+                        GetLogLevel(item.MinimumLevel),
+                        null,
+                        false,
+                        item.FileSizeLimitBytes); 
+                }      
         }
+
+
+        public static LogLevel GetLogLevel(string level)
+        {
+            switch(level)
+            {
+                default:
+                case "Error":
+                    return LogLevel.Error;  
+                case "None":
+                    return LogLevel.None;  
+                case "Warning":
+                    return LogLevel.Warning;  
+                case "Trace":
+                    return LogLevel.Trace;  
+                case "Information":
+                    return LogLevel.Information;   
+                case "Debug":
+                    return LogLevel.Debug;         
+                case "Critical":
+                    return LogLevel.Critical;
+            }
+        }
+       
     }
 
      

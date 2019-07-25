@@ -24,6 +24,7 @@ using TamTech.Monshaat.POS.SDK.Core.Constants;
 using TamTech.Monshaat.POS.MCI.EFile2.Utilities;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -38,12 +39,13 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IUsersManagerService _usersManagerService;
         public VendorsController(
             ITelemetryService telemetryClientService,
+              ILogger<VendorsController> logger,
             IStringLocalizer<BaseController> localizer,
             IVendorAdminServices vendorServices,
             IVendorStatusService statusServices,
             IdentityUtilities identityUtilities,
             IEmailSenderService emailSender,
-            IUsersManagerService usersManagerService) : base(telemetryClientService, localizer)
+            IUsersManagerService usersManagerService) : base(telemetryClientService, logger, localizer)
         {
             _vendorServices = vendorServices;
             _statusServices = statusServices;
@@ -96,7 +98,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View();
@@ -118,7 +120,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View();
         }
@@ -171,7 +173,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -207,7 +209,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -224,7 +226,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
                 return PartialView("~/Areas/Admin/Views/Vendors/Partials/_history.cshtml", new List<VendorStatusHistoryDto>());
             }
 

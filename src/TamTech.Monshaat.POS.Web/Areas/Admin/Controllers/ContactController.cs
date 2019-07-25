@@ -23,6 +23,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
 using TamTech.Monshaat.POS.SDK.Core.Constants;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -41,11 +42,12 @@ namespace TamTechSDK.Web.Controllers.Admin
             IUsersManagerService IdentityService,
             IEmailSenderService emailService,
             ITelemetryService telemetryClientService,
+              ILogger<ContactController> logger,
             IStringLocalizer<BaseController> localizer,
             IContactService contactService,
             IContactTypeService typeService,
             IContactUsStatusService statusService
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
             _IdentityService = IdentityService;
             _EmailService = emailService;
@@ -97,7 +99,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View();
         }
@@ -114,7 +116,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("Details", null);
         }
@@ -171,7 +173,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -205,7 +207,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return Json(new { success = false });
         }

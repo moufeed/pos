@@ -6,6 +6,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Settings;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -17,9 +18,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly ISettingService _settingsServices;
         private readonly IStringLocalizer<BaseController> _localizer;
         public ConfigurationsController(ITelemetryService telemetryClientService,
+              ILogger<ConfigurationsController> logger,
             IStringLocalizer<BaseController> localizer,
             ISettingService settingsServices
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
             _settingsServices = settingsServices;
             _localizer = localizer;

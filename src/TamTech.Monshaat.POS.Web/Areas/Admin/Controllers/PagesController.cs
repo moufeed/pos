@@ -22,6 +22,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Filter;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {   
@@ -41,8 +42,9 @@ namespace TamTechSDK.Web.Controllers.Admin
                               IPageService pageService,
                               IUploadManagerService uploadManager,
                               IStringConverters stringConverters,
+                                ILogger<PagesController> logger,
                                IStringLocalizer<BaseController> localizer)
-                             : base(telemetryClientService, localizer)
+                             : base(telemetryClientService, logger, localizer)
         {
             this._pageService = pageService;
             this._stringConverters = stringConverters;
@@ -160,7 +162,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, _filters);
             }
 
             return View();
@@ -197,7 +199,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex,type, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
 
@@ -246,7 +248,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, type, id);
                 return ReturnJsonErrorResult(ex.Message, id);
                 //return Json(new
                 //{
@@ -281,7 +283,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("HtmlPageDetails", new HtmlPage());
 
@@ -349,7 +351,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View(model);
         }
@@ -371,7 +373,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View(new HtmlPageEditingVM());
         }
@@ -431,7 +433,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             //GetLanguages();
             return View(model);
@@ -461,7 +463,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("SectionsPageDetails", new SectionsPage());
         }
@@ -525,7 +527,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             // GetLanguages();
             return View(model);
@@ -545,7 +547,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View();
         }
@@ -604,7 +606,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View(model);

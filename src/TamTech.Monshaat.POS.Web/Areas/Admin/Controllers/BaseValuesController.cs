@@ -15,7 +15,8 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Values;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Values;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;    
+using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.SelectList;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -27,8 +28,11 @@ namespace TamTechSDK.Web.Controllers.Admin
         public readonly IAttributeService _attributesServices;
         private readonly IStringLocalizer<BaseController> _localizer;
 
-        public BaseValuesController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer,
-            IValueService valuesServices, IAttributeService attributesServices) : base(telemetryClientService, localizer)
+        public BaseValuesController(ITelemetryService telemetryClientService,
+              ILogger<BaseValuesController> logger,
+            IStringLocalizer<BaseController> localizer,
+            IValueService valuesServices, IAttributeService attributesServices) 
+            : base(telemetryClientService, logger, localizer)
         {
             _valuesServices = valuesServices;
             _attributesServices = attributesServices;
@@ -76,7 +80,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View();
@@ -115,7 +119,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             ViewBag.IsEditMode = false;
             await _GetAttributesList();
@@ -138,7 +142,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             await _GetAttributesList();
             return View("Form", model);
@@ -168,7 +172,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             await _GetAttributesList(model.AttId);
             ViewBag.IsEditMode = true;
@@ -200,7 +204,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -222,7 +226,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }

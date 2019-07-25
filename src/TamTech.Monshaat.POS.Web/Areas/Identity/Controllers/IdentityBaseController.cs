@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,8 +19,10 @@ namespace TamTechSDK.Web.Controllers.Identity
 
 
         #region Ctors
-        public IdentityBaseController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer)
-          : base(telemetryClientService , localizer)
+        public IdentityBaseController(ITelemetryService telemetryClientService,
+                 ILogger<IdentityBaseController> logger,
+            IStringLocalizer<BaseController> localizer)
+          : base(telemetryClientService , logger, localizer)
         {
             //  _helperService = helperService;
             ViewData["Area"] = "Admin";

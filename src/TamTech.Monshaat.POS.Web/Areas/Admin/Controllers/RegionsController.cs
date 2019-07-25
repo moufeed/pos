@@ -16,6 +16,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -26,9 +27,10 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IStringLocalizer<BaseController> _localizer;
 
         public RegionsController(ITelemetryService telemetryClientService,
+              ILogger<RegionsController> logger,
             IStringLocalizer<BaseController> localizer,
             IContactRegionService regionsServices
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
             _regionsServices = regionsServices;
             _localizer = localizer;
@@ -73,7 +75,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View(new PagedResultModel<List<RegionDto>>());
@@ -120,7 +122,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             ViewBag.IsEditMode = false;
             return View("Form", model);
@@ -145,7 +147,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
 
             return View("Form", new RegionVM());
@@ -187,7 +189,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -215,7 +217,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -246,7 +248,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }

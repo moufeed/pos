@@ -15,6 +15,7 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -27,10 +28,11 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IUploadManagerService _uploadManager;
         private readonly IBiographiesManager _biographiesManager;
         public SettingsController(ITelemetryService telemetryClientService,
+              ILogger<SettingsController> logger,
             IStringLocalizer<BaseController> localizer,
             IBiographyService settingsServices,
             IUploadManagerService uploadManager, IBiographiesManager biographiesManager
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
             _settingsServices = settingsServices;
             _uploadManager = uploadManager;
@@ -77,7 +79,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View(model);
@@ -143,7 +145,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View(model);
         }
@@ -161,7 +163,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View(model);
         }
@@ -200,7 +202,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             return View(model);
         }

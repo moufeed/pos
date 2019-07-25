@@ -3,17 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
-using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
-using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;    
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;      
 using TamTech.Monshaat.POS.Web.SDK.Services.Upload.Models; 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TamTech.Monshaat.POS.Web.SDK.Models.Dtos.Sort;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
 using Microsoft.Extensions.Localization;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
+
 namespace TamTechSDK.Web.Controllers
 {
 
@@ -22,7 +23,7 @@ namespace TamTechSDK.Web.Controllers
         #region Props 
        
         private readonly IStringLocalizer<BaseController> _localizer;
-
+        public readonly ILogger _logger;
         private const bool _disableSuccessMode = false;
         private const string _successMsg = "The process has successfully.";
         private const string _errorMsg = "General Error!!";
@@ -30,10 +31,13 @@ namespace TamTechSDK.Web.Controllers
         #endregion
 
         #region Ctors
-        public BaseController(ITelemetryService telemetryClientService , IStringLocalizer<BaseController> localizer)
+        public BaseController(ITelemetryService telemetryClientService ,
+             ILogger<BaseController> logger, 
+             IStringLocalizer<BaseController> localizer)
         {
             //   _telemetryClientService = telemetryClientService;
             _localizer = localizer;
+            _logger = logger;
         }
         #endregion 
 
@@ -44,11 +48,16 @@ namespace TamTechSDK.Web.Controllers
             return result != null && result.Success && result.Data != null;
         }
 
-        public virtual void TrackException(Exception exc)
-        {
-            //
-        }
 
+        #region Tracking & Logging
+        public virtual void TrackException(Exception ex)
+        {
+            _logger.LogException(ex, null);
+        }
+        public virtual void TrackException(Exception ex, params object[] args)
+        {
+            _logger.LogException(ex, args);
+        }
 
         public void TrackIfNotFilesDeleted(bool success,
                                             HttpStatusCode statusCode,
@@ -72,14 +81,15 @@ namespace TamTechSDK.Web.Controllers
         public void TrackEvent(string name, dynamic model, string statusCode = null)
         {
 
-        //
+                //     implementation
 
         }
 
         public void TrackEvent(string name, ModelStateDictionary modelState, dynamic model = null)
-        { 
-          // 
+        {
+                 //     implementation
         }
+        #endregion
 
 
         public RedirectToActionResult RedirectToNotFound(object pName)

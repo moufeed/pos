@@ -15,6 +15,7 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Types;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Types;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -25,9 +26,10 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         public BaseTypesController(ITelemetryService telemetryClientService,
+              ILogger<BaseTypesController> logger,
             IStringLocalizer<BaseController> localizer,
              ITypeService typeService)
-            : base(telemetryClientService, localizer)
+            : base(telemetryClientService, logger, localizer)
         {
 
             _typeService = typeService;
@@ -122,7 +124,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             ViewBag.IsEditMode = false;
             return View("Form", model);
@@ -150,7 +152,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
 
             return View("Form", model);
@@ -189,7 +191,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -224,7 +226,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -247,7 +249,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }

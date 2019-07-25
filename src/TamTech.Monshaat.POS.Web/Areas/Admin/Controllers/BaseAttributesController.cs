@@ -10,7 +10,8 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Core.Mappers.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
-using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;   
+using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using Microsoft.Extensions.Logging;        
 
 namespace TamTechSDK.Web.Controllers.Admin
 {   
@@ -21,9 +22,10 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
         public BaseAttributesController(ITelemetryService telemetryClientService,
+              ILogger<BaseAttributesController> logger,
             IStringLocalizer<BaseController> localizer,
              IAttributeService attributeService)
-            : base(telemetryClientService, localizer)
+            : base(telemetryClientService, logger, localizer)
         {
 
             _attributeService = attributeService;
@@ -61,7 +63,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View();
@@ -72,11 +74,12 @@ namespace TamTechSDK.Web.Controllers.Admin
         [HttpGet("{Culture}/[Area]/[Controller]/Create")]
         public virtual async Task<ActionResult> Create()
         {
-            // AttributeVM  model =  NewTypeVm();
-            AttributeVM model = new AttributeVM();
+            
+                // AttributeVM  model =  NewTypeVm();
+                AttributeVM model = new AttributeVM();
             ViewBag.IsEditMode = false;
 
-            return View("Form", model);
+            return View("Form", model);   
         }
 
 
@@ -108,7 +111,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             ViewBag.IsEditMode = false;
             return View("Form", model);
@@ -133,7 +136,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
 
             return View("Form", model);
@@ -172,7 +175,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -207,7 +210,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -230,7 +233,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }

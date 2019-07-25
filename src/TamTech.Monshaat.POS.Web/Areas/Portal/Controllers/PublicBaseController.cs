@@ -23,8 +23,7 @@ namespace TamTechSDK.Web.Controllers.Portal
     {
 
 
-        public static int HtmlRenderCounter = 0;
-        public readonly ILogger _logger;
+        public static int HtmlRenderCounter = 0;   
         public readonly string _lang;
         public readonly string _culture;
 
@@ -32,52 +31,18 @@ namespace TamTechSDK.Web.Controllers.Portal
         public PublicBaseController(ITelemetryService telemetryClientService ,
             ILogger<PublicBaseController> logger,
             IStringLocalizer<BaseController> localizer)
-          : base(telemetryClientService, localizer)
+          : base(telemetryClientService, logger, localizer)
         {
 
             _lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             _culture = CultureInfo.CurrentCulture.Name;
             HtmlRenderCounter = 1;
-            _logger = logger;
+          
 
        }
 
 
-        public  void TrackException(Exception ex, params object[] args)
-        {
-            try
-            {
-                string msg = "params";
-
-                if (args != null)
-                {
-                    for (int i = 0; i < args.Length; i++)
-                    {
-                        msg += "{" + i + "},";
-                    }
-
-
-                    object[] newArgs = new object[args.Length];
-                    for (int i = 0; i < args.Length; i++)
-                    {
-                        if (args[i] != null)
-                        {
-                            var ser = JsonConvert.SerializeObject(args[i]);
-                            var json = JsonConvert.DeserializeObject(ser);
-                            newArgs[i] = json;
-                        }
-                    }
-                    args = newArgs;
-                }
-
-                _logger.LogWarning(2, ex, msg, args);
-            }
-            catch  (Exception exc)
-            {
-                _logger.LogWarning(2,  ex,"");
-            }
-
-        }
+      
  
 
 

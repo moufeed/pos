@@ -4,6 +4,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.ContentService.Types;
 using TamTech.Monshaat.POS.Web.SDK.Core.Attributes;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;    
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -13,8 +14,9 @@ namespace TamTechSDK.Web.Controllers.Admin
     public class ContactTypesController : BaseTypesController
     {
         public ContactTypesController(ITelemetryService telemetryClientService,
+              ILogger<ContactTypesController> logger,
             IStringLocalizer<BaseController> localizer, IContactTypeService typeService)
-            : base(telemetryClientService, localizer, typeService)
+            : base(telemetryClientService, logger, localizer, typeService)
         {
         }
     }

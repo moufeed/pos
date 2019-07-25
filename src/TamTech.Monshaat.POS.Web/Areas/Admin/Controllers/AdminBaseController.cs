@@ -17,8 +17,8 @@ using TamTech.Monshaat.POS.Web.SDK.Core.Cultures;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
-using TamTech.Monshaat.POS.Web.SDK.Core.Constants;  
-
+using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
+using Microsoft.Extensions.Logging;     
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -34,8 +34,10 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
 
-        public AdminBaseController(ITelemetryService telemetryClientService, IStringLocalizer<BaseController> localizer)
-          : base(telemetryClientService, localizer)
+        public AdminBaseController(ITelemetryService telemetryClientService,
+                ILogger<AdminBaseController> logger, 
+                IStringLocalizer<BaseController> localizer)
+          : base(telemetryClientService, logger, localizer)
         {
 
             ViewData["Area"] = "Admin";
@@ -63,14 +65,14 @@ namespace TamTechSDK.Web.Controllers.Admin
 
 
        
-        public override void TrackException(Exception exc)
+        public override void TrackException(Exception exc, params object[] args)
         {
             AddErrorModel("Exeption", exc.Message);
-            base.TrackException(exc);
+            base.TrackException(exc, args);
         }
-        public void TrackExceptionOnly(Exception exc)
+        public void TrackExceptionOnly(Exception exc, params object[] args)
         {
-            base.TrackException(exc);
+            base.TrackException(exc, args);
         }
 
 

@@ -20,6 +20,7 @@ using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Admin.Sectors;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
 using TamTech.Monshaat.POS.Web.SDK.Core.Telemetry;
 using TamTech.Monshaat.POS.Web.SDK.Core.Providers.Requests.Models;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -32,11 +33,12 @@ namespace TamTechSDK.Web.Controllers.Admin
 
         public SectorsController(
                                     ITelemetryService telemetryClientService,
+                                      ILogger<SectorsController> logger,
                                     IStringLocalizer<BaseController> localizer,
                                     IPOSSectorServices sectorServices,
                                     IUploadManagerService uploadManager
 
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
             _sectorServices = sectorServices;
             _uploadManager = uploadManager;
@@ -57,7 +59,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, img);
             }
         }
          
@@ -88,7 +90,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View();
@@ -105,7 +107,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("Details");
         }
@@ -205,7 +207,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
             ViewBag.IsEditMode = false;
             return View("Form", model);
@@ -223,7 +225,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("Form", new SectorVM());
         }
@@ -312,7 +314,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
 
@@ -337,7 +339,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -367,7 +369,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }

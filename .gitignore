@@ -264,3 +264,4 @@ __pycache__/
 .vscode/
 UploadFolder/
 /src/TamTech.Monshaat.POS.Web/packages
+Logs/

@@ -21,6 +21,7 @@ using TamTech.Monshaat.POS.Web.SDK.Services.Email;
 using TamTech.Monshaat.POS.Web.SDK.Services.Email.Models;
 using System.Text.RegularExpressions;
 using TamTech.Monshaat.POS.SDK.Core.Constants;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -35,13 +36,14 @@ namespace TamTechSDK.Web.Controllers.Admin
         private readonly IPOSSectorServices _sectorservice;
         private readonly IEmailSenderService _emailSender;
         public PosController(ITelemetryService telemetryClientService,
+              ILogger<PosController> logger,
                 IStringLocalizer<BaseController> localizer,
                 IPOSAdminServeice posservice,
                 IPosTypeService typeservice,
                 IPosStatusService statusService,
                 IPOSSectorServices sectorservice,
                 IEmailSenderService emailSender
-            ) : base(telemetryClientService, localizer)
+            ) : base(telemetryClientService, logger, localizer)
         {
 
             _posservice = posservice;
@@ -95,7 +97,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, model);
             }
 
             return View();
@@ -114,7 +116,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
             }
             return View("Details");
         }
@@ -148,9 +150,9 @@ namespace TamTechSDK.Web.Controllers.Admin
                     return ReturnJsonErrorResult(ModelState, model);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex )
             {
-                TrackException(ex);
+                TrackException(ex, model);
                 return ReturnJsonErrorResult(ex.Message, model);
             }
         }
@@ -172,7 +174,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -203,7 +205,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackExceptionOnly(ex);
+                TrackExceptionOnly(ex, id);
                 return ReturnJsonErrorResult(ex.Message, id);
             }
         }
@@ -220,7 +222,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             }
             catch (Exception ex)
             {
-                TrackException(ex);
+                TrackException(ex, id);
                 return PartialView("~/Areas/Admin/Views/Pos/Partials/_history.cshtml", new List<POSStatusHistoryDto>());
             }
 

@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using TamTech.Monshaat.POS.Web.SDK.Core.Constants;
 using Microsoft.Extensions.Localization;
 using TamTech.Monshaat.POS.Web.SDK.Models.VMs.Shared.Filters;
+using Microsoft.Extensions.Logging;
 
 namespace TamTechSDK.Web.Controllers.Admin
 {
@@ -33,8 +34,9 @@ namespace TamTechSDK.Web.Controllers.Admin
         public UsersController(ITelemetryService telemetryClientService,
                                IUsersManagerService identityService,
                                 IRolesService rolesService,
+                                  ILogger<UsersController> logger,
                                 IStringLocalizer<BaseController> localizer)
-            : base(telemetryClientService, localizer)
+            : base(telemetryClientService, logger, localizer)
         {
 
             this._IdentityService = identityService;
