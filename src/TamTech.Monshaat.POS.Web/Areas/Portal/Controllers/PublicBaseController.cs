@@ -36,15 +36,9 @@ namespace TamTechSDK.Web.Controllers.Portal
 
             _lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             _culture = CultureInfo.CurrentCulture.Name;
-            HtmlRenderCounter = 1;
-          
-
+            HtmlRenderCounter = 1;    
        }
-
-
-      
- 
-
+                    
 
         public void TrackIfNotFilesDeleted(bool success,
                                            HttpStatusCode statusCode,

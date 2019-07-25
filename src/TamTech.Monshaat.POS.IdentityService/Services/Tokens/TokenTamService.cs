@@ -1,4 +1,5 @@
 ﻿using IdentityModel.Client;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;       
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using TamTech.Monshaat.POS.IdentityService.Models;
 using TamTech.Monshaat.POS.IdentityService.Utilities;
 using TamTech.Monshaat.POS.Web.SDK.Core.Enums;
+using TamTech.Monshaat.POS.Web.SDK.Core.Extensions;
 using TamTech.Monshaat.POS.Web.SDK.Core.Settings.Utilities;
 using TamTech.Monshaat.POS.Web.SDK.Models.Shared;
 
@@ -19,33 +21,46 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
     {
 
         private readonly BackendApiSettingsModel _settings;
+        public readonly ILogger _logger;
 
-        public TokenTamService(BackendApiSettingsModel settings)
+        public TokenTamService(BackendApiSettingsModel settings, ILogger<TokenTamService> logger)
         {
             _settings = settings;
             _settings.Url = _settings.Url.TrimEnd('/');
+            _logger = logger;
         }
 
         public async Task<TokenModel> GetTokenAsync(GetTokenModel model)
         {
-            
-            if (model == null || string.IsNullOrWhiteSpace(model.Username)|| string.IsNullOrWhiteSpace(model.Password)) return null;
-            var client = new TokenClient($"{_settings.Url}/connect/token", _settings.ClientId, _settings.ClientSecret);
+            string username = null;
+            try
+            {
+                username = model.Username;
+                if (model == null || string.IsNullOrWhiteSpace(model.Username) || string.IsNullOrWhiteSpace(model.Password)) return null;
+                var client = new TokenClient($"{_settings.Url}/connect/token", _settings.ClientId, _settings.ClientSecret);
 
-            var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: _settings.ClientScope).GetAwaiter().GetResult();
-           
-            if (token.IsError || string.IsNullOrWhiteSpace( token.AccessToken))
-             {
-                 return null;
-             }
-            var result = token.MapToModel();
-            return result;
+                var token = client.RequestResourceOwnerPasswordAsync(model.Username, model.Password, scope: _settings.ClientScope).GetAwaiter().GetResult();
+
+                if (token.IsError || string.IsNullOrWhiteSpace(token.AccessToken))
+                {
+                    return null;
+                }
+                var result = token.MapToModel();
+                return result;
+            }
+            catch (Exception ex)
+            {      
+                _logger.LogException(ex, username);
+                throw;
+            }
         }
 
 
         public async Task<List<Claim>> GetUserClaimsAsync(string accessToken, PermissionTypeEnum permission)
         {
-            var info = await SendAsync($"{_settings.Url}/connect/userinfo", accessToken);
+            try
+            {
+                var info = await SendAsync($"{_settings.Url}/connect/userinfo", accessToken);
 
             if (info == null) return null;
             List<Claim> claims = new List<Claim>()
@@ -112,7 +127,12 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
 
             return claims;
 
-
+            }
+            catch (Exception ex)
+            {
+                _logger.LogException(ex, accessToken, permission);
+                throw;
+            }
         }
 
 
@@ -145,6 +165,7 @@ namespace TamTech.Monshaat.POS.IdentityService.Services
             }
             catch (Exception ex)
             {
+                _logger.LogException(ex, uri, token);
                 throw new Exception("Http Request Provider Exception - ", ex);
             }
         }

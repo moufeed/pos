@@ -23,7 +23,7 @@ namespace TamTechSDK.Web.Controllers
         #region Props 
        
         private readonly IStringLocalizer<BaseController> _localizer;
-        public readonly ILogger _logger;
+        private readonly ILogger _logger;
         private const bool _disableSuccessMode = false;
         private const string _successMsg = "The process has successfully.";
         private const string _errorMsg = "General Error!!";
