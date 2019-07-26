@@ -4,6 +4,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
     public class AppSettings
     {
         public const string WebApplicationSettings = "WebApplicationSettings";
+        public const string App_Url = "App_Url";
 
         public const string Routing_DefaultArea = "Routing_DefaultArea";
         public const string DurationOfLogin = "DurationOfLogin";
@@ -25,6 +26,8 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
                                                                               
         
        
+        public const string HealthChecksUI = "HealthChecks-UI";
+
         public const string SeriLog = "SeriLog";
         public const string Logging = "Logging";                     
 

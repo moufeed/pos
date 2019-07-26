@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TamTech.Monshaat.POS.SDK.Models.Settings
 {
-    public class SeriLogSettingsModel
+    public class SeriLogSettings
     {
         public string PathFormat { get; set; }
         public string MinimumLevel { get; set; }

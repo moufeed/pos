@@ -17,7 +17,7 @@ namespace TamTech.Monshaat.POS.Web
 {
     public class Startup
     {
-        public IConfiguration _configuration { get; }
+        private readonly IConfiguration _configuration;   
 
         public Startup(IConfiguration configuration)
         {
@@ -30,7 +30,9 @@ namespace TamTech.Monshaat.POS.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddHealthChecksConfigurations();
+          //  int durationOfLogin = _configuration.Get( )  
+
+            services.AddHealthChecksConfigurations(_configuration);
 
             services.AddLocalizationConfigurations();
 
@@ -46,7 +48,7 @@ namespace TamTech.Monshaat.POS.Web
 
             services.DirectBackendServices_AddFilesServicesConfigurationsConfigurations(_configuration);
 
-            services._AddBusinessLogicDirectBackendServicesConfigurations();
+            services.AddBusinessLogicDirectBackendServicesConfigurations();
 
             services.MicroServices_AddProvidersServicesConfigurations();
 
@@ -72,14 +74,9 @@ namespace TamTech.Monshaat.POS.Web
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            
-
-            app.UseLogsConfigurations(_configuration, loggerFactory);
-
-            app.UseHealthChecksConfigurations();
-
-            //   app.SeedData(env, Configuration);  
+        {    
+            app.UseLogsConfigurations(_configuration, loggerFactory);    
+            app.UseHealthChecksConfigurations(_configuration);    
             string cachePeriod;
             if (env.IsDevelopment())
             {
@@ -107,10 +104,8 @@ namespace TamTech.Monshaat.POS.Web
             app.UseStatusCodePagesWithRedirects("/error/{0}");
             app.InitializeMapper();    
             app.UseSettings(env, _configuration);
-            app.ConfigureIdentityService(env);
-           // app.UseCustomHttpContext();
-            app.UseResponseCompression();
-
+            app.ConfigureIdentityService(env);  
+            app.UseResponseCompression();    
             app.UseMvcAndRoute(_configuration, new CultureManager().LocalizationOptions);
             app.UseCookiePolicy();
 

@@ -5,7 +5,7 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 {
     public static class BLLDirectBackendServicesConfigurations
     {
-        public static void _AddBusinessLogicDirectBackendServicesConfigurations(this IServiceCollection services)
+        public static void AddBusinessLogicDirectBackendServicesConfigurations(this IServiceCollection services)
         {  
             #region Upload Service 
 

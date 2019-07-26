@@ -18,22 +18,10 @@ namespace TamTech.Monshaat.POS.Web.StartUP
     {
         public static void AddCommonServicesConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTelemetryConfigurations(configuration);
-
-
-            //   services.AddScoped<IAppSettingsFile, AppSettingsFileReader>();
-
-           // services.AddSingleton<IHelperService, HelperService>();
+            services.AddTelemetryConfigurations(configuration);    
             services.AddScoped<IStringConverters, StringConverters>();
-            services.AddScoped<IExpressionValidation, ExpressionValidation>();
-
-
-            // services.AddScoped<ICulturesManager, ConstantsCulturesService>();   
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //   services.AddTransient<IHelperService, HelperService>();
-
-
+            services.AddScoped<IExpressionValidation, ExpressionValidation>();    
+      
             services.AddScoped<IUploadManagerService, UploadManagerService>((serviceExtension) =>
             {
                 List<FileTypesSettingsModel> Settings = configuration.GetSection(AppSettings.WebApplicationSettings)

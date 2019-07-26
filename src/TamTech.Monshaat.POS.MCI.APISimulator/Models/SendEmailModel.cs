@@ -1,13 +1,14 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace TamTech.Monshaat.POS.MCI.APISimulator.Models
 {
     public class SendEmailModel
     {
-
+        [Required]
         [JsonProperty("To")]
         public List<string> To { get; set; }
 

@@ -19,9 +19,9 @@ namespace TamTech.Monshaat.POS.Web.StartUP
 
         public static void UseLogsConfigurations(this IApplicationBuilder app, IConfiguration configuration ,ILoggerFactory loggerFactory)
         {
-            List<SeriLogSettingsModel> settings = configuration.GetSection(AppSettings.Logging)  
+            List<SeriLogSettings> settings = configuration.GetSection(AppSettings.Logging)  
                                                                .GetSection(AppSettings.SeriLog)
-                                                               .Get<List<SeriLogSettingsModel>>();
+                                                               .Get<List<SeriLogSettings>>();
             if(settings!= null)
 
                 foreach (var item in settings)
