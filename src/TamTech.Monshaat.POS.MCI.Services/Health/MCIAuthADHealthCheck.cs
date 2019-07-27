@@ -49,7 +49,7 @@ namespace TamTech.Monshaat.POS.MCI.Services.Health
             }
 
             return Task.FromResult(
-                HealthCheckResult.Unhealthy("The check ping MCI AD api an unhealthy result."));
+                HealthCheckResult.Unhealthy("The check ping MCI AD api indicates an unhealthy result."));
         }
 
 

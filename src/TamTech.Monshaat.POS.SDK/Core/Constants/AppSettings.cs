@@ -26,7 +26,7 @@ namespace TamTech.Monshaat.POS.Web.SDK.Core.Constants
                                                                               
         
        
-        public const string HealthChecksUI = "HealthChecks-UI";
+        public const string HealthChecksUI = "HealthChecksSettings";
 
         public const string SeriLog = "SeriLog";
         public const string Logging = "Logging";                     

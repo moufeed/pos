@@ -42,11 +42,11 @@ namespace TamTech.Monshaat.POS.MCI.Services.Health
                 if (healthCheckResultHealthy)
             {
                 return Task.FromResult(
-                    HealthCheckResult.Healthy("The check ping MCI Email api indicates a healthy result."));
+                    HealthCheckResult.Healthy("The check ping MCI Email api indicates a Healthy result."));
             }
 
             return Task.FromResult(
-                HealthCheckResult.Unhealthy("The check ping MCI Email api an unhealthy result."));
+                HealthCheckResult.Unhealthy("The check ping MCI Email api indicates an Unhealthy result."));
         }
 
 
