@@ -260,9 +260,14 @@ paket-files/
 __pycache__/
 *.pyc
 
-healthchecksdb
+
 
 .vscode/
 UploadFolder/
 /src/TamTech.Monshaat.POS.Web/packages
+
+# Logs files
 Logs/
+
+# Health Check Status
+healthchecksdb
