@@ -62,7 +62,7 @@ namespace TamTech.Monshaat.POS.MCI.APISimulator.Controllers
             if (!Authorized()) return Unauthorized();
             if (ModelState.IsValid)
             {
-                var user = new MockData().TestUsers.SingleOrDefault(u => u.Username.Equals(model.Username) && u.Username.Equals(model.Password));
+                var user = new MockData().TestUsers.SingleOrDefault(u => u.Username.Equals(model.Username) && u.Password.Equals(model.Password));
                 return Ok(new
                 {
                     status = true,

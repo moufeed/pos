@@ -25,7 +25,7 @@ namespace TamTech.Monshaat.POS.MCI.Services.Services
             var request = await _mCIServices.AuthenticateByAD(new ADUserModel
             {
                 Username = model.Username,
-                Password = model.Username
+                Password = model.Password
             }); 
 
            var result =  new ExternalAuthResultModel { Successed = true };
