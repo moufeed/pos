@@ -431,7 +431,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                     if (_files.Count > 0)
                     {
                         var fileInfo = await GenerateFileInfo(_files[0]);
-                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.GalleryMainImage);
+                        var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.SliderItemMainImage);
                         if (upload_result.Success)
                         {
                             model.MainImage = upload_result.URL;

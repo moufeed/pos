@@ -51,7 +51,7 @@ namespace TamTechSDK.Web.Controllers.Admin
             {
                 if (!string.IsNullOrWhiteSpace(img))
                 {
-                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.SectionMainImage } };
+                    Dictionary<string, FileTypesEnum> deleteInputModel = new Dictionary<string, FileTypesEnum> { { img, FileTypesEnum.SectorMainImage } };
                     IRequestProviderResult< DeleteFilesModelResult> uploadResult = await _uploadManager.DeleteFilesAsync(deleteInputModel);
                     TrackIfNotFilesDeleted(uploadResult.Success, uploadResult.StatusCode, uploadResult.Data, deleteInputModel);
                 }

@@ -199,7 +199,7 @@ namespace TamTechSDK.Web.Controllers.Admin
                 if (_files.Count > 0)
                 {
                     var fileInfo = await GenerateFileInfo(_files[0]);
-                    var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.General);
+                    var upload_result = await _uploadManager.UploadFileAsync(fileInfo, FileTypesEnum.EditorImages);
 
                     if (upload_result.Success)
                     {

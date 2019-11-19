@@ -30,19 +30,31 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
             else
             {
                 // static types of files 
+                /*  _fileTypesSettings = new List<FileTypesSettingsModel>
+                  {
+                      new FileTypesSettingsModel { File = FileTypesEnum.General.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.BrandMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.CategoryMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.GalleryItemImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.GalleryMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.PageMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.ProductImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.ProductMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.ServiceMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.SliderItemMainImage.ToString(), Type = "avatars" },
+                      new FileTypesSettingsModel { File = FileTypesEnum.SliderMainImage.ToString(), Type = "avatars" }
+                  };*/
                 _fileTypesSettings = new List<FileTypesSettingsModel>
                 {
-                    new FileTypesSettingsModel { File = FileTypesEnum.General.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.BrandMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.CategoryMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.GalleryItemImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.GalleryMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.PageMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.ProductImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.ProductMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.ServiceMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.SliderItemMainImage.ToString(), Type = "avatars" },
-                    new FileTypesSettingsModel { File = FileTypesEnum.SliderMainImage.ToString(), Type = "avatars" }
+                    new FileTypesSettingsModel { File = FileTypesEnum.General.ToString(), Type = "general" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.PageMainImage.ToString(), Type = "general" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.SliderItemMainImage.ToString(), Type = "general" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.SliderMainImage.ToString(), Type = "general" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.ContactUsFile.ToString(), Type = "contact-us" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.VendorFile.ToString(), Type = "vendor" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.POSImage.ToString(), Type = "pos" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.SectorIcon.ToString(), Type = "content" },
+                    new FileTypesSettingsModel { File = FileTypesEnum.SectorMainImage.ToString(), Type = "content" },
                 };
             }
         }
@@ -159,23 +171,35 @@ namespace TamTech.Monshaat.POS.Web.Services.Upload
         }
  
     }
-
     public enum FileTypesEnum
     {
         General,
-        ProductImage,
-        ProductMainImage,
         PageMainImage,
-        ServiceMainImage,
-        CategoryMainImage,
-        BrandMainImage,
         SliderMainImage,
         SliderItemMainImage,
-        GalleryMainImage,
-        GalleryItemImage,
-        PostMainImage,
-        SectionMainImage,
         SectorIcon,
-        SectorMainImage
+        SectorMainImage,
+        ContactUsFile,
+        VendorFile,
+        POSImage,
+        EditorImages
     }
+    /* public enum FileTypesEnum
+     {
+         General,
+         ProductImage,
+         ProductMainImage,
+         PageMainImage,
+         ServiceMainImage,
+         CategoryMainImage,
+         BrandMainImage,
+         SliderMainImage,
+         SliderItemMainImage,
+         GalleryMainImage,
+         GalleryItemImage,
+         PostMainImage,
+         SectionMainImage,
+         SectorIcon,
+         SectorMainImage
+     }*/
 }
